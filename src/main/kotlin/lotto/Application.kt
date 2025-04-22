@@ -10,5 +10,15 @@ fun main() {
 
     val winningNumbers = InputView.readWinningNumbers()
     val bonusNumber = InputView.readBonusNumber(winningNumbers)
-    println("Bonus number: $bonusNumber") // Temp debug
+
+    val ranks = tickets.map { ticket ->
+        val matchCount = ticket.matchCount(winningNumbers)
+        val bonusMatched = ticket.contains(bonusNumber)
+        Rank.of(matchCount, bonusMatched)
+    }
+    val result = LottoResult(ranks)
+
+    //Temporal debug print statements
+    println(result.getRankCounts())
+    println("Total Prize: ${result.totalPrize()}")
 }
