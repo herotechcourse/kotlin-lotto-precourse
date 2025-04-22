@@ -3,7 +3,8 @@ package lotto.views
 import camp.nextstep.edu.missionutils.Console
 
 object InputView {
-    fun readPurchaseAmount(): Int {
+
+    fun readPurchaseAmount(): Int = retryInput {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
         val amount = input.toIntOrNull()
@@ -12,10 +13,10 @@ object InputView {
             throw IllegalArgumentException("[ERROR] Amount must be a positive number divisible by 1,000.")
         }
 
-        return amount
+        amount
     }
 
-    fun readWinningNumbers(): List<Int> {
+    fun readWinningNumbers(): List<Int> = retryInput {
         println("Please enter last week's winning numbers.")
         val input = Console.readLine()
         val numbers = input.split(",").map { it.trim().toIntOrNull() }
@@ -34,10 +35,10 @@ object InputView {
             throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
         }
 
-        return validNumbers
+        validNumbers
     }
 
-    fun readBonusNumber(winningNumbers: List<Int>): Int {
+    fun readBonusNumber(winningNumbers: List<Int>): Int = retryInput {
         println("Please enter the bonus number.")
         val input = Console.readLine()
         val bonus = input.toIntOrNull()
@@ -51,6 +52,16 @@ object InputView {
             throw IllegalArgumentException("[ERROR] Bonus number must not be part of the winning numbers.")
         }
 
-        return bonus
+        bonus
+    }
+
+    private fun <T> retryInput(block: () -> T): T {
+        while (true) {
+            try {
+                return block()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 }
