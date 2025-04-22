@@ -14,4 +14,26 @@ object InputView {
 
         return amount
     }
+
+    fun readWinningNumbers(): List<Int> {
+        println("Please enter last week's winning numbers.")
+        val input = Console.readLine()
+        val numbers = input.split(",").map { it.trim().toIntOrNull() }
+
+        if (numbers.any { it == null } || numbers.size != 6) {
+            throw IllegalArgumentException("[ERROR] Please enter exactly 6 valid numbers.")
+        }
+
+        val validNumbers = numbers.filterNotNull()
+
+        if (validNumbers.toSet().size != 6) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+        }
+
+        if (validNumbers.any { it !in 1..45 }) {
+            throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+        }
+
+        return validNumbers
+    }
 }
