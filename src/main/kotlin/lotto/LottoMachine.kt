@@ -1,10 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.config.LottoConfig.PRICE_PER_TICKET
 
 object LottoMachine {
-    private const val PRICE_PER_TICKET = 1000
-
     fun generateTickets(amount: Int): List<Lotto> {
         val count = amount / PRICE_PER_TICKET
         return List(count) {
