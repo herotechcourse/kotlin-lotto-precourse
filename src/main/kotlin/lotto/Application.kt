@@ -1,6 +1,10 @@
 package lotto
 
+import lotto.views.InputView
+import lotto.views.OutputView
+
 fun main() {
     val amount = InputView.readPurchaseAmount()
-    println("Valid purchase amount: $amount") // Just to confirm it works
+    val tickets = LottoMachine.generateTickets(amount)
+    OutputView.printTickets(tickets)
 }
