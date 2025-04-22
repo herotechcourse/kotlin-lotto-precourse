@@ -21,6 +21,53 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 | **Output** | Shows:<br>- All tickets with numbers.<br>- Prizes per ticket.<br>- Total winnings.<br>- Profit rate: \[(Winnings - Amount) / Amount\] × 100%. |
 | **Error Handling** | Uses `IllegalArgumentException` for invalid inputs and `IllegalStateException` for unexpected states. Avoids generic `Exception`. Retries on errors. |
 ## Code Structure
+### Lotto
+**Class** representing a lottery ticket with 6 unique numbers.
+
+**Properties:**
+- `numbers`: a list of 6 numbers.
+
+  **Methods:**
+- `getNumbers()`: returns the list of numbers.
+- `contains(number: Int)`: checks if the number is present in the ticket.
+
+### GeneratorTickets
+**Object** responsible for generating random lottery tickets.
+
+**Methods:**
+- `generate()`: generates a new ticket with 6 unique numbers between 1 and 45.
+
+### WinnerTickets
+**Class** representing a winning ticket with a bonus number.
+
+**Methods:**
+- `matchCount(ticket: Lotto)`: returns the number of matching numbers.
+- `hasBonus(ticket: Lotto)`: checks if the bonus number matches.
+- `getRank(ticket: Lotto)`: returns the rank based on the number of matches.
+
+### Rank
+**Enum** representing possible results.
+
+**Values:**
+- `FIRST`: 6 matches.
+- `SECOND`: 5 matches + bonus.
+- `THIRD`: 5 matches.
+- `FOURTH`: 4 matches.
+- `FIFTH`: 3 matches.
+- `WITHOUT`: fewer than 3 matches.
+
+### Result
+**Object** that calculates the number of wins for each rank.
+
+**Methods:**
+- `calculate`: returns the win count per rank.
+
+### Input
+**Object** responsible for getting input from the user.
+
+### Output
+**Object** responsible for displaying results to the user.
+
 ## Example Execution
 ```plain
 Please enter the purchase amount.
