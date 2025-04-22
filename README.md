@@ -1,4 +1,5 @@
 # kotlin-lotto-precourse
+# Lotto
 
 ## Project Overview
 
