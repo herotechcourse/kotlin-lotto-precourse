@@ -20,6 +20,16 @@ class LottoTest {
     }
 
     @Test
+    fun `throws an exception when lotto numbers are out of valid range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6)) // 0 is invalid
+        }
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 46)) // 46 is invalid
+        }
+    }
+
+    @Test
     fun `matchCount returns number of matching numbers`() {
         val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val winning = listOf(2, 3, 9, 10, 11, 12)
