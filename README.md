@@ -8,20 +8,20 @@ This project is a console-based Lotto ticket machine built in Kotlin as part of 
 
 The program includes the following features:
 
-- Read purchase amount from the user
-- Validate that the amount is a positive number and divisible by 1,000
-- Generate N tickets (1 ticket = 1,000 KRW) with 6 unique random numbers each (1–45)
-- Display the issued tickets sorted in ascending order
-- Read last week's winning numbers from the user
-- Validate that the winning numbers are 6 unique numbers in the 1–45 range
-- Read and validate the bonus number
-- Determine match count between purchased tickets and winning numbers
-- Categorize each ticket into one of 5 winning ranks (or no prize)
-- Count how many tickets match each rank
-- Calculate and display the total winnings
-- Calculate and display the profit rate (rounded to 1 decimal place)
-- Throw `IllegalArgumentException` and re-prompt input for invalid user entries
-- Ensure all error messages begin with `[ERROR]`
+- Reads purchase amount from the user
+- Validates that the amount is a positive integer and divisible by 1,000
+- Issues tickets (1,000 KRW per ticket) with 6 **unique random numbers** (range: 1–45)
+- Sorts and displays each ticket's numbers in ascending order
+- Reads last week's winning numbers and a bonus number
+- Validates all numbers for uniqueness and range
+- Calculates match counts between purchased tickets and winning numbers
+- Categorizes each ticket into 1 of 5 winning ranks (or no prize)
+- Calculate how many tickets fall into each rank
+- Calculates and displays:
+    - Total winnings
+    - Profit rate (rounded to 1 decimal place)
+- Handles invalid inputs by throwing `IllegalArgumentException` and re-prompting
+- Displays all error messages beginning with `[ERROR]`
 
 ---
 
@@ -78,19 +78,33 @@ BUILD SUCCESSFUL
 
 ## Tools & Constraints
 
-- Kotlin version: 1.9.24
-- Must use `Randoms.pickUniqueNumbersInRange(1, 45, 6)`
-- Input from user: `Console.readLine()`
+- Kotlin version: **1.9.24**
+- Uses:
+    - `Randoms.pickUniqueNumbersInRange(1, 45, 6)`
+    - `Console.readLine()` for input
 - Entry point: `main()` in `Application.kt`
-- Max indentation: 2 levels
-- No `System.exit()` or `exitProcess()`
-- Functions should be under 10 lines
-- Avoid `else` (use early return)
-- Business logic and UI logic must be separated
-- Use `enum` classes where applicable
-- Use `InputView` and `OutputView` to separate concerns
-- All logic must be tested (except I/O)
+- UI and business logic are cleanly separated:
+    - `InputView` for input
+    - `OutputView` for output
+- Complies with all pre-course constraints:
+    - No `System.exit()` or `exitProcess()`
+    - Max 2 levels of indentation
+    - No generic `Exception` handling
+    - Functions are concise (under 10 lines where possible)
+    - Avoids `else` via early returns
+    - Uses `enum` for prize ranks
+    - Logic is fully covered by unit tests (excluding I/O)
 
+---
+
+## Testing Philosophy
+
+- All business logic (e.g. ranking, validation, result aggregation) is unit tested
+- Input/output logic (`System.out`, `System.in`) is not tested, in accordance with the mission rules
+- Validation logic is tested independently using pure functions
+- Tests are organized in files corresponding to the classes they test
+- Assertions are written using AssertJ
+- Exceptions are verified using JUnit 5's `assertThrows`
 ---
 
 ## Notes
