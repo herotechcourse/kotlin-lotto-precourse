@@ -18,6 +18,5 @@ fun main() {
     }
 
     val result = LottoResult(ranks)
-
     OutputView.printStatistics(result, amount)
 }
