@@ -36,4 +36,21 @@ object InputView {
 
         return validNumbers
     }
+
+    fun readBonusNumber(winningNumbers: List<Int>): Int {
+        println("Please enter the bonus number.")
+        val input = Console.readLine()
+        val bonus = input.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Bonus number must be a valid integer.")
+
+        if (bonus !in 1..45) {
+            throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+        }
+
+        if (bonus in winningNumbers) {
+            throw IllegalArgumentException("[ERROR] Bonus number must not be part of the winning numbers.")
+        }
+
+        return bonus
+    }
 }

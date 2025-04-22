@@ -7,6 +7,8 @@ fun main() {
     val amount = InputView.readPurchaseAmount()
     val tickets = LottoMachine.generateTickets(amount)
     OutputView.printTickets(tickets)
+
     val winningNumbers = InputView.readWinningNumbers()
-    println("Winning numbers: $winningNumbers") // Temp debug
+    val bonusNumber = InputView.readBonusNumber(winningNumbers)
+    println("Bonus number: $bonusNumber") // Temp debug
 }
