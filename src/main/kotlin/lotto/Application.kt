@@ -16,9 +16,8 @@ fun main() {
         val bonusMatched = ticket.contains(bonusNumber)
         Rank.of(matchCount, bonusMatched)
     }
+
     val result = LottoResult(ranks)
 
-    //Temporal debug print statements
-    println(result.getRankCounts())
-    println("Total Prize: ${result.totalPrize()}")
+    OutputView.printStatistics(result, amount)
 }
