@@ -1,5 +1,6 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val amount = InputView.readPurchaseAmount()
+    println("Valid purchase amount: $amount") // Just to confirm it works
 }
