@@ -51,7 +51,7 @@ class InputView {
     private fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
-        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("Input must be a valid number.")
+        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a valid number.")
         InputValidator.validatePurchaseAmount(amount)
         return amount
     }
