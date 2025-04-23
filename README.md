@@ -2,7 +2,7 @@
 
 ## Planned Features
 
-- [ ] Get user inputs
+- [X] Get user inputs
     - A user input for purchase amount (must be divisible by 1,000)
     - A user input for winning numbers (6 unique integers, comma-separated)
     - A user Input for bonus number (must not duplicate winning numbers)
