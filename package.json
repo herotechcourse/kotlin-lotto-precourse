@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
+}
