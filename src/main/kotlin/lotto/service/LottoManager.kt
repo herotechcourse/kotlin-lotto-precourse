@@ -1,6 +1,6 @@
 package lotto.service
 
-import lotto.Lotto
+import lotto.models.Lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 object LottoManager {

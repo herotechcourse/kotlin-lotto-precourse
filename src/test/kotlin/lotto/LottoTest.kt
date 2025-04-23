@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.models.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -11,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +19,4 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
 }
