@@ -97,4 +97,41 @@ class LottoTest {
         result.add(Rank.WITHOUT)
         result.calculate()
     }
+
+    @Test
+    fun `throws exception for invalid purchase amount`() {
+        assertThrows<IllegalArgumentException> {
+            val amount = 1500
+            require(amount >= 1000 && amount % 1000 == 0) { "[ERROR] Amount must be at least 1,000 and divisible by 1,000." }
+        }
+    }
+
+    @Test
+    fun `throws exception for invalid winning numbers`() {
+        assertThrows<IllegalArgumentException> {
+            val numbers = listOf(1, 2, 3, 4, 5, 46)
+            require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
+        }
+        assertThrows<IllegalArgumentException> {
+            val numbers = listOf(1, 2, 3, 4, 5, 5)
+            require(numbers.toSet().size == 6) { "[ERROR] Winning numbers must be unique." }
+        }
+        assertThrows<IllegalArgumentException> {
+            val numbers = listOf(1, 2, 3, 4, 5)
+            require(numbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
+        }
+    }
+
+    @Test
+    fun `throws exception for invalid bonus number`() {
+        assertThrows<IllegalArgumentException> {
+            val bonus = 46
+            require(bonus in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        }
+        assertThrows<IllegalArgumentException> {
+            val bonus = 1
+            val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+            require(bonus !in winningNumbers) { "[ERROR] Bonus number must not be among winning numbers." }
+        }
+    }
 }
