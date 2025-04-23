@@ -9,8 +9,8 @@ class Lotto(private val numbers: List<Int>) {
 
     // TODO: Implement additional functions
     companion object {
-        const val FIRST_NUM = 1
-        const val LAST_NUM = 45
+        private const val FIRST_NUM = 1
+        private const val LAST_NUM = 45
         const val SIZE = 6
         const val COST = 10000
 
