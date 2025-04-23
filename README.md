@@ -17,7 +17,6 @@
     - It must not overlap with the previously entered winning numbers.
     - Used to determine 2nd place in ranking.
 
-
 # Validator
 - Define message
     - All error messages are predefined as constants for consistency.
@@ -38,28 +37,26 @@
     - Ensures it does not match any of the 6 winning numbers.
     - Throws an exception on failure.
 
-
 # OutputView
 - Define constant, message
-  - Defines all prompt and result messages for consistent output formatting.
+    - Defines all prompt and result messages for consistent output formatting.
 
 - Print, purchase amount
-  - Prints message prompting user for purchase amount.
-  - Prints the total number of purchased tickets.
+    - Prints message prompting user for purchase amount.
+    - Prints the total number of purchased tickets.
 
 - Print, winning numbers
-  - Prints message prompting user to enter winning numbers.
-  - Prints the list of purchased tickets in sorted order.
+    - Prints message prompting user to enter winning numbers.
+    - Prints the list of purchased tickets in sorted order.
 
 - Print, bonus number
-  - Prints message prompting user to enter the bonus number.
+    - Prints message prompting user to enter the bonus number.
 
 - Print, statistics
-  - Prints match statistics by rank and number of winning tickets.
+    - Prints match statistics by rank and number of winning tickets.
 
 - Print, return rate
-  - Prints the total return rate in percentage.
-
+    - Prints the total return rate in percentage.
 
 ## LottoGenerator
 - generate Lotto with random numbers
@@ -70,4 +67,22 @@
 
 ## Lotte Rank Formatter
 - format, description
-- format, KRW currency 
+- format, KRW currency
+
+# Lotto
+- Lotto numbers initialization
+    - Ensures the Lotto object is always created with exactly 6 numbers.
+    - All numbers must be unique and within the range 1 to 45.
+    - Throws an `IllegalArgumentException` if invalid.
+
+- Provide sorted numbers
+    - Returns the Lotto numbers sorted in ascending order.
+    - Useful for consistent display formatting.
+
+- Count matched winning numbers
+    - Compares this Lotto with the winning numbers.
+    - Returns the number of matched numbers.
+
+- Check bonus number
+    - Checks whether the bonus number exists in this Lotto.
+    - Used to determine 2nd place ranking (5 matches + bonus).
