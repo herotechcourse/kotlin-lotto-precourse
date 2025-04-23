@@ -49,12 +49,12 @@ class InputView {
         return winningNumbers
     }
 
-    fun readAndGetWinningNumbers(): Lotto {
+    private fun readAndGetWinningNumbers(): Lotto {
         println()
         println("Please enter last week's winning numbers.")
         val winningNumbers = Console.readLine()!!
             .split(",")
-            .map { validateLottoNumber(it.trim().toInt()) }
+            .map { validateLottoNumber(it.trim().toIntOrNull()) }
         return Lotto(winningNumbers)
     }
 

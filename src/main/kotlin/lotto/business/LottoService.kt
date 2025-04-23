@@ -39,7 +39,7 @@ class LottoService {
         return winningStatistics
     }
 
-    private fun getLottoMatchType( matchCount: Int, ticketNumbers: List<Int>, bonusNumber: Int): LottoMatchType? {
+    fun getLottoMatchType( matchCount: Int, ticketNumbers: List<Int>, bonusNumber: Int): LottoMatchType? {
         return when {
             matchCount == 6 -> LottoMatchType.SIX_MATCHES
             matchCount == 5 && ticketNumbers.contains(bonusNumber) -> LottoMatchType.FIVE_MATCHES_BONUS
