@@ -13,8 +13,8 @@ class InputView {
             it.size == 6 && it.all { num -> num in 1..45 } && it.distinct().size == 6
         }
 
-        fun readBonusNumber(): Int = readIntWithValidation(Messages.PROMPT_BONUS_NUMBER) {
-            it in 1..45
+        fun readBonusNumber(winningNumbers: List<Int>): Int = readIntWithValidation(Messages.PROMPT_BONUS_NUMBER) {
+            it in 1..45 && !winningNumbers.contains(it)
         }
 
         private fun readIntWithValidation(prompt: String, validate: (Int) -> Boolean): Int {
