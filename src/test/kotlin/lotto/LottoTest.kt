@@ -77,7 +77,7 @@ class LottoTest {
         result.add(Rank.FOURTH)
         result.add(Rank.THIRD)
         result.add(Rank.WITHOUT)
-        result.display()
+        OutputView.displayWinCounts(result.getWinCounts())
     }
 
     @Test
@@ -134,4 +134,6 @@ class LottoTest {
             require(bonus !in winningNumbers) { "[ERROR] Bonus number must not be among winning numbers." }
         }
     }
+
+
 }
