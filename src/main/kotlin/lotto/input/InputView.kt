@@ -30,7 +30,7 @@ class InputView {
                 try {
                     return validateIntInput(input, validate)
                 } catch (e: IllegalArgumentException) {
-                    println(e.message)
+                    println("\n" + e.message + "\nTry again:")
                 }
             }
         }
@@ -49,7 +49,7 @@ class InputView {
                 try {
                     return validateNumberListInput(input, validate)
                 } catch (e: IllegalArgumentException) {
-                    println(e.message)
+                    println("\n" + e.message + "\nTry again:")
                 }
             }
         }
