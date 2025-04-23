@@ -20,4 +20,14 @@ class LottoTest {
     }
 
     // TODO: Implement tests based on the added features
+    @Test
+    fun `creates valid lotto and checks numbers and contains method`() {
+
+        val validNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(validNumbers)
+
+        lotto.getNumbers()
+        lotto.contains(3)
+        lotto.contains(7)
+    }
 }
