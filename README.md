@@ -17,6 +17,8 @@
     - It must not overlap with the previously entered winning numbers.
     - Used to determine 2nd place in ranking.
 
+- apply validator and retry or throw Exception
+
 # Validator
 - Define message
     - All error messages are predefined as constants for consistency.
@@ -88,7 +90,6 @@
     - Used to determine 2nd place ranking (5 matches + bonus).
 
 # Lotto Result
-
 - Analyze results
   - Evaluates all tickets based on winning numbers and bonus number.
   - Stores the result ranks internally.
