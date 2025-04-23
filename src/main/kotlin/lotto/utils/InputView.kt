@@ -31,19 +31,24 @@ object InputView {
 
     fun readWinningTicket(): Lotto{
 
-        println("Please enter last week's winning numbers (comma-separated).")
-        val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
-        val numbers = input.split(",").map { it.trim().toInt() }
-
-        return parseWinningTicket(numbers)
+        while (true) {
+            try {
+                println("Please enter last week's winning numbers (comma-separated).")
+                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+                val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must contain 6 numbers.") }
+                return parseWinningTicket(numbers)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun parseWinningTicket(numbers: List<Int>): Lotto {
-
         require(numbers.size == 6) { "[ERROR] Winning numbers must be 6 numbers." }
         require(numbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
         require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
 
         return Lotto(numbers)
     }
+
 }
