@@ -1,4 +1,5 @@
 # Lotto 🎰
+
 ---
 
 ## Feature Specification
@@ -23,14 +24,14 @@
   - [ ] If the number of values is not 6.
   - [ ] If any value is not a number.
 
-### Receive the bonus number for the lottery
+### Receive the bonus number for the lottery.
 - [ ] Display a prompt message to enter the bonus number.
 - [ ] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
     - [ ] If the input is empty.
     - [ ] If the input is not a number.
     - [ ] If the number is not in range 1 to 45.
 
-### Display the winning statistics by match count
+### Display the winning statistics by match count.
 - [ ] Display a message for the winning statistics. "Winning Statistics"
 - [ ] Display a separator line.
 - [ ] Display the number of winning tickets for 3, 4, 6, 6+bonus, and 6 matched numbers.
