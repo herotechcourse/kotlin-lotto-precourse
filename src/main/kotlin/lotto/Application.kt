@@ -5,7 +5,6 @@ fun main() {
 }
 
 enum class LottoResults(val matches: Int, val message: String) {
-
     FIRST_PRIZE(matches = 1, message = "6 Matches (2,000,000,000 KRW)"),
     SECOND_PRIZE(matches = 2, message = "5 Matches + Bonus Ball (30,000,000 KRW)"),
     THIRD_PRIZE(matches = 3, message = "5 Matches (1,500,000 KRW)"),
