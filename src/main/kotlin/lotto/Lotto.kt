@@ -5,5 +5,11 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    // TODO: Implement additional functions
+    fun display(): String {
+        return numbers.joinToString(", ", prefix = "[", postfix = "]")
+    }
+
+    fun sort(): Lotto {
+        return Lotto(numbers.sorted())
+    }
 }
