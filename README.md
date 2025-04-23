@@ -61,9 +61,13 @@
   - Prints the total return rate in percentage.
 
 
-# LottoGenerator
+## LottoGenerator
 - generate Lotto with random numbers
 
-# Lotto Rank (Enum)
+## Lotto Rank (Enum)
 - matchCount, isBonus, prize, description
 - factory method
+
+## Lotte Rank Formatter
+- format, description
+- format, KRW currency 
