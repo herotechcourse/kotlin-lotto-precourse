@@ -34,13 +34,16 @@ This project is a simple console-based Lotto program written in Kotlin. It simul
 ## 🚧 Progress Checklist
 
 - [ ] Set up project structure and build system
-- [ ] Create LottoNumber and LottoTicket classes
+- [ ] Create Lotto class
+- [ ] Create ServiceManager class
 - [ ] Implement ticket generation logic
 - [ ] Add input validation
 - [ ] Build comparison and ranking logic
 - [ ] Handle exceptions properly
 - [ ] Write unit tests for all major components
 - [ ] Add user input/output logic
+- [ ] Build Error handling method
+      - When exception is thrown by require(), main() terminates before printing anything so comparing with "[ERROR]" is not possible
 
 ---
 
