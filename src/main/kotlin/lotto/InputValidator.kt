@@ -33,9 +33,18 @@ object InputValidator {
     /**
      * Checks that all numbers are within the valid range start to End inclusive.
      */
-    fun checkRange(numbers: List<Int>) {
+    private fun checkRange(numbers: List<Int>) {
         numbers.forEach {
             if (it !in 1..45) throw IllegalArgumentException("All numbers must be between 1 and 45.")
         }
+    }
+
+    /**
+     * Validates that the bonus number is a valid integer in the range 1–45.
+     */
+    fun validateBonusNumber(input: String): Int {
+        val number = input.toIntOrNull() ?: throw IllegalArgumentException("Please enter a valid number.")
+        if (number !in 1..45) throw IllegalArgumentException("Bonus number must be between 1 and 45.")
+        return number
     }
 }

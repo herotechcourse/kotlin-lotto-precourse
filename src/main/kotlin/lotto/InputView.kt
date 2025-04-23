@@ -32,6 +32,19 @@ class InputView {
     }
 
     /**
+     * Repeatedly reads and returns a valid bonus number.
+     * Must be in range 1..45 and not duplicate a winning number.
+     */
+    fun readValidBonusNumber(): Int {
+        while (true) {
+            try {
+                return readBonusNumber()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+    /**
      * Reads a raw purchase amount and validates it.
      * Throws if input is not a number or invalid amount.
      */
@@ -51,5 +64,14 @@ class InputView {
         val input = Console.readLine()
         val numbers = InputValidator.parseWinningNumbers(input)
         return InputValidator.validateWinningNumbers(numbers)
+    }
+
+    /**
+     * Reads and returns a validated bonus number from the user.
+     */
+    private fun readBonusNumber(): Int {
+        println("Please enter the bonus number.")
+        val input = Console.readLine()
+        return InputValidator.validateBonusNumber(input)
     }
 }
