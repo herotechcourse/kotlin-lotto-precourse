@@ -5,7 +5,7 @@
 |---------|------------------------------------------------------------|----------|
 | &#9745; | Input purchase amount                                      | view     |
 | &#9744; | Validate purchase amount                                   | business |
-| &#9744; | Issue lotto tickets                                        | business |
+| &#9745; | Issue lotto tickets                                        | business |
 | &#9744; | Output issued tickets sorted ascending                     | view     |
 | &#9744; | Input last week's winning numbers and bonus number         | view     |
 | &#9744; | Validate winning numbers and bonus number                  | business |
