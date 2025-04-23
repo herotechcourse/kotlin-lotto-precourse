@@ -82,9 +82,9 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 
 - `calculate Map<Rank, Int>`: a map of ranks and their corresponding ticket counts
 - `add(rank: Rank)`: increments the count for a given rank (e.g., FIRST, SECOND) in the winnings tally
-- `display()`: prints the number of winning tickets for each rank with prize amounts to the console
 - `getProfitRate(): String`: calculates the profit rate as a percentage (total winnings / total spent * 100) and returns
   it as a string with one decimal place
+- `getWinCounts(): Map<Rank, Int>`: returns the current map of rank counts
 
 ### InputView
 
@@ -96,9 +96,15 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 - `WinningNumbers(): List`: reads and validates 6 unique winning numbers in the range 1–45
 - `BonusNumber(winningNumbers: List): Int`: reads and validates the bonus number (1–45, not in winning numbers)
 
-### Output
+### OutputView
 
 **Object** responsible for displaying results to the user.
+
+**Methods:**
+
+- `displayTickets(tickets: List)`: prints the number of purchased tickets and their sorted numbers
+- `displayResults(result: Result)`: prints winning statistics and profit rate
+- `displayWinCounts(winCounts: Map<Rank, Int>)`: prints the number of winning tickets for each rank with prize amounts.
 
 ## Example Execution
 
