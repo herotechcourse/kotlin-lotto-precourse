@@ -7,4 +7,8 @@ class WinningLotto() {
     fun registerWinningNumbers(input: List<Int>) {
         winningNumbers.addAll(input)
     }
+
+    fun registerBonusNumber(lastWeekBonusNumber: String) {
+        bonusNumber = lastWeekBonusNumber.toInt()
+    }
 }
