@@ -1,11 +1,11 @@
 package lotto
 
 object Validator {
-    private const val ERROR_INVALID_AMOUNT = "[ERROR] Purchase amount must be a positive number and divisible by 1000."
-    private const val ERROR_INVALID_WINNING_NUMBERS_COUNT = "[ERROR] Exactly 6 winning numbers must be provided."
-    private const val ERROR_DUPLICATE_WINNING_NUMBERS = "[ERROR] Winning numbers must be unique."
-    private const val ERROR_NUMBER_OUT_OF_RANGE = "[ERROR] Numbers must be between $LOTTO_NUMBER_MIN and $LOTTO_NUMBER_MAX."
-    private const val ERROR_BONUS_DUPLICATE = "[ERROR] Bonus number must not be one of the winning numbers."
+    private const val ERROR_INVALID_AMOUNT = "$ERROR_PREFIX Purchase amount must be a positive number and divisible by 1000."
+    private const val ERROR_INVALID_WINNING_NUMBERS_COUNT = "$ERROR_PREFIX Exactly 6 winning numbers must be provided."
+    private const val ERROR_DUPLICATE_WINNING_NUMBERS = "$ERROR_PREFIX Winning numbers must be unique."
+    private const val ERROR_NUMBER_OUT_OF_RANGE = "$ERROR_PREFIX Numbers must be between $LOTTO_NUMBER_MIN and $LOTTO_NUMBER_MAX."
+    private const val ERROR_BONUS_DUPLICATE = "$ERROR_PREFIX Bonus number must not be one of the winning numbers."
 
     fun validateAmount(amount: Int) {
         if (amount <= 0 || amount % LOTTO_UNIT_PRICE != 0) {
