@@ -46,12 +46,13 @@ class ApplicationTest : NsTest() {
     fun `buy ticket and generate tickets`() {
         assertRandomUniqueNumbersInRangeTest(
             {
-                run("3000")
+                run("3000","1,2,3,4,5,6", "7")
                 assertThat(output()).contains(
                     "You have purchased 3 tickets.",
                     "[3, 5, 11, 16, 32, 38]",
                     "[7, 11, 16, 35, 36, 44]",
-                    "[1, 8, 11, 31, 41, 42]"
+                    "[1, 8, 11, 31, 41, 42]",
+
                 )
             },
             listOf(3, 5, 11, 16, 32, 38),
