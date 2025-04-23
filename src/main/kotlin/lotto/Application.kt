@@ -1,5 +1,20 @@
 package lotto
 
+import lotto.input.InputView
+
+
 fun main() {
-    // TODO: Implement the program
+    try {
+        val purchaseAmount = InputView.readPurchaseAmount()
+        println("Purchase amount: $purchaseAmount")
+
+        val winningNumbers = InputView.readWinningNumbers()
+        println("Winning numbers: $winningNumbers")
+
+        val bonusNumber = InputView.readBonusNumber()
+        println("Bonus number: $bonusNumber")
+    } catch (e: Exception) {
+        println("An error occurred: ${e.message}")
+    }
+
 }
