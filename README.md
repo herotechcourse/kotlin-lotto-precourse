@@ -12,7 +12,7 @@
 
 - [ ] Based on the purchase amount (which must be divisible by 1,000), issue as many lottery tickets as allowed (1
   ticket per 1,000 KRW).
-- [ ] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
+- [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
 - [ ] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
 - [ ] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
 - [ ] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
@@ -62,7 +62,7 @@
 
 ### Constraints
 
-- [ ] You must use the provided `Lotto` class for your implementation.
-- [ ] Do not add any fields (instance variables) to the `Lotto` class other than `numbers`.
-- [ ] Do not change the `private` visibility modifier on the `numbers` field.
-- [ ] Do not change the package of the `Lotto` class.
+- [x] You must use the provided `Lotto` class for your implementation.
+- [x] Do not add any fields (instance variables) to the `Lotto` class other than `numbers`.
+- [x] Do not change the `private` visibility modifier on the `numbers` field.
+- [x] Do not change the package of the `Lotto` class.
