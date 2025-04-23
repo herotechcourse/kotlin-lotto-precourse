@@ -1,0 +1,73 @@
+package lotto.view
+
+import camp.nextstep.edu.missionutils.Console
+
+class InputView {
+    internal var purchaseAmount = 0
+    internal var ticketCount = 0
+    internal var winningNumbers = emptyList<Int>()
+    internal var bonusNumber = 0
+
+    // Ask user to input the purchase amount
+    fun getPurchaseAmount(): Int {
+        println("Purchase amount for lottery tickets: ")
+        this.purchaseAmount = Console.readLine().toInt()
+        this.ticketCount = validatePurchaseAmount(this.purchaseAmount)
+        return this.purchaseAmount
+    }
+
+    // Ask user to input exactly 6 numbers  comma-separated and they should be between 1 and 45
+    fun getWinningNumbers(): List<Int> {
+        println("Winning numbers (comma-separated): ")
+        val winningNumbersStr = Console.readLine()
+        val winningNumbers = parseWinningNumbers(winningNumbersStr)
+        this.winningNumbers = validateWinningNumbers(winningNumbers)
+        return this.winningNumbers
+    }
+
+    // Ask user to input a bonus number different from the previous ones and between 1 and 45
+    fun getBonusNumber(): Int {
+        println("Bonus number: ")
+        val bonusNumber = Console.readLine().toInt()
+        this.bonusNumber = validateBonusNumber(winningNumbers, bonusNumber)
+        return this.bonusNumber
+    }
+
+    companion object{
+        private fun validatePurchaseAmount(purchaseAmount: Int): Int{
+            if (purchaseAmount%1000 != 0)
+                throw IllegalArgumentException("[ERROR] Not divisible by 1000")
+            return purchaseAmount/1000
+        }
+
+
+        private fun parseWinningNumbers(winningNumbersStr: String): List<Int> {
+            val winningNumbers = winningNumbersStr.split(",")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+                .mapNotNull { it.toIntOrNull() }
+            return winningNumbers
+        }
+
+        private fun validateWinningNumbers(winningNumbers: List<Int>): List<Int> {
+            if (winningNumbers.size != 6)
+                throw IllegalArgumentException("[ERROR] There must be exactly 6 numbers")
+
+            if (winningNumbers.size != winningNumbers.toSet().size)
+                throw IllegalArgumentException("[ERROR] All numbers must be unique")
+
+            if (winningNumbers.any { it !in 1..45 })
+                throw IllegalArgumentException("[ERROR] All numbers must be between 1 and 45")
+            return winningNumbers
+        }
+
+        fun validateBonusNumber(winningNumbers: List<Int>, bonusNumber: Int): Int {
+            if (bonusNumber in winningNumbers)
+                throw IllegalArgumentException("[ERROR] Bonus number must be different from other numbers")
+            if(bonusNumber !in 1..45)
+                throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45")
+            return bonusNumber
+        }
+    }
+}
+
