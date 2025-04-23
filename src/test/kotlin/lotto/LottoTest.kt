@@ -1,10 +1,10 @@
 package lotto
 
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
 
@@ -30,7 +30,10 @@ class LottoTest {
 
             // Act
             // Assert
-            assertThrows<IllegalArgumentException> { Lotto(exceedNumbers) }
+            assertThatThrownBy { Lotto(exceedNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageStartingWith("[ERROR]")
+                .hasMessageContaining("Lotto must contain exactly")
         }
 
         @Test
@@ -40,7 +43,10 @@ class LottoTest {
 
             // Act
             // Assert
-            assertThrows<IllegalArgumentException> { Lotto(duplicateNumbers) }
+            assertThatThrownBy { Lotto(duplicateNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageStartingWith("[ERROR]")
+                .hasMessageContaining("Lotto numbers must be unique.")
         }
 
         @Test
@@ -50,7 +56,10 @@ class LottoTest {
 
             // Act
             // Assert
-            assertThrows<IllegalArgumentException> { Lotto(invalidNumbers) }
+            assertThatThrownBy { Lotto(invalidNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageStartingWith("[ERROR]")
+                .hasMessageContaining("Lotto numbers must be between")
         }
 
         @Test
@@ -60,7 +69,10 @@ class LottoTest {
 
             // Act
             // Assert
-            assertThrows<IllegalArgumentException> { Lotto(invalidNumbers) }
+            assertThatThrownBy { Lotto(invalidNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageStartingWith("[ERROR]")
+                .hasMessageContaining("Lotto numbers must be between")
         }
     }
 
