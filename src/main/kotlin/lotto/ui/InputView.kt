@@ -9,17 +9,32 @@ private const val ERROR_PREFIX = "[ERROR]"
 
 class InputView {
 
-    fun getPurchaseAmount(): Int {
+    private fun <T> readValidatedInput(prompt: String, parseAndValidate: () -> T): T {
         while (true) {
-            println("Please enter the purchase amount.")
+            println(prompt)
             try {
-                val amount = Console.readLine().toIntOrNull()
-                    ?: throw IllegalArgumentException("$ERROR_PREFIX Input must be a valid number")
-                validatePurchaseAmount(amount)
-                return amount
+                return parseAndValidate()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
+        }
+    }
+
+    fun getPurchaseAmount(): Int {
+        return readValidatedInput("Please enter the purchase amount.") {
+            val amount = Console.readLine().toIntOrNull()
+                ?: throw IllegalArgumentException("$ERROR_PREFIX Input must be a valid number")
+            validatePurchaseAmount(amount)
+            amount
+        }
+    }
+
+    fun getWinningNumbers(): SortedSet<Int> {
+        return readValidatedInput("Please enter the last week's winning numbers.") {
+            val winningNumbersStr = Console.readLine()
+            val winningNumbers = parseWinningNumbers(winningNumbersStr)
+            validateWinningNumbers(winningNumbers)
+            winningNumbers
         }
     }
 
@@ -29,20 +44,6 @@ class InputView {
         }
         if (amount % PURCHASE_AMOUNT_UNIT != 0) {
             throw IllegalArgumentException("$ERROR_PREFIX Purchase amount must be in units of $PURCHASE_AMOUNT_UNIT KRW")
-        }
-    }
-
-    fun getWinningNumbers(): SortedSet<Int> {
-        while (true) {
-            println("Please enter the last week's winning numbers.")
-            try {
-                val winningNumbersStr = Console.readLine()
-                val winningNumbers = parseWinningNumbers(winningNumbersStr)
-                validateWinningNumbers(winningNumbers)
-                return winningNumbers
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
         }
     }
 
@@ -60,7 +61,7 @@ class InputView {
         if (numbers.size != 6) {
             throw IllegalArgumentException("$ERROR_PREFIX Lotto numbers must be 6 unique numbers")
         }
-        numbers.forEach{number->
+        numbers.forEach { number ->
             if (number !in 1..45) {
                 throw IllegalArgumentException("$ERROR_PREFIX Lotto numbers must be between 1 and 45")
             }
