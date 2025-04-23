@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    try {
+        val app = LottoApplication()
+        app.run()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
