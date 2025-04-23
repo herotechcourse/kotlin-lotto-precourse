@@ -9,7 +9,9 @@ class LottoGame {
         val lottos = LottoMachine().generate(ticketCount)
         OutputView().printLottos(lottos)
         OutputView().askWinningNumbers()
-        InputView().lastWeekWinningNumbers()
+        val lastWeekWinningNumbers = InputView().lastWeekWinningNumbers()
+        val splittedWinningNumbers = Util().winningNumberSplitter(lastWeekWinningNumbers)
+        WinningLotto().registerWinningNumbers(splittedWinningNumbers)
     }
 
     private fun calculateTicketCount(purchaseAmount: String) = purchaseAmount.toInt() / LOTTO_PRICE
