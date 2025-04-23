@@ -6,6 +6,6 @@ class OutputView {
     }
 
     fun printPurchasedCount(ticketCount: Int) {
-        println("You have purchased ${ticketCount} tickets.")
+        println("\nYou have purchased ${ticketCount} tickets.")
     }
 }
