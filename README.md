@@ -14,7 +14,7 @@
   ticket per 1,000 KRW).
 - [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
 - [ ] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
-- [ ] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
+- [x] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
 - [ ] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
   profit rate.
 - [ ] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
@@ -24,7 +24,7 @@
 ##### Extended Rules
 
 - [ ] Determine the match count (number of winning numbers matched) for each ticket.
-- [ ] Map match conditions to prize ranks:
+- [x] Map match conditions to prize ranks:
 
   | Rank   | Condition                                 | Prize Amount      |
     |--------|-------------------------------------------|-------------------|
@@ -44,7 +44,7 @@
 - [ ] Print the number of tickets purchased and each ticket’s numbers **in ascending order.**
 - [ ] Print lotto result statistics as shown in the rank table above.
 - [ ] Print profit rate rounded to one decimal place (e.g., `62.5%`).
-- [ ] All error messages must start with `[ERROR]`.
+- [x] All error messages must start with `[ERROR]`.
 
 ---
 
@@ -52,11 +52,11 @@
 
 - [ ] Keep each function under 10 lines and ensure it follows the single responsibility principle.
 - [ ] Avoid using `else` statements; prefer early return instead.
-- [ ] Use `Enum` classes where applicable.
+- [x] Use `Enum` classes where applicable.
 - [ ] Clearly separate business logic from UI logic.
     - [ ] Use dedicated classes such as `InputView` and `OutputView` to isolate UI code.
 - [ ] Write unit tests for all logic except for UI interactions (`System.out`, `System.in`).
-    - [ ] If unfamiliar with unit testing, refer to `LottoTest` as an example before writing your own.
+    - [x] If unfamiliar with unit testing, refer to `LottoTest` as an example before writing your own.
 
 ---
 
