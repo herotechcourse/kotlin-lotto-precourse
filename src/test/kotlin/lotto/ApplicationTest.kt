@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
@@ -61,9 +62,8 @@ class ApplicationTest : NsTest() {
 
     @Test
     fun `amount not divisible by 1000`() {
-        assertSimpleTest {
-            run("1234j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+         assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("1234") }
         }
     }
 
