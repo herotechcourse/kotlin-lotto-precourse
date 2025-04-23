@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.utils.InputView
+
 fun main() {
-    // TODO: Implement the program
+    val purchaseAmount = InputView.readPurchaseAmount()
 }
