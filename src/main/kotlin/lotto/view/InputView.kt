@@ -1,8 +1,8 @@
-package lotto.handler
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 
-object InputHandler {
+object InputView {
 
     fun getPurchaseAmount(): Int {
         println("Please enter the purchase amount.")

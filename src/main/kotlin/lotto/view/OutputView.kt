@@ -1,8 +1,8 @@
-package lotto.handler
+package lotto.view
 
 import lotto.Lotto
 
-class OutputHandler {
+class OutputView {
 
     fun displayPurchasedTicketsInfo(tickets: List<Lotto>) {
         println("\nYou have purchased ${tickets.size} tickets.")
