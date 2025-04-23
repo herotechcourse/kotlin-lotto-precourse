@@ -13,7 +13,7 @@
 - [ ] Based on the purchase amount (which must be divisible by 1,000), issue as many lottery tickets as allowed (1
   ticket per 1,000 KRW).
 - [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
-- [ ] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
+- [x] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
 - [x] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
 - [ ] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
   profit rate.
@@ -23,7 +23,7 @@
 
 ##### Extended Rules
 
-- [ ] Determine the match count (number of winning numbers matched) for each ticket.
+- [x] Determine the match count (number of winning numbers matched) for each ticket.
 - [x] Map match conditions to prize ranks:
 
   | Rank   | Condition                                 | Prize Amount      |
@@ -44,7 +44,7 @@
 - [ ] Print the number of tickets purchased and each ticket’s numbers **in ascending order.**
 - [ ] Print lotto result statistics as shown in the rank table above.
 - [ ] Print profit rate rounded to one decimal place (e.g., `62.5%`).
-- [x] All error messages must start with `[ERROR]`.
+- [ ] All error messages must start with `[ERROR]`.
 
 ---
 
