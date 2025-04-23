@@ -45,4 +45,27 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5,46))
         }
     }
+
+    @Test
+    fun `creates valid winner ticket and validates constraints`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+        val winner = WinnerTickets(winningNumbers, bonusNumber)
+
+        val ticket = Lotto(listOf(1, 2, 3, 10, 11, 12))
+
+        winner.matchCount(ticket)
+        winner.hasBonus(ticket)
+        winner.getRank(ticket)
+
+        assertThrows<IllegalArgumentException> {
+            WinnerTickets(listOf(1, 2, 3, 4, 5, 5), 7)
+        }
+        assertThrows<IllegalArgumentException> {
+            WinnerTickets(listOf(0, 2, 3, 4, 5, 6), 7)
+        }
+        assertThrows<IllegalArgumentException> {
+            WinnerTickets(listOf(1, 2, 3, 4, 5, 6), 46)
+        }
+    }
 }
