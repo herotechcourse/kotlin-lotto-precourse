@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
@@ -55,5 +56,40 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
+    }
+}
+
+class InputValidatorTest : NsTest() {
+    @Test
+    fun `assert that input isn't empty`() {
+        val validator = InputValidator()
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validator.validateBudget("") }
+        }
+    }
+
+    @Test
+    fun `assert that input isn't less than 1`() {
+        val validator = InputValidator()
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validator.validateBudget("0") }
+            assertThrows<IllegalArgumentException> { validator.validateBudget("-1") }
+        }
+    }
+
+    @Test
+    fun `assert that input is divisible by 1000`() {
+        val validator = InputValidator()
+
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { validator.validateBudget("5") }
+            assertThrows<IllegalArgumentException> { validator.validateBudget("3.3") }
+        }
+    }
+
+    override fun runMain() {
+        main()
     }
 }
