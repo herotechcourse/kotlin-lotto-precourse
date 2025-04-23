@@ -19,7 +19,7 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 
 ### Lotto Purchase
 
-* [ ] Allow the user to input the purchase amount in units of 1,000 KRW (e.g., `3000`, `10000`).
+* [x] Allow the user to input the purchase amount in units of 1,000 KRW (e.g., `3000`, `10000`).
 * [ ] Determine the number of tickets to issue based on the amount (e.g., 3 tickets for 3,000 KRW).
 
 ### Lotto Ticket Issuance
@@ -30,7 +30,7 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 
 ### Winning Numbers Input
 
-* [ ] Allow the user to input 6 winning numbers, separated by commas (,), with each number between 1 and 45 (e.g., `1,2,3,4,5,6`).
+* [x] Allow the user to input 6 winning numbers, separated by commas (,), with each number between 1 and 45 (e.g., `1,2,3,4,5,6`).
 
 ### Bonus Number Input
 
@@ -63,13 +63,13 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 For the following cases, throw an `IllegalArgumentException`, and re-prompt the user for input from the current step:
 
 * **During Purchase Amount Input:**
-    * [ ] If the input is not a valid number.
-    * [ ] If the input amount is not divisible by 1,000.
+    * [x] If the input is not a valid number.
+    * [x] If the input amount is not divisible by 1,000.
 * **During Winning Numbers Input:**
-    * [ ] If the input is not separated by commas or contains non-numeric characters (excluding commas).
+    * [x] If the input is not separated by commas or contains non-numeric characters (excluding commas).
     * [x] If the count of numbers is not exactly 6.
-    * [ ] If any number is outside the range of 1 to 45.
-    * [ ] If there are duplicate numbers among the 6 winning numbers.
+    * [x] If any number is outside the range of 1 to 45.
+    * [x] If there are duplicate numbers among the 6 winning numbers.
 * **During Bonus Number Input:**
     * [ ] If the number is outside the range of 1 to 45.
     * [ ] If the bonus number is already present in the 6 winning numbers entered previously.
