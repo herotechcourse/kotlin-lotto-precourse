@@ -1,10 +1,11 @@
 # kotlin-lotto-precourse | Hero Tech - Second Challenge
 
-## Lotto Ticket Machine Features
- This project is a mock of a Lotto Machine where users can simulate a purchase of 
-lotto tickets and, after input six winning numbers, the logic will output the 
-number os tickets issued and their numbers, the list of matches for each prize 
- and the profit rate of the game.
+This project is a mock of a Lotto Machine where users can simulate a purchase of
+lotto tickets and, after input six winning numbers, the logic will output the
+number os tickets issued and their numbers, the list of matches for each prize
+and the profit rate of the game.
+
+## Features
 
 ### User Features (UI):
 
