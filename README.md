@@ -63,3 +63,7 @@
 
 # LottoGenerator
 - generate Lotto with random numbers
+
+# Lotto Rank (Enum)
+- matchCount, isBonus, prize, description
+- factory method
