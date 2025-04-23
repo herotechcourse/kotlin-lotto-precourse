@@ -5,10 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms
 class LottoMachine {
     fun generate(ticketCount: Int) : Lottos {
         val generatedLottos = mutableListOf<Lotto>()
-        for (i in 1..ticketCount) {
-            val generatedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        repeat(ticketCount) {
+            val generatedNumbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, PICK_NUMBER)
             generatedLottos.add(Lotto(generatedNumbers))
         }
         return Lottos(generatedLottos)
+    }
+
+    companion object {
+        private const val START_NUMBER = 1
+        private const val END_NUMBER = 45
+        private const val PICK_NUMBER = 6
     }
 }
