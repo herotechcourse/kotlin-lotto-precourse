@@ -17,7 +17,6 @@ class InputView {
             it in 1..45 && !winningNumbers.contains(it)
         }
 
-
         private fun readIntWithValidation(prompt: String, validate: (Int) -> Boolean): Int {
             while (true) {
                 println(prompt)
@@ -31,8 +30,9 @@ class InputView {
         }
 
         private fun validateIntInput(input: String, validate: (Int) -> Boolean): Int {
-            val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid input: $input is not a number.")
-            if (!validate(number)) throw IllegalArgumentException("[ERROR] Input does not meet criteria.")
+            val number = input.toIntOrNull()
+                ?: throw IllegalArgumentException(Messages.ERROR_NOT_A_NUMBER.format(input))
+            if (!validate(number)) throw IllegalArgumentException(Messages.ERROR_INPUT_DOES_NOT_MEET_CRITERIA)
             return number
         }
 
@@ -52,23 +52,22 @@ class InputView {
 
         private fun validateNumberListInput(input: String, validate: (List<Int>) -> Boolean): List<Int> {
             val numbers = parseCommaSeparatedNumbers(input)
-            if (!validate(numbers)) throw IllegalArgumentException("[ERROR] List of numbers does not meet criteria.")
+            if (!validate(numbers)) throw IllegalArgumentException(Messages.ERROR_OUT_OF_RANGE.format(input))
             return numbers
         }
 
         private fun parseCommaSeparatedNumbers(input: String): List<Int> {
-            return input.split(",").map {
-                it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] $it is not a valid integer.")
+            if (!input.contains(",")) {
+                throw IllegalArgumentException(Messages.ERROR_MALFORMED_LIST.format(input))
             }
+            return input.split(",").mapIndexed { index, raw -> validateNumber(raw, index) }
         }
 
+        private fun validateNumber(raw: String, index: Int): Int {
+            val trimmed = raw.trim()
+            if (trimmed.isEmpty()) throw IllegalArgumentException(Messages.ERROR_EMPTY_VALUE_AT.format(index + 1))
+            return trimmed.toIntOrNull()
+                ?: throw IllegalArgumentException(Messages.ERROR_INVALID_INTEGER.format(trimmed))
+        }
     }
 }
-
-
-
-
-
-
-
-
