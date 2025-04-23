@@ -1,4 +1,5 @@
 # kotlin-lotto-precourse
+
 # Lotto
 
 ## Project Overview
@@ -75,11 +76,15 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 
 ### Result
 
-**Object** that calculates the number of wins for each rank.
+**Class** that calculates the number of wins for each rank.
 
 **Methods:**
 
-- `calculate`: returns the win count per rank.
+- `calculate Map<Rank, Int>`: a map of ranks and their corresponding ticket counts
+- `add(rank: Rank)`: increments the count for a given rank (e.g., FIRST, SECOND) in the winnings tally
+- `display()`: prints the number of winning tickets for each rank with prize amounts to the console
+- `getProfitRate(): String`: calculates the profit rate as a percentage (total winnings / total spent * 100) and returns
+  it as a string with one decimal place
 
 ### Input
 
