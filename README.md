@@ -31,7 +31,7 @@ A Simple Lottery Ticket Application built with Kotlin
 
 | Feature                                                                                      | Status     | Branch                         |
 |----------------------------------------------------------------------------------------------|------------|--------------------------------|
-| User input for purchase amount                                                               | 📅 Planned | `feature/purchase-amount-input` |
+| User input for purchase amount                                                               | ✅ Done     | `feature/purchase-amount-input` |
 | Validation for purchase amount (must be divisible by 1,000)                                  | 📅 Planned | `feature/amount-validation`     |
 | Display purchase amount to the user                                                          | 📅 Planned | `feature/display-amount`        |
 | Automatic issuance of lottery tickets based on purchase amount                               | 📅 Planned | `feature/ticket-issuance`       |
