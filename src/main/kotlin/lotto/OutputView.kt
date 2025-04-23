@@ -21,4 +21,9 @@ class OutputView {
     fun askBonusNumber() {
         println("\nPlease enter the bonus number.")
     }
+
+    fun printWinningStatics() {
+        println("\nWinning Statistics")
+        println("---")
+    }
 }
