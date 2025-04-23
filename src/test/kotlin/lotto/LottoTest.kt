@@ -30,4 +30,19 @@ class LottoTest {
         lotto.contains(3)
         lotto.contains(7)
     }
+
+    @Test
+    fun `generates valid lotto ticket and validates constraints`() {
+        val lotto = GeneratorTickets.generate()
+
+        lotto.getNumbers()
+        lotto.contains(1)
+
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6))
+        }
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5,46))
+        }
+    }
 }
