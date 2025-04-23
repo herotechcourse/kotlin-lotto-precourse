@@ -49,6 +49,78 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `input Purchase Amount throws error for amount lower than ticket cost`() {
+        assertSimpleTest {
+            runException("10")
+            assertThat(output()).contains("Not enough amount to purchase at least 1 ticket (min 1000 KRW).")
+        }
+    }
+
+    @Test
+    fun `input Purchase Amount throws error for invalid input (non-numeric)`() {
+        assertSimpleTest {
+            runException("abc")
+            assertThat(output()).contains("[ERROR] Please enter digits only.")
+        }
+    }
+
+    @Test
+    fun `input Winning number throws error for fewer than 6 numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4")
+            assertThat(output()).contains("[ERROR] Lotto must contain exactly 6 numbers.")
+        }
+    }
+
+    @Test
+    fun `input Winning number throws error for more than 6 numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6,7")
+            assertThat(output()).contains("[ERROR] Lotto must contain exactly 6 numbers.")
+        }
+    }
+
+    @Test
+    fun `input Winning number throws error for non-numeric input`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5, a")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be between 1 and 45.")
+        }
+    }
+
+    @Test
+    fun `input Winning number throws error for out-of-range numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,100")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be between 1 and 45.")
+        }
+    }
+
+    @Test
+    fun `input Bonus number throws error for bonus number less than 1`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "-1")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be between 1 and 45.")
+        }
+    }
+
+    @Test
+    fun `input Bonus number throws error for bonus number more than 45`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "50")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be between 1 and 45.")
+        }
+    }
+
+    @Test
+    fun `input Bonus number throws error for non-numeric bonus number`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "abc")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be between 1 and 45.")
+        }
+    }
+
     override fun runMain() {
         main()
     }
