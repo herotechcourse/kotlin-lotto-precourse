@@ -5,7 +5,7 @@
 - [x] Parse and validate purchase amount from user input
 - [ ] Generate lotto tickets based on the purchase amount
 - [ ] Display purchased lotto tickets in sorted order
-- [ ] Parse and validate winning numbers from user input
+- [x] Parse and validate winning numbers from user input
 - [ ] Parse and validate bonus number from user input
 - [ ] Determine number of matches for each ticket
 - [ ] Categorize tickets into prize ranks based on match count and bonus number
