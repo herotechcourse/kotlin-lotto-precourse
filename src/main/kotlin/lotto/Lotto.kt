@@ -21,8 +21,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     companion object {
-        private const val ERROR_INVALID_SIZE = "[ERROR] Lotto must contain exactly 6 numbers."
-        private const val ERROR_DUPLICATE_NUMBER = "[ERROR] Lotto numbers must be unique."
-        private const val ERROR_OUT_OF_RANGE = "[ERROR] Lotto numbers must be between 1 and 45."
+        private const val ERROR_INVALID_SIZE = "$ERROR_PREFIX Lotto must contain exactly 6 numbers."
+        private const val ERROR_DUPLICATE_NUMBER = "$ERROR_PREFIX Lotto numbers must be unique."
+        private const val ERROR_OUT_OF_RANGE = "$ERROR_PREFIX Lotto numbers must be between 1 and 45."
     }
 }
