@@ -28,5 +28,11 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
 - Re-Prompt if Exception occur
 - Winning rate calculate -> profit/used -> Round to One decimal place
 - Lotto Class is equivalent to User class -> Maybe it's okay to save user information
-- There is no game over requirement, 
+- There is no game over requirement, just make it "One Round"
+
 ## Take Care (Formal)
+- Keep function 10 lines, perform single responsibility
+- Avoid using `else`, early return can eliminate `else`
+- Use `Enum` class as it possible
+- Separate business logic from UI logic
+- Implement unit test, except UI logic
