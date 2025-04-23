@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+   var inputView =InputView()
+   val lottoMachine=LottoMachine()
+
+   var purchaseAmount=inputView.getPurchaseAmount()
+   val ticketsCount=lottoMachine.calcTicketNumber(purchaseAmount)
+   
 }
