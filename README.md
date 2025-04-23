@@ -27,7 +27,7 @@
     - Must be divisible by 1,000 (i.e., ticket price).
     - Throws an `IllegalArgumentException` if invalid.
 
-- Validate, user input winner numbers
+- Validate, user input winning numbers
     - Validates that exactly 6 numbers are entered.
     - Checks for duplicate entries.
     - Ensures all numbers are within the valid range (1~45).
@@ -86,3 +86,15 @@
 - Check bonus number
     - Checks whether the bonus number exists in this Lotto.
     - Used to determine 2nd place ranking (5 matches + bonus).
+
+# Lotto Result
+
+- Analyze results
+  - Evaluates all tickets based on winning numbers and bonus number.
+  - Stores the result ranks internally.
+
+- Generate statistics
+  - Provides the count of tickets for each winning rank.
+
+- Calculate return rate
+  - Calculates the profit rate based on the total prize and purchase amount.
