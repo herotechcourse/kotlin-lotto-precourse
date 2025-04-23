@@ -7,10 +7,10 @@
 - [x] Read the number of lottery tickets
     - [x] Throw an `IllegalArgumentException` if the value is null or blank
     - [x] Throw an `IllegalArgumentException` if the value is not a number
-- [] Read the winning numbers
-    - [] Throw an `IllegalArgumentException` if the value is null or blank
-    - [] Throw an `IllegalArgumentException` if the value is not a number
-    - [] Throw an `IllegalArgumentException` if the value cannot separate by comma
+- [x] Read the winning numbers
+    - [x] Throw an `IllegalArgumentException` if the value is null or blank
+    - [x] Throw an `IllegalArgumentException` if the value is not a number
+    - [x] Throw an `IllegalArgumentException` if the value cannot separate by comma
 - [] Read the bonus number
     - [] Throw an `` if the value is null or blank
     - [] Throw an `IllegalArgumentException` if the value is not a number

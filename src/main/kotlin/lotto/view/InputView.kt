@@ -11,6 +11,12 @@ class InputView {
         return StringParser.parseToInt(purchaseAmount)
     }
 
+    fun readWinningNumbers(): List<Int> {
+        println(READ_WINNING_NUMBERS_MESSAGE)
+        val winningNumbers = readInput()
+        return StringParser.parseByDelimiter(winningNumbers, WINNING_NUMBER_DELIMITER)
+    }
+
     private fun readInput(): String {
         val input = Console.readLine().trim()
         require(input.isNotBlank()) { INVALID_INPUT_ERROR }
@@ -19,6 +25,9 @@ class InputView {
 
     companion object {
         private const val READ_PURCHASE_AMOUNT_MESSAGE: String = "Please enter the purchase amount."
+        private const val READ_WINNING_NUMBERS_MESSAGE: String = "Please enter last week's winning numbers."
+
+        private const val WINNING_NUMBER_DELIMITER = ","
 
         private const val INVALID_INPUT_ERROR = "[ERROR] Input value does not exist."
     }
