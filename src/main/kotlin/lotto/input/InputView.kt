@@ -14,7 +14,13 @@ class InputView {
         }
 
         fun readBonusNumber(winningNumbers: List<Int>): Int = readIntWithValidation(Messages.PROMPT_BONUS_NUMBER) {
-            it in 1..45 && !winningNumbers.contains(it)
+            validateBonusNumber(it, winningNumbers)
+        }
+
+        private fun validateBonusNumber(number: Int, winningNumbers: List<Int>): Boolean {
+            if (number !in 1..45) throw IllegalArgumentException(Messages.ERROR_INVALID_BONUS_NUMBER.format(number))
+            if (winningNumbers.contains(number)) throw IllegalArgumentException(Messages.ERROR_BONUS_DUPLICATE)
+            return true
         }
 
         private fun readIntWithValidation(prompt: String, validate: (Int) -> Boolean): Int {
@@ -32,11 +38,9 @@ class InputView {
         private fun validateIntInput(input: String, validate: (Int) -> Boolean): Int {
             val number = input.toIntOrNull()
                 ?: throw IllegalArgumentException(Messages.ERROR_NOT_A_NUMBER.format(input))
-            if (!validate(number)) throw IllegalArgumentException(Messages.ERROR_INPUT_DOES_NOT_MEET_CRITERIA)
+            if (!validate(number)) throw IllegalArgumentException(Messages.ERROR_NOT_MULTIPLE_OF_1000.format(number))
             return number
         }
-
-
 
         private fun readIntListWithValidation(prompt: String, validate: (List<Int>) -> Boolean): List<Int> {
             while (true) {
