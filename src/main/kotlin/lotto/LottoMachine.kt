@@ -7,6 +7,7 @@ class LottoMachine {
         val generatedLottos = mutableListOf<Lotto>()
         repeat(ticketCount) {
             val generatedNumbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, PICK_NUMBER)
+            generatedNumbers.sort()
             generatedLottos.add(Lotto(generatedNumbers))
         }
         return Lottos(generatedLottos)
