@@ -6,7 +6,7 @@ import lotto.util.Messages
 class InputView {
     companion object {
         fun readPurchaseAmount(): Int = readIntWithValidation(Messages.PROMPT_PURCHASE_AMOUNT) {
-            it % 1000 == 0
+            it >= 1000 && it % 1000 == 0
         }
 
         fun readWinningNumbers(): List<Int> = readIntListWithValidation(Messages.PROMPT_WINNING_NUMBERS) {
