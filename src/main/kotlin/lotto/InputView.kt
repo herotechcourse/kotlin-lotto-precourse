@@ -70,7 +70,7 @@ class InputView {
      * Reads and returns a validated bonus number from the user.
      */
     private fun readBonusNumber(): Int {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
         val input = Console.readLine()
         return InputValidator.validateBonusNumber(input)
     }

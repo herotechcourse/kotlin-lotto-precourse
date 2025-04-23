@@ -1,6 +1,10 @@
 package lotto
 
 object InputValidator {
+    private const val VALID_NUMBER_START = 1
+    private const val VALID_NUMBER_END = 45
+    private const val VALID_TICKET_SIZE = 6
+
     /**
      * Validates the purchase amount to be >= 1000 and divisible by 1000.
      */
@@ -24,8 +28,8 @@ object InputValidator {
      * Must contain exactly 6 distinct numbers between 1 and 45.
      */
     fun validateWinningNumbers(numbers: List<Int>): List<Int> {
-        require(numbers.size == 6) { "[ERROR] Exactly 6 numbers must be entered." }
-        require(numbers.distinct().size == 6) { "[ERROR] Numbers must be unique." }
+        require(numbers.size == VALID_TICKET_SIZE) { "[ERROR] Exactly 6 numbers must be entered." }
+        require(numbers.distinct().size == VALID_TICKET_SIZE) { "[ERROR] Numbers must be unique." }
         numbers.forEach { checkRange(it) }
         return numbers
     }
@@ -43,13 +47,13 @@ object InputValidator {
      * Checks that all numbers are within the valid range start to End inclusive.
      */
     private fun checkRange(number: Int) {
-        require(number !in 1..45) { IllegalArgumentException("[ERROR] '${number}' must be between 1 and 45.") }
+        require(number in VALID_NUMBER_START..VALID_NUMBER_END) { IllegalArgumentException("[ERROR] '${number}' must be between 1 and 45.") }
     }
 
     /**
      * Checks that all input is a Valid number
      */
-    private fun convertValidInteger(input:String):Int{
+    private fun convertValidInteger(input: String): Int {
         return input.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
     }
 }
