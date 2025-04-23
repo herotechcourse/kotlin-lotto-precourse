@@ -59,3 +59,7 @@
 
 - Print, return rate
   - Prints the total return rate in percentage.
+
+
+# LottoGenerator
+- generate Lotto with random numbers
