@@ -7,6 +7,7 @@
 - [ ] Prompt user to input purchase amount (must be divisible by 1,000).
 - [ ] Prompt user to input 6 comma-separated winning numbers.
 - [ ] Prompt user to input a single bonus number.
+- [ ] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
 
 #### Game Rules
 
@@ -17,7 +18,6 @@
 - [x] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
 - [ ] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
   profit rate.
-- [ ] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
 - [ ] Only use specific exceptions like `IllegalArgumentException` or `IllegalStateException` (do not use generic
   `Exception`).
 
