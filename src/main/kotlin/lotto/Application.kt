@@ -14,4 +14,9 @@ fun main() {
 
     val outputView = lotto.view.OutputView()
     outputView.displayPurchasedTicketsInfo(tickets)
+
+    val winningNumbers = InputView.getWinningNumbers()
+    val bonusNumber = InputView.getBonusNumber()
+
+    
 }

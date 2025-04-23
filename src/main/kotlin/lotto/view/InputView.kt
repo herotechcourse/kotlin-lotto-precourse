@@ -10,4 +10,16 @@ object InputView {
         val input = Console.readLine().trim()
         return InputValidator.validateAmount(input)
     }
+
+    fun getWinningNumbers(): List<Int> {
+        println("Please enter last week's winning numbers.")
+        val input = Console.readLine().trim()
+        return InputValidator.validateWinningNumbers(input)
+    }
+
+    fun getBonusNumber(): Int {
+        println("Please enter the bonus number.")
+        val input = Console.readLine().trim()
+        return InputValidator.validateBonusNumber(input)
+    }
 }
