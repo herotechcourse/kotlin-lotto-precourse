@@ -43,12 +43,32 @@ object InputView {
         }
     }
 
-    private fun parseWinningTicket(numbers: List<Int>): Lotto {
+    internal fun parseWinningTicket(numbers: List<Int>): Lotto {
         require(numbers.size == 6) { "[ERROR] Winning numbers must be 6 numbers." }
         require(numbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
         require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
 
         return Lotto(numbers)
     }
+
+    fun readBonusNumber(): Int {
+        while (true) {
+            try {
+                println("Please enter last week's bonus number.")
+                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+                return parseBonusNumber(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    internal fun parseBonusNumber(input: String): Int {
+        require(input.isNotBlank()) { "[ERROR] Input cannot be empty." }
+        val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+        require(number in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        return number
+    }
+
 
 }
