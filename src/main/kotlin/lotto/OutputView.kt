@@ -1,12 +1,16 @@
 package lotto
 
 class OutputView {
+    fun askWinningNumbers() {
+
+    }
+
     fun printLottos(lottos: Lottos) {
         for (lotto in lottos.getTickets()) {
             println(lotto.getNumbers())
         }
     }
-    fun welcome() {
+    fun askPurchaseAmount() {
         println("Please enter the purchase amount.")
     }
 

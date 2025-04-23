@@ -2,7 +2,7 @@ package lotto
 
 class LottoGame {
     fun run() {
-        OutputView().welcome()
+        OutputView().askPurchaseAmount()
         val purchaseAmount = InputView().purchaseAmount()
         val ticketCount = calculateTicketCount(purchaseAmount)
         OutputView().printPurchasedCount(ticketCount)
