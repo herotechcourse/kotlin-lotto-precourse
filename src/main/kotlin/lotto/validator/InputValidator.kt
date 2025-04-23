@@ -12,4 +12,10 @@ object InputValidator {
             throw IllegalArgumentException("[ERROR] Input must be a number.")
         }
     }
+
+    fun withinRange(input: Int, minRange: Int, maxRange: Int) {
+        if (input < minRange || input > maxRange) {
+            throw IllegalArgumentException("[ERROR] Input must be a number between $minRange and $maxRange.")
+        }
+    }
 }
