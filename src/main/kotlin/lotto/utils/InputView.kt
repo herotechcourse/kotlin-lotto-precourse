@@ -1,6 +1,7 @@
 package lotto.utils
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Lotto
 
 object InputView {
     fun readPurchaseAmount(): Int {
@@ -26,5 +27,23 @@ object InputView {
         require(amount % 1000 == 0) { "[ERROR] The purchase amount must be divisible by 1,000." }
 
         return amount
+    }
+
+    fun readWinningTicket(): Lotto{
+
+        println("Please enter last week's winning numbers (comma-separated).")
+        val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+        val numbers = input.split(",").map { it.trim().toInt() }
+
+        return parseWinningTicket(numbers)
+    }
+
+    private fun parseWinningTicket(numbers: List<Int>): Lotto {
+
+        require(numbers.size == 6) { "[ERROR] Winning numbers must be 6 numbers." }
+        require(numbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
+        require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
+
+        return Lotto(numbers)
     }
 }
