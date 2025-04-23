@@ -68,4 +68,33 @@ class LottoTest {
             WinnerTickets(listOf(1, 2, 3, 4, 5, 6), 46)
         }
     }
+
+    @Test
+    fun `adds ranks and displays results without errors`() {
+        val result = Result()
+        result.add(Rank.FIFTH)
+        result.add(Rank.FOURTH)
+        result.add(Rank.FOURTH)
+        result.add(Rank.THIRD)
+        result.add(Rank.WITHOUT)
+        result.display()
+    }
+
+    @Test
+    fun `calculates profit rate without errors`() {
+        val result = Result()
+        result.add(Rank.FIFTH)
+        result.add(Rank.FOURTH)
+        result.add(Rank.WITHOUT)
+        result.getProfitRate()
+    }
+
+    @Test
+    fun `returns win counts map without errors`() {
+        val result = Result()
+        result.add(Rank.FIRST)
+        result.add(Rank.SECOND)
+        result.add(Rank.WITHOUT)
+        result.calculate()
+    }
 }
