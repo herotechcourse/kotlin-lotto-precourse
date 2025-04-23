@@ -86,9 +86,15 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 - `getProfitRate(): String`: calculates the profit rate as a percentage (total winnings / total spent * 100) and returns
   it as a string with one decimal place
 
-### Input
+### InputView
 
 **Object** responsible for getting input from the user.
+
+**Methods:**
+
+- `PurchaseAmount(): Int`: reads and validates the purchase amount (must be at least 1,000 and divisible by 1,000)
+- `WinningNumbers(): List`: reads and validates 6 unique winning numbers in the range 1–45
+- `BonusNumber(winningNumbers: List): Int`: reads and validates the bonus number (1–45, not in winning numbers)
 
 ### Output
 
