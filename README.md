@@ -11,9 +11,9 @@
     - [x] Throw an `IllegalArgumentException` if the value is null or blank
     - [x] Throw an `IllegalArgumentException` if the value is not a number
     - [x] Throw an `IllegalArgumentException` if the value cannot separate by comma
-- [] Read the bonus number
-    - [] Throw an `` if the value is null or blank
-    - [] Throw an `IllegalArgumentException` if the value is not a number
+- [x] Read the bonus number
+    - [x] Throw an `IllegalArgumentException` if the value is null or blank
+    - [x] Throw an `IllegalArgumentException` if the value is not a number
 - [] Re-prompt input whenever an `IllegalArgumentException` occurs, resuming the process from the corresponding step.
 
 ## ▪︎ Output
