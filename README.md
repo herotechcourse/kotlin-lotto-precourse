@@ -4,16 +4,17 @@
 
 ## ▪︎ Input
 
-- [] Read the number of lottery tickets
-    - [] Throw an `IllegalArgumentException` if the value is null or blank, then re-prompt input from that step
-    - [] Throw an `IllegalArgumentException` if the value is not a number, then re-prompt input from that step
+- [x] Read the number of lottery tickets
+    - [x] Throw an `IllegalArgumentException` if the value is null or blank
+    - [x] Throw an `IllegalArgumentException` if the value is not a number
 - [] Read the winning numbers
-    - [] Throw an `IllegalArgumentException` if the value is null or blank, then re-prompt input from that step
-    - [] Throw an `IllegalArgumentException` if the value is not a number, then re-prompt input from that step
-    - [] Throw an `IllegalArgumentException` if the value cannot separate by comma, then re-prompt input from that step
+    - [] Throw an `IllegalArgumentException` if the value is null or blank
+    - [] Throw an `IllegalArgumentException` if the value is not a number
+    - [] Throw an `IllegalArgumentException` if the value cannot separate by comma
 - [] Read the bonus number
-    - [] Throw an `IllegalArgumentException` if the value is null or blank, then re-prompt input from that step
-    - [] Throw an `IllegalArgumentException` if the value is not a number, then re-prompt input from that step
+    - [] Throw an `` if the value is null or blank
+    - [] Throw an `IllegalArgumentException` if the value is not a number
+- [] Re-prompt input whenever an `IllegalArgumentException` occurs, resuming the process from the corresponding step.
 
 ## ▪︎ Output
 
@@ -25,16 +26,16 @@
 ## ▪︎ Domain
 
 - [] Validate the amount of lottery tickets must be between `1,000` and `100,000`
-    - Throw an `IllegalArgumentException` if the value is out of range, then re-prompt input from that step
+    - Throw an `IllegalArgumentException` if the value is out of range
 - [] Calculate the number of purchased lottery tickets
-    - [] Throw an `IllegalArgumentException` if amount is not divisible by `1,000`, then re-prompt input from that step
+    - [] Throw an `IllegalArgumentException` if amount is not divisible by `1,000
 - [] Issue lottery tickets based on the purchased amount
     - [] Validate each tickets contains 6 unique random numbers
-        - Throw an `IllegalArgumentException` if the value is out of range, then re-prompt input from that step
+        - Throw an `IllegalArgumentException` if the value is out of range
     - [] Validate each number must be between 1 and 45
-        - Throw an `IllegalArgumentException` if the value is out of range, then re-prompt input from that step
+        - Throw an `IllegalArgumentException` if the value is out of range
 - [] Validate winning numbers and the bonus number are unique
-    - Throw an `IllegalArgumentException` if they are duplicated, then re-prompt input from that step
+    - Throw an `IllegalArgumentException` if they are duplicated
 - [] Calculate result statistics
     - [] Compare how many numbers match
 - [] Calculate profit rate
