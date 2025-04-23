@@ -2,8 +2,7 @@ package lotto
 
 class OutputView {
     fun askWinningNumbers() {
-        println()
-        println("Please enter last week's winning numbers.")
+        println("\nPlease enter last week's winning numbers.")
     }
 
     fun printLottos(lottos: Lottos) {
@@ -17,5 +16,9 @@ class OutputView {
 
     fun printPurchasedCount(ticketCount: Int) {
         println("\nYou have purchased ${ticketCount} tickets.")
+    }
+
+    fun askBonusNumber() {
+        println("\nPlease enter the bonus number.")
     }
 }

@@ -12,4 +12,9 @@ class InputView {
         val input = Console.readLine()
         return input
     }
+
+    fun lastWeekBonusNumber(): String {
+        val input = Console.readLine()
+        return input
+    }
 }
