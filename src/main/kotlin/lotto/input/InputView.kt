@@ -17,37 +17,51 @@ class InputView {
             it in 1..45 && !winningNumbers.contains(it)
         }
 
+
         private fun readIntWithValidation(prompt: String, validate: (Int) -> Boolean): Int {
             while (true) {
+                println(prompt)
+                val input = Console.readLine()
                 try {
-                    println(prompt)
-                    val input = Console.readLine()
-                    val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid input: $input is not a number.")
-                    if (!validate(number)) {
-                        throw IllegalArgumentException("[ERROR] Input does not meet criteria.")
-                    }
-                    return number
+                    return validateIntInput(input, validate)
                 } catch (e: IllegalArgumentException) {
                     println(e.message)
                 }
             }
         }
 
+        private fun validateIntInput(input: String, validate: (Int) -> Boolean): Int {
+            val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid input: $input is not a number.")
+            if (!validate(number)) throw IllegalArgumentException("[ERROR] Input does not meet criteria.")
+            return number
+        }
+
+
+
         private fun readIntListWithValidation(prompt: String, validate: (List<Int>) -> Boolean): List<Int> {
             while (true) {
+                println(prompt)
+                val input = Console.readLine()
                 try {
-                    println(prompt)
-                    val input = Console.readLine()
-                    val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] $it is not a valid integer.") }
-                    if (!validate(numbers)) {
-                        throw IllegalArgumentException("[ERROR] List of numbers does not meet criteria.")
-                    }
-                    return numbers
+                    return validateNumberListInput(input, validate)
                 } catch (e: IllegalArgumentException) {
                     println(e.message)
                 }
             }
         }
+
+        private fun validateNumberListInput(input: String, validate: (List<Int>) -> Boolean): List<Int> {
+            val numbers = parseCommaSeparatedNumbers(input)
+            if (!validate(numbers)) throw IllegalArgumentException("[ERROR] List of numbers does not meet criteria.")
+            return numbers
+        }
+
+        private fun parseCommaSeparatedNumbers(input: String): List<Int> {
+            return input.split(",").map {
+                it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] $it is not a valid integer.")
+            }
+        }
+
     }
 }
 
