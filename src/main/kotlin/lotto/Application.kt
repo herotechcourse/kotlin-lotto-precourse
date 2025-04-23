@@ -1,21 +1,24 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            Application().purchaseAmount()
+            val purchaseAmount = Application().purchaseAmount()
+            val tickets = Application().generateLottoTickets(purchaseAmount)
+            Application().displayTickets(tickets)
         }
     }
 
-    private fun purchaseAmount():Long? {
+    private fun purchaseAmount(): Long {
         println("Please enter the purchase amount.")
         val input = Console.readLine()?.trim()
         val purchaseLotto = input?.toLongOrNull()
         validatePurchaseAmount(purchaseLotto)
-        return purchaseLotto
+        return purchaseLotto!!
     }
 
     private fun validatePurchaseAmount(purchaseLotto: Long?) {
@@ -27,6 +30,23 @@ class Application {
         }
         if (purchaseLotto % 1000L != 0L) {
             throw IllegalArgumentException("[ERROR] Amount must be a multiply of 1000")
+        }
+    }
+
+    private fun generateLottoTickets(purchaseAmount: Long): List<List<Int>> {
+        val quantityOfTickets = (purchaseAmount / 1000).toInt()
+        val tickets = mutableListOf<List<Int>>()
+        for (i in 0 until quantityOfTickets) {
+            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+            tickets.add(numbers)
+        }
+        return tickets
+    }
+
+    private fun displayTickets(tickets: List<List<Int>>) {
+        println("\nYou have purchased ${tickets.size} tickets.")
+        for (ticket in tickets) {
+            println(ticket)
         }
     }
 }
