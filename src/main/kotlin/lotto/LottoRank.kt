@@ -17,11 +17,11 @@ enum class LottoRank(
     companion object {
         fun from(matchCount: Int, isBonus: Boolean): LottoRank {
             return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && isBonus -> SECOND
-                matchCount == 5 -> THIRD
-                matchCount == 4 -> FOURTH
-                matchCount == 3 -> FIFTH
+                matchCount == FIRST.matchCount -> FIRST
+                matchCount == SECOND.matchCount && SECOND.isBonus == isBonus -> SECOND
+                matchCount == THIRD.matchCount -> THIRD
+                matchCount == FOURTH.matchCount -> FOURTH
+                matchCount == FIFTH.matchCount -> FIFTH
                 else -> MISS
             }
         }
