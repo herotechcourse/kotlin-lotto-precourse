@@ -1,21 +1,54 @@
 package lotto
 
+import java.lang.IllegalArgumentException
+
 class InputView {
-    fun getAmount(): Int? {
-        println("Please enter the purchase amount.")
-        val amount = readLine()
-        return amount?.toIntOrNull()
+    fun getAmount(): Int {
+        while (true) {
+            try {
+                println("Please enter the purchase amount.")
+                val amount = readLine()
+                requireNumberFormat(amount)
+                return amount!!.toInt()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
-    fun getWinningNumbers(): List<Int?>? {
-        println("Please enter last week's winning numbers")
-        val winningNumbers = readLine()
-        return winningNumbers?.split(",")?.map { it.toIntOrNull() }
+    fun getWinningNumbers(): List<Int> {
+        while (true) {
+            try {
+                println("Please enter last week's winning numbers")
+                val winningNumbers = readLine()
+                requireWinningNumbersInputFormat(winningNumbers)
+                return winningNumbers!!.split(",").map { it.toInt()}
+            } catch (e: IllegalArgumentException) { println(e.message) }
+        }
     }
 
-    fun getBonusNumber(): Int? {
-        println("Please enter the bonus number")
-        val bonus = readLine()
-        return bonus?.toIntOrNull()
+    fun getBonusNumber(): Int {
+        while(true) {
+            try {
+                println("Please enter the bonus number")
+                val bonus = readLine()
+                requireNumberFormat(bonus)
+                return bonus!!.toInt()
+            }
+            catch (e: IllegalArgumentException) { println(e.message) }
+        }
+    }
+    private fun requireNumberFormat(input: String?) {
+        require (!
+        input.isNullOrBlank()
+                && input.matches(Regex("^[0-9]+$"))
+        ) { "You must enter a number." }
+    }
+
+    private fun requireWinningNumbersInputFormat(winningNumbers: String?) {
+        require(
+            !winningNumbers.isNullOrBlank()
+                    && winningNumbers.trim().matches(Regex("^([0-9]+,)*[0-9]+$"))
+        ) { "Input must consist of comma-separated digits (e.g 1,2,3,4,5,6)" }
     }
 }
