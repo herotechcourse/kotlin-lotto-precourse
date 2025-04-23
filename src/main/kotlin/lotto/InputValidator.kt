@@ -15,7 +15,7 @@ object InputValidator {
      */
     fun parseWinningNumbers(input: String): List<Int> {
         return input.split(",").map {
-            it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] All values must be valid integers.")
+            convertValidInteger(it)
         }
     }
 
@@ -24,27 +24,32 @@ object InputValidator {
      * Must contain exactly 6 distinct numbers between 1 and 45.
      */
     fun validateWinningNumbers(numbers: List<Int>): List<Int> {
-        if (numbers.size != 6) throw IllegalArgumentException("[ERROR] Exactly 6 numbers must be entered.")
-        if (numbers.distinct().size != 6) throw IllegalArgumentException("[ERROR] Numbers must be unique.")
-        checkRange(numbers)
+        require(numbers.size == 6) { "[ERROR] Exactly 6 numbers must be entered." }
+        require(numbers.distinct().size == 6) { "[ERROR] Numbers must be unique." }
+        numbers.forEach { checkRange(it) }
         return numbers
-    }
-
-    /**
-     * Checks that all numbers are within the valid range start to End inclusive.
-     */
-    private fun checkRange(numbers: List<Int>) {
-        numbers.forEach {
-            if (it !in 1..45) throw IllegalArgumentException("[ERROR] All numbers must be between 1 and 45.")
-        }
     }
 
     /**
      * Validates that the bonus number is a valid integer in the range 1–45.
      */
     fun validateBonusNumber(input: String): Int {
-        val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
-        if (number !in 1..45) throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+        val number = convertValidInteger(input)
+        checkRange(number)
         return number
+    }
+
+    /**
+     * Checks that all numbers are within the valid range start to End inclusive.
+     */
+    private fun checkRange(number: Int) {
+        require(number !in 1..45) { IllegalArgumentException("[ERROR] '${number}' must be between 1 and 45.") }
+    }
+
+    /**
+     * Checks that all input is a Valid number
+     */
+    private fun convertValidInteger(input:String):Int{
+        return input.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
     }
 }
