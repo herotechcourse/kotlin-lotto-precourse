@@ -23,6 +23,7 @@
 - [x] All numbers must be in the range of 1 to 45.
 - [x] Lotto generator has to make a random lottos according to purchase amount.
 - [x] Price calculator can calculate the return rate.
+- [x] Winning checker can count the winning lottos.
 
 ## Programming Requirements
 - [ ] The program must be executable with Kotlin 1.9.24.
