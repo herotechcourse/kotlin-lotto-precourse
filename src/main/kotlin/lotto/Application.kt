@@ -32,9 +32,20 @@ fun getTickets (){
     repeat(tickets){
         val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(ticketNumbers)
-        Lotto(ticketNumbers)
+        Lotto(ticketNumbers)  // send back ticket numbers
     }
 
+}
+
+fun checkWinningNumbers () {
+    println("Please enter last week's winning numbers.")
+    val inputNumbers = Console.readLine().split(",")
+
+}
+
+fun checkBonusNumbers () {
+    println("Please enter a bonus number.")
+    val inputBonus = Console.readLine().toIntOrNull()
 }
 
 
