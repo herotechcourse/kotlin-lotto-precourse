@@ -1,5 +1,6 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    println("Please enter the purchase amount.")
+    println(InputView.purchaseAmountInput(InputView.input().toInt()))
 }
