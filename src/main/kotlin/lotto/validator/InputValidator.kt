@@ -27,9 +27,15 @@ object InputValidator {
         }
     }
 
-    fun allAreNumbers(inputs: List<String>) {
-        inputs.forEach {
+    fun allAreNumbers(input: List<String>) {
+        input.forEach {
             isNumeric(it)
+        }
+    }
+
+    fun numberCountIsSix(input: List<String>) {
+        if (input.size != 6) {
+            throw IllegalArgumentException("[ERROR] You must enter 6 numbers.")
         }
     }
 }
