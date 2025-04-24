@@ -2,14 +2,21 @@ package lotto.model
 
 import lotto.Lotto
 
-class User (private var budget: Int) {
+class User(private val budget: Long) {
+    var usedAmount: Long = 0L
+    var earnedAmount: Long = 0L
     var lottoTickets: List<Lotto> = emptyList()
         private set // make private set, get only at outer
 
-    fun buyLottoTickets(): List<Lotto> {
-        val ticketNum = budget / Lotto.COST
-        budget -= ticketNum * Lotto.COST
-        lottoTickets = List(ticketNum) { Lotto.getLottoNumbers() }
-        return lottoTickets
+    init {
+        buyLottoTickets()
     }
+
+    private fun buyLottoTickets() {
+        val ticketNum = budget / Lotto.COST
+        usedAmount += ticketNum * Lotto.COST
+        lottoTickets = List(ticketNum.toInt()) { Lotto.getLottoNumbers() }
+    }
+
+
 }

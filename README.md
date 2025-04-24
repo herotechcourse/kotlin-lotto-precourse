@@ -58,22 +58,27 @@
 
 ## Lotto
 - [x] getLottoNumbers: Extension Function, Give 6 random unique numbers
-
+- [x] define companion object variables that match to Lotto  
 ## User
 - [x] buyLottoTickets: member method,  purchases lotto tickets within the given budget
 
 ## LottoManager
+- [x] getLottoRank: Get Lotto Rank (1st prize ... 5th prize)
 - [x] matchLotto: Match Lotto Tickets with WinnerLotto
+- [x] paySettlementAmount: Get Earned Amount
+- [x] getWinningRate: Get Winning Rate 
+- [x] matchAndPaySettlement: Combine Every private function
+- [x] define companion object variables that match to LottoManager
 
 ## InputView
-- [ ] readPurchaseAmount: 
-- [ ] readWinnerLotto:
-- [ ] readBonusNumber:
+- [x] readPurchaseAmount: 
+- [x] readWinnerLotto:
+- [x] readBonusNumber:
  
 ## ResultView
-- [ ] printPurchasedTickets
-- [ ] printWinningStatistics
-- [ ] printNewLine
+- [x] printPurchasedTickets
+- [x] printWinningStatistics
+- [x] printNewLine
 
 ## InputValidator
 - [ ] validatePurchaseAmount:
@@ -81,7 +86,13 @@
 - [ ] validateBonusNumber:
 
 ## LottoController 
-- [ ] run: Combine every Component
+- [x] run: Combine every Component
 - [ ] readAndValidatePurchaseAmount: Combine InputView and Validator
 - [ ] readAndValidateWinnerLotto: Combine InputView and Validator
 - [ ] readAndValidateBonusNumber: Combine InputView and Validator
+
+# Issues
+
+## Int Range overflow 
+I got negative value, even though I don't have minus calc
+I realized overflow and changed to Long Type 
