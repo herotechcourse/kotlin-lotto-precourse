@@ -3,11 +3,11 @@
 ### Feature List:
 
 * User Interface [ ]
-  * Prompt the user [ ]
-  * Take user input [ ]
-  * Parse user input [ ]
-  * Error management (
-    * Throw Exception
+  * Prompt the user [X]
+  * Take user input [X]
+  * Parse user input [X]
+  * Error management [ ]
+    * Throw Exceptions [X]
     * Re-prompt same step input) [ ]
   * Produce messages to the user [ ]
 * Ticket purchase [ ]
