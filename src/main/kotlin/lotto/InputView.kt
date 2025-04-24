@@ -14,7 +14,7 @@ object InputView {
     fun readWinningNumbers(): List<Int> = retryUserInput {
         val numbers = Console.readLine()
             .split(",")
-            .map { it.trim().toInt() }
+            .map { it.toInt() }
         Validator.validateWinningNumbers(numbers)
         numbers
     }
