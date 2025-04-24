@@ -8,6 +8,7 @@ import lotto.calculation.TicketCalculator
 import lotto.calculation.TicketGenerator
 import lotto.display.TicketDisplay
 import lotto.display.PrizeStatisticsDisplay
+import lotto.display.ProfitDisplay
 import lotto.prize.PrizeRanking
 
 fun main() {
@@ -44,5 +45,7 @@ fun main() {
 
     // Calculate and print total return rate
     val returnRate = profitCalculator.calculateReturnRate(prizeResults, purchaseAmount)
+
+    ProfitDisplay().displayReturnRate(returnRate)
 
 }

@@ -23,11 +23,11 @@ class PrizeStatisticsDisplayTest {
         PrizeStatisticsDisplay().displayPrizeStatistics(prizeResults, prizeRanking)
 
         val expectedOutput = """
-            3 Matches (5,000 KRW) - 0 tickets
-            4 Matches (50,000 KRW) - 0 tickets
-            5 Matches (1,500,000 KRW) - 1 tickets
-            5 Matches + Bonus Ball (30,000,000 KRW) - 0 tickets
-            6 Matches (2,000,000,000 KRW) - 1 tickets
+            3 Matches (5,000 KRW) – 0 tickets
+            4 Matches (50,000 KRW) – 0 tickets
+            5 Matches (1,500,000 KRW) – 1 tickets
+            5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets
+            6 Matches (2,000,000,000 KRW) – 1 tickets
         """.trimIndent()
 
         //Check Expected output is present in the output string

@@ -29,7 +29,7 @@ class PrizeStatisticsDisplay {
     // Function to display the prize count for each prize category
     private fun displayPrizeCount(prize: String, totalWinnings: Map<String, Int>) {
         val count = totalWinnings[prize] ?: 0
-        println("$prize - $count tickets")
+        println("$prize – $count tickets")
     }
 
     // Function to display the prize statistics in the required format

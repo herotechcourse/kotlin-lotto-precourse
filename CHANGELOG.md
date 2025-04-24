@@ -134,6 +134,17 @@ All notable changes to this project will be documented in this file.
 - `ProfitCalculator` class to calculate Profit based on total prize amount and total purchased tickets
 - Unit test for `ProfitCalculator` to verify correct calculation of profit
 
+## [0.15.0] - 2025-04-24
+
+### Added
+
+- `ProfitDisplay` class to print purchased ticket
+- Unit tests for `ProfitDisplay` to verify output formatting and correctness
+
+### Fix
+
+- Changed dash to hyphen in `ProfileStatisticsDisplay` based on requirements
+
 ---
 
 ## Notes
