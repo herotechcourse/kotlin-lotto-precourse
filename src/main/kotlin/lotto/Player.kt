@@ -21,4 +21,8 @@ class Player(private val amount: Int) {
         }
         return tickets
     }
+
+    fun getAmount(): Int {
+        return amount
+    }
 }
