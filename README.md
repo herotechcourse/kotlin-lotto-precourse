@@ -7,3 +7,8 @@
 - [x] WinningLotto
     - [x] Lotto
     - [x] Bonus Number
+- [x] Rank
+    - [x] rank
+    - [x] matchCount, isBonusNumberRequired
+    - [x] price
+- 
