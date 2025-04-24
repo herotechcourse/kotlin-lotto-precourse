@@ -10,6 +10,15 @@ enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: 
     THIRD(5, false, 1500000),
     SECOND(5, true, 30000000),
     FIRST(6, false, 2000000000)
+
+    // check prize rank
+    companion object{
+        fun match (matchCount: Int, hasBonus: Boolean): prizeTypes {
+            if (matchCount == 5 && hasBonus) {return SECOND}
+            return values().first{ it.matchCount == matchCount && !it.hasBonus }
+        }
+    }
+
 }
 
 // lotto result
