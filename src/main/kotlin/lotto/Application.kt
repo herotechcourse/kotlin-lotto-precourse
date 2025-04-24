@@ -10,14 +10,14 @@ enum class prizeTypes {
 
 // lotto result
 object LottoResult {
-    fun match(types: prizeTypes): Lotto{
+
+    fun printResults (types: prizeTypes): Lotto {
         println("Winning Statistics")
         println("---")
-
     }
 }
 
-fun getTickets (){
+fun getTickets (): List<Lotto> {
 
     // ticket amounts
     println("Please enter the purchase amount.")
@@ -27,32 +27,53 @@ fun getTickets (){
     }
 
     // purchased tickets
-    val tickets = input / 1000
-    println("You have purchased $tickets tickets.")
-    repeat(tickets){
+    val ticketAmounts = input / 1000
+    println("You have purchased $ticketAmounts tickets.")
+
+    val purchasedTickets = mutableListOf<Lotto>()
+
+    repeat(ticketAmounts){
         val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(ticketNumbers)
-        Lotto(ticketNumbers)  // send back ticket numbers
+        purchasedTickets.add(Lotto(ticketNumbers))
     }
 
+    return Pair(purchasedTickets, input) // pass to main
+
 }
 
-fun checkWinningNumbers () {
+fun checkWinningNumbers (): List<Int> {
     println("Please enter last week's winning numbers.")
-    val inputNumbers = Console.readLine().split(",")
-
+    val inputWinningNumbers = Console.readLine().split(",").map{ it.trim().toIntOrNull() }
+    if (inputWinningNumbers == null || inputWinningNumbers.size !== 6) throw IllegalArgumentException("Please enter 6 valid winning numbers.")
+    require( inputWinningNumbers.all{ it in 1..45}) {"[ERROR] Please enter the correct numbers between 1 to 45."}
+    return inputWinningNumbers
 }
 
-fun checkBonusNumbers () {
+fun checkBonusNumbers (inputNumbers: List<Int>): Int {
     println("Please enter a bonus number.")
     val inputBonus = Console.readLine().toIntOrNull()
+    if (inputBonus == null || !(inputBonus in 1..45)) throw IllegalArgumentException("Please enter a valid number between 1 and 45.")
+    if (inputNumbers.contains(inputBonus)) throw IllegalArgumentException("Please enter a separate bonus number.")
+
+    return inputBonus
+}
+
+fun match(purchasedtickets, inputNumbers: List<Int>, inputBonus: Int){
+
+    purchasedtickets.forEach {ticket ->
+
+
+    }
+
+
 }
 
 
 fun main() {
 
-    val purchasedTickets = getTickets()
-    val lottoResult: Lotto = LottoResult.match()
+    val (purchasedTickets, purchaseAmount) = getTickets()
+    val lottoResult =
     val profitRate = (award / input) * 100
     println("Total return rate is $profitRate%. fun")
 
