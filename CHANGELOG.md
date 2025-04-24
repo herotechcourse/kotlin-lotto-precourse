@@ -127,6 +127,13 @@ All notable changes to this project will be documented in this file.
 - `PrizeStatisticsDisplay` class to print statistics of Prize
 - Unit tests for `PrizeStatisticsDisplay` to verify output formatting and correctness
 
+## [0.14.0] - 2025-04-24
+
+### Added
+
+- `ProfitCalculator` class to calculate Profit based on total prize amount and total purchased tickets
+- Unit test for `ProfitCalculator` to verify correct calculation of profit
+
 ---
 
 ## Notes

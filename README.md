@@ -44,7 +44,7 @@ A Simple Lottery Ticket Application built with Kotlin
 | Prize ranking system based on number matches and bonus number                                | ✅ Done     | `feature/prize-ranking`           |
 | Calculation of total winnings based on ticket results                                        | ✅ Done     | `feature/calculate-winnings`      |
 | Display how many tickets matched each prize rank (Winning Statistics)                        | ✅ Done     | `feature/prize-statistics`        |
-| Calculation of profit rate                                                                   | 📅 Planned | `feature/profit-rate`             |
+| Calculation of profit rate                                                                   | ✅ Done     | `feature/profit-rate`             |
 | Display profit rate                                                                          | 📅 Planned | `feature/display-profit-rate`     |
 | Error handling with `IllegalArgumentException` or `IllegalStateException` for invalid inputs | 🚧 WIP     | `Integrated with each feature`    |
 | Re-prompting user on invalid input (instead of terminating the program)                      | 🚧 WIP     | `Integrated with each feature`    |

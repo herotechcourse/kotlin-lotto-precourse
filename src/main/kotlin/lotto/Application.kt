@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.calculation.ProfitCalculator
 import lotto.input.PurchaseAmountInputReader
 import lotto.input.BonusNumberInputReader
 import lotto.input.WinningNumberInputReader
@@ -37,5 +38,11 @@ fun main() {
 
     // Display Prize Statistics
     PrizeStatisticsDisplay().displayPrizeStatistics(prizeResults, PrizeRanking())
+
+    // Create ProfitCalculator using ticketCalculator instance
+    val profitCalculator = ProfitCalculator(TicketCalculator())
+
+    // Calculate and print total return rate
+    val returnRate = profitCalculator.calculateReturnRate(prizeResults, purchaseAmount)
 
 }
