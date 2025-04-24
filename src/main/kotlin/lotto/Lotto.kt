@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.LottoPrize.*
+import kotlin.math.round
 
 class Lotto(private val numbers: List<Int>) : LottoValidator {
 
@@ -12,6 +13,11 @@ class Lotto(private val numbers: List<Int>) : LottoValidator {
         issuedTickets.forEach {
             updateTicketCount(it, bonusNumber)
         }
+    }
+
+    fun getProfitRate(purchaseAmount: Int): Double {
+        val totalPrizeAmount = LottoPrize.getTotalPrizeAmount()
+        return round((totalPrizeAmount / purchaseAmount * PERCENTAGE).toDouble())
     }
 
     private fun updateTicketCount(issuedTicket: List<Int>, bonusNumber: Int) {
@@ -29,4 +35,8 @@ class Lotto(private val numbers: List<Int>) : LottoValidator {
     private fun getMatchCount(issuedTicket: List<Int>) = numbers.count { it in issuedTicket }
 
     private fun hasBonus(issuedTicket: List<Int>, bonusNumber: Int) = bonusNumber in issuedTicket
+
+    companion object {
+        private const val PERCENTAGE = 100
+    }
 }

@@ -18,4 +18,10 @@ enum class LottoPrize(
     fun updateTicketCount() {
         ticketCount += 1
     }
+
+    companion object {
+
+        fun getTotalPrizeAmount() = entries.toTypedArray()
+            .sumOf { it.prizeAmount * it.ticketCount }
+    }
 }
