@@ -12,30 +12,32 @@ class OutputView {
     }
 
     fun printResults(results: Map<LottoResult, Int>, profitRate: Double) {
-        println("\nWinning Statistics")
-        println("---")
-
-        printResultLine(LottoResult.FIFTH, results)
-        printResultLine(LottoResult.FOURTH, results)
-        printResultLine(LottoResult.THIRD, results)
-        printResultLine(LottoResult.SECOND, results)
-        printResultLine(LottoResult.FIRST, results)
-
+        println("\nWinning Statistics\n---")
+        printStatistics(results)
         val roundedRate = round(profitRate * 10) / 10
         println("Total return rate is ${roundedRate}%.")
     }
 
+    private fun printStatistics(results: Map<LottoResult, Int>) {
+        listOf(
+            LottoResult.FIFTH,
+            LottoResult.FOURTH,
+            LottoResult.THIRD,
+            LottoResult.SECOND,
+            LottoResult.FIRST
+        ).forEach { printResultLine(it, results) }
+    }
+
     private fun printResultLine(result: LottoResult, results: Map<LottoResult, Int>) {
         val count = results[result] ?: 0
-        val description = when (result) {
-            LottoResult.SECOND -> "5 Matches + Bonus Ball (${formatPrize(result.prize)})"
-            else -> "${result.matchCount} Matches (${formatPrize(result.prize)})"
+        if (result == LottoResult.SECOND) {
+            println("5 Matches + Bonus Ball (${formatPrize(result.prize)}) – $count tickets")
+            return
         }
-        println("$description – $count tickets")
+        println("${result.matchCount} Matches (${formatPrize(result.prize)}) – $count tickets")
     }
 
     private fun formatPrize(prize: Int): String {
-//        return "$prize KRW"
         return "${String.format("%,d", prize)} KRW"
     }
 }
