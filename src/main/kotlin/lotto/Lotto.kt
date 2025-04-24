@@ -12,6 +12,10 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.count {it in other.numbers}
     }
 
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
+    }
+
     // return
     fun getNumbers(): List<Int> = numbers.sorted()
 
