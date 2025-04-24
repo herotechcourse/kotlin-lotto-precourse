@@ -18,4 +18,18 @@ object InputView {
         }
     }
 
+    fun readWinningNumbers(): List<Int> {
+        while (true) {
+            println("Please enter last week's winning numbers.")
+            val input = Console.readLine()
+            println()
+
+            try {
+                return InputParser.parseWinningNumbers(input)
+            }catch (e : IllegalArgumentException){
+                println(e.message)
+            }
+        }
+    }
+
 }
