@@ -99,7 +99,7 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 - [x]  Throw an error if all input values are not valid numbers.
 - [x]  Throw an error if the number of values is not exactly 6.
 - [x]  Throw an error if any number is outside the range of 1 to 45.
-- [ ]  Throw an error if there are duplicate numbers.
+- [x]  Throw an error if there are duplicate numbers.
 
 ### Validation for Bonus Number
 

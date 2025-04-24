@@ -52,5 +52,12 @@ object InputValidator {
         }
     }
 
+    fun noDuplicateNumbers(input: List<String>) {
+        val uniqueNumbers = input.toSet()
+        if (uniqueNumbers.size != input.size) {
+            throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
+        }
+    }
+
 
 }
