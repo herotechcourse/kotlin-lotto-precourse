@@ -1,5 +1,14 @@
 {
+  "name": "kotlin-lotto",
+  "version": "1.1.0",
+  "description": "Kotlin Lotto project with auto-generated changelog",
+  "scripts": {
+    "release": "standard-version"
+  },
   "devDependencies": {
     "standard-version": "^9.5.0"
+  },
+  "dependencies": {
+    "kotlin-lotto": "file:"
   }
 }
