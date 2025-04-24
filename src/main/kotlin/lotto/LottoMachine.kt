@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-interface LottoMachine {
+fun interface LottoMachine {
     fun issue(): Lotto
 }
 

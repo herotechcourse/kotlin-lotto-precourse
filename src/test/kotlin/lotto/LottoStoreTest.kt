@@ -10,9 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource
 class LottoStoreTest {
 
     private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-    private val fixedMachine = object : LottoMachine {
-        override fun issue(): Lotto = lotto
-    }
+    private val fixedMachine: LottoMachine = LottoMachine { lotto }
     private val sut = LottoStore(fixedMachine)
 
     @Test
