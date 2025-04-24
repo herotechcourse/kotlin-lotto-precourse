@@ -4,25 +4,33 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
+    val tickets = mutableListOf<Lotto>()
     println("Please enter the purchase amount.")
     val sumOfMoney = Console.readLine()?.toIntOrNull()
         ?: throw IllegalArgumentException("The purchase amount should be an integer.")
     val numberOfTickets = getNumberOfTickets(sumOfMoney)
     validateSumOfMoney(sumOfMoney)
     println("You have purchased $numberOfTickets tickets.")
+
     repeat(numberOfTickets) {
-        println(createLotteryTicket())
+        val ticket = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
+        tickets.add(ticket)
+        ticket.showNumbers()
     }
+
     println("Please enter last week's winning numbers.")
     val winNumbers = Console.readLine().split(",").map { it.trim() }
     validateNumbers(winNumbers.map {
         it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
     })
-println("Please enter the bonus number.")
+
+    println("Please enter the bonus number.")
     val bonusNumber = Console.readLine()?.toIntOrNull()
         ?: throw IllegalArgumentException("The purchase amount should be an integer.")
     validateBonusNumber(bonusNumber)
-    println(bonusNumber)
+
+    println("Winning Statistics")
+    println("---")
 }
 
 fun getNumberOfTickets(sum: Int): Int {
@@ -34,11 +42,6 @@ fun validateSumOfMoney(sum: Int) {
         throw IllegalArgumentException("The amount must be divisible by 1,000")
     }
 
-}
-
-fun createLotteryTicket(): List<Int> {
-    val generatedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-    return generatedNumbers.sorted()
 }
 
 fun validateNumbers(numbers: List<Int>) {
@@ -54,8 +57,9 @@ fun validateNumbers(numbers: List<Int>) {
         }
     }
 }
-fun validateBonusNumber(number: Number){
-    if(number !in 1..45){
+
+fun validateBonusNumber(number: Number) {
+    if (number !in 1..45) {
         throw IllegalArgumentException("Bonus number must be between 1 and 45.")
     }
 }
