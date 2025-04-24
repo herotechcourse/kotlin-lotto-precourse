@@ -11,7 +11,7 @@
 
 ### 2️⃣ Lotto Number Generation
 
-- [ ] Each ticket must contain 6 unique random numbers
+- [x] Each ticket must contain 6 unique random numbers
 
   → Random numbers Generation (Randoms.pickUniqueNumbersInRange)
 
