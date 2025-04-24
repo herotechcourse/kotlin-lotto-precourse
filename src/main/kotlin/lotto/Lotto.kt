@@ -2,7 +2,7 @@ package lotto
 
 import lotto.LottoPrize.*
 
-class Lotto(private val numbers: List<Int>) : LottoValidator {
+class Lotto(private val numbers: List<Int>) : LottoValidator, BonusValidator {
 
     init {
         validateNumbers(numbers)
@@ -34,6 +34,12 @@ class Lotto(private val numbers: List<Int>) : LottoValidator {
     private fun getMatchCount(issuedTicket: List<Int>) = numbers.count { it in issuedTicket }
 
     private fun hasBonus(issuedTicket: List<Int>, bonusNumber: Int) = bonusNumber in issuedTicket
+
+    override fun validateNumber(number: Int) {
+        require(number !in numbers) {
+            "Bonus number must not duplicate with winning numbers."
+        }
+    }
 
     companion object {
         private const val PERCENTAGE = 100
