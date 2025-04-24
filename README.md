@@ -7,9 +7,10 @@ This project is a application that simulates a lottery ticket machine. The goal 
 ## Plan features
 
 - **User Input**
-    - [ ] Prompt the user to purchase lottery ticket(s) (1000 KRW per ticket)
-    - [ ] Prompt the user to enter 6 winning numbers (comma-separated)
-    - [ ] Prompt the user to enter bonus number
+    - [x] Prompt the user to purchase lottery ticket(s) (1000 KRW per ticket)
+    - [x] Prompt the user to enter 6 winning numbers (comma-separated)
+    - [x] Prompt the user to enter bonus number
+
 
 - **Input Validation**
     - [ ] Verify purchase amount is a positive integer divisible by 1000
@@ -18,14 +19,17 @@ This project is a application that simulates a lottery ticket machine. The goal 
     - [ ] Error handling with `[ERROR]` prefix messages
     - [ ] Re-prompt on invalid input
 
+
 - **Ticket Generation**
     - [ ] Calculate how many lottery ticket(s) can be purchased with the given amount
     - [ ] Generate random lottery tickets with 6 unique random numbers (1-45 range)
+
 
 - **Lottery Mechanics**
     - [ ] Compare ticket(s) numbers for winning numbers
     - [ ] Compare ticket(s) numbers for bonus number
     - [ ] Calculate profit rate
+
 
 - **Lottery Display**
     - [ ] Display number of tickets purchased
@@ -34,6 +38,7 @@ This project is a application that simulates a lottery ticket machine. The goal 
         - [ ] Display prize list
         - [ ] Display number of winning ticket(s)
         - [ ] Display rounded profit rate
+
 
 - **Test**
     - [ ] Purchase amount
