@@ -11,30 +11,31 @@ In the app the user has to purchase lottery tickets and earn as much profit as p
 ## Features
 
 #### 1. Makes users buy lottery tickets
-- Prompts user to purchase lottery tickets for 1,000 KRW each.
-- Parses and validates input.
-- If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
-- Gives 1 ticket for every 1,000 KRW spent.
+- [ ] Prompts user to purchase lottery tickets for 1,000 KRW each.
+- [ ] Parses and validates input.
+- [ ] If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
+- [ ] Gives 1 ticket for every 1,000 KRW spent.
 
 #### 2. Creates lottery ticket
-- Creates a ticket made of 6 unique numbers in ascending order.
-- Creates as many tickets as the amount of money spent.
-- Displays lottery ticket(s) to the user.
+- [ ] Creates a ticket made of 6 unique numbers in ascending order.
+- [ ] Creates as many tickets as the amount of money spent.
+- [ ] Displays lottery ticket(s) to the user.
 
 #### 3. Asks for winning numbers
-- Prompts user to write 6 winning unique numbers.
-- Parses and validates input.
-- Throws IllegalArgumentException and re-prompts the user with the corresponding error message if input is invalid.
+- [ ] Prompts user to write 6 winning unique numbers.
+- [ ] Parses and validates input.
+- [ ] Throws IllegalArgumentException and re-prompts the user with the corresponding error message if input is invalid.
 
 #### 4. Asks for bonus number
-- Prompts user to write a separate bonus number.
-- Parses and validates input.
-- If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
+- [ ] Prompts user to write a separate bonus number.
+- [ ] Parses and validates input.
+- [ ] If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
 
 #### 5. Gives winning statistics
-- Compares each ticket against winning numbers and bonus.
-- Determines the number of winning tickets throughout 5 prize ranks.
-- Calculates the profit rate, rounded to the nearest tenth.
+- [ ] Compares each ticket against winning numbers and bonus.
+- [ ] Determines the number of winning tickets throughout 5 prize ranks.
+- [ ] Calculates the profit rate, rounded to the nearest tenth.
+- [ ] Displays statistics to the user (winning tickets for each rank and profit rate).
 
 ## Validation rules
 - **Ticket purchase:** must be a number divisible by 1,000.
