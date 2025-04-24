@@ -11,10 +11,10 @@ class InputView {
     fun validateTickets(input: String): Int {
         val inputValidated = input.toIntOrNull()
         if (inputValidated == null) {
-            println("Error: Must be a number! Please provide an integer value.")
+            println("[ERROR] Must be a number! Please provide an integer value.")
             return inputTickets()
         } else if (inputValidated % 1000 != 0) {
-            println("Error: The amount must be divisible by 1000. Please try again.")
+            println("[ERROR] The amount must be divisible by 1000. Please try again.")
             return inputTickets()
         }
         return inputValidated
@@ -30,20 +30,20 @@ class InputView {
     fun validateWinningNumber(input: String): List<Int> {
         val numbers = input.split(",").map { it.trim() }
         if (numbers.size != 6) {
-            println("Error: You must provide exactly 6 numbers separated by commas. Please try again.")
+            println("[ERROR] You must provide exactly 6 numbers separated by commas. Please try again.")
             return inputWinningNumber()
         }
         val validatedNumbers = numbers.mapNotNull { it.toIntOrNull() }
         if (validatedNumbers.size != 6) {
-            println("Error: All inputs must be valid integers. Please try again.")
+            println("[ERROR] All inputs must be valid integers. Please try again.")
             return inputWinningNumber()
         }
         if (validatedNumbers.any { it !in 1..45 }) {
-            println("Error: All numbers must be between 1 and 45. Please try again.")
+            println("[ERROR] All numbers must be between 1 and 45. Please try again.")
             return inputWinningNumber()
         }
         if (validatedNumbers.toSet().size != 6) {
-            println("Error: All numbers must be unique. Please try again.")
+            println("[ERROR] All numbers must be unique. Please try again.")
             return inputWinningNumber()
         }
         return validatedNumbers
@@ -58,15 +58,15 @@ class InputView {
     fun validateSingleNumber(input: String, winningNumbers: List<Int>): Int {
         val inputValidated = input.toIntOrNull()
         if (inputValidated == null) {
-            println("Error: Must be a valid number. Please try again.")
+            println("[ERROR] Must be a valid number. Please try again.")
             return inputSingleNumber(winningNumbers)
         }
         if (inputValidated in winningNumbers) {
-            println("Error: The number must not be one of the winning numbers. Please try again.")
+            println("[ERROR] The number must not be one of the winning numbers. Please try again.")
             return inputSingleNumber(winningNumbers)
         }
         if (inputValidated !in 1..45) {
-            println("Error: The number must be between 1 and 45. Please try again.")
+            println("[ERROR] The number must be between 1 and 45. Please try again.")
             return inputSingleNumber(winningNumbers)
         }
         return inputValidated
