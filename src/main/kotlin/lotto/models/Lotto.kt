@@ -7,7 +7,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) { "[ERROR] Numbers must be between 1 and 45." }
     }
 
-    fun getNumbers(): List<Int> = numbers.sorted() 
+    fun getNumbers(): List<Int> = numbers
 
     override fun toString(): String {
         return numbers.toString()
