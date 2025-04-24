@@ -1,6 +1,7 @@
 package lotto
 
-import lotto.domain.LottoTickets
+import lotto.domain.*
+import lotto.service.LottoGame
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -14,6 +15,13 @@ fun main() {
 
     val winningNumbers = retryUntilSuccess { inputView.inputWinningNumbers() }
     val bonusNumber = retryUntilSuccess { inputView.inputBonusNumber(winningNumbers) }
+
+    val winning = WinningNumbers(winningNumbers, bonusNumber)
+    val game = LottoGame(tickets, winning)
+    val result = game.evaluate()
+
+    outputView.printStatistics(result)
+    outputView.printProfitRate(result, amount)
 }
 
 /**
