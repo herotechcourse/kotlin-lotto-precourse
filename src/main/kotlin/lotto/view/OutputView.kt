@@ -26,7 +26,7 @@ object OutputView {
             if (rankName == "SECOND_PLACE") {
                 print(" + Bonus Ball")
             }
-            println(" (${String.format("%,d", winningAmount)} KRW) - $count tickets")
+            println(" (${String.format("%,d", winningAmount)} KRW) – $count tickets")
         }
     }
 
