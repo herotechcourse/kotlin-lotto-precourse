@@ -25,6 +25,7 @@
 - [x] The user inputs 6 winning numbers from the previous week
 - [x] The user inputs one bonus number
 - [x] The bonus number must not be duplicated with winning numbers
+- [x] Validate 6 winning numbers: count, duplicates, range
 
 ### 4️⃣ Result Check
 
@@ -42,6 +43,8 @@
    → ✅ `Money` class: zero, negative, or not divisible by 1000
 
    → ✅ `InputValidator` class: non-numeric input, bonus duplication, invalid count/range
+
+   →✅ `WinningNumber` class: duplicates, invalid count, out-of-range numbers
 
 - [ ] All error messages must start with `[ERROR]`  
   → ✅ Exception validation added,  Message prefix application remaining
