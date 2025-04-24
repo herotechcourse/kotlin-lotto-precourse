@@ -3,35 +3,29 @@ package lotto.service.logic
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
-class CountByRankTest {
+import lotto.domain.Rank
 
-    enum class FakeRank {
-        FIRST,
-        SECOND,
-        THIRD,
-        FOURTH,
-        FIFTH
-    }
+class CountByRankTest {
 
     @Test
     fun `givenListOfRanks_whenCountByRank_thenReturnsMapWithCounts`() {
         val input = listOf(
-            FakeRank.FIFTH,
-            FakeRank.FOURTH,
-            FakeRank.THIRD,
-            FakeRank.FOURTH,
-            FakeRank.SECOND,
-            FakeRank.FIRST
+            Rank.FIFTH,
+            Rank.FOURTH,
+            Rank.THIRD,
+            Rank.FOURTH,
+            Rank.SECOND,
+            Rank.FIRST
         )
         val expected = mapOf(
-            FakeRank.FIRST to 1,
-            FakeRank.SECOND to 1,
-            FakeRank.THIRD to 1,
-            FakeRank.FOURTH to 2,
-            FakeRank.FIFTH to 1
+            Rank.FIRST to 1,
+            Rank.SECOND to 1,
+            Rank.THIRD to 1,
+            Rank.FOURTH to 2,
+            Rank.FIFTH to 1
         )
-        val result = countByRank(input)
 
+        val result = countByRank(input)
         assertEquals(expected, result)
     }
 }
