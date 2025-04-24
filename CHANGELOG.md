@@ -95,6 +95,13 @@ All notable changes to this project will be documented in this file.
 
 - Added `RangeValidator` as shared object to work with common functions
 
+## [0.10.0] - 2025-04-24
+
+### Added
+
+- [Optional] `BonusNumberDisplay` & `WinningNumberDisplay` class to print the entered bonus number and winning number
+- Unit tests for `BonusNumberDisplay` & `WinningNumberDisplay` to verify output formatting and correctness
+
 ---
 
 ## Notes
