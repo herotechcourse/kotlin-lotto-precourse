@@ -4,6 +4,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+/out/
 
 ### STS ###
 .apt_generated
@@ -16,6 +17,13 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
+# Kotlin/Java compiled class files
+*.class
+
+# Eclipse
+.metadata/
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -38,3 +46,4 @@ out/
 
 ### Mac OS ###
 .DS_Store
+Thumbs.db
