@@ -42,4 +42,13 @@ class IssuedTicketTest {
 
         assertEquals(8, count)
     }
+
+    @Test
+    fun `random unique numbers are sorted`() {
+        val issuedTicket = IssuedTicket(8000, FixedRandomGenerator())
+
+        val randomUniqueNumbers = issuedTicket.getRandomUniqueNumbers()
+
+        assertEquals(listOf(2, 4, 8, 10, 43, 45), randomUniqueNumbers)
+    }
 }
