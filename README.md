@@ -16,9 +16,9 @@
 - [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
 - [x] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
 - [x] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
-- [ ] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
+- [x] Compare all user tickets with the winning numbers and print the number of winners per rank, total winnings, and
   profit rate.
-- [ ] Only use specific exceptions like `IllegalArgumentException` or `IllegalStateException` (do not use generic
+- [x] Only use specific exceptions like `IllegalArgumentException` or `IllegalStateException` (do not use generic
   `Exception`).
 
 ##### Extended Rules
@@ -35,9 +35,9 @@
   | 5th    | Match 3 numbers                           | 5,000 KRW         |
   | No Win | Does not meet any of the above conditions | -                 |
 
-- [ ] Count the number of winning tickets per prize rank.
-- [ ] Calculate the total winnings from all tickets.
-- [ ] Calculate the profit rate as `(total winnings / purchase amount) * 100`
+- [x] Count the number of winning tickets per prize rank.
+- [x] Calculate the total winnings from all tickets.
+- [x] Calculate the profit rate as `(total winnings / purchase amount) * 100`
 
 #### Output
 
