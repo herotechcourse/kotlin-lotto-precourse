@@ -1,13 +1,14 @@
 package lotto
 
 fun main() {
-    val lottoTicketMachine = LottoTicketMachine(Input(), Validator(), Output())
+    val input = Input(Validator())
+    val output = Output()
+    val issuedTicket = input.enterPurchaseAmount()
+    val issuedTickets = IssuedTicketsGenerator.of(issuedTicket)
+    output.printIssuedTickets(issuedTicket.getCount(), issuedTickets)
 
-    val purchaseAmount = lottoTicketMachine.enterPurchaseAmount()
-    val issuedTickets = lottoTicketMachine.issueTickets(purchaseAmount)
-    val winningNumbers = lottoTicketMachine.enterWinningNumbers()
-    val bonusNumber = lottoTicketMachine.enterBonusNumber(winningNumbers)
-
-    val lotto = Lotto(winningNumbers)
-    lottoTicketMachine.winningStatistics(lotto, issuedTickets, bonusNumber, purchaseAmount)
+    val lotto = input.enterWinningNumbers()
+    val bonusNumber = input.enterBonusNumber(lotto)
+    lotto.simulate(issuedTickets, bonusNumber)
+    output.printWinningStatistics(lotto.getProfitRate(issuedTicket.purchaseAmount))
 }

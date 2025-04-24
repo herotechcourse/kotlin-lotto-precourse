@@ -2,21 +2,38 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Consts.ERROR_PREFIX
+import lotto.StringUtil.toIntList
 
-class Input {
+class Input(private val validator: Validator) {
 
-    fun <T> enterNumber(block: (String) -> T): T {
-        while (true) {
-            isRun(block)?.let { return it }
+    fun enterPurchaseAmount(): IssuedTicket {
+        println("Please enter the purchase amount.")
+        return retry { IssuedTicket.of(validator.validateStringToInt(it)) }
+    }
+
+    fun enterWinningNumbers(): Lotto {
+        println("Please enter last week's winning numbers.")
+        return retry { Lotto(it.toIntList(validator)) }
+    }
+
+    fun enterBonusNumber(lotto: Lotto): Int {
+        println("Please enter the bonus number.")
+        return retry { getBonusNumber(it, lotto) }
+    }
+
+    private fun getBonusNumber(stringValue: String, lotto: Lotto): Int {
+        return validator.validateStringToInt(stringValue).apply {
+            lotto.validateNumber(this)
         }
     }
 
-    private fun <T> isRun(block: (String) -> T): T? {
-        return try {
-            block(Console.readLine())
-        } catch (e: IllegalArgumentException) {
-            println("$ERROR_PREFIX ${e.message}")
-            null
+    private fun <T> retry(run: (String) -> T): T {
+        while (true) {
+            try {
+                return run(Console.readLine())
+            } catch (e: IllegalArgumentException) {
+                println("$ERROR_PREFIX ${e.message}")
+            }
         }
     }
 }
