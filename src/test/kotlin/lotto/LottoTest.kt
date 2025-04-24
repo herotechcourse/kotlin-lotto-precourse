@@ -1,5 +1,6 @@
 package lotto
 
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -31,7 +32,7 @@ class LottoTest {
         }
 
         //then
-        assert(exception.message?.contains("must contain 6 unique numbers") == true)
+        assertTrue(exception.message?.contains("must contain 6 unique numbers") == true)
     }
 
     @Test
@@ -45,6 +46,6 @@ class LottoTest {
         }
 
         //
-        assert(exception.message?.contains("must be between 1 and 45") == true)
+        assertTrue(exception.message?.contains("must be between 1 and 45") == true)
     }
 }
