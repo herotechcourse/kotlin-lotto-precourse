@@ -1,10 +1,12 @@
-package lotto
+package lotto.domain
+
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 /**
  * Represents a collection of Lotto tickets.
  *
- * This class is responsible for generating a list of [Lotto] tickets based on a given purchase amount.
+ * This class is responsible for generating a list of [lotto.Lotto] tickets based on a given purchase amount.
  * Each ticket is composed of 6 unique random numbers between 1 and 45 (inclusive), sorted in ascending order.
  *
  * The internal list of tickets is immutable and accessible via [getAll] for display or evaluation.

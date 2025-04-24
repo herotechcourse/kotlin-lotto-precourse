@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.domain.LottoTickets
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()

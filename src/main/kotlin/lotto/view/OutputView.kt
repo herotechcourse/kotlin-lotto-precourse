@@ -1,4 +1,6 @@
-package lotto
+package lotto.view
+
+import lotto.domain.LottoTickets
 
 /**
  * Handles all user output for the Lotto application.
