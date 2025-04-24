@@ -3,7 +3,7 @@ package lotto
 import lotto.Consts.TICKET_COST
 
 class IssuedTicket(
-    private val purchaseAmount: Int,
+    val purchaseAmount: Int,
     private val randomGenerator: RandomGenerator,
 ) : IssuedTicketValidator {
 
@@ -14,4 +14,9 @@ class IssuedTicket(
     fun getCount() = purchaseAmount / TICKET_COST
 
     fun getRandomUniqueNumbers() = randomGenerator.nextSortedUniqueNumbers()
+
+    companion object {
+
+        fun of(purchaseAmount: Int) = IssuedTicket(purchaseAmount, DefaultRandomGenerator())
+    }
 }
