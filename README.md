@@ -19,10 +19,10 @@
     - [Exception] Bonus number must be between 1 and 45.
     - [Exception] Winning numbers must not contain duplicates.
     - [Exception] Bonus number must not duplicate any winning number.
-- [ ] Display processed results to the user.
-    - [ ] Show the number of tickets issued and each ticket’s numbers.
+- [x] Display processed results to the user.
+    - [x] Show the number of tickets issued and each ticket’s numbers.
     - [Exception] Ticket numbers must be sorted in ascending order.
-    - [ ] Show the winning results and profit rate.
+    - [x] Show the winning results and profit rate.
     - [Exception] Profit rate must be rounded to two decimal places.
 
 ### 💻 Domain Features
