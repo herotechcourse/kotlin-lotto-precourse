@@ -53,7 +53,52 @@ class ApplicationTest : NsTest() {
         main()
     }
 
+
+    @Test
+    fun `should print 1st prize result correctly when all winning numbers match`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 1 tickets.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "6 Matches (2,000,000,000 KRW) – 1 tickets",
+                    "Total return rate is 200,000,000.0%"
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6)
+        )
+    }
+
+    @Test
+    fun `should print 2nd prize when 5 numbers and bonus match`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 1 tickets",
+                    "Total return rate is 3,000,000.0%"
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 7)
+        )
+    }
+
+
+    @Test
+    fun `should print no prize when less than 3 numbers match`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains("Total return rate is 0.0%.")
+            },
+            listOf(10, 20, 30, 40, 41, 42)
+        )
+    }
+
+
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
     }
+
 }
