@@ -43,10 +43,16 @@ Based on the user’s input budget, it issues tickets and compares them with the
         - ️ 4th Prize: Match 4 (50,000 KRW)
         - ️ 5th Prize: Match 3 (5,000 KRW)
 
+
 5. **OutputView**
     - Prints purchased ticket numbers.
     - Prints result statistics and rank count.
     - Prints total return rate as a percentage (rounded to 1 decimal place).
+
+
+6. **LottoResultAnalyzer**
+   - Compares multiple Lotto tickets with the winning numbers.
+   - Analyzes the result of each ticket.
 
 ---
 
