@@ -26,4 +26,10 @@ object InputValidator {
             throw IllegalArgumentException("[ERROR] Input must be a multiple of $THRESHOLD_UNIT.")
         }
     }
+
+    fun allAreNumbers(inputs: List<String>) {
+        inputs.forEach {
+            isNumeric(it)
+        }
+    }
 }
