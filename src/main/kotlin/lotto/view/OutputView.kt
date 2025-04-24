@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.models.Lotto
+import lotto.models.MatchPrize
 
 class OutputView {
 
@@ -10,5 +11,16 @@ class OutputView {
         tickets.forEach { ticket ->
             println(ticket.toString())
         }
+    }
+
+    fun displayResult(rankCount: Map<MatchPrize, Int>) {
+        println("\nWinning Statistics")
+        println("---")
+        println("3 Matches (5,000 KRW) - ${rankCount[MatchPrize.THREE] ?: 0} tickets")
+        println("4 Matches (50,000 KRW) - ${rankCount[MatchPrize.FOUR] ?: 0} tickets")
+        println("5 Matches (1,500,000 KRW) - ${rankCount[MatchPrize.FIVE] ?: 0} tickets")
+        println("5 Matches + Bonus (30,000,000 KRW) - ${rankCount[MatchPrize.FIVEWITHBONUS] ?: 0} tickets")
+        println("6 Matches (2,000,000,000 KRW) - ${rankCount[MatchPrize.SIX] ?: 0} tickets")
+
     }
 }
