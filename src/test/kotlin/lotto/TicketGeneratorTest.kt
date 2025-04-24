@@ -7,10 +7,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class TicketGeneratorTest : NsTest() {
-    private val generator = TicketGenerator()
-
     @Test
     fun `ticket has 6 unique numbers in range 1-45`() {
+        val generator = TicketGenerator()
         val ticket = generator.generateTicket()
         assertAll(
             { assertEquals(6, ticket.size) },
@@ -21,15 +20,15 @@ class TicketGeneratorTest : NsTest() {
 
     @Test
     fun `assert that it generates correct number of tickets`() {
-        val validator = InputValidator()
+        val generator = TicketGenerator()
+        val ticket = generator.generateMultiples(5)
 
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { validator.validateBudget("") }
-        }
+        assertEquals(5, ticket.size)
     }
 
     @Test
     fun `assert that generated tickets are unique across multiple calls`() {
+        val generator = TicketGenerator()
         val tickets = List(100) { generator.generateTicket().sorted() }
         val uniqueTickets = tickets.distinct()
         assertEquals(tickets.size, uniqueTickets.size)
