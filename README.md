@@ -7,7 +7,7 @@
 - [x] Prompt user to input purchase amount (must be divisible by 1,000).
 - [x] Prompt user to input 6 comma-separated winning numbers.
 - [x] Prompt user to input a single bonus number.
-- [ ] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
+- [x] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
 
 #### Game Rules
 
@@ -50,8 +50,8 @@
 
 ### Programming Requirements
 
-- [ ] Keep each function under 10 lines and ensure it follows the single responsibility principle.
-- [ ] Avoid using `else` statements; prefer early return instead.
+- [x] Keep each function under 10 lines and ensure it follows the single responsibility principle.
+- [x] Avoid using `else` statements; prefer early return instead.
 - [x] Use `Enum` classes where applicable.
 - [x] Clearly separate business logic from UI logic.
     - [x] Use dedicated classes such as `InputView` and `OutputView` to isolate UI code.
