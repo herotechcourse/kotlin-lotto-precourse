@@ -38,4 +38,19 @@ object InputValidator {
             throw IllegalArgumentException("[ERROR] You must enter 6 numbers.")
         }
     }
+
+    fun numberIsRange(input: String) {
+        val number = input.toInt()
+        if (number < 1 || number > 45) {
+            throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+        }
+    }
+
+    fun allNumbersInRange(input: List<String>) {
+        input.forEach {
+            numberIsRange(it)
+        }
+    }
+
+
 }

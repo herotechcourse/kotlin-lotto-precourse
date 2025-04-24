@@ -31,13 +31,13 @@ If the user enters an invalid value, the program:
 
 There are five prize tiers from 1st to 5th place. The match conditions and prize amounts are described below.
 
-| Rank | Match Condition | Prize Amount (KRW) |
-| --- | --- | --- |
-| 1st | 6 matching numbers | 2,000,000,000 KRW |
-| 2nd | 5 matching numbers + bonus number | 30,000,000 KRW |
-| 3rd | 5 matching numbers | 1,500,000 KRW |
-| 4th | 4 matching numbers | 50,000 KRW |
-| 5th | 3 matching numbers | 5,000 KRW |
+| Rank | Match Condition                   | Prize Amount (KRW) |
+|------|-----------------------------------|--------------------|
+| 1st  | 6 matching numbers                | 2,000,000,000 KRW  |
+| 2nd  | 5 matching numbers + bonus number | 30,000,000 KRW     |
+| 3rd  | 5 matching numbers                | 1,500,000 KRW      |
+| 4th  | 4 matching numbers                | 50,000 KRW         |
+| 5th  | 3 matching numbers                | 5,000 KRW          |
 
 <br/>
 
@@ -47,7 +47,7 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Lottery Purchase Amount Input
 
-- [ ]  Prompt the user to enter the lottery purchase amount.
+- [x]  Prompt the user to enter the lottery purchase amount.
 
 ### Lottery Issuance
 
@@ -88,22 +88,22 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Validation for Lottery Purchase Amount
 
-- [ ]  Throw an error if the input is empty.
-- [ ]  Throw an error if the input contains non-numeric characters.
-- [ ]  Throw an error if the amount is not between 1000 and 100000 KRW.
-- [ ]  Throw an error if the amount is not a multiple of 1000.
+- [x]  Throw an error if the input is empty.
+- [x]  Throw an error if the input contains non-numeric characters.
+- [x]  Throw an error if the amount is not between 1000 and 100000 KRW.
+- [x]  Throw an error if the amount is not a multiple of 1000.
 
 ### Validation for Winning Numbers
 
-- [ ]  Throw an error if the input is empty.
-- [ ]  Throw an error if the format is not six comma-separated numbers.
-- [ ]  Throw an error if the number of values is not exactly 6.
-- [ ]  Throw an error if any number is outside the range of 1 to 45.
+- [x]  Throw an error if the input is empty.
+- [x]  Throw an error if all input values are not valid numbers.
+- [x]  Throw an error if the number of values is not exactly 6.
+- [x]  Throw an error if any number is outside the range of 1 to 45.
 - [ ]  Throw an error if there are duplicate numbers.
 
 ### Validation for Bonus Number
 
-- [ ]  Throw an error if the input is empty.
+- [x]  Throw an error if the input is empty.
 - [ ]  Throw an error if the input is not a number.
 - [ ]  Throw an error if the number is outside the range of 1 to 45.
 - [ ]  Throw an error if the number duplicates any of the winning numbers.
