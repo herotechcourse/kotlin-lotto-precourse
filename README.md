@@ -27,9 +27,9 @@
 
 ### 💻 Domain Features
 
-- [ ] Compare generated tickets with winning numbers to count matches.
-- [ ] Calculate the prize amount corresponding to the number of matches.
-- [ ] Determine the rank corresponding to the number of matches.
+- [x] Compare generated tickets with winning numbers to count matches.
+- [x] Calculate the prize amount corresponding to the number of matches.
+- [x] Determine the rank corresponding to the number of matches.
 
 ### 🔨 Utility Features
 
