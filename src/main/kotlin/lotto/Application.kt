@@ -1,6 +1,8 @@
 package lotto
 
 import lotto.input.PurchaseAmountInputReader
+import lotto.input.BonusNumberInputReader
+import lotto.input.WinningNumberInputReader
 import lotto.calculation.TicketCalculator
 import lotto.calculation.TicketGenerator
 import lotto.display.TicketDisplay
@@ -18,5 +20,11 @@ fun main() {
 
     // Display the generated Lotto tickets
     TicketDisplay().displayTickets(numberOfTickets, tickets)
+
+    //Read Winning Number input from the user
+    val winningNumber = WinningNumberInputReader().read()
+
+    //Read Bonus Number input from the user
+    val bonusNumber = BonusNumberInputReader().read()
 
 }

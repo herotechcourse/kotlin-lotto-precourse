@@ -78,6 +78,12 @@ All notable changes to this project will be documented in this file.
 - `TicketDisplay` class to print purchased ticket
 - Unit tests for `TicketDisplay` to verify output formatting and correctness
 
+## [0.9.0] - 2025-04-24
+
+### Added
+
+- `WinningNumberInputReader` and `BonusNumberInputReader` classes to read last week's winning numbers and the bonus number from user input.
+
 ---
 
 ## Notes
