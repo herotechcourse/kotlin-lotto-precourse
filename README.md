@@ -11,4 +11,5 @@
     - [x] rank
     - [x] matchCount, isBonusNumberRequired
     - [x] price
-- 
+- [] Lotto Ticket Machine
+  - [x] buy Lotto 
