@@ -6,17 +6,20 @@
   * Prompt the user [ ]
   * Take user input [ ]
   * Parse user input [ ]
+  * Error management (
+    * Throw Exception
+    * Re-prompt same step input) [ ]
   * Produce messages to the user [ ]
-  * Error management (Throw Exception + re-prompt same step input) [ ]
-* Lotto [ ]
-  * Ticket purchase [ ]
-    * Amount of tickets [ ]
-    * Ticket generation [ ]
-  * Numbers selection [ ]
-  * Lotto results [ ]
-    * Lotto outcome [ ]
-    * Total return rate [ ]
+* Ticket purchase [ ]
+  * Amount of tickets [ ]
+  * Ticket generation [ ]
+* Winner numbers selection [ ]
+* Lotto results [ ]
+  * Lotto outcome [ ]
+  * Total return rate [ ]
+* Implement overarching (main) logic []
 * Unit Tests [ ]
+* Refactor [ ]
 
 ---
 
