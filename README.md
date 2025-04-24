@@ -18,11 +18,11 @@
 - [X] Print each lotto ticket's numbers, one per line.
 
 ### Receive the winning numbers for the lotto.
-- [ ] Print a prompt message to enter the winning numbers. "Please enter last week's winning numbers."
-- [ ] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
-  - [ ] If the input is empty.
-  - [ ] If the number of values is not 6.
-  - [ ] If any value is not a number.
+- [X] Print a prompt message to enter the winning numbers. "Please enter last week's winning numbers."
+- [X] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
+  - [X] If the input is empty.
+  - [X] If the number of values is not 6.
+  - [X] If any value is not a number.
 
 ### Receive the bonus number for the lotto.
 - [ ] Print a prompt message to enter the bonus number.

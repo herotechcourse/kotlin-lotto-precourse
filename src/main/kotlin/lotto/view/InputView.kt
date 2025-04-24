@@ -7,7 +7,6 @@ object InputView {
     fun readPurchaseAmount(): Int {
         while (true) {
             println("Please enter the purchase amount.")
-
             val purchaseAmount = Console.readLine()
 
             try {
@@ -18,4 +17,12 @@ object InputView {
             }
         }
     }
+
+    fun readWinningNumbers(): String {
+        println("\nPlease enter last week's winning numbers.")
+        val winningNumbers = Console.readLine()
+
+        return winningNumbers
+    }
 }
+
