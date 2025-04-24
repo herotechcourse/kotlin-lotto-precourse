@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.domain.LottoTickets
+import lotto.domain.Rank
 
 /**
  * Handles all user output for the Lotto application.
@@ -25,5 +26,26 @@ class OutputView {
         tickets.getAll().forEach { ticket ->
             println(ticket.toString())
         }
+    }
+
+    fun printStatistics(result: Map<Rank, Int>) {
+        println("\nWinning Statistics")
+        println("---")
+
+        result.entries
+            .sortedByDescending { it.key.prize }
+            .forEach { (rank, count) ->
+                val matchText = when (rank) {
+                    Rank.SECOND -> "5 Matches + Bonus Ball"
+                    else -> "${rank.matchCount} Matches"
+                }
+                println("$matchText (${rank.prize.toString().replace(Regex("(\\d)(?=(\\d{3})+(?!\\d))"), "$1,")} KRW) - $count ticket${if (count != 1) "s" else ""}")
+            }
+    }
+
+    fun printProfitRate(result: Map<Rank, Int>, totalSpent: Int) {
+        val totalPrize = result.entries.sumOf { (rank, count) -> rank.prize * count }
+        val rate = totalPrize.toDouble() / totalSpent * 100
+        println("Total return rate is ${"%.1f".format(rate)}%.")
     }
 }
