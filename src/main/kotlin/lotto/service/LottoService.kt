@@ -22,9 +22,16 @@ class LottoService {
         winningNumbers: List<Int>,
         bonusNumber: Int
     ): Map<Rank, Int> {
-        return tickets.groupBy { evaluateTicket(it, winningNumbers, bonusNumber) }
-            .mapValues { it.value.size }
+        val rankCounts = Rank.entries.associateWith { 0 }.toMutableMap()
+
+        tickets.forEach { ticket ->
+            val rank = evaluateTicket(ticket, winningNumbers, bonusNumber)
+            rankCounts[rank] = rankCounts.getValue(rank) + 1
+        }
+
+        return rankCounts
     }
+
 
     private fun evaluateTicket(
         ticket: LottoTicket,
@@ -57,5 +64,6 @@ class LottoService {
             0.0
         }
     }
+
 
 }
