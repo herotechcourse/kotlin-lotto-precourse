@@ -6,7 +6,7 @@ fun main() {
     val purchaseAmount = lottoTicketMachine.enterPurchaseAmount()
     val issuedTickets = lottoTicketMachine.issueTickets(purchaseAmount)
     val winningNumbers = lottoTicketMachine.enterWinningNumbers()
-    val bonusNumber = lottoTicketMachine.enterBonusNumber()
+    val bonusNumber = lottoTicketMachine.enterBonusNumber(winningNumbers)
 
     val lotto = Lotto(winningNumbers)
     lottoTicketMachine.winningStatistics(lotto, issuedTickets, bonusNumber, purchaseAmount)

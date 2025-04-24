@@ -25,9 +25,9 @@ class LottoTicketMachine(
         return input.enterNumber { it.toIntList(validator) }
     }
 
-    fun enterBonusNumber(): Int {
+    fun enterBonusNumber(winningNumbers: List<Int>): Int {
         println("Please enter the bonus number.")
-        return input.enterNumber { validator.validateStringToInt(it) }
+        return input.enterNumber { validator.validateBonusNumber(it, winningNumbers) }
     }
 
     fun winningStatistics(
