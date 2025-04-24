@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -23,7 +24,7 @@ class ApplicationTest : NsTest() {
                     "[7, 11, 30, 40, 42, 43]",
                     "[2, 13, 22, 32, 38, 45]",
                     "[1, 3, 5, 14, 22, 45]",
-                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "3 Matches (5,000 KRW) – 1 ticket",
                     "4 Matches (50,000 KRW) – 0 tickets",
                     "5 Matches (1,500,000 KRW) – 0 tickets",
                     "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
@@ -87,6 +88,24 @@ class InputValidatorTest : NsTest() {
             assertThrows<IllegalArgumentException> { validator.validateBudget("5") }
             assertThrows<IllegalArgumentException> { validator.validateBudget("3.3") }
         }
+    }
+
+    @Test
+    fun `assert that winning numbers are not empty`() {
+        val validator = InputValidator()
+        assertThrows<IllegalArgumentException> { validator.validateWinningNumber("") }
+    }
+
+    @Test
+    fun `validateWinningNumber throws exception when input has less than 6 numbers`() {
+        val validator = InputValidator()
+        assertThrows<IllegalArgumentException> { validator.validateWinningNumber("1,2,3,4,5") }
+    }
+
+    @Test
+    fun `validateWinningNumber throws exception when input isn't between 1 and 45`() {
+        val validator = InputValidator()
+        assertThrows<IllegalArgumentException> { validator.validateWinningNumber("1,2,3,4,47,5")}
     }
 
     override fun runMain() {
