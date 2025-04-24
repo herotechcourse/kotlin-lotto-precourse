@@ -55,10 +55,5 @@ class InputViewTest {
     @ValueSource(strings = ["1,2,3,4,5,6", "121,456,3"])
     fun `test valid winning numbers list`(input: String) {
         assertThatNoException().isThrownBy{ InputView().parseWinningNumbers(input) }
-        val value = InputView().parseWinningNumbers(input)
     }
-
-
-
-
 }
