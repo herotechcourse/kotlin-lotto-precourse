@@ -20,6 +20,17 @@ All notable changes to this project will be documented in this file.
 
 - `PurchaseAmountInputReader` class for purchase amount input
 
+## [0.3.0] - 2025-04-24
+
+### Added
+
+- `PurchaseAmountValidator` class with input number validation and divisibility checks
+- Unit tests for `PurchaseAmountValidator` covering all test cases and expected behavior
+
+### Changed
+
+-  Input validation loop in `PurchaseAmountInputReader` to reprompt users on invalid input instead of terminating
+
 ---
 
 ## Notes
