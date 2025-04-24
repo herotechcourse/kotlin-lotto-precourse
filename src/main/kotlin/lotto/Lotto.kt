@@ -1,7 +1,5 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
-
 class Lotto(private val numbers: List<Int>) {
 
     init {

@@ -4,8 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 // prize ranks
-enum class prizeTypes {
-    fifth, fourth, third, second, first
+enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: Int) {
+    FIFTH(3, false, 5000),
+    FOURTH(4, false, 50000),
+    THIRD(5, false, 1500000),
+    SECOND(5, true, 30000000),
+    FIRST(6, false, 2000000000)
 }
 
 // lotto result
@@ -42,7 +46,7 @@ fun getTickets (): List<Lotto> {
 
 }
 
-fun checkWinningNumbers (): List<Int> {
+fun getWinningNumbers (): List<Int> {
     println("Please enter last week's winning numbers.")
     val inputWinningNumbers = Console.readLine().split(",").map{ it.trim().toIntOrNull() }
     if (inputWinningNumbers == null || inputWinningNumbers.size !== 6) throw IllegalArgumentException("Please enter 6 valid winning numbers.")
@@ -50,7 +54,7 @@ fun checkWinningNumbers (): List<Int> {
     return inputWinningNumbers
 }
 
-fun checkBonusNumbers (inputNumbers: List<Int>): Int {
+fun getBonusNumbers (inputNumbers: List<Int>): Int {
     println("Please enter a bonus number.")
     val inputBonus = Console.readLine().toIntOrNull()
     if (inputBonus == null || !(inputBonus in 1..45)) throw IllegalArgumentException("Please enter a valid number between 1 and 45.")
@@ -59,10 +63,11 @@ fun checkBonusNumbers (inputNumbers: List<Int>): Int {
     return inputBonus
 }
 
-fun match(purchasedtickets, inputNumbers: List<Int>, inputBonus: Int){
+fun match(purchasedtickets: List<Lotto>, inputWinningNumbers: List<Int>, inputBonus: Int){
 
     purchasedtickets.forEach {ticket ->
-
+        val matchCount = ticket.matchedNumbersCount(inputWinningNumbers)
+        val hasBonus = ticket.includedBonusNumber(inputBonus)
 
     }
 
@@ -73,8 +78,7 @@ fun match(purchasedtickets, inputNumbers: List<Int>, inputBonus: Int){
 fun main() {
 
     val (purchasedTickets, purchaseAmount) = getTickets()
-    val lottoResult =
-    val profitRate = (award / input) * 100
-    println("Total return rate is $profitRate%. fun")
+
+    println("Total return rate is %.")
 
 }
