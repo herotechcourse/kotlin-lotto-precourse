@@ -61,3 +61,6 @@
 
 ## User
 - [x] buyLottoTickets: member method,  purchases lotto tickets within the given budget
+
+## InputView
+- [ ] 
