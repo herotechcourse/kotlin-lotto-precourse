@@ -8,13 +8,13 @@ class InputView {
 
         while (true) {
             try {
-                Message.display(Message.PURCHASE_AMOUNT)
+                Messages.display(Messages.PURCHASE_AMOUNT)
                 val input = Console.readLine()
                 return Validator.validatePurchaseAmount(input)
             }
             catch (e: IllegalArgumentException) {
-                Message.display(Message.ERROR,
-                    e.message ?: Message.ERROR_INVALID_INPUT)
+                Messages.display(Messages.ERROR,
+                    e.message ?: Messages.ERROR_INVALID_INPUT)
             }
         }
     }

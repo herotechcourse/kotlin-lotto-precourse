@@ -16,27 +16,27 @@ class PurchaseValidatorTest {
     fun `should throw IllegalArgumentException when input is not a number`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("abc") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(Message.ERROR_INVALID_NUMBER)
+            .hasMessage(Messages.ERROR_INVALID_NUMBER)
     }
 
     @Test
     fun `should throw IllegalArgumentException when input is not an integer`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("14000,5") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(Message.ERROR_INVALID_NUMBER)
+            .hasMessage(Messages.ERROR_INVALID_NUMBER)
     }
 
     @Test
     fun `should throw IllegalArgumentException when input is a negative number`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("-3000") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(Message.ERROR_NEGATIVE_NUMBER)
+            .hasMessage(Messages.ERROR_NEGATIVE_NUMBER)
     }
 
     @Test
     fun `should throw IllegalArgumentException when input is not a multiple of ticket price`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("2500") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage(Message.ERROR_NOT_THOUSANDS)
+            .hasMessage(Messages.ERROR_NOT_THOUSANDS)
     }
 }

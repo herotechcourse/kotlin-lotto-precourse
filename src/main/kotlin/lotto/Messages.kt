@@ -1,6 +1,6 @@
 package lotto
 
-object Message {
+object Messages {
     const val PURCHASE_AMOUNT = "Please enter the purchase amount."
     const val TICKETS_PURCHASED = "You have purchased %d tickets."
     const val ERROR = "[ERROR] %s"
