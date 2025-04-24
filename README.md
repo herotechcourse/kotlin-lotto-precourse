@@ -71,5 +71,5 @@ For the following cases, throw an `IllegalArgumentException`, and re-prompt the 
     * [x] If any number is outside the range of 1 to 45.
     * [x] If there are duplicate numbers among the 6 winning numbers.
 * **During Bonus Number Input:**
-    * [ ] If the number is outside the range of 1 to 45.
-    * [ ] If the bonus number is already present in the 6 winning numbers entered previously.
+    * [x] If the number is outside the range of 1 to 45.
+    * [x] If the bonus number is already present in the 6 winning numbers entered previously.
