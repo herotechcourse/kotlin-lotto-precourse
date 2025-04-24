@@ -1,8 +1,8 @@
-package lotto
+package lotto.service
 
+import lotto.Lotto
 import lotto.domain.LottoTicket
 import lotto.domain.Rank
-import lotto.service.LottoService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

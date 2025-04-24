@@ -1,6 +1,6 @@
-package lotto
+package lotto.domain
 
-import lotto.domain.LottoTicket
+import lotto.Lotto
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
