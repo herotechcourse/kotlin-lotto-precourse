@@ -4,8 +4,8 @@
 - Enter the purchase amount input ✅
 - Validation for Purchase Amount Input
     - Validate that the input is a number ✅
-    - Validate that the purchase amount does not exceed the maximum limit
-    - Validate that the purchase amount is a multiple of the unit value
+    - Validate that the purchase amount does not exceed the maximum limit ✅
+    - Validate that the purchase amount is a multiple of the unit value ✅
 - Calculate how may Lottery tickets to generate
 
 ### 2. Create Random Lotto
