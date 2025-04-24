@@ -9,6 +9,7 @@
 
 ## Table of Contents
 - [📌 Program Summary](#-program-summary)
+- [🛠️ Development Flow](#️-development-flow)
 - [📂 Documentation](#-documentation)
 - [🏗️ Hierarchy](#-hierarchy)
 - [🗂️ Feature List](#-feature-list)
@@ -17,9 +18,27 @@
 ---
 
 ## 📌 Program summary
-- Implemented a Console-based Lotto simulator according to the pre-course mission guidelines.<br>
+- Implemented a Console-based Lotto simulator<br>
+    according to the pre-course mission guidelines.
 - Users purchase lotto tickets and input winning numbers.
 - User get statistics and profit rates based on given ranks. 
+
+---
+
+## 🛠️ Development Flow
+- Follows a structured development flow designed for<br>
+    clarity, testability, and maintainability:
+
+    ### 1. **FDD (Feature-Driven Development)**
+    - Break the program into small features<br>
+    that are easy to develop and test.
+
+    ### 2. **TDD (Test-Driven Development)**
+    - Write tests first to check that each feature works correctly.
+
+    ### 3. **MVC + SR Refactoring**
+    - Organize the code by responsibility.
+    - Model, View, Controller, Service, Repository.
 
 ---
 
