@@ -7,10 +7,12 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it >= 1 && it <= 45 }) { "[ERROR] Numbers must be in the range from 1 to 45" }
     }
 
-    // sort
-
     // compare
+    fun matches(other: Lotto): Int {
+        return numbers.count {it in other.numbers}
+    }
 
     // return
+    fun getNumbers(): List<Int> = numbers.sorted()
 
 }
