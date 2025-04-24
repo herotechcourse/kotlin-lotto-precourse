@@ -1,5 +1,6 @@
 package lotto.controller
 
+import lotto.Lotto
 import lotto.model.LottoMachine
 import lotto.model.PriceCalculator
 import lotto.model.WinningChecker
@@ -17,6 +18,8 @@ class LottoController(
 
     fun start() {
         val purchaseAmount: Int = readValidPurchaseAmount()
+        val userLottos: List<Lotto> = lottoMachine.makeLottos(purchaseAmount)
+        outputView.printUserLottos(userLottos)
     }
 
     private tailrec fun readValidPurchaseAmount(): Int {
