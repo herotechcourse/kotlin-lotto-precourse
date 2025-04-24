@@ -31,6 +31,19 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 
 ## Code Structure
 
+### Game
+
+**Object** responsible for orchestrating the lottery process.
+
+**Methods**
+
+- `run()`: executes the main program flow: purchases tickets, displays them, reads winning numbers, calculates results,
+  and displays the outcome.
+- `purchaseTickets(): List<Lotto>`: generates tickets based on the user’s purchase amount.
+- `readWinningNumbers(): Pair<List<Int>, Int>`: reads winning numbers and bonus number from the user
+- `calculateResults(tickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): Result`: calculates the rank for
+  each ticket and aggregates results.
+
 ### Lotto
 
 **Class** representing a lottery ticket with 6 unique numbers.
@@ -63,7 +76,13 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 
 ### Rank
 
-**Enum** representing possible results.
+**Enum** representing possible prize ranks with associated data
+
+**Properties:**
+
+- `matchCount`: number of matching numbers required
+- `prize`: prize amount in KRW
+- `requiresBonus`: indicates if the bonus number is required (true only for SECOND)
 
 **Values:**
 
@@ -74,13 +93,17 @@ The program meets all the assignment’s rules. Here’s how it handles each req
 - `FIFTH`: 3 matches.
 - `WITHOUT`: fewer than 3 matches.
 
+**Companion Object Methods:**
+
+- `from(matchCount: Int, hasBonus: Boolean)`: determines the appropriate rank based on the number of matches and bonus
+  number presence.
+
 ### Result
 
 **Class** that calculates the number of wins for each rank.
 
 **Methods:**
 
-- `calculate Map<Rank, Int>`: a map of ranks and their corresponding ticket counts
 - `add(rank: Rank)`: increments the count for a given rank (e.g., FIRST, SECOND) in the winnings tally
 - `getProfitRate(): String`: calculates the profit rate as a percentage (total winnings / total spent * 100) and returns
   it as a string with one decimal place
