@@ -1,9 +1,11 @@
 package lotto
 import lotto.views.inputTickets
+import lotto.views.inputWinningNumber
 
 fun main() {
     // TODO: Implement the program
     val tickets = inputTickets()
+    val numbers = inputWinningNumber()
 }
 
 enum class LottoResults(val matches: Int, val matchBonus: Boolean, val prize: Int , val message: String) {

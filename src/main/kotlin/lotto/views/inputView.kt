@@ -23,3 +23,24 @@ fun validateTickets(input: String): Int {
     }
     return inputValidated
 }
+
+
+fun inputWinningNumber(): List<Int> {
+    println("Enter 6 numbers separated by commas:")
+    val input = readLine() ?: throw IllegalArgumentException("Input cannot be null.")
+    return validateWinningNumber(input)
+}
+
+fun validateWinningNumber(input: String): List<Int> {
+    val numbers = input.split(",").map { it.trim() }
+    if (numbers.size != 6) {
+        println("Error: You must provide exactly 6 numbers separated by commas. Please try again.")
+        return inputWinningNumber()
+    }
+    val validatedNumbers = numbers.mapNotNull { it.toIntOrNull() }
+    if (validatedNumbers.size != 6) {
+        println("Error: All inputs must be valid integers. Please try again.")
+        return inputWinningNumber()
+    }
+    return validatedNumbers
+}
