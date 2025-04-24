@@ -39,8 +39,10 @@ Please enter the bonus number.
    prompt the user to enter the winning numbers again.
 6. If the bonus number is a non-numeric string or not within the range of 1 to 45, throw an
    `IllegalArgumentException` and prompt the user to enter the bonus number again.
+7. If the bonus number duplicates with the winning numbers, throw an `IllegalArgumentException` and
+   prompt the user to enter the bonus number again.
 
-## 3. Lotto Draw Process
+## 3. Lotto Simulation
 
 - Compare the numbers on each issued lotto ticket with the winning numbers entered by the user to
   determine how many match: 3 matches, 4 matches, 5 matches, 5 matches + bonus number match, or 6
@@ -68,10 +70,8 @@ You have purchased 8 tickets.
 
 ### 2. Print winning statistics.
 
-- If the count of winning tickets is 1, use 'ticket'. If it is 0 or greater than 1, use 'tickets'.
-
 ```
-3 Matches (5,000 KRW) - 1 ticket
+3 Matches (5,000 KRW) - 1 tickets
 4 Matches (50,000 KRW) - 0 tickets
 5 Matches (1,500,000 KRW) - 0 tickets
 5 Matches + Bonus Ball (30,000,000 KRW) - 0 tickets
@@ -88,3 +88,7 @@ You have purchased 8 tickets.
   (1,500,000 * the count of 5 matches tickets) +
   (30,000,000 * the count of 5 matches and bonus tickets) +
   (2,000,000,000 * the count of 6 matches tickets)
+
+```
+Total return rate is 62.5%.
+```
