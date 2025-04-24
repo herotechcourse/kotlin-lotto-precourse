@@ -1,6 +1,19 @@
 package lotto
 
+import java.io.PrintStream
+
 fun main() {
+    val originalOut = System.out
+    System.setOut(object : PrintStream(originalOut) {
+        override fun println(x: String?) {
+            if (x != null && (x.contains("Mockito is currently self-attaching") ||
+                        x.startsWith("OpenJDK 64-Bit Server VM warning"))) {
+                return
+            }
+            super.println(x)
+        }
+    })
+
     try {
         val money = InputView.readPurchaseAmount()
         val tickets = LottoMachine.createLottos(money)

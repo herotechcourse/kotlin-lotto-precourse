@@ -20,7 +20,11 @@ object InputView {
         require(nums.size == 6 && nums.all { it != null }) {
             "[ERROR] Must input exactly 6 numbers."
         }
-        return nums.filterNotNull()
+        val list = nums.filterNotNull()
+        require(list.toSet().size == 6 && list.all { it in 1..45 }) {
+            "[ERROR] Winning numbers must be 6 unique values between 1 and 45."
+        }
+        return list
     }
 
     fun readBonusNumber(): Int {
