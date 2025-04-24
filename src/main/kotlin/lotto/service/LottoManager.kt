@@ -26,4 +26,9 @@ object LottoManager {
         return userTickets.groupingBy { compareTicket(it, winningTicket) }
             .eachCount()
     }
+
+    fun calculateReturnRate(rankCount: Map<MatchPrize, Int>, purchasedAmount: Int): Double {
+        val totalPrize = rankCount.entries.sumOf { it.key.prize * it.value }
+        return (totalPrize.toDouble() / purchasedAmount) * 100
+    }
 }
