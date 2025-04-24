@@ -32,7 +32,7 @@
 - [] Issue lottery tickets based on the purchased amount
     - [] Validate each tickets contains 6 unique random numbers
         - Throw an `IllegalArgumentException` if the value is out of range
-    - [] Validate each number must be between 1 and 45
+    - [x] Validate each number must be between 1 and 45
         - Throw an `IllegalArgumentException` if the value is out of range
 - [] Validate winning numbers and the bonus number are unique
     - Throw an `IllegalArgumentException` if they are duplicated
