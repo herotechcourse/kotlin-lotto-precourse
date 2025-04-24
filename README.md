@@ -15,16 +15,16 @@ winnings and the according profit rate.
     1. [x] purchase amount (Int)
     2. [x] winning numbers (comma-separated list of Ints)
     3. [x] bonus number (Int)
-2. [ ] validate user input
+2. [x] validate user input
     1. [x] purchase amount:
         1. [x] divisible by 1000
         2. [x] positive number
         3. [x] equal or lower than a maximum value
-    2. [ ] winning numbers:
+    2. [x] winning numbers:
         1. [x] comma separated
-        2. [ ] 6
-        3. [ ] unique
-        4. [ ] between 1 and 45
+        2. [x] 6
+        3. [x] unique
+        4. [x] between 1 and 45
     3. [x] bonus number
         1. [x] between 1 and 45
         2. [ ] ? not duplicating a winning number?
