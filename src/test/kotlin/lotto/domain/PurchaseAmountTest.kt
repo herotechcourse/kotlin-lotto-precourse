@@ -3,6 +3,7 @@ package lotto.domain
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
@@ -22,5 +23,12 @@ class PurchaseAmountTest {
         fun `test purchase amount unit`(input: Int) {
             Assertions.assertThatIllegalArgumentException().isThrownBy { PurchaseAmount(input) }
         }
+    }
+
+    @Test
+    @DisplayName("[Success] when 3,000 for purchase amount, lottery ticket number is 3")
+    fun `test calculation ticket number`() {
+        val purchaseAmount = PurchaseAmount(3_000)
+        org.junit.jupiter.api.Assertions.assertEquals(purchaseAmount.toTicketNumber(), 3)
     }
 }
