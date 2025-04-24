@@ -63,7 +63,7 @@ class ApplicationTest : NsTest() {
                     "You have purchased 1 tickets.",
                     "[1, 2, 3, 4, 5, 6]",
                     "6 Matches (2,000,000,000 KRW) - 1 tickets",
-                    "Total return rate is 200000000.0%"
+                    "Total return rate is 200,000,000.0%"
                 )
             },
             listOf(1, 2, 3, 4, 5, 6)
@@ -77,7 +77,7 @@ class ApplicationTest : NsTest() {
                 run("1000", "1,2,3,4,5,6", "7")
                 assertThat(output()).contains(
                     "5 Matches + Bonus Ball (30,000,000 KRW) - 1 tickets",
-                    "Total return rate is 3000000.0%"
+                    "Total return rate is 3,000,000.0%"
                 )
             },
             listOf(1, 2, 3, 4, 5, 7)
