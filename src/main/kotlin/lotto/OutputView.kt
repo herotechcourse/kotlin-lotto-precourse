@@ -50,7 +50,7 @@ object OutputView {
 
     private fun printLottoRankStatisticsLines(statistics: Map<LottoRank, Int>, rank: LottoRank) {
         val count = statistics[rank] ?: 0
-        println("${rank.description} - $count tickets.")
+        println("${rank.description} – $count tickets.")
     }
 
     private fun printBlankLine() {
