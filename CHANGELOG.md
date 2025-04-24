@@ -120,6 +120,13 @@ All notable changes to this project will be documented in this file.
 
 -  Updated `PrizeRanking` class to calculate total winnings
 
+## [0.13.0] - 2025-04-24
+
+### Added
+
+- `PrizeStatisticsDisplay` class to print statistics of Prize
+- Unit tests for `PrizeStatisticsDisplay` to verify output formatting and correctness
+
 ---
 
 ## Notes

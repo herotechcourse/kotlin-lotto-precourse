@@ -6,6 +6,7 @@ import lotto.input.WinningNumberInputReader
 import lotto.calculation.TicketCalculator
 import lotto.calculation.TicketGenerator
 import lotto.display.TicketDisplay
+import lotto.display.PrizeStatisticsDisplay
 import lotto.prize.PrizeRanking
 
 fun main() {
@@ -33,5 +34,8 @@ fun main() {
 
     // Calculate total winnings
     val totalWinnings = PrizeRanking().calculateTotalWinnings(prizeResults)
+
+    // Display Prize Statistics
+    PrizeStatisticsDisplay().displayPrizeStatistics(prizeResults, PrizeRanking())
 
 }
