@@ -77,7 +77,7 @@ class InputView {
         const val MAX_RETRY = 5
         const val MIN_NUM = 1
         const val MAX_NUM = 45
-        const val MAX_AMOUNT = 12000
+        const val MAX_AMOUNT = 15000
         const val AMOUNT_RANGE_MSG = "[ERROR] Amount cannot be 0 or higher than $MAX_AMOUNT"
         const val MAX_RETRY_MSG = "[ERROR] Maximum retry attempts exceeded."
         const val INVALID_INPUT_MSG = "[ERROR] Invalid input."
