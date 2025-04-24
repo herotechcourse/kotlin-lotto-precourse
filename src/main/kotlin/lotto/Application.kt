@@ -1,13 +1,14 @@
 package lotto
-import lotto.views.inputTickets
-import lotto.views.inputWinningNumber
-import lotto.views.inputSingleNumber
+import lotto.views.InputView
 
 fun main() {
-    // TODO: Implement the program
-    val tickets = inputTickets()
-    val numbers = inputWinningNumber()
-    val luckyNumber = inputSingleNumber(numbers)
+    val inputView = InputView()
+    val tickets = generateLottoTickets()
+    val numbers = inputView.inputWinningNumber()
+    val singleNumber = inputView.inputSingleNumber(numbers)
+    println("Generated Lotto Tickets:")
+    tickets.forEach { println(it) }
+
 }
 
 enum class LottoResults(val matches: Int, val matchBonus: Boolean, val prize: Int , val message: String) {
