@@ -105,4 +105,34 @@ class PrizeRankingTest {
 
         Assertions.assertEquals(expectedResults, results)
     }
+
+    @Test
+    fun `calculates total winnings correctly`() {
+
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),   // 6 matches
+            Lotto(listOf(1, 2, 3, 4, 5, 8)),   // 5 matches
+            Lotto(listOf(1, 2, 3, 4, 10, 11)), // 4 matches
+            Lotto(listOf(1, 2, 3, 11, 12, 13)), // 3 matches
+            Lotto(listOf(1, 2, 3, 4, 5, 7)) // No match
+        )
+
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+
+        // Simulate prize calculation for all tickets
+        val prizeResults = prizeRanking.calculatePrizeForAllTickets(tickets, winningNumbers, bonusNumber)
+
+        // Calculate total winnings
+        val totalWinnings = prizeRanking.calculateTotalWinnings(prizeResults)
+
+        // Verify total winnings count
+        Assertions.assertEquals(1, totalWinnings["6 Matches (2,000,000,000 KRW)"])
+        Assertions.assertEquals(1, totalWinnings["5 Matches (1,500,000 KRW)"])
+        Assertions.assertEquals(1, totalWinnings["5 Matches + Bonus Ball (30,000,000 KRW)"])
+        Assertions.assertEquals(1, totalWinnings["4 Matches (50,000 KRW)"])
+        Assertions.assertEquals(1, totalWinnings["3 Matches (5,000 KRW)"])
+
+    }
+
 }

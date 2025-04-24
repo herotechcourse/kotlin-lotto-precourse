@@ -35,4 +35,17 @@ class PrizeRanking {
         return prizeResults
     }
 
+    // Function to calculate the total number of each type of winnings
+    fun calculateTotalWinnings(prizeResults: List<String>): Map<String, Int> {
+        val winningsCount = mutableMapOf<String, Int>()
+
+        prizeResults.forEach { result ->
+            val prize = result.split(" - Prize: ")[1]
+
+            winningsCount[prize] = winningsCount.getOrDefault(prize, 0) + 1
+        }
+
+        return winningsCount
+    }
+
 }

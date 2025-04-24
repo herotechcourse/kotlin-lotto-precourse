@@ -110,6 +110,16 @@ All notable changes to this project will be documented in this file.
 - Unit testing for `PrizeRanking` to verify prizes based on different scenarios
 - `CalculatePrizeForAllTickets` function to process and store prize results for all tickets
 
+## [0.12.0] - 2025-04-24
+
+### Added
+
+- New unit test cases for `PrizeRanking` for the total winnings
+
+### Changed
+
+-  Updated `PrizeRanking` class to calculate total winnings
+
 ---
 
 ## Notes

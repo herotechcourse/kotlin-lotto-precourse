@@ -31,4 +31,7 @@ fun main() {
     // Prize Ranking
     val prizeResults = PrizeRanking().calculatePrizeForAllTickets(tickets, winningNumber, bonusNumber)
 
+    // Calculate total winnings
+    val totalWinnings = PrizeRanking().calculateTotalWinnings(prizeResults)
+
 }
