@@ -15,7 +15,7 @@ All components are refactored according to the **`MVC + SR`** pattern.
 | validateAmount | Must be num, ≥ `1,000` | ⏳ | — | — | — |
 | calcLottoCount | `nLotto = Amount / 1000` | ⏳ | — | — | — |
 | generateLottos | Each with `6` unique numbers | ⏳ | — | — | — |
-| handleLottoError | Duplicates or out-of-range | ⏳ | — | — | — |
+| validateLottoNumbers | Duplicates or out-of-range | ⏳ | — | — | — |
 
 ### 🧩 2. Lotto Printing
 [`Execution Flow (5)`](./execution-flow.md#5-consoleoutput)
