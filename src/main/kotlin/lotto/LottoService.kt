@@ -2,19 +2,17 @@ package lotto
 
 class LottoService() {
 
-    private var winnerNumbers: List<Int>? = null
-    private var bonusNumber: Int? = null
-    private var lottoTickets: MutableList<Lotto> = mutableListOf()
+    private var lottoTickets: List<Lotto> = emptyList()
 
     fun purchaseTickets(amount: Int) {
         val lottoGenerator = LottoGenerator()
         val numberOfTickets = amount / LottoConstants.TICKET_PRICE
-        lottoTickets = MutableList(numberOfTickets){
+        lottoTickets = List(numberOfTickets){
             lottoGenerator.createLottoTicket()
         }
     }
 
-    fun getTickets(): MutableList<Lotto> {
+    fun getTickets(): List<Lotto> {
         return lottoTickets
     }
 
