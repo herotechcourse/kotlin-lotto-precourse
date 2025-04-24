@@ -10,6 +10,9 @@ class Lotto(private val numbers: List<Int>) {
             require(number in 1..45){"${Constants.ERROR_PREFIX} Lotto numbers must be between 1 and 45."}
         }
     }
-
     fun getNumbers(): List<Int> = numbers
+
+    override fun toString(): String {
+        return "$numbers"
+    }
 }
