@@ -17,6 +17,11 @@
 - [ ] If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
   - [ ] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
 
+## Function List
+- [x] Lotto must contain exactly 6 numbers.
+- [x] Lotto must contain unique numbers.
+- [x] All numbers must be in the range of 1 to 45.
+
 ## Programming Requirements
 - [ ] The program must be executable with Kotlin 1.9.24.
 - [ ] You must implement the solution only in Kotlin—Java code is not allowed.
