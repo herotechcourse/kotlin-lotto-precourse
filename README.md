@@ -57,13 +57,13 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Winning Numbers Input
 
-- [ ]  Prompt the user to enter 6 winning numbers in a comma-separated format.
-- [ ]  Validate that the entered numbers are 6 unique values within the range of 1 to 45.
+- [x]  Prompt the user to enter 6 winning numbers in a comma-separated format.
+- [x]  Validate that the entered numbers are 6 unique values within the range of 1 to 45.
 
 ### Bonus Number Input
 
-- [ ]  Prompt the user to enter 1 bonus number.
-- [ ]  The bonus number must not duplicate any of the winning numbers.
+- [x]  Prompt the user to enter 1 bonus number.
+- [x]  The bonus number must not duplicate any of the winning numbers.
 
 ### Lottery Result Evaluation
 
@@ -104,6 +104,6 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 ### Validation for Bonus Number
 
 - [x]  Throw an error if the input is empty.
-- [ ]  Throw an error if the input is not a number.
-- [ ]  Throw an error if the number is outside the range of 1 to 45.
-- [ ]  Throw an error if the number duplicates any of the winning numbers.
+- [x]  Throw an error if the input is not a number.
+- [x]  Throw an error if the number is outside the range of 1 to 45.
+- [x]  Throw an error if the number duplicates any of the winning numbers.

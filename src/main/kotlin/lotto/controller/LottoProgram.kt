@@ -1,7 +1,9 @@
 package lotto.controller
 
+import lotto.Lotto
 import lotto.model.LottoIssuer
 import lotto.model.LottoStorage
+import lotto.model.WinningLotto
 import lotto.validator.InputValidator
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -25,9 +27,7 @@ class LottoProgram {
         OutputView.printLottery(lottoStorage.getAll())
         println("")
 
-
-        val winningNumbersInput: String = InputView.promptAndReadLine("Please enter last week's winning numbers.")
-        validateWinningNumbers(winningNumbersInput)
+        val finalWinningLotto = readWinningLotto()
     }
 }
 
@@ -44,7 +44,41 @@ fun validateWinningNumbers(input: String) {
     InputValidator.notEmpty(input)
     val numbers = input.split(",").map { it.trim() }
     InputValidator.allAreNumbers(numbers)
-    InputValidator.numberCountIsSix(numbers)
-    InputValidator.allNumbersInRange(numbers)
-    InputValidator.noDuplicateNumbers(numbers)
+}
+
+fun validateBonusNumber(input: String) {
+    InputValidator.notEmpty(input)
+    InputValidator.isNumeric(input)
+}
+
+fun readWinningLotto(): WinningLotto {
+    val winningLotto = readValidLotto()
+    val finalWinningLotto = readValidBonusNumber(winningLotto)
+    return finalWinningLotto
+}
+
+fun readValidLotto(): Lotto {
+    while (true) {
+        try {
+            val input = InputView.promptAndReadLine("Please enter last week's winning numbers.")
+            validateWinningNumbers(input)
+            val numbers = input.split(",").map { it.trim().toInt() }
+            return Lotto(numbers)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
+fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
+    while (true) {
+        try {
+            val input = InputView.promptAndReadLine("Please enter the bonus number.")
+            validateBonusNumber(input)
+            val bonusNumber = input.toInt()
+            return WinningLotto(mainLotto, bonusNumber)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
 }
