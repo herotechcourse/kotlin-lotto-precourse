@@ -32,14 +32,15 @@ class OutputView {
         println("\nWinning Statistics")
         println("---")
 
-        result.entries
-            .sortedByDescending { it.key.prize }
-            .forEach { (rank, count) ->
+        Rank.entries
+            .sortedByDescending { it.prize }
+            .forEach { rank ->
+                val count = result[rank] ?: 0
                 val matchText = when (rank) {
                     Rank.SECOND -> "5 Matches + Bonus Ball"
                     else -> "${rank.matchCount} Matches"
                 }
-                println("$matchText (${rank.prize.toString().replace(Regex("(\\d)(?=(\\d{3})+(?!\\d))"), "$1,")} KRW) - $count ticket${if (count != 1) "s" else ""}")
+                println("$matchText (${rank.prize.toString().replace(Regex("(\\d)(?=(\\d{3})+(?!\\d))"), "$1,")} KRW) – $count tickets")
             }
     }
 
