@@ -1,5 +1,6 @@
 package lotto
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -32,5 +33,13 @@ class IssuedTicketTest {
         assertDoesNotThrow {
             IssuedTicket(2000, DefaultRandomGenerator())
         }
+    }
+
+    @Test
+    fun `issued ticket count is the purchase amount divided by 1000`() {
+        val issuedTicket = IssuedTicket(8000, DefaultRandomGenerator())
+        val count = issuedTicket.getCount()
+
+        assertEquals(8, count)
     }
 }
