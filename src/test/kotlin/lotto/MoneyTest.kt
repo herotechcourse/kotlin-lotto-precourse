@@ -29,7 +29,7 @@ class MoneyTest {
         val money = Money(amount)
 
         //act
-        val isZero = money.isZero()
+        val isZero: Boolean = money.isZero()
 
         // Assert
         assertThat(isZero).isEqualTo(expected)
@@ -42,7 +42,7 @@ class MoneyTest {
         val output = "Lotto"
 
         // Act
-        val result = money.payFor { output }
+        val result: List<String> = money.payFor { output }
 
         // Assert
         SoftAssertions.assertSoftly {

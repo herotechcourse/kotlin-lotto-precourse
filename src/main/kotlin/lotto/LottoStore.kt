@@ -4,7 +4,7 @@ class LottoStore(private val machine: LottoMachine) {
 
     fun sell(amount: Long): Lottos {
         val money = Money(amount)
-        val tickets = money.payFor { machine.issue() }
+        val tickets: List<Lotto> = money.payFor { machine.issue() }
 
         return Lottos(tickets)
     }

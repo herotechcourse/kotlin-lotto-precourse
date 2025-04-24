@@ -101,7 +101,6 @@ class LottoTest {
 
     }
 
-
     @Nested
     inner class ContainsTest {
 

@@ -17,7 +17,7 @@ class RankTest {
     )
     fun `returns correct Rank based on match count and bonus`(matchCount: Int, bonusMatch: Boolean, expected: Rank) {
         // Act
-        val result = Rank.of(matchCount, bonusMatch)
+        val result: Rank = Rank.of(matchCount, bonusMatch)
 
         // Assert
         assertThat(result).isEqualTo(expected)
@@ -31,7 +31,7 @@ class RankTest {
     )
     fun `returns correct Rank regardless of bonus when bonus is not relevant`(matchCount: Int, expected: Rank) {
         // Act
-        val result = Rank.of(matchCount, bonusMatch = true)
+        val result: Rank = Rank.of(matchCount, bonusMatch = true)
 
         // Assert
         assertThat(result).isEqualTo(expected)
@@ -45,7 +45,7 @@ class RankTest {
     )
     fun `returns NONE when fewer than 3 numbers match`(matchCount: Int, bonusMatch: Boolean) {
         // Act
-        val result = Rank.of(matchCount, bonusMatch)
+        val result: Rank = Rank.of(matchCount, bonusMatch)
 
         // Assert
         assertThat(result).isEqualTo(Rank.NONE)
