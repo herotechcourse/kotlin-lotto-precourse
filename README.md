@@ -7,7 +7,7 @@
 ### Receive the purchase amount for the lottery.
 - [X] Display a prompt message to enter the purchase amount.
 - [X] Parse the entered amount and calculate the number of purchasable tickets by dividing it by 1,000.
-- [ ] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
+- [X] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
   - [X] If the input is empty.
   - [X] If the amount is less than 1,000.
   - [X] If the amount is not divisible by 1,000.
