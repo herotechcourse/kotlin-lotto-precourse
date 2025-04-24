@@ -6,7 +6,7 @@ class Player(private val amount: Int) {
 
     val numberOfTickets: Int = amount / 1000
 
-    private val tickets: List<Lotto> by lazy {
+    val tickets: List<Lotto> by lazy {
         generateTickets(numberOfTickets)
     }
 
