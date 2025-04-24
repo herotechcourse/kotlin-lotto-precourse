@@ -21,6 +21,7 @@
 - [x] Lotto must contain exactly 6 numbers.
 - [x] Lotto must contain unique numbers.
 - [x] All numbers must be in the range of 1 to 45.
+- [x] Lotto generator has to make a random lottos according to purchase amount.
 
 ## Programming Requirements
 - [ ] The program must be executable with Kotlin 1.9.24.

@@ -1,6 +1,6 @@
 package lotto
 
-class Lotto(private val _numbers: List<Int>) {
+data class Lotto(private val _numbers: List<Int>) {
     init {
         require(_numbers.size == LOTTO_NUMBER_SIZE) {
             "[ERROR] Lotto must contain exactly ${LOTTO_NUMBER_SIZE} numbers."
