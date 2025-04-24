@@ -53,6 +53,43 @@
 
 ---
 
+## 🦴Directory Structure for TDD
+- It reflects feature-based responsibilities.
+- It'll evolve into a full MVC + SR hierarchy as TDD progresses.
+
+```
+lotto/
+├── domain/                         (1) Core domain logic
+│   ├── MatchLottos.kt                  # Match lottos with winning numbers.
+│   └── DetermineRank.kt                # Determine prize ranks.
+
+├── service/
+│   ├── validation/                 (2) All input validation
+│   │   ├── ValidateAmount.kt           # Validate purchase amount.
+│   │   ├── ValidateLottoNumbers.kt     # Validate generated lotto numbers.
+│   │   ├── ValidateWinningMain.kt      # Validate 6 main winning numbers.
+│   │   └── ValidateWinningBonus.kt     # Validate 1 bonus winning number.
+│   │
+│   └── logic/                      (3) Core business logic (calculation & generation)
+│       ├── CalcLottoCount.kt           # Calculate number of purchasable lottos.
+│       ├── GenerateLottos.kt           # Generate lottos.
+│       ├── CalcProfitRate.kt           # Calculate profit rate.
+│       └── CountByRank.kt              # Count matched lottos by rank.
+
+├── util/                           (4) Utility
+│   └── RoundProfitRate.kt              # Rounds profit rate to first decimal place.
+
+├── view/                           (5) ⏳ [T.B.D.] UI Layer // Used when refactoring to MVC.
+
+├── controller/                     (6) ⏳ [T.B.D.] Controller // Used when refactoring to MVC.
+
+├── repository/                     (7) No actual DB, but can be introduced if necessary.
+
+└── Application.kt                  (8) Entry point.
+```
+
+---
+
 ## 🏗️ Hierarchy
 ## 🗂️ Feature List
 - ### Full Feature Table → [Click here](./docs/feature-list.md)
