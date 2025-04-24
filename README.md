@@ -92,3 +92,22 @@ You have purchased 8 tickets.
 ```
 Total return rate is 62.5%.
 ```
+
+## 5. Test Plan
+
+1. Enter value must numerical characters.
+2. Throws an exception when non-numerical characters entered.
+3. Purchase amount must positive and not zero and divisible 1000.
+4. Throws an exception when purchase amount is negative or zero or not divisible 1000.
+5. Issued ticket's numbers are sorted.
+6. Create issued tickets by purchased ticket count.
+7. Lotto number must between 1 and 45 and no duplicates and exactly 6 size.
+8. Throws an exception when lotto number is not between 1 and 45.
+9. Throws an exception when lotto numbers exceed 6 or less than 6 or contain duplicates.
+10. Increases the ticket count of matches when winning the lottery.
+11. Profit rate is total prize amount divided by purchase amount percentage.
+12. Bonus number must not duplicate with winning numbers.
+13. Throws an exception when bonus number duplicate with winning numbers.
+14. Format int to comma pattern.(#,###)
+15. Format double to comma and one decimal pattern.(#,##0.0)
+16. String with comma to int list.
