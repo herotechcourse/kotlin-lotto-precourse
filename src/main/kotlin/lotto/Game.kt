@@ -4,7 +4,7 @@ package lotto
 
 class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
 
-    enum class Prize(val matchCount: Int, val bonus: Boolean, val Amount: Int){
+    enum class Prize(val matchCount: Int, val bonus: Boolean, val Amount: Long){
         FIRST(6, false, 2_000_000_000),
         SECOND(5, true, 30_000_000),
         THIRD(5, false, 1_500_000),
@@ -12,8 +12,16 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
         FIFTH(3, false, 5_000)
     }
 
-    val finalMatches: List<Pair<Int, Boolean>> = getMatches(player.tickets)
-    val statistics: List<Pair<Prize, Int>> = getStatistics(finalMatches)
+    val finalMatches: List<Pair<Int, Boolean>> by lazy {
+        getMatches(player.tickets)
+    }
+
+    val statistics: List<Pair<Prize, Int>> by lazy {
+        getStatistics(finalMatches)
+    }
+    val finalPrizeAmount: Long by lazy {
+        getFinalPrizeAmount(statistics)
+    }
 
     fun getMatches(tickets: List<Lotto>): List<Pair<Int, Boolean>> {
         val finalMatches = tickets.map { ticket ->
@@ -37,5 +45,15 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
         return statistics
     }
 
+    fun getFinalPrizeAmount(statistics: List<Pair<Prize, Int>>): Long {
+        var amountEarned:Long = 0;
+        statistics.map{(prize, count) ->
+            amountEarned += (prize.Amount * count)
+        }
+        return amountEarned
+    }
 
+    fun getProfitRate(amount: Int, finalPrizeAmount: Long ): Double {
+        return ((finalPrizeAmount - amount).toDouble() / amount) * 100
+    }
 }
