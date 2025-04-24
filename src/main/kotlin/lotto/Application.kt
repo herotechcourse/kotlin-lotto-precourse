@@ -10,9 +10,14 @@ fun main() {
     val numberOfTickets = getNumberOfTickets(sumOfMoney)
     validateSumOfMoney(sumOfMoney)
     println("You have purchased $numberOfTickets tickets.")
-    repeat(numberOfTickets){
+    repeat(numberOfTickets) {
         println(createLotteryTicket())
     }
+    println("Please enter last week's winning numbers.")
+    val winNumbers = Console.readLine().split(",").map { it.trim() }
+    validateNumbers(winNumbers.map {
+        it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
+    })
 
 }
 
@@ -28,6 +33,20 @@ fun validateSumOfMoney(sum: Int) {
 }
 
 fun createLotteryTicket(): List<Int> {
-        val generatedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        return generatedNumbers.sorted()
+    val generatedNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return generatedNumbers.sorted()
+}
+
+fun validateNumbers(numbers: List<Int>) {
+    if (numbers.size != 6) {
+        throw IllegalArgumentException("You need to write 6 comma-separated numbers")
     }
+    if (numbers.size != numbers.toSet().size) {
+        throw IllegalArgumentException("You need to write 6 unique numbers")
+    }
+    for (number in numbers) {
+        if (number !in 1..45) {
+            throw IllegalArgumentException("Lotto numbers must be between 1 and 45.")
+        }
+    }
+}
