@@ -7,7 +7,8 @@ object OutputView {
     private const val WINNING_STATISTICS = "Winning Statistics"
     private const val SEPARATOR = "---"
     private const val TICKETS_PURCHASED = "You have purchased %d tickets."
-    private const val RETURN_RATE = "Total return rate is %.1f%%."
+    private const val RETURN_RATE = "Total return rate is %,.1f%%."
+
 
     fun printPurchaseAmount() {
         println(PROMPT_PURCHASE_AMOUNT)
