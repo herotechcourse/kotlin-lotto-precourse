@@ -7,8 +7,8 @@ object Validator {
     private const val ERROR_NUMBER_OUT_OF_RANGE = "Numbers must be between $LOTTO_NUMBER_MIN and $LOTTO_NUMBER_MAX."
     private const val ERROR_BONUS_DUPLICATE = "Bonus number must not be one of the winning numbers."
 
-    fun validateAmount(amount: Int) {
-        if (amount <= 0 || amount % LOTTO_UNIT_PRICE != 0) {
+    fun validateAmount(amount: Long) {
+        if (amount <= 0 || amount % LOTTO_UNIT_PRICE.toLong() != 0L) {
             throw IllegalArgumentException(ERROR_INVALID_AMOUNT)
         }
     }

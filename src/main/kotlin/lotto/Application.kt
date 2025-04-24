@@ -3,7 +3,7 @@ package lotto
 fun main() {
     OutputView.printPurchaseAmount()
     val amount = InputView.readPurchaseAmount()
-    val ticketCount = amount / 1000
+    val ticketCount = (amount / 1000).toInt()
     val lottoTickets = List(ticketCount) { LottoGenerator().generateLotto() }
 
     OutputView.printTicketCount(ticketCount)

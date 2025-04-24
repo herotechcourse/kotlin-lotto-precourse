@@ -22,7 +22,7 @@ class LottoResult(
             .eachCount()
     }
 
-    fun calculateReturnRate(purchaseAmount: Int): Double {
+    fun calculateReturnRate(purchaseAmount: Long): Double {
         val totalPrize = lottoResults.sumOf { it.prize.toLong() }
         return (totalPrize.toDouble() / purchaseAmount) * 100
     }
