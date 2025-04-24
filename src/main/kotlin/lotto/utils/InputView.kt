@@ -51,21 +51,22 @@ object InputView {
         return Lotto(numbers)
     }
 
-    fun readBonusNumber(): Int {
+    fun readBonusNumber(winningNumbers: Lotto): Int {
         while (true) {
             try {
                 println("Please enter last week's bonus number.")
                 val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
-                return parseBonusNumber(input)
+                return parseBonusNumber(input, winningNumbers)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
-    internal fun parseBonusNumber(input: String): Int {
+    internal fun parseBonusNumber(input: String, winningNumbers: Lotto): Int {
         require(input.isNotBlank()) { "[ERROR] Input cannot be empty." }
         val number = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+        require(number !in winningNumbers.getNumbers()) { "[ERROR] Bonus number must not be among the winning numbers." }
         require(number in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
         return number
     }

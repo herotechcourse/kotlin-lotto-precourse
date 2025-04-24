@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.core.LottoGame
 import lotto.utils.InputView
 import lotto.utils.LottoMachine
 import lotto.utils.OutputView
@@ -13,8 +14,7 @@ fun main() {
     OutputView.printTickets(tickets)
 
     val winningTicket = InputView.readWinningTicket()
-    val bonusNumber = InputView.readBonusNumber()
-
+    val bonusNumber = InputView.readBonusNumber(winningTicket)
 
 
 }

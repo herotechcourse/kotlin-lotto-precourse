@@ -22,6 +22,7 @@ It fulfills process, functional, and programming requirements provided in the mi
 - Prompt user to enter 6 unique winning numbers
 - Prompt user to enter a bonus number
 - Validate that numbers are in range and unique
+- Validate that bonus number is not included in the 6 winning numbers
 
 ### 4. Lotto Result Evaluation
 - Compare each ticket against winning numbers
