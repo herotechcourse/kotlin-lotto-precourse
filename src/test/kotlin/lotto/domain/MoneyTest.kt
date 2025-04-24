@@ -17,9 +17,8 @@ class MoneyTest {
         val invalidAmount = 1500
 
         // when & then
-        assertThatThrownBy {
-            Money(invalidAmount)
-        }.isInstanceOf(IllegalArgumentException::class.java)
+        assertThatThrownBy { Money(invalidAmount) }
+            .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining("Amount must be divisible by 1000")
     }
 
@@ -41,11 +40,10 @@ class MoneyTest {
         // given
         val invalidAmounts = listOf(0, -3000)
 
-        // when & then
-        invalidAmounts.forEach { amount ->
-            assertThatThrownBy {
-                Money(amount)
-            }.isInstanceOf(IllegalArgumentException::class.java)
+        // when & then : For each amount, check if an exception is thrown
+        invalidAmounts.forEach {  // Indentation level 1
+            assertThatThrownBy { Money(it) }  // Indentation level 2
+                .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining("greater than 0")
         }
     }
