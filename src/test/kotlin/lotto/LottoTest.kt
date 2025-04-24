@@ -1,6 +1,7 @@
 package lotto
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
@@ -30,6 +31,13 @@ class LottoTest {
     fun `throws an exception when lotto numbers are less then 6`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4))
+        }
+    }
+
+    @Test
+    fun `no exception when lotto number is between 1 and 45 and no duplicates and exactly 6 size`() {
+        assertDoesNotThrow {
+            Lotto(listOf(1, 2, 3, 4, 5, 6))
         }
     }
 }
