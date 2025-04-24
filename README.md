@@ -30,3 +30,8 @@
 - [ ] Calculate the return rate.
   - [ ] Return rate = (total prize money / total purchase amount) * 100.0, rounded to one decimal place.
 - [ ] Print the statistics of winning tickets and the return rate.
+
+
+## UML Object Design
+Below is the class diagram representing the object-oriented structure of the Lotto mission.
+![lotto-precourse-uml](/docs/lotto-precourse.drawio.png)
