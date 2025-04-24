@@ -60,6 +60,17 @@ All notable changes to this project will be documented in this file.
 
 - `Lotto class` and `LottoTest` were modified to handle validation of the 6 unique numbers and exceptions for invalid inputs.
 
+## [0.7.0] - 2025-04-24
+
+### Added
+
+- Sorted error statement was added in `Lotto Class`.
+- New unit test cases for `TicketGenerator` and `Lotto` to ensure generated tickets are sorted.
+
+### Changes
+
+- Updated `TicketGenerator` to return sorted numbers.
+
 ---
 
 ## Notes

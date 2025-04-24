@@ -22,4 +22,16 @@ class TicketGeneratorTest {
             assertEquals(ticket.getNumbers().toSet().size, ticket.getNumbers().size, "Each ticket should contain unique numbers.")
         }
     }
+
+    @Test
+    fun `ensures that each Lotto ticket's numbers are sorted`() {
+        val numberOfTickets = 5  // Example: generating 5 tickets
+        val tickets = ticketGenerator.generateTickets(numberOfTickets)
+
+        // Ensure each ticket's numbers are sorted in ascending order
+        tickets.forEach { ticket ->
+            assertTrue(ticket.getNumbers() == ticket.getNumbers().sorted(), "The numbers in the ticket should be sorted in ascending order.")
+        }
+    }
+
 }
