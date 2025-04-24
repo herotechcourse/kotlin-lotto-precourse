@@ -1,18 +1,18 @@
 package lotto
 
 fun main() {
-    val amount = InputView.readPurchaseAmount()
-    val count = amount / 1000
-    val tickets = LottoMachine.generateTickets(count)
+    try {
+        val money = InputView.readPurchaseAmount()
+        val tickets = LottoMachine.createLottos(money)
+        OutputView.printLottos(tickets)
 
-    OutputView.printTickets(tickets)
+        val winNums = InputView.readWinningNumbers()
+        val bonus = InputView.readBonusNumber()
+        val winningLotto = WinningLotto(winNums, bonus)
 
-    val winningNumbers = InputView.readWinningNumbers()
-    val bonus = InputView.readBonusNumber(winningNumbers)
-
-    val winningLotto = WinningLotto(winningNumbers, bonus)
-    val result = LottoResult.calculate(tickets, winningLotto)
-
-    OutputView.printResult(result)
-    OutputView.printReturnRate(result, amount)
+        val result = LottoResult(winningLotto, tickets)
+        OutputView.printResult(result)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }

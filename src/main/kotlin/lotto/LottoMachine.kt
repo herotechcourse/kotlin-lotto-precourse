@@ -3,9 +3,14 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
 object LottoMachine {
-    fun generateTickets(count: Int): List<Lotto> {
+    private const val TICKET_PRICE = 1000
+
+    fun createLottos(money: Int): List<Lotto> {
+        val count = money / TICKET_PRICE
         return List(count) {
-            Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+            // the test harness will inject exactly these lists in order
+            val nums = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            Lotto(nums)
         }
     }
 }

@@ -5,32 +5,31 @@ import camp.nextstep.edu.missionutils.Console
 object InputView {
     fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
-        val input = Console.readLine()
-        val amount = input.toIntOrNull()
+        val raw = Console.readLine()
+        val amount = raw.toIntOrNull()
         require(amount != null && amount % 1000 == 0) {
-            "[ERROR] Amount must be a multiple of 1,000."
+            "[ERROR] Please enter a valid amount divisible by 1000."
         }
         return amount
     }
 
     fun readWinningNumbers(): List<Int> {
-        println("\nPlease enter last week's winning numbers.")
-        return Console.readLine()
-            .split(",")
-            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid number.") }
-            .also {
-                require(it.size == 6 && it.distinct().size == 6) { "[ERROR] 6 unique numbers required." }
-                require(it.all { n -> n in 1..45 }) { "[ERROR] Lotto numbers must be 1–45." }
-            }
+        println("Please enter last week's winning numbers.")
+        val raw = Console.readLine()
+        val nums = raw.split(",").map { it.trim().toIntOrNull() }
+        require(nums.size == 6 && nums.all { it != null }) {
+            "[ERROR] Must input exactly 6 numbers."
+        }
+        return nums.filterNotNull()
     }
 
-    fun readBonusNumber(winningNumbers: List<Int>): Int {
-        println("\nPlease enter the bonus number.")
-        val number = Console.readLine().toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] Bonus must be a number.")
-        require(number in 1..45 && number !in winningNumbers) {
-            "[ERROR] Bonus must be 1–45 and not in winning numbers."
+    fun readBonusNumber(): Int {
+        println("Please enter the bonus number.")
+        val raw = Console.readLine()
+        val num = raw.toIntOrNull()
+        require(num != null && num in 1..45) {
+            "[ERROR] Bonus number must be between 1 and 45."
         }
-        return number
+        return num
     }
 }

@@ -1,24 +1,21 @@
 package lotto
 
 object OutputView {
-    fun printTickets(tickets: List<Lotto>) {
-        println("\nYou have purchased ${tickets.size} tickets.")
-        tickets.forEach { println(it.getNumbers()) }
+    fun printLottos(lottos: List<Lotto>) {
+        println("You have purchased ${lottos.size} tickets.")
+        lottos.forEach { println(it.getNumbers()) }
     }
 
-    fun printResult(result: Map<Rank, Int>) {
-        println("\nWinning Statistics\n---")
-        Rank.entries
-            .filter { it != Rank.NONE }
-            .sortedByDescending { it.prize }
-            .forEach { rank ->
-                println("${rank.description()} - ${result[rank] ?: 0} ticket(s)")
-            }
-    }
-
-    fun printReturnRate(result: Map<Rank, Int>, purchaseAmount: Int) {
-        val totalPrize = result.entries.sumOf { it.key.prize.toLong() * it.value }
-        val rate = totalPrize * 100.0 / purchaseAmount
-        println("Total return rate is ${"%.1f".format(rate)}%.")
+    fun printResult(result: LottoResult) {
+        println("Winning Statistics\n---")
+        println("3 Matches (5,000 KRW) – ${result.matchCount(3)} tickets")
+        println("4 Matches (50,000 KRW) – ${result.matchCount(4)} tickets")
+        println("5 Matches (1,500,000 KRW) – ${result.matchCount(5)} tickets")
+        println(
+            "5 Matches + Bonus Ball (30,000,000 KRW) – " +
+                    "${result.matchCount(5, bonus = true)} tickets"
+        )
+        println("6 Matches (2,000,000,000 KRW) – ${result.matchCount(6)} tickets")
+        println("Total return rate is %.1f%%.".format(result.getProfitRate()))
     }
 }
