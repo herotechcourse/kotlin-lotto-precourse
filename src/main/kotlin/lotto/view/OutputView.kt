@@ -4,8 +4,8 @@ import Rank
 
 object OutputView {
 
-  fun requestPurchase() {
-    println("Please enter the purchase amount.")
+  fun promptUser(Message: String) {
+    println(Message)
   }
 
   /*
@@ -17,14 +17,6 @@ object OutputView {
     purchasedTickets.forEach {
       println(it.sorted().joinToString(prefix = "[", postfix = "]", separator = ", "))
     }
-  }
-
-  fun requestWinningSet() {
-    println("Please enter last week's winning numbers.")
-  }
-
-  fun requestBonusNumber() {
-    println("Please enter the bonus number.")
   }
 
   fun printResult(
