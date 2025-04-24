@@ -2,7 +2,7 @@ package lotto
 
 class IssuedTicket(
     private val purchaseAmount: Int,
-    private val randomGenerator: DefaultRandomGenerator,
+    private val randomGenerator: RandomGenerator,
 ) : IssuedTicketValidator {
 
     init {
