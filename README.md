@@ -14,8 +14,9 @@
 - [ Retrospect ] After implementing each features, write test codes that can verify the feature.
 
 ## Feature list
-- [ ] Receive the purchase amount from the user.
+- [x] Receive the purchase amount from the user.
   - [ ] If the amount is not divisible by 1,000, throw an exception and prompt for input again.
+  - [ ] If the amount is not positive, throw exception.
 - [ ] Calculate how many lottery tickets can be purchased with the given amount.
   - [ ] Generate N lottery tickets.
   - [ ] Each ticket must consist of 6 unique numbers between 1 and 45.
