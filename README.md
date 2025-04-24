@@ -1,8 +1,8 @@
 # kotlin-lotto-precourse
 
 ### 1. Enter the Purchase Amount
-- Enter the purchase amount input
-- Validate that the input is a number
+- Enter the purchase amount input ✅
+- Validate that the input is a number ✅
 - Calculate how may Lottery tickets to generate
 
 ### 2. Create Random Lotto

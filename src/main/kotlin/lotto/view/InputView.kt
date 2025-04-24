@@ -1,0 +1,10 @@
+package lotto.view
+
+import camp.nextstep.edu.missionutils.Console
+
+class InputView {
+    fun askPurchaseAmount(): Int {
+        println("Please enter the purchase amount.")
+        return InputValidator.parseAndValidateNumber(Console.readLine())
+    }
+}
