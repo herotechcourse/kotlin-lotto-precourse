@@ -8,8 +8,11 @@ class LottoNumberMakerTest {
     fun `lotto number should contain 6 unique numbers from 1 to 45`() {
         val lottoNumber = LottoNumberMaker.makeOneLineLottoNumber()
 
-        assertThat(lottoNumber).hasSize(6).doesNotHaveDuplicates()
-            .allSatisfy { number -> assertThat(number).isBetween(1, 45) }
+        assertThat(lottoNumber)
+            .hasSize(6)
+            .doesNotHaveDuplicates()
+            .allSatisfy { number -> assertThat(number)
+            .isBetween(1, 45) }
     }
 
     @Test
