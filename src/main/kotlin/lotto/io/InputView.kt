@@ -32,4 +32,18 @@ object InputView {
         }
     }
 
+    fun readBonusNumber(numbers: List<Int>): Int {
+        while (true) {
+            println("Please enter the bonus number.")
+            val input = Console.readLine()
+            println()
+
+            try {
+                return InputParser.parseBonusNumber(input, numbers)
+            }catch (e : IllegalArgumentException){
+                println(e.message)
+            }
+        }
+    }
+
 }
