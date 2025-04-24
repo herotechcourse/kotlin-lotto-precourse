@@ -1,4 +1,6 @@
-package lotto
+package lotto.ticket
+
+import lotto.TICKET_COST
 
 class TicketPurchase {
     var purchasedTickets: Int = 0

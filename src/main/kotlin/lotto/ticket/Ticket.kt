@@ -1,4 +1,4 @@
-package lotto
+package lotto.ticket
 
 class Ticket {
     var numbers: MutableSet<Int> = mutableSetOf()
