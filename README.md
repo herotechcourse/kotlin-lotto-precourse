@@ -14,8 +14,8 @@
   - [X] If the input is not a valid number.
 
 ### Display the purchased lottery tickets.
-- [ ] Display a message to show the number of purchased tickets. "You have purchased $8 tickets."
-- [ ] Display each lottery ticket's numbers, one per line.
+- [X] Display a message to show the number of purchased tickets. "You have purchased $8 tickets."
+- [X] Display each lottery ticket's numbers, one per line.
 
 ### Receive the winning numbers for the lottery.
 - [ ] Display a prompt message to enter the winning numbers. "Please enter last week's winning numbers."
