@@ -12,4 +12,10 @@ class TicketPurchase {
     fun buyTickets(userInput: UserInput) {
         this.amountOfTicketsBought = userInput.purchaseAmount.floorDiv(TICKET_COST)
     }
+
+    fun generateTickets() {
+        for (i in 1..this.amountOfTicketsBought) {
+            tickets.add(Ticket())
+        }
+    }
 }

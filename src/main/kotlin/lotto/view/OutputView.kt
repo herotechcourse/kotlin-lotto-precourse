@@ -13,7 +13,10 @@ class OutputView {
         }
 
         fun displayBoughtTickets(ticketPurchase: TicketPurchase) {
-            println("Tickets")
+            val tickets = ticketPurchase.tickets
+            for (ticket in tickets) {
+                println(ticket.numbers)
+            }
             println()
         }
 

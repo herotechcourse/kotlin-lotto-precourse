@@ -19,6 +19,7 @@ fun main() {
     }
 
     ticketPurchase.buyTickets(userInput)
+    ticketPurchase.generateTickets()
     OutputView.displayPurchaseMessage(ticketPurchase)
     OutputView.displayBoughtTickets(ticketPurchase)
 
