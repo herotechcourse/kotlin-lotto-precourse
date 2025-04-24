@@ -18,7 +18,11 @@ fun main() {
     validateNumbers(winNumbers.map {
         it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
     })
-
+println("Please enter the bonus number.")
+    val bonusNumber = Console.readLine()?.toIntOrNull()
+        ?: throw IllegalArgumentException("The purchase amount should be an integer.")
+    validateBonusNumber(bonusNumber)
+    println(bonusNumber)
 }
 
 fun getNumberOfTickets(sum: Int): Int {
@@ -48,5 +52,10 @@ fun validateNumbers(numbers: List<Int>) {
         if (number !in 1..45) {
             throw IllegalArgumentException("Lotto numbers must be between 1 and 45.")
         }
+    }
+}
+fun validateBonusNumber(number: Number){
+    if(number !in 1..45){
+        throw IllegalArgumentException("Bonus number must be between 1 and 45.")
     }
 }
