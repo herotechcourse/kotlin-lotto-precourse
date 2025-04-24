@@ -16,9 +16,10 @@ class LottoResult(
     }
 
     fun getStatistics(): Map<LottoRank, Int> {
-        return LottoRank.entries
-            .associateWith { lottoRank -> lottoResults.count { it == lottoRank } }
-            .filterKeys { it != LottoRank.MISS }
+        return lottoResults
+            .filter { it != LottoRank.MISS }
+            .groupingBy { it }
+            .eachCount()
     }
 
     fun calculateReturnRate(purchaseAmount: Int): Double {
