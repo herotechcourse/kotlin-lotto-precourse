@@ -1,8 +1,6 @@
 package lotto.InputValidation
 
-import camp.nextstep.edu.missionutils.Console
-
-class AmountValidation {
+class `AmountValidation` {
     fun NullCheckAmount(amount : String) : Int{
         if(amount.isEmpty() || amount.toIntOrNull() == null) throw IllegalArgumentException("[ERROR] Input needs to be an integer")
         return amount.toInt()

@@ -1,9 +1,5 @@
-package lotto
+package lotto.InputValidation
 
-import lotto.InputValidation.AmountValidation
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
-import camp.nextstep.edu.missionutils.test.NsTest
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -45,9 +41,8 @@ class AmountValidationTest {
 
     @Test
     fun `exception Amount entered is an integer`() {
-      val result = validator.NullCheckAmount("2000")
-      assertEquals(2000, result)
+        val result = validator.NullCheckAmount("2000")
+        assertEquals(2000, result)
     }
-
 
 }

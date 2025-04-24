@@ -1,17 +1,25 @@
 package lotto
-import lotto.InputValidation.AmountValidation
+import lotto.InputValidation.WinningNumbersValidation
 import camp.nextstep.edu.missionutils.Console
-const val winning_numbers_size = 6
-private val validator = AmountValidation()
+import lotto.InputValidation.AmountValidation
+
+private val amountValidator = AmountValidation()
+private val winningNumbersvalidator = WinningNumbersValidation()
 
 fun main() {
 
     println("Purchase amount for lottery tickets: ")
     val amount = InputPurchaseAmount()
-    val purchaseAmount = validator.NullCheckAmount(amount)
-    validator.ValidateAmount(purchaseAmount)
+    val purchaseAmount = amountValidator.NullCheckAmount(amount)
+    amountValidator.ValidateAmount(purchaseAmount)
 
-    //println("Amount = $amount")
+    println("Winning numbers (comma-separated):")
+    val numbers = InputWinningNumbers()
+    winningNumbersvalidator.NullCheckWinningNumber(numbers)
+    val winningNumbers = winningNumbersvalidator.SplitNumbersIntoList(numbers)
+    winningNumbersvalidator.SizeOfWinningNumberValidation(winningNumbers)
+    winningNumbersvalidator.ValidateWinningNumberInRange1to45(winningNumbers)
+    winningNumbersvalidator.UniqueWinningNumbersValidation(winningNumbers)
 }
 
 fun InputPurchaseAmount() : String{
@@ -19,4 +27,7 @@ fun InputPurchaseAmount() : String{
     return amount
 }
 
-
+fun InputWinningNumbers() : String{
+    val winning_numbers = Console.readLine()
+    return winning_numbers
+}
