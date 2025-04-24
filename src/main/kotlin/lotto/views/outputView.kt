@@ -4,6 +4,6 @@ import lotto.generateLottoTickets
 
 
 class outputView {
-    val tickets = generateLottoTickets()
+
 
 }

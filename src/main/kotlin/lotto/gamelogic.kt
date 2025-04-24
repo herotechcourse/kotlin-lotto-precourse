@@ -39,19 +39,6 @@ fun checkWinningTickets(tickets: List<List<Int>>, winningNumbers: List<Int>, luc
     }
 }
 
-//fun claculateResults(results: List<LottoResults>) {
-//    val resultCounts = LottoResults.entries.associateWith { result ->
-//        results.count { it == result }
-//    }
-//    var totalPrize = 0
-//    resultCounts.forEach { (result, count) ->
-//        println("${result.message} – $count tickets")
-//        totalPrize += result.prize * count
-//    }
-//    println("Total Prize: ${totalPrize} KRW")
-//}
-
-
 fun calculateResultCounts(results: List<LottoResults>): Map<LottoResults, Int> {
     return LottoResults.entries.associateWith { result ->
         results.count { it == result }
@@ -70,19 +57,7 @@ fun displayTotalPrize(resultCounts: Map<LottoResults, Int>, numberOfTickets: Int
     println("Total Prize: ${totalPrize} KRW")
     println("Earnings Percentage: ${"%.2f".format(percentage)}%")
 }
-//
-//fun displayTotalPrize(resultCounts: Map<LottoResults, Int>, numberOfTickets: Int, ticketPrice: Int = 1000) {
-//    var totalPrize = 0
-//    resultCounts.forEach { (result, count) ->
-//        totalPrize += result.prize * count
-//    }
-//
-//    val totalSpent = numberOfTickets * ticketPrice
-//    val percentage = (totalPrize.toDouble() / totalSpent) * 100
-//
-//    println("Total Prize: ${totalPrize} KRW")
-//    println("Earnings Percentage: ${"%.2f".format(percentage)}%")
-//}
+
 
 fun displayResults(resultCounts: Map<LottoResults, Int>) {
     resultCounts.forEach { (result, count) ->
