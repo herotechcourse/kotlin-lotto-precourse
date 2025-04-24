@@ -51,9 +51,9 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Lottery Issuance
 
-- [ ]  Calculate the number of tickets based on the purchase amount (1 ticket per 1000 KRW).
-- [ ]  Each ticket consists of 6 unique numbers ranging from 1 to 45.
-- [ ]  The generated numbers for each ticket must be sorted in ascending order.
+- [x]  Calculate the number of tickets based on the purchase amount (1 ticket per 1000 KRW).
+- [x]  Each ticket consists of 6 unique numbers ranging from 1 to 45.
+- [x]  The generated numbers for each ticket must be sorted in ascending order.
 
 ### Winning Numbers Input
 

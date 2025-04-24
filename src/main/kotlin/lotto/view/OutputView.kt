@@ -1,4 +1,9 @@
 package lotto.view
 
-class OutputView {
+import lotto.Lotto
+
+object OutputView {
+    fun printLottery(lottery: List<Lotto>) {
+        lottery.forEach { println(it) }
+    }
 }

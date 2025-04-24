@@ -1,4 +1,13 @@
 package lotto.model
 
-class LottoStorage {
+import lotto.Lotto
+
+class LottoStorage(lottery: List<Lotto>) {
+    private val lottery: List<Lotto>
+
+    init {
+        this.lottery = lottery.toList()
+    }
+
+    fun getAll(): List<Lotto> = lottery
 }
