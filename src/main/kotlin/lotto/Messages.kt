@@ -9,7 +9,11 @@ object Messages {
     const val ERROR_NEGATIVE_NUMBER = "Enter a positive number"
     const val ERROR_NOT_THOUSANDS = "Enter a number divisible by 1000"
     const val ERROR_NOT_SIX_NUMBERS = "Lotto must contain exactly 6 numbers."
-
+    const val SEPARATOR = ", "
+    const val PREFIX = "["
+    const val POSTFIX = "]"
+    const val WINNING_NUMBERS= "Please enter last week's winning numbers."
+    const val BONUS_NUMBER = "Please enter the bonus number."
 
     fun display(message: String, vararg args: Any) {
         println(message.format(*args))
