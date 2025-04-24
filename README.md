@@ -34,4 +34,4 @@
 ### 🔨 Utility Features
 
 - [x] Auto-generate lottery numbers for each purchased ticket.
-- [ ] Calculate profit rate based on purchase amount and total winnings.
+- [x] Calculate profit rate based on purchase amount and total winnings.
