@@ -1,5 +1,23 @@
 package lotto
 
-enum class Rank {
-    FIRST, SECOND, THIRD, FOURTH, FIFTH, WITHOUT
+enum class Rank(val matchCount: Int, val prize: Long, val requiresBonus: Boolean = false) {
+    FIRST(6, 2_000_000_000, false),
+    SECOND(5, 30_000_000, true),
+    THIRD(5, 1_500_000, false),
+    FOURTH(4, 50_000, false),
+    FIFTH(3, 5_000, false),
+    WITHOUT(0, 0, false);
+
+    companion object {
+        fun from(matchCount: Int, hasBonus: Boolean): Rank {
+            return when {
+                matchCount == 6 -> FIRST
+                matchCount == 5 && hasBonus -> SECOND
+                matchCount == 5 -> THIRD
+                matchCount == 4 -> FOURTH
+                matchCount == 3 -> FIFTH
+                else -> WITHOUT
+            }
+        }
+    }
 }

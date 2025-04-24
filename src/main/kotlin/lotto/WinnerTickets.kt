@@ -17,14 +17,6 @@ class WinnerTickets(private val winningNumbers: List<Int>, private val bonusNumb
     }
 
     fun getRank(ticket: Lotto): Rank {
-        val matchCount = matchCount(ticket)
-        return when {
-            matchCount == 6 -> Rank.FIRST
-            matchCount == 5 && hasBonus(ticket) -> Rank.SECOND
-            matchCount == 5 -> Rank.THIRD
-            matchCount == 4 -> Rank.FOURTH
-            matchCount == 3 -> Rank.FIFTH
-            else -> Rank.WITHOUT
-        }
+        return Rank.from(matchCount(ticket), hasBonus(ticket))
     }
 }

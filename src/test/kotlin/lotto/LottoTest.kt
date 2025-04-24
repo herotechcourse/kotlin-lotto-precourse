@@ -95,7 +95,6 @@ class LottoTest {
         result.add(Rank.FIRST)
         result.add(Rank.SECOND)
         result.add(Rank.WITHOUT)
-        result.calculate()
     }
 
     @Test
