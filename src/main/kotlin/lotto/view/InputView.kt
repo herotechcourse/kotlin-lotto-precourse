@@ -13,7 +13,7 @@ object InputView {
     }
 
     fun readWinningLotto(): Lotto {
-        println("You have purchased 8 tickets.")
+        println("Please enter last week's winning numbers.")
         val input = readln()
         checkIfWinningLottoIsValid(input)
         val numbers = input.split(",").map { it.toInt() }
