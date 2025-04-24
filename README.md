@@ -4,9 +4,9 @@
 
 #### Input
 
-- [ ] Prompt user to input purchase amount (must be divisible by 1,000).
-- [ ] Prompt user to input 6 comma-separated winning numbers.
-- [ ] Prompt user to input a single bonus number.
+- [x] Prompt user to input purchase amount (must be divisible by 1,000).
+- [x] Prompt user to input 6 comma-separated winning numbers.
+- [x] Prompt user to input a single bonus number.
 - [ ] If invalid input is given, throw an `IllegalArgumentException` and re-prompt from the same step.
 
 #### Game Rules
@@ -41,9 +41,9 @@
 
 #### Output
 
-- [ ] Print the number of tickets purchased and each ticket's numbers **in ascending order.**
-- [ ] Print lotto result statistics as shown in the rank table above.
-- [ ] Print profit rate rounded to one decimal place (e.g., `62.5%`).
+- [x] Print the number of tickets purchased and each ticket's numbers **in ascending order.**
+- [x] Print lotto result statistics as shown in the rank table above.
+- [x] Print profit rate rounded to one decimal place (e.g., `62.5%`).
 - [ ] All error messages must start with `[ERROR]`.
 
 ---
@@ -53,9 +53,9 @@
 - [ ] Keep each function under 10 lines and ensure it follows the single responsibility principle.
 - [ ] Avoid using `else` statements; prefer early return instead.
 - [x] Use `Enum` classes where applicable.
-- [ ] Clearly separate business logic from UI logic.
-    - [ ] Use dedicated classes such as `InputView` and `OutputView` to isolate UI code.
-- [ ] Write unit tests for all logic except for UI interactions (`System.out`, `System.in`).
+- [x] Clearly separate business logic from UI logic.
+    - [x] Use dedicated classes such as `InputView` and `OutputView` to isolate UI code.
+- [x] Write unit tests for all logic except for UI interactions (`System.out`, `System.in`).
     - [x] If unfamiliar with unit testing, refer to `LottoTest` as an example before writing your own.
 
 ---
