@@ -2,11 +2,7 @@ package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Lotto
-import java.util.*
-
-private const val PURCHASE_AMOUNT_UNIT = 1000
-private const val MIN_PURCHASE_AMOUNT = PURCHASE_AMOUNT_UNIT
-private const val ERROR_PREFIX = "[ERROR]"
+import lotto.util.Constants
 
 class InputView {
 
@@ -24,7 +20,7 @@ class InputView {
     fun getPurchaseAmount(): Int {
         return readValidatedInput("Please enter the purchase amount.") {
             val amount = Console.readLine().toIntOrNull()
-                ?: throw IllegalArgumentException("$ERROR_PREFIX Input must be a valid number")
+                ?: throw IllegalArgumentException("${Constants.ERROR_PREFIX} Input must be a valid number")
             validatePurchaseAmount(amount)
             amount
         }
@@ -38,11 +34,11 @@ class InputView {
     }
 
     private fun validatePurchaseAmount(amount: Int) {
-        if (amount < MIN_PURCHASE_AMOUNT) {
-            throw IllegalArgumentException("$ERROR_PREFIX Purchase amount must be at least $MIN_PURCHASE_AMOUNT KRW")
+        if (amount < Constants.MIN_PURCHASE_AMOUNT) {
+            throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be at least ${Constants.MIN_PURCHASE_AMOUNT} KRW")
         }
-        if (amount % PURCHASE_AMOUNT_UNIT != 0) {
-            throw IllegalArgumentException("$ERROR_PREFIX Purchase amount must be in units of $PURCHASE_AMOUNT_UNIT KRW")
+        if (amount % Constants.PURCHASE_AMOUNT_UNIT != 0) {
+            throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be in units of ${Constants.PURCHASE_AMOUNT_UNIT} KRW")
         }
     }
 
@@ -51,7 +47,7 @@ class InputView {
             .split(",")
             .map {
                 it.trim().toIntOrNull()
-                    ?: throw IllegalArgumentException("$ERROR_PREFIX All Lotto numbers must be numbers")
+                    ?: throw IllegalArgumentException("${Constants.ERROR_PREFIX} All Lotto numbers must be numbers")
             }
         return numbers
     }
