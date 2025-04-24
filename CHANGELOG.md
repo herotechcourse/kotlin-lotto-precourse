@@ -71,6 +71,13 @@ All notable changes to this project will be documented in this file.
 
 - Updated `TicketGenerator` to return sorted numbers.
 
+## [0.8.0] - 2025-04-24
+
+### Added
+
+- `TicketDisplay` class to print purchased ticket
+- Unit tests for `TicketDisplay` to verify output formatting and correctness
+
 ---
 
 ## Notes
