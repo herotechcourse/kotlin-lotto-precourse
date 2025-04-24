@@ -1,5 +1,7 @@
 package lotto.validator
 
+import lotto.Lotto
+
 object InputValidator {
     private const val THRESHOLD_UNIT = 1000
 
@@ -52,6 +54,10 @@ object InputValidator {
         if (uniqueNumbers.size != input.size) {
             throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
         }
+    }
+
+    fun noDuplicateBonusNumber(bonusNumber: Int, mainLotto: Lotto) {
+        require(bonusNumber !in mainLotto.getNumbers()) { "[ERROR] Bonus number must not be in the main lotto numbers." }
     }
 
 }

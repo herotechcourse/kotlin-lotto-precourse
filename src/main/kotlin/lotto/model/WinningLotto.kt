@@ -9,6 +9,7 @@ class WinningLotto(
 ) {
     init {
         InputValidator.numberIsRange(bonusNumber)
-        require(bonusNumber !in mainLotto.getNumbers()) { "Bonus number must not be in the main lotto numbers." }
+        InputValidator.noDuplicateBonusNumber(bonusNumber, mainLotto)
     }
+    
 }
