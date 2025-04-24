@@ -1,10 +1,12 @@
 package lotto.domain
 
 
-import org.junit.jupiter.api.Assertions.assertEquals
+
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThatThrownBy
 
 class MoneyTest {
 
@@ -14,13 +16,11 @@ class MoneyTest {
         // given
         val invalidAmount = 1500
 
-        // when
-        val exception = assertThrows<IllegalArgumentException> {
+        // when & then
+        assertThatThrownBy {
             Money(invalidAmount)
-        }
-
-        // then : [ERROR] Exception thrown - > Amount must be divisible by 1000
-        assertTrue(exception.message?.contains("Amount must be divisible by 1000") == true)
+        }.isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining("Amount must be divisible by 1000")
     }
 
     // 지불한 값만 만큼 티켓 갯수 확인 검증
@@ -33,7 +33,7 @@ class MoneyTest {
         val money = Money(amount)
 
         // then :  If a user pays 8000 won, lotto-machine should receive 8 tickets
-        assertEquals(8, money.countTickets())
+        assertThat(money.countTickets()).isEqualTo(8);
     }
 
     @Test
@@ -43,10 +43,10 @@ class MoneyTest {
 
         // when & then
         invalidAmounts.forEach { amount ->
-            val exception = assertThrows<IllegalArgumentException> {
+            assertThatThrownBy {
                 Money(amount)
-            }
-            assertTrue(exception.message?.contains("greater than 0") == true)
+            }.isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining("greater than 0")
         }
     }
 }
