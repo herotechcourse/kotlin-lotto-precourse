@@ -20,13 +20,13 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 ### Lotto Purchase
 
 * [x] Allow the user to input the purchase amount in units of 1,000 KRW (e.g., `3000`, `10000`).
-* [ ] Determine the number of tickets to issue based on the amount (e.g., 3 tickets for 3,000 KRW).
+* [x] Determine the number of tickets to issue based on the amount (e.g., 3 tickets for 3,000 KRW).
 
 ### Lotto Ticket Issuance
 
-* [ ] Automatically issue the determined number of lotto tickets.
-* [ ] Ensure each lotto ticket contains 6 unique numbers between 1 and 45 (no duplicates within a ticket).
-* [ ] Print all the issued lotto numbers (e.g., `[8, 21, 23, 41, 42, 43]`, `[3, 5, 11, 16, 32, 38]`, ...).
+* [x] Automatically issue the determined number of lotto tickets.
+* [x] Ensure each lotto ticket contains 6 unique numbers between 1 and 45 (no duplicates within a ticket).
+* [x] Print all the issued lotto numbers (e.g., `[8, 21, 23, 41, 42, 43]`, `[3, 5, 11, 16, 32, 38]`, ...).
 
 ### Winning Numbers Input
 
@@ -34,7 +34,7 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 
 ### Bonus Number Input
 
-* [ ] Allow the user to input 1 bonus number between 1 and 45.
+* [x] Allow the user to input 1 bonus number between 1 and 45.
 
 ### Result Announcement
 
