@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
 
-    fun readPurchaseAmount(): Long = retryUserInput {
-        val amount = Console.readLine().toLong()
+    fun readPurchaseAmount(): Int = retryUserInput {
+        val amount = Console.readLine().toInt()
         Validator.validateAmount(amount)
         amount
     }
