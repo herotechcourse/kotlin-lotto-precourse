@@ -19,6 +19,10 @@ import lotto.Lotto
  * ```
  */
 class LottoTickets private constructor(private val tickets: List<Lotto>) {
+    fun getAll(): List<Lotto> = tickets
+
+    fun size(): Int = tickets.size
+
     companion object {
         private const val TICKET_PRICE = 1000
 
@@ -33,9 +37,9 @@ class LottoTickets private constructor(private val tickets: List<Lotto>) {
 
             return LottoTickets(tickets)
         }
+
+        fun of(vararg lottos: Lotto): LottoTickets {
+            return LottoTickets(lottos.toList())
+        }
     }
-
-    fun getAll(): List<Lotto> = tickets
-
-    fun size(): Int = tickets.size
 }
