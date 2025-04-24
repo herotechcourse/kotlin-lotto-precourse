@@ -4,10 +4,10 @@ import java.util.*
 
 class Lotto(private val numbers: List<Int>, val price: Int = 1000) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(numbers.toSet().size == numbers.size) {"[ERROR] Lotto numbers must consist of unique numbers."}
+        require(numbers.size == 6) { ExceptionMessage.INVALID_LOTTO_NUMBER_SIZE }
+        require(numbers.toSet().size == numbers.size) { ExceptionMessage.DUPLICATE_LOTTO_NUMBER }
         numbers.forEach {
-            require(it in 1..45) {"[ERROR] Lotto numbers must in the range from 1 to 45"}
+            require(it in 1..45) { ExceptionMessage.INVALID_LOTTO_NUMBER_RANGE }
         }
     }
 
