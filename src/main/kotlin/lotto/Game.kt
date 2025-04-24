@@ -1,10 +1,8 @@
 package lotto
 
-
-
 class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
 
-    enum class Prize(val matchCount: Int, val bonus: Boolean, val Amount: Long){
+    enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Long){
         FIRST(6, false, 2_000_000_000),
         SECOND(5, true, 30_000_000),
         THIRD(5, false, 1_500_000),
@@ -21,6 +19,10 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
     }
     val finalPrizeAmount: Long by lazy {
         getFinalPrizeAmount(statistics)
+    }
+
+    val profitRate: Double by lazy {
+        getProfitRate(player.getAmount(), finalPrizeAmount)
     }
 
     fun getMatches(tickets: List<Lotto>): List<Pair<Int, Boolean>> {
@@ -48,12 +50,12 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
     fun getFinalPrizeAmount(statistics: List<Pair<Prize, Int>>): Long {
         var amountEarned:Long = 0;
         statistics.map{(prize, count) ->
-            amountEarned += (prize.Amount * count)
+            amountEarned += (prize.amount * count)
         }
         return amountEarned
     }
 
     fun getProfitRate(amount: Int, finalPrizeAmount: Long ): Double {
-        return ((finalPrizeAmount - amount).toDouble() / amount) * 100
+        return ((finalPrizeAmount.toDouble() - amount) / amount) * 100
     }
 }
