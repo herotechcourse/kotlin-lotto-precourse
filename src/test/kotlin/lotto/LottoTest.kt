@@ -42,7 +42,7 @@ class LottoTest {
             Lotto(listOf(0, 2, 3, 4, 5, 6))
         }
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5,46))
+            Lotto(listOf(1, 2, 3, 4, 5, 46))
         }
     }
 

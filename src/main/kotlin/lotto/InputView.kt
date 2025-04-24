@@ -3,7 +3,7 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 object InputView {
-    fun PurchaseAmount(): Int {
+    fun purchaseAmount(): Int {
         while (true) {
             try {
                 println("Please enter the purchase amount.")
@@ -18,7 +18,7 @@ object InputView {
         }
     }
 
-    fun WinningNumbers(): List<Int> {
+    fun winningNumbers(): List<Int> {
         while (true) {
             try {
                 println("Please enter last week's winning numbers.")
@@ -36,7 +36,7 @@ object InputView {
         }
     }
 
-    fun BonusNumber(winningNumbers: List<Int>): Int {
+    fun bonusNumber(winningNumbers: List<Int>): Int {
         while (true) {
             try {
                 println("Please enter the bonus number.")

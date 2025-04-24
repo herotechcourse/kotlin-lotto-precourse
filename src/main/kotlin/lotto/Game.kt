@@ -10,14 +10,14 @@ object Game {
     }
 
     private fun purchaseTickets(): List<Lotto> {
-        val amount = InputView.PurchaseAmount()
+        val amount = InputView.purchaseAmount()
         val ticketCount = amount / 1000
         return List(ticketCount) { GeneratorTickets.generate() }
     }
 
     private fun readWinningNumbers(): Pair<List<Int>, Int> {
-        val winningNumbers = InputView.WinningNumbers()
-        val bonusNumber = InputView.BonusNumber(winningNumbers)
+        val winningNumbers = InputView.winningNumbers()
+        val bonusNumber = InputView.bonusNumber(winningNumbers)
         return winningNumbers to bonusNumber
     }
 
