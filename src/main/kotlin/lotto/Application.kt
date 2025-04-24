@@ -23,5 +23,6 @@ fun main() {
     val winningTicket = WinningLotto(Lotto(winningNumbers), bonusNumber)
 
     val rankCount = LottoManager.compareTickets(tickets, winningTicket)
-    outputView.displayResult(rankCount)
+    val returnRate = LottoManager.calculateReturnRate(rankCount, purchasedAmount)
+    outputView.displayResult(rankCount, returnRate)
 }

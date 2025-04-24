@@ -13,7 +13,7 @@ class OutputView {
         }
     }
 
-    fun displayResult(rankCount: Map<MatchPrize, Int>) {
+    fun displayResult(rankCount: Map<MatchPrize, Int>, returnRate: Double) {
         println("\nWinning Statistics")
         println("---")
         println("3 Matches (5,000 KRW) - ${rankCount[MatchPrize.THREE] ?: 0} tickets")
@@ -22,5 +22,6 @@ class OutputView {
         println("5 Matches + Bonus (30,000,000 KRW) - ${rankCount[MatchPrize.FIVEWITHBONUS] ?: 0} tickets")
         println("6 Matches (2,000,000,000 KRW) - ${rankCount[MatchPrize.SIX] ?: 0} tickets")
 
+        println("Total return rate is %.1f%%.".format(returnRate))
     }
 }
