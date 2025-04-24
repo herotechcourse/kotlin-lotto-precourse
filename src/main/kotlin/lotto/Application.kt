@@ -8,7 +8,16 @@ enum class prizeTypes {
     fifth, fourth, third, second, first
 }
 
-fun main() {
+// lotto result
+object LottoResult {
+    fun match(types: prizeTypes): Lotto{
+        println("Winning Statistics")
+        println("---")
+
+    }
+}
+
+fun getTickets (){
 
     // ticket amounts
     println("Please enter the purchase amount.")
@@ -23,6 +32,17 @@ fun main() {
     repeat(tickets){
         val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(ticketNumbers)
+        Lotto(ticketNumbers)
     }
+
+}
+
+
+fun main() {
+
+    val purchasedTickets = getTickets()
+    val lottoResult: Lotto = LottoResult.match()
+    val profitRate = (award / input) * 100
+    println("Total return rate is $profitRate%. fun")
 
 }
