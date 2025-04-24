@@ -84,6 +84,17 @@ All notable changes to this project will be documented in this file.
 
 - `WinningNumberInputReader` and `BonusNumberInputReader` classes to read last week's winning numbers and the bonus number from user input.
 
+## [0.9.0] - 2025-04-24
+
+### Added
+
+- `BonusNumberInputReader` & `WinningNumberInputReader` class with input number and logic validation
+- Unit tests for `BonusNumberValidator` & `WinningNumberValidator` covering all test cases and expected behavior
+
+### Changes
+
+- Added `RangeValidator` as shared object to work with common functions
+
 ---
 
 ## Notes
