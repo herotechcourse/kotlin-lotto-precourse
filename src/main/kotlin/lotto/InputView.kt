@@ -22,9 +22,10 @@ class InputView {
         require(amount % 1000 == 0) {
             DIVISIBLE_AMOUNT_MSG
         }
-        require(amount != 0) {
-            ZERO_AMOUNT_MSG
+        require(amount in 1..MAX_AMOUNT) {
+            AMOUNT_RANGE_MSG
         }
+        // add a max value e.g. 10.000
         return amount
     }
 
@@ -76,11 +77,12 @@ class InputView {
         const val MAX_RETRY = 5
         const val MIN_NUM = 1
         const val MAX_NUM = 45
-        const val MAX_RETRY_MSG = "\u001b[31m[ERROR] Maximum retry attempts exceeded.\u001b[0m"
-        const val INVALID_INPUT_MSG = "\u001B[31m[ERROR] Invalid input.\u001b[0m"
-        const val ZERO_AMOUNT_MSG = "\u001B[31m[ERROR] Amount cannot be zero.\u001B[0m"
-        const val DIVISIBLE_AMOUNT_MSG = "\u001B[31m[ERROR] Amount has to be divisible by 1000.\u001b[0m"
-        const val INVALID_RANGE_MSG = "\u001b[31m[ERROR] Invalid number: not in range $MIN_NUM-$MAX_NUM.\u001b[0m"
+        const val MAX_AMOUNT = 12000
+        const val AMOUNT_RANGE_MSG = "[ERROR] Amount cannot be 0 or higher than $MAX_AMOUNT"
+        const val MAX_RETRY_MSG = "[ERROR] Maximum retry attempts exceeded."
+        const val INVALID_INPUT_MSG = "[ERROR] Invalid input."
+        const val DIVISIBLE_AMOUNT_MSG = "[ERROR] Amount has to be divisible by 1000."
+        const val INVALID_RANGE_MSG = "[ERROR] Invalid number: not in range $MIN_NUM-$MAX_NUM."
     }
 
     class MaxRetryException(message: String, cause: Throwable? = null): RuntimeException(message, cause)

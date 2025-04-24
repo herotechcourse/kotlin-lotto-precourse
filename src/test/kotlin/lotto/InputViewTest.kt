@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class InputViewTest {
     @ParameterizedTest(name = "{index}. purchase amount of \"{0}\"")
-    @ValueSource(strings = ["0", "999", "1200", "abc", " ", "2147483647"])
+    @ValueSource(strings = ["0", "999", "1200", "abc", " ", "2147483647", "16000"])
     @EmptySource // for empty input; use @NullSource for null input
     fun `test parseAmount`(input: String) {
         assertThatIllegalArgumentException()
