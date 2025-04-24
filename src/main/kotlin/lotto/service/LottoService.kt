@@ -42,4 +42,20 @@ class LottoService {
             else -> Rank.NONE
         }
     }
+
+    fun calculateProfitRate(purchaseAmount: Int, results: Map<Rank, Int>): Double {
+        val totalPrizeMoney = results.entries.sumOf { (rank, count) ->
+            rank.prizeAmount * count
+        }
+        return calculateRate(purchaseAmount, totalPrizeMoney)
+    }
+
+    private fun calculateRate(purchaseAmount: Int, totalPrizeMoney: Long): Double {
+        return if (purchaseAmount > 0) {
+            (totalPrizeMoney.toDouble() / purchaseAmount) * 100
+        } else {
+            0.0
+        }
+    }
+
 }
