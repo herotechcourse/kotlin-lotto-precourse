@@ -11,5 +11,5 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> = numbers
 }
