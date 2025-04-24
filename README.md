@@ -62,5 +62,26 @@
 ## User
 - [x] buyLottoTickets: member method,  purchases lotto tickets within the given budget
 
+## LottoManager
+- [x] matchLotto: Match Lotto Tickets with WinnerLotto
+
 ## InputView
-- [ ] 
+- [ ] readPurchaseAmount: 
+- [ ] readWinnerLotto:
+- [ ] readBonusNumber:
+ 
+## ResultView
+- [ ] printPurchasedTickets
+- [ ] printWinningStatistics
+- [ ] printNewLine
+
+## InputValidator
+- [ ] validatePurchaseAmount:
+- [ ] validateWinnerLotto:
+- [ ] validateBonusNumber:
+
+## LottoController 
+- [ ] run: Combine every Component
+- [ ] readAndValidatePurchaseAmount: Combine InputView and Validator
+- [ ] readAndValidateWinnerLotto: Combine InputView and Validator
+- [ ] readAndValidateBonusNumber: Combine InputView and Validator
