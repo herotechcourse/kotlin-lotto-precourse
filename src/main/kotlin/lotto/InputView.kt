@@ -8,6 +8,7 @@ class InputView {
             try {
                 println("Please enter the purchase amount.")
                 val amount = readLine()
+                println()
                 requireNumberFormat(amount)
                 return amount!!.toInt()
             } catch (e: IllegalArgumentException) {
@@ -21,6 +22,7 @@ class InputView {
             try {
                 println("Please enter last week's winning numbers")
                 val winningNumbers = readLine()
+                println()
                 requireWinningNumbersInputFormat(winningNumbers)
                 return winningNumbers!!.split(",").map { it.toInt()}
             } catch (e: IllegalArgumentException) { println(e.message) }
@@ -32,6 +34,7 @@ class InputView {
             try {
                 println("Please enter the bonus number")
                 val bonus = readLine()
+                println()
                 requireNumberFormat(bonus)
                 return bonus!!.toInt()
             }
