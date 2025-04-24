@@ -22,7 +22,7 @@ class ApplicationTest : NsTest() {
                     "[7, 11, 30, 40, 42, 43]",
                     "[2, 13, 22, 32, 38, 45]",
                     "[1, 3, 5, 14, 22, 45]",
-                    "3 Matches (5,000 KRW) - 1 ticket",
+                    "3 Matches (5,000 KRW) - 1 tickets",
                     "4 Matches (50,000 KRW) - 0 tickets",
                     "5 Matches (1,500,000 KRW) - 0 tickets",
                     "5 Matches + Bonus Ball (30,000,000 KRW) - 0 tickets",
@@ -62,7 +62,7 @@ class ApplicationTest : NsTest() {
                 assertThat(output()).contains(
                     "You have purchased 1 tickets.",
                     "[1, 2, 3, 4, 5, 6]",
-                    "6 Matches (2,000,000,000 KRW) - 1 ticket",
+                    "6 Matches (2,000,000,000 KRW) - 1 tickets",
                     "Total return rate is 200000000.0%"
                 )
             },
@@ -76,7 +76,7 @@ class ApplicationTest : NsTest() {
             {
                 run("1000", "1,2,3,4,5,6", "7")
                 assertThat(output()).contains(
-                    "5 Matches + Bonus Ball (30,000,000 KRW) - 1 ticket",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) - 1 tickets",
                     "Total return rate is 3000000.0%"
                 )
             },
@@ -90,7 +90,7 @@ class ApplicationTest : NsTest() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("1000", "1,2,3,4,5,6", "7")
-                assertThat(output()).contains("Total return rate is 0.0%")
+                assertThat(output()).contains("Total return rate is 0.0%.")
             },
             listOf(10, 20, 30, 40, 41, 42)
         )
