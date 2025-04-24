@@ -43,3 +43,5 @@ winnings and the according profit rate.
     2. [ ] the return rate rounded to the nearest tenth
 
 ### Core Logic
+1. [ ] issue lottery tickets based on budget
+   2. [ ] randomly generated 6 unique numbers
