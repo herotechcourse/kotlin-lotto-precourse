@@ -5,22 +5,24 @@ import camp.nextstep.edu.missionutils.Console
 object LottoMessages {
     val welcome = "Welcome to Lotto Machine! Please, insert the amount do you want to " +
             "invest on your Lotto Ticket. (It has to be divisible by 1000):"
-    val tryAgainDivisible = "The amount has to be divisible by 1000! Please insert a correct amount value:"
-//        val winningNumbers = "Please, Enter all winner numbers (coma-separated):"
-//        val invalidInput = "Invalid Input. Please try again:"
-//        val bonusNumber = "Digit a bonus number:"
+    val tryAgainDivisible = " [ERROR] The amount has to be divisible by 1000! Please insert a correct amount value:"
+    val winningNumbers = "Please, Enter 6 winning numbers (coma-separated):"
+    val invalidWinningNumbers = "[ERROR] Invalid input. Please enter 6 winning numbers (coma-separated):"
+    val invalidInput = "[ERROR] Invalid Input. Please try again:"
+    val bonusNumber = "Digit a bonus number:"
 }
 
 class InputValidator {
     fun validateBudget(input: String) {
-        require(!input.isBlank()) { "Input cannot be blank." }
-        require(input > "1") { "Input cannot be smaller than 1" }
-        require(input.toInt() % 1000 == 0) { "Input cannot be smaller than 1" }
+        require(!input.isBlank()) { "[ERROR] Input cannot be blank." }
+        require(input > "1") { "[ERROR] Input cannot be smaller than 1" }
+        require(input.toInt() % 1000 == 0) { "[ERROR] Input cannot be smaller than 1" }
     }
 }
 
 class InputView(val name: String) {
     val validator = InputValidator()
+
     fun readBudget(): Int {
         while (true) {
             try {
@@ -41,6 +43,6 @@ fun main() {
     val budget = initiateLotto.readBudget()
     val numberOfTickets = budget / 1000
 
-    Lotto(listOf(9, 8, 9, 6, 8, 8))
-
+    val ticketCreator = TicketGenerator()
+    val ticketsList = ticketCreator.generateMultiples(numberOfTickets)
 }
