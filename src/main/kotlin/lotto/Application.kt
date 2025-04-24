@@ -6,6 +6,7 @@ import lotto.input.WinningNumberInputReader
 import lotto.calculation.TicketCalculator
 import lotto.calculation.TicketGenerator
 import lotto.display.TicketDisplay
+import lotto.prize.PrizeRanking
 
 fun main() {
 
@@ -26,5 +27,8 @@ fun main() {
 
     //Read Bonus Number input from the user
     val bonusNumber = BonusNumberInputReader().read()
+
+    // Prize Ranking
+    val prizeResults = PrizeRanking().calculatePrizeForAllTickets(tickets, winningNumber, bonusNumber)
 
 }

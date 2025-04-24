@@ -102,6 +102,14 @@ All notable changes to this project will be documented in this file.
 - [Optional] `BonusNumberDisplay` & `WinningNumberDisplay` class to print the entered bonus number and winning number
 - Unit tests for `BonusNumberDisplay` & `WinningNumberDisplay` to verify output formatting and correctness
 
+## [0.11.0] - 2025-04-24
+
+### Added
+
+-  `PrizeRanking` class to calculate prize based on number of matches and bonus ball
+- Unit testing for `PrizeRanking` to verify prizes based on different scenarios
+- `CalculatePrizeForAllTickets` function to process and store prize results for all tickets
+
 ---
 
 ## Notes
