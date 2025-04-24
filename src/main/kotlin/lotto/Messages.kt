@@ -8,6 +8,7 @@ object Messages {
     const val ERROR_INVALID_NUMBER = "Enter a valid number"
     const val ERROR_NEGATIVE_NUMBER = "Enter a positive number"
     const val ERROR_NOT_THOUSANDS = "Enter a number divisible by 1000"
+    const val ERROR_NOT_SIX_NUMBERS = "Lotto must contain exactly 6 numbers."
 
 
     fun display(message: String, vararg args: Any) {
