@@ -13,6 +13,8 @@
 
 - [x] Based on the purchase amount (which must be divisible by 1,000), issue as many lottery tickets as allowed (1
   ticket per 1,000 KRW).
+    - [x] The purchase amount must not exceed **2,147,484,000 KRW**, to prevent internal overflow when issuing a large
+      number of tickets.
 - [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.
 - [x] Winning numbers and the bonus number must be **in the range of 1 to 45** and **must not be duplicated**.
 - [x] Determine the prize rank (1st to 5th) and corresponding reward based on the matching numbers.
@@ -27,7 +29,7 @@
 - [x] Map match conditions to prize ranks:
 
   | Rank   | Condition                                 | Prize Amount      |
-    |--------|-------------------------------------------|-------------------|
+      |--------|-------------------------------------------|-------------------|
   | 1st    | Match 6 numbers                           | 2,000,000,000 KRW |
   | 2nd    | Match 5 numbers + Bonus number            | 30,000,000 KRW    |
   | 3rd    | Match 5 numbers                           | 1,500,000 KRW     |

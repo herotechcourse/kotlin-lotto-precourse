@@ -13,6 +13,7 @@ class MoneyTest {
     @CsvSource(
         "-1000, Money must not be negative.",
         "1500, Money must be divisible by",
+        "2_147_484_000, Money must not exceed"
     )
     fun `throws exception for invalid amounts`(amount: Long, message: String) {
         // Act
@@ -38,7 +39,7 @@ class MoneyTest {
     @Test
     fun `payFor returns list of items equal to amount divided by 1000`() {
         // Arrange
-        val money = Money(3000)
+        val money = Money(2_147_483_000)
         val output = "Lotto"
 
         // Act
@@ -46,7 +47,7 @@ class MoneyTest {
 
         // Assert
         SoftAssertions.assertSoftly {
-            assertThat(result).hasSize(3)
+            assertThat(result).hasSize(2_147_483)
             assertThat(result).containsOnly(output)
         }
     }

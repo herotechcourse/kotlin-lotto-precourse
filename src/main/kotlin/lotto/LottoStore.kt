@@ -16,6 +16,7 @@ value class Money(private val amount: Long) {
     init {
         require(amount % UNIT == 0L) { "Money must be divisible by $UNIT." }
         require(amount >= 0L) { "Money must not be negative." }
+        require(amount <= MAX_ALLOWED) { "Money must not exceed $MAX_ALLOWED." }
     }
 
     fun isZero(): Boolean = amount == 0L
@@ -26,6 +27,7 @@ value class Money(private val amount: Long) {
 
     companion object {
         private const val UNIT = 1_000L
+        private const val MAX_ALLOWED = (Int.MAX_VALUE / 1000) * 1000L
 
         fun fromTicketCount(count: Int): Money {
             return Money(count * UNIT)
