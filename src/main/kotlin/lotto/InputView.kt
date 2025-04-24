@@ -42,13 +42,13 @@ class InputView {
         require (!
         input.isNullOrBlank()
                 && input.matches(Regex("^[0-9]+$"))
-        ) { "You must enter a number." }
+        ) { "[ERROR] You must enter a number." }
     }
 
     private fun requireWinningNumbersInputFormat(winningNumbers: String?) {
         require(
             !winningNumbers.isNullOrBlank()
                     && winningNumbers.trim().matches(Regex("^([0-9]+,)*[0-9]+$"))
-        ) { "Input must consist of comma-separated digits (e.g 1,2,3,4,5,6)" }
+        ) { "[ERROR] Input must consist of comma-separated digits (e.g 1,2,3,4,5,6)" }
     }
 }
