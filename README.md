@@ -40,14 +40,13 @@ This project is a simple console-based Lotto program written in Kotlin. It simul
 - [✅] Add input validation
 - [✅] Build comparison and ranking logic
 - [✅] Create Enum for Winner Criteria
-- [ ] Add profitability caculation logic
+- [✅] Add profitability caculation logic
 - [ ] Handle exceptions properly
 - [ ] Write unit tests for all major components
 - [✅] Add user input/output logic
+- [ ] Enhance Readability
 - [ ] Build Error handling method
       - When exception is thrown by require(), main() terminates before printing anything so comparing with "[ERROR]" is not possible
       - [✅] Stick with assertThrows and search later if there's other way to utilize "[ERROR]" message
 
 ---
-
-_This README will be updated as the project evolves._
