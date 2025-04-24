@@ -1,7 +1,6 @@
 package lotto
 
 import lotto.Consts.END_NUMBER
-import lotto.Consts.ERROR_PREFIX
 import lotto.Consts.LOTTO_NUMBER_SIZE
 import lotto.Consts.START_NUMBER
 
@@ -17,19 +16,19 @@ interface LottoValidator {
 
     private fun validateInRange(number: Int) {
         require(number in START_NUMBER..END_NUMBER) {
-            "$ERROR_PREFIX Lotto number '$number' must be between $START_NUMBER and $END_NUMBER."
+            "Lotto number '$number' must be between $START_NUMBER and $END_NUMBER."
         }
     }
 
     private fun validateSize(size: Int) {
         require(size == LOTTO_NUMBER_SIZE) {
-            "$ERROR_PREFIX Lotto number's size '$size' must be 6."
+            "Lotto number's size '$size' must be 6."
         }
     }
 
     private fun validateDuplicatedNumber(numbers: List<Int>) {
         require(numbers.distinct().size == numbers.size) {
-            "$ERROR_PREFIX Lotto number must not contain duplicated numbers."
+            "Lotto number must not contain duplicated numbers."
         }
     }
 }

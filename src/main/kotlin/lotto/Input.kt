@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Consts.ERROR_PREFIX
 
 class Input {
 
@@ -14,7 +15,7 @@ class Input {
         return try {
             block(Console.readLine())
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            println("$ERROR_PREFIX ${e.message}")
             null
         }
     }
