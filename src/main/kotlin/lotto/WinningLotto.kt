@@ -10,8 +10,8 @@ class WinningLotto(
     }
 
     fun match(lotto: Lotto): Rank {
-        val matchCount = lotto.matchCount(winningLotto)
-        val bonusMatch = lotto.contains(bonusNumber)
+        val matchCount: Int = lotto.matchCount(winningLotto)
+        val bonusMatch: Boolean = lotto.contains(bonusNumber)
 
         return Rank.of(matchCount, bonusMatch)
     }

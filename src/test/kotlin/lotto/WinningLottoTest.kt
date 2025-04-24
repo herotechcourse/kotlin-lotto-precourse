@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class WinningLottoTest {
 
@@ -15,11 +17,9 @@ class WinningLottoTest {
 
         private val winningLotto = Lotto(winningNumbers)
 
-        @Test
-        fun `throws an exception when bonus number is not in valid range`() {
-            // Arrange
-            val invalidBonus = 0
-
+        @ParameterizedTest
+        @ValueSource(ints = [0, 46])
+        fun `throws an exception when bonus number is not in valid range`(invalidBonus: Int) {
             // Act
             // Assert
             assertThatThrownBy { WinningLotto(winningLotto, invalidBonus) }
