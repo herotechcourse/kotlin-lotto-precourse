@@ -37,11 +37,11 @@
 
 - [ ] Count the number of winning tickets per prize rank.
 - [ ] Calculate the total winnings from all tickets.
-- [ ] Calculate the profit rate as `(total winnings / purchase amount) * 100`, rounded to the nearest tenth.
+- [ ] Calculate the profit rate as `(total winnings / purchase amount) * 100`
 
 #### Output
 
-- [ ] Print the number of tickets purchased and each ticket’s numbers **in ascending order.**
+- [ ] Print the number of tickets purchased and each ticket's numbers **in ascending order.**
 - [ ] Print lotto result statistics as shown in the rank table above.
 - [ ] Print profit rate rounded to one decimal place (e.g., `62.5%`).
 - [ ] All error messages must start with `[ERROR]`.
