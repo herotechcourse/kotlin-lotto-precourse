@@ -44,6 +44,7 @@ class InputView {
             }
         }
     }
+
     /**
      * Reads a raw purchase amount and validates it.
      * Throws if input is not a number or invalid amount.
