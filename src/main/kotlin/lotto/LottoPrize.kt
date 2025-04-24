@@ -1,6 +1,6 @@
 package lotto
 
-import java.text.DecimalFormat
+import lotto.NumberUtil.formatInt
 
 enum class LottoPrize(
     private val matches: String,
@@ -22,7 +22,7 @@ enum class LottoPrize(
     }
 
     override fun toString(): String {
-        return "$matches (${DecimalFormat("#,###").format(prizeAmount)} KRW) – $ticketCount tickets"
+        return "$matches (${prizeAmount.formatInt()} KRW) – $ticketCount tickets"
     }
 
     companion object {

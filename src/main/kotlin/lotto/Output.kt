@@ -1,7 +1,7 @@
 package lotto
 
 import lotto.LottoPrize.*
-import java.text.DecimalFormat
+import lotto.NumberUtil.formatDouble
 
 class Output {
 
@@ -21,6 +21,6 @@ class Output {
         println(FIVE_MATCHES.toString())
         println(FIVE_MATCHES_BONUS.toString())
         println(SIX_MATCHES.toString())
-        println("Total return rate is ${DecimalFormat("#,##0.0").format(profitRate)}%.")
+        println("Total return rate is ${profitRate.formatDouble()}%.")
     }
 }
