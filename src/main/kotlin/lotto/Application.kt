@@ -12,5 +12,5 @@ fun main() {
    val tickets=lottoMachine.issueTickets(ticketsCount)
    outputView.printTickets(tickets)
    val winningNumbers=inputView.getWinningNumbers()
-   println(winningNumbers)
+   val bonusNumber=inputView.getBonusNumber()
 }

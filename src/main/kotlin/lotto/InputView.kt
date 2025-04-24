@@ -6,7 +6,7 @@ class InputView {
     fun getPurchaseAmount():Int {
         println("Please Enter Purchase amount for lottery tickets:")
         val input=Console.readLine()
-        val purchaseAmount = input?.toIntOrNull()?:throw IllegalArgumentException("Invalid Input :not a number")
+        val purchaseAmount = input?.toIntOrNull() ?: throw IllegalArgumentException("Invalid Purchase Amount Number")
         if (purchaseAmount >= 0 && purchaseAmount % 1000 == 0) {
             return purchaseAmount
         }
@@ -27,5 +27,15 @@ class InputView {
         return winningNumbers
     }
     
+    fun getBonusNumber(): Int
+    {
+        println("Please enter the bonus number.")
+        val input=Console.readLine()
+        val bonusNumber = input?.toIntOrNull() ?: throw IllegalArgumentException("Invalid Bonus Number")
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw IllegalArgumentException("Bonus number must be between 1 and 45")
+        }
+        return bonusNumber
+    }
 }
 
