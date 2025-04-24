@@ -88,24 +88,21 @@ class LottoResultTest {
         assertThat(returnRate).isEqualTo(0.0)
     }
 
+
     @Test
-    fun `All ranks should return a count of 0 when there are no winners`() {
-        val result = LottoResult(winningNumbers, bonusNumber)
-        result.analyzeResult(
-            listOf(
-                Lotto(listOf(8, 9, 10, 11, 12, 13)),
-                Lotto(listOf(14, 15, 16, 17, 18, 19))
-            )
+    fun `getStatistics should return empty map when there are no winners`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+        val lottoTickets = listOf(
+            Lotto(listOf(10, 11, 12, 13, 14, 15)),
+            Lotto(listOf(16, 17, 18, 19, 20, 21))
         )
 
-        val expected = mapOf(
-            LottoRank.FIFTH to 0,
-            LottoRank.FOURTH to 0,
-            LottoRank.THIRD to 0,
-            LottoRank.SECOND to 0,
-            LottoRank.FIRST to 0
-        )
+        val lottoResult = LottoResult(winningNumbers, bonusNumber)
+        lottoResult.analyzeResult(lottoTickets)
+        val statistics = lottoResult.getStatistics()
 
-        assertThat(result.getStatistics()).isEqualTo(expected)
+        assertThat(statistics).isEmpty()
     }
+
 }
