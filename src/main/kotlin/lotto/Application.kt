@@ -3,18 +3,20 @@ package lotto
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
+    val lottoResult = LottoResult()
 
     val purchaseAmount = inputView.readValidPurchaseAmount()
-//    val purchaseAmount = 4000
 
     val numberOfTickets = LottoMachine.getTicketCount(purchaseAmount)
     val tickets = LottoMachine.generateTickets(numberOfTickets)
+
     outputView.printTickets(tickets)
 
     val winningNumbers = inputView.readValidWinningNumbers()
     val bonusNumber = inputView.readValidBonusNumber()
 
+    tickets.forEach { lottoResult.evaluateAndRecord(it, winningNumbers, bonusNumber) }
 
-//    val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
-//    val bonusNumber = 21
+    outputView.printResults(lottoResult.getRankStatistics())
+    outputView.printProfitReturn(lottoResult.getProfitRate(purchaseAmount))
 }
