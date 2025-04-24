@@ -1,0 +1,152 @@
+# 📌 Changelog
+
+All notable changes to this project will be documented in this file.
+
+---
+
+## [0.1.0] - 2025-04-23
+
+### Added
+
+- Kotlin project structure initialization
+- Gradle project setup with Kotlin DSL
+- Initial version of the Lottery Ticket App
+- Placeholder `main()` function for application entry point
+- README with example usage and test instructions
+
+## [0.2.0] - 2025-04-23
+
+### Added
+
+- `PurchaseAmountInputReader` class for purchase amount input
+
+## [0.3.0] - 2025-04-24
+
+### Added
+
+- `PurchaseAmountValidator` class with input number validation and divisibility checks
+- Unit tests for `PurchaseAmountValidator` covering all test cases and expected behavior
+
+### Changed
+
+-  Input validation loop in `PurchaseAmountInputReader` to reprompt users on invalid input instead of terminating
+
+## [0.4.0] - 2025-04-24
+
+### Added
+
+- [Optional] `PurchaseAmountDisplay` class to print the entered purchase amount
+- Unit tests for `PurchaseAmountDisplay` to verify output formatting and correctness
+
+## [0.5.0] - 2025-04-24
+
+### Added
+
+- `TicketCalculator` class to calculate the number of tickets based on the purchase amount.
+- Unit test for `TicketCalculator` to verify correct calculation of tickets.
+
+### Fix
+
+- Adjusted `PurchaseAmountDisplayTest` to proper folder structure
+
+## [0.6.0] - 2025-04-24
+
+### Added
+
+- `TicketGenerator` class to generate multiple lottery tickets with 6 unique random numbers between 1 and 45.
+- Unit test for `TicketGenerator` to verify the correct generation of tickets, ensuring each contains 6 unique numbers within the valid range.
+
+### Changes
+
+- `Lotto class` and `LottoTest` were modified to handle validation of the 6 unique numbers and exceptions for invalid inputs.
+
+## [0.7.0] - 2025-04-24
+
+### Added
+
+- Sorted error statement was added in `Lotto Class`.
+- New unit test cases for `TicketGenerator` and `Lotto` to ensure generated tickets are sorted.
+
+### Changes
+
+- Updated `TicketGenerator` to return sorted numbers.
+
+## [0.8.0] - 2025-04-24
+
+### Added
+
+- `TicketDisplay` class to print purchased ticket
+- Unit tests for `TicketDisplay` to verify output formatting and correctness
+
+## [0.9.0] - 2025-04-24
+
+### Added
+
+- `WinningNumberInputReader` and `BonusNumberInputReader` classes to read last week's winning numbers and the bonus number from user input.
+
+## [0.9.0] - 2025-04-24
+
+### Added
+
+- `BonusNumberInputReader` & `WinningNumberInputReader` class with input number and logic validation
+- Unit tests for `BonusNumberValidator` & `WinningNumberValidator` covering all test cases and expected behavior
+
+### Changes
+
+- Added `RangeValidator` as shared object to work with common functions
+
+## [0.10.0] - 2025-04-24
+
+### Added
+
+- [Optional] `BonusNumberDisplay` & `WinningNumberDisplay` class to print the entered bonus number and winning number
+- Unit tests for `BonusNumberDisplay` & `WinningNumberDisplay` to verify output formatting and correctness
+
+## [0.11.0] - 2025-04-24
+
+### Added
+
+-  `PrizeRanking` class to calculate prize based on number of matches and bonus ball
+- Unit testing for `PrizeRanking` to verify prizes based on different scenarios
+- `CalculatePrizeForAllTickets` function to process and store prize results for all tickets
+
+## [0.12.0] - 2025-04-24
+
+### Added
+
+- New unit test cases for `PrizeRanking` for the total winnings
+
+### Changed
+
+-  Updated `PrizeRanking` class to calculate total winnings
+
+## [0.13.0] - 2025-04-24
+
+### Added
+
+- `PrizeStatisticsDisplay` class to print statistics of Prize
+- Unit tests for `PrizeStatisticsDisplay` to verify output formatting and correctness
+
+## [0.14.0] - 2025-04-24
+
+### Added
+
+- `ProfitCalculator` class to calculate Profit based on total prize amount and total purchased tickets
+- Unit test for `ProfitCalculator` to verify correct calculation of profit
+
+## [0.15.0] - 2025-04-24
+
+### Added
+
+- `ProfitDisplay` class to print purchased ticket
+- Unit tests for `ProfitDisplay` to verify output formatting and correctness
+
+### Fix
+
+- Changed dash to hyphen in `ProfileStatisticsDisplay` based on requirements
+
+---
+
+## Notes
+
+- N/A
