@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.Consts.TICKET_COST
+
 class IssuedTicket(
     private val purchaseAmount: Int,
     private val randomGenerator: RandomGenerator,
@@ -12,8 +14,4 @@ class IssuedTicket(
     fun getCount() = purchaseAmount / TICKET_COST
 
     fun getRandomUniqueNumbers() = randomGenerator.nextSortedUniqueNumbers()
-
-    companion object {
-        private const val TICKET_COST = 1000
-    }
 }

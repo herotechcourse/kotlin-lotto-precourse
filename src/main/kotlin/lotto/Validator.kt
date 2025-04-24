@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.Consts.ERROR_PREFIX
+
 class Validator {
 
     fun validateStringToInt(stringValue: String): Int {
@@ -17,9 +19,5 @@ class Validator {
         require(number !in numbers) {
             "$ERROR_PREFIX Bonus number must not duplicate with winning numbers."
         }
-    }
-
-    companion object {
-        private const val ERROR_PREFIX = "[ERROR]"
     }
 }

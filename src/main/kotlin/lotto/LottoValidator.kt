@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.Consts.END_NUMBER
+import lotto.Consts.ERROR_PREFIX
+import lotto.Consts.LOTTO_NUMBER_SIZE
+import lotto.Consts.START_NUMBER
+
 interface LottoValidator {
 
     fun validateNumbers(numbers: List<Int>) {
@@ -26,12 +31,5 @@ interface LottoValidator {
         require(numbers.distinct().size == numbers.size) {
             "$ERROR_PREFIX Lotto number must not contain duplicated numbers."
         }
-    }
-
-    companion object {
-        private const val ERROR_PREFIX = "[ERROR]"
-        private const val LOTTO_NUMBER_SIZE = 6
-        private const val START_NUMBER = 1
-        private const val END_NUMBER = 45
     }
 }

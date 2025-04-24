@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.Consts.ERROR_PREFIX
+import lotto.Consts.TICKET_COST
+import lotto.Consts.ZERO
+
 interface IssuedTicketValidator {
 
     fun validatePurchaseAmount(purchaseAmount: Int) {
@@ -24,11 +28,5 @@ interface IssuedTicketValidator {
         require(purchaseAmount % number == ZERO) {
             "$ERROR_PREFIX Purchase amount $purchaseAmount must be divisible by $number."
         }
-    }
-
-    companion object {
-        private const val ERROR_PREFIX = "[ERROR]"
-        private const val ZERO = 0
-        private const val TICKET_COST = 1000
     }
 }
