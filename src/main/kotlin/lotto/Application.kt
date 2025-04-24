@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    try {
+        InputView().readPurchaseAmount()
+    } catch (e: InputView.MaxRetryException) {
+        println(e.message + " Exiting...")
+        return
+    }
 }
