@@ -14,8 +14,8 @@ class LottoStore(private val machine: LottoMachine) {
 @JvmInline
 value class Money(private val amount: Long) {
     init {
-        require(amount % UNIT == 0L) { "[ERROR] Money must be divisible by $UNIT." }
-        require(amount >= 0L) { "[ERROR] Money must not be negative." }
+        require(amount % UNIT == 0L) { "Money must be divisible by $UNIT." }
+        require(amount >= 0L) { "Money must not be negative." }
     }
 
     fun isZero(): Boolean = amount == 0L

@@ -24,7 +24,6 @@ class WinningLottoTest {
             // Assert
             assertThatThrownBy { WinningLotto(winningLotto, invalidBonus) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Bonus number must be between")
         }
 
@@ -37,7 +36,6 @@ class WinningLottoTest {
             // Assert
             assertThatThrownBy { WinningLotto(winningLotto, duplicateBonus) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Bonus number must not be included in the winning numbers.")
         }
     }

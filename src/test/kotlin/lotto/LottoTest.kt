@@ -32,7 +32,6 @@ class LottoTest {
             // Assert
             assertThatThrownBy { Lotto(exceedNumbers) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Lotto must contain exactly")
         }
 
@@ -45,7 +44,6 @@ class LottoTest {
             // Assert
             assertThatThrownBy { Lotto(duplicateNumbers) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Lotto numbers must be unique.")
         }
 
@@ -58,7 +56,6 @@ class LottoTest {
             // Assert
             assertThatThrownBy { Lotto(invalidNumbers) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Lotto numbers must be between")
         }
 
@@ -71,7 +68,6 @@ class LottoTest {
             // Assert
             assertThatThrownBy { Lotto(invalidNumbers) }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining("Lotto numbers must be between")
         }
     }

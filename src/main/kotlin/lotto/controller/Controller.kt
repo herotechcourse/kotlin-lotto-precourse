@@ -25,7 +25,7 @@ class Controller(private val store: LottoStore) {
             try {
                 return action()
             } catch (ex: IllegalArgumentException) {
-                println("${ex.message}")
+                println("[ERROR] ${ex.message}")
             }
         }
     }

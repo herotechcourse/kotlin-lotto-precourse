@@ -40,7 +40,6 @@ class LottoStoreTest {
         // Assert
         assertThatThrownBy { sut.sell(amount) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageStartingWith("[ERROR]")
             .hasMessageContaining(message)
     }
 

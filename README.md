@@ -44,7 +44,7 @@
 - [x] Print the number of tickets purchased and each ticket's numbers **in ascending order.**
 - [x] Print lotto result statistics as shown in the rank table above.
 - [x] Print profit rate rounded to one decimal place (e.g., `62.5%`).
-- [ ] All error messages must start with `[ERROR]`.
+- [x] All error messages must start with `[ERROR]`.
 
 ---
 
