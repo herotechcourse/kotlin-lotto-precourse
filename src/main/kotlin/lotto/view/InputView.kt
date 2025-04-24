@@ -1,5 +1,6 @@
 package lotto.view
 
+import camp.nextstep.edu.missionutils.Console
 import lotto.domain.Bonus
 import lotto.domain.Lotto
 
@@ -7,14 +8,14 @@ object InputView {
 
     fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
-        val input = readln()
+        val input = Console.readLine()
         checkIfNumberIsValid(input)
         return input.toInt()
     }
 
     fun readWinningLotto(): Lotto {
         println("Please enter last week's winning numbers.")
-        val input = readln()
+        val input = Console.readLine()
         checkIfWinningLottoIsValid(input)
         val numbers = input.split(",").map { it.toInt() }
         return Lotto(numbers)
@@ -23,7 +24,7 @@ object InputView {
     fun readBonus(): Bonus {
         println()
         println("Please enter the bonus number.")
-        val input = readln()
+        val input = Console.readLine()
         checkIfNumberIsValid(input)
         return Bonus(input.toInt())
     }
