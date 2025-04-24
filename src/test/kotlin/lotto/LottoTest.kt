@@ -12,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -20,5 +19,4 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
 }
