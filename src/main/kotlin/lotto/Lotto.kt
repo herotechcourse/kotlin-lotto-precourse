@@ -17,7 +17,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     private fun matchCountFrom(winningNumbers: List<Int>): Int {
-        return numbers.union(winningNumbers).count()
+        return numbers.intersect(winningNumbers).size
     }
 
     companion object {
