@@ -43,6 +43,26 @@ class LottoTest {
     }
 
     @Test
+    fun `throws an exception when bonus number duplicate with winning numbers`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 4
+
+        assertThrows<IllegalArgumentException> {
+            lotto.validateNumber(bonusNumber)
+        }
+    }
+
+    @Test
+    fun `no exception when bonus number not duplicate with winning numbers`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 10
+
+        assertDoesNotThrow {
+            lotto.validateNumber(bonusNumber)
+        }
+    }
+
+    @Test
     fun `increases the ticket count of matches when winning the lottery`() {
         val lotto = Lotto(listOf(1, 3, 4, 5, 22, 11))
         val issuedTickets = getIssuedTickets()

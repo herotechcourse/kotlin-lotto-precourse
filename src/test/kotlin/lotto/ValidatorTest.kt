@@ -25,24 +25,4 @@ class ValidatorTest {
             validator.validateStringToInt(stringValue)
         }
     }
-
-    @Test
-    fun `throws an exception when bonus number duplicate with winning numbers`() {
-        val bonusNumber = "4"
-        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
-
-        assertThrows<IllegalArgumentException> {
-            validator.validateBonusNumber(bonusNumber, winningNumbers)
-        }
-    }
-
-    @Test
-    fun `no exception when bonus number not duplicate with winning numbers`() {
-        val bonusNumber = "10"
-        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
-
-        assertDoesNotThrow {
-            validator.validateBonusNumber(bonusNumber, winningNumbers)
-        }
-    }
 }
