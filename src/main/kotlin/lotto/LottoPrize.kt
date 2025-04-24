@@ -1,5 +1,7 @@
 package lotto
 
+import java.text.DecimalFormat
+
 enum class LottoPrize(
     private val matches: String,
     val prizeAmount: Int,
@@ -17,6 +19,10 @@ enum class LottoPrize(
 
     fun updateTicketCount() {
         ticketCount += 1
+    }
+
+    override fun toString(): String {
+        return "$matches (${DecimalFormat("#,###").format(prizeAmount)} KRW) – $ticketCount tickets"
     }
 
     companion object {
