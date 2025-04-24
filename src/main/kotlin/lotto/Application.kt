@@ -1,20 +1,29 @@
 package lotto
 
-import lotto.input.InputView
-
+import lotto.domain.Rank
+import lotto.view.InputView
+import lotto.service.LottoMachine
+import lotto.service.Statistics
+import lotto.view.OutputView
 
 fun main() {
-    try {
-        val purchaseAmount = InputView.readPurchaseAmount()
-        println("Purchase amount: $purchaseAmount")
 
-        val winningNumbers = InputView.readWinningNumbers()
-        println("Winning numbers: $winningNumbers")
+    val purchaseAmount = InputView.readPurchaseAmount()
+    val machine = LottoMachine()
+    val tickets = machine.purchaseTickets(purchaseAmount)
 
-        val bonusNumber = InputView.readBonusNumber(winningNumbers)
-        println("Bonus number: $bonusNumber")
-    } catch (e: Exception) {
-        println("An error occurred: ${e.message}")
+    OutputView.printTickets(tickets.map { it.getNumbers() })
+
+    val winningNumbers = InputView.readWinningNumbers()
+    val bonusNumber = InputView.readBonusNumber(winningNumbers)
+
+    val ranks = tickets.map { ticket ->
+        val numbers = ticket.getNumbers()
+        val matchCount = numbers.count { it in winningNumbers }
+        val hasBonus = numbers.contains(bonusNumber)
+        Rank.from(matchCount, hasBonus)
     }
 
+    val statistics = Statistics.from(ranks, purchaseAmount)
+    OutputView.printStatistics(statistics)
 }
