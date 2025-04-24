@@ -1,11 +1,17 @@
 package lotto
 
+import lotto.validator.InputValidator
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        InputValidator.checkLottoSize(numbers)
+        InputValidator.allNumbersInRange(numbers)
+        InputValidator.noDuplicateNumbers(numbers)
     }
 
     override fun toString(): String {
         return numbers.toString()
     }
+
+    fun getNumbers(): List<Int> = numbers
 }

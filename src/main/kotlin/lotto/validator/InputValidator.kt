@@ -33,31 +33,25 @@ object InputValidator {
         }
     }
 
-    fun numberCountIsSix(input: List<String>) {
-        if (input.size != 6) {
-            throw IllegalArgumentException("[ERROR] You must enter 6 numbers.")
-        }
+    fun checkLottoSize(input: List<Int>) {
+        require(input.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    fun numberIsRange(input: String) {
-        val number = input.toInt()
-        if (number < 1 || number > 45) {
-            throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
-        }
+    fun numberIsRange(input: Int) {
+        require(input in 1..45) { "Numbers must be between 1 and 45." }
     }
 
-    fun allNumbersInRange(input: List<String>) {
+    fun allNumbersInRange(input: List<Int>) {
         input.forEach {
             numberIsRange(it)
         }
     }
 
-    fun noDuplicateNumbers(input: List<String>) {
+    fun noDuplicateNumbers(input: List<Int>) {
         val uniqueNumbers = input.toSet()
         if (uniqueNumbers.size != input.size) {
             throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
         }
     }
-
 
 }
