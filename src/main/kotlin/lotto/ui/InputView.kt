@@ -1,6 +1,7 @@
 package lotto.ui
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Lotto
 import java.util.*
 
 private const val PURCHASE_AMOUNT_UNIT = 1000
@@ -29,12 +30,10 @@ class InputView {
         }
     }
 
-    fun getWinningNumbers(): SortedSet<Int> {
+    fun getWinningNumbers(): Lotto {
         return readValidatedInput("Please enter the last week's winning numbers.") {
-            val winningNumbersStr = Console.readLine()
-            val winningNumbers = parseWinningNumbers(winningNumbersStr)
-            validateWinningNumbers(winningNumbers)
-            winningNumbers
+            val winningNumbers = parseWinningNumbers(Console.readLine())
+            Lotto(winningNumbers)
         }
     }
 
@@ -47,24 +46,13 @@ class InputView {
         }
     }
 
-    private fun parseWinningNumbers(winningNumbersStr: String): SortedSet<Int> {
-        val numbers = winningNumbersStr
+    private fun parseWinningNumbers(input: String): List<Int> {
+        val numbers = input
             .split(",")
             .map {
                 it.trim().toIntOrNull()
                     ?: throw IllegalArgumentException("$ERROR_PREFIX All Lotto numbers must be numbers")
             }
-        return numbers.toSortedSet()
-    }
-
-    private fun validateWinningNumbers(numbers: SortedSet<Int>) {
-        if (numbers.size != 6) {
-            throw IllegalArgumentException("$ERROR_PREFIX Lotto numbers must be 6 unique numbers")
-        }
-        numbers.forEach { number ->
-            if (number !in 1..45) {
-                throw IllegalArgumentException("$ERROR_PREFIX Lotto numbers must be between 1 and 45")
-            }
-        }
+        return numbers
     }
 }
