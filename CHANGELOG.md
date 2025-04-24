@@ -49,6 +49,17 @@ All notable changes to this project will be documented in this file.
 
 - Adjusted `PurchaseAmountDisplayTest` to proper folder structure
 
+## [0.6.0] - 2025-04-24
+
+### Added
+
+- `TicketGenerator` class to generate multiple lottery tickets with 6 unique random numbers between 1 and 45.
+- Unit test for `TicketGenerator` to verify the correct generation of tickets, ensuring each contains 6 unique numbers within the valid range.
+
+### Changes
+
+- `Lotto class` and `LottoTest` were modified to handle validation of the 6 unique numbers and exceptions for invalid inputs.
+
 ---
 
 ## Notes

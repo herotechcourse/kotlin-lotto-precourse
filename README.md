@@ -35,7 +35,7 @@ A Simple Lottery Ticket Application built with Kotlin
 | Validation for purchase amount (must be divisible by 1,000)                                  | ✅ Done      | `feature/amount-validation`       |
 | [Optional] Display purchase amount to the user                                               | ✅ Done      | `feature/display-amount`          |
 | Automatic issuance of lottery tickets based on purchase amount                               | ✅ Done      | `feature/ticket-issuance`         |
-| Each ticket contains 6 unique random numbers within range 1–45                               | 📅 Planned  | `feature/ticket-numbers`          |
+| Each ticket contains 6 unique random numbers within range 1–45                               | ✅ Done      | `feature/ticket-numbers`          |
 | Sort numbers within each ticket for display                                                  | 📅 Planned  | `feature/ticket-sort`             |
 | Display issued lottery tickets to the user                                                   | 📅 Planned  | `feature/display-tickets`         |
 | User input for winning numbers and bonus number                                              | 📅 Planned  | `feature/winning-numbers-input`   |
