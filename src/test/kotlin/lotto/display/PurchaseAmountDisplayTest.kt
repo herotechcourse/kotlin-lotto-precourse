@@ -1,7 +1,7 @@
 package lotto.display
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -14,6 +14,6 @@ class PurchaseAmountDisplayTest {
 
         PurchaseAmountDisplay().show(3000)
 
-        assertEquals("Purchase amount entered: 3000", output.toString())
+        Assertions.assertEquals("Purchase amount entered: 3000", output.toString())
     }
 }

@@ -38,6 +38,17 @@ All notable changes to this project will be documented in this file.
 - [Optional] `PurchaseAmountDisplay` class to print the entered purchase amount
 - Unit tests for `PurchaseAmountDisplay` to verify output formatting and correctness
 
+## [0.5.0] - 2025-04-24
+
+### Added
+
+- `TicketCalculator` class to calculate the number of tickets based on the purchase amount.
+- Unit test for `TicketCalculator` to verify correct calculation of tickets.
+
+### Fix
+
+- Adjusted `PurchaseAmountDisplayTest` to proper folder structure
+
 ---
 
 ## Notes
