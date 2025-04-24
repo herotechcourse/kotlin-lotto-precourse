@@ -2,33 +2,34 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-fun readPurchaseAmount(): Int? {
+fun readPurchaseAmount(): Int {
     println("Please enter the purchase amount.")
     val userInput = Console.readLine()
     val purchaseAmount = userInput.toIntOrNull()
-    if  (purchaseAmount == null) {
-        println("[ERROR] purchase amount must be an integer")
-        return null
-    }
-    return  purchaseAmount
+        ?: throw IllegalArgumentException("[ERROR] purchase amount must be an integer")
+    return purchaseAmount
 }
 
-fun validatePurchaseAmount(amount: Int){
+fun validatePurchaseAmount(amount: Int) {
     if (amount <= 0) {
-        println("[ERROR] Amount must be a positive number.")
-        throw IllegalArgumentException()
+        throw IllegalArgumentException("[ERROR] amount must be a positive number.")
     }
-    if (
-        amount % 1000 != 0
-    ) {
-        println("[ERROR] Each ticket costs 1,000 KRW")
-        throw IllegalArgumentException()
+    if (amount % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] Each ticket costs 1,000 KRW")
     }
 }
 
 fun main() {
-    val amount = readPurchaseAmount() ?: return
-    validatePurchaseAmount(amount)
+    var amount: Int
+    while (true) {
+        try {
+            amount = readPurchaseAmount()
+            validatePurchaseAmount(amount)
+            break
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
     println()
     val ticketCount = amount / 1000
     println("You have purchased $ticketCount tickets.")
