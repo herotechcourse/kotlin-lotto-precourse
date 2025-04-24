@@ -16,6 +16,7 @@ class LottoMachine {
     private fun generateLotto(): Lotto {
         return Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
     }
+
     fun checkResults(lottos: List<Lotto>, winningNumbers: Lotto, bonusNumber: Int): Map<LottoResult, Int> {
         val results = mutableMapOf<LottoResult, Int>()
         LottoResult.values().forEach { results[it] = 0 }
@@ -28,5 +29,10 @@ class LottoMachine {
         }
 
         return results
+    }
+
+    fun calculateProfitRate(results: Map<LottoResult, Int>, purchasedAmount: Int): Double {
+        val totalPrize = results.entries.sumOf { (result, count) -> result.prize.toLong() * count }
+        return totalPrize.toDouble() / purchasedAmount * 100
     }
 }

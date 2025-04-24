@@ -13,6 +13,7 @@ fun main() {
 
         // Buy lottery tickets
         val lottos = lottoMachine.buyLottos(amount)
+        outputView.printPurchasedLottos(lottos)
 
         // Get winning numbers
         val winningNumbers = inputView.readWinningNumbers()
@@ -22,7 +23,10 @@ fun main() {
 
         // Check results
         val results = lottoMachine.checkResults(lottos, winningNumbers, bonusNumber)
-        println(results)
+        val profitRate = lottoMachine.calculateProfitRate(results, amount)
+
+        // Output results
+        outputView.printResults(results, profitRate)
 
     } catch (e: IllegalArgumentException) {
         println(e.message)

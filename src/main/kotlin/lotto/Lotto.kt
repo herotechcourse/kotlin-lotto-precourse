@@ -7,10 +7,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.distinct().size == 6) { "[ERROR] Lotto numbers must be unique." }
     }
 
-//    TODO: Implement additional functions
-fun matchCount(winningNumbers: Lotto): Int {
-    return numbers.count { it in winningNumbers.numbers }
-}
+    fun matchCount(winningNumbers: Lotto): Int {
+        return numbers.count { it in winningNumbers.numbers }
+    }
 
     fun contains(number: Int): Boolean {
         return numbers.contains(number)
