@@ -34,6 +34,7 @@ class UserInput{
             require(number >= LOWEST_NUMBER && number <= HIGHEST_NUMBER) { "[ERROR] All numbers must be between $LOWEST_NUMBER and $HIGHEST_NUMBER ($number)." }
             numbers.add(number)
         }
+        require(numbers.size == numbers.toSet().size) { "[ERROR] All numbers must be unique" }
         require(numbers.size == 6) { "[ERROR] There must be exactly 6 winning numbers." }
 
         this.winningNumbers = numbers
@@ -44,6 +45,7 @@ class UserInput{
 
         require(bonusNumber != null) { "[ERROR] Bonus number must be a number." }
         require(bonusNumber >= LOWEST_NUMBER && bonusNumber <= HIGHEST_NUMBER) { "[ERROR] All numbers must be between $LOWEST_NUMBER and $HIGHEST_NUMBER ($bonusNumber)." }
+        require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
 
         this.bonusNumber = bonusNumber
     }

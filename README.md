@@ -2,18 +2,17 @@
 
 ### Feature List:
 
-* User Interface [ ]
+* User Interface [X]
   * Prompt the user [X]
   * Take user input [X]
   * Parse user input [X]
-  * Error management [ ]
-    * Throw Exceptions [ ]
+  * Error management [X]
+    * Throw Exceptions [X]
     * Re-prompt same step input) [X]
   * Produce messages to the user [X]
 * Ticket purchase [ ]
   * Amount of tickets [X]
   * Ticket generation [ ]
-* Winner numbers selection [ ]
 * Lotto results [ ]
   * Lotto outcome [ ]
   * Total return rate [ ]
