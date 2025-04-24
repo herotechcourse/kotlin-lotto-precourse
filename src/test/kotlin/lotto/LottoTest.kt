@@ -55,6 +55,20 @@ class LottoTest {
         assertEquals(2, LottoPrize.THREE_MATCHES.ticketCount)
     }
 
+    @Test
+    fun `profit rate is total prize amount divided by purchase amount percentage`() {
+        val lotto = Lotto(listOf(1, 3, 4, 5, 22, 11))
+        val issuedTickets = getIssuedTickets()
+        val bonusNumber = 30
+        val purchaseAmount = 8000
+        lotto.simulate(issuedTickets, bonusNumber)
+
+        val profitRate = lotto.getProfitRate(purchaseAmount)
+
+        val expectedProfitRate = 30_060_000.0 / 8000 * 100
+        assertEquals(expectedProfitRate, profitRate)
+    }
+
     private fun getIssuedTickets(): List<List<Int>> {
         return listOf(
             listOf(8, 21, 23, 41, 42, 43),
