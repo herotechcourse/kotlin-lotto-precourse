@@ -11,32 +11,35 @@ winnings and the according profit rate.
 
 ### User Interface
 #### Input
-1. read user input
-    1. purchase amount (Int)
-    2. winning numbers (comma-separated list of Ints)
-    3. bonus number (Int)
-2. validate user input
-    1. purchase amount:
-        1. divisible by 1000
-        2. positive number
-        3. ? minimum and/or maximum values?
-    2. winning numbers:
-        1. comma separated
-        2. 6
-        3. unique
-        4. between 1 and 45
-    3. bonus number
-        1. between 1 and 45
-        2. ? not duplicating a winning number?
-    4. throw exception with an error message and re-prompt if invalid
-        1. syntax: “[ERROR] my message“
+1. [x] read user input
+    1. [x] purchase amount (Int)
+    2. [x] winning numbers (comma-separated list of Ints)
+    3. [x] bonus number (Int)
+2. [ ] validate user input
+    1. [x] purchase amount:
+        1. [x] divisible by 1000
+        2. [x] positive number
+        3. [x] equal or lower than a maximum value
+    2. [ ] winning numbers:
+        1. [x] comma separated
+        2. [ ] 6
+        3. [ ] unique
+        4. [ ] between 1 and 45
+    3. [x] bonus number
+        1. [x] between 1 and 45
+        2. [ ] ? not duplicating a winning number?
+3. [x] handle invalid input
+    1. [x] throw exception with a message: “[ERROR] my message“
+    2. [x] handle only specific exception types
+    3. [x] re-prompt from current state 
+    4. [x] quit after max retries are exceeded
        
 #### Output
-3. output the purchased tickets after reading the purchase amount
-    1. the number of purchased tickets
-    2. the values sorted in ascending order
-4. output the winning statistics
-    1. the lotto result statistics in the following syntax: [prize rank] [price] – [number of winning tickets]
-    2. the return rate rounded to the nearest tenth
+3. [ ] output the purchased tickets after reading the purchase amount
+    1. [ ] the number of purchased tickets
+    2. [ ] the values sorted in ascending order 
+4. [ ] output the winning statistics
+    1. [ ] the lotto result statistics in the following syntax: [prize rank] [price] – [number of winning tickets]
+    2. [ ] the return rate rounded to the nearest tenth
 
 ### Core Logic
