@@ -1,7 +1,6 @@
 package lotto
 
 import lotto.Game.Prize
-import java.util.DoubleSummaryStatistics
 
 class OutputView() {
     fun printTickets(tickets: List<Lotto>) {
