@@ -31,6 +31,13 @@ All notable changes to this project will be documented in this file.
 
 -  Input validation loop in `PurchaseAmountInputReader` to reprompt users on invalid input instead of terminating
 
+## [0.4.0] - 2025-04-24
+
+### Added
+
+- [Optional] `PurchaseAmountDisplay` class to print the entered purchase amount
+- Unit tests for `PurchaseAmountDisplay` to verify output formatting and correctness
+
 ---
 
 ## Notes

@@ -8,7 +8,7 @@ A Simple Lottery Ticket Application built with Kotlin
 
 - ⭐ User input for purchase amount
 - ⭐ Validation for purchase amount (must be divisible by 1,000)
-- ⭐ Display purchase amount to the user
+- 🔹 Display purchase amount to the user
 - ⭐ Automatic issuance of lottery tickets based on purchase amount
 - ⭐ Each ticket contains 6 unique random numbers within range 1–45
 - ⭐ Sort numbers within each ticket for display
@@ -29,26 +29,26 @@ A Simple Lottery Ticket Application built with Kotlin
 
 ## 🔄 Progress Log
 
-| Feature                                                                                      | Status      | Branch                         |
-|----------------------------------------------------------------------------------------------|-------------|--------------------------------|
-| User input for purchase amount                                                               | ✅ Done      | `feature/purchase-amount-input` |
-| Validation for purchase amount (must be divisible by 1,000)                                  | ✅ Done      | `feature/amount-validation`     |
-| Display purchase amount to the user                                                          | 📅 Planned  | `feature/display-amount`        |
-| Automatic issuance of lottery tickets based on purchase amount                               | 📅 Planned  | `feature/ticket-issuance`       |
-| Each ticket contains 6 unique random numbers within range 1–45                               | 📅 Planned  | `feature/ticket-numbers`        |
-| Sort numbers within each ticket for display                                                  | 📅 Planned  | `feature/ticket-sort`           |
-| Display issued lottery tickets to the user                                                   | 📅 Planned  | `feature/display-tickets`      |
-| User input for winning numbers and bonus number                                              | 📅 Planned  | `feature/winning-numbers-input` |
-| Validation of winning numbers (6 unique numbers) and bonus number inputs (1 number)          | 📅 Planned  | `feature/winning-validation`    |
-| Display last week winning numbers and bonus number to the user                               | 📅 Planned  | `feature/display-last-week-winners` |
-| Prize ranking system based on number matches and bonus number                                | 📅 Planned  | `feature/prize-ranking`         |
-| Calculation of total winnings based on ticket results                                        | 📅 Planned  | `feature/calculate-winnings`    |
-| Display how many tickets matched each prize rank (Winning Statistics)                        | 📅 Planned  | `feature/prize-statistics`     |
-| Calculation of profit rate                                                                   | 📅 Planned  | `feature/profit-rate`           |
-| Display profit rate                                                                          | 📅 Planned  | `feature/display-profit-rate`   |
-| Error handling with `IllegalArgumentException` or `IllegalStateException` for invalid inputs | 🚧 WIP      | `Integrated with each feature` |
-| Re-prompting user on invalid input (instead of terminating the program)                      | 🚧 WIP      | `Integrated with each feature` |
-| Unit tests using **JUnit 5** + **AssertJ**                                                   | 🚧 WIP      | `Integrated with each feature` |
+| Feature                                                                                      | Status     | Branch                            |
+|----------------------------------------------------------------------------------------------|------------|-----------------------------------|
+| User input for purchase amount                                                               | ✅ Done     | `feature/purchase-amount-input`   |
+| Validation for purchase amount (must be divisible by 1,000)                                  | ✅ Done     | `feature/amount-validation`       |
+| [Optional] Display purchase amount to the user                                               | ✅ Done     | `feature/display-amount`          |
+| Automatic issuance of lottery tickets based on purchase amount                               | 📅 Planned | `feature/ticket-issuance`         |
+| Each ticket contains 6 unique random numbers within range 1–45                               | 📅 Planned | `feature/ticket-numbers`          |
+| Sort numbers within each ticket for display                                                  | 📅 Planned | `feature/ticket-sort`             |
+| Display issued lottery tickets to the user                                                   | 📅 Planned | `feature/display-tickets`         |
+| User input for winning numbers and bonus number                                              | 📅 Planned | `feature/winning-numbers-input`   |
+| Validation of winning numbers (6 unique numbers) and bonus number inputs (1 number)          | 📅 Planned | `feature/winning-validation`      |
+| Display last week winning numbers and bonus number to the user                               | 📅 Planned | `feature/display-last-week-winners` |
+| Prize ranking system based on number matches and bonus number                                | 📅 Planned | `feature/prize-ranking`           |
+| Calculation of total winnings based on ticket results                                        | 📅 Planned | `feature/calculate-winnings`      |
+| Display how many tickets matched each prize rank (Winning Statistics)                        | 📅 Planned | `feature/prize-statistics`        |
+| Calculation of profit rate                                                                   | 📅 Planned | `feature/profit-rate`             |
+| Display profit rate                                                                          | 📅 Planned | `feature/display-profit-rate`     |
+| Error handling with `IllegalArgumentException` or `IllegalStateException` for invalid inputs | 🚧 WIP     | `Integrated with each feature`    |
+| Re-prompting user on invalid input (instead of terminating the program)                      | 🚧 WIP     | `Integrated with each feature`    |
+| Unit tests using **JUnit 5** + **AssertJ**                                                   | 🚧 WIP     | `Integrated with each feature`    |
 
 ---
 
