@@ -20,11 +20,15 @@ class LottoController(
 
         // Output (Purchased Tickets)
         outputView.printPurchasedTickets(user)
+        outputView.printNewLine()
 
         // Input (Winner Lotto)
         val winnerNumbers = inputView.readWinnerLotto().split(",").map { it.trim().toInt() }
+        outputView.printNewLine()
+
         // Input (Bonus Number)
         val winnerBonusNumber = inputView.readBonusNumber().toInt()
+        outputView.printNewLine()
 
         val winnerLotto = Lotto(winnerNumbers, winnerBonusNumber)
 

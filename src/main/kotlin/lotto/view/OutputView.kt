@@ -5,6 +5,7 @@ import lotto.model.User
 
 class OutputView {
     fun printPurchasedTickets(user: User) {
+        println("You have purchased ${user.lottoTickets.size} tickets.")
         user.lottoTickets.forEach { ticket ->
             println(ticket.numbers)
         }
