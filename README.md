@@ -18,7 +18,7 @@
   - [x] If the amount is not divisible by 1,000, throw an exception and prompt for input again.
   - [x] If the amount is not positive, throw exception.
 - [x] Calculate how many lottery tickets can be purchased with the given amount.
-  - [ ] Generate N lottery tickets.
+  - [x] Generate N lottery tickets.
   - [ ] Each ticket must consist of 6 unique numbers between 1 and 45.
   - [ ] The numbers must be sorted in ascending order when printed.
 - [ ] Receive 6 winning numbers from the user.
