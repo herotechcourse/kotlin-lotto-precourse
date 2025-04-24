@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Lotto
+
 class LottoManager(
     private val lottos: List<Lotto>,
     winningLotto: Lotto,

@@ -1,7 +1,6 @@
 package lotto
 
 import lotto.domain.Bonus
-import lotto.domain.Lotto
 import lotto.domain.LottoManager
 import lotto.util.EarningCalculator
 import lotto.util.RandomNumberGenerator

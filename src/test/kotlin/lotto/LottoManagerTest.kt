@@ -1,7 +1,6 @@
 package lotto
 
 import lotto.domain.Bonus
-import lotto.domain.Lotto
 import lotto.domain.LottoManager
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName

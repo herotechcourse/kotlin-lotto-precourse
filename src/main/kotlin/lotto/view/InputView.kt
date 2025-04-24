@@ -2,7 +2,7 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.Bonus
-import lotto.domain.Lotto
+import lotto.Lotto
 
 object InputView {
 
