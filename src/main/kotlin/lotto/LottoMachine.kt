@@ -16,4 +16,17 @@ class LottoMachine {
     private fun generateLotto(): Lotto {
         return Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
     }
+    fun checkResults(lottos: List<Lotto>, winningNumbers: Lotto, bonusNumber: Int): Map<LottoResult, Int> {
+        val results = mutableMapOf<LottoResult, Int>()
+        LottoResult.values().forEach { results[it] = 0 }
+
+        lottos.forEach { lotto ->
+            val matchCount = lotto.matchCount(winningNumbers)
+            val hasBonus = matchCount == 5 && lotto.contains(bonusNumber)
+            val result = LottoResult.from(matchCount, hasBonus)
+            results[result] = results.getOrDefault(result, 0) + 1
+        }
+
+        return results
+    }
 }
