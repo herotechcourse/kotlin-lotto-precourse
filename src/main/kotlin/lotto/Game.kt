@@ -11,7 +11,7 @@ object Game {
 
     private fun purchaseTickets(): List<Lotto> {
         val amount = InputView.purchaseAmount()
-        val ticketCount = amount / 1000
+        val ticketCount = amount / Constants.TICKET_PRICE
         return List(ticketCount) { GeneratorTickets.generate() }
     }
 

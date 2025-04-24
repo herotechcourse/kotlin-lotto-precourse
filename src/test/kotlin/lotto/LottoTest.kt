@@ -133,6 +133,4 @@ class LottoTest {
             require(bonus !in winningNumbers) { "[ERROR] Bonus number must not be among winning numbers." }
         }
     }
-
-
 }

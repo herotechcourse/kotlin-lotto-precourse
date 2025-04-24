@@ -14,7 +14,7 @@ class Result {
         val totalPrize = winCounts.entries.sumOf { (rank, count) ->
             rank.prize * count
         }
-        val totalSpent = winCounts.values.sum() * 1000
+        val totalSpent = winCounts.values.sum() * Constants.TICKET_PRICE
         return String.format("%.1f", totalPrize.toDouble() / totalSpent * 100).replace(",", ".")
     }
 

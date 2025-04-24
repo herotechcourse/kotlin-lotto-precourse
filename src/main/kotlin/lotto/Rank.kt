@@ -1,11 +1,11 @@
 package lotto
 
-enum class Rank(val matchCount: Int, val prize: Long, val requiresBonus: Boolean = false) {
-    FIRST(6, 2_000_000_000, false),
-    SECOND(5, 30_000_000, true),
-    THIRD(5, 1_500_000, false),
-    FOURTH(4, 50_000, false),
-    FIFTH(3, 5_000, false),
+enum class Rank(val matchCount: Int, val prize: Int, val requiresBonus: Boolean = false) {
+    FIRST(6, Constants.FIRST_PRIZE, false),
+    SECOND(5, Constants.SECOND_PRIZE, true),
+    THIRD(5, Constants.THIRD_PRIZE, false),
+    FOURTH(4, Constants.FOURTH_PRIZE, false),
+    FIFTH(3, Constants.FIFTH_PRIZE, false),
     WITHOUT(0, 0, false);
 
     companion object {

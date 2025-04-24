@@ -2,10 +2,10 @@ package lotto
 
 class WinnerTickets(private val winningNumbers: List<Int>, private val bonusNumber: Int) {
     init {
-        require(winningNumbers.size == 6) { "[ERROR] Winning ticket must contain exactly 6 numbers." }
-        require(winningNumbers.toSet().size == 6) { "[ERROR] Winning numbers must be unique." }
-        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
-        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(winningNumbers.size == Constants.LOTTO_NUMBER_COUNT) { Constants.ERROR_INVALID_WINNING_NUMBERS }
+        require(winningNumbers.toSet().size == Constants.LOTTO_NUMBER_COUNT) { Constants.ERROR_WINNING_NUMBERS_UNIQUE }
+        require(winningNumbers.all { it in Constants.MIN_NUMBER..Constants.MAX_NUMBER }) { Constants.ERROR_WINNING_NUMBERS }
+        require(bonusNumber in Constants.MIN_NUMBER..Constants.MAX_NUMBER) { Constants.ERROR_INVALID_BONUS_NUMBER }
     }
 
     fun matchCount(ticket: Lotto): Int {

@@ -8,10 +8,10 @@ object InputView {
             try {
                 println("Please enter the purchase amount.")
                 val amount = Console.readLine().trim().toInt()
-                require(amount >= 1000 && amount % 1000 == 0) { "[ERROR] Amount must be at least 1,000 and divisible by 1,000." }
+                require(amount >= Constants.TICKET_PRICE && amount % Constants.TICKET_PRICE == 0) { Constants.ERROR_INVALID_AMOUNT }
                 return amount
             } catch (e: NumberFormatException) {
-                println("[ERROR] Please enter a valid number.")
+                println(Constants.ERROR_INVALID_NUMBER)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -24,12 +24,12 @@ object InputView {
                 println("Please enter last week's winning numbers.")
                 val input = Console.readLine().trim()
                 val numbers = input.split(",").map { it.trim().toInt() }
-                require(numbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
-                require(numbers.toSet().size == 6) { "[ERROR] Winning numbers must be unique." }
-                require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
+                require(numbers.size == Constants.LOTTO_NUMBER_COUNT) { Constants.ERROR_INVALID_WINNING_NUMBERS }
+                require(numbers.toSet().size == Constants.LOTTO_NUMBER_COUNT) { Constants.ERROR_WINNING_NUMBERS_UNIQUE }
+                require(numbers.all { it in Constants.MIN_NUMBER..Constants.MAX_NUMBER }) { Constants.ERROR_INVALID_BONUS_NUMBER }
                 return numbers
             } catch (e: NumberFormatException) {
-                println("[ERROR] Please enter valid numbers separated by commas.")
+                println(Constants.ERROR_INVALID_NUMBERS)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -41,11 +41,11 @@ object InputView {
             try {
                 println("Please enter the bonus number.")
                 val bonus = Console.readLine().trim().toInt()
-                require(bonus in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
-                require(bonus !in winningNumbers) { "[ERROR] Bonus number must not be among winning numbers." }
+                require(bonus in Constants.MIN_NUMBER..Constants.MAX_NUMBER) { Constants.ERROR_INVALID_BONUS_NUMBER }
+                require(bonus !in winningNumbers) { Constants.ERROR_BONUS_NOT_IN_WINNING }
                 return bonus
             } catch (e: NumberFormatException) {
-                println("[ERROR] Please enter a valid number.")
+                println(Constants.ERROR_INVALID_NUMBER)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
