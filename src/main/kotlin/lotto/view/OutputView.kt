@@ -2,47 +2,31 @@ package lotto.view
 
 import lotto.Lottos
 import lotto.Rank
-import java.text.NumberFormat
-import java.util.*
 
 object OutputView {
 
-    private val numberFormatter = NumberFormat.getNumberInstance(Locale.US)
+    private val formatter = LottoViewFormatter
 
-    private const val PROFIT_RATE_FORMAT = "%.1f"
-
-    fun printLottos(lottos: Lottos) {
-        println("\nYou have purchased ${lottos.size()} tickets.")
-        lottos.getValues()
-            .map { it.getNumbers().sorted() }
-            .forEach { println(it) }
+    fun printLottoTickets(lottos: Lottos) {
+        print(buildLottoTickets(lottos))
     }
 
     fun printFinalReport(rankCounts: Map<Rank, Int>, profitRate: Double) {
-        printStatistics(rankCounts)
-        printProfitRate(profitRate)
+        println(buildFinalReport(rankCounts, profitRate))
     }
 
-    private fun printStatistics(rankCounts: Map<Rank, Int>) {
-        println("\nWinning Statistics\n---")
-        Rank.entries
-            .filter { it != Rank.NONE }
-            .sortedBy { it.prize }
-            .map { it.toStatisticsLine(rankCounts) }
-            .forEach(::println)
+    private fun buildLottoTickets(lottos: Lottos): String = buildString {
+        appendLine()
+        appendLine(formatter.formatPurchaseMessage(lottos))
+        appendLine(formatter.formatLottoTickets(lottos))
     }
 
-    private fun Rank.toStatisticsLine(rankCounts: Map<Rank, Int>): String {
-        val count = rankCounts[this] ?: 0
-        val formattedPrize = numberFormatter.format(this.prize)
-        val bonusInfo = if (this == Rank.SECOND) "+ Bonus Ball " else ""
-
-        return "${this.matchCount} Matches $bonusInfo(${formattedPrize} KRW) – $count tickets"
+    private fun buildFinalReport(rankCounts: Map<Rank, Int>, profitRate: Double): String = buildString {
+        appendLine()
+        appendLine("Winning Statistics")
+        appendLine("---")
+        appendLine(formatter.formatWinningStatistics(rankCounts))
+        appendLine(formatter.formatProfitRate(profitRate))
     }
 
-    private fun printProfitRate(profitRate: Double) {
-        val formatted = PROFIT_RATE_FORMAT.format(profitRate)
-
-        println("Total return rate is $formatted%.")
-    }
 }
