@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.StringUtil.toIntList
+
 class LottoTicketMachine(
     private val input: Input,
     private val validator: Validator,
@@ -20,12 +22,7 @@ class LottoTicketMachine(
 
     fun enterWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers.")
-        return input.enterNumber {
-            it.split(",")
-                .map {
-                    validator.validateStringToInt(it)
-                }
-        }
+        return input.enterNumber { it.toIntList(validator) }
     }
 
     fun enterBonusNumber(): Int {
