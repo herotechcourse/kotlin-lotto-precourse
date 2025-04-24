@@ -37,9 +37,10 @@ This project is a simple console-based Lotto program written in Kotlin. It simul
 - [✅] Create Lotto class
 - [✅] Create LottoManager class
 - [✅] Implement ticket generation logic
-- [ ] Add input validation
-- [ ] Build comparison and ranking logic
-- [ ] Create Enum for Winner Criteria
+- [✅] Add input validation
+- [✅] Build comparison and ranking logic
+- [✅] Create Enum for Winner Criteria
+- [ ] Add profitability caculation logic
 - [ ] Handle exceptions properly
 - [ ] Write unit tests for all major components
 - [✅] Add user input/output logic
