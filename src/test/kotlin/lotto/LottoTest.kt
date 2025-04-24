@@ -1,6 +1,7 @@
 package lotto
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
@@ -11,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +19,18 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `throws exception when any number is not between 1 and 45`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 46))
+            Lotto(listOf(0, 1, 2, 3, 4, 5))
+        }
+    }
+
+    @Test
+    fun `does not throw exception when lotto is created 1000 times`() {
+        repeat(1000) {
+            assertDoesNotThrow { Lotto.create() }
+        }
+    }
 }
