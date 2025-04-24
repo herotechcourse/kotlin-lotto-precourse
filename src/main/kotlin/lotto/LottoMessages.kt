@@ -10,9 +10,10 @@ object LottoMessages {
     val bonusNumber = "Digit a bonus number:"
 
     val blankInput = "[ERROR] Input cannot be blank."
-    val smallThanOne = "[ERROR] Input cannot be smaller than 1"
-    val divisibleByThousand = "[ERROR] Input has to be divisible by 1000"
+    val smallThanOne = "[ERROR] Input cannot be smaller than 1."
+    val divisibleByThousand = "[ERROR] Input has to be divisible by 1000."
     val rangeOneToFortyfive = "[ERROR] All numbers must be between 1 and 45."
-    val duplicate = "[ERROR] Numbers cannot contain duplicate numbers"
-    val sixNumbers = "[ERROR] Ticket must contain 6 numbers"
+    val duplicate = "[ERROR] Numbers cannot contain duplicate numbers."
+    val sixNumbers = "[ERROR] Ticket must contain 6 numbers."
+    val isANumber = "[ERROR] It contains a non numeric."
 }

@@ -11,6 +11,9 @@ fun main() {
     // Tickets created and checked
     val ticketCreator = TicketGenerator()
     val ticketsList = ticketCreator.generateMultiples(numberOfTickets)
+    val ticketsOutput = OutputView()
+    ticketsOutput.printPurchasedTickets(numberOfTickets, ticketsList)
+
 
     //Second input read and checked
     println(LottoMessages.winningNumbers)
