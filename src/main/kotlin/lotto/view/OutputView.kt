@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.Lotto
+import lotto.constants.Messages
 import lotto.model.LottoRank
 import lotto.model.LottoResult
 
@@ -22,7 +23,7 @@ object OutputView {
             LottoRank.FIRST
         )
         for (rank in ranksInOrder) {
-            println("${rank.description} – ${lottoResult.getCount(rank)} tickets")
+            println(Messages.Output.LOTTO_RESULT_STATISTICS.format(rank.description, lottoResult.getCount(rank)))
         }
     }
 
@@ -31,12 +32,11 @@ object OutputView {
     }
 
     fun purchaseCount(count: Int) {
-        println("You have purchased $count tickets.")
+        println(Messages.Output.PURCHASE_COUNT.format(count))
     }
 
-
     fun profitRate(profitRate: Double) {
-        println("Total return rate is $profitRate%.")
+        println(Messages.Output.PROFIT_RATE.format(profitRate))
     }
 
 }

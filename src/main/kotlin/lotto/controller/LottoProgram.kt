@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.Lotto
 import lotto.constants.Constants
+import lotto.constants.Messages
 import lotto.model.LottoIssuer
 import lotto.model.LottoResult
 import lotto.model.LottoStorage
@@ -51,7 +52,7 @@ fun readWinningLotto(): WinningLotto {
 fun readValidPurchaseAmount(): Int {
     while (true) {
         try {
-            val input = InputView.promptAndReadLine("Please enter the purchase amount.")
+            val input = InputView.promptAndReadLine(Messages.Prompt.PURCHASE_AMOUNT)
             validatePurchaseAmount(input)
             return input.toInt()
         } catch (e: IllegalArgumentException) {
@@ -63,7 +64,7 @@ fun readValidPurchaseAmount(): Int {
 fun readValidLotto(): Lotto {
     while (true) {
         try {
-            val input = InputView.promptAndReadLine("Please enter last week's winning numbers.")
+            val input = InputView.promptAndReadLine(Messages.Prompt.WINNING_NUMBERS)
             validateWinningNumbers(input)
             val numbers = input.split(",").map { it.trim().toInt() }
             return Lotto(numbers)
@@ -76,7 +77,7 @@ fun readValidLotto(): Lotto {
 fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
     while (true) {
         try {
-            val input = InputView.promptAndReadLine("Please enter the bonus number.")
+            val input = InputView.promptAndReadLine(Messages.Prompt.BONUS_NUMBER)
             validateBonusNumber(input)
             val bonusNumber = input.toInt()
             return WinningLotto(mainLotto, bonusNumber)
@@ -101,7 +102,7 @@ fun issueLottery(purchaseAmount: Int): LottoStorage {
 
 fun printStatistics(result: LottoResult, purchaseAmount: Int) {
     OutputView.newline()
-    OutputView.message("Winning Statistics\n---")
+    OutputView.message(Messages.Output.WINNING_STATISTICS_TITLE)
     OutputView.lottoStatistics(result)
     OutputView.profitRate(result.calculateProfitRate(purchaseAmount))
 }

@@ -39,7 +39,7 @@ object InputValidator {
     }
 
     fun numberIsRange(input: Int) {
-        require(input in Constants.LOTTO_MIN_NUMBER..Constants.LOTTO_MAX_NUMBER) { "Numbers must be between 1 and 45." }
+        require(input in Constants.LOTTO_MIN_NUMBER..Constants.LOTTO_MAX_NUMBER) { "[ERROR] Numbers must be between 1 and 45." }
     }
 
     fun allNumbersInRange(input: List<Int>) {
