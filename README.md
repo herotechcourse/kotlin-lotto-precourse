@@ -55,10 +55,9 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 6. Evaluate All Tickets & Count Statistics
-- [ ] All purchased tickets are evaluated one by one.
-- [ ] Each ticket is assigned a rank using `LottoRankEvaluator`.
-- [ ] A summary of winning results is collected using `Map<Rank, Int>`.
-
+- [x] All purchased tickets are evaluated one by one.
+- [x] Each ticket is matched against the winning numbers and the bonus number : `LottoRankEvaluator`.
+- [x] Ranks are aggregated in a `Map<Rank, Int>` to count the number of tickets per rank.
 ---
 
 ### 7. Calculate Profit Rate

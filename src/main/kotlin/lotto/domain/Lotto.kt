@@ -23,4 +23,9 @@ class Lotto(private val numbers: List<LottoNumber>) {
     override fun toString(): String {
         return getSortedNumbers().toString()
     }
+
+    fun contains(number: LottoNumber): Boolean {
+        return numbers.contains(number)
+    }
+
 }
