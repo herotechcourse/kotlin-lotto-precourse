@@ -8,14 +8,11 @@ import lotto.MIN_RANGE
 import lotto.TICKET_LEN
 
 object TicketMachine {
-    fun giveTickets(userPurchase: Int): List<List<Int>> {
-
-        val totalTicketPurchase = userPurchase / 1000
-        return List(totalTicketPurchase) { createTicket().getNumbers() }
+    fun giveTickets(ticketsPurchased: Int): List<List<Int>> {
+        return List(ticketsPurchased) { createTicket().getNumbers() }
     }
 
     private fun createTicket(): Lotto {
-
         val numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, TICKET_LEN).sorted()
         return (Lotto(numbers))
     }

@@ -1,9 +1,13 @@
 package lotto.domain
 
 import lotto.view.InputView
+import lotto.view.OutputView
 
 class Game {
     fun run() {
-        val userTickets = TicketMachine.giveTickets(InputView.getPurchaseAmount())
+        val ticketsPurchased = InputView.getPurchaseAmount() / lotto.TICKET_PRICE
+        val userTicketList = TicketMachine.giveTickets(ticketsPurchased)
+        OutputView.printGeneratedTickets(userTicketList, ticketsPurchased)
+
     }
 }
