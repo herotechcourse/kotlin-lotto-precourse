@@ -8,16 +8,27 @@ fun main() {
     val budget = initiateLotto.readBudget()
     val numberOfTickets = budget / 1000
 
-    // Tickets created and checked
+    // Tickets created, checked and printed
     val ticketCreator = TicketGenerator()
     val ticketsList = ticketCreator.generateMultiples(numberOfTickets)
     val ticketsOutput = OutputView()
     ticketsOutput.printPurchasedTickets(numberOfTickets, ticketsList)
 
-
     //Second input read and checked
     println(LottoMessages.winningNumbers)
     val winningNumbers = InputView()
     val readWinningNumbers = winningNumbers.readWinningNumbers()
+
+    //Third input (Create a bonusNumber input)
+    println(LottoMessages.bonusNumber)
+    val bonusNumber = InputView()
+    val readBonusNumber = bonusNumber.readBonusNumber()
+
+
+    //Logic to check for winnerTickets, and match with prizes
+    println(LottoMessages.winningStatisticsTitle)
+    println(LottoMessages.dashSeparator)
+
+    //Logic to check profit rate
 
 }

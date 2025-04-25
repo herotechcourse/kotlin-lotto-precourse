@@ -18,4 +18,11 @@ class InputValidator {
         }
         require(separatedInputs.distinct().size == 6) { LottoMessages.duplicate }
     }
+
+    fun validateBonusInput(input: String) {
+        require(input.isNotBlank()) { LottoMessages.blankInput }
+        val number = input.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Please enter a numeric value.")
+        require(number in 1..45) { LottoMessages.rangeOneToFortyfive}
+    }
 }

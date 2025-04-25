@@ -59,6 +59,18 @@ class InputValidatorTest : NsTest() {
         assertThrows<IllegalArgumentException> { validator.validateWinningNumbers("1,2,3,4,4,5")}
     }
 
+    @Test
+    fun `validateBonusNumber throws exception when input is empty`() {
+        val validator = InputValidator()
+        assertThrows<IllegalArgumentException> { validator.validateBonusInput("")}
+    }
+
+    @Test
+    fun `validateBonusNumber throws exception when input isn't between 1 and 45`() {
+        val validator = InputValidator()
+        assertThrows<IllegalArgumentException> { validator.validateBonusInput("47") }
+    }
+
     override fun runMain() {
         main()
     }

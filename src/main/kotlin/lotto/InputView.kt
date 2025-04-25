@@ -29,4 +29,16 @@ class InputView {
             }
         }
     }
+
+    fun readBonusNumber(): Int {
+        while (true) {
+            try {
+                val input = Console.readLine()
+                validator.validateBonusInput(input)
+                return input.toInt()
+            } catch (e: IllegalArgumentException) {
+                println(LottoMessages.invalidInput)
+            }
+        }
+    }
 }
