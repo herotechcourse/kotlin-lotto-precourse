@@ -21,3 +21,4 @@
 - [] InputView
   - [x] ask purchase amount
   - [x] ask bonus number
+  - [x] ask winning number
