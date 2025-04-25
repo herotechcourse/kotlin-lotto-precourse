@@ -61,9 +61,10 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 7. Calculate Profit Rate
-- [ ] Calculate the return rate using: `totalPrize / purchaseAmount * 100`.
-- [ ] Round to one decimal place.
-- [ ] Example output: `Total return rate is 62.5%.`
+- [x] Calculates the return rate using: `totalPrize / purchaseAmount * 100` : `ProfitCalculator`
+- [x] Rounded to one decimal place using `String.format("%.1f", value)`
+- [x] Throws an error if the purchase amount is zero or less
+- [x] Example output: `Total return rate is 62.5%.`
 
 ---
 
