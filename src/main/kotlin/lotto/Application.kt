@@ -1,5 +1,152 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+
+// prize ranks
+enum class prizeTypes(val matchCount: Int, val hasBonus: Boolean, val rewards: Int) {
+    NONE(0, false, 0),
+    FIFTH(3, false, 5000),
+    FOURTH(4, false, 50000),
+    THIRD(5, false, 1500000),
+    SECOND(5, true, 30000000),
+    FIRST(6, false, 2000000000);
+
+    // check prize rank
+    companion object {
+        fun match(matchCount: Int, hasBonus: Boolean): prizeTypes {
+            if (matchCount == 5 && hasBonus) {
+                return SECOND
+            }
+            return values().firstOrNull { it.matchCount == matchCount && !it.hasBonus } ?: NONE
+        }
+    }
+
+}
+
+fun checkBudget(): Int {
+    // amounts
+    println("Please enter the purchase amount.")
+
+    val input = Console.readLine().toIntOrNull()
+    if (input == null) {
+        throw IllegalArgumentException("[ERROR] Please enter a valid amount.")
+    }
+    if (input % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] Each ticket costs 1,000 KRW. ")
+    }
+
+    return input
+
+}
+
+fun getTickets(purchaseAmount: Int): List<Lotto> {
+    // purchased tickets
+    val ticketAmounts = purchaseAmount / 1000
+    println("You have purchased $ticketAmounts tickets.")
+
+    val purchasedTickets = mutableListOf<Lotto>()
+
+    repeat(ticketAmounts) {
+        val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        println(ticketNumbers)
+        purchasedTickets.add(Lotto(ticketNumbers))
+    }
+
+    return purchasedTickets
+}
+
+fun getWinningNumbers(): List<Int> {
+
+    println("Please enter last week's winning numbers.")
+
+    val inputWinningNumbers = Console.readLine().split(",").map { it.trim().toIntOrNull() }
+    if (inputWinningNumbers.any { it == null }) throw IllegalArgumentException("[ERROR] Please enter valid winning numbers.")
+
+    val winningNumbers = inputWinningNumbers.filterNotNull()
+    require(winningNumbers.size == 6) { "[ERROR] There must be 6 winning numbers." }
+    require(winningNumbers.all { it in 1..45 }) { "[ERROR] Please enter the correct numbers between 1 to 45." }
+
+    return winningNumbers
+
+}
+
+fun getBonusNumbers(winningNumbers: List<Int>): Int {
+
+    println("Please enter a bonus number.")
+
+    val inputBonus = Console.readLine().toIntOrNull()
+    if (inputBonus == null || !(inputBonus in 1..45)) throw IllegalArgumentException("[ERROR] Please enter a valid number between 1 and 45.")
+    if (winningNumbers.contains(inputBonus)) throw IllegalArgumentException("[ERROR] Please enter a separate bonus number.")
+
+    return inputBonus
+
+}
+
+// matching result
+fun match(purchasedtickets: List<Lotto>, winningNumbers: List<Int>, inputBonus: Int): Map<prizeTypes, Int> {
+
+    val results = mutableMapOf<prizeTypes, Int>()
+    // Int = how many tickets match the prize rank
+
+    prizeTypes.values().forEach { it -> results[it] = 0 }
+
+
+    purchasedtickets.forEach { ticket ->
+        val matchCount = ticket.matchedNumbersCount(winningNumbers)
+        val hasBonus = ticket.includedBonusNumber(inputBonus)
+        val rank = prizeTypes.match(matchCount, hasBonus)
+
+        if (rank != prizeTypes.NONE) {
+            results[rank] = (results[rank] ?: 0) + 1
+        }
+    }
+
+    return results
+
+}
+
+// calculate prize
+fun finalResult(results: Map<prizeTypes, Int>): Int {
+
+    var finalPrize = 0
+
+    for ((key, value) in results) {
+        val prize = key.rewards * value
+        finalPrize += prize
+    }
+
+    return finalPrize
+
+}
+
+// printing results
+fun print(results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int) {
+
+    println("Winning Statistics")
+    println("---")
+    println("3 Matches (5,000 KRW) – ${results[prizeTypes.FIFTH]} tickets")
+    println("4 Matches (50,000 KRW) – ${results[prizeTypes.FOURTH]} tickets")
+    println("5 Matches (1,500,000 KRW) – ${results[prizeTypes.THIRD]} tickets")
+    println("5 Matches + Bonus Ball (30,000,000 KRW) – ${results[prizeTypes.SECOND]} tickets")
+    println("6 Matches (2,000,000,000 KRW) – ${results[prizeTypes.FIRST]} tickets")
+    val returnRate = (finalPrize.toDouble() / purchaseAmount) * 100
+    println("Total return rate is $returnRate%.")
+
+}
+
 fun main() {
-    // TODO: Implement the program
+
+    try {
+        val purchaseAmount = checkBudget()
+        val purchasedTickets = getTickets(purchaseAmount)
+        val winningNumbers = getWinningNumbers()
+        val inputBonus = getBonusNumbers(winningNumbers)
+        val results = match(purchasedTickets, winningNumbers, inputBonus)
+        val finalPrize = finalResult(results)
+        print(results, finalPrize, purchaseAmount)
+    } catch (error: IllegalArgumentException) {
+        println(error.message)
+    }
+
 }
