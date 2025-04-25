@@ -6,14 +6,12 @@ import org.junit.jupiter.api.assertThrows
 
 class ValidatorTest {
 
-    private val validator = Validator()
-
     @Test
     fun `throws an exception when non numerical characters entered`() {
         val stringValue = "uuu"
 
         assertThrows<IllegalArgumentException> {
-            validator.validateStringToInt(stringValue)
+            Validator.validateStringToInt(stringValue)
         }
     }
 
@@ -22,7 +20,25 @@ class ValidatorTest {
         val stringValue = "9"
 
         assertDoesNotThrow {
-            validator.validateStringToInt(stringValue)
+            Validator.validateStringToInt(stringValue)
+        }
+    }
+
+    @Test
+    fun `throws an exception when non numerical characters with comma entered`() {
+        val stringValue = "1,2,3,4,5,dd"
+
+        assertThrows<IllegalArgumentException> {
+            Validator.validateStringToIntList(stringValue)
+        }
+    }
+
+    @Test
+    fun `no exception when numerical characters with comma entered`() {
+        val stringValue = "1,2,3,4,5,6"
+
+        assertDoesNotThrow {
+            Validator.validateStringToIntList(stringValue)
         }
     }
 }
