@@ -3,6 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
+    private var _winningNumbers = listOf<Int>()
+
     fun readPurchaseAmount(): Int {
         repeat(MAX_RETRY) {
             try {
@@ -33,6 +35,7 @@ class InputView {
             try {
                 println("\nPlease enter the winning numbers (comma-separated):")
                 val input = Console.readLine()
+                _winningNumbers = input.split(',').map(String::toInt)
                 return parseWinningNumbers(input)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -42,15 +45,15 @@ class InputView {
     }
 
     internal fun parseWinningNumbers(input: String): List<Int> {
-        val numbers = input.split(",").map {
-            it.trim().toIntOrNull()
-                ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
-        }
+        val rawNumbers = input.split(",").map { it.trim().toIntOrNull() }
+        require(rawNumbers.all { it != null } ) { INVALID_INPUT_MSG }
+        val numbers = rawNumbers.map { it!! } // casting from List<Int?> to List<Int>
         require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_MSG }
         require(numbers.distinct().size == numbers.size) { UNIQUE_NUM_MSG }
         numbers.forEach {
                 number -> require(number in MIN_NUM..MAX_NUM) { INVALID_RANGE_MSG }
         }
+        _winningNumbers = numbers
         return numbers
     }
 
@@ -70,9 +73,8 @@ class InputView {
     internal fun parseBonusNumber(input: String): Int {
         val number = input.trim().toIntOrNull()
             ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
-        require(number in MIN_NUM..MAX_NUM) {
-            INVALID_RANGE_MSG
-        }
+        require(number in MIN_NUM..MAX_NUM) { INVALID_RANGE_MSG }
+        require(number !in _winningNumbers) { UNIQUE_BONUS_MESSAGE }
         return number
     }
 
@@ -91,6 +93,7 @@ class InputView {
         private const val INVALID_RANGE_MSG = "[ERROR] Invalid number: not in range $MIN_NUM-$MAX_NUM."
         private const val UNIQUE_NUM_MSG = "[ERROR] Input must contain unique numbers."
         private const val LOTTO_SIZE_MSG =  "[ERROR] Input must contain exactly $LOTTO_SIZE numbers."
+        private const val UNIQUE_BONUS_MESSAGE = "[ERROR] Bonus number has to differ from the winning numbers."
     }
 
     class MaxRetryException(message: String, cause: Throwable? = null): RuntimeException(message, cause)
