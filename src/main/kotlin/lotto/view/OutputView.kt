@@ -2,7 +2,6 @@ package lotto.view
 
 import lotto.Lotto
 import lotto.domain.LottoResults
-import lotto.domain.Prize
 import lotto.domain.ProfitRate
 
 class OutputView {
@@ -39,6 +38,10 @@ class OutputView {
 
     fun printProfitRate(profitRate: ProfitRate) {
         println(PROFIT_RATE_MESSAGE.format(profitRate.value() * 100))
+    }
+
+    fun printLine() {
+        println()
     }
 
     companion object {
