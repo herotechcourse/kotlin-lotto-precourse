@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.validation.PurchaseAmountValidator
 
 object InputView {
+
     fun readPurchaseAmount(): Int {
         while (true) {
             println("Please enter the purchase amount.")
@@ -24,5 +25,12 @@ object InputView {
 
         return winningNumbers
     }
-}
 
+    fun readBonusNumber(): String {
+        println()
+        println("Please enter the bonus number.")
+        val bonusNumber = Console.readLine()
+
+        return bonusNumber
+    }
+}
