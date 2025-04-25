@@ -23,16 +23,21 @@ class OutputView {
                 .sortedByDescending { it.prize }
                 .forEach{ rank->
                     val count = winningStats.stats.getOrDefault(rank, 0)
-                    val matchDescription = when (rank) {
-                        WinningRank.FIFTH -> "3 Matches (${Constants.FORMATTED_PRIZE_FIFTH} ${Constants.CURRENCY_UNIT})"
-                        WinningRank.FOURTH -> "4 Matches (${Constants.FORMATTED_PRIZE_FOURTH} ${Constants.CURRENCY_UNIT})"
-                        WinningRank.THIRD -> "5 Matches (${Constants.FORMATTED_PRIZE_THIRD} ${Constants.CURRENCY_UNIT})"
-                        WinningRank.SECOND -> "5 Matches + Bonus Ball (${Constants.FORMATTED_PRIZE_SECOND} ${Constants.CURRENCY_UNIT})"
-                        WinningRank.FIRST -> "6 Matches (${Constants.FORMATTED_PRIZE_FIRST} ${Constants.CURRENCY_UNIT})"
-                        else -> ""
-                    }
+                    val matchDescription = getMatchDescription(rank)
                     println("$matchDescription - $count tickets")
                 }
+        }
+
+        private fun getMatchDescription(rank: WinningRank): String {
+            val matchDescription = when (rank) {
+                WinningRank.FIFTH -> "3 Matches (${Constants.FORMATTED_PRIZE_FIFTH} ${Constants.CURRENCY_UNIT})"
+                WinningRank.FOURTH -> "4 Matches (${Constants.FORMATTED_PRIZE_FOURTH} ${Constants.CURRENCY_UNIT})"
+                WinningRank.THIRD -> "5 Matches (${Constants.FORMATTED_PRIZE_THIRD} ${Constants.CURRENCY_UNIT})"
+                WinningRank.SECOND -> "5 Matches + Bonus Ball (${Constants.FORMATTED_PRIZE_SECOND} ${Constants.CURRENCY_UNIT})"
+                WinningRank.FIRST -> "6 Matches (${Constants.FORMATTED_PRIZE_FIRST} ${Constants.CURRENCY_UNIT})"
+                else -> ""
+            }
+            return matchDescription
         }
 
         fun printProfitRate(winningStats: WinningStats, purchaseAmount: Int) {
