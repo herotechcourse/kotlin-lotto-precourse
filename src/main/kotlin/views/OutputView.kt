@@ -1,5 +1,6 @@
 package views
 
+import lotto.MatchCondition
 import lotto.Lotto
 
 class OutputView {
@@ -8,5 +9,13 @@ class OutputView {
         for(ticket in tickets) {
             println(ticket)
         }
+    }
+
+    fun printMatches(matchMap:MutableMap<MatchCondition, Int>)
+    {
+        
+        for ((condition, count) in matchMap) {
+            println("${condition.label} - $count tickets")
+        }       
     }
 }
