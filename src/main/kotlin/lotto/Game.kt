@@ -1,6 +1,9 @@
 package lotto
 
 class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
+    init {
+        require(bonusNumber >= 1 && bonusNumber <= 45) { "Bonus number must be between 1 and 45" }
+    }
 
     enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Int){
         FIRST(6, false, 2_000_000_000),
