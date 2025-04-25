@@ -6,25 +6,25 @@ import lotto.domain.WinningStats
 import lotto.util.Constants
 
 class OutputView {
-    companion object{
+    companion object {
         fun printPurchasedLottos(purchasedLottos: PurchasedLottos) {
             val ticketAmount = purchasedLottos.count()
             println("\nYou have purchased $ticketAmount tickets.")
-            purchasedLottos.getAllTickets().forEach{ticket->
+            purchasedLottos.getAllTickets().forEach { ticket ->
                 println(ticket)
             }
         }
 
-        fun printWinningStats(winningStats: WinningStats){
+        fun printWinningStats(winningStats: WinningStats) {
             println("\nWinning Statistics")
             println("---")
             WinningRank.entries
                 .filter { it != WinningRank.MISS }
                 .sortedByDescending { it.prize }
-                .forEach{ rank->
+                .forEach { rank ->
                     val count = winningStats.stats.getOrDefault(rank, 0)
                     val matchDescription = getMatchDescription(rank)
-                    println("$matchDescription - $count tickets")
+                    println("$matchDescription - $count ${if (count == 1) "ticket" else "tickets"}")
                 }
         }
 
@@ -41,10 +41,10 @@ class OutputView {
         }
 
         fun printProfitRate(winningStats: WinningStats, purchaseAmount: Int) {
-            val totalPrize = winningStats.stats.entries.sumOf { (rank,count)->
+            val totalPrize = winningStats.stats.entries.sumOf { (rank, count) ->
                 rank.prize * count
             }
-            val profitRate = (totalPrize.toDouble()/purchaseAmount)*100
+            val profitRate = (totalPrize.toDouble() / purchaseAmount) * 100
             println("Total return rate is ${profitRate}%.")
         }
     }
