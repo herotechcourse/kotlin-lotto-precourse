@@ -21,8 +21,7 @@ class Lotto(private val numbers: List<Int>) : LottoValidator, BonusValidator {
     private fun hasBonus(issuedTicket: List<Int>, bonusNumber: Int) = bonusNumber in issuedTicket
 
     override fun validateNumber(number: Int) {
-        require(number !in numbers) {
-            "Bonus number must not duplicate with winning numbers."
-        }
+        validateInRange(number)
+        validateDuplicatedNumber(number, numbers)
     }
 }

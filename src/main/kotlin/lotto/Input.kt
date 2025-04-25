@@ -7,12 +7,12 @@ object Input {
 
     fun enterPurchaseAmount(): IssuedTicket {
         println("Please enter the purchase amount.")
-        return retry { IssuedTicket.of(Validator.validateStringToInt(it)) }
+        return retry { IssuedTicket.of(StringValidator.validateStringToInt(it)) }
     }
 
     fun enterWinningNumbers(): Lotto {
         println("\nPlease enter last week's winning numbers.")
-        return retry { Lotto(Validator.validateStringToIntList(it)) }
+        return retry { Lotto(StringValidator.validateStringToIntList(it)) }
     }
 
     fun enterBonusNumber(lotto: Lotto): Int {
@@ -21,7 +21,7 @@ object Input {
     }
 
     private fun getBonusNumber(stringValue: String, lotto: Lotto): Int {
-        return Validator.validateStringToInt(stringValue).apply {
+        return StringValidator.validateStringToInt(stringValue).apply {
             lotto.validateNumber(this)
         }
     }

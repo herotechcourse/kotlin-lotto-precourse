@@ -1,14 +1,13 @@
 package lotto
 
-object Validator {
+import lotto.Consts.END_NUMBER
+import lotto.Consts.START_NUMBER
 
-    private const val COMMA = ","
+interface Validator {
 
-    fun validateStringToInt(stringValue: String): Int {
-        return stringValue.toIntOrNull()
-            ?: throw IllegalArgumentException("Non-numeric '$stringValue' is not allowed.")
+    fun validateInRange(number: Int) {
+        require(number in START_NUMBER..END_NUMBER) {
+            "Lotto number '$number' must be between $START_NUMBER and $END_NUMBER."
+        }
     }
-
-    fun validateStringToIntList(stringValue: String) =
-        stringValue.split(COMMA).map { validateStringToInt(it) }
 }
