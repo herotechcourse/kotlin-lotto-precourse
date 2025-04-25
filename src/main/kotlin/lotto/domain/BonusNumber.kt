@@ -14,7 +14,7 @@ class BonusNumber(private val number: Int) {
         }
     }
 
-    fun value(): Int = number
+    fun number(): Int = number
 
     companion object {
         const val BONUS_NUMBER_OUT_OF_RANGE = "[ERROR] Bonus number must be between 1 and 45."
