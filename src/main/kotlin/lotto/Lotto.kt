@@ -9,4 +9,12 @@ class Lotto(private val numbers: List<Int>) {
 
     // TODO: Implement additional functions
     override fun toString(): String = numbers.sorted().toString()
+
+    fun countMatching(winningNumbers: Set<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
+
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
+    }
 }
