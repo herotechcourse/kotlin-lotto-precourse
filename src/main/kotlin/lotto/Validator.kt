@@ -40,4 +40,17 @@ object Validator {
                 )
             }
     }
+
+    fun validateBonusNumber(input: String, winnerNumbers: List<Int>): Int {
+        val number = input.toIntOrNull() ?: throw IllegalArgumentException(
+            Messages.ERROR_INVALID_NUMBER
+        )
+        if (number !in LottoConstants.MIN_NUMBER..LottoConstants.MAX_NUMBER) {
+            throw IllegalArgumentException(Messages.ERROR_OUT_OF_RANGE)
+        }
+        if (number in winnerNumbers) {
+            throw IllegalArgumentException(Messages.ERROR_BONUS_IN_WINNER)
+        }
+        return number
+    }
 }
