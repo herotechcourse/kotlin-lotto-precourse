@@ -1,5 +1,12 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+
+    var inputView = InputView()
+
+    for(ticket in inputView.tickets){
+        val lotto = Lotto(ticket)
+        lotto.start(ticket)
+    }
 }
+
