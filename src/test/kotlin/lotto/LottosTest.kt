@@ -93,15 +93,6 @@ class LottosTest {
         }
 
         @Test
-        fun `profitRate returns 0 when Lottos is empty`() {
-            // Act
-            val profitRate: Double = emptyLottos.profitRate(winningLotto)
-
-            // Assert
-            assertThat(profitRate).isEqualTo(0.0)
-        }
-
-        @Test
         fun `size returns 0 when Lottos is empty`() {
             // Act
             val size: Int = emptyLottos.size()

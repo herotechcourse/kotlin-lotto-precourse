@@ -11,7 +11,8 @@ class MoneyTest {
 
     @ParameterizedTest
     @CsvSource(
-        "-1000, Money must not be negative.",
+        "-1000, Money must be between",
+        "2147483001, Money must be between",
         "1500, Money must be divisible by"
     )
     fun `throws exception for invalid amounts`(amount: Int, message: String) {
@@ -20,19 +21,6 @@ class MoneyTest {
         assertThatThrownBy { Money(amount) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(message)
-    }
-
-    @ParameterizedTest
-    @CsvSource("0, true", "2000, false")
-    fun `isZero returns boolean`(amount: Int, expected: Boolean) {
-        // Arrange
-        val money = Money(amount)
-
-        //act
-        val isZero: Boolean = money.isZero()
-
-        // Assert
-        assertThat(isZero).isEqualTo(expected)
     }
 
     @Test
@@ -50,20 +38,6 @@ class MoneyTest {
             assertThat(result).containsOnly(output)
         }
     }
-
-    @Test
-    fun `div returns correct ratio between two Money instances`() {
-        // Arrange
-        val totalPrize = Money(5000)
-        val cost = Money(2000)
-
-        // Act
-        val ratio: Double = totalPrize / cost
-
-        // Assert
-        assertThat(ratio).isEqualTo(2.5)
-    }
-
 
     @Test
     fun `fromTicketCount returns correct Money based on ticket count`() {

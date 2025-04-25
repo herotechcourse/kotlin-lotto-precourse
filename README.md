@@ -13,6 +13,7 @@
 
 - [x] Based on the purchase amount (which must be divisible by 1,000), issue as many lottery tickets as allowed (1
   ticket per 1,000 KRW).
+    - [x] The purchase amount must be at least 1,000 KRW; zero-value purchases are not valid in the domain.
     - [x] The purchase amount must not exceed **2,147,484,000 KRW**, to prevent internal overflow when issuing a large
       number of tickets.
 - [x] Each ticket must **contain 6 unique random numbers** in the **range of 1 to 45**.

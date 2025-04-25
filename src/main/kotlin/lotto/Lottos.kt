@@ -10,21 +10,18 @@ class Lottos(private val values: List<Lotto>) {
     }
 
     fun profitRate(winningLotto: WinningLotto): Double {
-        val totalPrize: Money = calculateTotalPrize(winningLotto)
+        val totalPrize: Prize = calculateTotalPrize(winningLotto)
         val cost: Money = Money.fromTicketCount(size())
 
-        if (cost.isZero()) {
-            return 0.0
-        }
         return (totalPrize / cost) * PERCENT
     }
 
-    private fun calculateTotalPrize(winningLotto: WinningLotto): Money {
+    private fun calculateTotalPrize(winningLotto: WinningLotto): Prize {
         val totalPrize: Int = matchAll(winningLotto)
             .entries
             .sumOf { (rank, count) -> rank.prize * count }
 
-        return Money(totalPrize)
+        return Prize(totalPrize.toLong())
     }
 
     fun size(): Int = values.size
