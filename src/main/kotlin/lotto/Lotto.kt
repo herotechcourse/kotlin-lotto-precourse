@@ -10,9 +10,9 @@ class Lotto(private val numbers: List<Int>) {
     fun getNumbers(): List<Int> = numbers.toList()
 
     companion object {
-        private const val REQUIRED_SIZE = 6
-        private const val MIN_NUMBER = 1
-        private const val MAX_NUMBER = 45
+        const val REQUIRED_SIZE = 6
+        const val MIN_NUMBER = 1
+        const val MAX_NUMBER = 45
 
         private const val ERROR_SIZE = "[ERROR] Lotto must contain exactly $REQUIRED_SIZE numbers."
         private const val ERROR_DUPLICATE = "[ERROR] Lotto must contain $REQUIRED_SIZE unique numbers."

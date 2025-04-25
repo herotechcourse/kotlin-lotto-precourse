@@ -17,7 +17,7 @@ class InputView {
         return inputValidator.validateWinningNumbers(input)
     }
 
-    fun readBounsNumber(): Int {
+    fun readBonusNumber(winningNumbers: List<Int>): Int {
         println("Please enter the bonus number.")
         val input = Console.readLine()
         return inputValidator.validateBonusNumber(input, listOf())
