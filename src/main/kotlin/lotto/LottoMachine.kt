@@ -10,6 +10,8 @@ object LottoMachine {
      * Each ticket contains 6 unique random numbers between 1 and 45, sorted in ascending order.
      */
     fun generateTickets(count: Int): List<Lotto> {
+        require(count <= 0) { "[ERROR] Purchase tickets should be greater than 0" }
+
         return List(count) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
             Lotto(numbers)
