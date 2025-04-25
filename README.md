@@ -6,7 +6,7 @@ This program allows users to purchase lotto tickets, generates random numbers fo
 
 ## Features
 
-- Users can input a purchase amount.
+- Users can input a purchase amount, which must be divisible by 1000.
 - Winning numbers (6 numbers from 1 to 45) and a bonus number can be set.
 - Displays the total number of tickets purchased and the randomly generated numbers for each ticket.
 - Shows lotto result statistics (number of matches per tier) and the return rate.
