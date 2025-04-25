@@ -3,9 +3,8 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.util.Messages
 
-class InputView {
-    companion object {
-        fun readPurchaseAmount(): Int = readIntWithValidation(Messages.PROMPT_PURCHASE_AMOUNT) { number ->
+object InputView {
+    fun readPurchaseAmount(): Int = readIntWithValidation(Messages.PROMPT_PURCHASE_AMOUNT) { number ->
             number >= 1000 && number % 1000 == 0 || throw IllegalArgumentException(Messages.ERROR_NOT_MULTIPLE_OF_1000.format(number))
         }
 
@@ -66,4 +65,4 @@ class InputView {
             }
         }
     }
-}
+
