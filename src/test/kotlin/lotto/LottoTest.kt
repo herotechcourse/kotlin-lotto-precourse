@@ -1,10 +1,10 @@
 package lotto
 
-import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
-import org.assertj.core.api.Assertions.assertThatNoException
-import org.assertj.core.api.NotThrownAssert
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class LottoTest {
     @Test
@@ -35,5 +35,14 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @ParameterizedTest (name = "{index}. bonus number of {0}")
+    @ValueSource(strings = ["-1", "0", "46", "3", "200"])
+    fun `invalid bonus number`(input: String) {
+        assertThatNoException().isThrownBy {
+            val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+            assertThatIllegalArgumentException().isThrownBy {
+                lotto.addBonusNumber(input.toInt())
+            }
+        }
+    }
 }
