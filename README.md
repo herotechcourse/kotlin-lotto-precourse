@@ -38,3 +38,10 @@
 ### atep 4: Build Lotto Ticket generator
 - We use `Randoms.pickUniqueNumbersInRange` to generate 6 unique 1-45. It returns to us a list of `Lotto` objects.
 - We use `List(count) {block}` to generate a list the size of `count`.
+
+
+### step 5: Update Lotto.tk
+- The `Lotto.tk` class represents one lotto ticket
+- We use `require` to validate the input
+- We use `toSet().size == 6` to make sure that all input values are unique
+- We use `getNumbers()` method to make the numbers accessible
