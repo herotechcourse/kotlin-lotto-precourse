@@ -6,7 +6,11 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must not contain duplicates." }
-        require(numbers.all { it in 1 until 45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+    }
+
+    override fun toString(): String {
+        return numbers.toString()
     }
 
     fun toRank(winningNumbers: List<Int>, bonusNumber: Int): Rank? {
@@ -23,7 +27,7 @@ class Lotto(private val numbers: List<Int>) {
     companion object {
         fun create(): Lotto {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            return try { Lotto(numbers) } catch (e: IllegalArgumentException) { create() }
+            return try { Lotto(numbers.sorted()) } catch (e: IllegalArgumentException) { create() }
         }
     }
 }
