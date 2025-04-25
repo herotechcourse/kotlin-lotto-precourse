@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/kimpeter2018/kotlin-lotto-precourse/compare/v1.3.0...v1.4.0) (2025-04-25)
+
+
+### Features
+
+* add exception handlers in validation for input ([28c8b23](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/28c8b23459d29ddc691a1876f5c35013b135ebdd))
+
+
+### Bug Fixes
+
+* fix method implementation error ([da936fd](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/da936fdf42331c132ff5e2e0524ff466a331c245))
+* replaced hyphen to check ([c68d36f](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/c68d36fe5eddbca2f0a76d63701fc9e38dd4f358))
+* typo in hyphen ([05c1f27](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/05c1f271eca5e424980e081f0b33c3262ab22a0b))
+
 ## [1.3.0](https://github.com/kimpeter2018/kotlin-lotto-precourse/compare/v1.2.0...v1.3.0) (2025-04-25)
 
 
