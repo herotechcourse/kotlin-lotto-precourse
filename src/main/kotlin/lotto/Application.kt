@@ -12,6 +12,7 @@ fun main() {
     val purchaseAmount = readPurchaseAmount()
     val winningNumbers = readWinningNumbers() // TODO: decide whether to use instance of Lotto class
     val bonusNumber = readBonusNumber(winningNumbers)
+    val numberOfTickets = (purchaseAmount / 1000u).toInt()
 }
 
 // TODO: add below methods, and purchase amount, winning numbers, and bonus number as attributes to another class/object?
