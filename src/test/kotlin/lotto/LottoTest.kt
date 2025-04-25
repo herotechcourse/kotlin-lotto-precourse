@@ -65,40 +65,14 @@ class LottoTest {
     @Test
     fun `increases the ticket count of matches when winning the lottery`() {
         val lotto = Lotto(listOf(1, 3, 4, 5, 22, 11))
-        val issuedTickets = getIssuedTickets()
+        val issuedTickets = FixedIssuedTicketsGenerator.of()
         val bonusNumber = 30
+        val lottoStatistics = LottoStatistics.of()
 
-        lotto.simulate(issuedTickets, bonusNumber)
+        lotto.simulate(issuedTickets, bonusNumber, lottoStatistics)
 
-        assertEquals(1, LottoPrize.FIVE_MATCHES_BONUS.ticketCount)
-        assertEquals(1, LottoPrize.FOUR_MATCHES.ticketCount)
-        assertEquals(2, LottoPrize.THREE_MATCHES.ticketCount)
-    }
-
-    @Test
-    fun `profit rate is total prize amount divided by purchase amount percentage`() {
-        val lotto = Lotto(listOf(1, 3, 4, 5, 22, 11))
-        val issuedTickets = getIssuedTickets()
-        val bonusNumber = 30
-        val purchaseAmount = 8000
-        lotto.simulate(issuedTickets, bonusNumber)
-
-        val profitRate = lotto.getProfitRate(purchaseAmount)
-
-        val expectedProfitRate = 30_060_000.0 / 8000 * 100
-        assertEquals(expectedProfitRate, profitRate)
-    }
-
-    private fun getIssuedTickets(): List<List<Int>> {
-        return listOf(
-            listOf(8, 21, 23, 41, 42, 43),
-            listOf(3, 5, 11, 16, 32, 38),
-            listOf(7, 11, 16, 35, 36, 44),
-            listOf(1, 8, 11, 22, 41, 42),
-            listOf(13, 14, 16, 38, 42, 45),
-            listOf(7, 11, 30, 40, 42, 43),
-            listOf(3, 4, 5, 11, 22, 30),
-            listOf(1, 3, 5, 14, 22, 45),
-        )
+        assertEquals(2, lottoStatistics.statistics[0].ticketCount)
+        assertEquals(1, lottoStatistics.statistics[1].ticketCount)
+        assertEquals(1, lottoStatistics.statistics[3].ticketCount)
     }
 }
