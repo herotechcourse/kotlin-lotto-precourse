@@ -33,7 +33,9 @@ class OutputView {
     }
 
     fun printLottoResult(results: LottoResults) {
-        results.toResultLines().forEach { println(it) }
+        results.toResultLines().forEach { resultLine ->
+            println("${resultLine.description} ${TICKETS_LABEL} ${resultLine.count} ${TICKETS_SUFFIX}")
+        }
     }
 
     fun printProfitRate(profitRate: ProfitRate) {
@@ -51,6 +53,8 @@ class OutputView {
         const val BONUS_NUMBER_INPUT_PROMPT = "Please enter the bonus number."
         const val WINNING_STATISTICS_HEADER = "Winning Statistics"
         const val STATISTICS_SEPARATOR = "---"
+        const val TICKETS_LABEL = "–"
+        const val TICKETS_SUFFIX = "tickets"
         const val PROFIT_RATE_MESSAGE = "Total return rate is %.1f%%."
     }
 }
