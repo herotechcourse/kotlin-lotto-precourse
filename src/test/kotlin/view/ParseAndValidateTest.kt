@@ -143,6 +143,13 @@ class ParseAndValidateTest {
     }
 
     @Test
+    fun `exception test, invalid bonus number input, not unique number`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("1", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
     fun `valid bonus number input, number in range 1 to 45`() {
         assertTrue(bonusNumber("21", WINNING_NUMBERS) == 21)
     }
