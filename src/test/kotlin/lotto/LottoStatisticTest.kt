@@ -24,4 +24,14 @@ class LottoStatisticTest {
 
         assertEquals(false, isMatch)
     }
+
+    @Test
+    fun `update ticket count`() {
+        val statistic = LottoStatistic(LottoPrize.FIVE_MATCHES)
+
+        statistic.updateTicketCount()
+        statistic.updateTicketCount()
+
+        assertEquals(2, statistic.ticketCount)
+    }
 }
