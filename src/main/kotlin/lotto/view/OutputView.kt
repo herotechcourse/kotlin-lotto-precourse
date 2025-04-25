@@ -1,6 +1,8 @@
 package lotto.view
 
 import lotto.Lotto
+import lotto.domain.LottoResults
+import lotto.domain.Prize
 
 class OutputView {
     fun printPurchaseLottoAmountPrompt() {
@@ -28,6 +30,10 @@ class OutputView {
     fun printWinningStatisticsIntroMessage() {
         println(WINNING_STATISTICS_HEADER)
         println(STATISTICS_SEPARATOR)
+    }
+
+    fun printLottoResult(results: LottoResults) {
+        results.toResultLines().forEach { println(it) }
     }
 
     companion object {
