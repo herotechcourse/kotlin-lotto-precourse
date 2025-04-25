@@ -2,41 +2,70 @@ package lotto.controller
 
 import lotto.Lotto
 import lotto.config.LottoConfig
+import lotto.domain.BonusNumber
 import lotto.domain.LottoProfitCalculator
 import lotto.domain.Lottos
 import lotto.util.runCatchingRepeatedly
 
 class LottoController(
-    private val config: LottoConfig
+    config: LottoConfig
 ) {
+    private val inputView = config.inputView()
+    private val outputView = config.outputView()
+    private val lottoAmountInputParser = config.lottoAmountInputParser()
+    private val winningNumbersInputParser = config.winningNumbersInputParser()
+    private val bonusNumberInputParser = config.bonusNumberInputParser()
+    private val lottoGenerator = config.lottoGenerator()
+    private val lottoAmountCounter = config.lottoAmountCounter()
+
     fun run() {
-        val inputView = config.inputView()
-        val outputView = config.outputView()
+        val amount = readPurchaseAmount()
+        val lottos = generateLottos(amount)
+        val winningNumbers = readWinningNumbers()
+        val bonusNumber = readBonusNumber(winningNumbers)
 
+        printResults(lottos, winningNumbers, bonusNumber, amount)
+    }
+
+    private fun readPurchaseAmount(): Int {
         outputView.printPurchaseLottoAmountPrompt()
-        val amount = runCatchingRepeatedly {
-            config.lottoAmountInputParser().parseToInt(inputView.readPurchaseLottoAmount())
+        return runCatchingRepeatedly {
+            lottoAmountInputParser.parseToInt(inputView.readPurchaseLottoAmount())
         }
+    }
 
-        val count = config.lottoAmountCounter().count(amount)
+    private fun generateLottos(amount: Int): List<Lotto> {
+        val count = lottoAmountCounter.count(amount)
         outputView.printIssuedLottoCountMessage(count)
 
-        val lottos = config.lottoGenerator().generate(count)
+        val lottos = lottoGenerator.generate(count)
         outputView.printIssuedLottoNumbers(lottos)
+        outputView.printLine()
+        return lottos
+    }
 
-        println()
+    private fun readWinningNumbers(): List<Int> {
         outputView.printWinningNumbersInputPrompt()
-        val winningNumbers = runCatchingRepeatedly {
-            config.winningNumbersInputParser().parse(inputView.readWinningNumbers())
+        return runCatchingRepeatedly {
+            winningNumbersInputParser.parse(inputView.readWinningNumbers())
         }
+    }
 
+    private fun readBonusNumber(winningNumbers: List<Int>): BonusNumber {
         outputView.printBonusNumberInputPrompt()
-        val bonusNumber = runCatchingRepeatedly {
-            val bonus = config.bonusNumberInputParser().parse(inputView.readBonusNumber())
+        return runCatchingRepeatedly {
+            val bonus = bonusNumberInputParser.parse(inputView.readBonusNumber())
             bonus.validateNotDuplicateWith(Lotto(winningNumbers))
             bonus
         }
+    }
 
+    private fun printResults(
+        lottos: List<Lotto>,
+        winningNumbers: List<Int>,
+        bonusNumber: BonusNumber,
+        amount: Int
+    ) {
         outputView.printWinningStatisticsIntroMessage()
         val results = Lottos(lottos).results(winningNumbers, bonusNumber)
         val profitRate = LottoProfitCalculator(results, amount).calculate()
@@ -44,3 +73,6 @@ class LottoController(
         outputView.printProfitRate(profitRate)
     }
 }
+
+
+
