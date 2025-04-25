@@ -26,10 +26,23 @@ fun promptAndTakeWinning() : Lotto {
 }
 
 fun validateWinningOrShowError(numbers: List<Int>) : Boolean = try {
-    // TODO
+    validateWinning(numbers)
+    true
+} catch (e: IllegalArgumentException) {
+    println(e.message)
     false
-} catch (e: Exception) {
-    false
+}
+
+fun validateWinning(numbers: List<Int>) {
+    if (numbers.size != 6) {
+        throw IllegalArgumentException("[ERROR] Please input exactly 6 comma-separated numbers.")
+    }
+    if (numbers.distinct().size != 6) {
+        throw IllegalArgumentException("[ERROR] Numbers must not contain duplicates.")
+    }
+    if (!numbers.all { it in 1..45 }) {
+        throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+    }
 }
 
 fun parseCommaSeparatedNumbers(input: String): List<Int>? = try {
