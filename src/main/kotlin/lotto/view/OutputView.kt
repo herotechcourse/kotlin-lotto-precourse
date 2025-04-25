@@ -2,8 +2,8 @@ package lotto.view
 
 import lotto.service.Statistics
 
-class OutputView {
-    companion object {
+object OutputView {
+
         fun printTickets(tickets: List<List<Int>>) {
             println("You have purchased ${tickets.size} tickets.")
             tickets.forEach { println(it) }
@@ -15,4 +15,3 @@ class OutputView {
                 .forEach { println(it) }
         }
     }
-}
