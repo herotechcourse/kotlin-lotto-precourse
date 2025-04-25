@@ -27,4 +27,18 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `number of matches returns a number of matches`(){
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        assert(lotto.numberOfMatches(listOf(1,2,3,4,5,6)) == 6)
+        assert(lotto.numberOfMatches(listOf(1,2,3,4,5,12)) == 5)
+        assert(lotto.numberOfMatches(listOf(1,22,3,4,5,12)) == 4)
+        assert(lotto.numberOfMatches(listOf(11,21,30,45,55,66)) == 0)
+    }
+
+    @Test
+    fun `if bonus number is already contained in numbers, bonusRepeatsNumbers returns true`(){
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        assert(lotto.bonusRepeatsNumber(5))
+    }
 }

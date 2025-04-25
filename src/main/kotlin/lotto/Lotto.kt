@@ -5,8 +5,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.size == numbers.toSet().size) { "[ERROR] Lotto numbers must be unique." }
         for (i in numbers) {
-            if (i !in WINNING_NUMBER_RANGE_MIN..WINNING_NUMBER_RANGE_MAX) throw IllegalArgumentException("[ERROR]Lotto numbers must be between 1 and 45.")
+            if (i !in 1..45) throw IllegalArgumentException("[ERROR]Lotto numbers must be between 1 and 45.")
         }
     }
-    // TODO: Implement additional functions
+    fun numberOfMatches(ticket: List<Int>):Int = 6 - (numbers - ticket.toSet()).size
+    fun bonusRepeatsNumber(bonus: Int): Boolean = numbers.contains(bonus)
 }
