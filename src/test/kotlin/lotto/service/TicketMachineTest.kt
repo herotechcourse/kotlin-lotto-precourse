@@ -4,14 +4,14 @@ import lotto.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class LottoMachineTest {
+class TicketMachineTest {
 
     @Test
     fun `generates correct number of tickets with sorted numbers`() {
         val mockGenerator = { listOf(6, 1, 4, 3, 5, 2) }
-        val machine = LottoMachine(mockGenerator)
+        val machine = TicketMachine(mockGenerator)
 
-        val tickets = machine.purchaseTickets(3000)
+        val tickets = machine.generateTickets(3000)
 
         assertThat(tickets).hasSize(3)
         tickets.forEach {
