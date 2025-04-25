@@ -16,6 +16,9 @@ object ParseAndValidate {
     }
 
     fun bonusNumber(input: String, winningNumbers: List<Int>): Int {
-        return 7
+        val num = input.toIntOrNull() ?: throw throw IllegalArgumentException("[ERROR] Bonus number must be numeric.")
+        require(num in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(winningNumbers.all { it != num }) { "[ERROR] Bonus number must be unique from winning numbers." }
+        return num
     }
 }
