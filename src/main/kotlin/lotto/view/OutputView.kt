@@ -1,9 +1,7 @@
 package lotto.view
 
-import lotto.Lotto
-import lotto.TICKET_COST
-import lotto.UserInput
-import lotto.ticket.TicketPurchase
+import lotto.LottoResult
+import lotto.TicketPurchase
 
 class OutputView {
     companion object {
@@ -15,17 +13,17 @@ class OutputView {
         fun displayBoughtTickets(ticketPurchase: TicketPurchase) {
             val tickets = ticketPurchase.tickets
             for (ticket in tickets) {
-                println(ticket.numbers)
+                println(ticket.getNumbers())
             }
             println()
         }
 
-        fun displayWinningStatistics(lotto: Lotto) {
+        fun displayWinningStatistics(lottoResult: LottoResult) {
             println("Winning statistics")
             println("---")
         }
 
-        fun displayReturnRate(lotto: Lotto) {
+        fun displayReturnRate(lottoResult: LottoResult) {
             println("Total return rate is X%.")
         }
     }
