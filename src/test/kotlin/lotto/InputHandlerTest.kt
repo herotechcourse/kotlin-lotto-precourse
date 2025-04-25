@@ -80,7 +80,7 @@ class InputHandlerTest {
         val exception = assertThrows(IllegalArgumentException::class.java) {
             inputHandler.readWinningNumbers(fakeInput)
         }
-        assertEquals("Please enter not duplicate numbers.", exception.message)
+        assertEquals("Please enter non duplicate numbers.", exception.message)
     }
 
     @Test
@@ -112,4 +112,46 @@ class InputHandlerTest {
         }
         assertEquals("Please enter 6 numbers.", exception.message)
     }
+
+    @Test
+    @DisplayName("When bonus number is valid and not in winning numbers, it should return the number")
+    fun readBonusNumber_validInput() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val fakeInput = { "7" }
+        val result = inputHandler.readBonusNumbers(fakeInput, winningNumbers)
+        assertEquals(7, result)
+    }
+
+    @Test
+    @DisplayName("When bonus number is non-numeric, NumberFormatException should be thrown")
+    fun readBonusNumber_nonNumericInput() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val fakeInput = { "abc" }
+        assertThrows(NumberFormatException::class.java) {
+            inputHandler.readBonusNumbers(fakeInput, winningNumbers)
+        }
+    }
+
+    @Test
+    @DisplayName("When bonus number is out of range, IllegalArgumentException should be thrown")
+    fun readBonusNumber_outOfRange() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val fakeInput = { "46" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readBonusNumbers(fakeInput, winningNumbers)
+        }
+        assertEquals("Please enter number range in 1 to 45.", exception.message)
+    }
+
+    @Test
+    @DisplayName("When bonus number is duplicated with winning numbers, IllegalArgumentException should be thrown")
+    fun readBonusNumber_duplicateWithWinningNumbers() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val fakeInput = { "6" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readBonusNumbers(fakeInput, winningNumbers)
+        }
+        assertEquals("Please enter non duplicate number with winning numbers.", exception.message)
+    }
+
 }

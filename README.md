@@ -22,12 +22,13 @@
   - [ ] Each ticket must consist of 6 unique numbers between 1 and 45.
   - [ ] The numbers must be sorted in ascending order when printed.
 - [x] Receive 6 winning numbers from the user. 
-  - [x] Input must not contain non-numeric values. 
-  - [x] Input must not have duplicates.
-  - [x] Input numbers must be in range (1 ~ 45). 
-  - [x] Input numbers must be 6 numbers.
-- [ ] Receive 1 bonus number from the user.
-  - [ ] The bonus number must not overlap with any of the winning numbers.
+  - [x] Winning numbers must not contain non-numeric values. 
+  - [x] Winning numbers must not have duplicates.
+  - [x] Winning numbers must be in range (1 ~ 45). 
+  - [x] Winning numbers must be 6 numbers.
+- [x] Receive 1 bonus number from the user.
+  - [x] The bonus number must not overlap with any of the winning numbers.
+  - [x] The bonus number must be in range (1 ~ 45).
 - [ ] Compare each lottery ticket to the winning numbers and count how many numbers match.
   - [ ] If there are exactly 5 matches, check whether the ticket contains the bonus number.
 - [ ] Determine the result for each ticket and count the number of tickets for each prize rank.
