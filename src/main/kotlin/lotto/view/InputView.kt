@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
     fun promptAndReadLine(promptMessage: String): String {
-        println(promptMessage)
+        OutputView.message(promptMessage)
         return Console.readLine()
     }
 }

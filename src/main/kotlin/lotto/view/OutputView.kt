@@ -5,15 +5,15 @@ import lotto.model.LottoRank
 import lotto.model.LottoResult
 
 object OutputView {
-    fun printLottery(lottery: List<Lotto>) {
+    fun purchaseLottery(lottery: List<Lotto>) {
         lottery.forEach { println(it) }
     }
 
-    fun printNewline() {
+    fun newline() {
         println()
     }
 
-    fun printStatistics(lottoResult: LottoResult) {
+    fun lottoStatistics(lottoResult: LottoResult) {
         val ranksInOrder = listOf(
             LottoRank.FIFTH,
             LottoRank.FOURTH,
@@ -25,4 +25,18 @@ object OutputView {
             println("${rank.description} – ${lottoResult.getCount(rank)} tickets")
         }
     }
+
+    fun message(message: String) {
+        println(message)
+    }
+
+    fun purchaseCount(count: Int) {
+        println("You have purchased $count tickets.")
+    }
+
+
+    fun profitRate(profitRate: Double) {
+        println("Total return rate is $profitRate%.")
+    }
+
 }

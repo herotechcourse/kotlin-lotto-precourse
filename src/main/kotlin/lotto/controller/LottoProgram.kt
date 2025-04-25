@@ -16,23 +16,22 @@ class LottoProgram {
     fun run() {
         val purchaseAmount = readValidPurchaseAmount()
         val lottoCount = purchaseAmount / 1000
-        OutputView.printNewline()
+        OutputView.newline()
 
-        println("You have purchased $lottoCount tickets.")
+        OutputView.purchaseCount(lottoCount)
         val lottery = LottoIssuer.execute(lottoCount)
         val lottoStorage = LottoStorage(lottery)
-        OutputView.printLottery(lottoStorage.getAll())
+        OutputView.purchaseLottery(lottoStorage.getAll())
 
-        OutputView.printNewline()
+        OutputView.newline()
 
         val winningLotto = readWinningLotto()
-        OutputView.printNewline()
+        OutputView.newline()
 
-        println("Winning Statistics\n---")
         val lottoResult = LottoResult(lottoStorage, winningLotto)
-
-        OutputView.printStatistics(lottoResult)
-        println("Total return rate is ${lottoResult.calculateProfitRate(purchaseAmount)}%.")
+        OutputView.message("Winning Statistics\n---")
+        OutputView.lottoStatistics(lottoResult)
+        OutputView.profitRate(lottoResult.calculateProfitRate(purchaseAmount))
     }
 }
 
@@ -58,6 +57,7 @@ fun validateBonusNumber(input: String) {
 
 fun readWinningLotto(): WinningLotto {
     val winningLotto = readValidLotto()
+    OutputView.newline()
     val finalWinningLotto = readValidBonusNumber(winningLotto)
     return finalWinningLotto
 }
