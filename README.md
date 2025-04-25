@@ -4,8 +4,8 @@
 ## ✅ Feature List
 
 ### 1. Purchase Flow
-- [ ] Prompt user to input a purchase amount.
-- [ ] Validate that the amount is divisible by 1,000 KRW.
+- [x] Prompt user to input a purchase amount.
+- [x] Validate that the amount is divisible by 1,000 KRW.
 - [ ] Calculate the number of tickets to be issued.
 - [ ] Generate the correct number of tickets.
 
@@ -16,10 +16,10 @@
 - [ ] Display all generated tickets after purchase.
 
 ### 3. Winning Numbers Input
-- [ ] Prompt user to input 6 unique winning numbers (comma-separated).
-- [ ] Validate numbers are in range [1, 45] and unique.
-- [ ] Prompt user to input 1 bonus number.
-- [ ] Validate bonus number is unique and in range.
+- [x] Prompt user to input 6 unique winning numbers (comma-separated).
+- [x] Validate numbers are in range [1, 45] and unique.
+- [x] Prompt user to input 1 bonus number.
+- [x] Validate bonus number is unique and in range.
 
 ### 4. Result Calculation
 - [ ] Compare each ticket to the winning numbers.
@@ -37,7 +37,7 @@
 - [ ] Calculate and display profit rate (rounded to 1 decimal place).
 
 ### 6. Input Validation & Error Handling
-- [ ] Throw `IllegalArgumentException` or `IllegalStateException` for invalid inputs.
+- [x] Throw `IllegalArgumentException` or `IllegalStateException` for invalid inputs.
 - [ ] Re-prompt user on invalid input.
 - [ ] Display all error messages with prefix `[ERROR]`.
 
