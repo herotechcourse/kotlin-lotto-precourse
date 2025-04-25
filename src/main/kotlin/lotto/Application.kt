@@ -3,6 +3,7 @@ package lotto
 import lotto.domain.WinningNumbers
 import lotto.service.LottoGameService
 import lotto.service.LottoMachine
+import lotto.service.ProfitCalculator
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -24,8 +25,9 @@ fun main() {
 
         val gameService = LottoGameService()
         val resultMap = gameService.evaluateTickets(tickets, result)
+        val profitRate = ProfitCalculator.calculateProfitRate(resultMap, amount)
 
-        println(resultMap)
+        OutputView.printStatistics(resultMap, profitRate)
     } catch (e: IllegalArgumentException) {
         println(e.message)
     }
