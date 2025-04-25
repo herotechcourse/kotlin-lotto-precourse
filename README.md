@@ -67,12 +67,12 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Lottery Result Evaluation
 
-- [ ]  Compare each purchased ticket against the winning numbers to count matching numbers.
-- [ ]  Classify each ticket into 1st to 5th prize tiers based on the number of matches and the bonus number.
+- [x]  Compare each purchased ticket against the winning numbers to count matching numbers.
+- [x]  Classify each ticket into 1st to 5th prize tiers based on the number of matches and the bonus number.
 
 ### Winning Statistics Output
 
-- [ ]  Display the number of tickets in each prize tier.
+- [x]  Display the number of tickets in each prize tier.
 
 ### Profit Rate Calculation and Output
 

@@ -1,9 +1,7 @@
 package lotto.controller
 
 import lotto.Lotto
-import lotto.model.LottoIssuer
-import lotto.model.LottoStorage
-import lotto.model.WinningLotto
+import lotto.model.*
 import lotto.validator.InputValidator
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -27,7 +25,16 @@ class LottoProgram {
         OutputView.printLottery(lottoStorage.getAll())
         println("")
 
-        val finalWinningLotto = readWinningLotto()
+        val winningLotto = readWinningLotto()
+        println("Winning Statistics\n---")
+        val lottoResult = LottoResult(lottoStorage, winningLotto)
+
+        println("3 Matches (5,000 KRW) – ${lottoResult.getCount(LottoRank.FIFTH)} tickets")
+        println("4 Matches (50,000 KRW) – ${lottoResult.getCount(LottoRank.FOURTH)} tickets")
+        println("5 Matches (1,500,000 KRW) – ${lottoResult.getCount(LottoRank.THIRD)} tickets")
+        println("5 Matches + Bonus Ball (30,000,000 KRW) – ${lottoResult.getCount(LottoRank.SECOND)} tickets")
+        println("6 Matches (2,000,000,000 KRW) – ${lottoResult.getCount(LottoRank.FIRST)} tickets")
+
     }
 }
 
