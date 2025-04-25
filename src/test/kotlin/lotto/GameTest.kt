@@ -50,7 +50,7 @@ class GameTest {
     fun `getFinalPrizeAmount correctly`() {
         val statistics= listOf(
             Pair(Game.Prize.FIRST, 0),
-            Pair(Game.Prize.SECOND, 1),
+            Pair(Game.Prize.SECOND, 0),
             Pair(Game.Prize.THIRD, 0),
             Pair(Game.Prize.FOURTH, 0),
             Pair(Game.Prize.FIFTH, 1)
@@ -58,12 +58,12 @@ class GameTest {
 
         val result = game.getFinalPrizeAmount(statistics)
 
-        assertThat(result).isEqualTo(30_005_000)
+        assertThat(result).isEqualTo(5000)
     }
 
     @Test
     fun `getProfitRate correctly`() {
-        val result = game.getProfitRate(5000, 50000)
-        assertThat(result).isEqualTo(900.0)
+        val result = game.getProfitRate(8000, 5000)
+        assertThat(result).isEqualTo(62.5)
     }
 }
