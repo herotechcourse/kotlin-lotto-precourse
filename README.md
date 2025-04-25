@@ -34,6 +34,8 @@
 - [x] 3 or more matches qualify for a prize
 - [x] 2nd prize is for 5 matches + the bonus number
 - [x] Calculate profit rate = (Total Winnings / Purchase Amount) * 100.0
+- [x] Display winning statistics formatted by rank
+- [x] Show total return rate rounded to one decimal place
 
 ### 5️⃣ Exception Handling
 
