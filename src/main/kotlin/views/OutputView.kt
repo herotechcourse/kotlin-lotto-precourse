@@ -19,7 +19,7 @@ class OutputView {
         println("Winning Statistics")
         println("---")
         for ((condition, countAndPrize) in matchMap) {
-            println("${condition.label} - ${countAndPrize.count} tickets")
+            println("${condition.label} – ${countAndPrize.count} tickets")
         }       
     }
 
