@@ -4,7 +4,7 @@ import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.service.LottoManager
 import lotto.models.WinningLotto
-import lotto.models.Lotto
+import lotto.Lotto
 
 fun main() {
     try {

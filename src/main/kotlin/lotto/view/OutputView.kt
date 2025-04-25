@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.models.Lotto
+import lotto.Lotto
 import lotto.models.MatchPrize
 
 class OutputView {

@@ -1,6 +1,6 @@
 package lotto.service
 
-import lotto.models.Lotto
+import lotto.Lotto
 import lotto.models.MatchPrize
 import lotto.models.WinningLotto
 import camp.nextstep.edu.missionutils.Randoms

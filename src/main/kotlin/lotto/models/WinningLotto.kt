@@ -1,6 +1,6 @@
 package lotto.models
 
-import lotto.models.Lotto
+import lotto.Lotto
 
 class WinningLotto(
     val ticket: Lotto,
