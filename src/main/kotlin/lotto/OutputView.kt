@@ -9,14 +9,13 @@ class OutputView() {
         println()
     }
 
-    // format statistics string
     fun formatString(prize: Prize, count: Int): String {
         val matchDescription = if (prize.bonus) {
             "${prize.matchCount} Matches + Bonus Ball"
         } else {
             "${prize.matchCount} Matches"
         }
-        val formattedAmount = "%,d".format(prize.amount) // Format amount with commas
+        val formattedAmount = "%,d".format(prize.amount)
         val ticketText = if (count == 1) "ticket" else "tickets"
             return "$matchDescription ($formattedAmount KRW) - $count $ticketText"
     }
@@ -28,6 +27,6 @@ class OutputView() {
     }
 
     fun printReturnRate(returnRate: Double) {
-        println("Total return rate is $returnRate%")
+        println(String.format("Total return rate is %.2f%%", returnRate))
     }
 }
