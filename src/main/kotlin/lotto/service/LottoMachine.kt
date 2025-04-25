@@ -1,11 +1,11 @@
-package lotto
+package lotto.service
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 class LottoMachine {
 
-    fun generateTckets(amount: Int): List<Lotto>{
-        require(amount % 1000 == 0) { "[ERROR] Amount must be divisible by 1000." }
+    fun generateTickets(amount: Int): List<Lotto>{
         val ticketCount = amount / 1000
         return List(ticketCount) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()

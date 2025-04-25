@@ -1,4 +1,8 @@
-package lotto
+package lotto.service
+
+import lotto.Lotto
+import lotto.domain.Rank
+import lotto.domain.WinningLotto
 
 object LottoStatistics {
     fun calculate(tickets: List<Lotto>, winningLotto: WinningLotto): Map<Rank, Int> {

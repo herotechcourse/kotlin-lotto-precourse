@@ -1,4 +1,6 @@
-package lotto
+package lotto.domain
+
+import lotto.Lotto
 
 class WinningLotto (private val winningNumbers: List<Int>, private val bonusNumber: Int){
     init {

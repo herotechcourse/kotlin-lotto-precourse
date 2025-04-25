@@ -1,4 +1,4 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 
@@ -7,11 +7,17 @@ object InputView {
     fun readPurchaseAmount() : Int {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
-        return input.toIntOrNull()?.takeIf { it >= 1000 && it % 1000 ==0 }
-            ?: throw IllegalArgumentException("[ERROR] Amount must be a positive number divisible by 1000.")
+        val amount = input.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Amount must be a positive number divisible by 1,000.")
+
+        require(amount > 0 && amount % 1000 == 0) {
+            "[ERROR] Amount must be a positive number divisible by 1,000."
+        }
+
+        return amount
     }
 
-    fun readWinningNumber() : List<Int> {
+    fun readWinningNumbers() : List<Int> {
         println("Please enter last week's winning numbers.")
         val input = Console.readLine()
         val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
