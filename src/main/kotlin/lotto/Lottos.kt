@@ -20,7 +20,7 @@ class Lottos(private val values: List<Lotto>) {
     }
 
     private fun calculateTotalPrize(winningLotto: WinningLotto): Money {
-        val totalPrize: Long = matchAll(winningLotto)
+        val totalPrize: Int = matchAll(winningLotto)
             .entries
             .sumOf { (rank, count) -> rank.prize * count }
 

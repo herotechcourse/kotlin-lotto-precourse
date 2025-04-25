@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
 
-    fun readPurchaseAmount(): Long {
+    fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
 
-        return Console.readLine().toLong()
+        return Console.readLine().toInt()
     }
 
     fun readWinningNumbers(): List<Int> {

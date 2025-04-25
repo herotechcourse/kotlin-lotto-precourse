@@ -13,7 +13,7 @@ class LottoStoreTest {
     @Test
     fun `returns correct number of Lotto tickets when amount is divisible by 1000`() {
         // Arrange
-        val amount = Money(3000L)
+        val amount = Money(3000)
 
         // Act
         val result: Lottos = sut.sell(amount)

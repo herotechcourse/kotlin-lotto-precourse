@@ -12,10 +12,9 @@ class MoneyTest {
     @ParameterizedTest
     @CsvSource(
         "-1000, Money must not be negative.",
-        "1500, Money must be divisible by",
-        "2_147_484_000, Money must not exceed"
+        "1500, Money must be divisible by"
     )
-    fun `throws exception for invalid amounts`(amount: Long, message: String) {
+    fun `throws exception for invalid amounts`(amount: Int, message: String) {
         // Act
         // Assert
         assertThatThrownBy { Money(amount) }
@@ -25,7 +24,7 @@ class MoneyTest {
 
     @ParameterizedTest
     @CsvSource("0, true", "2000, false")
-    fun `isZero returns boolean`(amount: Long, expected: Boolean) {
+    fun `isZero returns boolean`(amount: Int, expected: Boolean) {
         // Arrange
         val money = Money(amount)
 
@@ -75,7 +74,7 @@ class MoneyTest {
         val result: Money = Money.fromTicketCount(count)
 
         // Assert
-        assertThat(result).isEqualTo(Money(1000L * count))
+        assertThat(result).isEqualTo(Money(1000 * count))
     }
 
 }
