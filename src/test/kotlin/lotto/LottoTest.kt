@@ -43,6 +43,16 @@ class LottoTest {
     }
 
     @Test
+    fun `throws an exception when bonus number is not between 1 and 45`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = -1
+
+        assertThrows<IllegalArgumentException> {
+            lotto.validateNumber(bonusNumber)
+        }
+    }
+
+    @Test
     fun `throws an exception when bonus number duplicate with winning numbers`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = 4
@@ -53,7 +63,7 @@ class LottoTest {
     }
 
     @Test
-    fun `no exception when bonus number not duplicate with winning numbers`() {
+    fun `no exception when bonus number is between 1 and 45 and not duplicate with winning numbers`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = 10
 
