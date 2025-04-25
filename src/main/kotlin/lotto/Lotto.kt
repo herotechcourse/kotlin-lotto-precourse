@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.domain.LottoMatchResult
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
@@ -12,4 +14,11 @@ class Lotto(private val numbers: List<Int>) {
     fun numberOfMatches(winningNumbers: List<Int>) : Int = numbers.count { it in winningNumbers}
 
     fun containsBonus(bonusNumber: Int): Boolean = bonusNumber in numbers
+
+    fun toMatchResult(winningNumbers: List<Int>, bonusNumber: Int): LottoMatchResult {
+        return LottoMatchResult(
+            matchCount = numberOfMatches(winningNumbers),
+            bonusMatched = containsBonus(bonusNumber)
+        )
+    }
 }
