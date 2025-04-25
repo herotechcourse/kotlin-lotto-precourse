@@ -12,21 +12,17 @@ object OutputView {
         println()
     }
 
-    fun printPrizeStatics(prizeList: MutableList<Prize>) {
+    fun printPrizeStatics(prizeList: MutableList<Prize>, prize: Int, purchaseAmount: Int) {
+        var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
         println()
         println("Winning Statistics")
         println("---")
         println("3 Matches (5,000 KRW) – ${prizeList.count { it == Prize.FifthPrize }} tickets")
         println("4 Matches (50,000 KRW) – ${prizeList.count { it == Prize.FourthPrize }} tickets")
-        println("5 Matches (1,500,000 KRW) - ${prizeList.count { it == Prize.ThirdPrize }} tickets")
-        println("5 Matches + Bonus Ball (30,000,000 KRW)- ${prizeList.count { it == Prize.SecondPrize }} tickets")
-        println("6 Matches (2,000,000,000 KRW) - ${prizeList.count { it == Prize.FirstPrize }} tickets")
+        println("5 Matches (1,500,000 KRW) – ${prizeList.count { it == Prize.ThirdPrize }} tickets")
+        println("5 Matches + Bonus Ball (30,000,000 KRW) – ${prizeList.count { it == Prize.SecondPrize }} tickets")
+        println("6 Matches (2,000,000,000 KRW) – ${prizeList.count { it == Prize.FirstPrize }} tickets")
+        println("Total return rate is %.1f%%.".format(rate))
     }
-
-    fun calculatePrintRate(prize: Int, purchaseAmount: Int) {
-        var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
-        println("Total return rate is %.1f%%".format(rate))
-    }
-
 
 }
