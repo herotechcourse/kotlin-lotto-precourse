@@ -8,6 +8,7 @@ import lotto.model.LottoResult
 object OutputView {
     fun purchaseLottery(lottery: List<Lotto>) {
         lottery.forEach { println(it) }
+        newline()
     }
 
     fun newline() {
@@ -32,6 +33,7 @@ object OutputView {
     }
 
     fun purchaseCount(count: Int) {
+        newline()
         println(Messages.Output.PURCHASE_COUNT.format(count))
     }
 

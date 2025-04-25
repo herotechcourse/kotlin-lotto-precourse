@@ -89,14 +89,12 @@ fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
 
 fun issueLottery(purchaseAmount: Int): LottoStorage {
     val lottoCount = purchaseAmount / Constants.LOTTO_PURCHASE_UNIT
-    OutputView.newline()
     OutputView.purchaseCount(lottoCount)
 
     val lottery = LottoIssuer.execute(lottoCount)
     val lottoStorage = LottoStorage(lottery)
 
     OutputView.purchaseLottery(lottoStorage.getAll())
-    OutputView.newline()
     return lottoStorage
 }
 
