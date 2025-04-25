@@ -1,12 +1,12 @@
-package lotto.domain
+package lotto.parser
 
 class WinningNumbersInputParser {
     fun parse(input: String): List<Int> {
         val tokens = input.split(",").map { it.trim() }
-        require(tokens.size == 6) {INVALID_WINNING_NUMBERS_SIZE }
+        require(tokens.size == 6) { INVALID_WINNING_NUMBERS_SIZE }
 
         val numbers = tokens.map {
-            require(it.toIntOrNull() != null) {INVALID_NUMBER_FORMAT}
+            require(it.toIntOrNull() != null) { INVALID_NUMBER_FORMAT }
             it.toInt()
         }
 

@@ -1,8 +1,8 @@
-package lotto.domain
+package lotto.parser
 
 class LottoAmountInputParser {
     fun parseToInt(input: String): Int{
-        require(input.toIntOrNull() != null) {INVALID_INPUT}
+        require(input.toIntOrNull() != null) { INVALID_INPUT }
         return input.toInt()
     }
 

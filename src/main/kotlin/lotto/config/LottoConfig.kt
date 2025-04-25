@@ -1,6 +1,9 @@
 package lotto.config
 
 import lotto.domain.*
+import lotto.parser.BonusNumberInputParser
+import lotto.parser.LottoAmountInputParser
+import lotto.parser.WinningNumbersInputParser
 import lotto.view.InputView
 import lotto.view.OutputView
 

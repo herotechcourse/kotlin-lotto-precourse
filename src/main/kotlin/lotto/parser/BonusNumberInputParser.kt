@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto.parser
+
+import lotto.domain.BonusNumber
 
 class BonusNumberInputParser {
     fun parse(input: String): BonusNumber {
