@@ -76,9 +76,9 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ### Profit Rate Calculation and Output
 
-- [ ]  Calculate the total winning amount.
-- [ ]  Calculate the profit rate based on the total purchase amount.
-- [ ]  Round the profit rate to one decimal place and display it as a percentage.
+- [x]  Calculate the total winning amount.
+- [x]  Calculate the profit rate based on the total purchase amount.
+- [x]  Round the profit rate to one decimal place and display it as a percentage.
 
 <br/>
 

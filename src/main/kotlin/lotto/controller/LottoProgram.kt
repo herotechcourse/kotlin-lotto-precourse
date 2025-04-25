@@ -34,7 +34,7 @@ class LottoProgram {
         println("5 Matches (1,500,000 KRW) – ${lottoResult.getCount(LottoRank.THIRD)} tickets")
         println("5 Matches + Bonus Ball (30,000,000 KRW) – ${lottoResult.getCount(LottoRank.SECOND)} tickets")
         println("6 Matches (2,000,000,000 KRW) – ${lottoResult.getCount(LottoRank.FIRST)} tickets")
-
+        println("Total return rate is ${lottoResult.calculateProfitRate(purchaseAmount)}%")
     }
 }
 

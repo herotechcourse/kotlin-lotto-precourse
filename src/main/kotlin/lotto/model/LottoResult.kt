@@ -24,4 +24,16 @@ class LottoResult(
         return rankCountMap.getOrDefault(rank, 0)
     }
 
+    private fun calculateTotalPrize(): Int {
+        return rankCountMap.entries.sumOf { (rank, count) -> rank.prize * count }
+    }
+
+    fun calculateProfitRate(purchaseAmount: Int): Double {
+        val totalPrize = calculateTotalPrize()
+        if (purchaseAmount == 0 || totalPrize == 0) {
+            return 0.0
+        }
+        val rawRate = (totalPrize.toDouble() / purchaseAmount) * 100
+        return String.format("%.1f", rawRate).toDouble()
+    }
 }
