@@ -24,11 +24,11 @@ class OutputView {
                 .forEach{ rank->
                     val count = winningStats.stats.getOrDefault(rank, 0)
                     val matchDescription = when (rank) {
-                        WinningRank.FIFTH -> "3 Matches (${Constants.FORMATTED_PRIZE_FIFTH} KRW)"
-                        WinningRank.FOURTH -> "4 Matches (${Constants.FORMATTED_PRIZE_FOURTH} KRW)"
-                        WinningRank.THIRD -> "5 Matches (${Constants.FORMATTED_PRIZE_THIRD} KRW)"
-                        WinningRank.SECOND -> "5 Matches + Bonus Ball (${Constants.FORMATTED_PRIZE_SECOND} KRW)"
-                        WinningRank.FIRST -> "6 Matches (${Constants.FORMATTED_PRIZE_FIRST} KRW)"
+                        WinningRank.FIFTH -> "3 Matches (${Constants.FORMATTED_PRIZE_FIFTH} ${Constants.CURRENCY_UNIT})"
+                        WinningRank.FOURTH -> "4 Matches (${Constants.FORMATTED_PRIZE_FOURTH} ${Constants.CURRENCY_UNIT})"
+                        WinningRank.THIRD -> "5 Matches (${Constants.FORMATTED_PRIZE_THIRD} ${Constants.CURRENCY_UNIT})"
+                        WinningRank.SECOND -> "5 Matches + Bonus Ball (${Constants.FORMATTED_PRIZE_SECOND} ${Constants.CURRENCY_UNIT})"
+                        WinningRank.FIRST -> "6 Matches (${Constants.FORMATTED_PRIZE_FIRST} ${Constants.CURRENCY_UNIT})"
                         else -> ""
                     }
                     println("$matchDescription - $count tickets")

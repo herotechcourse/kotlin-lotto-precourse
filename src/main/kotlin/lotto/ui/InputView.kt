@@ -44,10 +44,10 @@ class InputView {
 
         private fun validatePurchaseAmount(amount: Int) {
             if (amount < Constants.MIN_PURCHASE_AMOUNT) {
-                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be at least ${Constants.MIN_PURCHASE_AMOUNT} KRW.")
+                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be at least ${Constants.MIN_PURCHASE_AMOUNT} ${Constants.CURRENCY_UNIT}.")
             }
             if (amount % Constants.PURCHASE_AMOUNT_UNIT != 0) {
-                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be in units of ${Constants.PURCHASE_AMOUNT_UNIT} KRW.")
+                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Purchase amount must be in units of ${Constants.PURCHASE_AMOUNT_UNIT} ${Constants.CURRENCY_UNIT}.")
             }
         }
 
