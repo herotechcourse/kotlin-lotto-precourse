@@ -33,7 +33,7 @@ fun validatePurchaseAmount(input: String) {
 
 fun validateWinningNumbers(input: String) {
     InputValidator.notEmpty(input)
-    val numbers = input.split(",").map { it.trim() }
+    val numbers = input.split(Constants.SEPARATOR).map { it.trim() }
     InputValidator.allAreNumbers(numbers)
 }
 
@@ -66,7 +66,7 @@ fun readValidLotto(): Lotto {
         try {
             val input = InputView.promptAndReadLine(Messages.Prompt.WINNING_NUMBERS)
             validateWinningNumbers(input)
-            val numbers = input.split(",").map { it.trim().toInt() }
+            val numbers = input.split(Constants.SEPARATOR).map { it.trim().toInt() }
             return Lotto(numbers)
         } catch (e: IllegalArgumentException) {
             OutputView.error(e.message)
