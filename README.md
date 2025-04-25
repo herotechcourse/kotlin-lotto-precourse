@@ -18,3 +18,6 @@
   - [x] Winning Lotto
   - [x] match lotto ticket, winning lotto and get a result <Rank, Lotto>
   - [x] profit
+- [] InputView
+  - [x] ask purchase amount
+  - [x] ask bonus number
