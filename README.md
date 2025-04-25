@@ -25,9 +25,13 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 3. Input Winning Numbers
-- [ ] Users input **6 numbers**, separated by commas.
-- [ ] All numbers must be **between 1 and 45** and **must not contain duplicates**.
-- [ ] If the input is malformed, contains duplicates, or includes numbers out of range, an error is shown and the user is prompted again.
+- [x] Users input **6 numbers**, separated by commas. : `WinningNumbers`
+- [x] All numbers must be **between 1 and 45** and **must not contain duplicates**.
+- [x] `WinningNumbers.of()` validates the input and creates a value object of 6 numbers. Each number is wrapped with `LottoNumber`.
+- [x] Throws an error if:
+  - The number of inputs is not 6
+  - There are duplicates
+  - Numbers are not within 1–45
 - Error format: `[ERROR] Invalid winning numbers.`
 
 ---
