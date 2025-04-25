@@ -28,9 +28,34 @@ fun main() {
     val bonusNumber = Console.readLine()?.toIntOrNull()
         ?: throw IllegalArgumentException("The purchase amount should be an integer.")
     validateBonusNumber(bonusNumber)
+    val ticketMatchesMap = mutableMapOf(
+        "match3" to 0,
+        "match4" to 0,
+        "match5" to 0,
+        "match5andBonus" to 0,
+        "match6" to 0,
+    )
 
     println("Winning Statistics")
     println("---")
+    for (ticket in tickets) {
+        val matches = ticket.calculateMatches(winNumbers.map { it.toInt() })
+        when (matches) {
+            3 -> ticketMatchesMap["match3"] = ticketMatchesMap["match3"]!! + 1;
+            4 -> ticketMatchesMap["match4"] = ticketMatchesMap["match4"]!! + 1;
+            5 -> ticketMatchesMap["match5"] = ticketMatchesMap["match5"]!! + 1;
+            6 -> ticketMatchesMap["match6"] = ticketMatchesMap["match6"]!! + 1;
+        }
+    }
+
+    println(
+        "3 Matches (5,000 KRW) – ${ticketMatchesMap["match3"]} tickets\n" +
+                "4 Matches (50,000 KRW) – ${ticketMatchesMap["match4"]} tickets\n" +
+                "5 Matches (1,500,000 KRW) – ${ticketMatchesMap["match5"]} tickets\n" +
+                "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets\n" +
+                "6 Matches (2,000,000,000 KRW) – ${ticketMatchesMap["match6"]} tickets"
+    )
+    println("Total return rate is ")
 }
 
 fun getNumberOfTickets(sum: Int): Int {
