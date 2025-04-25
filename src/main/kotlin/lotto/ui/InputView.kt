@@ -27,14 +27,14 @@ class InputView {
     }
 
     fun getWinningNumbers(): Lotto {
-        return readValidatedInput("Please enter the last week's winning numbers.") {
+        return readValidatedInput("\nPlease enter the last week's winning numbers.") {
             val winningNumbers = parseWinningNumbers(Console.readLine())
             Lotto(winningNumbers)
         }
     }
 
     fun getBonusNumber(winningNumbers: Lotto): Int {
-        return readValidatedInput("Please enter the bonus number."){
+        return readValidatedInput("\nPlease enter the bonus number."){
             val number = Console.readLine().toIntOrNull()
                 ?: throw IllegalArgumentException("${Constants.ERROR_PREFIX} Bonus number must be number.")
             validateBonusNumber(number, winningNumbers.getNumbers())
