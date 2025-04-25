@@ -1,12 +1,23 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 const val TICKET_PRICE = 1000;
 
 fun main() {
-    // Ticket Purchase Flow
-    val amount: Int = promptAndTakeAmount();
+    // Lotto Purchase Flow
+    val amount: Int = promptAndTakeAmount()
+    val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
+}
+
+fun generateLottos(count: Int) : List<Lotto> =
+    List(count) { generateLotto() }
+
+fun generateLotto() : Lotto {
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return Lotto(numbers)
 }
 
 fun promptAndTakeAmount() : Int {
