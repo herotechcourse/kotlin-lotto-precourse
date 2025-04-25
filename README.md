@@ -37,9 +37,9 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 4. Input Bonus Number
-- [ ] Users input **a single bonus number**.
-- [ ] It must be **between 1 and 45** and must **not duplicate any of the winning numbers**.
-- [ ] If the bonus number is invalid or duplicated, an error is shown and the user is prompted again.
+- [x] Users input a single bonus number. : `BonusNumber`
+- [x] It must be between 1 and 45 and must not duplicate any of the winning numbers.
+- [x] Throws an error if the bonus number is invalid or duplicated.
 - Error format: `[ERROR] Invalid bonus number.`
 
 ---

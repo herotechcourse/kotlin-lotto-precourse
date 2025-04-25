@@ -8,7 +8,9 @@ class WinningNumbers(private val numbers: List<LottoNumber>) {
     }
 
     fun matchCount(lotto: Lotto): Int {
-        return lotto.getSortedNumbers().count { number -> numbers.map { it.number }.contains(number) }
+        return lotto.getSortedNumbers().count { number ->
+            numbers.any { it.number == number }
+        }
     }
 
     fun contains(number: LottoNumber): Boolean {
@@ -20,9 +22,13 @@ class WinningNumbers(private val numbers: List<LottoNumber>) {
     companion object {
         private const val SIZE = 6
 
-        fun of(rawNumbers: List<Int>): WinningNumbers {
+        fun from(rawNumbers: List<Int>): WinningNumbers {
             val lottoNumbers = rawNumbers.map { LottoNumber(it) }
             return WinningNumbers(lottoNumbers)
         }
+    }
+
+    override fun toString(): String {
+        return numbers.map { it.number }.sorted().toString()
     }
 }
