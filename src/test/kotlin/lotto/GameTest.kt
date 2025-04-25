@@ -60,5 +60,10 @@ class GameTest {
 
         assertThat(result).isEqualTo(30_005_000)
     }
-    // TODO tests for getProfitRate
+
+    @Test
+    fun `getProfitRate correctly`() {
+        val result = game.getProfitRate(5000, 50000)
+        assertThat(result).isEqualTo(900.0)
+    }
 }
