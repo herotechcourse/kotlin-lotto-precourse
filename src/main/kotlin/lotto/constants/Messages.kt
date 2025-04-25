@@ -4,7 +4,7 @@ object Messages {
 
     object Prompt {
         const val PURCHASE_AMOUNT = "Please enter the purchase amount."
-        const val WINNING_NUMBERS = "Please enter the winning numbers."
+        const val WINNING_NUMBERS = "Please enter last week's winning numbers."
         const val BONUS_NUMBER = "Please enter the bonus number."
     }
 
