@@ -36,5 +36,30 @@ out/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
+### Node.js ###
+node_modules/
+dist/
+.cache/
+.nyc_output/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+### Git hooks ###
+.husky/
+
+### Environment files ###
+.env
+.env.*.local
+
+### Optional - remove comment if you want to ignore lock files ###
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+### macOS ###
 .DS_Store
+.Spotlight-V100
+.Trashes
