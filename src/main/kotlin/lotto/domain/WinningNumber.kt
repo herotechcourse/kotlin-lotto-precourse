@@ -1,6 +1,9 @@
 package lotto.domain
 
-class WinningNumber(private val numbers: List<Int>) {
+import lotto.Lotto
+
+class WinningNumber(private val numbers: List<Int>, private val bonusNumber: Int) {
+
     // Validates the user input for last week lotto winning numbers
     init {
         require(numbers.size == REQUIRED_SIZE) {
@@ -12,6 +15,12 @@ class WinningNumber(private val numbers: List<Int>) {
         require(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) {
             "[ERROR] Winning numbers must be between $MIN_NUMBER and $MAX_NUMBER."
         }
+    }
+
+    fun match(lotto: Lotto): Rank {
+        val matchCount = lotto.getNumbers().count { it in numbers }
+        val hasBonus = lotto.getNumbers().contains(bonusNumber)
+        return Rank.valueOf(matchCount, hasBonus)
     }
 
     /*

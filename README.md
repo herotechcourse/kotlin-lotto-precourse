@@ -30,9 +30,9 @@
 
 ### 4️⃣ Result Check
 
-- [ ] Determine the prize rank based on the number of matching numbers
-- [ ] 3 or more matches qualify for a prize
-- [ ] 2nd prize is for 5 matches + the bonus number
+- [x] Determine the prize rank based on the number of matching numbers
+- [x] 3 or more matches qualify for a prize
+- [x] 2nd prize is for 5 matches + the bonus number
 - [ ] Calculate profit rate = (Total Winnings / Purchase Amount) * 100.0
 
 ### 5️⃣ Exception Handling
@@ -51,3 +51,12 @@
 
 - [ ] All error messages must start with `[ERROR]`  
   → ✅ Exception validation added,  Message prefix application remaining
+
+### 🔍 Test Coverage
+
+- [x] Lotto class validation
+- [x] Money class validation
+- [x] Input validation (InputView + InputValidator)
+- [x] WinningNumber validation
+- [x] WinningNumber.match() → Retrun Rank
+- [ ] WinningResult → Rank-wise statistics test
