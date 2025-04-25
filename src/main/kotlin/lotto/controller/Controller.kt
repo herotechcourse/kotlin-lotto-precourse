@@ -7,18 +7,24 @@ import lotto.WinningLotto
 import lotto.view.InputView
 import lotto.view.OutputView
 
-class Controller(private val store: LottoStore) {
+class Controller(
+    private val store: LottoStore,
+    private val inputView: InputView,
+    private val outputView: OutputView
+) {
 
     fun run() {
-        val lottos: Lottos = retry { store.sell(InputView.readPurchaseAmount()) }
-        OutputView.printLottos(lottos)
+        val lottos: Lottos = retry { store.sell(inputView.readPurchaseAmount()) }
+        outputView.printLottoTickets(lottos)
 
-        val winningNumbers: Lotto = retry { Lotto(InputView.readWinningNumbers()) }
-        val winningLotto: WinningLotto = retry { WinningLotto(winningNumbers, InputView.readBonusNumber()) }
+        val winningNumbers: Lotto = retry { Lotto(inputView.readWinningNumbers()) }
+        val winningLotto: WinningLotto = retry { WinningLotto(winningNumbers, inputView.readBonusNumber()) }
 
-        OutputView.printFinalReport(rankCounts = lottos.matchAll(winningLotto), profitRate = lottos.profitRate(winningLotto))
+        outputView.printFinalReport(
+            rankCounts = lottos.matchAll(winningLotto),
+            profitRate = lottos.profitRate(winningLotto)
+        )
     }
-
 
     private fun <T> retry(action: () -> T): T {
         while (true) {
