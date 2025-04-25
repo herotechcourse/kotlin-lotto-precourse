@@ -13,3 +13,8 @@
     - [x] price
 - [] Lotto Ticket Machine
   - [x] buy Lotto 
+- [] Game
+  - [x] Lotto Ticket
+  - [x] Winning Lotto
+  - [x] match lotto ticket, winning lotto and get a result <Rank, Lotto>
+  - [x] profit
