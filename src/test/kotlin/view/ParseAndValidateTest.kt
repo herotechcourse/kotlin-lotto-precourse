@@ -64,6 +64,58 @@ class ParseAndValidateTest {
         assertEquals(purchaseAmount("8000"), 8000)
     }
 
+    @Test
+    fun `exception test, invalid winning numbers input, not a number`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("1,abc")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid winning numbers input, empty string`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid winning numbers input, blank string`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("         ")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid winning numbers input, string`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("abcdf")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid winning numbers input, one of numbers is grater than 45`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("1,2222,3,4,5,6")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid winning numbers input, one of numbers is negative`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("1,2,3,4,-5,6")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `parse valid winning numbers input`() {
+        assertThat(winningNumbers("1,2,3,4,5,6")).containsExactlyElementsOf(listOf(1, 2, 3, 4, 5, 6))
+    }
+
+    @Test
+    fun `parse valid winning numbers input with white spaces`() {
+        assertThat(winningNumbers("1,2, 3 ,  4 ,5,6")).containsExactlyElementsOf(listOf(1, 2, 3, 4, 5, 6))
+    }
+
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
     }
