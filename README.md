@@ -2,8 +2,11 @@
 
 Implement a simple lottery ticket machine with the following rules:
 
-The user enters the purchase amount, and the program issues as many lottery tickets as the budget allows.
-Each ticket costs 1,000 KRW, so the amount must be divisible by 1,000.
+- [x] The user enters the purchase amount
+  - [x] Each ticket costs 1,000 KRW
+  - [x] so the amount must be divisible by 1,000.
+- [x] the program issues as many lottery tickets as the budget allows.
+
 Each lottery ticket consists of 6 unique random numbers.
 Numbers must be in the range from 1 to 45.
 The user then enters the winning numbers and a bonus number.
