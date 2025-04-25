@@ -50,7 +50,8 @@ class ApplicationTest : NsTest() {
     }
 
     override fun runMain() {
-        main()
+        val application = Application()
+        application.main()
     }
 
     companion object {
