@@ -12,6 +12,9 @@
 8. Follow Kotlin coding conventions and low nesting (≤ 2 levels)
 9. Unit tests using JUnit 5 and AssertJ (excluding UI logic)
 
+
+## App Step-by-Step
+
 ### step 1: Initialise the application entry point
 - `fun main()` is the standard entry point in kotlin
 - `LottoGame().run()` creates an instance of the game and runs it.
