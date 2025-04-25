@@ -6,9 +6,9 @@
 
 ### 📥 Input
 
-- [ ] Input amount of money to purchase lottery tickets
-- [ ] Input last week's winning numbers (comma-separated)
-- [ ] Input bonus number (single number)
+- [x] Input amount of money to purchase lottery tickets
+- [x] Input last week's winning numbers (comma-separated)
+- [x] Input bonus number (single number)
 
 ---
 
