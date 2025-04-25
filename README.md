@@ -30,3 +30,4 @@
 - [] % format
 - [] bonus ball format
 - [] separate controller logic
+- [] separate Lotto Machine with Interface
