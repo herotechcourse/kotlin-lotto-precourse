@@ -6,7 +6,7 @@ class InputView {
     fun readPurchaseAmount(): Int {
         repeat(MAX_RETRY) {
             try {
-                println("Please enter the purchase amount:")
+                println("\nPlease enter the purchase amount:")
                 val input = Console.readLine().trim()
                 return parseAmount(input)
             } catch (e: IllegalArgumentException) {
@@ -31,7 +31,7 @@ class InputView {
     fun readWinningNumbers(): List<Int> {
         repeat(MAX_RETRY) {
             try {
-                println("Please enter the winning numbers (comma-separated):")
+                println("\nPlease enter the winning numbers (comma-separated):")
                 val input = Console.readLine()
                 return parseWinningNumbers(input)
             } catch (e: IllegalArgumentException) {
@@ -52,7 +52,7 @@ class InputView {
     fun readBonusNumber(): Int {
         repeat(MAX_RETRY) {
             try {
-                println("Please enter a bonus number:")
+                println("\nPlease enter a bonus number:")
                 val input = Console.readLine()
                 return parseBonusNumber(input)
             } catch (e: IllegalArgumentException) {
