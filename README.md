@@ -111,15 +111,18 @@
 ## Int Range overflow
 
 I got negative value, even though I don't have minus calc
-I realized overflow and changed to Long Type
+
+I realized this is Integer overflow, and I changed to Long Type
 
 ## Lotto Model
 
 I read that I can't add any instance variables in Lotto Class
 So I should change my lotto class logic
+
 Firstly I thought Winning Lotto Ticket is same as simple Lotto Ticket, But I realized Wining Lotto is kind
 of abstract thing. It's not a ticket, it is just number of list and bonus number set.
-So I decided to make WinningLotto Class in model package (can I?)
+
+So I decided to make WinningLotto Class in model package
 
 ## Validator
 
@@ -132,5 +135,6 @@ I considered a lot. And decided to separate into Syntax Error Parser and Logical
 I just used Exception to catch error, because I don't know what error occurs when `require` statement is wrong.
 Then I noticed that if `require` statement is wrong it occurs `IllegalArgumentException`.
 So I changed Exception to `IllegalArgumentException`
+
 But one thing I am wondering - if we're just catching the error and
 printing a message like "[ERROR] ...", why do we specifically throw an `IllegalArgumentException`?
