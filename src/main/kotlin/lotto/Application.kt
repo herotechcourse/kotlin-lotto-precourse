@@ -33,17 +33,17 @@ class Application {
         }
     }
 
-    private fun generateLottoTickets(purchaseAmount: Long): List<List<Int>> {
+    private fun generateLottoTickets(purchaseAmount: Long): List<Lotto> {
         val quantityOfTickets = (purchaseAmount / 1000).toInt()
-        val tickets = mutableListOf<List<Int>>()
-        for (i in 0 until quantityOfTickets) {
+        val tickets = mutableListOf<Lotto>()
+        repeat (quantityOfTickets) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-            tickets.add(numbers)
+            tickets.add(Lotto(numbers))
         }
         return tickets
     }
 
-    private fun displayTickets(tickets: List<List<Int>>) {
+    private fun displayTickets(tickets: List<Lotto>) {
         println("\nYou have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
             println(ticket)
