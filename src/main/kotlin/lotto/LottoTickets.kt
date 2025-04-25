@@ -6,12 +6,10 @@ class LottoTickets(private val tickets: List<Lotto>) {
         require(tickets.isNotEmpty()) { "LottoTickets must have at least 1 ticket." }
     }
 
-    fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> {
-        return tickets
-            .map { winningLotto.match(it) }
-            .groupingBy { it }
-            .eachCount()
-    }
+    fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> = tickets
+        .map { winningLotto.match(it) }
+        .groupingBy { it }
+        .eachCount()
 
     fun profitRate(winningLotto: WinningLotto): Double {
         val totalPrize: Prize = calculateTotalPrize(winningLotto)
@@ -20,13 +18,10 @@ class LottoTickets(private val tickets: List<Lotto>) {
         return (totalPrize / cost) * PERCENT
     }
 
-    private fun calculateTotalPrize(winningLotto: WinningLotto): Prize {
-        val totalPrize: Int = matchAll(winningLotto)
-            .entries
-            .sumOf { (rank, count) -> rank.prize * count }
-
-        return Prize(totalPrize.toLong())
-    }
+    private fun calculateTotalPrize(winningLotto: WinningLotto): Prize = matchAll(winningLotto)
+        .entries
+        .map { (rank, count) -> rank.prize * count }
+        .fold(Prize.ZERO) { acc, prize -> acc + prize }
 
     fun size(): Int = tickets.size
 

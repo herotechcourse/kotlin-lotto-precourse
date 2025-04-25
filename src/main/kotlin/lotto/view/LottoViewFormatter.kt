@@ -31,7 +31,7 @@ object LottoViewFormatter {
 
     private fun Rank.toStatisticsLine(rankCounts: Map<Rank, Int>): String {
         val count = rankCounts[this] ?: 0
-        val formattedPrize = numberFormatter.format(this.prize)
+        val formattedPrize = numberFormatter.format(this.prize.amount)
         val bonusInfo = if (this == Rank.SECOND) "+ Bonus Ball " else ""
 
         return "$matchCount Matches $bonusInfo(${formattedPrize} KRW) – $count tickets"

@@ -1,12 +1,12 @@
 package lotto
 
-enum class Rank(val matchCount: Int, val bonusMatch: Boolean, val prize: Int) {
-    FIRST(6, false, 2_000_000_000),
-    SECOND(5, true, 30_000_000),
-    THIRD(5, false, 1_500_000),
-    FOURTH(4, false, 50_000),
-    FIFTH(3, false, 5_000),
-    NONE(0, false, 0);
+enum class Rank(val matchCount: Int, private val bonusMatch: Boolean, val prize: Prize) {
+    FIRST(6, false, Prize(2_000_000_000)),
+    SECOND(5, true, Prize(30_000_000)),
+    THIRD(5, false, Prize(1_500_000)),
+    FOURTH(4, false, Prize(50_000)),
+    FIFTH(3, false, Prize(5_000)),
+    NONE(0, false, Prize.ZERO);
 
     private fun matches(matchCount: Int, bonusMatch: Boolean): Boolean {
         if (needsBonusMatch()) {

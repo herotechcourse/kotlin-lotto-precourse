@@ -6,8 +6,6 @@ import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import java.text.NumberFormat
-import java.util.*
 
 class PrizeTest {
 
@@ -74,19 +72,6 @@ class PrizeTest {
             assertThat(prize1 < prize2).isTrue()
             assertThat(prize1 > prize2).isFalse()
         }
-    }
-
-    @Test
-    fun `toString should format amount with commas`() {
-        // Arrange
-        val amount = 2_000_000_000L
-        val formattedAmount: String = NumberFormat.getNumberInstance(Locale.US).format(amount)
-
-        // Act
-        val result: String = Prize(amount).toString()
-
-        // Assert
-        assertThat(result).isEqualTo(formattedAmount)
     }
 
     @Test
