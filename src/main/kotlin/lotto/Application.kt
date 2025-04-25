@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 // prize ranks
 enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: Int) {
+    NONE(0, false, 0),
     FIFTH(3, false, 5000),
     FOURTH(4, false, 50000),
     THIRD(5, false, 1500000),
@@ -16,6 +17,7 @@ enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: 
         fun match (matchCount: Int, hasBonus: Boolean): prizeTypes {
             if (matchCount == 5 && hasBonus) {return SECOND}
             return values().first{ it.matchCount == matchCount && !it.hasBonus }
+            // PrizeRank.FIFTH(3, false, 5_000)
         }
     }
 
@@ -58,9 +60,11 @@ fun getTickets (): List<Lotto> {
 fun getWinningNumbers (): List<Int> {
     println("Please enter last week's winning numbers.")
     val inputWinningNumbers = Console.readLine().split(",").map{ it.trim().toIntOrNull() }
-    if (inputWinningNumbers == null || inputWinningNumbers.size !== 6) throw IllegalArgumentException("Please enter 6 valid winning numbers.")
-    require( inputWinningNumbers.all{ it in 1..45}) {"[ERROR] Please enter the correct numbers between 1 to 45."}
-    return inputWinningNumbers
+    if (inputWinningNumbers.any {it == null}) throw IllegalArgumentException("Please enter valid winning numbers.")
+    val winningNumbers = inputWinningNumbers.filterNotNull() // verify each element and then convert the collection type
+    require(winningNumbers.size == 6)  {"[ERROR] There must be 6 winning numbers."}
+    require( winningNumbers.all{ it in 1..45}) {"[ERROR] Please enter the correct numbers between 1 to 45."}
+    return winningNumbers
 }
 
 fun getBonusNumbers (inputNumbers: List<Int>): Int {
@@ -72,14 +76,27 @@ fun getBonusNumbers (inputNumbers: List<Int>): Int {
     return inputBonus
 }
 
-fun match(purchasedtickets: List<Lotto>, inputWinningNumbers: List<Int>, inputBonus: Int){
+// matching result
+fun match(purchasedtickets: List<Lotto>, winningNumbers: List<Int>, inputBonus: Int): Map<prizeTypes, Int> {
+
+    val results = mutableMapOf<prizeTypes, Int>()
+    // empty map
+    // Int = how many tickets match the prize rank
+
+    prizeTypes.values().forEach { it -> results[it] = 0 }
+    // prizeTypes.values() returns an array: [FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE]
 
     purchasedtickets.forEach {ticket ->
-        val matchCount = ticket.matchedNumbersCount(inputWinningNumbers)
+        val matchCount = ticket.matchedNumbersCount(winningNumbers)
         val hasBonus = ticket.includedBonusNumber(inputBonus)
+        val rank = prizeTypes.match(matchCount, hasBonus)  // e.g. prizeTypes.FIFTH(3, false, 5_000)
 
+        if (rank != prizeTypes.NONE) { results[rank] = (results[rank] ?: 0) + 1}
+        // use Elvis operator
+        // results[rank] = results.getOrDefault(rank, 0) + 1 set default entry as 0
     }
 
+    return results
 
 }
 
@@ -87,7 +104,9 @@ fun match(purchasedtickets: List<Lotto>, inputWinningNumbers: List<Int>, inputBo
 fun main() {
 
     val (purchasedTickets, purchaseAmount) = getTickets()
-
+    val winningNumbers = getWinningNumbers()
+    val inputBonus = getBonusNumbers()
+    val results = match(purchasedTickets, winningNumbers, inputBonus)
     println("Total return rate is %.")
 
 }
