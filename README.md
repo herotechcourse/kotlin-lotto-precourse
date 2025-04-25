@@ -25,22 +25,33 @@
 
 ## ▪︎ Domain
 
-- [x] Validate the amount of lottery tickets must be between `1,000` and `100,000`
-    - Throw an `IllegalArgumentException` if the value is out of range
 - [x] Calculate the quantity of purchased lottery tickets
-    - [x] Throw an `IllegalArgumentException` if the purchased amount is not divisible by `1,000
-- [] Issue lottery tickets based on the purchased amount
-    - [] Validate each tickets contains 6 unique random numbers
-        - Throw an `IllegalArgumentException` if the value is out of range
-    - [x] Validate each number must be between 1 and 45
-        - Throw an `IllegalArgumentException` if the value is out of range
-- [] Validate winning numbers and the bonus number are unique
-    - Throw an `IllegalArgumentException` if they are duplicated
+- [x] Issue lottery tickets based on the purchased amount
 - [] Calculate result statistics
     - [] Compare how many numbers match
 - [] Calculate profit rate
     - [] Formula: Total Prize Money / Lottery Purchase Amount
     - [] Round to the nearest tenth
+
+## ▪︎ Exception
+
+### ▪︎ Purchase Amount
+
+- [x] Throw an `IllegalArgumentException` if the amount of lottery tickets is not between `1,000` and `100,000`
+- [x] Throw an `IllegalArgumentException` if the purchased amount is not divisible by `1,000
+
+### ▪︎ Lotto Number
+
+- [x] Throw an `IllegalArgumentException` if the number is not between 1 and 45
+
+### ▪︎ Lotto
+
+- [] Throw an `IllegalArgumentException` if numbers are duplicated
+- [] Throw an `IllegalArgumentException` if numbers do not contain 6 numbers
+
+### ▪︎ Winning Lotto & Bonus Number
+
+- [] Throw an `IllegalArgumentException` if winning numbers and the bonus number are duplicated
 
 ## ▪︎ Conventions
 
