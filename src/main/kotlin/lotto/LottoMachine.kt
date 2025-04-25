@@ -3,6 +3,13 @@ package lotto
 class LottoMachine()
 {
     private var tickets: MutableList<Lotto> = mutableListOf()
+    public val matchMap=mutableMapOf<MatchCondition, Int>(
+        MatchCondition.MATCH_3 to 0,
+        MatchCondition.MATCH_4 to 0,
+        MatchCondition.MATCH_5 to 0,
+        MatchCondition.MATCH_5_AND_BONUS to 0,
+        MatchCondition.MATCH_6 to 0
+    )
 
     fun calcTicketNumber(purchaseAmount:Int):Int
     {
@@ -23,13 +30,6 @@ class LottoMachine()
 
     fun checkMatches(winningNumbers:List<Int>, bonusNumber:Int)
     {
-        val matchMap=mutableMapOf<MatchCondition, Int>(
-            MatchCondition.MATCH_3 to 0,
-            MatchCondition.MATCH_4 to 0,
-            MatchCondition.MATCH_5 to 0,
-            MatchCondition.MATCH_5_AND_BONUS to 0,
-            MatchCondition.MATCH_6 to 0
-        )
         for (ticket in tickets) {
             val matchCount = winningNumbers.count { it in ticket.getNumbers() }
 
@@ -44,10 +44,6 @@ class LottoMachine()
             if(matchCondition==null) continue
 
             matchMap[matchCondition] = matchMap.getOrDefault(matchCondition, 0) + 1
-    
-            matchMap.forEach { (condition, count) ->
-                println("${condition}: $count matches")
-            }
         }
     }
 }
