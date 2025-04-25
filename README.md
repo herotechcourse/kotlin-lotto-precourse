@@ -6,6 +6,9 @@
 ### 1. User purchases the tickets
 
 	1.1. User enters the total purchase amount (must be divisible by 1000 KRW)
+        1.1.1. The user enters the total purchase amount, along with winning numbers and a bonus number
+        1.1.2. The winning numbers and bonus number are within the range of 1 and 45
+        1.1.3 The bonus number should not be the same as the winning number
 
 	1.2. The machine calculates and issues the appropriate number of lottery tickets
 
@@ -31,4 +34,22 @@
 	3.2. Calculate the total winnings and profit rate
 	3.3. Display the winnings and profit rate 
 	
+## Test cases
+    1. User input validations, for amount purchased, are done for the following cases:
+        1.1 Illegal argument exception is thrown when the user enters 0 for the amount purchased
+        1.2 Illegal argument exception is thrown when the user enters a negative number for the amount purchased 
+        1.3 Illegal argument exception is thrown when the user enters a number that is not divisible by 1000 for the amount purchased
+        1.4 Illegal argument exception is thrown when the user enters the amount purchased as empty
+        1.5 The correctness of result is checked when the user enters the amount purchased is a valid number
+        
+    2. User input validations, for winning numbers are done for the following cases: 
+        2.1 Illegal argument exception is thrown when the user enters null for winning numbers
+        2.2 Illegal argument exception is thrown when 6 winning numbers are not entered by the user
+        2.3 Illegal argument exception is thrown when winning numbers entered by the user are not in range of 1-45
+        2.4 Illegal argument exception is thrown when winning numbers are not unique
+        2.5 Feature testing to check correctness when numbers are entered by comma as delimiter and are split into list of integers
 
+    3. User input validations for bonus numbers are done for the sollowing cases:
+        3.1 Illegal argument exception is thrown when the bonus number is null or empty
+        3.2 Illegal argument exception is thrown when the bonus number is not in the range of 1-45
+        3.3 Illegal argument exception is thrown when the bonus number is already contained in the list of winning numbers
