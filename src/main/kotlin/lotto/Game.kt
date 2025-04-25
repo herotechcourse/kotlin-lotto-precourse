@@ -2,7 +2,7 @@ package lotto
 
 class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
 
-    enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Long){
+    enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Int){
         FIRST(6, false, 2_000_000_000),
         SECOND(5, true, 30_000_000),
         THIRD(5, false, 1_500_000),
@@ -48,7 +48,7 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
     }
 
     fun getFinalPrizeAmount(statistics: List<Pair<Prize, Int>>): Long {
-        var amountEarned:Long = 0;
+        var amountEarned:Long = 0
         statistics.map{(prize, count) ->
             amountEarned += (prize.amount * count)
         }
@@ -56,6 +56,6 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
     }
 
     fun getProfitRate(amount: Int, finalPrizeAmount: Long ): Double {
-        return ((finalPrizeAmount.toDouble() - amount) / amount) * 100
+        return (finalPrizeAmount.toDouble() / amount) * 100
     }
 }
