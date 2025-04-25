@@ -6,9 +6,10 @@ Implement a simple lottery ticket machine with the following rules:
   - [x] Each ticket costs 1,000 KRW
   - [x] so the amount must be divisible by 1,000.
 - [x] the program issues as many lottery tickets as the budget allows.
-
-Each lottery ticket consists of 6 unique random numbers.
-Numbers must be in the range from 1 to 45.
+- [x] generate lottos
+  - [x] Each lottery ticket consists of 6 unique random numbers.
+  - [x] Numbers must be in the range from 1 to 45.
+  
 The user then enters the winning numbers and a bonus number.
 The winning numbers consist of 6 unique numbers.
 The bonus number is a single, separate number.
@@ -37,11 +38,11 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
 ## Output
 - [x] print purchase prompt 
   - ex Please enter the purchase amount.
-- [ ] Number of tickets issued and their numbers (sorted in ascending order):
+- [x] Number of tickets issued and their numbers (sorted in ascending order):
   - [x] print issued ticket intro message with ammount
     - You have purchased 8 tickets.
-  - [ ] print issued number of tickets
-    - [ ] sorted in ascending order
+  - [x] print issued number of tickets
+    - [x] sorted in ascending order
 - [ ] print lotto numbers input prompt 
   - ex Please enter last week's winning numbers.
 - [ ] print bonus number input prompt
