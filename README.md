@@ -24,3 +24,10 @@
    - Calculates how many lotto tickets to generate
    - Hands the lotto ticket generation to `LottoMachine`
    - Prints ticket data using `OutputView`
+
+### step 3: Handle the input and Output
+- We use `InputView` to read and validate user input.
+- We use `ÒutputView` to print messages to the user
+- In Kotlin `object` is a Singleton pattern (only one instance of this class exists in the entire application, we can use it anywhere)
+- `console.readLine()` is provided by MissionUtils.
+- Validation makes sure that users don't crash the program with invalid inputs
