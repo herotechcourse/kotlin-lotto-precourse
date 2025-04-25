@@ -13,4 +13,5 @@ fun main() {
    outputView.printTickets(tickets)
    val winningNumbers=inputView.getWinningNumbers()
    val bonusNumber=inputView.getBonusNumber()
+   lottoMachine.checkMatches(winningNumbers, bonusNumber)
 }
