@@ -74,6 +74,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `print error message when bonus number is out of bounds`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "46")
+            assertThat(output()).contains("$ERROR_MESSAGE Bonus Number must be in ${Lotto.FIRST_NUM..Lotto.LAST_NUM}")
+        }
+    }
+
     override fun runMain() {
         main()
     }

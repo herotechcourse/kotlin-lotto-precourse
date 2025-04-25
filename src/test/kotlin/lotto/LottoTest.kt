@@ -19,7 +19,7 @@ class LottoTest {
     }
 
     @Test
-    fun `throws an exception when lotto numbers out of bounds`() {
+    fun `throws an exception when lotto number is out of bounds`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 46))
         }
