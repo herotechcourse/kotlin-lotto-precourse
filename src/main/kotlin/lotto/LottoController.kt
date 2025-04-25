@@ -2,18 +2,23 @@ package lotto
 
 import lotto.domain.Rank
 import lotto.view.InputView
-import lotto.service.LottoMachine
+import lotto.service.TicketMachine
 import lotto.service.Statistics
 import lotto.view.OutputView
 
 class LottoController(
-    private val machine: LottoMachine,
+    private val machine: TicketMachine,
     private val input: InputView,
     private val output: OutputView
 ) {
     fun run() {
+        println("***** Welcome to Lotto *****")
+        println()
+        println("Each ticket costs 1,000 KRW.")
+        println()
+
         val purchaseAmount = input.readPurchaseAmount()
-        val tickets = machine.purchaseTickets(purchaseAmount)
+        val tickets = machine.generateTickets(purchaseAmount)
 
         output.printTickets(tickets.map { it.getNumbers() })
 

@@ -1,7 +1,7 @@
 package lotto.util
 
 object Messages {
-    const val PROMPT_PURCHASE_AMOUNT = "Please enter the purchase amount (must be multiple of 1,000):"
+    const val PROMPT_PURCHASE_AMOUNT = "Please enter the purchase amount (must be multiple of 1,000;  for example: 2000):"
     const val PROMPT_WINNING_NUMBERS = "Enter the 6 winning numbers (comma-separated):"
     const val PROMPT_BONUS_NUMBER = "Enter the bonus number:"
 
