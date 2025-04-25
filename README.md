@@ -34,3 +34,7 @@
 - In Kotlin `object` is a Singleton pattern (only one instance of this class exists in the entire application, we can use it anywhere)
 - `console.readLine()` is provided by MissionUtils.
 - Validation makes sure that users don't crash the program with invalid inputs
+
+### atep 4: Build Lotto Ticket generator
+- We use `Randoms.pickUniqueNumbersInRange` to generate 6 unique 1-45. It returns to us a list of `Lotto` objects.
+- We use `List(count) {block}` to generate a list the size of `count`.
