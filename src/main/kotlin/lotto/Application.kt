@@ -1,6 +1,5 @@
 package lotto
 
-import lotto.ticket.TicketPurchase
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -43,8 +42,8 @@ fun main() {
         }
     }
 
-    val lotto = Lotto(userInput.winningNumbers)
-    OutputView.displayWinningStatistics(lotto)
-    OutputView.displayReturnRate(lotto)
+    val lottoResult = LottoResult()
+    OutputView.displayWinningStatistics(lottoResult)
+    OutputView.displayReturnRate(lottoResult)
 }
 
