@@ -2,7 +2,6 @@ package view
 
 import camp.nextstep.edu.missionutils.Console
 import util.Parser
-import util.Validator
 
 object Input {
     fun readPurchaseAmountSafely(): Int = readSafely(Parser::toPurchaseAmount)
@@ -16,8 +15,8 @@ object Input {
             try {
                 val input = Console.readLine()
                 return block(input)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
+            } catch (exception: IllegalArgumentException) {
+                println(exception.message)
             }
         }
     }

@@ -17,11 +17,7 @@ object Output {
 
     fun printWinningStatisticsMessage(statistic: Statistic) {
         println("\nWinning Statistics\n---")
-
-        statistic.sortedRankCounts().forEach { (rank, count) ->
-            println("$rank – $count tickets")
-        }
-
+        statistic.sortedRankCounts().forEach { (rank, count) -> println("$rank – $count tickets") }
         println(String.format("Total return rate is %.1f%%.", statistic.returnRate() * 100))
     }
 }
