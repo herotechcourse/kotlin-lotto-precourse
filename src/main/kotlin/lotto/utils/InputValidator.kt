@@ -8,8 +8,8 @@ object InputValidator {
     fun validatePurchaseAmount(amount: String): Long {
         val purchaseAmount = InputParser.parsePurchaseAmount(amount)
         when {
-            purchaseAmount < 0 -> throw IllegalArgumentException("Purchase amount must be positive number")
-            purchaseAmount < Lotto.COST -> throw IllegalArgumentException("Purchase amount must be bigger than 1 ticket cost (${Lotto.COST})")
+            (purchaseAmount < 0) -> throw IllegalArgumentException("Purchase amount must be positive number")
+            (purchaseAmount < Lotto.COST) -> throw IllegalArgumentException("Purchase amount must be bigger than 1 ticket cost (${Lotto.COST})")
         }
         return purchaseAmount
     }

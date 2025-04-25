@@ -45,8 +45,7 @@ class LottoController(
                 val validatedBudget = InputValidator.validatePurchaseAmount((budget))
                 return validatedBudget
             } catch (e: IllegalArgumentException) {
-                e.message?.let { outputView.printError(it) }
-                outputView.printNewLine()
+                handleError(e)
             }
         }
     }
@@ -58,8 +57,7 @@ class LottoController(
                 val validatedLotto = InputValidator.validateWinnerLottoAndGetLotto(lottoNumbers)
                 return validatedLotto
             } catch (e: IllegalArgumentException) {
-                e.message?.let { outputView.printError(it) }
-                outputView.printNewLine()
+                handleError(e)
 
             }
         }
@@ -73,9 +71,14 @@ class LottoController(
                 val validatedBonus = InputValidator.validateBonusNumberAndGetWinnerLotto(bonusNumber, winnerLotto)
                 return validatedBonus
             } catch (e: IllegalArgumentException) {
-                e.message?.let { outputView.printError(it) }
-                outputView.printNewLine()
+                handleError(e)
             }
         }
+    }
+
+    // just for coding convention
+    private fun handleError(e: IllegalArgumentException) {
+        e.message?.let { outputView.printError(it) }
+        outputView.printNewLine()
     }
 }

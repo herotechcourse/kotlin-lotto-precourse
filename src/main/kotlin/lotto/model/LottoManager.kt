@@ -12,10 +12,8 @@ class LottoManager(private val winnerLotto: WinnerLotto, private val user: User)
 
     private fun getLottoRank(lotto: Lotto): Int {
         val lottoNumbers = lotto.getLottoNumbers()
-        val winnerNumbers = winnerLotto.getLottoNumbers()
-        val bonusNumber = winnerLotto.getBonusNumber()
-        val matches: Int = lottoNumbers.count { it in winnerNumbers }
-        val isBonus: Boolean = bonusNumber in lottoNumbers
+        val matches: Int = lottoNumbers.count { it in winnerLotto.getLottoNumbers() }
+        val isBonus: Boolean = winnerLotto.getBonusNumber() in lottoNumbers
         return when (matches) {
             6 -> 1
             5 -> if (isBonus) 2 else 3
