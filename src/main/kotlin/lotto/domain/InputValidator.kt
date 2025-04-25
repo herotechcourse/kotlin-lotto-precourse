@@ -1,6 +1,8 @@
 package lotto.domain
 
-class InputValidatior {
+import lotto.messages.PurchaseErrorMessage
+
+class InputValidator {
 
     fun validatePurchaseInput(input: String): Int {
 
