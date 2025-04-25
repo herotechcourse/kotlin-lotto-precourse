@@ -1,4 +1,4 @@
-package lotto
+package utils
 
 import camp.nextstep.edu.missionutils.Randoms
 

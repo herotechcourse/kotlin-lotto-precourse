@@ -1,4 +1,4 @@
-package lotto
+package utils
 
 class InputValidator {
     companion object{
@@ -11,7 +11,8 @@ class InputValidator {
                 if (amount % 1000 != 0) {
                     throw IllegalArgumentException("Amount must be divisible by 1000.")
                 }
-                return amount/1000
+                val numberOfLottos = amount/1000
+                return numberOfLottos
             } catch (e: NumberFormatException) {
                 throw IllegalArgumentException("You entered an invalid number. Please enter a valid integer.")
             }
