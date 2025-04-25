@@ -25,7 +25,6 @@ class InputView {
         require(amount in 1..MAX_AMOUNT) {
             AMOUNT_RANGE_MSG
         }
-        // add a max value e.g. 10.000
         return amount
     }
 
@@ -45,7 +44,7 @@ class InputView {
     internal fun parseWinningNumbers(input: String): List<Int> {
         val numbers = input.split(",").map {
             it.trim().toIntOrNull()
-            ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
+                ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
         }
         return numbers
     }
