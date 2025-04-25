@@ -38,5 +38,9 @@
 
 
 ## UML Object Design
+### First Design
 Below is the class diagram representing the object-oriented structure of the Lotto mission.
 ![lotto-precourse-uml](/docs/lotto-precourse.drawio.png)
+
+### Advanced Design
+![lotto-precourse-uml](/docs/lotto-precourse_1.drawio.png)
