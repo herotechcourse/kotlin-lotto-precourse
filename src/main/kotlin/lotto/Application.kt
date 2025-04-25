@@ -1,13 +1,12 @@
 package lotto
 
-import lotto.view.InputView
+import lotto.views.InputView
 
 fun main() {
+    val inputView = InputView()
+    val game = LotteryGame()
 
-    val input = InputView()
-
-    input.getPurchaseAmount()
-    input.getWinningNumbers()
-    input.getBonusNumber()
+    val purchaseAmount = inputView.getPurchaseAmount()
 }
+
 
