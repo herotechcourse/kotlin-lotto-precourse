@@ -33,7 +33,7 @@
 - [x] Determine the prize rank based on the number of matching numbers
 - [x] 3 or more matches qualify for a prize
 - [x] 2nd prize is for 5 matches + the bonus number
-- [ ] Calculate profit rate = (Total Winnings / Purchase Amount) * 100.0
+- [x] Calculate profit rate = (Total Winnings / Purchase Amount) * 100.0
 
 ### 5️⃣ Exception Handling
 
