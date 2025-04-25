@@ -5,16 +5,24 @@ Implement a simple lottery ticket machine with the following rules:
 - [x] The user enters the purchase amount
   - [x] Each ticket costs 1,000 KRW
   - [x] so the amount must be divisible by 1,000.
-- [x] the program issues as many lottery tickets as the budget allows.
-- [x] generate lottos
+    - **Exception:** `[ERROR] lotto amount must be divisible by 1,000`
+    - **Exception:** `[ERROR] Lotto Amount must be Integer`
+- [x] The program issues as many lottery tickets as the budget allows.
+- [x] Generate lottos
   - [x] Each lottery ticket consists of 6 unique random numbers.
   - [x] Numbers must be in the range from 1 to 45.
-  
+    - **Exception:** `[ERROR] Lotto must contain exactly 6 numbers.`
+    - **Exception:** `[ERROR] Lotto numbers must not contain duplicates.`
+    - **Exception:** `[ERROR] Lotto numbers must be between 1 and 45.`
+
 - [x] The user then enters the winning numbers and a bonus number.
-  - [x] The user then enters a bonus number
   - [x] The winning numbers consist of 6 unique numbers.
-  - [x] The user then enters the winning numbers
+    - **Exception:** `[ERROR] Winning numbers must contain exactly 6 values.`
+    - **Exception:** `[ERROR] All winning numbers must be valid integers.`
   - [x] The bonus number is a single, separate number.
+    - **Exception:** `[ERROR] Bonus number must be an integer.`
+    - **Exception:** `[ERROR] Bonus number must be between 1 and 45.`
+    - **Exception:** `[ERROR] Bonus number must not duplicate any winning number.`
 
 - [x] There are five prize ranks. The criteria and prize amounts are as follows:
   - 1st Prize: Match 6 numbers / 2,000,000,000 KRW
@@ -22,6 +30,7 @@ Implement a simple lottery ticket machine with the following rules:
   - 3rd Prize: Match 5 numbers / 1,500,000 KRW
   - 4th Prize: Match 4 numbers / 50,000 KRW
   - 5th Prize: Match 3 numbers / 5,000 KRW
+
 - [x] The program compares the user's tickets to the winning numbers and prints the result, including winnings and profit rate.
   - [x] Compare each ticket to the winning numbers
   - [x] Determine the prize for each ticket
@@ -29,36 +38,34 @@ Implement a simple lottery ticket machine with the following rules:
   - [x] Print the result in formatted lines
   - [x] Calculate and print total winnings and profit rate
 
-
-- [x] If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
-- [x] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
-
+- [x] If the user inputs invalid data, the program must throw an `IllegalArgumentException` and re-prompt input from that step.
+- [x] Handle only specific exception types such as `IllegalArgumentException` or `IllegalStateException`, not generic Exception.
 
 # Input/Output Requirements
 
 ## Input
 
-- [x] Purchase amount for lottery tickets: 
+- [x] Purchase amount for lottery tickets:
   - ex 14000
-- [x] Winning numbers (comma-separated): 
+- [x] Winning numbers (comma-separated):
   - ex 1,2,3,4,5,6
-- [x] Bonus number: 
+- [x] Bonus number:
   - ex 7
 
 ## Output
-- [x] print purchase prompt 
+- [x] print purchase prompt
   - ex Please enter the purchase amount.
 - [x] Number of tickets issued and their numbers (sorted in ascending order):
-  - [x] print issued ticket intro message with ammount
+  - [x] print issued ticket intro message with amount
     - You have purchased 8 tickets.
   - [x] print issued number of tickets
     - [x] sorted in ascending order
-- [x] print lotto numbers input prompt 
+- [x] print lotto numbers input prompt
   - ex Please enter last week's winning numbers.
 - [x] print bonus number input prompt
   - ex Please enter the bonus number.
 - [x] print winning numbers status intro message
-  - ex Winning Statistics /n ---
+  - ex Winning Statistics \n ---
 - [x] print Lotto result statistics:
 - [x] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%):
   - ex Total return rate is 62.5%.
