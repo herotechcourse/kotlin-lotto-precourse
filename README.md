@@ -1,10 +1,5 @@
 # kotlin-lotto-precourse
 
-- **Domain**: Business logic, use cases, repository interfaces, models.
-- **Data**: Lotto number generator, data models, repository implementation, mappers.
-- **Presentation**: App entry point, InputView, OutputView.
-
----
 
 ## ✅ Feature List
 
