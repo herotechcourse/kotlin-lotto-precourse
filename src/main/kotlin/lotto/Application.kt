@@ -1,22 +1,20 @@
 package lotto
 
 fun main() {
-    val inputView = InputView()
-    val outputView = OutputView()
     val lottoResult = LottoResult()
 
-    val purchaseAmount = inputView.readValidPurchaseAmount()
+    val purchaseAmount = InputView.readValidPurchaseAmount()
 
     val numberOfTickets = LottoMachine.getTicketCount(purchaseAmount)
     val tickets = LottoMachine.generateTickets(numberOfTickets)
 
-    outputView.printTickets(tickets)
+    OutputView.printTickets(tickets)
 
-    val winningNumbers = inputView.readValidWinningNumbers()
-    val bonusNumber = inputView.readValidBonusNumber()
+    val winningNumbers = InputView.readValidWinningNumbers()
+    val bonusNumber = InputView.readValidBonusNumber()
 
     tickets.forEach { lottoResult.evaluateAndRecord(it, winningNumbers, bonusNumber) }
 
-    outputView.printResults(lottoResult.getRankStatistics())
-    outputView.printProfitReturn(lottoResult.getProfitRate(purchaseAmount))
+    OutputView.printResults(lottoResult.getRankStatistics())
+    OutputView.printProfitReturn(lottoResult.getProfitRate(purchaseAmount))
 }

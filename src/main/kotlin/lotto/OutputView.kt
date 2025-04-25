@@ -4,7 +4,7 @@ package lotto
  * Handles all output display logic for the Lotto application.
  * Responsible for printing tickets, result statistics, and profit rate to the console.
  */
-class OutputView {
+object OutputView {
 
     /**
      * Prints the list of purchased lotto tickets to the console.

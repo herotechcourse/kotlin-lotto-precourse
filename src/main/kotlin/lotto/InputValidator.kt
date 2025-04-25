@@ -27,7 +27,7 @@ object InputValidator {
      * Validates the winning numbers list.
      * Must contain exactly 6 distinct numbers between 1 and 45.
      */
-    fun validateWinningNumbers(numbers: List<Int>): List<Int> {
+    fun getValidatedWinningNumbers(numbers: List<Int>): List<Int> {
         require(numbers.size == VALID_TICKET_SIZE) { "[ERROR] Exactly 6 numbers must be entered." }
         require(numbers.distinct().size == VALID_TICKET_SIZE) { "[ERROR] Numbers must be unique." }
         numbers.forEach { checkRange(it) }
@@ -37,7 +37,7 @@ object InputValidator {
     /**
      * Validates that the bonus number is a valid integer in the range 1–45.
      */
-    fun validateBonusNumber(input: String): Int {
+    fun getValidatedBonusNumber(input: String): Int {
         val number = convertValidInteger(input)
         checkRange(number)
         return number

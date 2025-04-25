@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputView {
+object InputView {
     /**
      * Repeatedly reads and returns a valid purchase amount from user input.
      * Only accepts values >= 1000 and divisible by 1000.
@@ -64,7 +64,7 @@ class InputView {
         println("Please enter last week's 6 winning numbers, separated by commas.")
         val input = Console.readLine()
         val numbers = InputValidator.parseWinningNumbers(input)
-        return InputValidator.validateWinningNumbers(numbers)
+        return InputValidator.getValidatedWinningNumbers(numbers)
     }
 
     /**
@@ -73,6 +73,6 @@ class InputView {
     private fun readBonusNumber(): Int {
         println("\nPlease enter the bonus number.")
         val input = Console.readLine()
-        return InputValidator.validateBonusNumber(input)
+        return InputValidator.getValidatedBonusNumber(input)
     }
 }
