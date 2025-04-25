@@ -1,6 +1,7 @@
 package lotto
 
 import views.OutputView
+import views.InputView
 
 fun main() {
    var inputView = InputView()
