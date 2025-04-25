@@ -1,5 +1,7 @@
 package lotto
 
+import javax.swing.plaf.metal.MetalIconFactory.TreeControlIcon
+
 class Purchase(val amount: Int) {
     val tickets: List<Ticket> = List(amount / TICKET_PRICE) { Ticket() }
 
@@ -8,10 +10,14 @@ class Purchase(val amount: Int) {
             "[ERROR] Only purchase amount divisible" +
                     " by $TICKET_PRICE is accepted."
         }
+        require(amount in TICKET_PRICE..MAX_AMOUNT) {
+            "[ERROR] Amount cannot be lower than $TICKET_PRICE or higher than $MAX_AMOUNT"
+        }
     }
 
     companion object {
         private const val TICKET_PRICE = 1000
+        private const val MAX_AMOUNT = 15000
     }
     // Property declarations
     // Initializer blocks
