@@ -24,7 +24,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
 
 ## Input
 
-- [ ] Purchase amount for lottery tickets: 
+- [x] Purchase amount for lottery tickets: 
   - ex 14000
 - [ ] Winning numbers (comma-separated): 
   - ex 1,2,3,4,5,6
