@@ -3,9 +3,9 @@ package lotto
 const val BONUS: Int = 7
 
 class Cashier (private val lotto: Lotto, private val bonusNumber: Int){
-    private val register: MutableMap<Int, Int> =
-        mutableMapOf(3 to 0, 4 to 0, 5 to 0, 6 to 0, BONUS to 0)
-    fun checkWinningNumbers(tickets:List<List<Int>>): Map<Int, Int>{
+    private val register: MutableMap<Rank, Int> =
+        enumValues<Rank>().associateWith { 0 }.toMutableMap()
+    fun checkWinningNumbers(tickets:List<List<Int>>): Map<Rank, Int>{
         for (ticket in tickets ){
             var numberOfMatches = lotto.numberOfMatches(ticket)
             if (numberOfMatches == 5 && ticket.contains(bonusNumber))
@@ -16,11 +16,14 @@ class Cashier (private val lotto: Lotto, private val bonusNumber: Int){
     }
     private fun updateRegister(numberOfMatches:Int){
         when(numberOfMatches){
-            3 -> register[3] = register.getValue(3 ) + 1
-            4 -> register[4] = register.getValue(4 ) + 1
-            5 -> register[5] = register.getValue(5 ) + 1
-            6 -> register[6] = register.getValue(6 ) + 1
-            BONUS -> register[BONUS] = register.getValue(BONUS) + 1
+            3 -> register[Rank.THREE] = register.getValue(Rank.THREE ) + 1
+            4 -> register[Rank.FOUR] = register.getValue(Rank.FOUR ) + 1
+            5 -> register[Rank.FIVE] = register.getValue(Rank.FIVE ) + 1
+            6 -> register[Rank.SIX] = register.getValue(Rank.SIX ) + 1
+            BONUS -> register[Rank.BONUS] = register.getValue(Rank.BONUS) + 1
         }
+    }
+    fun calculateStatistic(purchasePrice:Int):Double{
+        return 0.0
     }
 }
