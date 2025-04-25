@@ -1,19 +1,15 @@
-package lotto.view
+package lotto.views
 
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    internal var purchaseAmount = 0
-    internal var ticketCount = 0
-    internal var winningNumbers = emptyList<Int>()
-    internal var bonusNumber = 0
+    internal var validatedWinningNumbers = emptyList<Int>()
 
     // Ask user to input the purchase amount
     fun getPurchaseAmount(): Int {
         println("Purchase amount for lottery tickets: ")
-        this.purchaseAmount = Console.readLine().toInt()
-        this.ticketCount = validatePurchaseAmount(this.purchaseAmount)
-        return this.purchaseAmount
+        val purchaseAmount = Console.readLine().toInt()
+        return validatePurchaseAmount(purchaseAmount)
     }
 
     // Ask user to input exactly 6 numbers  comma-separated and they should be between 1 and 45
@@ -21,25 +17,23 @@ class InputView {
         println("Winning numbers (comma-separated): ")
         val winningNumbersStr = Console.readLine()
         val winningNumbers = parseWinningNumbers(winningNumbersStr)
-        this.winningNumbers = validateWinningNumbers(winningNumbers)
-        return this.winningNumbers
+        validatedWinningNumbers = validateWinningNumbers(winningNumbers)
+        return validatedWinningNumbers
     }
 
     // Ask user to input a bonus number different from the previous ones and between 1 and 45
     fun getBonusNumber(): Int {
         println("Bonus number: ")
         val bonusNumber = Console.readLine().toInt()
-        this.bonusNumber = validateBonusNumber(winningNumbers, bonusNumber)
-        return this.bonusNumber
+        return validateBonusNumber(validatedWinningNumbers, bonusNumber)
     }
 
     companion object{
         private fun validatePurchaseAmount(purchaseAmount: Int): Int{
             if (purchaseAmount%1000 != 0)
                 throw IllegalArgumentException("[ERROR] Not divisible by 1000")
-            return purchaseAmount/1000
+            return purchaseAmount
         }
-
 
         private fun parseWinningNumbers(winningNumbersStr: String): List<Int> {
             val winningNumbers = winningNumbersStr.split(",")
