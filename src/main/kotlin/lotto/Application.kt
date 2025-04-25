@@ -13,9 +13,12 @@ private val bonusNumberValidation = BonusNumberValidation()
 fun main() {
 
     println("Purchase amount for lottery tickets: ")
-    val amount = InputPurchaseAmount()
-    val purchaseAmount = amountValidator.NullCheckNumber(amount)
-    amountValidator.ValidateAmount(purchaseAmount)
+    try {
+        val amount = InputPurchaseAmount()
+
+        val purchaseAmount = amountValidator.NullCheckNumber(amount)
+        amountValidator.ValidateAmount(purchaseAmount)
+
 
     println("Winning numbers (comma-separated):")
     val numbers = InputWinningNumbers()
@@ -28,6 +31,12 @@ fun main() {
     val bonus_number = amountValidator.NullCheckNumber(bonus_no)
     bonusNumberValidation.ValidateBonusNumberInRange1to45(bonus_number)
     bonusNumberValidation.ValidateBonusNumberUniqueness(bonus_number,winningNumbers)
+
+    val numberOfTickets = lottoVariable.CalculateNumberOfTickets(purchaseAmount)
+    val tickets = lottoVariable.GenerateLottoTickets(numberOfTickets)
+    lottoVariable.PrintLottoTickets(tickets, numberOfTickets)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)}
 }
 
 fun InputPurchaseAmount() : String{

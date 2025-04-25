@@ -42,13 +42,13 @@ class ApplicationTest : NsTest() {
 //        )
 //    }
 
-//    @Test
-//    fun `exception Amount Exception test`() {
-//        assertSimpleTest {
-//            runException("1000j")
-//            assertThat(output()).contains(ERROR_MESSAGE)
-//        }
-//    }
+    @Test
+    fun `exception Amount Exception test`() {
+        assertSimpleTest {
+            runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
 
 
     override fun runMain() {
