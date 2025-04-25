@@ -1,6 +1,6 @@
 package lotto
 
-import kotlin.random.Random
+import camp.nextstep.edu.missionutils.Randoms
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -18,13 +18,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     companion object {
-        fun getUniqueNumbers(): List<Int> {
-            val numbers = mutableSetOf<Int>()
-            while (numbers.size < 6) {
-                val randomNumber = Random.nextInt(1, 46)
-                numbers.add(randomNumber)
-            }
-            return numbers.toList().sorted()
+        fun getUniqueNumbers(): List<Int> {            
+            return Randoms.pickUniqueNumbersInRange(1, 45, 6)
         }
     }
 }
