@@ -44,7 +44,6 @@ class LottoManager(private val winnerLotto: WinnerLotto, private val user: User)
 
     private fun getWinningRate() {
         val rate = (user.earnedAmount.toFloat() / user.usedAmount) * 100
-//        println("${user.earnedAmount},  ${user.usedAmount}")
         winningRate = (Math.round(rate * 10) / 10f)
     }
 
