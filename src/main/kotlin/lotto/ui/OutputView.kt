@@ -3,6 +3,7 @@ package lotto.ui
 import lotto.domain.WinningRank
 import lotto.domain.PurchasedLottos
 import lotto.domain.WinningStats
+import lotto.util.Constants
 
 class OutputView {
     companion object{
@@ -23,11 +24,11 @@ class OutputView {
                 .forEach{ rank->
                     val count = winningStats.stats.getOrDefault(rank, 0)
                     val matchDescription = when (rank) {
-                        WinningRank.FIFTH -> "3 Matches (5,000 KRW)"
-                        WinningRank.FOURTH -> "4 Matches (50,000 KRW)"
-                        WinningRank.THIRD -> "5 Matches (1,500,000 KRW)"
-                        WinningRank.SECOND -> "5 Matches + Bonus Ball (30,000,000 KRW)"
-                        WinningRank.FIRST -> "6 Matches (2,000,000,000 KRW)"
+                        WinningRank.FIFTH -> "3 Matches (${Constants.FORMATTED_PRIZE_FIFTH} KRW)"
+                        WinningRank.FOURTH -> "4 Matches (${Constants.FORMATTED_PRIZE_FOURTH} KRW)"
+                        WinningRank.THIRD -> "5 Matches (${Constants.FORMATTED_PRIZE_THIRD} KRW)"
+                        WinningRank.SECOND -> "5 Matches + Bonus Ball (${Constants.FORMATTED_PRIZE_SECOND} KRW)"
+                        WinningRank.FIRST -> "6 Matches (${Constants.FORMATTED_PRIZE_FIRST} KRW)"
                         else -> ""
                     }
                     println("$matchDescription - $count tickets")
