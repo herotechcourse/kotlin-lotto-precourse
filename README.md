@@ -20,7 +20,7 @@
 
 - [x] Show the number of tickets issued and their numbers
     - [x] Sort numbers in ascending order
-- [] Show the lotto result statistics
+- [x] Show the lotto result statistics
 - [] show the profit rate rounded to the nearest tenth
 
 ## ▪︎ Domain
