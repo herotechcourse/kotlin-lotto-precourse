@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
 
+    // This function prompts the user to enter the purchase amount
     fun readPurchaseAmount() : Int {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
@@ -17,6 +18,7 @@ object InputView {
         return amount
     }
 
+    // This function prompts the user to enter the last week's winning numbers
     fun readWinningNumbers() : List<Int> {
         println("Please enter last week's winning numbers.")
         val input = Console.readLine()
@@ -26,6 +28,8 @@ object InputView {
         }
         return numbers
     }
+
+    // This function prompts the user to enter the bonus number
     fun readBonusNumber(): Int {
         println("Please enter the bonus number.")
         return Console.readLine().toIntOrNull()?.takeIf { it in 1..45 }

@@ -2,6 +2,13 @@ package lotto.domain
 
 import lotto.Lotto
 
+/**
+ * Represents the winning lottery numbers, including the bonus number.
+ *
+ * @property winningNumbers A list of 6 unique winning numbers.
+ * @property bonusNumber A unique bonus number not included in the winning numbers.
+ */
+
 class WinningLotto (private val winningNumbers: List<Int>, private val bonusNumber: Int){
     init {
         require(winningNumbers.size == 6) { "[ERROR] Winning numbers must contain 6 numbers." }

@@ -1,5 +1,13 @@
 package lotto.domain
 
+/**
+ * Represents the prize rank based on the number of matching lotto numbers and bonus.
+ *
+ * @property matchCount the number of main numbers matched
+ * @property hasBonus whether the bonus number was matched
+ * @property prize the reward amount in KRW
+ */
+
 enum class Rank(val matchCount: Int, val hasBonus: Boolean, val prize: Int) {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),

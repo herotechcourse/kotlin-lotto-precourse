@@ -5,6 +5,7 @@ import lotto.domain.Rank
 import lotto.domain.WinningLotto
 
 object LottoStatistics {
+    // This function calculates the statistics of the tickets compared to the winning numbers.
     fun calculate(tickets: List<Lotto>, winningLotto: WinningLotto): Map<Rank, Int> {
         val statistics = mutableMapOf<Rank, Int>()
         tickets.forEach {

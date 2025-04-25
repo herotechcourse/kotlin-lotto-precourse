@@ -4,11 +4,14 @@ import lotto.Lotto
 import lotto.domain.Rank
 
 object OutputView {
+
+    // This function prints the list of purchased lotto tickets
     fun printTickets(tickets: List<Lotto>) {
         println("You have purchased ${tickets.size} tickets.")
         tickets.forEach { println(it.getNumbers()) }
     }
 
+    // This function prints the winning statistics, including the prize for each rank and the total return rate
     fun printStatistics(results: Map<Rank, Int>, purchaseAmount: Int) {
         println("\nWinning Statistics\n---")
         Rank.values().filter { it != Rank.NONE }.forEach {
