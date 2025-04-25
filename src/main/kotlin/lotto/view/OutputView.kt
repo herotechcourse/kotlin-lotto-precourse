@@ -3,6 +3,7 @@ package lotto.view
 import lotto.Lotto
 import lotto.domain.LottoResults
 import lotto.domain.Prize
+import lotto.domain.ProfitRate
 
 class OutputView {
     fun printPurchaseLottoAmountPrompt() {
@@ -36,6 +37,10 @@ class OutputView {
         results.toResultLines().forEach { println(it) }
     }
 
+    fun printProfitRate(profitRate: ProfitRate) {
+        println(PROFIT_RATE_MESSAGE.format(profitRate.value() * 100))
+    }
+
     companion object {
         const val PURCHASE_LOTTO_AMOUNT_PROMPT_MESSAGE = "Please enter the purchase amount."
         const val ISSUED_LOTTO_COUNT_MESSAGE = "You have purchased %d tickets."
@@ -43,5 +48,6 @@ class OutputView {
         const val BONUS_NUMBER_INPUT_PROMPT = "Please enter the bonus number."
         const val WINNING_STATISTICS_HEADER = "Winning Statistics"
         const val STATISTICS_SEPARATOR = "---"
+        const val PROFIT_RATE_MESSAGE = "Total return rate is %.1f%%."
     }
 }
