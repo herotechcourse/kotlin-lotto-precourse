@@ -46,8 +46,8 @@
 
 ### ▪︎ Lotto
 
-- [] Throw an `IllegalArgumentException` if numbers are duplicated
-- [] Throw an `IllegalArgumentException` if numbers do not contain 6 numbers
+- [x] Throw an `IllegalArgumentException` if numbers are duplicated
+- [x] Throw an `IllegalArgumentException` if numbers do not contain 6 numbers
 
 ### ▪︎ Winning Lotto & Bonus Number
 
