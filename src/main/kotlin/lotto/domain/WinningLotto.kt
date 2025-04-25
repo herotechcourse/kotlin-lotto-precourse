@@ -1,4 +1,6 @@
 package lotto.domain
 
-class WinningLotto {
-}
+class WinningLotto(
+    val numbers: List<Int>,
+    val bonusNumber: Int
+)
