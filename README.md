@@ -51,8 +51,11 @@
 
    → ✅ `BonusNumber` class : out-of-range numbers,  duplicates
 
-- [ ] All error messages must start with `[ERROR]`  
+- [x] All error messages must start with `[ERROR]`  
   → ✅ Exception validation added,  Message prefix application remaining
+
+### 🛠 Refactoring
+- [x] Moved all game-related constants (e.g., TICKET_PRICE, MIN_NUMBER, MAX_NUMBER) to `Lotto` class
 
 ### 🔍 Test Coverage
 
