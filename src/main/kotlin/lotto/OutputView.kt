@@ -4,7 +4,7 @@ import lotto.Game.Prize
 
 class OutputView() {
     fun printTickets(tickets: List<Lotto>) {
-        println("You have purchased ${tickets.size} tickets")
+        println("You have purchased ${tickets.size} tickets.")
         tickets.forEach { println(it.getNumbers()) }
         println()
     }
@@ -16,8 +16,7 @@ class OutputView() {
             "${prize.matchCount} Matches"
         }
         val formattedAmount = "%,d".format(prize.amount)
-        val ticketText = if (count == 1) "ticket" else "tickets"
-            return "$matchDescription ($formattedAmount KRW) - $count $ticketText"
+        return "$matchDescription ($formattedAmount KRW) – $count tickets"
     }
 
     fun printStatistics(statistics:  List<Pair<Prize, Int>>) {
@@ -27,6 +26,6 @@ class OutputView() {
     }
 
     fun printReturnRate(returnRate: Double) {
-        println(String.format("Total return rate is %.2f%%", returnRate))
+        println(String.format("Total return rate is %.1f%%.", returnRate))
     }
 }

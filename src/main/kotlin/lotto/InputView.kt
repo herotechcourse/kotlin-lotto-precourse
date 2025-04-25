@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import java.lang.IllegalArgumentException
 
 class InputView {
@@ -7,7 +8,7 @@ class InputView {
         while (true) {
             try {
                 println("Please enter the purchase amount.")
-                val amount = readLine()
+                val amount = Console.readLine()
                 println()
                 requireNumberFormat(amount)
                 return amount!!.toInt()
@@ -21,7 +22,7 @@ class InputView {
         while (true) {
             try {
                 println("Please enter last week's winning numbers")
-                val winningNumbers = readLine()
+                val winningNumbers = Console.readLine()
                 println()
                 requireWinningNumbersInputFormat(winningNumbers)
                 return winningNumbers!!.split(",").map { it.toInt()}
@@ -33,7 +34,7 @@ class InputView {
         while(true) {
             try {
                 println("Please enter the bonus number")
-                val bonus = readLine()
+                val bonus = Console.readLine()
                 println()
                 requireNumberFormat(bonus)
                 return bonus!!.toInt()
