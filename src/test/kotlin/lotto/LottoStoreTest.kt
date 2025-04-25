@@ -16,12 +16,12 @@ class LottoStoreTest {
         val amount = Money(3000)
 
         // Act
-        val result: Lottos = sut.sell(amount)
+        val result: LottoTickets = sut.sell(amount)
 
         // Assert
         SoftAssertions.assertSoftly {
             assertThat(result.size()).isEqualTo(3)
-            assertThat(result.getValues()).containsOnly(lotto)
+            assertThat(result.getTickets()).containsOnly(lotto)
         }
     }
 

@@ -1,9 +1,13 @@
 package lotto
 
-class Lottos(private val values: List<Lotto>) {
+class LottoTickets(private val tickets: List<Lotto>) {
+
+    init {
+        require(tickets.isNotEmpty()) { "LottoTickets must have at least 1 ticket." }
+    }
 
     fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> {
-        return values
+        return tickets
             .map { winningLotto.match(it) }
             .groupingBy { it }
             .eachCount()
@@ -24,9 +28,9 @@ class Lottos(private val values: List<Lotto>) {
         return Prize(totalPrize.toLong())
     }
 
-    fun size(): Int = values.size
+    fun size(): Int = tickets.size
 
-    fun getValues(): List<Lotto> = values.toList()
+    fun getTickets(): List<Lotto> = tickets.toList()
 
     companion object {
         private const val PERCENT = 100.0

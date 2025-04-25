@@ -1,7 +1,7 @@
 package lotto.view
 
 import lotto.Lotto
-import lotto.Lottos
+import lotto.LottoTickets
 import lotto.Rank
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -12,7 +12,7 @@ class LottoViewFormatterTest {
     @Nested
     inner class LottoTickets {
 
-        private val lottos = Lottos(
+        private val lottoTickets = LottoTickets(
             listOf(
                 Lotto(listOf(8, 21, 23, 41, 42, 43)),
                 Lotto(listOf(3, 5, 11, 16, 32, 38))
@@ -22,7 +22,7 @@ class LottoViewFormatterTest {
         @Test
         fun `formatPurchaseMessage should return ticket count message`() {
             // Act
-            val result = LottoViewFormatter.formatPurchaseMessage(lottos)
+            val result = LottoViewFormatter.formatPurchaseMessage(lottoTickets)
 
             // Assert
             assertThat(result).isEqualTo("You have purchased 2 tickets.")
@@ -32,7 +32,7 @@ class LottoViewFormatterTest {
         @Test
         fun `formatLottoTickets should return sorted number lines`() {
             // Act
-            val result = LottoViewFormatter.formatLottoTickets(lottos)
+            val result = LottoViewFormatter.formatLottoTickets(lottoTickets)
 
             // Assert
             assertThat(result).isEqualTo(

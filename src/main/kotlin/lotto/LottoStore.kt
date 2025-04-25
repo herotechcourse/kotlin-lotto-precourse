@@ -2,10 +2,10 @@ package lotto
 
 class LottoStore(private val machine: LottoMachine) {
 
-    fun sell(amount: Money): Lottos {
+    fun sell(amount: Money): LottoTickets {
         val tickets: List<Lotto> = amount.payFor { machine.issue() }
 
-        return Lottos(tickets)
+        return LottoTickets(tickets)
     }
 
 }
