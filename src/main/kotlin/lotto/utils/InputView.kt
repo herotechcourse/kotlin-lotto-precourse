@@ -37,4 +37,13 @@ object InputView {
         if (amount % 1000u != 0u)
             throw IllegalArgumentException("[ERROR] The purchase amount must be a multiple of 1000.")
     }
+
+    fun toWinningNumbers(str: String): List<UByte> {
+        val winningNumbers: List<String> = str.split(",")
+        return try {
+            winningNumbers.map { it.toUByte() }
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Invalid input for winning numbers.")
+        }
+    }
 }

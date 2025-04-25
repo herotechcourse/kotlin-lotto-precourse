@@ -13,7 +13,7 @@ The features will be implemented in the following order:
   - [x] It must be a positive integer.
   - [x] It must be divisible by 1,000.
 
-- [ ] Get the winning numbers from the user.
+- [x] Get the winning numbers from the user.
 - [ ] Check if the winning numbers are valid.
   - [ ] Each number must be between 1 and 45.
   - [ ] There must be 6 unique numbers.
@@ -54,6 +54,7 @@ The features will be implemented in the following order:
 - We need to use unsigned integer literals for comparisons with unsigned integers.
 - The IntelliJ IDEA debugger provides an intuitive display of current values in the editor, which helps to understand program flow.
 - We should declare methods as `internal` instead of `private` when we need to test them.
+- `map` takes each item in a collection, applies a function to it, and returns a new collection with the transformed items.
 
 ## Considerations
 
@@ -66,3 +67,5 @@ The features will be implemented in the following order:
 
 - [South Korean Lotto 6/45 Explanation](https://en.namu.wiki/w/%EB%A1%9C%EB%98%90%206/45)
 - [Kotlin documentation on unsigned integers](https://kotlinlang.org/docs/unsigned-integer-types.html#unsigned-integers-literals)
+- [The `map` function from Kotlin's  standard library](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
+- [Parameterized Tests in JUnit 5](https://www.baeldung.com/parameterized-tests-junit-5)
