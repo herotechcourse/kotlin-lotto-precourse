@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class TicketPurchase {
     var amountOfTicketsBought: Int = 0
     private set
-    var tickets: MutableSet<Lotto> = mutableSetOf()
+    var tickets: MutableList<Lotto> = mutableListOf()
         private set
 
     fun buyTickets(userInput: UserInput) {
