@@ -15,23 +15,11 @@ private const val MAX_PURCHASE_RANGE = 100000
 class LottoProgram {
     fun run() {
         val purchaseAmount = readValidPurchaseAmount()
-        val lottoCount = purchaseAmount / 1000
-        OutputView.newline()
-
-        OutputView.purchaseCount(lottoCount)
-        val lottery = LottoIssuer.execute(lottoCount)
-        val lottoStorage = LottoStorage(lottery)
-        OutputView.purchaseLottery(lottoStorage.getAll())
-
-        OutputView.newline()
-
+        val lottoStorage = issueLottery(purchaseAmount)
         val winningLotto = readWinningLotto()
-        OutputView.newline()
 
         val lottoResult = LottoResult(lottoStorage, winningLotto)
-        OutputView.message("Winning Statistics\n---")
-        OutputView.lottoStatistics(lottoResult)
-        OutputView.profitRate(lottoResult.calculateProfitRate(purchaseAmount))
+        printStatistics(lottoResult, purchaseAmount)
     }
 }
 
@@ -98,4 +86,24 @@ fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
             println(e.message)
         }
     }
+}
+
+fun issueLottery(purchaseAmount: Int): LottoStorage {
+    val lottoCount = purchaseAmount / 1000
+    OutputView.newline()
+    OutputView.purchaseCount(lottoCount)
+
+    val lottery = LottoIssuer.execute(lottoCount)
+    val lottoStorage = LottoStorage(lottery)
+
+    OutputView.purchaseLottery(lottoStorage.getAll())
+    OutputView.newline()
+    return lottoStorage
+}
+
+fun printStatistics(result: LottoResult, purchaseAmount: Int) {
+    OutputView.newline()
+    OutputView.message("Winning Statistics\n---")
+    OutputView.lottoStatistics(result)
+    OutputView.profitRate(result.calculateProfitRate(purchaseAmount))
 }
