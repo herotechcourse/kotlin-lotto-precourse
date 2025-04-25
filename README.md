@@ -8,10 +8,10 @@ The features will be implemented in the following order:
 
 ### Input Handling
 
-- [ ] Get the purchase amount from the user.
-- [ ] Check if the purchase amount is valid.
-  - [ ] It must be a positive integer.
-  - [ ] It must be divisible by 1,000.
+- [x] Get the purchase amount from the user.
+- [x] Check if the purchase amount is valid.
+  - [x] It must be a positive integer.
+  - [x] It must be divisible by 1,000.
 
 - [ ] Get the winning numbers from the user.
 - [ ] Check if the winning numbers are valid.
@@ -48,7 +48,21 @@ The features will be implemented in the following order:
 
 - [ ] Print the winning statistics.
 
+## Learnings
+
+- In Kotlin, we can use `try` as an expression to directly return a result. If the `try` block executes successfully, its result is returned.
+- We need to use unsigned integer literals for comparisons with unsigned integers.
+- The IntelliJ IDEA debugger provides an intuitive display of current values in the editor, which helps to understand program flow.
+- We should declare methods as `internal` instead of `private` when we need to test them.
+
+## Considerations
+
+- I decided not to allow a purchase amount of 0. The program should not run if no tickets can be bought.
+- Regarding number ranges, I intend to use "between" for user-facing messages and "in the range of" for developer-facing messages to ensure clarity and correctness.
+- I am using `UInt` for the purchase amount to handle larger numbers without additional memory costs.
+- I might use `UByte` instead of larger integer types for the lottery numbers between 1 and 45 to keep memory usage minimal.
 
 ## Sources
 
 - [South Korean Lotto 6/45 Explanation](https://en.namu.wiki/w/%EB%A1%9C%EB%98%90%206/45)
+- [Kotlin documentation on unsigned integers](https://kotlinlang.org/docs/unsigned-integer-types.html#unsigned-integers-literals)
