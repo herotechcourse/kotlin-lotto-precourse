@@ -23,16 +23,7 @@ enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: 
 
 }
 
-// lotto result
-object LottoResult {
-
-    fun printResults (types: prizeTypes): Lotto {
-        println("Winning Statistics")
-        println("---")
-    }
-}
-
-fun getTickets (): List<Lotto> {
+fun getTickets (): Pair<List<Lotto>, Int> {
 
     // ticket amounts
     println("Please enter the purchase amount.")
@@ -110,6 +101,18 @@ fun finalResult(results: Map<prizeTypes, Int>): Int{
     return finalPrize
 }
 
+// printing results
+fun print (results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int){
+    println("Winning Statistics")
+    println("---")
+    print("3 Matches (5,000 KRW) - ${results[prizeTypes.FIFTH]} ticket")
+    print("4 Matches (50,000 KRW) - ${results[prizeTypes.FOURTH]} ticket")
+    print("5 Matches (1,500,000 KRW) - ${results[prizeTypes.THIRD]} ticket")
+    print("5 Matches + Bonus Ball (30,000,000 KRW) - ${results[prizeTypes.SECOND]} ticket")
+    print("6 Matches (2,000,000,000 KRW) - ${results[prizeTypes.FIRST]} ticket")
+    val returnRate = (finalPrize.toDouble() / purchaseAmount) * 100
+    println("Total return rate is $returnRate %.")
+}
 
 fun main() {
 
@@ -118,7 +121,6 @@ fun main() {
     val inputBonus = getBonusNumbers(winningNumbers)
     val results = match(purchasedTickets, winningNumbers, inputBonus)
     val finalPrize = finalResult(results)
-
-    println("Total return rate is %.")
+    print(results, finalPrize, purchaseAmount)
 
 }
