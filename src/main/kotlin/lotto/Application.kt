@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 // prize ranks
-enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: Int) {
+enum class prizeTypes(val matchCount: Int, val hasBonus: Boolean, val rewards: Int) {
     NONE(0, false, 0),
     FIFTH(3, false, 5000),
     FOURTH(4, false, 50000),
@@ -13,22 +13,22 @@ enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: 
     FIRST(6, false, 2000000000);
 
     // check prize rank
-    companion object{
-        fun match (matchCount: Int, hasBonus: Boolean): prizeTypes {
-            if (matchCount == 5 && hasBonus) { return SECOND }
+    companion object {
+        fun match(matchCount: Int, hasBonus: Boolean): prizeTypes {
+            if (matchCount == 5 && hasBonus) {
+                return SECOND
+            }
             return values().firstOrNull { it.matchCount == matchCount && !it.hasBonus } ?: NONE
-            // prizeTypes.FIFTH(3, false, 5_000)
         }
     }
 
 }
 
-fun getTickets (): Pair<List<Lotto>, Int> {
-
+fun getTickets(): Pair<List<Lotto>, Int> {
     // ticket amounts
     println("Please enter the purchase amount.")
     val input = Console.readLine().toIntOrNull()
-    if (input == null || (input % 1000) != 0 ){
+    if (input == null || (input % 1000) != 0) {
         throw IllegalArgumentException("Each ticket costs 1,000 KRW. Please enter a valid amount.")
     }
 
@@ -38,7 +38,7 @@ fun getTickets (): Pair<List<Lotto>, Int> {
 
     val purchasedTickets = mutableListOf<Lotto>()
 
-    repeat(ticketAmounts){
+    repeat(ticketAmounts) {
         val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         println(ticketNumbers)
         purchasedTickets.add(Lotto(ticketNumbers))
@@ -48,17 +48,17 @@ fun getTickets (): Pair<List<Lotto>, Int> {
 
 }
 
-fun getWinningNumbers (): List<Int> {
+fun getWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers.")
-    val inputWinningNumbers = Console.readLine().split(",").map{ it.trim().toIntOrNull() }
-    if (inputWinningNumbers.any {it == null}) throw IllegalArgumentException("Please enter valid winning numbers.")
+    val inputWinningNumbers = Console.readLine().split(",").map { it.trim().toIntOrNull() }
+    if (inputWinningNumbers.any { it == null }) throw IllegalArgumentException("Please enter valid winning numbers.")
     val winningNumbers = inputWinningNumbers.filterNotNull() // verify each element and then convert the collection type
-    require(winningNumbers.size == 6)  {"[ERROR] There must be 6 winning numbers."}
-    require( winningNumbers.all{ it in 1..45}) {"[ERROR] Please enter the correct numbers between 1 to 45."}
+    require(winningNumbers.size == 6) { "[ERROR] There must be 6 winning numbers." }
+    require(winningNumbers.all { it in 1..45 }) { "[ERROR] Please enter the correct numbers between 1 to 45." }
     return winningNumbers
 }
 
-fun getBonusNumbers (winningNumbers: List<Int>): Int {
+fun getBonusNumbers(winningNumbers: List<Int>): Int {
     println("Please enter a bonus number.")
     val inputBonus = Console.readLine().toIntOrNull()
     if (inputBonus == null || !(inputBonus in 1..45)) throw IllegalArgumentException("Please enter a valid number between 1 and 45.")
@@ -69,22 +69,20 @@ fun getBonusNumbers (winningNumbers: List<Int>): Int {
 
 // matching result
 fun match(purchasedtickets: List<Lotto>, winningNumbers: List<Int>, inputBonus: Int): Map<prizeTypes, Int> {
-
     val results = mutableMapOf<prizeTypes, Int>()
-    // empty map
     // Int = how many tickets match the prize rank
 
     prizeTypes.values().forEach { it -> results[it] = 0 }
-    // prizeTypes.values() returns an array: [FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE]
 
-    purchasedtickets.forEach {ticket ->
+
+    purchasedtickets.forEach { ticket ->
         val matchCount = ticket.matchedNumbersCount(winningNumbers)
         val hasBonus = ticket.includedBonusNumber(inputBonus)
-        val rank = prizeTypes.match(matchCount, hasBonus)  // e.g. prizeTypes.FIFTH(3, false, 5_000)
+        val rank = prizeTypes.match(matchCount, hasBonus)
 
-        if (rank != prizeTypes.NONE) { results[rank] = (results[rank] ?: 0) + 1}
-        // use Elvis operator
-        // results[rank] = results.getOrDefault(rank, 0) + 1 set default entry as 0
+        if (rank != prizeTypes.NONE) {
+            results[rank] = (results[rank] ?: 0) + 1
+        }
     }
 
     return results
@@ -92,7 +90,7 @@ fun match(purchasedtickets: List<Lotto>, winningNumbers: List<Int>, inputBonus: 
 }
 
 // calculate prize
-fun finalResult(results: Map<prizeTypes, Int>): Int{
+fun finalResult(results: Map<prizeTypes, Int>): Int {
     var finalPrize = 0
     for ((key, value) in results) {
         val prize = key.rewards * value
@@ -102,7 +100,7 @@ fun finalResult(results: Map<prizeTypes, Int>): Int{
 }
 
 // printing results
-fun print (results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int){
+fun print(results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int) {
     println("Winning Statistics")
     println("---")
     println("3 Matches (5,000 KRW) - ${results[prizeTypes.FIFTH]} ticket")
