@@ -2,9 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class Lotto(val numbers: List<Int>, val bonusNumber: Int = 0) {
+class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == SIZE) { "[ERROR] Lotto must contain exactly $SIZE numbers." }
+        require(numbers.size == SIZE) { "Lotto must contain exactly $SIZE numbers." }
+        require(numbers.toSet().size == SIZE) {"Lotto numbers must be unique."}
+        require(numbers.all { it in FIRST_NUM..LAST_NUM}) { "Lotto numbers must be in ${FIRST_NUM..LAST_NUM}"}
     }
 
     companion object {
@@ -13,8 +15,8 @@ class Lotto(val numbers: List<Int>, val bonusNumber: Int = 0) {
         const val SIZE = 6
         const val COST = 1000
 
-        fun getLottoNumbers(bonusNumber: Int = 0): Lotto =
-            Lotto(Randoms.pickUniqueNumbersInRange(FIRST_NUM, LAST_NUM, SIZE), bonusNumber)
+        fun getLottoNumbers(): Lotto =
+            Lotto(Randoms.pickUniqueNumbersInRange(FIRST_NUM, LAST_NUM, SIZE))
 
     }
 }

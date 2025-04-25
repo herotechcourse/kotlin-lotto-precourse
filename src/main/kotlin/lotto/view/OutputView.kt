@@ -28,4 +28,8 @@ class OutputView {
     fun printNewLine() {
         println()
     }
+
+    fun printError(message: String) {
+        println("[ERROR] $message")
+    }
 }

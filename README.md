@@ -75,10 +75,11 @@
 - [x] readWinnerLotto:
 - [x] readBonusNumber:
  
-## ResultView
+## OutputView
 - [x] printPurchasedTickets
 - [x] printWinningStatistics
 - [x] printNewLine
+- [x] printError
 
 ## InputValidator
 - [ ] validatePurchaseAmount:
@@ -96,3 +97,10 @@
 ## Int Range overflow 
 I got negative value, even though I don't have minus calc
 I realized overflow and changed to Long Type 
+
+## Lotto Model 
+I read that I can't add any instance variables in Lotto Class 
+So I should change my lotto class logic
+Firstly I thought Winning Lotto Ticket is same as simple Lotto Ticket, But I realized Wining Lotto is kind 
+of abstract thing. It's not a ticket, it is just number of list and bonus number set.
+So I decided to make WinningLotto Class in model package (can I?)
