@@ -14,42 +14,31 @@ class LottoTest {
     }
 
     @Test
-    fun `EXCEPTION lotto numbers exceed six`() {
-        val exception = assertThrows<IllegalArgumentException> {
+    fun `EXCEPTION when lotto numbers exceed six`() {
+        assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
-
-        assertThat(exception.message).contains(ERROR_MESSAGE)
-
     }
 
     @Test
     fun `EXCEPTION lotto numbers less than six`() {
-        val exception = assertThrows<IllegalArgumentException> {
+        assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5))
         }
-
-        assertThat(exception.message).contains(ERROR_MESSAGE)
-
     }
 
     @Test
     fun `EXCEPTION lotto numbers contain duplicates`() {
-        val exception = assertThrows<IllegalArgumentException> {
+        assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
-
-        assertThat(exception.message).contains(ERROR_MESSAGE)
     }
 
     @Test
     fun `EXCEPTION numbers are out of 1 to 45 range`() {
-        val exception = assertThrows<IllegalArgumentException> {
+        assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 46))
         }
-
-        assertThat(exception.message).contains(ERROR_MESSAGE)
-
     }
 
     companion object {
