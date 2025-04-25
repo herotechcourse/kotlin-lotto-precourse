@@ -1,9 +1,6 @@
 package lotto.controller
 
-import lotto.Lotto
-import lotto.LottoStore
-import lotto.Lottos
-import lotto.WinningLotto
+import lotto.*
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -14,7 +11,8 @@ class Controller(
 ) {
 
     fun run() {
-        val lottos: Lottos = retry { store.sell(inputView.readPurchaseAmount()) }
+        val amount: Money = retry { Money(InputView.readPurchaseAmount()) }
+        val lottos: Lottos = store.sell(amount)
         outputView.printLottoTickets(lottos)
 
         val winningNumbers: Lotto = retry { Lotto(inputView.readWinningNumbers()) }
