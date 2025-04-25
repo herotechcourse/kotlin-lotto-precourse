@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
     @Test
-    fun `feature test`() {
+    fun `TEST main feature test`() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
@@ -44,19 +44,18 @@ class ApplicationTest : NsTest() {
 
 
     @Test
-    fun `amount not divisible by 1000`() {
+    fun `EXCEPTION amount not divisible by 1000`() {
          assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("1234") }
+            val exception = assertThrows<IllegalArgumentException> { runException("1234") }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
         }
     }
 
     @Test
-    fun `exception test`() {
+    fun `EXCEPTION non-numeric input`() {
         assertSimpleTest {
-            // run("1000j")
-            // assertThat(output()).contains(ERROR_MESSAGE)
-            assertThrows<IllegalArgumentException> { runException("1000j") }
-
+            val exception = assertThrows<IllegalArgumentException> { runException("1000j") }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
         }
     }
 
