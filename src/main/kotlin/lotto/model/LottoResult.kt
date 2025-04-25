@@ -15,7 +15,7 @@ class LottoResult(
         for (lotto in lottery.getAll()) {
             val matchCount = lotto.countMatch(winningLotto.getWinningNumbers())
             val matchBonus = lotto.isContainsNumber(winningLotto.getBonusNumber())
-            val rank = LottoRank.of(matchCount, matchBonus)
+            val rank = LottoRank.fromMatchResult(matchCount, matchBonus)
             rankCountMap[rank] = rankCountMap.getOrDefault(rank, 0) + 1
         }
     }
