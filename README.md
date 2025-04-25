@@ -27,7 +27,7 @@
 
 - [x] Calculate the quantity of purchased lottery tickets
 - [x] Issue lottery tickets based on the purchased amount
-- [] Calculate result statistics
+- [x] Calculate result statistics
     - [] Compare how many numbers match
 - [] Calculate profit rate
     - [] Formula: Total Prize Money / Lottery Purchase Amount
