@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == SIZE) { "Lotto must contain exactly $SIZE numbers." }
-        require(numbers.toSet().size == SIZE) {"Lotto numbers must be unique."}
-        require(numbers.all { it in FIRST_NUM..LAST_NUM}) { "Lotto numbers must be in ${FIRST_NUM..LAST_NUM}"}
+        require(numbers.toSet().size == SIZE) { "Lotto numbers must be unique." }
+        require(numbers.all { it in FIRST_NUM..LAST_NUM }) { "Lotto numbers must be in ${FIRST_NUM..LAST_NUM}" }
     }
 
     fun getLottoNumbers(): List<Int> = numbers

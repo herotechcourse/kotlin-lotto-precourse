@@ -3,39 +3,26 @@ package lotto.utils
 import lotto.Lotto
 import lotto.model.WinnerLotto
 
-class InputValidator {
+object InputValidator {
 
     fun validatePurchaseAmount(amount: String): Long {
-        val purchaseAmount =
-            amount.toLongOrNull() ?: throw IllegalArgumentException("Purchase amount must be numeric number")
+        val purchaseAmount = InputParser.parsePurchaseAmount(amount)
         when {
             purchaseAmount < 0 -> throw IllegalArgumentException("Purchase amount must be positive number")
-            purchaseAmount < Lotto.COST -> throw IllegalArgumentException("Purchase amount must be bigger than 1 ticket cost(${Lotto.COST})")
+            purchaseAmount < Lotto.COST -> throw IllegalArgumentException("Purchase amount must be bigger than 1 ticket cost (${Lotto.COST})")
         }
         return purchaseAmount
     }
 
-    fun validateWinnerLotto(numbers: String): Lotto {
-        val lottoNumbers = try {
-            numbers.split(",").map { it.trim().toInt() }
-        } catch (e: Exception) {
-            throw IllegalArgumentException("Winner Lotto Numbers must be numeric number")
-        }
 
-        return try {
-            Lotto(lottoNumbers)
-        } catch (e: Exception) {
-            throw IllegalArgumentException(e.message)
-        }
-
+    fun validateWinnerLottoAndGetLotto(numbers: String): Lotto {
+        val lottoNumbers = InputParser.parseWinnerLottoNumbers(numbers)
+        return Lotto(lottoNumbers)
     }
 
-    fun validateBonusNumber(number: String, winnerLotto: Lotto): WinnerLotto {
-        val bonusNumber = number.toIntOrNull() ?: throw IllegalArgumentException("Bonus number must be numeric number")
-        return try {
-            WinnerLotto(winnerLotto, bonusNumber)
-        } catch (e: Exception) {
-            throw IllegalArgumentException(e.message)
-        }
+
+    fun validateBonusNumberAndGetWinnerLotto(number: String, winnerLotto: Lotto): WinnerLotto {
+        val bonusNumber = InputParser.parseWinnerBonusNumber(number)
+        return WinnerLotto(winnerLotto, bonusNumber)
     }
 }

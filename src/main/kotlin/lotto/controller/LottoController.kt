@@ -11,7 +11,6 @@ import lotto.view.OutputView
 class LottoController(
     private val inputView: InputView,
     private val outputView: OutputView,
-    private val inputValidator: InputValidator,
 ) {
 
     fun run() {
@@ -28,7 +27,7 @@ class LottoController(
         outputView.printNewLine()
 
         // Input (Bonus Number)
-        val winnerLottoWithBonus: WinnerLotto = readAndValidateBonusNumber(winnerLotto)
+        val winnerLottoWithBonus: WinnerLotto = readAndValidateBonusNumberAndGetWinnerLotto(winnerLotto)
         outputView.printNewLine()
 
 
@@ -43,34 +42,37 @@ class LottoController(
         while (true) {
             try {
                 val budget = inputView.readPurchaseAmount()
-                val validatedBudget = inputValidator.validatePurchaseAmount((budget))
+                val validatedBudget = InputValidator.validatePurchaseAmount((budget))
                 return validatedBudget
-            } catch(e: Exception) {
+            } catch (e: IllegalArgumentException) {
                 e.message?.let { outputView.printError(it) }
                 outputView.printNewLine()
             }
         }
     }
+
     private fun readAndValidateWinnerLotto(): Lotto {
         while (true) {
             try {
                 val lottoNumbers = inputView.readWinnerLotto()
-                val validatedLotto = inputValidator.validateWinnerLotto(lottoNumbers)
+                val validatedLotto = InputValidator.validateWinnerLottoAndGetLotto(lottoNumbers)
                 return validatedLotto
-            } catch(e: Exception) {
+            } catch (e: IllegalArgumentException) {
                 e.message?.let { outputView.printError(it) }
                 outputView.printNewLine()
 
             }
         }
     }
-    private fun readAndValidateBonusNumber(winnerLotto: Lotto): WinnerLotto {
+
+    // hmm.. combine function..
+    private fun readAndValidateBonusNumberAndGetWinnerLotto(winnerLotto: Lotto): WinnerLotto {
         while (true) {
             try {
                 val bonusNumber = inputView.readBonusNumber()
-                val validatedBonus = inputValidator.validateBonusNumber(bonusNumber, winnerLotto)
+                val validatedBonus = InputValidator.validateBonusNumberAndGetWinnerLotto(bonusNumber, winnerLotto)
                 return validatedBonus
-            } catch(e: Exception) {
+            } catch (e: IllegalArgumentException) {
                 e.message?.let { outputView.printError(it) }
                 outputView.printNewLine()
             }

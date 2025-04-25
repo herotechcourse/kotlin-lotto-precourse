@@ -21,7 +21,7 @@
 - Bonus number only used when it matches 5 number
 - Exception could be various -> type matching, input range, duplicate number, not enough input, bonus number
   duplicate ...
-- Re-Prompt if Exception occur (IllegalArgumentException)
+- Re-Prompt if Exception occur (`IllegalArgumentException`)
 - Winning rate calculate -> profit/used -> Round to One decimal place
 - There is no game over requirement, just make it "One Round"
 
@@ -81,10 +81,15 @@
 - [x] printNewLine
 - [x] printError
 
+## InputParser
+- [x] parsePurchaseAmount: String -> Long
+- [x] parseWinnerLottoNumbers: String -> List<Int>
+- [x] parseWinnerBonusNumber: String -> Int
+
 ## InputValidator
-- [ ] validatePurchaseAmount:
-- [ ] validateWinnerLotto:
-- [ ] validateBonusNumber:
+- [x] validatePurchaseAmount: validate input to make valid PurchaseAmount
+- [x] validateWinnerLotto: validate input to make valid Lotto
+- [x] validateBonusNumber: validate input to make valid WinnerLotto
 
 ## LottoController 
 - [x] run: Combine every Component
@@ -106,6 +111,13 @@ of abstract thing. It's not a ticket, it is just number of list and bonus number
 So I decided to make WinningLotto Class in model package (can I?)
 
 ## Validator 
-Given Lotto class has require with error message, So I should include Lotto class in validator class.
+Given Lotto class has `require` with error message, So I should include Lotto class in validator class.
 But then Validator class got two responsibilities (Validation, Conversion).
 I considered a lot. And decided to separate into Syntax Error Parser and Logical Error Validator
+
+## Error Type 
+I just used Exception to catch error, because I don't know what error occurs when `require` statement is wrong.
+Then I noticed that if `require` statement is wrong it occurs `IllegalArgumentException`.
+So I changed Exception to `IllegalArgumentException`
+But one thing I am wondering - if we're just catching the error and 
+printing a message like "[ERROR] ...", why do we specifically throw an `IllegalArgumentException`?
