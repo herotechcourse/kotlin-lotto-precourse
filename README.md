@@ -6,7 +6,7 @@ This program simulates a lottery ticket machine where users can purchase tickets
 
 ## Features
 
-1. Purchase Amount Input
+1. Get Purchase Amount and calculate the number of tickets
  * Validates that the amount is divisible by 1000 KRW
  * Calculates the number of tickets (amount / 1000)
  * Re-prompts on invalid input with [ERROR] message
@@ -62,8 +62,6 @@ This program simulates a lottery ticket machine where users can purchase tickets
  
 
  ### Code Organization
-
-* Lotto class with fixed structure
 * Dedicated classes for input/output
 * Proper package organization
 * Follows Kotlin Coding Conventions
