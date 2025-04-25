@@ -13,45 +13,35 @@ class ParseAndValidateTest {
     fun `exception test, invalid purchase amount input, negative sum`() {
         assertThrows<IllegalArgumentException> {
             purchaseAmount("-1000")
-        } .also {
-            e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE))
-        }
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
     }
 
     @Test
     fun `exception test, invalid purchase amount input, not multiple of 1,000`() {
         assertThrows<IllegalArgumentException> {
             purchaseAmount("7777")
-        } .also {
-            e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE))
-        }
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
     }
 
     @Test
     fun `exception test, invalid purchase amount input, empty string`() {
         assertThrows<IllegalArgumentException> {
             purchaseAmount("")
-        } .also {
-            e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE))
-        }
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
     }
 
     @Test
     fun `exception test, invalid purchase amount input, blank string`() {
         assertThrows<IllegalArgumentException> {
             purchaseAmount("       ")
-        } .also {
-            e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE))
-        }
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
     }
 
     @Test
     fun `exception test, invalid purchase amount input, string`() {
         assertThrows<IllegalArgumentException> {
             purchaseAmount("abcdf")
-        } .also {
-            e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE))
-        }
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
     }
 
     @Test
