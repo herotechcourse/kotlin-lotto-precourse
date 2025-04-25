@@ -1,4 +1,5 @@
 package lotto
 
 class LottoGame {
+
 }
