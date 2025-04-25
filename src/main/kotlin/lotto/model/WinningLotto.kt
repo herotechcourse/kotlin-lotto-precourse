@@ -11,5 +11,8 @@ class WinningLotto(
         InputValidator.numberIsRange(bonusNumber)
         InputValidator.noDuplicateBonusNumber(bonusNumber, mainLotto)
     }
-    
+
+    fun getWinningNumbers(): List<Int> = mainLotto.getNumbers()
+
+    fun getBonusNumber(): Int = bonusNumber
 }
