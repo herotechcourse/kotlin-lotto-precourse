@@ -38,14 +38,14 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
 
 ### Result Announcement
 
-* [ ] Compare each purchased lotto ticket with the winning numbers and the bonus number to determine the results.
-* [ ] Calculate the count for each winning rank based on the following criteria:
+* [x] Compare each purchased lotto ticket with the winning numbers and the bonus number to determine the results.
+* [x] Calculate the count for each winning rank based on the following criteria:
     * 3 matches (5,000 KRW)
     * 4 matches (50,000 KRW)
     * 5 matches (1,500,000 KRW)
     * 5 matches + Bonus number match (30,000,000 KRW)
     * 6 matches (2,000,000,000 KRW)
-* [ ] Print the winning statistics in the specified format:
+* [x] Print the winning statistics in the specified format:
     ```
     Winning Statistics
     ---
@@ -55,8 +55,8 @@ This project is the Pre-course Week 2 assignment to implement a Lotto game based
     5 matches, Bonus ball match (30,000,000 KRW) - n tickets
     6 matches (2,000,000,000 KRW) - n tickets
     ```
-* [ ] Calculate the total profit rate (Total Winnings / Purchase Amount * 100).
-* [ ] Print the total profit rate, rounded to one decimal place (e.g., `Total profit rate is 62.5%`).
+* [x] Calculate the total profit rate (Total Winnings / Purchase Amount * 100).
+* [x] Print the total profit rate, rounded to one decimal place (e.g., `Total profit rate is 62.5%`).
 
 ### Exception Handling
 
