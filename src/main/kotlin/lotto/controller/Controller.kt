@@ -5,9 +5,9 @@ import lotto.view.InputView
 import lotto.view.OutputView
 
 class Controller(
-    private val store: LottoStore,
-    private val inputView: InputView,
-    private val outputView: OutputView
+    private val store: LottoStore = LottoStore(),
+    private val inputView: InputView = InputView,
+    private val outputView: OutputView = OutputView()
 ) {
 
     fun run() {

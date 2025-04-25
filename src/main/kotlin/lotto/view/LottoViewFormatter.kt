@@ -5,12 +5,9 @@ import lotto.Rank
 import java.text.NumberFormat
 import java.util.*
 
-object LottoViewFormatter {
-
-    private const val PROFIT_RATE_FORMAT = "%.1f"
-    private const val LN = "\n"
-
-    private val numberFormatter = NumberFormat.getNumberInstance(Locale.US)
+class LottoViewFormatter(
+    private val numberFormatter: NumberFormat = NumberFormat.getNumberInstance(Locale.US)
+) {
 
     fun formatPurchaseMessage(lottoTickets: List<Lotto>) = "You have purchased ${lottoTickets.size} tickets."
 
@@ -37,4 +34,8 @@ object LottoViewFormatter {
         return "$matchCount Matches $bonusInfo(${formattedPrize} KRW) – $count tickets"
     }
 
+    companion object {
+        private const val PROFIT_RATE_FORMAT = "%.1f"
+        private const val LN = "\n"
+    }
 }

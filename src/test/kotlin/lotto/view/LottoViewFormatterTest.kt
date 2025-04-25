@@ -1,13 +1,16 @@
 package lotto.view
 
 import lotto.Lotto
-import lotto.LottoTickets
 import lotto.Rank
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import java.text.NumberFormat
+import java.util.*
 
 class LottoViewFormatterTest {
+
+    private val sut: LottoViewFormatter = LottoViewFormatter(NumberFormat.getInstance(Locale.US))
 
     @Nested
     inner class LottoTickets {
@@ -20,7 +23,7 @@ class LottoViewFormatterTest {
         @Test
         fun `formatPurchaseMessage should return ticket count message`() {
             // Act
-            val result = LottoViewFormatter.formatPurchaseMessage(lottoTickets)
+            val result = sut.formatPurchaseMessage(lottoTickets)
 
             // Assert
             assertThat(result).isEqualTo("You have purchased 2 tickets.")
@@ -30,7 +33,7 @@ class LottoViewFormatterTest {
         @Test
         fun `formatLottoTickets should return sorted number lines`() {
             // Act
-            val result = LottoViewFormatter.formatLottoTickets(lottoTickets)
+            val result = sut.formatLottoTickets(lottoTickets)
 
             // Assert
             assertThat(result).isEqualTo(
@@ -53,7 +56,7 @@ class LottoViewFormatterTest {
         )
 
         // Act
-        val result = LottoViewFormatter.formatWinningStatistics(rankCounts)
+        val result = sut.formatWinningStatistics(rankCounts)
 
         // Assert
         assertThat(result).contains(
@@ -72,7 +75,7 @@ class LottoViewFormatterTest {
         val profitRate = 127.54
 
         // Act
-        val result = LottoViewFormatter.formatProfitRate(profitRate)
+        val result = sut.formatProfitRate(profitRate)
 
         // Assert
         assertThat(result).isEqualTo("Total return rate is 127.5%.")

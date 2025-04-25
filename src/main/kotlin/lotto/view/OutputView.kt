@@ -3,7 +3,7 @@ package lotto.view
 import lotto.Lotto
 import lotto.Rank
 
-class OutputView(private val formatter: LottoViewFormatter) {
+class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter()) {
 
     fun printLottoTickets(lottoTickets: List<Lotto>) {
         print(buildLottoTickets(lottoTickets))
