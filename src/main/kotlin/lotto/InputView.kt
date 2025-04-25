@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
 
-    private fun <T> readInput(promptMessage: String,
-                      validator: (String) -> T): T {
+    private fun <T> readInput(
+        promptMessage: String,
+        validator: (String) -> T
+    ): T {
         while (true) {
             try {
                 Messages.display(promptMessage)
@@ -14,7 +16,8 @@ class InputView {
             } catch (e: IllegalArgumentException) {
                 Messages.display(
                     Messages.ERROR,
-                    e.message ?: Messages.ERROR_INVALID_INPUT)
+                    e.message ?: Messages.ERROR_INVALID_INPUT
+                )
             }
         }
     }

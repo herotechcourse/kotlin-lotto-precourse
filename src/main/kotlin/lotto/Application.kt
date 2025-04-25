@@ -2,8 +2,11 @@ package lotto
 
 fun main() {
 
+    val lottoService = LottoService()
     val inputView = InputView()
+    val outputView = OutputView()
     val purchaseAmount = inputView.readPurchaseAmount()
-    val amountOfTickets = purchaseAmount / LottoConstants.TICKET_PRICE
-    Messages.display(Messages.TICKETS_PURCHASED, amountOfTickets)
+    lottoService.purchaseTickets(purchaseAmount)
+    outputView.displayPurchasedTickets(lottoService.getTickets())
+    inputView.readWinnerNumbers()
 }

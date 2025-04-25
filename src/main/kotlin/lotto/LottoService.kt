@@ -7,7 +7,7 @@ class LottoService() {
     fun purchaseTickets(amount: Int) {
         val lottoGenerator = LottoGenerator()
         val numberOfTickets = amount / LottoConstants.TICKET_PRICE
-        lottoTickets = List(numberOfTickets){
+        lottoTickets = List(numberOfTickets) {
             lottoGenerator.createLottoTicket()
         }
     }
