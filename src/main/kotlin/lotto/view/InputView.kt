@@ -22,4 +22,9 @@ class InputView {
         val input = Console.readLine()
         return inputValidator.validateBonusNumber(input, listOf())
     }
+    /*[Single Responsibility Principle - InputView vs BonusNumber]
+    *  InputView is responsible for handling user input and providing user-friendly validation messages
+    *  whereas BonusNumber as a domain object must ensure its own validity upon creation to preserve domain integrity
+    *  the domain object must defensively guarantee that it is never created with invalid values
+    * */
 }

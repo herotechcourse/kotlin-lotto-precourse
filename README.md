@@ -26,6 +26,7 @@
 - [x] The user inputs one bonus number
 - [x] The bonus number must not be duplicated with winning numbers
 - [x] Validate 6 winning numbers: count, duplicates, range
+- [x] BonusNumber class also performs validation to protect domain integrity (domain layer, **SRP**)
 
 ### 4️⃣ Result Check
 
@@ -44,7 +45,9 @@
 
    → ✅ `InputValidator` class: non-numeric input, bonus duplication, invalid count/range
 
-   →✅ `WinningNumber` class: duplicates, invalid count, out-of-range numbers
+   → ✅ `WinningNumber` class: duplicates, invalid count, out-of-range numbers
+
+   → ✅ `BonusNumber` class : out-of-range numbers,  duplicates
 
 - [ ] All error messages must start with `[ERROR]`  
   → ✅ Exception validation added,  Message prefix application remaining
