@@ -16,15 +16,22 @@ Implement a simple lottery ticket machine with the following rules:
   - [x] The user then enters the winning numbers
   - [x] The bonus number is a single, separate number.
 
-There are five prize ranks. The criteria and prize amounts are as follows:
-1st Prize: Match 6 numbers / 2,000,000,000 KRW
-2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
-3rd Prize: Match 5 numbers / 1,500,000 KRW
-4th Prize: Match 4 numbers / 50,000 KRW
-5th Prize: Match 3 numbers / 5,000 KRW
-The program compares the user's tickets to the winning numbers and prints the result, including winnings and profit rate.
-If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
-Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
+- [x] There are five prize ranks. The criteria and prize amounts are as follows:
+  - 1st Prize: Match 6 numbers / 2,000,000,000 KRW
+  - 2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
+  - 3rd Prize: Match 5 numbers / 1,500,000 KRW
+  - 4th Prize: Match 4 numbers / 50,000 KRW
+  - 5th Prize: Match 3 numbers / 5,000 KRW
+- [ ] The program compares the user's tickets to the winning numbers and prints the result, including winnings and profit rate.
+  - [x] Compare each ticket to the winning numbers
+  - [x] Determine the prize for each ticket
+  - [x] Count the number of tickets per prize rank
+  - [x] Print the result in formatted lines
+  - [ ] Calculate and print total winnings and profit rate
+
+
+- [ ] If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
+- [ ] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
 
 
 # Input/Output Requirements
@@ -52,7 +59,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
   - ex Please enter the bonus number.
 - [x] print winning numbers status intro message
   - ex Winning Statistics /n ---
-- [ ] print Lotto result statistics:
+- [x] print Lotto result statistics:
 - [ ] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%):
   - ex Total return rate is 62.5%.
 - [ ] Error messages must start with [ERROR]:
