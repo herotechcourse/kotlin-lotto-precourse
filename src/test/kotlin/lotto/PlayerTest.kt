@@ -18,7 +18,7 @@ class PlayerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [100001,9999999, Int.MAX_VALUE])
+    @ValueSource(ints = [1_000_001,9_999_999, Int.MAX_VALUE])
     fun `throws an exception when amount is more than 100000`(input: Int) {
         assertThrows<IllegalArgumentException> {
             Player(input)
