@@ -34,4 +34,16 @@ class LottoStatisticTest {
 
         assertEquals(2, statistic.ticketCount)
     }
+
+    @Test
+    fun `each prize amount is prize amount multiplied by ticket count`() {
+        val statistic = LottoStatistic(LottoPrize.FIVE_MATCHES)
+        statistic.updateTicketCount()
+        statistic.updateTicketCount()
+
+        val prizeAmount = statistic.getPrizeAmount()
+
+        val expectedPrizeAmount = 1_500_000 * 2
+        assertEquals(expectedPrizeAmount, prizeAmount)
+    }
 }
