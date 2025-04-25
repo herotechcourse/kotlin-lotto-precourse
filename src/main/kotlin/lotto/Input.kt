@@ -12,12 +12,12 @@ class Input(private val validator: Validator) {
     }
 
     fun enterWinningNumbers(): Lotto {
-        println("Please enter last week's winning numbers.")
+        println("\nPlease enter last week's winning numbers.")
         return retry { Lotto(it.toIntList(validator)) }
     }
 
     fun enterBonusNumber(lotto: Lotto): Int {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
         return retry { getBonusNumber(it, lotto) }
     }
 
