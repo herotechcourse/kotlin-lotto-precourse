@@ -1,33 +1,26 @@
 package lotto
 
-import lotto.NumberUtil.formatInt
-
 enum class LottoPrize(
-    private val matches: String,
-    val prizeAmount: Int,
+    val matches: String,
+    val amount: Int,
     val value: Int,
 ) {
 
-    THREE_MATCHES("3 Matches", 5_000, 3),
-    FOUR_MATCHES("4 Matches", 50_000, 4),
-    FIVE_MATCHES("5 Matches", 1_500_000, 5),
-    FIVE_MATCHES_BONUS("5 Matches + Bonus Ball", 30_000_000, 5),
-    SIX_MATCHES("6 Matches", 2_000_000_000, 6);
+    THREE_MATCHES("3 Matches", 5_000, 3) {
+        override fun isMatch(matchCount: Int, hasBonus: Boolean) = matchCount == value
+    },
+    FOUR_MATCHES("4 Matches", 50_000, 4) {
+        override fun isMatch(matchCount: Int, hasBonus: Boolean) = matchCount == value
+    },
+    FIVE_MATCHES("5 Matches", 1_500_000, 5) {
+        override fun isMatch(matchCount: Int, hasBonus: Boolean) = matchCount == value && !hasBonus
+    },
+    FIVE_MATCHES_BONUS("5 Matches + Bonus Ball", 30_000_000, 5) {
+        override fun isMatch(matchCount: Int, hasBonus: Boolean) = matchCount == value && hasBonus
+    },
+    SIX_MATCHES("6 Matches", 2_000_000_000, 6) {
+        override fun isMatch(matchCount: Int, hasBonus: Boolean) = matchCount == value
+    };
 
-    var ticketCount = 0
-        private set
-
-    fun updateTicketCount() {
-        ticketCount += 1
-    }
-
-    override fun toString(): String {
-        return "$matches (${prizeAmount.formatInt()} KRW) – $ticketCount tickets"
-    }
-
-    companion object {
-
-        fun getTotalPrizeAmount() = entries.toTypedArray()
-            .sumOf { it.prizeAmount * it.ticketCount }
-    }
+    abstract fun isMatch(matchCount: Int, hasBonus: Boolean): Boolean
 }
