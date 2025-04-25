@@ -56,7 +56,7 @@ class ValidateLottoNumbersTest {
         val exception = assertThrows<IllegalArgumentException> {
             validator.validate(invalidSize)
         }
-        assertEquals("[ERROR] Lotto numbers must contain exactly 6 numbers.", exception.message)
+        assertEquals("[ERROR] Lotto must contain exactly 6 numbers.", exception.message)
     }
 
     @Test
