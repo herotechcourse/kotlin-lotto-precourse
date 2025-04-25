@@ -17,8 +17,13 @@ class OutputView {
         }
     }
 
+    fun printWinningNumbersInputPrompt() {
+        println(WINNING_NUMBERS_INPUT_PROMPT)
+    }
+
     companion object {
         const val PURCHASE_LOTTO_AMOUNT_PROMPT_MESSAGE = "Please enter the purchase amount."
         const val ISSUED_LOTTO_COUNT_MESSAGE = "You have purchased %d tickets."
+        const val WINNING_NUMBERS_INPUT_PROMPT = "Please enter last week's winning numbers."
     }
 }
