@@ -9,7 +9,7 @@ class LottoTicketMachineTest {
     fun `lotto ticket machine create lotto tickets`() {
         val lottoTicketMachine = LottoTicketMachine()
         val lottoTicket = lottoTicketMachine.buyLotto(
-            PurchaseQuantityDto(3),
+            PurchaseAmountDto(3),
             listOf(
                 LottoTicketDto(listOf(1, 2, 3, 4, 5, 6)),
                 LottoTicketDto(listOf(11, 12, 13, 14, 15, 16)),

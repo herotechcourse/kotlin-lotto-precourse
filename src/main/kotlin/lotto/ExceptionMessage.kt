@@ -1,7 +1,9 @@
 package lotto
 
-enum class ExceptionMessage(errorMessage: String) {
+enum class ExceptionMessage(val errorMessage: String) {
     DUPLICATE_LOTTO_NUMBER("[ERROR] Lotto numbers must consist of unique numbers."),
     INVALID_LOTTO_NUMBER_RANGE("[ERROR] Lotto numbers must in the range from 1 to 45"),
-    INVALID_LOTTO_NUMBER_SIZE("[ERROR] Lotto must contain exactly 6 numbers.")
+    INVALID_LOTTO_NUMBER_SIZE("[ERROR] Lotto must contain exactly 6 numbers."),
+    INPUT_IS_NOT_A_NUMBER("[ERROR] Input must be a number"),
+    INVALID_PURCHASE_AMOUNT("[ERROR] Purchase amount must be divided into 1,000 KRW")
 }
