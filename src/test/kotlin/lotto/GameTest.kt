@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.model.Game
+import lotto.enums.Rank
 import lotto.model.WinningLotto
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
