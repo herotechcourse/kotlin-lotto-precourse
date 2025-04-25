@@ -9,14 +9,15 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in FIRST_NUM..LAST_NUM}) { "Lotto numbers must be in ${FIRST_NUM..LAST_NUM}"}
     }
 
+    fun getLottoNumbers(): List<Int> = numbers
+
     companion object {
         private const val FIRST_NUM = 1
         private const val LAST_NUM = 45
         const val SIZE = 6
         const val COST = 1000
 
-        fun getLottoNumbers(): Lotto =
+        fun getRandomLottoNumbers(): Lotto =
             Lotto(Randoms.pickUniqueNumbersInRange(FIRST_NUM, LAST_NUM, SIZE))
-
     }
 }

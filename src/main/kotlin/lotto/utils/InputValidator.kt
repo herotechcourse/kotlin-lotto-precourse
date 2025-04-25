@@ -1,6 +1,7 @@
 package lotto.utils
 
 import lotto.Lotto
+import lotto.model.WinnerLotto
 
 class InputValidator {
 
@@ -20,9 +21,6 @@ class InputValidator {
         } catch (e: Exception) {
             throw IllegalArgumentException("Winner Lotto Numbers must be numeric number")
         }
-        val winnerLotto: Lotto
-
-        if (lottoNumbers.toSet().size != lottoNumbers.size) throw IllegalArgumentException("Winner Lotto numbers must be unique numbers")
 
         return try {
             Lotto(lottoNumbers)
@@ -32,11 +30,12 @@ class InputValidator {
 
     }
 
-    fun validateBonusNumber(number: String, winnerLotto: Lotto): Int {
+    fun validateBonusNumber(number: String, winnerLotto: Lotto): WinnerLotto {
         val bonusNumber = number.toIntOrNull() ?: throw IllegalArgumentException("Bonus number must be numeric number")
-
-        if (bonusNumber in winnerLotto.numbers) throw IllegalArgumentException("Bonus Number must be a unique number")
-
-        return bonusNumber
+        return try {
+            WinnerLotto(winnerLotto, bonusNumber)
+        } catch (e: Exception) {
+            throw IllegalArgumentException(e.message)
+        }
     }
 }

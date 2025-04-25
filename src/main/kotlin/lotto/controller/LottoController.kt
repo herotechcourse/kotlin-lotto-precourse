@@ -3,6 +3,7 @@ package lotto.controller
 import lotto.Lotto
 import lotto.model.LottoManager
 import lotto.model.User
+import lotto.model.WinnerLotto
 import lotto.utils.InputValidator
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -23,16 +24,15 @@ class LottoController(
         outputView.printNewLine()
 
         // Input (Winner Lotto)
-        val winnerLotto = readAndValidateWinnerLotto()
+        val winnerLotto: Lotto = readAndValidateWinnerLotto()
         outputView.printNewLine()
 
         // Input (Bonus Number)
-        val winnerBonusNumber = readAndValidateBonusNumber(winnerLotto)
-        winnerLotto.bonusNumber = winnerBonusNumber
+        val winnerLottoWithBonus: WinnerLotto = readAndValidateBonusNumber(winnerLotto)
         outputView.printNewLine()
 
 
-        val lottoManager = LottoManager(winnerLotto, user)
+        val lottoManager = LottoManager(winnerLottoWithBonus, user)
 
         // Output (Winner Statistic)
         outputView.printWinningStatistics(lottoManager)
@@ -64,7 +64,7 @@ class LottoController(
             }
         }
     }
-    private fun readAndValidateBonusNumber(winnerLotto: Lotto): Int {
+    private fun readAndValidateBonusNumber(winnerLotto: Lotto): WinnerLotto {
         while (true) {
             try {
                 val bonusNumber = inputView.readBonusNumber()

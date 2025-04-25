@@ -104,3 +104,8 @@ So I should change my lotto class logic
 Firstly I thought Winning Lotto Ticket is same as simple Lotto Ticket, But I realized Wining Lotto is kind 
 of abstract thing. It's not a ticket, it is just number of list and bonus number set.
 So I decided to make WinningLotto Class in model package (can I?)
+
+## Validator 
+Given Lotto class has require with error message, So I should include Lotto class in validator class.
+But then Validator class got two responsibilities (Validation, Conversion).
+I considered a lot. And decided to separate into Syntax Error Parser and Logical Error Validator

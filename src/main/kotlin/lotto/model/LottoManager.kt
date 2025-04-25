@@ -2,7 +2,7 @@ package lotto.model
 
 import lotto.Lotto
 
-class LottoManager(val winnerLotto: Lotto, val user: User) {
+class LottoManager(private val winnerLotto: WinnerLotto, private val user: User) {
     val matchedLottoTicket: MutableList<Int> = MutableList(6) { 0 }
     var winningRate: Float = 0f
 
@@ -11,8 +11,11 @@ class LottoManager(val winnerLotto: Lotto, val user: User) {
     }
 
     private fun getLottoRank(lotto: Lotto): Int {
-        val matches: Int = lotto.numbers.count { it in winnerLotto.numbers }
-        val isBonus: Boolean = winnerLotto.bonusNumber in lotto.numbers
+        val lottoNumbers = lotto.getLottoNumbers()
+        val winnerNumbers = winnerLotto.getLottoNumbers()
+        val bonusNumber = winnerLotto.getBonusNumber()
+        val matches: Int = lottoNumbers.count { it in winnerNumbers }
+        val isBonus: Boolean = bonusNumber in lottoNumbers
         return when (matches) {
             6 -> 1
             5 -> if (isBonus) 2 else 3

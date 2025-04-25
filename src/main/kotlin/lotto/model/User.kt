@@ -15,7 +15,7 @@ class User(private val budget: Long) {
     private fun buyLottoTickets() {
         val ticketNum = budget / Lotto.COST
         usedAmount += ticketNum * Lotto.COST
-        lottoTickets = List(ticketNum.toInt()) { Lotto.getLottoNumbers() }
+        lottoTickets = List(ticketNum.toInt()) { Lotto.getRandomLottoNumbers() }
     }
 
 
