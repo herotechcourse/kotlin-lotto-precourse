@@ -19,7 +19,7 @@ class OutputView() {
         return "$matchDescription ($formattedAmount KRW) – $count tickets"
     }
 
-    fun printStatistics(statistics:  List<Pair<Prize, Int>>) {
+    fun printStatistics(statistics: List<Pair<Prize, Int>>) {
         println("Winning statistics:")
         println("---")
         statistics.reversed().forEach { println(formatString(it.first, it.second)) }

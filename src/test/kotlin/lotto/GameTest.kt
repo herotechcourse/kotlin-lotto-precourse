@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class GameTest {
-
     val winningTicket = Lotto(listOf(1, 2, 3, 4, 5, 6))
     val bonusNumber = 7
     val game = Game(Player(3000), winningTicket, bonusNumber)
@@ -47,7 +46,7 @@ class GameTest {
 
         val result = game.getStatistics(finalMatches)
 
-        val expected= listOf(
+        val expected = listOf(
             Pair(Game.Prize.FIRST, 0),
             Pair(Game.Prize.SECOND, 1),
             Pair(Game.Prize.THIRD, 0),
@@ -59,7 +58,7 @@ class GameTest {
 
     @Test
     fun `getFinalPrizeAmount correctly`() {
-        val statistics= listOf(
+        val statistics = listOf(
             Pair(Game.Prize.FIRST, 0),
             Pair(Game.Prize.SECOND, 0),
             Pair(Game.Prize.THIRD, 0),

@@ -7,10 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class PlayerTest {
-
-
     @ParameterizedTest
-    @ValueSource(ints = [100,999,-3,0])
+    @ValueSource(ints = [100, 999, -3, 0])
     fun `throws an exception when amount is less than 1000`(input: Int) {
         assertThrows<IllegalArgumentException> {
             Player(input)
@@ -18,7 +16,7 @@ class PlayerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [1_000_001,9_999_999, Int.MAX_VALUE])
+    @ValueSource(ints = [1_000_001, 9_999_999, Int.MAX_VALUE])
     fun `throws an exception when amount is more than 100000`(input: Int) {
         assertThrows<IllegalArgumentException> {
             Player(input)
@@ -31,5 +29,4 @@ class PlayerTest {
         val result = player.tickets
         assertThat(result).hasSize(10)
     }
-
 }

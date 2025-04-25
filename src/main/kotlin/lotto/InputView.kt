@@ -25,27 +25,32 @@ class InputView {
                 val winningNumbers = Console.readLine()
                 println()
                 requireWinningNumbersInputFormat(winningNumbers)
-                return winningNumbers!!.split(",").map { it.toInt()}
-            } catch (e: IllegalArgumentException) { println(e.message) }
+                return winningNumbers!!.split(",").map { it.toInt() }
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
         }
     }
 
     fun getBonusNumber(): Int {
-        while(true) {
+        while (true) {
             try {
                 println("Please enter the bonus number")
                 val bonus = Console.readLine()
                 println()
                 requireNumberFormat(bonus)
                 return bonus!!.toInt()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
             }
-            catch (e: IllegalArgumentException) { println(e.message) }
         }
     }
+
     private fun requireNumberFormat(input: String?) {
-        require (!
-        input.isNullOrBlank()
-                && input.matches(Regex("^[0-9]+$"))
+        require(
+            !
+            input.isNullOrBlank()
+                    && input.matches(Regex("^[0-9]+$"))
         ) { "[ERROR] You must enter a number." }
     }
 

@@ -5,7 +5,7 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
         require(bonusNumber >= 1 && bonusNumber <= 45) { "[ERROR] Bonus number must be between 1 and 45" }
     }
 
-    enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Int){
+    enum class Prize(val matchCount: Int, val bonus: Boolean, val amount: Int) {
         FIRST(6, false, 2_000_000_000),
         SECOND(5, true, 30_000_000),
         THIRD(5, false, 1_500_000),
@@ -41,9 +41,9 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
         val statistics = Prize.entries.map { prize ->
             val count = finalMatches.count { (matchCount, bonusMatched) ->
                 matchCount == prize.matchCount &&
-                        ((prize.bonus && bonusMatched) ||
-                                (!prize.bonus && !finalMatches.any {
-                                    it.first == matchCount && it.second }))
+                        ((prize.bonus && bonusMatched) || (!prize.bonus && !finalMatches.any {
+                            it.first == matchCount && it.second
+                        }))
             }
             Pair(prize, count)
         }
@@ -51,14 +51,14 @@ class Game(val player: Player, val winningTicket: Lotto, val bonusNumber: Int) {
     }
 
     fun getFinalPrizeAmount(statistics: List<Pair<Prize, Int>>): Long {
-        var amountEarned:Long = 0
-        statistics.map{(prize, count) ->
+        var amountEarned: Long = 0
+        statistics.map { (prize, count) ->
             amountEarned += (prize.amount * count)
         }
         return amountEarned
     }
 
-    fun getProfitRate(amount: Int, finalPrizeAmount: Long ): Double {
+    fun getProfitRate(amount: Int, finalPrizeAmount: Long): Double {
         return (finalPrizeAmount.toDouble() / amount) * 100
     }
 }

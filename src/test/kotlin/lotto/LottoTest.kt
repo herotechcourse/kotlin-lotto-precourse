@@ -21,7 +21,7 @@ class LottoTest {
         }
     }
 
-   @ParameterizedTest
+    @ParameterizedTest
     @MethodSource("numbers")
 
     fun `throws an exception when lotto contains numbers out of range 1-45`(numbers: List<Int>) {
