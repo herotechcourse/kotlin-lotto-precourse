@@ -3,12 +3,12 @@ package lotto
 class LottoMachine()
 {
     private var tickets: MutableList<Lotto> = mutableListOf()
-    public val matchMap=mutableMapOf<MatchCondition, Int>(
-        MatchCondition.MATCH_3 to 0,
-        MatchCondition.MATCH_4 to 0,
-        MatchCondition.MATCH_5 to 0,
-        MatchCondition.MATCH_5_AND_BONUS to 0,
-        MatchCondition.MATCH_6 to 0
+    public val matchMap=mutableMapOf<MatchCondition, CountAndPrize>(
+        MatchCondition.MATCH_3 to CountAndPrize(0,5_000),
+        MatchCondition.MATCH_4 to CountAndPrize(0,50_000),
+        MatchCondition.MATCH_5 to CountAndPrize(0,1_500_000),
+        MatchCondition.MATCH_5_AND_BONUS to CountAndPrize(0,30_000_000),
+        MatchCondition.MATCH_6 to CountAndPrize(0,2_000_000_000)
     )
 
     fun calcTicketNumber(purchaseAmount:Int):Int
@@ -43,7 +43,7 @@ class LottoMachine()
 
             if(matchCondition==null) continue
 
-            matchMap[matchCondition] = matchMap.getOrDefault(matchCondition, 0) + 1
+            matchMap[matchCondition]?.count = matchMap.getOrDefault(matchCondition, CountAndPrize(0,0)).count + 1
         }
     }
 }
