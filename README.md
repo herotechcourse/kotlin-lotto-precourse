@@ -11,11 +11,11 @@
 
 ### 2. Create Random Lotto
 
-- Generate random Lottery tickets based on the purchase amount
+- Generate random Lottery tickets based on the purchase amount ✅
 - Common Validation for Lotto
     - Ensure exactly six numbers are selected
     - Ensure no duplicate numbers exist
-- Sort the numbers in each Lotto ticket in ascending order
+- Sort the numbers in each Lotto ticket in ascending order ✅
 - Print the generated Lotto
 
 ### 3. Enter the Winning Numbers
