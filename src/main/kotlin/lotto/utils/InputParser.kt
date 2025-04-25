@@ -1,8 +1,5 @@
 package lotto.utils
 
-import lotto.Lotto
-import lotto.model.WinnerLotto
-
 object InputParser {
     fun parsePurchaseAmount(amount: String): Long =
         amount.toLongOrNull() ?: throw IllegalArgumentException("Purchase amount must be numeric number")
