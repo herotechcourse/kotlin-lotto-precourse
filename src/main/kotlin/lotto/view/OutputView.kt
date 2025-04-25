@@ -40,6 +40,6 @@ object OutputView {
     }
 
     fun error(message: String?) {
-        println("[ERROR] $message\n")
+        println(Messages.Error.FORMAT.format(message))
     }
 }

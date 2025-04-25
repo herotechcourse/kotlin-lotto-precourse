@@ -26,6 +26,8 @@ object Messages {
             "Numbers must be between ${Constants.LOTTO_MIN_NUMBER} and ${Constants.LOTTO_MAX_NUMBER}."
         const val DUPLICATE_NUMBERS = "Duplicate numbers are not allowed."
         const val DUPLICATE_BONUS_NUMBER = "Bonus number must not be in the main lotto numbers."
+
+        const val FORMAT = "[ERROR] %s\n"
     }
 
 
