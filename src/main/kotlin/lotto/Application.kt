@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.domain.Game
+
 fun main() {
-    // TODO: Implement the program
+  val lottoGame = Game()
+  lottoGame.run()
 }
