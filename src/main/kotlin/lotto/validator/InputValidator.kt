@@ -2,29 +2,30 @@ package lotto.validator
 
 import lotto.Lotto
 import lotto.constants.Constants
+import lotto.constants.Messages
 
 object InputValidator {
     fun notEmpty(input: String) {
         if (input.isEmpty()) {
-            throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+            throw IllegalArgumentException(Messages.Error.INPUT_NOT_EMPTY)
         }
     }
 
     fun isNumeric(input: String) {
         if (!input.all { it.isDigit() }) {
-            throw IllegalArgumentException("[ERROR] Input must be a number.")
+            throw IllegalArgumentException(Messages.Error.INPUT_MUST_BE_NUMBER)
         }
     }
 
     fun withinRange(input: Int) {
         if (input < Constants.MIN_PURCHASE_RANGE || input > Constants.MAX_PURCHASE_RANGE) {
-            throw IllegalArgumentException("[ERROR] Input must be a number between ${Constants.MIN_PURCHASE_RANGE} and ${Constants.MAX_PURCHASE_RANGE}.")
+            throw IllegalArgumentException(Messages.Error.INPUT_MUST_BE_IN_RANGE)
         }
     }
 
     fun isMultipleOfThousand(input: Int) {
         if (input % Constants.LOTTO_PURCHASE_UNIT != 0) {
-            throw IllegalArgumentException("[ERROR] Input must be a multiple of ${Constants.LOTTO_PURCHASE_UNIT}.")
+            throw IllegalArgumentException(Messages.Error.INPUT_MUST_BE_MULTIPLE_OF_THOUSAND)
         }
     }
 
@@ -35,11 +36,11 @@ object InputValidator {
     }
 
     fun checkLottoSize(input: List<Int>) {
-        require(input.size == Constants.LOTTO_NUMBERS_COUNT) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(input.size == Constants.LOTTO_NUMBERS_COUNT) { Messages.Error.LOTTO_NUMBERS_COUNT }
     }
 
     fun numberIsRange(input: Int) {
-        require(input in Constants.LOTTO_MIN_NUMBER..Constants.LOTTO_MAX_NUMBER) { "[ERROR] Numbers must be between 1 and 45." }
+        require(input in Constants.LOTTO_MIN_NUMBER..Constants.LOTTO_MAX_NUMBER) { Messages.Error.LOTTO_NUMBERS_RANGE }
     }
 
     fun allNumbersInRange(input: List<Int>) {
@@ -51,12 +52,12 @@ object InputValidator {
     fun noDuplicateNumbers(input: List<Int>) {
         val uniqueNumbers = input.toSet()
         if (uniqueNumbers.size != input.size) {
-            throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
+            throw IllegalArgumentException(Messages.Error.DUPLICATE_NUMBERS)
         }
     }
 
     fun noDuplicateBonusNumber(bonusNumber: Int, mainLotto: Lotto) {
-        require(bonusNumber !in mainLotto.getNumbers()) { "[ERROR] Bonus number must not be in the main lotto numbers." }
+        require(bonusNumber !in mainLotto.getNumbers()) { Messages.Error.DUPLICATE_BONUS_NUMBER }
     }
 
 }

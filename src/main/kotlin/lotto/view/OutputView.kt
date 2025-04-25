@@ -39,4 +39,7 @@ object OutputView {
         println(Messages.Output.PROFIT_RATE.format(profitRate))
     }
 
+    fun error(message: String?) {
+        println("[ERROR] $message\n")
+    }
 }

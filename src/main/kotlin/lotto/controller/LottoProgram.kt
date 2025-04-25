@@ -56,7 +56,7 @@ fun readValidPurchaseAmount(): Int {
             validatePurchaseAmount(input)
             return input.toInt()
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            OutputView.error(e.message)
         }
     }
 }
@@ -69,7 +69,7 @@ fun readValidLotto(): Lotto {
             val numbers = input.split(",").map { it.trim().toInt() }
             return Lotto(numbers)
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            OutputView.error(e.message)
         }
     }
 }
@@ -82,7 +82,7 @@ fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
             val bonusNumber = input.toInt()
             return WinningLotto(mainLotto, bonusNumber)
         } catch (e: IllegalArgumentException) {
-            println(e.message)
+            OutputView.error(e.message)
         }
     }
 }
