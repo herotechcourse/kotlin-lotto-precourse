@@ -2,12 +2,23 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class GameTest {
 
     val winningTicket = Lotto(listOf(1, 2, 3, 4, 5, 6))
     val bonusNumber = 7
     val game = Game(Player(3000), winningTicket, bonusNumber)
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, -1, 46, 99])
+    fun `throws an exception when lotto contains numbers out of range 1-45`(input: Int) {
+        assertThrows<IllegalArgumentException> {
+            Game(Player(3000), winningTicket, input)
+        }
+    }
 
     @Test
     fun `getMatches correctly pairs matches and bonus`() {
