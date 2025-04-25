@@ -23,11 +23,22 @@ class InputView {
     }
 
     fun readPurchaseAmount(): Int {
-        return readInput(Messages.PURCHASE_AMOUNT, Validator::validatePurchaseAmount)
+        return readInput(Messages.PURCHASE_AMOUNT) { input ->
+            Validator.validatePurchaseAmount(input)
+        }
     }
 
     fun readWinnerNumbers(): List<Int> {
-        return readInput(Messages.WINNING_NUMBERS, Validator::validateWinningNumbers)
+        println()
+        return readInput(Messages.WINNING_NUMBERS) { input ->
+            Validator.validateWinningNumbers(input)
+        }
     }
 
+    fun readBonusNumber(winningNumbers: List<Int>): Int {
+        println()
+        return readInput(Messages.BONUS_NUMBER) { input ->
+            Validator.validateBonusNumber(input, winningNumbers)
+        }
+    }
 }
