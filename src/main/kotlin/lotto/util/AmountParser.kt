@@ -2,6 +2,7 @@ package lotto.util
 
 class AmountParser {
     fun parse(input: String): Int {
+        if (input.isEmpty()) throw IllegalArgumentException("[ERROR] Purchase amount must not be empty.")
         val parsedInput = try {
             input.toInt()
         } catch (e: NumberFormatException) {
@@ -11,7 +12,6 @@ class AmountParser {
         validateAmount(parsedInput)
 
         return parsedInput
-
     }
 
     private fun validateAmount(amount: Int) {
