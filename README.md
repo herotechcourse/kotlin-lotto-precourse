@@ -46,18 +46,11 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 
 
 ### 5. Evaluate a Single Ticket (Rank)
-- [ ] Each ticket is compared with the winning numbers to count how many match.
-- [ ] Whether the ticket includes the bonus number is also checked.
-- [ ] A rank is assigned based on the following criteria:
-
-| Rank | Match Condition                   | Prize |
-|------|------------------------------------|--------|
-| 1st  | Matches all 6 numbers              | ₩2,000,000,000 |
-| 2nd  | Matches 5 + Bonus number           | ₩30,000,000 |
-| 3rd  | Matches 5                          | ₩1,500,000 |
-| 4th  | Matches 4                          | ₩50,000 |
-| 5th  | Matches 3                          | ₩5,000 |
-
+- [x] Each ticket is compared with the winning numbers to count how many match : `Rank` 
+- [x] Whether the ticket includes the bonus number is also checked
+- [x] Rank is determined based on match count and bonus number match
+  - `Rank` is an `enum` that maps the number of matches and bonus inclusion to the prize tier
+  - The `Rank.NONE` is returned if matches are less than 3
 
 ---
 
