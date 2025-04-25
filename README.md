@@ -61,4 +61,4 @@
 - [x] Input validation (InputView + InputValidator)
 - [x] WinningNumber validation
 - [x] WinningNumber.match() → Retrun Rank
-- [ ] WinningResult → Rank-wise statistics test
+- [x] WinningResult → Rank-wise statistics test

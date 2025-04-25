@@ -10,11 +10,12 @@ class ResultView {
         println("Winning Statistics")
         println("---")
 
-        result.getStatistics()
-            .filterKeys { it != Rank.NONE }
-            .toSortedMap(compareByDescending { it.prize })
-            .forEach { (rank, count) ->
+        Rank.values()
+            .filter { it != Rank.NONE }
+            .sortedByDescending { it.prize }
+            .forEach { rank ->
                 val matchText = formatMatchText(rank)
+                val count = result.getCountOf(rank)
                 println("$matchText (${formatCurrency(rank.prize)} KRW) – $count tickets")
             }
 
