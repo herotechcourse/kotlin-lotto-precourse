@@ -85,3 +85,14 @@ Over-refactoring sometimes reduced readability. Learned that balance is key to m
 
 ### 10. Architectural Patterns
 Recognized the importance of following established architectural patterns like MVC and domain-driven design for better project structure. This isn't implemented in this project and felt the need to further pursue learning these patterns in the future.
+
+### 11. Input Validation Responsibility Split
+Initially relied too much on the `Lotto` class to validate input, which caused unhandled exceptions during PR testing. Learned that validation should be fully handled in `InputValidator` before data is passed to domain classes. Domain classes like `Lotto` should still enforce rules internally, but all user input must be filtered early to avoid unexpected runtime errors.
+
+### 12. Exception Handling for Test Output
+
+One issue I encountered was with a test case that checked whether `[ERROR]` messages were printed when invalid input was provided. My original test logic used `assertThrows` and returned the error message directly. However, the built-in test on the application page relied on `output()` and expected the error message to be printed to `stdout`.
+
+To fix this, I had to adjust the `main()` function to catch `IllegalArgumentException` and print the message before exiting. This ensured that the test framework could detect the `[ERROR]` message as part of the console output.
+
+Additionally, I initially tried modifying the test case logic to suit my approach, but the PR system required the original version to pass. I had to revert to the provided structure and adapt the exception handling to match it.
