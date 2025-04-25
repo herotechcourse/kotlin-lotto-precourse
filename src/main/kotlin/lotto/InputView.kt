@@ -19,7 +19,7 @@ class InputView {
     internal fun parseAmount(input: String): Int {
         val amount = input.toIntOrNull()
             ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
-        require(amount % 1000 == 0) {
+        require(amount % TICKET_PRICE == 0) {
             DIVISIBLE_AMOUNT_MSG
         }
         require(amount in 1..MAX_AMOUNT) {
@@ -45,6 +45,11 @@ class InputView {
         val numbers = input.split(",").map {
             it.trim().toIntOrNull()
                 ?: throw IllegalArgumentException(INVALID_INPUT_MSG)
+        }
+        require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_MSG }
+        require(numbers.distinct().size == numbers.size) { UNIQUE_NUM_MSG }
+        numbers.forEach {
+                number -> require(number in MIN_NUM..MAX_NUM) { INVALID_RANGE_MSG }
         }
         return numbers
     }
@@ -77,11 +82,15 @@ class InputView {
         private const val MIN_NUM = 1
         private const val MAX_NUM = 45
         private const val MAX_AMOUNT = 15000
+        private const val LOTTO_SIZE = 6
+        private const val TICKET_PRICE = 1000
         private const val AMOUNT_RANGE_MSG = "[ERROR] Amount cannot be 0 or higher than $MAX_AMOUNT"
         private const val MAX_RETRY_MSG = "[ERROR] Maximum retry attempts exceeded."
         private const val INVALID_INPUT_MSG = "[ERROR] Invalid input."
-        private const val DIVISIBLE_AMOUNT_MSG = "[ERROR] Amount has to be divisible by 1000."
+        private const val DIVISIBLE_AMOUNT_MSG = "[ERROR] Amount has to be divisible by $TICKET_PRICE."
         private const val INVALID_RANGE_MSG = "[ERROR] Invalid number: not in range $MIN_NUM-$MAX_NUM."
+        private const val UNIQUE_NUM_MSG = "[ERROR] Input must contain unique numbers."
+        private const val LOTTO_SIZE_MSG =  "[ERROR] Input must contain exactly $LOTTO_SIZE numbers."
     }
 
     class MaxRetryException(message: String, cause: Throwable? = null): RuntimeException(message, cause)
