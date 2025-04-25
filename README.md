@@ -97,6 +97,7 @@ This project implements a simple lottery ticket simulator that generates tickets
 
 ##  Test Coverage
 
+- [ ] `ApplicationTest.kt`:  Simulates full game flow
 ### test(domain)
 
 - [ ] `LottoTest.kt`: Validates input numbers and matching logic
@@ -110,9 +111,6 @@ This project implements a simple lottery ticket simulator that generates tickets
 - [ ] `InputViewTest.kt`: Validates input parsing and error handling
 - [ ] `OutputViewTest.kt`: Verifies console output format
 
-### test(controller)
-
-- [ ] `ApplicationTest.kt`: Simulates full game input-output scenarios
 
 ### test(util)
 - [ ] `InputValidatorTest.kt`: Validates numeric input, range, duplicates, and bonus constraints
