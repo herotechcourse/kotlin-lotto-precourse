@@ -14,4 +14,8 @@ object ParseAndValidate {
                 .toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Winning numbers must be numeric.") }
             .onEach { require(it in 1..45) { "[ERROR] Winning numbers must be between 1 and 45." } }
     }
+
+    fun bonusNumber(input: String, winningNumbers: List<Int>): Int {
+        return 7
+    }
 }

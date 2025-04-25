@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.assertj.core.api.Assertions.assertThat
 import view.ParseAndValidate.winningNumbers
 import view.ParseAndValidate.purchaseAmount
+import view.ParseAndValidate.bonusNumber
 
 class ParseAndValidateTest {
     @Test
@@ -98,15 +99,56 @@ class ParseAndValidateTest {
 
     @Test
     fun `parse valid winning numbers input`() {
-        assertThat(winningNumbers("1,2,3,4,5,6")).containsExactlyElementsOf(listOf(1, 2, 3, 4, 5, 6))
+        assertThat(winningNumbers("1,2,3,4,5,6")).containsExactlyElementsOf(WINNING_NUMBERS)
     }
 
     @Test
     fun `parse valid winning numbers input with white spaces`() {
-        assertThat(winningNumbers("1,2, 3 ,  4 ,5,6")).containsExactlyElementsOf(listOf(1, 2, 3, 4, 5, 6))
+        assertThat(winningNumbers("1,2, 3 ,  4 ,5,6")).containsExactlyElementsOf(WINNING_NUMBERS)
+    }
+
+    @Test
+    fun `exception test, invalid bonus number input, empty string`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid bonus number input, blank string`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("      ", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid bonus number input, not a number`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("abcdf", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid bonus number input, negative number`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("-2", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `exception test, invalid bonus number input, zero`() {
+        assertThrows<IllegalArgumentException> {
+            bonusNumber("0", WINNING_NUMBERS)
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `valid bonus number input, number in range 1 to 45`() {
+        assertTrue(bonusNumber("21", WINNING_NUMBERS) == 21)
     }
 
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
+        private val WINNING_NUMBERS: List<Int> = listOf(1, 2, 3, 4, 5, 6)
     }
 }
