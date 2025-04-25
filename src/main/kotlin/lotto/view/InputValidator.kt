@@ -4,17 +4,25 @@ import lotto.Lotto
 
 class InputValidator {
 
-    // Utility function to handle toIntOrNull() conversion
     private fun String.toValidInt(): Int {
         return this.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid number format")
     }
 
     fun validatePurchaseAmount(input: String): Int {
-        val amount = input.toValidInt()
-        // Validate purchase amount: must be a positive number divisible by 1000
-        return amount.takeIf { it > 0 && it % Lotto.TICKET_PRICE == 0 }
-            ?: throw IllegalArgumentException("[ERROR] Purchase amount must be a positive number divisible by ${Lotto.TICKET_PRICE}")
+        val amount = try {
+            input.toValidInt() // 숫자가 아닌 경우 IllegalArgumentException 발생
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("[ERROR] Purchase amount must be a valid number. Provided: $input")
+        }
+
+        // Validate that amount is greater than 0 and divisible by 1000
+        require(amount > 0) { "[ERROR] Purchase amount must be a positive number. Provided: $input" }
+        require(amount % Lotto.TICKET_PRICE == 0) { "[ERROR] Purchase amount must be divisible by ${Lotto.TICKET_PRICE}. Provided: $input" }
+
+        return amount
     }
+
+
 
     fun validateWinningNumbers(input: String): List<Int> {
         val numbers = input.split(",").map { it.trim().toValidInt() }
@@ -28,12 +36,18 @@ class InputValidator {
     }
 
     fun validateBonusNumber(input: String, winningNumbers: List<Int>): Int {
-        val bonus = input.toValidInt()
+        val bonus = try {
+            input.toValidInt()
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("[ERROR] Bonus number must be a valid number")
+        }
+
 
         // Validate bonus number: must be between 1-45 and not duplicate any of the winning numbers
-        require(bonus in Lotto.MIN_NUMBER ..Lotto.MAX_NUMBER) { "[ERROR] Bonus number must be between ${Lotto.MIN_NUMBER} and ${Lotto.MAX_NUMBER}" }
+        require(bonus in Lotto.MIN_NUMBER ..Lotto.MAX_NUMBER) { "[ERROR] Numbers must be between ${Lotto.MIN_NUMBER} and ${Lotto.MAX_NUMBER}" }
         require(bonus !in winningNumbers) { "[ERROR] Bonus number must not duplicate winning numbers" }
 
         return bonus
     }
 }
+

@@ -1,5 +1,6 @@
 package lotto.view
 
+import lotto.Lotto
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 
@@ -15,8 +16,32 @@ class InputValidatorTest {
         // When & Then
         assertThatThrownBy { validator.validatePurchaseAmount(invalidInput) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Purchase amount must be a positive number divisible by 1000.")
+            .hasMessageContaining("Purchase amount must be divisible by 1000")
+            .hasMessageContaining("Provided: 2850")
     }
+
+    @Test
+    fun `throws exception when purchase amount is not a valid number`() {
+        // Given
+        val invalidInput = "1000j" // or other invalid inputs like "abc"
+
+        // When & Then
+        assertThatThrownBy { validator.validatePurchaseAmount(invalidInput) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining("[ERROR] Purchase amount must be a valid number")
+    }
+
+    @Test
+    fun `throws exception when purchase amount is negative`() {
+        // Given
+        val invalidInput = "-1000"
+
+        // When & Then
+        assertThatThrownBy { validator.validatePurchaseAmount(invalidInput) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining("[ERROR] Purchase amount must be a positive number")
+    }
+
 
     @Test
     fun `throws exception when winning numbers contain non-numeric values`() {
@@ -26,7 +51,7 @@ class InputValidatorTest {
         // When & Then
         assertThatThrownBy { validator.validateWinningNumbers(invalidInput) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Invalid number format.")
+            .hasMessageContaining("Invalid number format")
     }
 
     @Test
@@ -37,7 +62,7 @@ class InputValidatorTest {
         // When & Then
         assertThatThrownBy { validator.validateWinningNumbers(invalidInput) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Numbers must be between 1 and 45.")
+            .hasMessageContaining("Numbers must be between ${Lotto.MIN_NUMBER} and ${Lotto.MAX_NUMBER}")
     }
 
     @Test
@@ -49,7 +74,7 @@ class InputValidatorTest {
         // When & Then
         assertThatThrownBy { validator.validateBonusNumber(invalidInput, winningNumbers) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Bonus number must be a number.")
+            .hasMessageContaining("Bonus number must be a valid number")
     }
 
     @Test
@@ -64,7 +89,7 @@ class InputValidatorTest {
                 validator.validateBonusNumber(invalidInput.toString(), winningNumbers)
             }
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageContaining("Bonus number must be between 1 and 45.")
+                .hasMessageContaining("Numbers must be between ${Lotto.MIN_NUMBER} and ${Lotto.MAX_NUMBER}")
         }
     }
 
@@ -77,6 +102,6 @@ class InputValidatorTest {
         // When & Then
         assertThatThrownBy { validator.validateBonusNumber(input, winningNumbers) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Bonus number must not duplicate winning numbers.")
+            .hasMessageContaining("Bonus number must not duplicate winning numbers")
     }
 }
