@@ -12,8 +12,8 @@ fun main() {
     val tickets = lottoMachine.generateTickets(amount)
     OutputView.printTickets(tickets)
 
-    val winningNumbers = InputView.readWinningNumbers()
-    val bonusNumber = InputView.readBonusNumber()
+    val winningNumbers = retry {InputView.readWinningNumbers()}
+    val bonusNumber = retry {InputView.readBonusNumber()}
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
     val statistics = LottoStatistics.calculate(tickets, winningLotto)
