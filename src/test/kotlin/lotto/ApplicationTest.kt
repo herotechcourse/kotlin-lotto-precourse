@@ -58,6 +58,24 @@ class ApplicationTest : NsTest() {
             assertThat(exception.message).contains(ERROR_MESSAGE)
         }
     }
+  
+    @Test
+    fun `EXCEPTION zero purchased`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> { runException("0") }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION Extra unexpected input after winning numbers`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("2000", "1,2,3,4,5,6,7", "8")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
 
     override fun runMain() {
         main()
