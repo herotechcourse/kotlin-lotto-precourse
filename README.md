@@ -11,12 +11,12 @@
         1.1.3 The bonus number should not be the same as the winning number
 
 	1.2. The machine calculates and issues the appropriate number of lottery tickets
-
-
+        1.2.1. The machine calculates number of tickets based on the purchased amount divide by 1000
+        
 ### 2. Generating lottery tickets
 
 	2.1. Each ticket contains 6 unique random numbers between 1 to 45
-
+        2.1.1. The machine allocates unique lotto numbers between 1 to 45 for the number of tickets that the user has purchased
 
 ### 3.  Calculating the prize
 
@@ -53,3 +53,7 @@
         3.1 Illegal argument exception is thrown when the bonus number is null or empty
         3.2 Illegal argument exception is thrown when the bonus number is not in the range of 1-45
         3.3 Illegal argument exception is thrown when the bonus number is already contained in the list of winning numbers
+
+    4. The lottery tickets are generated
+        4.1 Validation for the number of tickets generated is done
+        4.2 Validation to check if the numbers inside the tickets are duplicates is done
