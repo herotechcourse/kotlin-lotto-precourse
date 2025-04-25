@@ -12,6 +12,10 @@ class Lotto(private val numbers: List<Int>) {
     }
     fun getNumbers(): List<Int> = numbers
 
+    fun countMatch(other: Lotto): Int {
+        return numbers.count { it in other.getNumbers() }
+    }
+
     override fun toString(): String {
         return "$numbers"
     }
