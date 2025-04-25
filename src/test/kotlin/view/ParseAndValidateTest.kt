@@ -98,8 +98,21 @@ class ParseAndValidateTest {
     }
 
     @Test
+    fun `exception test, invalid winning numbers input, quantity of numbers is not 5`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("1,2,3,4,6")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
     fun `parse valid winning numbers input`() {
         assertThat(winningNumbers("1,2,3,4,5,6")).containsExactlyElementsOf(WINNING_NUMBERS)
+    }
+
+    @Test
+    fun `parse valid winning numbers input, quantity of numbers is 6`() {
+        val numbers = winningNumbers("1,2,3,4,5,6")
+        assertTrue(numbers.size == 6)
     }
 
     @Test
