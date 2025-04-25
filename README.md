@@ -17,7 +17,7 @@ This project is a application that simulates a lottery ticket machine. The goal 
     - [x] Winning numbers: exactly 6 unique numbers (1-45 range)
     - [x] Bonus number: single unique number (1-45 range, not in winning numbers)
     - [x] Error handling with `[ERROR]` prefix messages
-    - [ ] Re-prompt on invalid input
+    - [x] Re-prompt on invalid input
 
 
 - **Ticket Generation**

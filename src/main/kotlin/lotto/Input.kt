@@ -12,7 +12,7 @@ class InputView(private val outputView: OutputView) {
     }
 
     fun readBonusNumber(): String {
-        outputView.promptBonus()
+        outputView.promptBonusNumber()
         return readlnOrNull() ?: ""
     }
 }

@@ -13,14 +13,11 @@ class OutputView {
         println("Please enter last week's winning numbers (comma-separated) :")
     }
 
-    fun promptBonus (){
+    fun promptBonusNumber (){
         println("Please enter the bonus number :")
     }
-
 
     fun error(message: String)  {
         println("[ERROR] $message")
     }
-
-
 }

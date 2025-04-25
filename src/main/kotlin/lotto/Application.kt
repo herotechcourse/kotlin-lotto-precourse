@@ -5,18 +5,22 @@ fun main() {
     val inputView = InputView(outputView)
     val validator = InputValidator()
 
-    try {
-        val amountInput = inputView.readPurchaseAmount()
-        val amount = validator.validatePurchaseAmount(amountInput)
-        outputView.ticketCount(amount / 1000)
+    val amount = inputView.validateWithReprompt(
+        readAction = InputView::readPurchaseAmount,
+        validation = validator::validatePurchaseAmount,
+        outputView = outputView
+    )
+    outputView.ticketCount(amount / 1000)
 
-        val winningNumbersInput = inputView.readWinningNumbers()
-        val winningNumbers = validator.validateWinningNumbers(winningNumbersInput)
+    val winningNumbers = inputView.validateWithReprompt(
+        readAction = InputView::readWinningNumbers,
+        validation = validator::validateWinningNumbers,
+        outputView = outputView
+    )
 
-        val bonusNumberInput = inputView.readBonusNumber()
-        val bonusNumber = validator.validateBonusNumber(bonusNumberInput, winningNumbers)
-
-    } catch (e: IllegalArgumentException) {
-        outputView.error(e.message ?: "An error occurred")
-    }
+    val bonusNumber = inputView.validateWithReprompt(
+        readAction = InputView::readBonusNumber,
+        validation = { input -> validator.validateBonusNumber(input, winningNumbers) },
+        outputView = outputView
+    )
 }
