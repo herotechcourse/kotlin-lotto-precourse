@@ -67,11 +67,11 @@ fun getWinningNumbers (): List<Int> {
     return winningNumbers
 }
 
-fun getBonusNumbers (inputNumbers: List<Int>): Int {
+fun getBonusNumbers (winningNumbers: List<Int>): Int {
     println("Please enter a bonus number.")
     val inputBonus = Console.readLine().toIntOrNull()
     if (inputBonus == null || !(inputBonus in 1..45)) throw IllegalArgumentException("Please enter a valid number between 1 and 45.")
-    if (inputNumbers.contains(inputBonus)) throw IllegalArgumentException("Please enter a separate bonus number.")
+    if (winningNumbers.contains(inputBonus)) throw IllegalArgumentException("Please enter a separate bonus number.")
 
     return inputBonus
 }
@@ -100,13 +100,25 @@ fun match(purchasedtickets: List<Lotto>, winningNumbers: List<Int>, inputBonus: 
 
 }
 
+// calculate prize
+fun finalResult(results: Map<prizeTypes, Int>): Int{
+    var finalPrize = 0
+    for ((key, value) in results) {
+        val prize = key.rewards * value
+        finalPrize += prize
+    }
+    return finalPrize
+}
+
 
 fun main() {
 
     val (purchasedTickets, purchaseAmount) = getTickets()
     val winningNumbers = getWinningNumbers()
-    val inputBonus = getBonusNumbers()
+    val inputBonus = getBonusNumbers(winningNumbers)
     val results = match(purchasedTickets, winningNumbers, inputBonus)
+    val finalPrize = finalResult(results)
+
     println("Total return rate is %.")
 
 }
