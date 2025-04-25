@@ -92,6 +92,32 @@ class ValidatorTest {
     }
 
     /**
+     * Tests for checkBonusNumberRules(value: Int, winningNumbers: List<Int>)
+     * - Bonus number must not be included in winning numbers
+     * - Bonus number must be in range 1 to 45
+     */
+    @Test
+    fun `throws an exception when bonus number is included in winning numbers`() {
+        assertThrows<IllegalArgumentException> {
+            Validator.checkBonusNumberRules(3, listOf(1, 2, 3, 4, 5, 6))
+        }
+    }
+
+    @Test
+    fun `throws an exception when bonus number is out of valid range`() {
+        assertThrows<IllegalArgumentException> {
+            Validator.checkBonusNumberRules(46, listOf(1, 2, 3, 4, 5, 6))
+        }
+    }
+
+    @Test
+    fun `does not throw when bonus number is not in winning numbers and in valid range`() {
+        assertDoesNotThrow {
+            Validator.checkBonusNumberRules(7, listOf(1, 2, 3, 4, 5, 6))
+        }
+    }
+
+    /**
      * Tests for checkLottoNumberRules(value: Int)
      * - Value must be between 1 and 45 (inclusive)
      */

@@ -17,10 +17,10 @@ object Parser {
         return value
     }
 
-    fun toBonusNumber(input: String): Int {
+    fun toBonusNumber(input: String, winningNumbers: List<Int>): Int {
         Validator.checkNumberFormat(input)
         val value = input.toInt()
-        Validator.checkLottoNumberRules(value)
+        Validator.checkBonusNumberRules(value, winningNumbers)
 
         return value
     }

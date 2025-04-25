@@ -77,21 +77,33 @@ class ParserTest {
      */
     @Test
     fun `returns int when bonus number is valid`() {
-        val result = Parser.toBonusNumber("7")
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val result = Parser.toBonusNumber("7", winningNumbers)
         assertThat(result).isEqualTo(7)
     }
 
     @Test
     fun `throws an exception when bonus number is non-numeric`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         assertThrows<IllegalArgumentException> {
-            Parser.toBonusNumber("abc")
+            Parser.toBonusNumber("abc", winningNumbers)
         }
     }
 
     @Test
     fun `throws an exception when bonus number is out of range`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         assertThrows<IllegalArgumentException> {
-            Parser.toBonusNumber("100")
+            Parser.toBonusNumber("100", winningNumbers)
+        }
+    }
+
+
+    @Test
+    fun `throws an exception when bonus number is duplicated with winning numbers`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        assertThrows<IllegalArgumentException> {
+            Parser.toBonusNumber("3", winningNumbers)
         }
     }
 }

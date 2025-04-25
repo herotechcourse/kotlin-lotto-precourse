@@ -14,7 +14,7 @@ fun main() {
     val winningNumbers = Input.readWinningNumbersSafely()
 
     Output.printBonusNumberInputMessage()
-    val bonusNumber = Input.readBonusNumberSafely()
+    val bonusNumber = Input.readBonusNumberSafely(winningNumbers)
 
     val ranks = tickets.map { it.toRank(winningNumbers, bonusNumber) }
     val statistic = Statistic(ranks)

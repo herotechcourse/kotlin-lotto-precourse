@@ -19,14 +19,19 @@ object Validator {
         require(value % 1000 == 0) { "[ERROR] Purchase amount must be a multiple of 1000." }
     }
 
-    fun checkLottoNumberRules(value: Int) {
-        require(value > 0) { "[ERROR] Lotto number must be greater than 0." }
-        require(value in 1..45) { "[ERROR] Lotto number must be between 1 and 45." }
+    fun checkBonusNumberRules(value: Int, winningNumbers: List<Int>) {
+        require(!winningNumbers.contains(value)) { "[ERROR] Bonus number must not be in winning numbers." }
+        checkLottoNumberRules(value)
     }
 
     fun checkLottoNumbersRules(value: List<Int>) {
         require(value.size == 6) { "[ERROR] Lotto numbers must contain exactly 6 numbers." }
         require(value.toSet().size == 6) { "[ERROR] Lotto numbers must not contain duplicates." }
         value.forEach { checkLottoNumberRules(it) }
+    }
+
+    fun checkLottoNumberRules(value: Int) {
+        require(value > 0) { "[ERROR] Lotto number must be greater than 0." }
+        require(value in 1..45) { "[ERROR] Lotto number must be between 1 and 45." }
     }
 }
