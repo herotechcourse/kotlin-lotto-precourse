@@ -10,19 +10,32 @@ fun main() {
     // Lotto Purchase Flow
     val amount: Int = promptAndTakeAmount()
     val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
-    displayLottos(tickets)
-    val winning = promptAndTakeWinning()
-    val bonus = promptAndTakeBonus()
+    val answers: Pair<Lotto, Int> = promptAndTakeWinningAndBonus()
+    //displayLottos(tickets)
 }
 
-fun promptAndTakeBonus(): Int = 0 // TODO
-
-fun promptAndTakeWinning() : Lotto {
+fun promptAndTakeWinningAndBonus(): Pair<Lotto, Int> {
     while(true) {
-        val input = promptInput("Please enter last week's winning numbers.")
+        var input = promptInput("Please enter last week's winning numbers.")
         val numbers = parseCommaSeparatedNumbers(input) ?: continue
-        if (validateWinningOrShowError(numbers)) return Lotto(numbers)
+        if (!validateWinningOrShowError(numbers)) continue
+        input = promptInput("Please enter the bonus number.")
+        val bonus = parseInputToInt(input) ?: continue
+        if (validateBonusOrShowError(bonus, numbers)) return Pair(Lotto(numbers), bonus)
     }
+}
+
+fun validateBonusOrShowError(bonus: Int, numbers: List<Int>) : Boolean = try {
+    validateBonus(bonus, numbers)
+    true
+} catch (e: IllegalArgumentException) {
+    println(e.message)
+    false
+}
+
+fun validateBonus(bonus: Int, numbers: List<Int>)  {
+    //if (bonus in numbers) throw IllegalArgumentException("[ERROR] Bonus can't be included in winning numbers.")
+    //if (!(bonus in 1 .. 41)) throw IllegalArgumentException("[ERROR] Bonus must be between 1 and 45.")
 }
 
 fun validateWinningOrShowError(numbers: List<Int>) : Boolean = try {
