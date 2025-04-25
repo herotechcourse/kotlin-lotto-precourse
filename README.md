@@ -10,9 +10,12 @@ Implement a simple lottery ticket machine with the following rules:
   - [x] Each lottery ticket consists of 6 unique random numbers.
   - [x] Numbers must be in the range from 1 to 45.
   
-The user then enters the winning numbers and a bonus number.
-The winning numbers consist of 6 unique numbers.
-The bonus number is a single, separate number.
+- [ ] The user then enters the winning numbers and a bonus number.
+  - [x] The user then enters a bonus number
+  - [x] The winning numbers consist of 6 unique numbers.
+  - [ ] The user then enters the winning numbers
+  - [ ] The bonus number is a single, separate number.
+
 There are five prize ranks. The criteria and prize amounts are as follows:
 1st Prize: Match 6 numbers / 2,000,000,000 KRW
 2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
@@ -30,7 +33,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
 
 - [x] Purchase amount for lottery tickets: 
   - ex 14000
-- [ ] Winning numbers (comma-separated): 
+- [x] Winning numbers (comma-separated): 
   - ex 1,2,3,4,5,6
 - [ ] Bonus number: 
   - ex 7
@@ -43,7 +46,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
     - You have purchased 8 tickets.
   - [x] print issued number of tickets
     - [x] sorted in ascending order
-- [ ] print lotto numbers input prompt 
+- [x] print lotto numbers input prompt 
   - ex Please enter last week's winning numbers.
 - [ ] print bonus number input prompt
   - ex Please enter the bonus number.
