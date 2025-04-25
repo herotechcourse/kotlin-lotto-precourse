@@ -41,12 +41,47 @@ This project is a simple console-based Lotto program written in Kotlin. It simul
 - [✅] Build comparison and ranking logic
 - [✅] Create Enum for Winner Criteria
 - [✅] Add profitability caculation logic
-- [ ] Handle exceptions properly
-- [ ] Write unit tests for all major components
+- [✅] Handle exceptions properly
+- [✅] Write unit tests for all major components
 - [✅] Add user input/output logic
-- [ ] Enhance Readability
-- [ ] Build Error handling method
+- [✅] Enhance Readability
+- [✅] Build Error handling method
       - When exception is thrown by require(), main() terminates before printing anything so comparing with "[ERROR]" is not possible
+
       - [✅] Stick with assertThrows and search later if there's other way to utilize "[ERROR]" message
 
+      - solved by saving return value from assertThrows and asserting if that return value contains "[ERROR]" message
+
 ---
+
+## 💪 Challenges Faced During the Project
+
+### 1. Incremental Development & Testing
+Struggled with working in small steps and testing frequently. Still at the habit of trying to cover a bigger area at once. Learned the value of Test-Driven Development (TDD) and early validation.
+
+### 2. Debugging
+Couldn't implement a debugger successfully, relied at times on `println` for tracking. Realized the importance of proper debugging tools.
+
+### 3. Test Setup
+Setting up tests for each and every class and function and not just for the whole program only was challenging but helped me understand the discipline of TDD.
+
+### 4. Initial Planning
+Learned the importance of planning ahead. A good initial README and structure made the development process smoother.
+
+### 5. Naming Classes & Variables
+Found naming classes and variables challenging. Learned that clear, descriptive names are essential for readability.
+
+### 6. Edge Case Thinking
+Realized that thinking of all edge cases on my own had limits. Outside source (AI, websites, etc.) helped identify more cases.
+
+### 7. Writing Test Cases vs Manual Testing
+Writing automated test cases was different from manual testing. It made me appreciate the value of repeatable, structured tests.
+
+### 8. Coding Conventions
+Not fully accustomed to coding conventions, but realized the need for constant review and practice.
+
+### 9. Over-Refactoring
+Over-refactoring sometimes reduced readability. Learned that balance is key to maintain clarity without overcomplicating.
+
+### 10. Architectural Patterns
+Recognized the importance of following established architectural patterns like MVC and domain-driven design for better project structure. This isn't implemented in this project and felt the need to further pursue learning these patterns in the future.
