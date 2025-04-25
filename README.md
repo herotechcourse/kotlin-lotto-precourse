@@ -50,7 +50,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
   - ex Please enter last week's winning numbers.
 - [x] print bonus number input prompt
   - ex Please enter the bonus number.
-- [ ] print winning numbers status intro message
+- [x] print winning numbers status intro message
   - ex Winning Statistics /n ---
 - [ ] print Lotto result statistics:
 - [ ] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%):
