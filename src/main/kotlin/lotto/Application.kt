@@ -34,8 +34,8 @@ fun validateBonusOrShowError(bonus: Int, numbers: List<Int>) : Boolean = try {
 }
 
 fun validateBonus(bonus: Int, numbers: List<Int>)  {
-    //if (bonus in numbers) throw IllegalArgumentException("[ERROR] Bonus can't be included in winning numbers.")
-    //if (!(bonus in 1 .. 41)) throw IllegalArgumentException("[ERROR] Bonus must be between 1 and 45.")
+    if (bonus in numbers) throw IllegalArgumentException("[ERROR] Bonus can't be included in winning numbers.")
+    if (!(bonus in 1 .. 41)) throw IllegalArgumentException("[ERROR] Bonus must be between 1 and 45.")
 }
 
 fun validateWinningOrShowError(numbers: List<Int>) : Boolean = try {
