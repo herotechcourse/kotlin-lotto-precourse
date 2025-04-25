@@ -10,13 +10,21 @@ fun main() {
     // Lotto Purchase Flow
     val amount: Int = promptAndTakeAmount()
     val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
+    displayLottos(tickets)
 }
+
+fun displayLottos(lottos: List<Lotto>) {
+    println("You have purchased ${lottos.size} tickets.")
+    lottos.forEach { println(it.getNumbers()) }
+}
+
 
 fun generateLottos(count: Int) : List<Lotto> =
     List(count) { generateLotto() }
 
 fun generateLotto() : Lotto {
     val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        .sorted()
     return Lotto(numbers)
 }
 
