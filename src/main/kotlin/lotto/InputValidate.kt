@@ -44,7 +44,7 @@ object InputValidate {
         return bonus
     }
 
-    fun validateTickets(tickets: MutableList<List<Int>>): List<List<Int>> {
+    fun validateTickets(tickets: MutableList<MutableList<Int>>): List<List<Int>> {
        if(tickets.isEmpty())
            throw IllegalArgumentException("[ERROR] Tickets are empty" )
 

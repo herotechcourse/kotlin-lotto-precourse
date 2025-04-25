@@ -4,49 +4,61 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    private var purchaseAmount: Int? = parsePurchaseAmount()
-    var tickets: List<List<Int>> = generateTickets(purchaseAmount)
-    private var winningNumber: List<Int> = parseWinningNumber()
-    private var bonusNumber: Int = parseBonusNumber()
+    private var ticketNumber: Int = 0
+    private var purchaseAmount: Int = 0
+    private var tickets: List<List<Int>> = listOf(listOf())
+    private var winningNumber: List<Int> = listOf()
+    private var bonusNumber: Int = 0
 
-    private fun parsePurchaseAmount(): Int {
+    fun initPrintTicket(){
+        parsePurchaseAmount()
+        tickets = generateTickets(purchaseAmount)
+        OutputView.printTickets(tickets, ticketNumber)
+        parseWinningNumber()
+        parseBonusNumber()
+    }
+
+    private fun parsePurchaseAmount() {
+        println()
         println("Please enter the purchase amount.")
         val input = Console.readLine()
-
-        return InputValidate.validateAmount(input)
+        purchaseAmount = InputValidate.validateAmount(input)
     }
 
-    private fun parseWinningNumber(): List<Int> {
+    private fun parseWinningNumber() {
         println("Please enter last week's winning numbers.")
         val input = Console.readLine()
-
-        return InputValidate.validateWinningNumber(input)
+        winningNumber = InputValidate.validateWinningNumber(input)
     }
 
-    private fun parseBonusNumber(): Int {
+    private fun parseBonusNumber(){
+        println()
         println("Please enter the bonus number.")
         val input = Console.readLine()
-
-        return InputValidate.validateBonusNumber(input, winningNumber)
+        bonusNumber = InputValidate.validateBonusNumber(input, winningNumber)
     }
 
-    private fun generateTickets(purchaseAmount: Int?): List<List<Int>> {
-        val ticketNumber = purchaseAmount?.div(1000)
-        val safeTicketNumber: Int = ticketNumber!!
-        var tickets: MutableList<List<Int>> = mutableListOf()
+    private fun generateTickets(purchaseAmount: Int): List<List<Int>>{
+        ticketNumber = purchaseAmount / 1000
+        var rawTickets: MutableList<MutableList<Int>> = mutableListOf()
 
-        for (i in 0 until safeTicketNumber) {
-            val singleTicket: List<Int> = generateSingleTicket()
-            tickets.add(singleTicket)
+        for (i in 0 until ticketNumber) {
+            val singleTicket: MutableList<Int> = generateSingleTicket()
+            rawTickets.add(singleTicket)
         }
-        return InputValidate.validateTickets(tickets)
+        return InputValidate.validateTickets(rawTickets)
     }
 
-    private fun generateSingleTicket(): List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    private fun generateSingleTicket(): MutableList<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
 
     fun getWinningNumber(): List<Int> = winningNumber
 
     fun getBonusNumber (): Int = bonusNumber
+
+    fun getPurchaseAmount (): Int = purchaseAmount
+
+    fun getTickets(): List<List<Int>> = tickets
+
 
 }
 
