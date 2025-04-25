@@ -10,7 +10,7 @@ fun main() {
     val outputView = OutputView()
 
     val purchasedAmount = InputView.getPurchaseAmount()
-    val ticketAmount = calculateTicketAmount(purchasedAmount)
+    val ticketAmount = LottoManager.calculateTicketAmount(purchasedAmount)
 
     val tickets = LottoManager.generateMultipleTickets(ticketAmount)
     outputView.displayPurchasedTicketsInfo(tickets)
@@ -18,7 +18,7 @@ fun main() {
     val winningNumbers = InputView.getWinningNumbers()
     val bonusNumber = InputView.getBonusNumber()
 
-    val winningTicket = createWinningLotto(winningNumbers, bonusNumber)
+    val winningTicket = LottoManager.createWinningLotto(winningNumbers, bonusNumber)
 
     val rankCount = LottoManager.compareTickets(tickets, winningTicket)
     val returnRate = LottoManager.calculateReturnRate(rankCount, purchasedAmount)
