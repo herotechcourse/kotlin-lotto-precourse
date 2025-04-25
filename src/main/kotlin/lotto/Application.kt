@@ -11,6 +11,32 @@ fun main() {
     val amount: Int = promptAndTakeAmount()
     val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
     displayLottos(tickets)
+    val winning = promptAndTakeWinning()
+    val bonus = promptAndTakeBonus()
+}
+
+fun promptAndTakeBonus(): Int = 0 // TODO
+
+fun promptAndTakeWinning() : Lotto {
+    while(true) {
+        val input = promptInput("Please enter last week's winning numbers.")
+        val numbers = parseCommaSeparatedNumbers(input) ?: continue
+        if (validateWinningOrShowError(numbers)) return Lotto(numbers)
+    }
+}
+
+fun validateWinningOrShowError(numbers: List<Int>) : Boolean = try {
+    // TODO
+    false
+} catch (e: Exception) {
+    false
+}
+
+fun parseCommaSeparatedNumbers(input: String): List<Int>? = try {
+    input?.split(",")?.map { it.trim() }?.map { it.toInt() }
+} catch (e: NumberFormatException) {
+    println("[ERROR] Input must be a number")
+    null
 }
 
 fun displayLottos(lottos: List<Lotto>) {
