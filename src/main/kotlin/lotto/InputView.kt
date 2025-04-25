@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-const val TICKET_PRICE: Int = 1000
 const val WINNING_NUMBER_RANGE_MIN = 1
 const val WINNING_NUMBER_RANGE_MAX = 45
 
@@ -33,7 +32,6 @@ object InputView {
     private fun getAndParsePurchaseAmount(): Int {
         OutputView.REQUEST_PURCHASE_AMOUNT.printMessage(null)
         val amount = Console.readLine().toInt()
-        if (amount % TICKET_PRICE != 0) throw IllegalArgumentException("Amount has to be divisible by 1000.")
         return amount
     }
 
