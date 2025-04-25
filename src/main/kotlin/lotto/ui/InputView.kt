@@ -27,7 +27,7 @@ class InputView {
         }
 
         fun getWinningNumbers(): Lotto {
-            return readValidatedInput("\nPlease enter the last week's winning numbers.") {
+            return readValidatedInput("\nPlease enter last week's winning numbers.") {
                 val winningNumbers = parseWinningNumbers(Console.readLine())
                 Lotto(winningNumbers)
             }

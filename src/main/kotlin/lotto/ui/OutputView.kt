@@ -24,7 +24,7 @@ class OutputView {
                 .forEach { rank ->
                     val count = winningStats.stats.getOrDefault(rank, 0)
                     val matchDescription = getMatchDescription(rank)
-                    println("$matchDescription - $count ${if (count == 1) "ticket" else "tickets"}")
+                    println("$matchDescription – $count tickets")
                 }
         }
 
