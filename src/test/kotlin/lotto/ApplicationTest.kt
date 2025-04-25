@@ -68,10 +68,70 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `EXCEPTION Extra unexpected input after winning numbers`() {
+    fun `EXCEPTION extra unexpected input after winning numbers`() {
         assertSimpleTest {
             val exception = assertThrows<IllegalArgumentException> {
                 runException("2000", "1,2,3,4,5,6,7", "8")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION blank input for purchase amount`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("\n")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION nonNumeric Winning Numbers`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("1000","1,2,3,4,5,six", "6")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION outOfRange Winning Numbers`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("1000","1,2,3,4,5,46", "6")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION duplicate Winning Numbers`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("1000","1,2,3,4,5,5", "6")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION empty Bonus Number`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("1000", "1,2,3,4,5,6", "\n")
+            }
+            assertThat(exception.message).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `EXCEPTION invalid Bonus Number`() {
+        assertSimpleTest {
+            val exception = assertThrows<IllegalArgumentException> {
+                runException("1000", "1,2,3,4,5,6", "46")
             }
             assertThat(exception.message).contains(ERROR_MESSAGE)
         }
