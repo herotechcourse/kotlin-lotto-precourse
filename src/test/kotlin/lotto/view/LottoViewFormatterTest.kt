@@ -12,11 +12,9 @@ class LottoViewFormatterTest {
     @Nested
     inner class LottoTickets {
 
-        private val lottoTickets = LottoTickets(
-            listOf(
-                Lotto(listOf(8, 21, 23, 41, 42, 43)),
-                Lotto(listOf(3, 5, 11, 16, 32, 38))
-            )
+        private val lottoTickets: List<Lotto> = listOf(
+            Lotto(listOf(8, 21, 23, 41, 42, 43)),
+            Lotto(listOf(3, 5, 11, 16, 32, 38))
         )
 
         @Test

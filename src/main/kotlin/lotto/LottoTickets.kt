@@ -13,7 +13,7 @@ class LottoTickets(private val tickets: List<Lotto>) {
 
     fun profitRate(winningLotto: WinningLotto): Double {
         val totalPrize: Prize = calculateTotalPrize(winningLotto)
-        val cost: Money = Money.fromTicketCount(size())
+        val cost: Money = Money.fromTicketCount(tickets.size)
 
         return (totalPrize / cost) * PERCENT
     }
@@ -22,8 +22,6 @@ class LottoTickets(private val tickets: List<Lotto>) {
         .entries
         .map { (rank, count) -> rank.prize * count }
         .fold(Prize.ZERO) { acc, prize -> acc + prize }
-
-    fun size(): Int = tickets.size
 
     fun getTickets(): List<Lotto> = tickets.toList()
 

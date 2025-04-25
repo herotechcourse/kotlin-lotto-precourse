@@ -1,7 +1,6 @@
 package lotto
 
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
 
 class LottoStoreTest {
@@ -19,10 +18,7 @@ class LottoStoreTest {
         val result: LottoTickets = sut.sell(amount)
 
         // Assert
-        SoftAssertions.assertSoftly {
-            assertThat(result.size()).isEqualTo(3)
-            assertThat(result.getTickets()).containsOnly(lotto)
-        }
+        assertThat(result.getTickets()).containsExactly(lotto, lotto, lotto)
     }
 
 }

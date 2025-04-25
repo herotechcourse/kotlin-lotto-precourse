@@ -19,7 +19,7 @@ class Controller(
         val amount: Money = retry { Money(inputView.readPurchaseAmount()) }
         val lottoTickets: LottoTickets = store.sell(amount)
 
-        outputView.printLottoTickets(lottoTickets)
+        outputView.printLottoTickets(lottoTickets.getTickets())
 
         return lottoTickets
     }

@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.LottoTickets
+import lotto.Lotto
 import lotto.Rank
 import java.text.NumberFormat
 import java.util.*
@@ -12,9 +12,9 @@ object LottoViewFormatter {
 
     private val numberFormatter = NumberFormat.getNumberInstance(Locale.US)
 
-    fun formatPurchaseMessage(lottoTickets: LottoTickets) = "You have purchased ${lottoTickets.size()} tickets."
+    fun formatPurchaseMessage(lottoTickets: List<Lotto>) = "You have purchased ${lottoTickets.size} tickets."
 
-    fun formatLottoTickets(lottoTickets: LottoTickets): String = lottoTickets.getTickets()
+    fun formatLottoTickets(lottoTickets: List<Lotto>): String = lottoTickets
         .map { it.getNumbers().sorted() }
         .joinToString(LN)
 

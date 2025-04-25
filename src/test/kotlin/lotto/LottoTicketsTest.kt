@@ -67,15 +67,6 @@ class LottoTicketsTest {
     }
 
     @Test
-    fun `size returns the number of Lotto tickets`() {
-        // Act
-        val size: Int = sut.size()
-
-        // Assert
-        assertThat(size).isEqualTo(tickets.size)
-    }
-
-    @Test
     fun `getTickets returns a defensive copy of the internal list`() {
         // Act
         val result: List<Lotto> = sut.getTickets()
