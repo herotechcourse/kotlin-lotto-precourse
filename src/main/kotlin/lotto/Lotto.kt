@@ -17,5 +17,7 @@ class Lotto(private val numbers: List<Int>) {
         bonusNumber = number
     }
 
-    // TODO: Implement additional functions
+//    fun compareNumbers() {
+//
+//    }
 }

@@ -10,4 +10,12 @@ class OutputView {
             println("]")
         }
     }
+
+//    fun printStatistics() {
+//
+//    }
+
+//    fun printProfitRate() {
+//
+//    }
 }
