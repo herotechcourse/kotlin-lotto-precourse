@@ -1,26 +1,20 @@
 package lotto
 
-import lotto.LottoPrize.*
 import lotto.NumberUtil.formatDouble
 
 class Output {
 
     fun printIssuedTickets(count: Int, issuedTickets: List<List<Int>>) {
-        println("You have purchased $count tickets.")
+        println("\nYou have purchased $count tickets.")
         issuedTickets.forEach {
             println(it)
         }
-        println()
     }
 
-    fun printWinningStatistics(profitRate: Double) {
-        println("Winning Statistics")
+    fun printWinningStatistics(statistics: LottoStatistics, purchaseAmount: Int) {
+        println("\nWinning Statistics")
         println("---")
-        println(THREE_MATCHES.toString())
-        println(FOUR_MATCHES.toString())
-        println(FIVE_MATCHES.toString())
-        println(FIVE_MATCHES_BONUS.toString())
-        println(SIX_MATCHES.toString())
-        println("Total return rate is ${profitRate.formatDouble()}%.")
+        println(statistics.toString())
+        println("Total return rate is ${statistics.getProfitRate(purchaseAmount).formatDouble()}%.")
     }
 }
