@@ -4,9 +4,16 @@ package lotto
 class InputHandler {
     companion object {
         const val INPUT_PURCHASE_MESSAGE = "Please enter the purchase amount."
+        const val INPUT_WINNING_NUMBER_MESSAGE = "Please enter last week's winning numbers."
         const val LOTTO_PRICE = 1_000
+        const val LOTTO_NUMBER_SIZE = 6
+        const val LOTTO_NUMBER_STARTS = 1
+        const val LOTTO_NUMBER_ENDS = 45
         const val INPUT_NOT_DIVIDABLE = "Input must be divided by lotto amount $LOTTO_PRICE"
         const val NOT_A_VALID_NUMBER = "Please enter a valid number."
+        const val WINNING_NUMBER_DUPLICATE = "Please enter not duplicate numbers."
+        const val WINNING_NUMBER_OVER_RANGE = "Please enter number range in 1 to 45."
+        const val WINNING_NUMBER_SIZE_NOT_SIX = "Please enter 6 numbers."
         const val NUMBER_NOT_POSITIVE = "Please enter a positive number."
         const val INVALID_INPUT = "Invalid input."
         const val UNEXPECTED_MESSAGE = "Unexpected error."
@@ -19,20 +26,64 @@ class InputHandler {
         }
     }
 
-    private fun validateAmount(readLine: () -> String): Int {
+    fun readWinningNumbers(readLine: () -> String): List<Int> {
+        while (true) {
+            println(INPUT_WINNING_NUMBER_MESSAGE)
+            return validateWinningNumbers(readLine)
+        }
+    }
+
+    private fun validateWinningNumbers(readLine: () -> String): List<Int> {
         try {
-            val amount = readLine().toInt()
-            validate(amount)
-            return amount
+            val winningNumbers = readLine().split(",").map { it.toInt() }
+            validateNumbers(winningNumbers)
+            return winningNumbers
         } catch (e: Exception) {
-            println(errorMessage(e))
+            println(winningNumberErrorMessage(e))
             throw e
         }
     }
 
-    private fun validate(purchaseAmount: Int) {
+    private fun validateAmount(readLine: () -> String): Int {
+        try {
+            val amount = readLine().toInt()
+            validatePurchaseAmount(amount)
+            return amount
+        } catch (e: Exception) {
+            println(amountErrorMessage(e))
+            throw e
+        }
+    }
+
+    private fun validatePurchaseAmount(purchaseAmount: Int) {
         checkDivisibility(purchaseAmount)
         checkPositive(purchaseAmount)
+    }
+
+    private fun validateNumbers(winningNumbers: List<Int>) {
+        checkDuplicates(winningNumbers)
+        checkRange(winningNumbers)
+        checkSize(winningNumbers)
+    }
+
+    private fun checkDuplicates(numbers: List<Int>) {
+        if (numbers.toSet().size != numbers.size) {
+            throw IllegalArgumentException(WINNING_NUMBER_DUPLICATE)
+        }
+    }
+
+    private fun checkRange(numbers: List<Int>) {
+        for (number in numbers) {
+            if (number < LOTTO_NUMBER_STARTS || number > LOTTO_NUMBER_ENDS) {
+                throw IllegalArgumentException(WINNING_NUMBER_OVER_RANGE)
+            }
+        }
+    }
+
+    private fun checkSize(numbers: List<Int>) {
+        if (numbers.size != LOTTO_NUMBER_SIZE) {
+            throw IllegalArgumentException(WINNING_NUMBER_SIZE_NOT_SIX)
+        }
     }
 
     private fun checkDivisibility(purchaseAmount: Int) {
@@ -47,10 +98,18 @@ class InputHandler {
         }
     }
 
-    private fun errorMessage(e: Throwable): String {
+    private fun amountErrorMessage(e: Throwable): String {
         when (e) {
             is NumberFormatException -> return NOT_A_VALID_NUMBER
-            is IllegalArgumentException -> return INVALID_INPUT
+            is IllegalArgumentException -> return e.message ?: INVALID_INPUT
+            else -> return UNEXPECTED_MESSAGE
+        }
+    }
+
+    private fun winningNumberErrorMessage(e: Throwable): String {
+        when (e) {
+            is NumberFormatException -> return NOT_A_VALID_NUMBER
+            is IllegalArgumentException -> return e.message ?: INVALID_INPUT
             else -> return UNEXPECTED_MESSAGE
         }
     }

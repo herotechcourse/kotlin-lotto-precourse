@@ -1,5 +1,6 @@
 import lotto.InputHandler
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -53,5 +54,62 @@ class InputHandlerTest {
             inputHandler.readPurchaseAmount(fakeInput)
         }
         assertEquals("Input must be divided by lotto amount 1000", exception.message)
+    }
+
+    @Test
+    @DisplayName("When input is 6 valid numbers, it should return list of integers")
+    fun readWinningNumbers_validInput() {
+        val fakeInput = { "1,2,3,4,5,6" }
+        val result = inputHandler.readWinningNumbers(fakeInput)
+        assertEquals(listOf(1, 2, 3, 4, 5, 6), result)
+    }
+
+    @Test
+    @DisplayName("When input contains non-numeric value, NumberFormatException should be thrown")
+    fun readWinningNumbers_nonNumericInput() {
+        val fakeInput = { "1,2,three,4,5,6" }
+        assertThrows(NumberFormatException::class.java) {
+            inputHandler.readWinningNumbers(fakeInput)
+        }
+    }
+
+    @Test
+    @DisplayName("When input contains duplicated numbers, IllegalArgumentException should be thrown")
+    fun readWinningNumbers_duplicateNumbers() {
+        val fakeInput = { "1,2,3,4,5,5" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readWinningNumbers(fakeInput)
+        }
+        assertEquals("Please enter not duplicate numbers.", exception.message)
+    }
+
+    @Test
+    @DisplayName("When input contains number out of range, IllegalArgumentException should be thrown")
+    fun readWinningNumbers_outOfRangeNumbers() {
+        val fakeInput = { "1,2,3,4,5,46" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readWinningNumbers(fakeInput)
+        }
+        assertEquals("Please enter number range in 1 to 45.", exception.message)
+    }
+
+    @Test
+    @DisplayName("When input contains less than 6 numbers, IllegalArgumentException should be thrown")
+    fun readWinningNumbers_lessThanSixNumbers() {
+        val fakeInput = { "1,2,3,4,5" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readWinningNumbers(fakeInput)
+        }
+        assertEquals("Please enter 6 numbers.", exception.message)
+    }
+
+    @Test
+    @DisplayName("When input contains more than 6 numbers, IllegalArgumentException should be thrown")
+    fun readWinningNumbers_moreThanSixNumbers() {
+        val fakeInput = { "1,2,3,4,5,6,7" }
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            inputHandler.readWinningNumbers(fakeInput)
+        }
+        assertEquals("Please enter 6 numbers.", exception.message)
     }
 }

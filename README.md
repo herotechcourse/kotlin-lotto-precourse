@@ -21,8 +21,11 @@
   - [x] Generate N lottery tickets.
   - [ ] Each ticket must consist of 6 unique numbers between 1 and 45.
   - [ ] The numbers must be sorted in ascending order when printed.
-- [ ] Receive 6 winning numbers from the user.
-  - [ ] If there are duplicates or numbers out of range, throw an exception.
+- [x] Receive 6 winning numbers from the user. 
+  - [x] Input must not contain non-numeric values. 
+  - [x] Input must not have duplicates.
+  - [x] Input numbers must be in range (1 ~ 45). 
+  - [x] Input numbers must be 6 numbers.
 - [ ] Receive 1 bonus number from the user.
   - [ ] The bonus number must not overlap with any of the winning numbers.
 - [ ] Compare each lottery ticket to the winning numbers and count how many numbers match.
