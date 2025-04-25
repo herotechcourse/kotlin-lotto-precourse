@@ -6,6 +6,12 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
+    /**
+     * Tests for Lotto constructor validation
+     * - Must contain exactly 6 numbers
+     * - Must not contain duplicates
+     * - All numbers must be between 1 and 45
+     */
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
@@ -28,6 +34,10 @@ class LottoTest {
         }
     }
 
+    /**
+     * Tests for Lotto.create()
+     * - Should not throw any exception even when created multiple times
+     */
     @Test
     fun `does not throw exception when lotto is created 1000 times`() {
         repeat(1000) {
@@ -35,6 +45,10 @@ class LottoTest {
         }
     }
 
+    /**
+     * Tests for Lotto.toRank(winningNumbers, bonusNumber)
+     * - Calculates prize rank based on match count and bonus number
+     */
     @Test
     fun `returns FIRST rank when all numbers match`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
