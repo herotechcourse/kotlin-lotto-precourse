@@ -32,7 +32,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
   - ex 7
 
 ## Output
-- [ ] print purchase prompt 
+- [x] print purchase prompt 
   - ex Please enter the purchase amount.
 - [ ] Number of tickets issued and their numbers (sorted in ascending order):
   - [ ] print issued ticket intro message with ammount
