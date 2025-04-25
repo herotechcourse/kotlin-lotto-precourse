@@ -6,4 +6,10 @@ class WinningLotto (private val winningNumbers: List<Int>, private val bonusNumb
         require(winningNumbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
         require(bonusNumber !in winningNumbers) { "[ERROR] Bonus number must not duplicate winning numbers." }
     }
+
+    fun getRank(ticket: Lotto): Rank {
+        val matchCount = ticket.matchCount(winningNumbers)
+        val hasBonus = ticket.contains(bonusNumber)
+        return Rank.of(matchCount, hasBonus)
+    }
 }
