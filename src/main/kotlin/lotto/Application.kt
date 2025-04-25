@@ -15,4 +15,6 @@ fun main() {
    val bonusNumber=inputView.getBonusNumber()
    lottoMachine.checkMatches(winningNumbers, bonusNumber)
    outputView.printMatches(lottoMachine.matchMap)
+   val returnRate=lottoMachine.calcReturnRate(purchaseAmount)
+   outputView.printReturnRate(returnRate)
 }

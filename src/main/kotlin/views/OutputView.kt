@@ -22,4 +22,9 @@ class OutputView {
             println("${condition.label} - ${countAndPrize.count} tickets")
         }       
     }
+
+    fun printReturnRate(returnRate:Double)
+    {
+        println("Total return rate is ${String.format("%.1f", returnRate)}%.")
+    }
 }

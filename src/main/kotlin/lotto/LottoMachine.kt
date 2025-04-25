@@ -46,4 +46,13 @@ class LottoMachine()
             matchMap[matchCondition]?.count = matchMap.getOrDefault(matchCondition, CountAndPrize(0,0)).count + 1
         }
     }
+
+    fun calcReturnRate(purchaseAmount:Int):Double
+    { 
+        var returnRate=0
+        for ((condition, countPrize) in matchMap) { 
+            returnRate += countPrize.count * countPrize.prize 
+        }
+        return  ( purchaseAmount/returnRate.toDouble()) * 100.0
+    }
 }
