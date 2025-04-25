@@ -1,5 +1,6 @@
-package lotto
+package lotto.domain
 
+import lotto.NumberGenerator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

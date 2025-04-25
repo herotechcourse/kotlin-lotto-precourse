@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 import lotto.InputHandler.Companion.INPUT_NOT_DIVIDABLE
 import lotto.InputHandler.Companion.NUMBER_NOT_POSITIVE

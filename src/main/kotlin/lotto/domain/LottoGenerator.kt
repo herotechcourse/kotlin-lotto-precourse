@@ -1,4 +1,6 @@
-package lotto
+package lotto.domain
+
+import lotto.NumberGenerator
 
 
 class LottoGenerator(private val numberGenerator: NumberGenerator) {
