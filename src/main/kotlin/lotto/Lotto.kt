@@ -1,17 +1,14 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import util.Validator.checkLottoNumbersRules
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must not contain duplicates." }
-        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+        checkLottoNumbersRules(numbers)
     }
 
-    override fun toString(): String {
-        return numbers.toString()
-    }
+    override fun toString() = numbers.toString()
 
     fun toRank(winningNumbers: List<Int>, bonusNumber: Int): Rank? {
         val matchCount = matchCountFrom(winningNumbers)
@@ -20,9 +17,7 @@ class Lotto(private val numbers: List<Int>) {
         return Rank.from(matchCount, isBonusMatched)
     }
 
-    private fun matchCountFrom(winningNumbers: List<Int>): Int {
-        return numbers.intersect(winningNumbers).size
-    }
+    private fun matchCountFrom(winningNumbers: List<Int>) = numbers.intersect(winningNumbers).size
 
     companion object {
         fun create(): Lotto {
