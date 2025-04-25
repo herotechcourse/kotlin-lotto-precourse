@@ -43,7 +43,9 @@ fun main() {
     }
 
     val lottoResult = LottoResult()
+    lottoResult.generateWinningStatistics(userInput, ticketPurchase)
     OutputView.displayWinningStatistics(lottoResult)
+    lottoResult.calculateReturnRate(userInput)
     OutputView.displayReturnRate(lottoResult)
 }
 
