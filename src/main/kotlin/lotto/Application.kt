@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.controller.LottoGameController
+
 fun main() {
-    // TODO: Implement the program
+    LottoGameController().run()
 }
