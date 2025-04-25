@@ -50,7 +50,7 @@ class LottoMachine()
     fun calcReturnRate(purchaseAmount:Int):Double
     { 
         var returnRate=0
-        for ((condition, countPrize) in matchMap) { 
+        for ((_, countPrize) in matchMap) { 
             returnRate += countPrize.count * countPrize.prize 
         }
         return  ( purchaseAmount/returnRate.toDouble()) * 100.0
