@@ -7,5 +7,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
     }
 
-    fun numbers(): List<Int> = numbers
+    fun numbers(): List<Int> = numbers.toList()
+
+    fun numberOfMatches(winningNumbers: List<Int>) : Int = numbers.count { it in winningNumbers}
+
+    fun containsBonus(bonusNumber: Int): Boolean = bonusNumber in numbers
 }
