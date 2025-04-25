@@ -31,4 +31,13 @@ object LottoManager {
         val totalPrize = rankCount.entries.sumOf { it.key.prize * it.value }
         return (totalPrize.toDouble() / purchasedAmount) * 100
     }
+
+    fun calculateTicketAmount(purchasedAmount: Int): Int {
+        return purchasedAmount / 1000
+    }
+    
+    fun createWinningLotto(winningNumbers: List<Int>, bonusNumber: Int): WinningLotto {
+        val lotto = Lotto(winningNumbers)
+        return WinningLotto(lotto, bonusNumber)
+    }
 }
