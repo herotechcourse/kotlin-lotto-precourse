@@ -1,5 +1,3 @@
-# kotlin-lotto-precourse
-
 # Lotto Ticket Machine
 
 A simple lottery ticket machine built in Kotlin.
