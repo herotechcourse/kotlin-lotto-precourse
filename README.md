@@ -17,9 +17,10 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 2. Generate Lotto Tickets Automatically
-- [ ] Based on the purchase amount, generate one ticket for every 1,000 won.
-- [ ] Each ticket contains **six unique numbers** between 1 and 45.
-- [ ] The numbers must be sorted in ascending order.
+- [x] Based on the purchase amount, generate one ticket for every 1,000 won : `LottoGenerator`
+- [x] Each ticket must consist of six **unique** numbers ranging from 1 to 45 : `Lotto`(a single ticket), `LottoNumber`(a valid number)
+- [x] Multiple `Lotto` tickets are bundled together in a collection : `LottoTickets`
+- [x] The generated numbers are sorted in ascending order before being displayed.
 
 ---
 
