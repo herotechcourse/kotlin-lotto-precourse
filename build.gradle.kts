@@ -15,8 +15,9 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.woowacourse-projects:mission-utils:1.2.0")
+    implementation("camp.nextstep.edu.missionutils:missionutils:1.0.0")
 }
+
 
 tasks {
     test {
