@@ -4,30 +4,28 @@ package lotto.view
 
 object OutputView {
 
-    fun promptUser(Message: String) {
-        println(Message)
+    fun requestUser(message: String) {
+        println(message)
     }
 
     /*TODO: initially seeing this as a list of tickets (the random generated ones) [ticket0, .., ticketN]*/
-    fun printGeneratedTickets(purchasedTickets: List<List<Int>>, totalTickets: Int) {
-        println("You have purchased $totalTickets tickets.")
-        for (ticket in purchasedTickets) {
+    fun showPurchase(ticketsPurchase: List<List<Int>>) {
+        println("You have purchased ${ticketsPurchase.size} tickets.")
+        for (ticket in ticketsPurchase) {
             println(ticket)
         }
     }
 
-    /*
-      might cwertanly need to be changed but keeping it here for now
-      fun printResult(
-          rankList: List<Rank>,
-          returnRate: Double
-      ) {
+    fun printStats(
+        /*   rankList: List<Rank>,
+           returnRate: Double*/
+    ) {
         println("Winning Statistics")
         println("---")
-        // should loop through rank list
+        // could loop through rank list ?
         println(
-            "{$rankList.type.name} Matches ({$rankList.type.prizeMoney} KRW) - {$rankList.count} ticket(if (count != 1) `s` else ``)")
-        println("Total return rate is {$returnRate}")
-      }
-     */
+            "{rankList.type} Matches ({rankList.prizeMoney} KRW) - {rankList.count} ticket(if (count != 1) `s` else ``)"
+        )
+        println("Total return rate is {returnRate}")
+    }
 }

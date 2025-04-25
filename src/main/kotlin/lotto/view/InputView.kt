@@ -1,21 +1,20 @@
 package lotto.view
 
-import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Console // TODO: remove this once sorted output/input call for remaining functions
 
 object InputView {
     // TODO: implement reprompting of invalid input
-    fun getPurchaseAmount(): Int {
-        OutputView.promptUser("Please enter the amount of money you want to spend.")
-        val input = Console.readLine().trim().toIntOrNull()
+    fun getPayment(input: String): Int {
+        val parsedInput = input.trim().toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] spending amount must be a valid number.")
-        require(input % 1000 == 0) { "[ERROR] spending amount must be divisible by 1,000." }
-        require(input < 100001) { "[ERROR] spending amount must not be greater than 100,000 to avoid game overload." }
-        return input
+        require(parsedInput % 1000 == 0) { "[ERROR] spending amount must be divisible by 1,000." }
+        require(parsedInput < 100001) { "[ERROR] spending amount must not be greater than 100,000 to avoid game overload." }
+        return parsedInput
     }
 
     // TODO: returns winning list of inputted numbers, only parsing errors are handled for now and need to handle validation in lotto class
-    fun returnWinningTicket(): List<Int> {
-        OutputView.promptUser("Please enter the winning numbers.")
+    fun getWinningNumbers(): List<Int> {
+        OutputView.requestUser("Please enter the winning numbers.") // TODO: shouldn't be nested here, put in a higher function
         val input = Console.readLine()?.trim()
             ?: throw IllegalArgumentException("[ERROR] winning numbers should be a valid number separated by ','.")
         require(input.contains(",")) { "[ERROR] winning numbers must be separated by commas." }
@@ -28,12 +27,11 @@ object InputView {
     }
 
 
-    fun returnBonusNumber(): Int {
-        OutputView.promptUser("Please enter the bonus number.")
+    fun getBonusNumber(): Int {
+        OutputView.requestUser("Please enter the bonus number.")// TODO: shouldn't be nested here, put in a higher function
         val input = Console.readLine().trim().toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] bonus number was not a valid number.")
         require(input in lotto.MIN_RANGE..lotto.MAX_RANGE) { "[ERROR] bonus number must be between ${lotto.MIN_RANGE} and ${lotto.MAX_RANGE}." }
-        println("DEBUG MAX_RANGE: ${lotto.MAX_RANGE}")
         return input
     }
 }
