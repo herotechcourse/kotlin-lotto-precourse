@@ -1,5 +1,7 @@
 package lotto.view
 
+import lotto.Lotto
+
 class OutputView {
     fun printPurchaseLottoAmountPrompt() {
         println(PURCHASE_LOTTO_AMOUNT_PROMPT_MESSAGE)
@@ -7,6 +9,12 @@ class OutputView {
 
     fun printIssuedLottoCountMessage(count: Int) {
         println(String.format(ISSUED_LOTTO_COUNT_MESSAGE, count))
+    }
+
+    fun printIssuedLottoNumbers(lottos: List<Lotto>) {
+        lottos.forEach{
+            lotto -> println(lotto.numbers().sorted())
+        }
     }
 
     companion object {
