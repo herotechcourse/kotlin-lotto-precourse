@@ -5,5 +5,15 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    // TODO: Implement additional functions
+    override fun toString(): String {
+        return numbers.sorted().toString()
+    }
+
+    fun countMatching(winningNumbers: List<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
+
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
+    }
 }
