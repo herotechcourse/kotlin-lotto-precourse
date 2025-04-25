@@ -2,6 +2,7 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThat
 
 class LottoTest {
     @Test
@@ -11,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +19,22 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `gets a copy of lotto numbers`(){
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(numbers)
+        assertThat(lotto.getNumbers()).isEqualTo(numbers)
+    }
+
+    @Test
+    fun `modifying the copied lotto numbers does not affect original numbers`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(numbers)
+
+        val copy = lotto.getNumbers().toMutableList()
+        copy.add(7)
+
+        assertThat(lotto.getNumbers()).hasSize(6)
+        assertThat(lotto.getNumbers()).doesNotContain(7)
+    }
 }

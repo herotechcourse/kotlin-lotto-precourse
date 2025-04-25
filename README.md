@@ -8,7 +8,7 @@
     - A user Input for bonus number (must not duplicate winning numbers)
     - Validate inputs and re-prompt on `IllegalArgumentException`
 
-- [ ] Generate lotto tickets
+- [X] Generate lotto tickets
     - Create one ticket per 1,000 KRW (e.g., 8,000 → 8 tickets)
     - Each ticket has 6 unique random numbers between 1 and 45
     - Numbers must be sorted in ascending order
