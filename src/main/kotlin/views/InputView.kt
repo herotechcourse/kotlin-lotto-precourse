@@ -45,7 +45,7 @@ class InputView {
             printError(e)
             return emptyList()
         }
-    } 
+    }
     
     fun getBonusNumber(): Int
     {
@@ -61,7 +61,7 @@ class InputView {
         } catch (e: Exception) {
             printError(e)
             return 0
-        }   
+        }
     }
 }
 
