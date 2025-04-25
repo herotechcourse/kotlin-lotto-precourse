@@ -43,7 +43,7 @@ class InputViewTest {
     }
 
     @ParameterizedTest(name = "{index}. invalid list of \"{0}\"")
-    @ValueSource(strings = ["a,b,c,1,2,3", "1,,2,3,4,5,6", "1,2,3,4,5,6,", " "])
+    @ValueSource(strings = ["a,b,c,1,2,3", "1,,2,3,4,5,6", "1,2,3,4,5,6,", " ", "256,345,4,5,6,7", "0,1,2,3,4,5", "1,2,3,4,5,46", "1,2,3,4,5"])
     @EmptySource
     fun `test invalid winning numbers list`(input: String) {
         assertThatIllegalArgumentException()
@@ -52,7 +52,7 @@ class InputViewTest {
     }
 
     @ParameterizedTest(name = "{index}. valid list of \"{0}\"")
-    @ValueSource(strings = ["1,2,3,4,5,6", "121,456,3"])
+    @ValueSource(strings = ["1,2,3,4,5,6", "12,45,3,1,24,33"])
     fun `test valid winning numbers list`(input: String) {
         assertThatNoException().isThrownBy{ InputView().parseWinningNumbers(input) }
     }
