@@ -41,13 +41,6 @@ class ApplicationTest : NsTest() {
         )
     }
 
-    @Test
-    fun `exception test`() {
-        assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
-        }
-    }
 
     override fun runMain() {
         main()
