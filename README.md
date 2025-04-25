@@ -27,15 +27,15 @@ The features will be implemented in the following order:
 
 #### Error Handling
 
-- [ ] Handle invalid user input by throwing an `IllegalArgumentException`.
-  - [ ] Re-prompt the user for input after an error.
-- [ ] Ensure error messages follow the format: `[ERROR] <message>`.
+- [x] Handle invalid user input by throwing an `IllegalArgumentException`.
+  - [x] Re-prompt the user for input after an error.
+- [x] Ensure error messages follow the format: `[ERROR] <message>`.
 
 ### Ticket Generation
 
 - [ ] Calculate how many lottery tickets the user can buy.
 - [ ] Create lottery tickets for the user.
-  - [ ] Each ticket must have 6 unique random numbers between 1 and 45.
+  - [ ] Each ticket must havegi 6 unique random numbers between 1 and 45.
 
 ### Prize Calculation
 
