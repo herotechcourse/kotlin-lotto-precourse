@@ -1,7 +1,6 @@
 package lotto.domain
 
 import lotto.Lotto
-import lotto.WinningRank
 
 class PurchasedLottos(private val tickets: List<Lotto>) {
     fun count(): Int {

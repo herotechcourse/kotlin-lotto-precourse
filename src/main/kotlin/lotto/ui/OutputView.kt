@@ -1,6 +1,6 @@
 package lotto.ui
 
-import lotto.WinningRank
+import lotto.domain.WinningRank
 import lotto.domain.PurchasedLottos
 import lotto.domain.WinningStats
 
