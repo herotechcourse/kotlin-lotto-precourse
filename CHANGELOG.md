@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/kimpeter2018/kotlin-lotto-precourse/compare/v1.2.0...v1.3.0) (2025-04-25)
+
+
+### Features
+
+* add logic to check if input is empty ([c193416](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/c193416aeb699b83320204caee1c8394f34bee47))
+* Add sorted to Lotto in case user enters unsorted numbers ([1433b6a](https://github.com/kimpeter2018/kotlin-lotto-precourse/commit/1433b6a113c8f8ffc1c5e44a180ca57942b07dac))
+
 ## 1.2.0 (2025-04-24)
 
 
