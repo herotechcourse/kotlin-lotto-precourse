@@ -7,7 +7,7 @@ import lotto.utils.InputView.validatePurchaseAmount
 
 fun main() {
     val purchaseAmount = readPurchaseAmount()
-    val winningNumbers = readWinningNumbers()
+    val winningNumbers = readWinningNumbers() // TODO: decide whether to use instance of Lotto class
 }
 
 private fun readPurchaseAmount(): UInt {
@@ -29,7 +29,7 @@ private fun promptAndValidatePurchaseAmount(): UInt {
 }
 
 // TODO: manually test whether re-prompting works as soon as validation is implemented
-private fun readWinningNumbers(): List<UByte> {
+private fun readWinningNumbers(): List<Int> {
     while (true) {
         try {
             return promptAndValidateWinningNumbers()
@@ -39,7 +39,7 @@ private fun readWinningNumbers(): List<UByte> {
     }
 }
 
-private fun promptAndValidateWinningNumbers(): List<UByte> {
+private fun promptAndValidateWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers.")
     val input = readInput()
     val numbers = toWinningNumbers(input)

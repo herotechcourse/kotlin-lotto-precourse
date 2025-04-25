@@ -10,11 +10,13 @@ The features will be implemented in the following order:
 
 - [x] Get the purchase amount from the user.
 - [x] Check if the purchase amount is valid.
+
   - [x] It must be a positive integer.
   - [x] It must be divisible by 1,000.
 
 - [x] Get the winning numbers from the user.
 - [ ] Check if the winning numbers are valid.
+
   - [ ] Each number must be between 1 and 45.
   - [ ] There must be 6 unique numbers.
 
@@ -61,11 +63,13 @@ The features will be implemented in the following order:
 - I decided not to allow a purchase amount of 0. The program should not run if no tickets can be bought.
 - Regarding number ranges, I intend to use "between" for user-facing messages and "in the range of" for developer-facing messages to ensure clarity and correctness.
 - I am using `UInt` for the purchase amount to handle larger numbers without additional memory costs.
-- I might use `UByte` instead of larger integer types for the lottery numbers between 1 and 45 to keep memory usage minimal.
+- I considered using `UByte` for lottery numbers between 1 and 45 to reduce memory costs.
+However, since the `Lotto` class uses a `<List>Int` to store numbers, I chose to use `Int` to avoid unnecessary type conversions.
+The performance impact is minimal.
 
 ## Sources
 
 - [South Korean Lotto 6/45 Explanation](https://en.namu.wiki/w/%EB%A1%9C%EB%98%90%206/45)
 - [Kotlin documentation on unsigned integers](https://kotlinlang.org/docs/unsigned-integer-types.html#unsigned-integers-literals)
-- [The `map` function from Kotlin's  standard library](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
+- [The `map` function from Kotlin's standard library](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
 - [Parameterized Tests in JUnit 5](https://www.baeldung.com/parameterized-tests-junit-5)

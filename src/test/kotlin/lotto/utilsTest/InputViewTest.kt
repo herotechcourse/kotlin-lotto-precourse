@@ -84,15 +84,15 @@ class InputViewTest {
     }
 
     @Test
-    fun `toWinningNumbers converts valid comma-separated numbers to UBytes`() {
+    fun `toWinningNumbers converts valid comma-separated numbers to Ints`() {
         val input = "1,2,3,4,5,6"
         val result = InputView.toWinningNumbers(input)
-        val expected = listOf(1, 2, 3, 4, 5, 6).map { it.toUByte() }
+        val expected = listOf(1, 2, 3, 4, 5, 6)
         assertEquals(expected, result)
     }
 
     @ParameterizedTest
-    @ValueSource(strings = ["1 ,2,3,4,5,6", "a,2,3,4,5,6", "1,2,3,4,5,abc", "-1,2,3,4,5,6", "256,2,3,4,5,6"])
+    @ValueSource(strings = ["1 ,2,3,4,5,6", "a,2,3,4,5,6", "1,2,3,4,5,abc", "2147483648,2,3,4,5,6"])
     fun `toWinningNumbers throws exception for invalid number input`(input: String) {
         val exception = assertThrows<IllegalArgumentException> {
             InputView.toWinningNumbers(input)
