@@ -4,11 +4,14 @@ import lotto.utils.InputView.readInput
 import lotto.utils.InputView.toUIntSafe
 import lotto.utils.InputView.toWinningNumbers
 import lotto.utils.InputView.validatePurchaseAmount
+import lotto.utils.InputView.validateWinningNumbers
 
 fun main() {
     val purchaseAmount = readPurchaseAmount()
     val winningNumbers = readWinningNumbers() // TODO: decide whether to use instance of Lotto class
 }
+
+// TODO: add below methods, and purchase amount, winning numbers, and bonus number as attributes to another class/object?
 
 private fun readPurchaseAmount(): UInt {
     while (true) {
@@ -43,6 +46,6 @@ private fun promptAndValidateWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers.")
     val input = readInput()
     val numbers = toWinningNumbers(input)
-    // TODO: validateWinningNumbers(numbers)
+    validateWinningNumbers(numbers)
     return numbers
 }

@@ -97,7 +97,51 @@ class InputViewTest {
         val exception = assertThrows<IllegalArgumentException> {
             InputView.toWinningNumbers(input)
         }
-        assertEquals("[ERROR] Invalid input for winning numbers.", exception.message)
+        assertEquals("[ERROR] The input for winning numbers is not valid.", exception.message)
     }
 
+    @Test
+    fun `validateWinningNumbers accepts valid input`() {
+        InputView.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 6))
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception when fewer than 6 numbers are provided`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            InputView.validateWinningNumbers(listOf(1, 2, 3, 4, 5))
+        }
+        assertEquals("[ERROR] There must be exactly six winning numbers.", exception.message)
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception when more than 6 numbers are provided`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            InputView.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 6, 7))
+        }
+        assertEquals("[ERROR] There must be exactly six winning numbers.", exception.message)
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception when numbers are below range`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            InputView.validateWinningNumbers(listOf(0, 2, 3, 4, 5, 6))
+        }
+        assertEquals("[ERROR] The winning numbers must be between 1 and 45.", exception.message)
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception when numbers are above range`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            InputView.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 46))
+        }
+        assertEquals("[ERROR] The winning numbers must be between 1 and 45.", exception.message)
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception when duplicate numbers are provided`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            InputView.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 5))
+        }
+        assertEquals("[ERROR] The winning numbers must be unique.", exception.message)
+    }
 }

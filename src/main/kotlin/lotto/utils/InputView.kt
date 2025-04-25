@@ -43,7 +43,19 @@ object InputView {
         return try {
             winningNumbers.map { it.toInt() }
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] Invalid input for winning numbers.")
+            throw IllegalArgumentException("[ERROR] The input for winning numbers is not valid.")
+        }
+    }
+
+    fun validateWinningNumbers(numbers: List<Int>) {
+        if (numbers.size != 6) {
+            throw IllegalArgumentException("[ERROR] There must be exactly six winning numbers.")
+        }
+        if (!numbers.all { it in 1..45 }) {
+            throw IllegalArgumentException("[ERROR] The winning numbers must be between 1 and 45.")
+        }
+        if (numbers.toSet().size != 6) {
+            throw IllegalArgumentException("[ERROR] The winning numbers must be unique.")
         }
     }
 }

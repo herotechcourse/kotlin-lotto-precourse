@@ -15,10 +15,10 @@ The features will be implemented in the following order:
   - [x] It must be divisible by 1,000.
 
 - [x] Get the winning numbers from the user.
-- [ ] Check if the winning numbers are valid.
+- [x] Check if the winning numbers are valid.
 
-  - [ ] Each number must be between 1 and 45.
-  - [ ] There must be 6 unique numbers.
+  - [x] Each number must be between 1 and 45.
+  - [x] There must be 6 unique numbers.
 
 - [ ] Get the bonus number from the user.
 - [ ] Check if the bonus number is valid.
@@ -57,6 +57,8 @@ The features will be implemented in the following order:
 - The IntelliJ IDEA debugger provides an intuitive display of current values in the editor, which helps to understand program flow.
 - We should declare methods as `internal` instead of `private` when we need to test them.
 - `map` takes each item in a collection, applies a function to it, and returns a new collection with the transformed items.
+- `toSet` converts a collection into a `Set`, which removes duplicate elements and keeps only unique values.
+- `all` checks if all elements in a collection satisfy a given condition. It returns `true` if every element meets the condition, and `false` otherwise.
 
 ## Considerations
 
@@ -64,8 +66,8 @@ The features will be implemented in the following order:
 - Regarding number ranges, I intend to use "between" for user-facing messages and "in the range of" for developer-facing messages to ensure clarity and correctness.
 - I am using `UInt` for the purchase amount to handle larger numbers without additional memory costs.
 - I considered using `UByte` for lottery numbers between 1 and 45 to reduce memory costs.
-However, since the `Lotto` class uses a `<List>Int` to store numbers, I chose to use `Int` to avoid unnecessary type conversions.
-The performance impact is minimal.
+  However, since the `Lotto` class uses a `<List>Int` to store numbers, I chose to use `Int` to avoid unnecessary type conversions.
+  The performance impact is minimal.
 
 ## Sources
 
