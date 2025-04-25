@@ -19,7 +19,7 @@ class InputView {
         println()
         println("Please enter last week's winning numbers:")
         val input=Console.readLine() ?: ""
-        val winningNumbers=input.split(',').map({ it.toInt() })
+        val winningNumbers=input.split(',').map({ it.trim().toInt() })
         if(winningNumbers.size < 6)
             throw IllegalArgumentException("There must be exactly 6 numbers")
         if(winningNumbers.distinct().size < 6)
