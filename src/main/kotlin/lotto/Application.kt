@@ -103,13 +103,13 @@ fun finalResult(results: Map<prizeTypes, Int>): Int {
 fun print(results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int) {
     println("Winning Statistics")
     println("---")
-    println("3 Matches (5,000 KRW) - ${results[prizeTypes.FIFTH]} ticket")
-    println("4 Matches (50,000 KRW) - ${results[prizeTypes.FOURTH]} ticket")
-    println("5 Matches (1,500,000 KRW) - ${results[prizeTypes.THIRD]} ticket")
-    println("5 Matches + Bonus Ball (30,000,000 KRW) - ${results[prizeTypes.SECOND]} ticket")
-    println("6 Matches (2,000,000,000 KRW) - ${results[prizeTypes.FIRST]} ticket")
+    println("3 Matches (5,000 KRW) – ${results[prizeTypes.FIFTH]} tickets")
+    println("4 Matches (50,000 KRW) – ${results[prizeTypes.FOURTH]} tickets")
+    println("5 Matches (1,500,000 KRW) – ${results[prizeTypes.THIRD]} tickets")
+    println("5 Matches + Bonus Ball (30,000,000 KRW) – ${results[prizeTypes.SECOND]} tickets")
+    println("6 Matches (2,000,000,000 KRW) – ${results[prizeTypes.FIRST]} tickets")
     val returnRate = (finalPrize.toDouble() / purchaseAmount) * 100
-    println("Total return rate is $returnRate %.")
+    println("Total return rate is $returnRate%.")
 }
 
 fun main() {
