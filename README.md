@@ -25,10 +25,10 @@
 
 ## ▪︎ Domain
 
-- [] Validate the amount of lottery tickets must be between `1,000` and `100,000`
+- [x] Validate the amount of lottery tickets must be between `1,000` and `100,000`
     - Throw an `IllegalArgumentException` if the value is out of range
-- [] Calculate the number of purchased lottery tickets
-    - [] Throw an `IllegalArgumentException` if amount is not divisible by `1,000
+- [x] Calculate the quantity of purchased lottery tickets
+    - [x] Throw an `IllegalArgumentException` if the purchased amount is not divisible by `1,000
 - [] Issue lottery tickets based on the purchased amount
     - [] Validate each tickets contains 6 unique random numbers
         - Throw an `IllegalArgumentException` if the value is out of range
