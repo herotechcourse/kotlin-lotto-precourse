@@ -19,14 +19,12 @@ class Statistics(
     }
 
     override fun toString(): String {
-        val builder = StringBuilder()
-        builder.appendLine("Lotto result statistics:").appendLine("---")
-        Rank.values().filter { it.isWinning() }.forEach { rank ->
+        return Rank.values()
+            .filter { it.isWinning() }
+            .joinToString(separator = "\n") { rank ->
             val count = rankCounts[rank] ?: 0
-            builder.appendLine(rank.description(count))
-        }
-        builder.appendLine("Total return rate is ${profitRate()}%.")
-        return builder.toString()
+            rank.description(count)
+        } + "\n\nTotal return rate is ${profitRate()}%."
     }
 
     companion object {
