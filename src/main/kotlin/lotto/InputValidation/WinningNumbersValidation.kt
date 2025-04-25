@@ -10,16 +10,5 @@ class WinningNumbersValidation {
         val winning_numbers = numbers.split(",").map { it.trim().toInt() }
         return winning_numbers
     }
-    fun SizeOfWinningNumberValidation(winning_numbers:List<Int>){
-        if(winning_numbers.size != winning_numbers_size ) throw IllegalArgumentException("[ERROR] Enter 6 unique numbers.")
-    }
-    fun UniqueWinningNumbersValidation(winning_numbers : List<Int>){
-        if(winning_numbers.distinct().size != winning_numbers_size ) throw IllegalArgumentException("[ERROR] Enter unique numbers only.")
-    }
-
-    fun ValidateWinningNumberInRange1to45(winning_numbers: List<Int>) {
-        val isValid = winning_numbers.all { it in 1..45 }
-        if(!isValid) throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
-    }
 
 }

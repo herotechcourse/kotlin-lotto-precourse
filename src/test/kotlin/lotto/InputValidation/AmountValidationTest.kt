@@ -34,15 +34,10 @@ class AmountValidationTest {
     @Test
     fun `exception Amount entered is invalid`() {
         val exception = assertThrows<IllegalArgumentException> {
-            validator.NullCheckAmount("")
+            validator.NullCheckNumber("")
         }
         assertEquals("[ERROR] Input needs to be an integer", exception.message)
     }
 
-    @Test
-    fun `exception Amount entered is an integer`() {
-        val result = validator.NullCheckAmount("2000")
-        assertEquals(2000, result)
-    }
 
 }

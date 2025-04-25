@@ -1,7 +1,7 @@
 package lotto.InputValidation
 
 class `AmountValidation` {
-    fun NullCheckAmount(amount : String) : Int{
+    fun NullCheckNumber(amount : String) : Int{
         if(amount.isEmpty() || amount.toIntOrNull() == null) throw IllegalArgumentException("[ERROR] Input needs to be an integer")
         return amount.toInt()
     }
