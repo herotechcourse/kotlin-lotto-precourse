@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun getPurchaseAmount():Int {
+        println()
         println("Please Enter Purchase amount for lottery tickets:")
         val input=Console.readLine()
         val purchaseAmount = input?.toIntOrNull() ?: throw IllegalArgumentException("Invalid Purchase Amount Number")
@@ -15,6 +16,7 @@ class InputView {
 
     fun getWinningNumbers(): List<Int>
     {
+        println()
         println("Please enter last week's winning numbers:")
         val input=Console.readLine() ?: ""
         val winningNumbers=input.split(',').map({ it.toInt() })
@@ -29,6 +31,7 @@ class InputView {
     
     fun getBonusNumber(): Int
     {
+        println()
         println("Please enter the bonus number.")
         val input=Console.readLine()
         val bonusNumber = input?.toIntOrNull() ?: throw IllegalArgumentException("Invalid Bonus Number")

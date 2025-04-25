@@ -6,6 +6,7 @@ import lotto.CountAndPrize
 
 class OutputView {
     fun printTickets(tickets: List<Lotto>) {
+        println()
         println("You have purchased ${tickets.size} tickets.")
         for(ticket in tickets) {
             println(ticket)
@@ -14,7 +15,9 @@ class OutputView {
 
     fun printMatches(matchMap:MutableMap<MatchCondition, CountAndPrize>)
     {
-        
+        println()
+        println("Winning Statistics")
+        println("---")
         for ((condition, countAndPrize) in matchMap) {
             println("${condition.label} - ${countAndPrize.count} tickets")
         }       
