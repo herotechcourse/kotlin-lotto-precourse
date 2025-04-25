@@ -20,7 +20,7 @@ class OutputView {
             println("---")
             WinningRank.entries
                 .filter { it != WinningRank.MISS }
-                .sortedByDescending { it.prize }
+                .sortedBy { it.prize }
                 .forEach { rank ->
                     val count = winningStats.stats.getOrDefault(rank, 0)
                     val matchDescription = getMatchDescription(rank)
