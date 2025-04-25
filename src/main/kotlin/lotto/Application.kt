@@ -10,14 +10,14 @@ enum class prizeTypes (val matchCount: Int, val hasBonus: Boolean, val rewards: 
     FOURTH(4, false, 50000),
     THIRD(5, false, 1500000),
     SECOND(5, true, 30000000),
-    FIRST(6, false, 2000000000)
+    FIRST(6, false, 2000000000);
 
     // check prize rank
     companion object{
         fun match (matchCount: Int, hasBonus: Boolean): prizeTypes {
-            if (matchCount == 5 && hasBonus) {return SECOND}
-            return values().first{ it.matchCount == matchCount && !it.hasBonus }
-            // PrizeRank.FIFTH(3, false, 5_000)
+            if (matchCount == 5 && hasBonus) { return SECOND }
+            return values().firstOrNull { it.matchCount == matchCount && !it.hasBonus } ?: NONE
+            // prizeTypes.FIFTH(3, false, 5_000)
         }
     }
 
@@ -105,11 +105,11 @@ fun finalResult(results: Map<prizeTypes, Int>): Int{
 fun print (results: Map<prizeTypes, Int>, finalPrize: Int, purchaseAmount: Int){
     println("Winning Statistics")
     println("---")
-    print("3 Matches (5,000 KRW) - ${results[prizeTypes.FIFTH]} ticket")
-    print("4 Matches (50,000 KRW) - ${results[prizeTypes.FOURTH]} ticket")
-    print("5 Matches (1,500,000 KRW) - ${results[prizeTypes.THIRD]} ticket")
-    print("5 Matches + Bonus Ball (30,000,000 KRW) - ${results[prizeTypes.SECOND]} ticket")
-    print("6 Matches (2,000,000,000 KRW) - ${results[prizeTypes.FIRST]} ticket")
+    println("3 Matches (5,000 KRW) - ${results[prizeTypes.FIFTH]} ticket")
+    println("4 Matches (50,000 KRW) - ${results[prizeTypes.FOURTH]} ticket")
+    println("5 Matches (1,500,000 KRW) - ${results[prizeTypes.THIRD]} ticket")
+    println("5 Matches + Bonus Ball (30,000,000 KRW) - ${results[prizeTypes.SECOND]} ticket")
+    println("6 Matches (2,000,000,000 KRW) - ${results[prizeTypes.FIRST]} ticket")
     val returnRate = (finalPrize.toDouble() / purchaseAmount) * 100
     println("Total return rate is $returnRate %.")
 }
