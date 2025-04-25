@@ -1,11 +1,18 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
+class InputView(private val outputView: OutputView) {
+    fun readPurchaseAmount(): String {
+        outputView.promptPurchase()
+        return readlnOrNull() ?: ""
+    }
 
-class InputView {
-    fun readPurchase (): String = Console.readLine()
+    fun readWinningNumbers(): String {
+        outputView.promptWinningNumbers()
+        return readlnOrNull() ?: ""
+    }
 
-    fun readLastWeek (): String = Console.readLine()
-
-    fun readBonusNumbers (): String = Console.readLine()
+    fun readBonusNumber(): String {
+        outputView.promptBonus()
+        return readlnOrNull() ?: ""
+    }
 }
