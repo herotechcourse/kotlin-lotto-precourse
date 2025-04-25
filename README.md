@@ -28,7 +28,7 @@
 - [x] Calculate the quantity of purchased lottery tickets
 - [x] Issue lottery tickets based on the purchased amount
 - [x] Calculate result statistics
-    - [] Compare how many numbers match
+    - [x] Compare how many numbers match
 - [] Calculate profit rate
     - [] Formula: Total Prize Money / Lottery Purchase Amount
     - [] Round to the nearest tenth
@@ -51,7 +51,7 @@
 
 ### ▪︎ Winning Lotto & Bonus Number
 
-- [] Throw an `IllegalArgumentException` if winning numbers and the bonus number are duplicated
+- [x] Throw an `IllegalArgumentException` if winning numbers and the bonus number are duplicated
 
 ## ▪︎ Conventions
 
