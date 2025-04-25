@@ -1,13 +1,12 @@
-package lotto.ticket
+package lotto
 
-import lotto.TICKET_COST
-import lotto.UserInput
+import camp.nextstep.edu.missionutils.Randoms
 
 class TicketPurchase {
     var amountOfTicketsBought: Int = 0
     private set
-    var tickets: MutableSet<Ticket> = mutableSetOf()
-    private set
+    var tickets: MutableSet<Lotto> = mutableSetOf()
+        private set
 
     fun buyTickets(userInput: UserInput) {
         this.amountOfTicketsBought = userInput.purchaseAmount.floorDiv(TICKET_COST)
@@ -15,7 +14,7 @@ class TicketPurchase {
 
     fun generateTickets() {
         for (i in 1..this.amountOfTicketsBought) {
-            tickets.add(Ticket())
+            this.tickets.add(Lotto(Randoms.pickUniqueNumbersInRange(LOWEST_NUMBER, HIGHEST_NUMBER, 6)))
         }
     }
 }
