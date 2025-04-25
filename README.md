@@ -20,10 +20,10 @@ The features will be implemented in the following order:
   - [x] Each number must be between 1 and 45.
   - [x] There must be 6 unique numbers.
 
-- [ ] Get the bonus number from the user.
-- [ ] Check if the bonus number is valid.
-  - [ ] It must be a single number between 1 and 45.
-  - [ ] It must not match any of the winning numbers.
+- [x] Get the bonus number from the user.
+- [x] Check if the bonus number is valid.
+  - [x] It must be a single number between 1 and 45.
+  - [x] It must not match any of the winning numbers.
 
 #### Error Handling
 
@@ -59,6 +59,7 @@ The features will be implemented in the following order:
 - `map` takes each item in a collection, applies a function to it, and returns a new collection with the transformed items.
 - `toSet` converts a collection into a `Set`, which removes duplicate elements and keeps only unique values.
 - `all` checks if all elements in a collection satisfy a given condition. It returns `true` if every element meets the condition, and `false` otherwise.
+- `in` checks if an element exists in a collection and returns a boolean result.
 
 ## Considerations
 

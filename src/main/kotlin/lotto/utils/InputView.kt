@@ -58,4 +58,21 @@ object InputView {
             throw IllegalArgumentException("[ERROR] The winning numbers must be unique.")
         }
     }
+
+    fun toIntSafe(str: String): Int {
+        return try {
+            str.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] The input for the bonus number is not valid.")
+        }
+    }
+
+    fun validateBonusNumber(number: Int, winningNumbers: List<Int>) {
+        if (number < 1 || number > 45) {
+            throw IllegalArgumentException("[ERROR] The bonus number must be between 1 and 45.")
+        }
+        if (number in winningNumbers) {
+            throw IllegalArgumentException("[ERROR] The bonus number must not match any of the winning numbers.")
+        }
+    }
 }
