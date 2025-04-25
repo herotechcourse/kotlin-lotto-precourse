@@ -1,13 +1,11 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.io.InputHandler
 
 fun main() {
     val tickets = mutableListOf<Lotto>()
-    println("Please enter the purchase amount.")
-    val sumOfMoney = Console.readLine()?.toIntOrNull()
-        ?: throw IllegalArgumentException("[ERROR] The purchase amount should be an integer.")
+    val sumOfMoney = InputHandler.getSumOfMoney()
     val numberOfTickets = getNumberOfTickets(sumOfMoney)
     validateSumOfMoney(sumOfMoney)
     println("You have purchased $numberOfTickets tickets.")
@@ -18,15 +16,12 @@ fun main() {
         ticket.showNumbers()
     }
 
-    println("Please enter last week's winning numbers.")
-    val winNumbers = Console.readLine().split(",").map { it.trim() }
+    val winNumbers = InputHandler.getWinningNumbers()
     validateNumbers(winNumbers.map {
         it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
     })
 
-    println("Please enter the bonus number.")
-    val bonusNumber = Console.readLine()?.toIntOrNull()
-        ?: throw IllegalArgumentException("The purchase amount should be an integer.")
+    val bonusNumber = InputHandler.getBonusNumber()
     validateBonusNumber(bonusNumber)
     val ticketMatchesMap = mutableMapOf(
         "match3" to 0,
@@ -41,23 +36,19 @@ fun main() {
     for (ticket in tickets) {
         val matches = ticket.calculateMatches(winNumbers.map { it.toInt() })
         when (matches) {
-            3 -> ticketMatchesMap["match3"] = ticketMatchesMap["match3"]!! + 1;
-            4 -> ticketMatchesMap["match4"] = ticketMatchesMap["match4"]!! + 1;
-            5 -> ticketMatchesMap["match5"] = ticketMatchesMap["match5"]!! + 1;
-            6 -> ticketMatchesMap["match6"] = ticketMatchesMap["match6"]!! + 1;
+            3 -> ticketMatchesMap["match3"] = ticketMatchesMap["match3"]!! + 1
+            4 -> ticketMatchesMap["match4"] = ticketMatchesMap["match4"]!! + 1
+            5 -> ticketMatchesMap["match5"] = ticketMatchesMap["match5"]!! + 1
+            6 -> ticketMatchesMap["match6"] = ticketMatchesMap["match6"]!! + 1
         }
     }
     fun countReturnRate(): Double {
-        val returnRate = (ticketMatchesMap["match3"]!! * 5000 + ticketMatchesMap["match4"]!! * 50000 +
-                ticketMatchesMap["match5"]!! * 1500000 + ticketMatchesMap["match6"]!! * 2000000000).toDouble() * 100 / sumOfMoney
+        val returnRate =
+            (ticketMatchesMap["match3"]!! * 5000 + ticketMatchesMap["match4"]!! * 50000 + ticketMatchesMap["match5"]!! * 1500000 + ticketMatchesMap["match6"]!! * 2000000000).toDouble() * 100 / sumOfMoney
         return returnRate
     }
     println(
-        "3 Matches (5,000 KRW) – ${ticketMatchesMap["match3"]} tickets\n" +
-                "4 Matches (50,000 KRW) – ${ticketMatchesMap["match4"]} tickets\n" +
-                "5 Matches (1,500,000 KRW) – ${ticketMatchesMap["match5"]} tickets\n" +
-                "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets\n" +
-                "6 Matches (2,000,000,000 KRW) – ${ticketMatchesMap["match6"]} tickets"
+        "3 Matches (5,000 KRW) – ${ticketMatchesMap["match3"]} tickets\n" + "4 Matches (50,000 KRW) – ${ticketMatchesMap["match4"]} tickets\n" + "5 Matches (1,500,000 KRW) – ${ticketMatchesMap["match5"]} tickets\n" + "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets\n" + "6 Matches (2,000,000,000 KRW) – ${ticketMatchesMap["match6"]} tickets"
     )
     println("Total return rate is ${countReturnRate()}%. ")
 }
