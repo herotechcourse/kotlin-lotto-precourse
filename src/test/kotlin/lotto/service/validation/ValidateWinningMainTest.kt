@@ -33,10 +33,13 @@ class ValidateWinningMainTest {
 
     @Test
     fun `givenNonNumericInput_whenValidateWinningMain_thenThrowsException`() {
+        // given
         val nonNumericInput = listOf("abc", "def", "ghi")
 
+        // when
         val validator = ValidateWinningMain()
 
+        // then
         val exception = assertThrows<IllegalArgumentException> {
             validator.typeValidate(nonNumericInput)
         }
@@ -45,10 +48,13 @@ class ValidateWinningMainTest {
 
     @Test
     fun `givenMixedTypeInput_whenValidateWinningMain_thenThrowsException`() {
+        // given
         val mixedTypeInput = listOf(1, 2, 3, 4, 5, "6")
 
+        // when
         val validator = ValidateWinningMain()
 
+        // then
         val exception = assertThrows<IllegalArgumentException> {
             validator.typeValidate(mixedTypeInput)
         }
@@ -57,10 +63,13 @@ class ValidateWinningMainTest {
 
     @Test
     fun `givenEmptyList_whenValidateWinningMain_thenThrowsException`() {
+        // given
         val emptyList = listOf<Int>()
 
+        // when
         val validator = ValidateWinningMain()
 
+        // then
         val exception = assertThrows<IllegalArgumentException> {
             validator.validate(emptyList)
         }
@@ -99,14 +108,14 @@ class ValidateWinningMainTest {
 
     @Test
     fun `givenOutOfRange_whenValidateWinningMain_thenThrowsException`() {
-        // given
+        // given(1), (2)
         val outOfRangeWinningNumbers1 = listOf(0, 1, 2, 3, 4, 5)
         val outOfRangeWinningNumbers2 = listOf(1, 2, 3, 4, 5, 46)
 
         // when
         val validator = ValidateWinningMain()
 
-        // then
+        // then(1), (2)
         val exception1 = assertThrows<IllegalArgumentException> {
             validator.validate(outOfRangeWinningNumbers1)
         }
