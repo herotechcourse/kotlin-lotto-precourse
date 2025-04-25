@@ -11,16 +11,26 @@ class Controller(
 ) {
 
     fun run() {
-        val amount: Money = retry { Money(InputView.readPurchaseAmount()) }
-        val lottos: Lottos = store.sell(amount)
-        outputView.printLottoTickets(lottos)
+        val lottoTickets: Lottos = purchase()
+        evaluate(lottoTickets)
+    }
 
+    private fun purchase(): Lottos {
+        val amount: Money = retry { Money(inputView.readPurchaseAmount()) }
+        val lottoTickets: Lottos = store.sell(amount)
+
+        outputView.printLottoTickets(lottoTickets)
+
+        return lottoTickets
+    }
+
+    private fun evaluate(lottoTickets: Lottos) {
         val winningNumbers: Lotto = retry { Lotto(inputView.readWinningNumbers()) }
         val winningLotto: WinningLotto = retry { WinningLotto(winningNumbers, inputView.readBonusNumber()) }
 
         outputView.printFinalReport(
-            rankCounts = lottos.matchAll(winningLotto),
-            profitRate = lottos.profitRate(winningLotto)
+            rankCounts = lottoTickets.matchAll(winningLotto),
+            profitRate = lottoTickets.profitRate(winningLotto)
         )
     }
 
