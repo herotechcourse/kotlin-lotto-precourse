@@ -12,8 +12,8 @@ class Lotto(private val numbers: List<Int>) {
     fun getLottoNumbers(): List<Int> = numbers
 
     companion object {
-        private const val FIRST_NUM = 1
-        private const val LAST_NUM = 45
+        const val FIRST_NUM = 1
+        const val LAST_NUM = 45
         const val SIZE = 6
         const val COST = 1000
 
