@@ -2,18 +2,17 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Consts.ERROR_PREFIX
-import lotto.StringUtil.toIntList
 
-class Input(private val validator: Validator) {
+object Input {
 
     fun enterPurchaseAmount(): IssuedTicket {
         println("Please enter the purchase amount.")
-        return retry { IssuedTicket.of(validator.validateStringToInt(it)) }
+        return retry { IssuedTicket.of(Validator.validateStringToInt(it)) }
     }
 
     fun enterWinningNumbers(): Lotto {
         println("\nPlease enter last week's winning numbers.")
-        return retry { Lotto(it.toIntList(validator)) }
+        return retry { Lotto(Validator.validateStringToIntList(it)) }
     }
 
     fun enterBonusNumber(lotto: Lotto): Int {
@@ -22,7 +21,7 @@ class Input(private val validator: Validator) {
     }
 
     private fun getBonusNumber(stringValue: String, lotto: Lotto): Int {
-        return validator.validateStringToInt(stringValue).apply {
+        return Validator.validateStringToInt(stringValue).apply {
             lotto.validateNumber(this)
         }
     }

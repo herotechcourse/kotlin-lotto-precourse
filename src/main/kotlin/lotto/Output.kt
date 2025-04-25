@@ -2,7 +2,7 @@ package lotto
 
 import lotto.NumberUtil.formatDouble
 
-class Output {
+object Output {
 
     fun printIssuedTickets(count: Int, issuedTickets: List<List<Int>>) {
         println("\nYou have purchased $count tickets.")
