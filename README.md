@@ -42,11 +42,11 @@ winnings and the according profit rate.
 
 ### Core Logic
 #### Purchase
-1. [ ] issue lottery tickets based on budget
-   2. [ ] tickets cost 1000 KRW
+1. [x] issue lottery tickets based on budget
+   2. [x] tickets cost 1000 KRW
    3. [x] randomly generated 6 unique numbers per ticket
-   3. [ ] store tickets 
-   4. [ ] store bonus number
+   3. [x] store tickets 
+   4. [x] store bonus number
 #### Lotto Game
 2. [ ] compare the user's tickets to the winning numbers
 3. [ ] print the result
