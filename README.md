@@ -15,3 +15,12 @@
 ### step 1: Initialise the application entry point
 - `fun main()` is the standard entry point in kotlin
 - `LottoGame().run()` creates an instance of the game and runs it.
+
+### step 2: Create Controller for controlling program flow
+
+- `InputView` : Allows us to read input     
+
+####  The controller:
+   - Calculates how many lotto tickets to generate
+   - Hands the lotto ticket generation to `LottoMachine`
+   - Prints ticket data using `OutputView`
