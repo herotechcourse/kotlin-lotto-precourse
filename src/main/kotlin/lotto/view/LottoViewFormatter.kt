@@ -6,7 +6,7 @@ import java.text.NumberFormat
 import java.util.*
 
 class LottoViewFormatter(
-    private val numberFormatter: NumberFormat = NumberFormat.getNumberInstance(Locale.US)
+    private val numberFormatter: NumberFormat = NumberFormat.getNumberInstance(Locale.KOREA)
 ) {
 
     fun formatPurchaseMessage(lottoTickets: List<Lotto>) = "You have purchased ${lottoTickets.size} tickets."

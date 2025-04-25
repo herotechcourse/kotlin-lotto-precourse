@@ -11,7 +11,7 @@ value class Money(val amount: Int) {
 
     companion object {
         private const val UNIT = 1_000
-        private const val MAX = (Int.MAX_VALUE / 1000) * 1000
+        private const val MAX = (Int.MAX_VALUE / UNIT) * UNIT
 
         fun fromTicketCount(count: Int): Money {
             return Money(count * UNIT)

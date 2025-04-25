@@ -10,7 +10,7 @@ import java.util.*
 
 class LottoViewFormatterTest {
 
-    private val sut: LottoViewFormatter = LottoViewFormatter(NumberFormat.getInstance(Locale.US))
+    private val sut: LottoViewFormatter = LottoViewFormatter(NumberFormat.getInstance(Locale.KOREA))
 
     @Nested
     inner class LottoTickets {
