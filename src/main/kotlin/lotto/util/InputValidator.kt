@@ -1,6 +1,6 @@
 package lotto.util
 
-object InputValidator {
+class InputValidator {
     fun validateAndParseAmount(amountString: String?): Int {
         require(!amountString.isNullOrBlank()) { "[ERROR]: Purchase amount cannot be empty." }
 
