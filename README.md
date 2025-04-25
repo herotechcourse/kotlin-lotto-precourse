@@ -18,7 +18,15 @@
   - [x] Winning Lotto
   - [x] match lotto ticket, winning lotto and get a result <Rank, Lotto>
   - [x] profit
-- [] InputView
+- [x] InputView
   - [x] ask purchase amount
   - [x] ask bonus number
   - [x] ask winning number
+
+
+- [] re-prompt input from that step - functional interface
+- [] print prize with comma(,) - Decimal Format
+- [] sort lotto number - comparator
+- [] % format
+- [] bonus ball format
+- [] separate controller logic
