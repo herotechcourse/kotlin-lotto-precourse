@@ -30,8 +30,8 @@ Implement a simple lottery ticket machine with the following rules:
   - [x] Calculate and print total winnings and profit rate
 
 
-- [ ] If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
-- [ ] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
+- [x] If the user inputs invalid data, the program must throw an IllegalArgumentException and re-prompt input from that step.
+- [x] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
 
 
 # Input/Output Requirements
@@ -62,7 +62,7 @@ Implement a simple lottery ticket machine with the following rules:
 - [x] print Lotto result statistics:
 - [x] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%):
   - ex Total return rate is 62.5%.
-- [ ] Error messages must start with [ERROR]:
+- [x] Error messages must start with [ERROR]:
   - ex [ERROR] Lotto numbers must be between 1 and 45.
 
 ## Example Execution
