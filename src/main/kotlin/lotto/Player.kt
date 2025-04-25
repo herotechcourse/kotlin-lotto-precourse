@@ -2,10 +2,12 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-const val TICKET_PRICE = 1_000
-const val MAX_AMOUNT = 1_000_000
-
 class Player(private val amount: Int) {
+    companion object {
+        const val TICKET_PRICE = 1_000
+        const val MAX_AMOUNT = 1_000_000
+    }
+
     init {
         require(amount >= TICKET_PRICE) { "[ERROR] That's enough money to by a ticket :( Each ticket costs 1000 KRW." }
         require(amount <= MAX_AMOUNT) { "[ERROR] Wow, that's too much to spend in Lotto tickets. Enter an amount less than 100000 KRW" }
