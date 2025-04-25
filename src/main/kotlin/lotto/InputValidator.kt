@@ -4,7 +4,7 @@ class InputValidator {
     companion object{
         fun validate(input : String):Int{
             if (input.isBlank()) {
-                throw IllegalArgumentException("Input cannot be null or empty. Please enter a valid amount divisible by 1000.")
+                throw IllegalArgumentException("Input cannot be null or empty.")
             }
             try {
                 val amount = input.toInt()
