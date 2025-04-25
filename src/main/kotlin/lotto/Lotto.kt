@@ -18,3 +18,27 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.contains(number)
     }
 }
+
+enum class PrizeRank(
+    val matchCount: Int,
+    val requiresBonus: Boolean,
+    val prizeAmount: Long
+) {
+    FIRST(6, false, 2_000_000_000),
+    SECOND(5, true, 30_000_000),
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000);
+
+    companion object {
+        fun findByMatch(matchCount: Int, bonusMatch: Boolean): PrizeRank? {
+            return when (matchCount) {
+                6 -> FIRST
+                5 -> if (bonusMatch) SECOND else THIRD
+                4 -> FOURTH
+                3 -> FIFTH
+                else -> null
+            }
+        }
+    }
+}

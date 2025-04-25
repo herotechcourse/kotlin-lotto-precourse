@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.Lotto
 
 const val TICKET_PRICE = 1000;
 
@@ -10,8 +9,24 @@ fun main() {
     // Lotto Purchase Flow
     val amount: Int = promptAndTakeAmount()
     val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
-    val answers: Pair<Lotto, Int> = promptAndTakeWinningAndBonus()
-    //displayLottos(tickets)
+    val (winning, bonus) = promptAndTakeWinningAndBonus()
+    val prizeRanks = determinePrizeRanks(tickets, winning, bonus)
+    evaluatePrizes(prizeRanks)
+}
+
+fun evaluatePrizes(prizeRank: List<PrizeRank?>) {
+   // TODO
+}
+
+fun determinePrizeRanks(tickets: List<Lotto>, winning: Lotto, bonus: Int): List<PrizeRank?> {
+    val winningNumbers = winning.getNumbers().toSet()
+
+    return tickets.map { ticket ->
+        PrizeRank.findByMatch(
+            matchCount = ticket.matchCount(winningNumbers),
+            bonusMatch = ticket.contains(bonus)
+        )
+    }
 }
 
 fun promptAndTakeWinningAndBonus(): Pair<Lotto, Int> {
