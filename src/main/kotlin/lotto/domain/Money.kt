@@ -3,19 +3,19 @@ package lotto.domain
 class Money(private val amount: Int) {
 
     init {
-        require(amount >= UNIT) {
-            "[ERROR] Purchase amount must be at least ₩$UNIT."
+        require(amount >= TICKET_PRICE) {
+            "[ERROR] Invalid purchase amount. Must be at least ₩1,000."
         }
-        require(amount % UNIT == 0) {
-            "[ERROR] Purchase amount must be divisible by ₩$UNIT."
+        require(amount % TICKET_PRICE == 0) {
+            "[ERROR] Purchase amount must be a multiple of ₩1,000."
         }
     }
 
-    fun getTicketCount(): Int = amount / UNIT
+    fun countTickets(): Int = amount / TICKET_PRICE
 
-    fun toInt(): Int = amount
+    fun value(): Int = amount
 
     companion object {
-        private const val UNIT = 1_000
+        const val TICKET_PRICE = 1000
     }
 }

@@ -9,10 +9,9 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 1. Enter Purchase Amount
-- [x] Users input a total purchase amount to buy tickets. : `Money`
+- [x] Users input a total purchase amount : `Money`
 - [x] The amount must be a **positive integer** and **a multiple of 1,000**.
-- [x] Validation and calculation logic is encapsulated in the `Money` class.
-- [X] Throws an error, If the input is less than 1,000, not a number, or not divisible by 1,000, an error message is shown and the user is prompted again.
+- [X] If the amount is invalid, `Money` throws an `IllegalArgumentException.
   - Error format: `[ERROR] Invalid purchase amount.`
 
 ---
