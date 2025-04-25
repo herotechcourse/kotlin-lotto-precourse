@@ -1,6 +1,7 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.error.ExceptionMessage
 
 class InputView {
 
@@ -8,7 +9,7 @@ class InputView {
         return PurchaseAmountDto(readInt())
     }
 
-    fun askWinningNumbers() :WinningNumbersDto{
+    fun askWinningNumbers() : WinningNumbersDto {
         return WinningNumbersDto(readIntList())
     }
 

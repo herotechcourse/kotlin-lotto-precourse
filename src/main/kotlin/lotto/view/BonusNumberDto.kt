@@ -1,4 +1,6 @@
-package lotto
+package lotto.view
+
+import lotto.error.ExceptionMessage
 
 data class BonusNumberDto(val bonusNumber: Int) {
     init {

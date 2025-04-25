@@ -1,5 +1,7 @@
-package lotto
+package lotto.model
 
+import lotto.Lotto
+import lotto.Rank
 import java.util.*
 
 class Game(private val purchaseAmount: Int, private val lottoTicket: List<Lotto>, private val winningLotto: WinningLotto) {

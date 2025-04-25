@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.error.ExceptionMessage
 import java.util.*
 
 class Lotto(private val numbers: List<Int>, val price: Int = 1000) {

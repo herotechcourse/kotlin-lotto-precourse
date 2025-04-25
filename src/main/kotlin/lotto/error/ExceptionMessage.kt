@@ -1,4 +1,4 @@
-package lotto
+package lotto.error
 
 enum class ExceptionMessage(val errorMessage: String) {
     DUPLICATE_LOTTO_NUMBER("[ERROR] Lotto numbers must consist of unique numbers."),

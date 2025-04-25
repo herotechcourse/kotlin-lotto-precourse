@@ -1,6 +1,7 @@
-package lotto
+package lotto.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 class LottoTicketMachine {
     fun buyLotto(quantity: Int) : List<Lotto> {
