@@ -5,9 +5,7 @@ import lotto.Game.Prize
 class OutputView() {
     fun printTickets(tickets: List<Lotto>) {
         println("You have purchased ${tickets.size} tickets")
-        tickets.map {
-            println(it.getNumbers())
-        }
+        tickets.forEach { println(it.getNumbers()) }
         println()
     }
 
@@ -26,7 +24,7 @@ class OutputView() {
     fun printStatistics(statistics:  List<Pair<Prize, Int>>) {
         println("Winning statistics:")
         println("---")
-        statistics.reversed().forEach() { println(formatString(it.first, it.second)) }
+        statistics.reversed().forEach { println(formatString(it.first, it.second)) }
     }
 
     fun printReturnRate(returnRate: Double) {
