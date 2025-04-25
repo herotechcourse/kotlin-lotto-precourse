@@ -52,7 +52,7 @@ fun getWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers.")
     val inputWinningNumbers = Console.readLine().split(",").map { it.trim().toIntOrNull() }
     if (inputWinningNumbers.any { it == null }) throw IllegalArgumentException("Please enter valid winning numbers.")
-    val winningNumbers = inputWinningNumbers.filterNotNull() // verify each element and then convert the collection type
+    val winningNumbers = inputWinningNumbers.filterNotNull()
     require(winningNumbers.size == 6) { "[ERROR] There must be 6 winning numbers." }
     require(winningNumbers.all { it in 1..45 }) { "[ERROR] Please enter the correct numbers between 1 to 45." }
     return winningNumbers
