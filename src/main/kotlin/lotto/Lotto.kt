@@ -1,9 +1,9 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+data class Lotto(val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == 6 && numbers.toSet().size == 6) {
+            "Lotto numbers must be 6 unique numbers"
+        }
     }
-
-    // TODO: Implement additional functions
 }
