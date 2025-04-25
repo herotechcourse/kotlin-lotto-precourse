@@ -38,7 +38,7 @@ Handle only specific exception types such as IllegalArgumentException or Illegal
 - [x] print purchase prompt 
   - ex Please enter the purchase amount.
 - [ ] Number of tickets issued and their numbers (sorted in ascending order):
-  - [ ] print issued ticket intro message with ammount
+  - [x] print issued ticket intro message with ammount
     - You have purchased 8 tickets.
   - [ ] print issued number of tickets
     - [ ] sorted in ascending order
