@@ -37,22 +37,25 @@ This Lotto project is part of the Hero Tech Course curriculum.
 
 ## Architecture
 
-The project follows a domain-view-controller architecture, for clear concerns separation, easy testing of the logic and better maintainability and extensibility:
+For this project I decided to maintain an Hybrid MVC architecture with domain-driven design (DDD) elements, which is a pattern that balances the separation of concerns across the view and business logic.
+To align with the project requirements and prototypes, I've made some modifications to simplify the structure and improve clarity, maintaining all the properties of DDD.
 
 ### Domain Layer
 
-- Contains core business entities and logic.
+- Encapsulates the core business logic and entities.
+- Also includes domain-specific utilities and constants.
+
+### Services Layer
+
+- Handles application-specific operations, assuming a role somewhat similar to traditional MVC controllers.
+- However, in this project orchestration is performed by Application.kt, which invokes services to interact with the domain layer.
+- This approach improving modularity and enabling the possibility to reuse services with other type of controllers, promoting extensibility.
 
 ### View Layer
 
 - Manages input and output interactions
 - Contains `InputView` for get the user input.
 - Contains `OutputView` for displaying results and messages
-
-### Controller Layer
-
-- Coordinates between domain and view layers
-- Contains the application flow control
 
 ## Programming Requirements
 
