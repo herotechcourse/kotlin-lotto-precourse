@@ -1,10 +1,9 @@
 package lotto.validator
 
 import lotto.Lotto
+import lotto.constants.Constants
 
 object InputValidator {
-    private const val THRESHOLD_UNIT = 1000
-
     fun notEmpty(input: String) {
         if (input.isEmpty()) {
             throw IllegalArgumentException("[ERROR] Input cannot be empty.")
@@ -17,15 +16,15 @@ object InputValidator {
         }
     }
 
-    fun withinRange(input: Int, minRange: Int, maxRange: Int) {
-        if (input < minRange || input > maxRange) {
-            throw IllegalArgumentException("[ERROR] Input must be a number between $minRange and $maxRange.")
+    fun withinRange(input: Int) {
+        if (input < Constants.MIN_PURCHASE_RANGE || input > Constants.MAX_PURCHASE_RANGE) {
+            throw IllegalArgumentException("[ERROR] Input must be a number between ${Constants.MIN_PURCHASE_RANGE} and ${Constants.MAX_PURCHASE_RANGE}.")
         }
     }
 
     fun isMultipleOfThousand(input: Int) {
-        if (input % THRESHOLD_UNIT != 0) {
-            throw IllegalArgumentException("[ERROR] Input must be a multiple of $THRESHOLD_UNIT.")
+        if (input % Constants.LOTTO_PURCHASE_UNIT != 0) {
+            throw IllegalArgumentException("[ERROR] Input must be a multiple of ${Constants.LOTTO_PURCHASE_UNIT}.")
         }
     }
 
@@ -36,11 +35,11 @@ object InputValidator {
     }
 
     fun checkLottoSize(input: List<Int>) {
-        require(input.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(input.size == Constants.LOTTO_NUMBERS_COUNT) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
     fun numberIsRange(input: Int) {
-        require(input in 1..45) { "Numbers must be between 1 and 45." }
+        require(input in Constants.LOTTO_MIN_NUMBER..Constants.LOTTO_MAX_NUMBER) { "Numbers must be between 1 and 45." }
     }
 
     fun allNumbersInRange(input: List<Int>) {

@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.Lotto
+import lotto.constants.Constants
 import lotto.model.LottoIssuer
 import lotto.model.LottoResult
 import lotto.model.LottoStorage
@@ -8,9 +9,6 @@ import lotto.model.WinningLotto
 import lotto.validator.InputValidator
 import lotto.view.InputView
 import lotto.view.OutputView
-
-private const val MIN_PURCHASE_RANGE = 1000
-private const val MAX_PURCHASE_RANGE = 100000
 
 class LottoProgram {
     fun run() {
@@ -28,7 +26,7 @@ fun validatePurchaseAmount(input: String) {
     InputValidator.isNumeric(input)
 
     val purchaseAmount = input.toInt()
-    InputValidator.withinRange(purchaseAmount, MIN_PURCHASE_RANGE, MAX_PURCHASE_RANGE)
+    InputValidator.withinRange(purchaseAmount)
     InputValidator.isMultipleOfThousand(purchaseAmount)
 }
 
@@ -89,7 +87,7 @@ fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
 }
 
 fun issueLottery(purchaseAmount: Int): LottoStorage {
-    val lottoCount = purchaseAmount / 1000
+    val lottoCount = purchaseAmount / Constants.LOTTO_PURCHASE_UNIT
     OutputView.newline()
     OutputView.purchaseCount(lottoCount)
 
