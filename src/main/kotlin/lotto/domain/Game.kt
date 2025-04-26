@@ -6,9 +6,9 @@ import lotto.view.OutputView
 
 class Game {
     fun run() {
-        val ticketsPurchased = TicketMachine.buy()
+        val playerData = TicketMachine.buy()
         val winningSet = Lotto(InputView.getWinningNumbers())
         val bonusNumber = InputView.getBonusNumber()
-        OutputView.printStats()
+       OutputView.printStats()
     }
 }
