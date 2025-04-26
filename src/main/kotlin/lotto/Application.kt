@@ -10,6 +10,7 @@ class Application {
             val purchaseAmount = Application().purchaseAmount()
             val tickets = Application().generateLottoTickets(purchaseAmount)
             Application().displayTickets(tickets)
+            Application().inputWinningNumbers()
         }
     }
 
@@ -36,7 +37,7 @@ class Application {
     private fun generateLottoTickets(purchaseAmount: Long): List<Lotto> {
         val quantityOfTickets = (purchaseAmount / 1000).toInt()
         val tickets = mutableListOf<Lotto>()
-        repeat (quantityOfTickets) {
+        repeat(quantityOfTickets) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
             tickets.add(Lotto(numbers))
         }
@@ -47,6 +48,37 @@ class Application {
         println("\nYou have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
             println(ticket)
+        }
+    }
+
+    private fun inputWinningNumbers(): List<Byte> {
+        println("\nPlease enter last week's winning numbers.")
+        val input = Console.readLine()
+
+        if (input.isBlank()) {
+            throw IllegalArgumentException("[ERROR] Input cannot be empty")
+        }
+        try {
+            val winningNumbers = input.split(",").map { it.trim().toByte() }
+            validateWinningNumbers(winningNumbers)
+            return winningNumbers
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Invalid number format. Please enter valid numbers.")
+        }
+    }
+
+    private fun validateWinningNumbers(winningNumbers: List<Byte>) {
+        if (winningNumbers.isEmpty()) {
+            throw IllegalArgumentException("[ERROR] Winning Numbers cannot be empty")
+        }
+        if (winningNumbers.size != 6) {
+            throw IllegalArgumentException("[ERROR] Winning should have 6 numbers")
+        }
+        if (winningNumbers.distinct().size != 6) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must not be duplicated")
+        }
+        if (winningNumbers.any { it < 1 || it > 45 }) {
+            throw IllegalArgumentException("[ERROR] Winning Numbers should between 1 - 45")
         }
     }
 }
