@@ -36,7 +36,7 @@ This feature list is organized in implementation order, following a test-driven 
 
 ### 3. UI Layer
 
-- [ ] **InputView**
+- [x] **InputView**
   - Get purchase amount from user with validation
   - Get winning numbers from user with validation
   - Get bonus number from user with validation
@@ -91,3 +91,12 @@ I decided to merge the LottoGenerator and LottoStatistics into just a single Lot
 As for the bonus number, I chose not to include it in the Lotto class since it's really a separate concept from the main 6 numbers. The bonus only matters when comparing winning numbers, and it felt cleaner to handle it separately during that specific process rather than forcing it into the Lotto model where it doesn't really belong. This keeps the Lotto class focused on just representing a valid lottery ticket.
 
 Overall, I went with a simpler approach that still satisfies all the requirements without unnecessary complexity.
+
+I also decided that having validation in both input and lotto class as it provides an extra safety layer rather than trusting purley on input being valid even though somewhat redundent! "Defensive programming"
+
+and infered that divisible meant meaning no remainder!
+i.e:
+1234 is not divisible by 1000 because:
+1234 ÷ 1000 = 1.234
+This has a remainder of 234, so 1234 is not divisible by 1000.
+Numbers that are divisible by 1000 include: 1000, 2000, 3000, etc. These all divide by 1000 with no remainder. I could have used >= 1000 instead if this was not the case!
