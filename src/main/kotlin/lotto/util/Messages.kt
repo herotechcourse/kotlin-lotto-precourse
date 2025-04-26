@@ -3,7 +3,7 @@ package lotto.util
 object Messages {
 
     object Prompt {
-        const val PURCHASE_AMOUNT = "Please enter the purchase amount (must be multiple of ${Config.TICKET_PRICE}; for example: 2000):"
+        const val PURCHASE_AMOUNT = "Please enter the purchase amount (must be multiple of ${Config.TICKET_PRICE}; for example ${Config.TICKET_PRICE * 2}):"
         const val WINNING_NUMBERS = "Enter the 6 winning numbers (comma-separated):"
         const val BONUS_NUMBER    = "Enter the bonus number:"
     }
