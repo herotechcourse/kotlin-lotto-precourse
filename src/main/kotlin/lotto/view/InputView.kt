@@ -9,13 +9,13 @@ object InputView {
             number >= Config.TICKET_PRICE && number % Config.TICKET_PRICE == 0 || throw IllegalArgumentException(Messages.Error.NOT_MULTIPLE_OF_TICKET_PRICE.format(number))
         }
 
-        fun readWinningNumbers(): List<Int> = readIntListWithValidation(Messages.Prompt.WINNING_NUMBERS) { list ->
-            list.size == 6 && list.all { num -> num in 1..45 } || throw IllegalArgumentException(Messages.Error.OUT_OF_RANGE.format(list))
-            list.distinct().size == 6 || throw IllegalArgumentException(Messages.Error.NUMBERS_NOT_UNIQUE)
-        }
+    fun readWinningNumbers(): List<Int> = readIntListWithValidation(Messages.Prompt.WINNING_NUMBERS) { list ->
+        list.size  == Config.LOTTO_NUMBER_COUNT && list.all  { it in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER } || throw IllegalArgumentException(Messages.Error.OUT_OF_RANGE.format(list))
+        list.distinct().size == Config.LOTTO_NUMBER_COUNT || throw IllegalArgumentException(Messages.Error.NUMBERS_NOT_UNIQUE)
+    }
 
         fun readBonusNumber(winningNumbers: List<Int>): Int = readIntWithValidation(Messages.Prompt.BONUS_NUMBER) { number ->
-            number in 1..45 || throw IllegalArgumentException(Messages.Error.INVALID_BONUS_NUMBER.format(number))
+            number in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER || throw IllegalArgumentException(Messages.Error.INVALID_BONUS_NUMBER.format(number))
             !winningNumbers.contains(number) || throw IllegalArgumentException(Messages.Error.BONUS_DUPLICATE)
         }
 
