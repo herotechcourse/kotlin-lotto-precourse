@@ -24,29 +24,30 @@ class PurchaseAmountTest {
     }
 
     @Test
-    fun `givenAmountNotDivisibleByThousandButPurchasable_whenCreatePurchaseAmount_thenReturnCorrectCount`() {
+    fun `givenAmountNotDivisibleByThousand_whenCreatePurchaseAmount_thenThrowException`() {
         val amount = 2500
-        val purchaseAmount = PurchaseAmount(amount)
-        val result = purchaseAmount.countPurchasableLottos()
-        assertEquals(2, result)
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount(amount)
+        }
     }
 
     @Test
     fun `givenPurchaseAmount_whenCallValueFunction_thenReturnAmount`() {
-        val amount = 9999
+        val amount = 15000
         val purchaseAmount = PurchaseAmount(amount)
         val result = purchaseAmount.value()
-        assertEquals(9999, result)
+        val expected = purchaseAmount.countPurchasableLottos()
+        assertEquals(15000, result)
+        assertEquals(15, expected)
     }
 
     @ParameterizedTest
     @CsvSource(
         "1000, 1",
-        "1400, 1",
-        "2700, 2",
+        "2000, 2",
         "3000, 3",
-        "5999, 5",
-        "99999, 99",
+        "5000, 5",
+        "10000, 10",
         "100000, 100"
     )
     fun `givenVariousAmounts_whenCountPurchasableLottos_thenReturnCorrectCount`(amount: Int, expectedCount: Int) {
