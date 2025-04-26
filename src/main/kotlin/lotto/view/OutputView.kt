@@ -21,9 +21,12 @@ object OutputView {
         }
 
         val totalWinnings = result.getTotalWinnings()
-        val profitRate = (totalWinnings.toDouble() / amount) * 100
-        val roundedProfit = "%.1f".format(profitRate)
+        val profitRate = calculateProfitRate(totalWinnings, amount)
 
-        println("\nTotal return rate is ${roundedProfit}%.")
+        println("\nTotal return rate is ${profitRate}%.")
+    }
+
+    private fun calculateProfitRate(totalWinnings: Int, amount: Int): String {
+        return "%.1f".format((totalWinnings.toDouble() / amount) * 100)
     }
 }

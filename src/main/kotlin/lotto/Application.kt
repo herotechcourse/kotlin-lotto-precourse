@@ -16,6 +16,10 @@ fun main() {
         val result = LottoMachine.calculateResults(tickets, winningNumbers, bonusNumber)
         OutputView.printStatistics(result, amount)
     } catch (e: IllegalArgumentException) {
-        println("[ERROR] ${e.message}")
+        handleError(e)
     }
+}
+
+private fun handleError(e: IllegalArgumentException) {
+    println("[ERROR] ${e.message}")
 }

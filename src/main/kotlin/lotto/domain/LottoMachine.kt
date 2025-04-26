@@ -10,25 +10,19 @@ object LottoMachine {
 
     fun generateTickets(amount: Int): List<Lotto> {
         validateAmount(amount)
-        val ticketCount = amount / LOTTO_PRICE
-        return List(ticketCount) { generateTicket() }
+        return List(amount / LOTTO_PRICE) { generateTicket() }
     }
 
     fun calculateResults(
-            tickets: List<Lotto>,
-            winningNumbers: Lotto,
-            bonusNumber: Int
+        tickets: List<Lotto>,
+        winningNumbers: Lotto,
+        bonusNumber: Int
     ): LottoResult {
-        val prizeCounts = mutableMapOf<Prize, Int>().withDefault { 0 }
-
-        tickets.forEach { ticket ->
-            val matchCount = ticket.matchCount(winningNumbers)
+        val prizeCounts = tickets.groupingBy {
+            val matchCount = it.matchCount(winningNumbers)
             val hasBonus = winningNumbers.contains(bonusNumber)
-
-            Prize.determinePrize(matchCount, hasBonus)?.let { prize ->
-                prizeCounts[prize] = prizeCounts.getValue(prize) + 1
-            }
-        }
+            Prize.determinePrize(matchCount, hasBonus)
+        }.eachCount().filterKeys { it != null }.mapKeys { it.key!! }
 
         return LottoResult(prizeCounts)
     }
@@ -39,9 +33,9 @@ object LottoMachine {
     }
 
     private fun validateAmount(amount: Int) {
-        require(amount >= LOTTO_PRICE) { "Purchase amount must be at least ${LOTTO_PRICE}." }
+        require(amount >= LOTTO_PRICE) { "Purchase amount must be at least $LOTTO_PRICE." }
         require(amount % LOTTO_PRICE == 0) {
-            "Purchase amount must be divisible by ${LOTTO_PRICE}."
+            "Purchase amount must be divisible by $LOTTO_PRICE."
         }
     }
 }
