@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
 class RankTest {
-
     companion object {
         @JvmStatic
         fun rankTestCases(): Stream<Arguments> {
