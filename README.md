@@ -33,4 +33,5 @@ This program simulates a lottery ticket machine's process:
 ## 🔧 How to Run
 
 ```bash
-$ ./gradlew run
+$ ./gradlew build
+$ ./gradlew clean build
