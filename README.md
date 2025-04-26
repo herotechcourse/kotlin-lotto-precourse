@@ -22,9 +22,9 @@
 
 ### 🏆 Winning Result Evaluation
 
-- [ ] Compare each ticket with winning numbers and bonus number
-- [ ] Determine the prize rank (1st ~ 5th or no prize)
-- [ ] Count the number of winning tickets per rank
+- [x] Compare each ticket with winning numbers and bonus number
+- [x] Determine the prize rank (1st ~ 5th or no prize)
+- [x] Count the number of winning tickets per rank
 - [ ] Calculate and display total winnings
 - [ ] Calculate and display profit rate (percentage, rounded to first decimal)
 
