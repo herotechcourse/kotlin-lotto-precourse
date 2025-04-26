@@ -11,7 +11,7 @@ class InputValidatorTest{
         val input  = " "
         assertThatThrownBy{ InputValidator.validate(input)}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("Input cannot be null or empty.")
+            .hasMessage("[ERROR] Input cannot be null or empty.")
     }
 
     @Test
@@ -19,7 +19,7 @@ class InputValidatorTest{
         val input = "1500"
         assertThatThrownBy{ InputValidator.validate(input)}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("Amount must be divisible by 1000.")
+            .hasMessage("[ERROR] Amount must be divisible by 1000.")
     }
 
     @Test
@@ -27,12 +27,20 @@ class InputValidatorTest{
         val input = "One"
         assertThatThrownBy{ InputValidator.validate(input)}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("You entered an invalid number. Please enter a valid integer.")
+            .hasMessage("[ERROR] You entered an invalid number. Please enter a valid integer.")
     }
 
     @Test
     fun `validate should pass if the input is valid number`(){
         val input = "1000"
         assertDoesNotThrow{ InputValidator.validate(input)}
+    }
+
+    @Test
+    fun `bonus validator throws an exception if number is not in range`(){
+        val input = "56"
+        assertThatThrownBy{InputValidator.validateBonusNum(input)}
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] The bonus number need to be in range 1 to 45.")
     }
 }
