@@ -44,13 +44,14 @@ The features will be implemented in the following order:
   - [x] Check if the user's tickets match the winning numbers.
   - [x] Check if the user's tickets match the bonus number.
 
-- [ ] Define the prize amounts for the five prize ranks.
-- [ ] Calculate the user's winnings, if any.
-- [ ] Calculate the profit rate.
+- [x] Define the prize amounts for the five prize ranks.
+- [x] Calculate the user's winnings, if any.
+- [x] Calculate the profit rate.
 
 ### Result Display
 
-- [ ] Print the winning statistics.
+- [x] Print the winning statistics.
+  - [x] Print the profit rate rounded to the nearest tenth.
 
 ## Learnings
 
