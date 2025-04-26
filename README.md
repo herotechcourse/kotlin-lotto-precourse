@@ -1,1 +1,39 @@
 # kotlin-lotto-precourse
+
+## Features
+- [ ] Prompt the user to input the amount of money they want to spend on purchasing lottery tickets.
+    - [ ] The amount the user enters must be divisible by 1,000 KRW, as each ticket costs 1,000 KRW.
+    - [ ] If the amount the user enters is not divisible by 1,000, throw an IllegalArgumentException.
+- [ ] Calculate the number of lottery tickets to be issued based on the input amount.
+- [ ] Generate lottery ticket numbers randomly for each ticket the user purchases.
+    - [ ] Each lottery ticket must consist of 6 unique random numbers within the range of 1 to 45.
+- [ ] Prompt the user to input a set of winning lottery numbers and a bonus number.
+    - [ ] The winning lottery number set must consist of 6 unique numbers within the range of 1 to 45.
+    - [ ] If the user enters duplicate numbers or the size of the winning lottery number set is not six, or if the winning lottery numbers or the bonus number are outside the range of 1 to 45, throw an IllegalArgumentException.
+- [ ] Compare each purchased ticket with the winning numbers to determine the prize.
+    - [ ] The prize criteria and amounts are as follows:
+        - 1st Prize: Match 6 numbers / 2,000,000,000 KRW
+        - 2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
+        - 3rd Prize: Match 5 numbers / 1,500,000 KRW
+        - 4th Prize: Match 4 numbers / 50,000 KRW
+        - 5th Prize: Match 3 numbers / 5,000 KRW
+- [ ] Calculate the return rate based on the total winnings and the total amount spent.
+- [ ] Display the complete lottery results, including the user's purchased tickets, the winning numbers (including the bonus number), the number of matched numbers for each ticket, the prize tier achieved by each ticket, and the overall return rate.## Functional Requirements
+- [ ] Prompt the user to input the amount of money they want to spend on purchasing lottery tickets.
+    - [ ] The amount the user enters must be divisible by 1,000 KRW, as each ticket costs 1,000 KRW.
+    - [ ] If the amount the user enters is not divisible by 1,000, throw an IllegalArgumentException.
+- [ ] Calculate the number of lottery tickets to be issued based on the input amount.
+- [ ] Generate lottery ticket numbers randomly for each ticket the user purchases.
+    - [ ] Each lottery ticket must consist of 6 unique random numbers within the range of 1 to 45.
+- [ ] Prompt the user to input a set of winning lottery numbers and a bonus number.
+    - [ ] The winning lottery number set must consist of 6 unique numbers within the range of 1 to 45.
+    - [ ] If the user enters duplicate numbers or the size of the winning lottery number set is not six, or if the winning lottery numbers or the bonus number are outside the range of 1 to 45, throw an IllegalArgumentException.
+- [ ] Compare each purchased ticket with the winning numbers to determine the prize.
+    - [ ] The prize criteria and amounts are as follows:
+        - 1st Prize: Match 6 numbers / 2,000,000,000 KRW
+        - 2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
+        - 3rd Prize: Match 5 numbers / 1,500,000 KRW
+        - 4th Prize: Match 4 numbers / 50,000 KRW
+        - 5th Prize: Match 3 numbers / 5,000 KRW
+- [ ] Calculate the return rate based on the total winnings and the total amount spent.
+- [ ] Display the complete lottery results, including the user's purchased tickets, the winning numbers (including the bonus number), the number of matched numbers for each ticket, the prize tier achieved by each ticket, and the overall return rate.
