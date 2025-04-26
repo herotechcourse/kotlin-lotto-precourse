@@ -36,8 +36,19 @@ class InputView {
 
     private fun inputSplitter(input: String): List<Int> {
         val numbers = input.split(",")
-            .map { it.toInt() }
+            .map {
+                require(it.isNotBlank()) { "[ERROR] Empty value is not allowed." }
+                it.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Only numbers are allowed.")
+            }
+
+        validateLastWeekLottoNumbers(numbers)
+
         return numbers
+    }
+
+    private fun validateLastWeekLottoNumbers(numbers: List<Int>) {
+        require(numbers.all { it in 1..45 }) { "[ERROR] Numbers must be between 1 and 45." }
+        require(numbers.size == numbers.toSet().size) { "[ERROR] Duplicate numbers are not allowed." }
     }
 
     private fun validateLasWeekWinningNumbers(input: String) {
