@@ -44,3 +44,13 @@
     `Total return rate is 62.5%.`
     - Error messages must start with [ERROR]:  
     `[ERROR] Lotto numbers must be between 1 and 45.`
+
+## Check
+
+- [x] You must use the Randoms and Console APIs provided by the camp.nextstep.edu.missionutils
+  package.
+    - To generate random values, use Randoms.pickUniqueNumbersInRange() from
+      camp.nextstep.edu.missionutils.Randoms.
+    - To receive user input, use Console.readLine() from camp.nextstep.edu.missionutils.Console.
+- [x] Custom Exception (Error)
+    - using huge try-catch

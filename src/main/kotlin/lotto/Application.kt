@@ -2,17 +2,27 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.Util.ENTER_PURCHASE_AMOUNT
 
 fun main() {
+    try {
+        playGame()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
+}
 
+fun playGame() {
     println("Please enter the purchase amount.")
-    val money = Console.readLine().trim().toInt()
+
+    val money = try {
+        Console.readLine().trim().toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("[ERROR] Please enter a valid purchase amount.")
+    }
     val ticketCount = money / 1000
 
     println("You have purchased $ticketCount tickets. ")
 
-//    val lottoNumberList = mutableListOf<List<Int>>()
     val lottoList = mutableListOf<Lotto>()
 
     for (ticket in 1..ticketCount) {
@@ -43,10 +53,12 @@ fun main() {
  * 5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets
  * 6 Matches (2,000,000,000 KRW) – 0 tickets
  */
-fun getLottoResult(money: Int, winningNumbers: List<Int>, bonusNumber: Int, lottoList: List<Lotto>) {
-
-//    var hit = 0
-//    var bonusHit = 0
+fun getLottoResult(
+    money: Int,
+    winningNumbers: List<Int>,
+    bonusNumber: Int,
+    lottoList: List<Lotto>
+) {
 
     var match3 = 0
     var match4 = 0
@@ -54,21 +66,21 @@ fun getLottoResult(money: Int, winningNumbers: List<Int>, bonusNumber: Int, lott
     var match5Bonus = 0
     var match6 = 0
 
-
     lottoList.forEach { lotto ->
         val hit = lotto.getHitNumberResult(winningNumbers)
-        val bonusHit = if(lotto.containsBonus(bonusNumber)) 1 else 0
+        val bonusHit = if (lotto.containsBonus(bonusNumber)) 1 else 0
 
-        when{
+        when {
             hit == 6 -> match6++
-            hit == 5 && bonusHit==1 -> match5Bonus++
+            hit == 5 && bonusHit == 1 -> match5Bonus++
             hit == 5 -> match5++
             hit == 4 -> match4++
             hit == 3 -> match3++
         }
     }
 
-    val totalIncome = match3*5000 + match4*50000 + match5*1500000 + match5Bonus*30000000 + match6*2000000000
+    val totalIncome =
+        match3 * 5000 + match4 * 50000 + match5 * 1500000 + match5Bonus * 30000000 + match6 * 2000000000
 
     val rate = if (totalIncome != 0) {
         val r = totalIncome.toDouble() / money
