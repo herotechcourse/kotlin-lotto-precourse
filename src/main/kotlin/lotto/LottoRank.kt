@@ -34,6 +34,10 @@ enum class LottoRank(val prize: Int, val matchCount: Int) {
 
     abstract fun match(lotto: Lotto, winningLotto: WinningLotto): Boolean
 
+    fun isSecond(): Boolean {
+        return this == SECOND
+    }
+
     companion object {
         fun calculate(lotto: Lotto, winningLotto: WinningLotto): LottoRank {
             return LottoRank.entries.first {

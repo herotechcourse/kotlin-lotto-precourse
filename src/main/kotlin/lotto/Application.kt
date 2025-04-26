@@ -11,11 +11,17 @@ fun main() {
 
     val lotteryMachine = LotteryMachine(budget, RandomNumbersStrategy())
 
-    outputView.printLottoTickets(lotteryMachine.generateTickets())
+    val tickets = lotteryMachine.generateTickets()
+    outputView.printLottoTickets(tickets)
 
     val numbers = inputView.getWinningNumbers()
     val winningNumbers = Lotto(numbers)
 
     val bonusNumber = inputView.getBonusNumber()
-    WinningLotto(winningNumbers, bonusNumber)
+    val winningLotto = WinningLotto(winningNumbers, bonusNumber)
+
+
+    val lottoRanks = winningLotto.match(tickets)
+
+    outputView.printWinningStatistics(WinningResult(lottoRanks, budget))
 }

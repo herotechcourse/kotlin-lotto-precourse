@@ -1,6 +1,9 @@
 package lotto.view
 
 import lotto.Lotto
+import lotto.WinningResult
+import java.text.NumberFormat
+import java.util.*
 
 class OutputView {
     fun printLottoTickets(tickets: List<Lotto>) {
@@ -9,5 +12,19 @@ class OutputView {
             val ticketNumbers = ticket.getNumbers().joinToString(", ")
             println("[$ticketNumbers]")
         }
+    }
+
+    fun printWinningStatistics(result: WinningResult) {
+        println("\nWinning Statistics\n---")
+        for (rank in result.getRanksWithCount()) {
+            print("${rank.key.matchCount} Matches")
+            if (rank.key.isSecond()) print(" + Bonus Ball")
+            println(" (${formatPrize(rank.key.prize)} KRW) – ${rank.value} tickets")
+        }
+    }
+
+    private fun formatPrize(prize: Int): String {
+        val formatter = NumberFormat.getNumberInstance(Locale.US)
+        return formatter.format(prize)
     }
 }

@@ -49,10 +49,9 @@
 ## Output Rules
 
 - [x] Print the number of tickets purchased.
-- [ ] Print each ticket's numbers.
+- [x] Print each ticket's numbers.
 - [ ] After the game ends:
-    - [ ] Display the count of matches for each prize rank.
-    - [ ] Display the total amount won.
+    - [x] Display the count of matches for each prize rank.
     - [ ] Display the profit rate.
         - [ ] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%)
 
