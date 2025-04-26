@@ -10,14 +10,14 @@ object LottoGenerator {
 
     fun generate(amount: Int): List<Lotto> {
         val lottos = mutableListOf<Lotto>()
-        for (i in 0..amount) {
+        for (i in 1..amount) {
             val sortedRandomLotto = pickSortedLotto()
             lottos.add(sortedRandomLotto)
         }
         return lottos.toList()
     }
 
-    fun pickSortedLotto(): Lotto {
+    private fun pickSortedLotto(): Lotto {
         val numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT)
         numbers.sort()
 
