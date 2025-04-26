@@ -16,6 +16,15 @@ class InputValidatorTest {
     }
 
     @Test
+    fun `should throw error when lottery numbers input is empty`() {
+        val input = ""
+        val exception = assertThrows<IllegalArgumentException> {
+            InputValidator.validateLotteryNumbersInput(input)
+        }
+        assertThat(exception).hasMessageContaining("[ERROR] All entries must be numbers!")
+    }
+
+    @Test
     fun `should return valid amount when input is multiple of 1000`() {
         val input = "2000"
         val result = InputValidator.validatePurchaseAmountInput(input)
@@ -55,6 +64,15 @@ class InputValidatorTest {
     @Test
     fun `should throw error when bonus number is not a number`() {
         val input = "car"
+        val exception = assertThrows<IllegalArgumentException> {
+            InputValidator.validateBonusNumber(input)
+        }
+        assertThat(exception).hasMessageContaining("[ERROR] The bonus number has to be a number!")
+    }
+
+    @Test
+    fun `should throw error when bonus number input is empty`() {
+        val input = ""
         val exception = assertThrows<IllegalArgumentException> {
             InputValidator.validateBonusNumber(input)
         }
