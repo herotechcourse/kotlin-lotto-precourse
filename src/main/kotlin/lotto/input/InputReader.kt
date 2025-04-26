@@ -33,12 +33,13 @@ object InputReader {
         return numbers
     }
 
-    fun bonusNumber(): Int {
+    fun bonusNumber(numbers: List<Int>): Int {
         InputView.bonusNumber()
         val rawInput = Console.readLine()
         Input.isEmpty(rawInput)
         Input.isInteger(rawInput)
         Input.isInRange(rawInput.toInt(), start, end)
+        Input.bonusNumberDuplication(rawInput.toInt(), numbers)
         return rawInput.toInt()
     }
 
