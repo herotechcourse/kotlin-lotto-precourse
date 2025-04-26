@@ -53,7 +53,7 @@ This feature list is organized in implementation order, following a test-driven 
 - 
 ### 4. Application Layer
 
-- [ ] **Application**
+- [x] **Application**
   - Main program entry point
 - [ ] testing
  
@@ -100,3 +100,5 @@ i.e:
 1234 ÷ 1000 = 1.234
 This has a remainder of 234, so 1234 is not divisible by 1000.
 Numbers that are divisible by 1000 include: 1000, 2000, 3000, etc. These all divide by 1000 with no remainder. I could have used >= 1000 instead if this was not the case!
+
+saw that the input could be refactored with a generaic funcitons and learnt how to use lambda expression and any return types.
