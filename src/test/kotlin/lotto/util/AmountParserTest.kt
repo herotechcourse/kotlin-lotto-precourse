@@ -43,6 +43,21 @@ class AmountParserTest {
     }
 
     @Test
+    fun `throws an exception when input has trailing whitespace`() {
+        assertThrows<IllegalArgumentException> {
+            amountParser.parse("8000 ")
+        }
+
+        assertThrows<IllegalArgumentException> {
+            amountParser.parse(" 8000")
+        }
+
+        assertThrows<IllegalArgumentException> {
+            amountParser.parse(" 8000 ")
+        }
+    }
+
+    @Test
     fun `successfully parses valid amount`() {
         val result = amountParser.parse("8000")
         assert(result == 8000)
