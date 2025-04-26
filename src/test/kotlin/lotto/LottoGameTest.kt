@@ -34,6 +34,25 @@ class LottoGameTest {
         }
     }
 
+    @Test
+    fun `count correct amount of matching tickets`() {
+        val lottoRankMap = mapOf(
+            LottoRank.FIRST to 1,
+            LottoRank.SECOND to 2,
+        )
+        val lottoRankList = listOf(LottoRank.FIRST, LottoRank.SECOND, LottoRank.SECOND)
+
+        assertThat(lottoGame.countRanks(lottoRankList)).isEqualTo(lottoRankMap)
+    }
+
+
+    @Test
+    fun `calculate correct profit rate in percentage`() {
+        val lottoRankList = listOf(LottoRank.FIFTH, LottoRank.FIFTH)
+        assertThat(lottoGame.calculateProfitRateInPercentage(lottoRankList)).isEqualTo("500.0%")
+
+    }
+
 }
 
 
