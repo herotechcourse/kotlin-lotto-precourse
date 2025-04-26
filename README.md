@@ -28,6 +28,7 @@
 
 - Enter the bonus number input
     - Validate that the input is a number
+    - Validate that input is blank or empty
     - Validate it is not duplicated in the winning numbers
 
 ### 5. Find RankPrize

@@ -12,4 +12,9 @@ class InputView {
         println("Please enter last week's winning numbers.")
         return InputValidator.validateBlank(Console.readLine())
     }
+
+    fun askBonusNumber(): Int {
+        println("Please enter the bonus number.")
+        return InputValidator.validateBonusNumber(Console.readLine())
+    }
 }

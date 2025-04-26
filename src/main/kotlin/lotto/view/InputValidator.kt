@@ -18,4 +18,9 @@ object InputValidator {
         require(input.isNotBlank()) { "[ERROR] This input must not be blank." }
         return input
     }
+
+    fun validateBonusNumber(input: String): Int {
+        val bonusNumber = validateBlank(input)
+        return parseAndValidateNumber(bonusNumber)
+    }
 }
