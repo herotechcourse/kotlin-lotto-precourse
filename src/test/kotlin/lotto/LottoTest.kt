@@ -8,43 +8,53 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
+import java.lang.reflect.Method
 
 class LottoTest {
-    private val winningNumbers: Lotto = Lotto(listOf(1,2,3,4,5,6))
+    private val winningNumbers: Lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+    
+    private fun getPrivateMethod(methodName: String, vararg paramTypes: Class<*>): Method {
+        val method = Lotto::class.java.getDeclaredMethod(methodName, *paramTypes)
+        method.isAccessible = true
+        return method
+    }
 
     @Test
-    fun `throws an exception when lotto numbers exceed six`() {
+    fun `should create lotto with valid numbers`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(numbers)
+        assertEquals(numbers.sorted(), lotto.getNumbers())
+    }
+
+    @Test
+    fun `should throw when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
+    
+    @Test
+    fun `should throw when lotto numbers are fewer than six`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5))
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 0, 46, 100])
+    fun `should throw when lotto numbers are outside valid range`(invalidNumber: Int) {
+        val validNumbers = listOf(1, 2, 3, 4, 5)
+        assertThrows<IllegalArgumentException> {
+            Lotto(validNumbers + invalidNumber)
+        }
+    }
 
     @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
+    fun `should throw when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
-
-    @Test
-    fun `throws an exception when lotto numbers are below the range`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(-1, 2, 3, 4, 5, 15))
-        }
-    }
-
-    @Test
-    fun `throws an exception when lotto numbers are above the range`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 105))
-        }
-    }
-
-    @Test
-    fun `throws an exception when lotto numbers are below and above the range`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(0, 2, 3, 4, 55, 5))
         }
     }
 
@@ -65,8 +75,8 @@ class LottoTest {
 
     @ParameterizedTest(name = "Compare Lotto with {0} matches")
     @MethodSource("matchTestCases")
-    fun `Compare lotto with varying matches`(expectedMatchCount: Int, user: Lotto) {
-        assertEquals(expectedMatchCount, user.compare(winningNumbers))
+    fun `should correctly count matching numbers`(expectedMatchCount: Int, userLotto: Lotto) {
+        assertEquals(expectedMatchCount, userLotto.compare(winningNumbers))
     }
 
     @Test

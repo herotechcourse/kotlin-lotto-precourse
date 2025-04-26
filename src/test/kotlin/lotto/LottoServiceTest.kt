@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class LottoServiceTest {
-
     @Test
     fun `createLottoTickets should generate correct number of tickets`() {
         val lottoService = LottoService()
@@ -48,7 +47,7 @@ class LottoServiceTest {
         assertEquals(1, rankCounts[Rank.FIFTH])
         assertEquals(1, rankCounts.getOrDefault(Rank.NONE, 0))
     }
-    
+
     @Test
     fun `determineRankCounts should handle bonus number according to Rank rules`() {
         val lottoService = LottoService()
