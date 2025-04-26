@@ -24,22 +24,22 @@ class LottoProgram {
 
 fun validatePurchaseAmount(input: String) {
     InputValidator.notEmpty(input)
-    InputValidator.isNumeric(input)
+    InputValidator.onlyContainsDigits(input)
 
     val purchaseAmount = input.toInt()
-    InputValidator.withinRange(purchaseAmount)
+    InputValidator.withinPurchaseRange(purchaseAmount)
     InputValidator.isMultipleOfThousand(purchaseAmount)
 }
 
 fun validateWinningNumbers(input: String) {
     InputValidator.notEmpty(input)
     val numbers = input.split(Constants.SEPARATOR).map { it.trim() }
-    InputValidator.allAreNumbers(numbers)
+    InputValidator.allAreDigits(numbers)
 }
 
 fun validateBonusNumber(input: String) {
     InputValidator.notEmpty(input)
-    InputValidator.isNumeric(input)
+    InputValidator.onlyContainsDigits(input)
 }
 
 fun readWinningLotto(): WinningLotto {

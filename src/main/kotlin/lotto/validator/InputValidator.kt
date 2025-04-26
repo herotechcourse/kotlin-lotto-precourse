@@ -11,13 +11,13 @@ object InputValidator {
         }
     }
 
-    fun isNumeric(input: String) {
+    fun onlyContainsDigits(input: String) {
         if (!input.all { it.isDigit() }) {
             throw IllegalArgumentException(Messages.Error.INPUT_MUST_BE_NUMBER)
         }
     }
 
-    fun withinRange(input: Int) {
+    fun withinPurchaseRange(input: Int) {
         if (input < Constants.MIN_PURCHASE_RANGE || input > Constants.MAX_PURCHASE_RANGE) {
             throw IllegalArgumentException(Messages.Error.INPUT_MUST_BE_IN_RANGE)
         }
@@ -29,9 +29,9 @@ object InputValidator {
         }
     }
 
-    fun allAreNumbers(input: List<String>) {
+    fun allAreDigits(input: List<String>) {
         input.forEach {
-            isNumeric(it)
+            onlyContainsDigits(it)
         }
     }
 
