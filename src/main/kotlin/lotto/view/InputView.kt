@@ -1,11 +1,12 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.util.Config
 import lotto.util.Messages
 
 object InputView {
     fun readPurchaseAmount(): Int = readIntWithValidation(Messages.PROMPT_PURCHASE_AMOUNT) { number ->
-            number >= 1000 && number % 1000 == 0 || throw IllegalArgumentException(Messages.ERROR_NOT_MULTIPLE_OF_1000.format(number))
+            number >= Config.TICKET_PRICE && number % Config.TICKET_PRICE == 0 || throw IllegalArgumentException(Messages.ERROR_NOT_MULTIPLE_OF_TICKET_PRICE.format(number))
         }
 
         fun readWinningNumbers(): List<Int> = readIntListWithValidation(Messages.PROMPT_WINNING_NUMBERS) { list ->
