@@ -23,4 +23,11 @@ class LottoTest {
             Lotto(listOf(0, 2, 3, 4, 5, 6))
         }
     }
+
+    @Test
+    fun  `returns sorted lotto numbers`() {
+        val lotto = Lotto(listOf(3, 1, 4, 2, 5, 6))
+        val sortedNumbers = lotto.getNumbers()
+        assert(sortedNumbers == listOf(1, 2, 3, 4, 5, 6)) { "Lotto numbers should be sorted." }
+    }
 }

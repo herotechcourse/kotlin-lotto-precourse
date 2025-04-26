@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     val inputView = InputView()
+    val outputView = OutputView()
 
     val order = readPurchaseOrder(inputView)
     val tickets = generateTickets(order.getLottoCount())
+    outputView.printTickets(tickets)
 }
 
 fun readPurchaseOrder(inputView: InputView): Order {
