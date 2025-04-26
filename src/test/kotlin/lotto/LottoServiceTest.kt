@@ -23,6 +23,7 @@ class LottoServiceTest {
         tickets.forEach { ticket ->
             val numbers = ticket.getNumbers()
             assertEquals(6, numbers.size)
+            assertEquals(numbers, numbers.sorted())
         }
     }
 
