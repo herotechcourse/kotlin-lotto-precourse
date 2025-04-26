@@ -100,7 +100,7 @@ This project implements a simple lottery ticket simulator that generates tickets
 - [ ] `ApplicationTest.kt`:  Simulates full game flow
 ### test(domain)
 
-- [ ] `LottoTest.kt`: Validates input numbers and matching logic
+- [x] `LottoTest.kt`: Validates input numbers and matching logic
 - [ ] `LottoesTest.kt`: Confirms collection behavior of multiple tickets
 - [ ] `LottoesGeneratorTest.kt`:Ensures correct number of `Lotto` instances are generated
 - [ ] `WinningLottoTest.kt`: Validates bonus number and comparison
