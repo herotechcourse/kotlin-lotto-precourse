@@ -27,7 +27,7 @@ object OutputView {
         println("---")
         Rank.entries
             .filter { it != Rank.NONE }
-            .sortedByDescending { it.prize }
+            .sortedBy { it.matchCount }
             .forEach {
                 val matchText = when (it) {
                     Rank.SECOND -> "5 Matches + Bonus Ball"
