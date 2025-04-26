@@ -4,16 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
     private fun readInput(): String {
-        val input = readLineSafe()
+        val input = Console.readLine()
         return validateInputNotEmpty(input)
-    }
-
-    private fun readLineSafe(): String? {
-        return try {
-            Console.readLine()
-        } catch (e: NoSuchElementException) {
-            null
-        }
     }
 
     internal fun validateInputNotEmpty(input: String?): String {
