@@ -30,7 +30,7 @@ class Controller(
 
         outputView.printFinalReport(
             rankCounts = lottoTickets.matchAll(winningLotto),
-            profitRate = lottoTickets.profitRate(winningLotto)
+            profitRate = lottoTickets.evaluate(winningLotto).profitRate()
         )
     }
 

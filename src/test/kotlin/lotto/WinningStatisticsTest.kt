@@ -1,17 +1,24 @@
 package lotto
 
 import org.assertj.core.api.Assertions.*
-import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.EnumSource
 
 class WinningStatisticsTest {
 
+    private val rankCounts: Map<Rank, Int> = mapOf(
+        Rank.FIRST to 1,
+        Rank.SECOND to 1,
+        Rank.THIRD to 1,
+        Rank.FOURTH to 1,
+        Rank.FIFTH to 1,
+        Rank.NONE to 1,
+    )
+
     @Test
     fun `creates WinningStatistics when rankCounts are valid`() {
-        // Arrange
-        val rankCounts = mapOf(Rank.FIFTH to 1, Rank.NONE to 1)
-
         // Act
         // Assert
         assertThatCode { WinningStatistics(rankCounts) }
@@ -20,9 +27,12 @@ class WinningStatisticsTest {
 
     @Test
     fun `throws exception when rankCounts is empty`() {
+        // Arrange
+        val rankCounts: Map<Rank, Int> = emptyMap()
+
         // Act
         // Assert
-        assertThatThrownBy { WinningStatistics(emptyMap()) }
+        assertThatThrownBy { WinningStatistics(rankCounts) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("rankCounts must not be empty")
     }
@@ -30,23 +40,24 @@ class WinningStatisticsTest {
     @Nested
     inner class GetCountsTest {
 
-        private val sut = WinningStatistics(mapOf(Rank.FIRST to 1, Rank.SECOND to 2))
+        @ParameterizedTest
+        @EnumSource
+        fun `getCount returns correct count for given Rank`(rank: Rank) {
+            // Arrange
+            val sut = WinningStatistics(rankCounts)
 
-        @Test
-        fun `getCount returns correct count for given Rank`() {
             // Act
-            val firstCount = sut.getCount(Rank.FIRST)
-            val secondCount = sut.getCount(Rank.SECOND)
+            val result: Int = sut.getCount(rank)
 
             // Assert
-            SoftAssertions.assertSoftly {
-                assertThat(firstCount).isEqualTo(1)
-                assertThat(secondCount).isEqualTo(2)
-            }
+            assertThat(result).isEqualTo(1)
         }
 
         @Test
         fun `getCount returns 0 for missing Rank`() {
+            // Arrange
+            val sut = WinningStatistics(mapOf(Rank.FIRST to 1, Rank.SECOND to 2))
+
             // Act
             val missingRankCount: Int = sut.getCount(Rank.FOURTH)
 
@@ -73,13 +84,13 @@ class WinningStatisticsTest {
         @Test
         fun `profitRate returns partial rate when some tickets win`() {
             // Arrange
-            val sut = WinningStatistics(mapOf(Rank.FIFTH to 1, Rank.NONE to 1))
+            val sut = WinningStatistics(rankCounts)
 
             // Act
             val rate: Double = sut.profitRate()
 
             // Assert
-            assertThat(rate).isCloseTo(250.0, within(0.00001))
+            assertThat(rate).isCloseTo(33859250.0, within(0.00001))
         }
 
         @Test

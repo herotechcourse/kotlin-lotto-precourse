@@ -43,27 +43,12 @@ class LottoTicketsTest {
     }
 
     @Test
-    fun `profitRate returns 0 when no ticket wins`() {
-        // Arrange
-        val sut = LottoTickets(List(2) { tickets[5] })
-
+    fun `evaluate returns WinningStatistics when WinningLotto is passed`() {
         // Act
-        val rate: Double = sut.profitRate(winningLotto)
+        val result: WinningStatistics = sut.evaluate(winningLotto)
 
         // Assert
-        assertThat(rate).isEqualTo(0.0)
-    }
-
-    @Test
-    fun `profitRate returns partial rate when some tickets win`() {
-        // Arrange
-        val sut = LottoTickets(listOf(tickets[4], tickets[5]))
-
-        // Act
-        val rate: Double = sut.profitRate(winningLotto)
-
-        // Assert
-        assertThat(rate).isEqualTo(250.0)
+        assertThat(result).isInstanceOf(WinningStatistics::class.java)
     }
 
     @Test
