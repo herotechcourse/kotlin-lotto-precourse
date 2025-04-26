@@ -1,6 +1,7 @@
 package lotto
 
-class LottoMachine(reader: InputReader, outputPrinter: OutputPrinter) {
+class LottoMachine(private val reader: InputReader, private val printer: OutputPrinter) {
+
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.
@@ -8,7 +9,9 @@ class LottoMachine(reader: InputReader, outputPrinter: OutputPrinter) {
         // 3. Input last week's numbers
         // 4. Input a bonus number.
         // 5. Print lotto result statistics.
-        // 6. Print calculated Profit rate.
+        // 6. Print calculated Profit rate.this.
+        printer.close()
+
     }
 
     companion object {
