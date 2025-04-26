@@ -2,12 +2,20 @@ package lotto
 
 fun main() {
     val inputView = InputView()
+    val outputView = OutputView()
     val validator = Validator()
-    var validPurchaseAmount: Int? = null
+    val lottoGenerator = LottoGenerator()
+    val validPurchaseAmount = readAndValidatePurchaseAmount(inputView, validator)
+    val numberOfTickets = calculateNumberOfTickets(validPurchaseAmount)
+    val purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
+    outputView.printHeader("You have purchased $numberOfTickets tickets.")
+    outputView.printListOfTickets(purchasedTickets)
+}
+fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
         try {
             var purchaseAmount = inputView.read("Please enter the purchase amount.")
-            validPurchaseAmount = validator.isPurchaseAmountValid(purchaseAmount)
+            return validator.isPurchaseAmountValid(purchaseAmount)
             break
         }
         catch (e: IllegalArgumentException)
@@ -15,12 +23,6 @@ fun main() {
             println("[ERROR] ${e.message}")
         }
     }
-    val numberOfTickets = calculateNumberOfTickets(validPurchaseAmount!!)
-        val lottoGenerator = LottoGenerator()
-    var purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
-    val outputView = OutputView()
-    outputView.printHeader("You have purchased $numberOfTickets tickets.")
-    outputView.printListOfTickets(purchasedTickets)
 }
 fun calculateNumberOfTickets(money: Int): Int
 {
