@@ -67,7 +67,7 @@ class LottoController(
         amount: Int
     ) {
         outputView.printWinningStatisticsIntroMessage()
-        val results = Lottos(lottos).results(winningNumbers, bonusNumber)
+        val results = Lottos(lottos).matchAgainst(winningNumbers, bonusNumber)
         val profitRate = LottoProfitCalculator(results, amount).calculate()
         outputView.printLottoResult(results)
         outputView.printProfitRate(profitRate)
