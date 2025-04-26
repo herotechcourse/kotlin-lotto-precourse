@@ -1,5 +1,6 @@
 package lotto
 
+import WinningNumbers
 import lotto.domain.*
 import lotto.io.*
 

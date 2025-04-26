@@ -1,6 +1,6 @@
 package lotto.domain
 
-import LottoResult
+import WinningNumbers
 
 class UserLottoTickets(private val tickets: List<Lotto>) {
     fun match(winningNumbers: WinningNumbers): LottoResult {
