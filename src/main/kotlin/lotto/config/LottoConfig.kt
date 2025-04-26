@@ -14,6 +14,6 @@ class LottoConfig {
     fun winningNumbersInputParser(): WinningNumbersInputParser = WinningNumbersInputParser()
     fun bonusNumberInputParser(): BonusNumberInputParser = BonusNumberInputParser()
     fun lottoNumberGenerator(): LottoNumberGenerator = RandomNumberGenerator()
-    fun lottoAmountCounter(): LottoTicketCalculator = LottoTicketCalculator()
+    fun lottoTicketCalculator(): LottoTicketCalculator = LottoTicketCalculator()
     fun lottoGenerator(): LottoGenerator = LottoGenerator(lottoNumberGenerator())
 }
