@@ -7,9 +7,9 @@
 
 ### Output
 - the number of tickets issued and the numbers on each ticket
-- result statistics.
-- the profit rate.
-- error messages.
+- result statistics
+- the profit rate
+- error messages
 
 ### Issue lottery tickets
 - Issue as many tickets as the budget allows (each ticket costs 1,000KRW).
@@ -23,6 +23,7 @@
 ### Validation
 - Throw an IllegalArgumentException and re-prompt input.
 - Validate the input
+  - Is it not a blank?
   - Is it a number?
   - Is it divisible by 1,000?
   - Are the winning numbers and bonus numbers between 1 and 45?
