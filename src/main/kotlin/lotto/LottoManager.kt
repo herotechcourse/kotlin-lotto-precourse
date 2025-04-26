@@ -17,31 +17,19 @@ object LottoManager {
         }
     }
 
-    fun printTickets() {
-        tickets.forEach {
-            it.printNumbers()
-        }
-    }
+    fun getTickets(): List<Lotto> = tickets.toList()
+
+    fun getRankTable(): List<Int> = rankTable.toList()
 
     private fun totalPrize(): Long =
         Rank.entries
             .filterNot { it != Rank.ZERO }
-            .sumOf { rank -> rankTable[rank.ordinal] * rank.prize}
+            .sumOf { rank -> rankTable[rank.ordinal] * rank.prize }
 
-    fun printRankTable() {
-        Rank.entries
-            .filter {it != Rank.ZERO}
-            .forEach { rank ->
-                val count = rankTable[rank.ordinal]
-                val prizeText = "%,d KRW".format(rank.prize)
-                println("${rank.label} ($prizeText) - $count tickets")
-            }
-    }
-
-    fun printReturnRate(purchaseAmount: Int) {
+    fun returnRate(purchaseAmount: Int): Double {
         val rawRate = totalPrize().toDouble() / purchaseAmount * 100
         val roundedRate = round(rawRate * 10) / 10.0
-        val rateText = "%,.1f%%".format(roundedRate)
-        println("Total return rate is $rateText.")
+        return roundedRate
     }
+
 }
