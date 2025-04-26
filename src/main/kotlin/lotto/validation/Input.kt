@@ -37,4 +37,10 @@ object Input {
             }
         }
     }
+
+    fun bonusNumberDuplication(input: Int, numbers: List<Int>) {
+        if (input in numbers) {
+            throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with the winning numbers")
+        }
+    }
 }
