@@ -118,6 +118,69 @@ class LottoProgram {
             throw IllegalArgumentException("[ERROR] Bonus number must not be among the winning numbers.")
         }
     }
+
+    private fun calculateResults(
+        lottos: List<Lotto>,
+        winningNumbers: List<Int>,
+        bonusNumber: Int
+    ): Map<LottoRank, Int> {
+        val results = mutableMapOf<LottoRank, Int>()
+        LottoRank.values().forEach { results[it] = 0 }
+
+        lottos.forEach { lotto ->
+            val matchCount = lotto.matchCount(winningNumbers)
+            val hasBonus = lotto.contains(bonusNumber)
+            val rank = LottoRank.calculateRank(matchCount, hasBonus)
+
+            results[rank] = results.getOrDefault(rank, 0) + 1
+        }
+
+        return results
+    }
+
+    private fun printWinningStatistics(results: Map<LottoRank, Int>, purchaseAmount: Int) {
+        println()
+        println("Winning Statistics")
+        println("---")
+
+        val displayRanks = listOf(
+            LottoRank.FIFTH,
+            LottoRank.FOURTH,
+            LottoRank.THIRD,
+            LottoRank.SECOND,
+            LottoRank.FIRST
+        )
+
+        displayRanks.forEach { rank ->
+            val count = results.getOrDefault(rank, 0)
+            println("${rank.description} (${formatMoney(rank.prize)} KRW) – ${count} tickets")
+        }
+
+        val totalPrize = calculateTotalPrize(results)
+        val profitRate = calculateProfitRate(totalPrize, purchaseAmount)
+
+        println("Total return rate is ${formatRate(profitRate)}%.")
+    }
+
+    private fun calculateTotalPrize(results: Map<LottoRank, Int>): Long {
+        return results.entries.sumOf { (rank, count) -> rank.prize * count }
+    }
+
+    private fun calculateProfitRate(prize: Long, purchaseAmount: Int): Double {
+        return prize * 100.0 / purchaseAmount
+    }
+
+    private fun formatMoney(amount: Long): String {
+        val formatter = DecimalFormat("#,###")
+        return formatter.format(amount)
+    }
+
+    private fun formatRate(rate: Double): String {
+        val formatter = DecimalFormat("#,##0.0")
+        return formatter.format(rate)
+    }
+}
+
 enum class LottoRank(
     val matchCount: Int,
     val hasBonus: Boolean,
