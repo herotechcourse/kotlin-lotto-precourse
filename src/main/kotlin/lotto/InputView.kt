@@ -14,7 +14,7 @@ object InputView {
     fun getWinningNumbers(): Set<Int> {
         println("Please enter last week's winning numbers (1-45 and comma separated):")
         val winningNumbersInput = Console.readLine()
-        val winningNumbers = winningNumbersInput.split(" ").map{it.toInt()}.toSet()
+        val winningNumbers = winningNumbersInput.split(",").map{it.toInt()}.toSet()
         require(winningNumbers.size == 6 && winningNumbers.all { it in 1..45}) {
             "[ERROR] Winning numbers must be 6 unique numbers between 1 and 45."
         }
