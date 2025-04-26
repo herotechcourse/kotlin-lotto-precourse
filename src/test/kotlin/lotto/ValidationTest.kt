@@ -49,6 +49,13 @@ class ValidationTest {
     }
 
     @Test
+    fun `winning numbers must not be duplicated`() {
+        assertThrows<IllegalArgumentException> {
+            Input.winningNumbersDuplication(listOf(1, 2, 3, 4, 5, 5))
+        }
+    }
+
+    @Test
     fun `bonus number must not be duplicated with the winning numbers`() {
         assertThrows<IllegalArgumentException> {
             Input.bonusNumberDuplication(6, listOf(1, 2, 3, 4, 5, 6))
