@@ -5,8 +5,14 @@ class OutputView {
         println("Please enter the purchase amount :")
     }
 
-    fun ticketCount(count: Int) {
-        println("You have purchased \n$count tickets.")
+    fun ticketAmount(count: Int) {
+        println("You have purchased $count tickets.")
+    }
+
+    fun tickets(tickets: List<Lotto>){
+        tickets.forEach { ticket ->
+            println(ticket.getNumbers())
+        }
     }
 
     fun promptWinningNumbers (){

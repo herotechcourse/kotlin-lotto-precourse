@@ -4,13 +4,19 @@ fun main() {
     val outputView = OutputView()
     val inputView = InputView(outputView)
     val validator = InputValidator()
+    val lottoMachine = LottoMachine()
 
     val amount = inputView.validateWithReprompt(
         readAction = InputView::readPurchaseAmount,
         validation = validator::validatePurchaseAmount,
         outputView = outputView
     )
-    outputView.ticketCount(amount / 1000)
+
+    val count = amount / 1000
+    val generation = lottoMachine.generateTickets(count)
+
+    outputView.ticketAmount(count)
+    outputView.tickets(generation)
 
     val winningNumbers = inputView.validateWithReprompt(
         readAction = InputView::readWinningNumbers,

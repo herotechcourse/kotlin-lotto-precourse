@@ -21,8 +21,8 @@ This project is a application that simulates a lottery ticket machine. The goal 
 
 
 - **Ticket Generation**
-    - [ ] Calculate how many lottery ticket(s) can be purchased with the given amount
-    - [ ] Generate random lottery tickets with 6 unique random numbers (1-45 range)
+    - [x] Calculate how many lottery ticket(s) can be purchased with the given amount
+    - [x] Generate random lottery tickets with 6 unique random numbers (1-45 range)
 
 
 - **Lottery Mechanics**
@@ -32,8 +32,8 @@ This project is a application that simulates a lottery ticket machine. The goal 
 
 
 - **Lottery Display**
-    - [ ] Display number of tickets purchased
-    - [ ] Display each ticket each sorted in ascending order
+    - [x] Display number of tickets purchased
+    - [x] Display each ticket each sorted in ascending order
     - [ ] Display winning statistics
         - [ ] Display prize list
         - [ ] Display number of winning ticket(s)
