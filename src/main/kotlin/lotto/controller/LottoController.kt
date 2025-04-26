@@ -21,7 +21,7 @@ class LottoController(
 
     private fun issueLottoTickets(purchaseAmount: LottoPurchaseAmount): List<Lotto> {
         val lottoStore = LottoStore(lottoGenerator)
-        val lottoTickets = lottoStore.sellLottoTickets(purchaseAmount)
+        val lottoTickets = lottoStore.issueLottoTickets(purchaseAmount)
         OutputView.showLottoTickets(lottoTickets)
         return lottoTickets
     }
