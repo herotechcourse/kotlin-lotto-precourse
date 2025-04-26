@@ -14,6 +14,7 @@ This program simulates a lottery ticket machine where users can purchase tickets
  * Generates random unique numbers (1-45) for each ticket
  * Sorts numbers in ascending order
  * Stores all purchased tickets
+ * Print out the generated numbers
 3. Winning Numbers Input
  * Validates 6 unique numbers (1-45)
  * Validates comma-separated format

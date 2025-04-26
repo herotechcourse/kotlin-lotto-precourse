@@ -18,4 +18,23 @@ class InputHandler {
             }
         }
     }
+
+    fun getWinningNumbers():List<Int>{
+        while (true){
+            try {
+                println("Please enter last week's winning numbers (comma-separated).")
+                val input = Console.readLine().trim()
+                val numbers = input.split(",")
+                    .map{it.trim().toInt()}
+                    .distinct()
+                require(numbers.size == 6){"Please enter exactly 6 unique numbers."}
+                return numbers
+
+            }catch (e: NumberFormatException){
+                println("[ERROR] Please enter valid numbers.")
+            }catch (e: IllegalArgumentException){
+                println("[ERROR] ${e.message}")
+            }
+        }
+    }
 }
