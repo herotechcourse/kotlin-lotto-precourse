@@ -1,7 +1,6 @@
 package lotto
 
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -36,5 +35,13 @@ class LottoTest {
 
         assertTrue(lotto.contains(1))
         assertFalse(lotto.contains(7))
+    }
+
+    @Test
+    fun `compare other lotto and how many numbers match`() {
+        val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val lotto2 = Lotto(listOf(6, 5, 4, 3, 2, 1))
+
+        assertEquals(6, lotto1.match(lotto2))
     }
 }
