@@ -10,4 +10,12 @@ class Lotto(private val numbers: List<Int>) {
     fun compare(other: Lotto ): Int {
         return numbers.count { it in other.numbers }
     }
+
+    fun containsNumber(number: Int): Boolean {
+        return number in numbers
+    }
+
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
 }
