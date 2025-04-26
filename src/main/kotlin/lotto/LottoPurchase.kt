@@ -8,7 +8,7 @@ class LottoPurchase(amount: Int) {
     private val lottos: List<Lotto>
 
     init {
-        require(amount % 1000 == 0) { "[Error] Amount must be divisible by 1,000 KRW." }
+        require(amount % 1000 == 0) { "[ERROR] Amount must be divisible by 1,000 KRW." }
         this.amount = amount
         this.lottoNums = amount / 1000
         this.lottos = List(lottoNums) { Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)) }
