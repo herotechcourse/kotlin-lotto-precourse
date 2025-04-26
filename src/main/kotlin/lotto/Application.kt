@@ -12,7 +12,7 @@ fun main() {
         try {
             InputView.promptPurchaseAmount(userInput)
             isInputValid = true
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             println(e.message)
         }
     }
@@ -27,7 +27,7 @@ fun main() {
         try {
             InputView.promptWinningNumbers(userInput)
             isInputValid = true
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             println(e.message)
         }
     }
@@ -37,7 +37,7 @@ fun main() {
         try {
             InputView.promptBonusNumber(userInput)
             isInputValid = true
-        } catch (e: Exception) {
+        } catch (e: IllegalArgumentException) {
             println(e.message)
         }
     }
