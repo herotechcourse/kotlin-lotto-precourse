@@ -2,9 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoMachine {
-    fun generate(count: Int): List<Lotto> =
-        List(count) {
-            Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+object LottoMachine {
+    fun buyTickets(amount: Int): List<Lotto> {
+        val count = amount / 1000
+        return List(count) {
+            Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
         }
+    }
 }
