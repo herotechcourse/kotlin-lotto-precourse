@@ -1,17 +1,18 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    println(InputView.inputPurchaseAmount())
-    println(InputView.inputLottoNumber())
-    println(InputView.inputBonusNumber())
+    val amount = InputView.inputPurchaseAmount()
+    //println(InputView.inputLottoNumber())
+    //println(InputView.inputBonusNumber())
 
-    val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
-    val lotto2 = Lotto(listOf(11, 12, 13, 14, 15, 16))
-    OutputView.printTickets(listOf(lotto1, lotto2))
-    OutputView.printResultStatistics()
-    OutputView.printProfitRate(62.2)
+    val lottoMachine = LottoMachine(amount)
+    lottoMachine.purchaseLottoTicket(amount)
+    OutputView.printTickets(lottoMachine.tickets)
+    //OutputView.printResultStatistics()
+    //OutputView.printProfitRate(62.2)
 }
 
 enum class WinningRanks(val rank: String) {
@@ -46,6 +47,8 @@ object InputView {
 
 object OutputView {
     fun printTickets(lottoTickets: List<Lotto>) {
+        println()
+        println("You have purchased ${lottoTickets.size} tickets.")
         for (lotto in lottoTickets) {
             println(lotto.getNumbers().joinToString(prefix="[", postfix="]", separator = ", "))
         }
@@ -61,5 +64,28 @@ object OutputView {
 
     fun printProfitRate(profitRate: Double) {
         println("Total return rate is $profitRate%.")
+    }
+}
+
+class LottoMachine (purchaseAmount: Int) {
+
+    val tickets: MutableList<Lotto> = mutableListOf()
+
+    init {
+        require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
+        require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000."}
+    }
+
+    fun purchaseLottoTicket(purchaseAmount: Int) {
+        val ticketQuantity = purchaseAmount / 1000
+        for (i in 1..ticketQuantity) {
+            val lotto = Lotto(generateTicketNumbers())
+            tickets.add(lotto)
+        }
+    }
+
+    private fun generateTicketNumbers(): List<Int> {
+        val ticketNumbers : List<Int>  =   Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        return ticketNumbers
     }
 }
