@@ -6,9 +6,7 @@ object Validator {
     private const val TICKET_PRICE= 1000
 
     fun validatePurchaseAmount(amount: Int){
-        if (amount < TICKET_PRICE)
-            throw(IllegalArgumentException(Message.ERROR_AMOUNT_TOO_SMALL))
-        if (amount % TICKET_PRICE != 0)
-            throw(IllegalArgumentException(Message.ERROR_AMOUNT_NOT_DIVISIBLE))
+        require(amount >= TICKET_PRICE) { Message.ERROR_AMOUNT_TOO_SMALL }
+        require(amount % TICKET_PRICE == 0) { Message.ERROR_AMOUNT_NOT_DIVISIBLE }
     }
 }
