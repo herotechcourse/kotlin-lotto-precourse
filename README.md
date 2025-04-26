@@ -7,8 +7,8 @@ This Lotto project is part of the Hero Tech Course curriculum.
 
 ### Core Functionality
 
-- [] Purchase lottery tickets based on input amount (1000 KRW per ticket)
-- [] Generate random lottery tickets (6 unique numbers from 1-45)
+- [x] Purchase lottery tickets based on input amount (1000 KRW per ticket)
+- [x] Generate random lottery tickets (6 unique numbers from 1-45)
 - [] Get Input Winning numbers and bonus number
 - [] Compare user tickets against winning numbers
 - [] Calculate and display prize statistic
@@ -16,9 +16,9 @@ This Lotto project is part of the Hero Tech Course curriculum.
 
 ### Input Validations
 
-- [] Validate purchase amount is divisible by 1000
-- [] Validate lottery numbers are between 1 and 45
-- [] Ensure each ticket numbers are unique
+- [x] Validate purchase amount is divisible by 1000
+- [x] Validate lottery numbers are between 1 and 45
+- [x] Ensure each ticket numbers are unique
 - [] Ensure that the winning numbers are unique
 - [] Validate bonus number is valid and not duplicated in winning numbers
 
@@ -31,7 +31,7 @@ This Lotto project is part of the Hero Tech Course curriculum.
 ### User Interface
 
 - [] Clear prompts for user input
-- [] Formatted display of purchased tickets
+- [x] Formatted display of purchased tickets
 - [] Organized presentation of winning statistics
 - [] Display return rate rounded to nearest tenth
 
