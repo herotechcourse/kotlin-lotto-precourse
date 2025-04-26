@@ -27,6 +27,6 @@ class PurchaseAmountTest {
     @DisplayName("[Success] when 3,000 for purchase amount, lottery ticket number is 3")
     fun `calculate number of the lottery ticket safely`() {
         val purchaseAmount = PurchaseAmount(3_000)
-        org.junit.jupiter.api.Assertions.assertEquals(purchaseAmount.toTicketNumber(), 3)
+        org.junit.jupiter.api.Assertions.assertEquals(purchaseAmount.toTicketAmount(), 3)
     }
 }
