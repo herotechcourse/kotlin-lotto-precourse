@@ -4,7 +4,7 @@ import java.util.*
 
 object OutputView {
     fun printPurchasedTickets(amount: Int, tickets: List<Lotto>) {
-        if (amount <= 0) throw IllegalArgumentException("Amount must be neither of negative or 0.")
+        if (amount <= 0) throw IllegalArgumentException("[ERROR] Amount must be neither of negative or 0.")
 
         println("You have purchased $amount tickets.")
         repeat(tickets.size) {

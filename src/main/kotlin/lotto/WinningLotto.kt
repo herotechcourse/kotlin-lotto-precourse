@@ -3,7 +3,7 @@ package lotto
 class WinningLotto(private val winningNumbers: Lotto, private val bonusNumber: Int) {
 
     init {
-        require(bonusNumber in 1..45) { "Bonus number must be between 1 and 45." }
+        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
     }
 
     fun getRank(lotto: Lotto): LottoRank {

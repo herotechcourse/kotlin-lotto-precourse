@@ -32,7 +32,7 @@ class LottoGame {
 
 
     fun createLottoTickets(amount: Int): List<Lotto> {
-        if (amount <= 0) throw IllegalArgumentException("[Error] Amount must be greater than 0")
+        if (amount <= 0) throw IllegalArgumentException("[ERROR] Amount must be greater than 0")
 
         val tickets = mutableListOf<Lotto>()
         repeat(amount) {
