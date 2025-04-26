@@ -28,7 +28,7 @@ class BonusNumberValidationTest {
     @Test
     fun `exception Bonus number in list of winning numbers test`() {
         val exception = assertThrows<IllegalArgumentException> {
-            validator.ValidateBonusNumberUniqueness(3,listOf(1,2,3,5,6,4))
+            validator.ValidateBonusNumberUniqueness(3, listOf(1, 2, 3, 5, 6, 4))
 
         }
         assertEquals("Bonus number must be different from winning numbers", exception.message)

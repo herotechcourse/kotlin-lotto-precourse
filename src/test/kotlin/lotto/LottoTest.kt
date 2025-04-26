@@ -7,7 +7,8 @@ import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
 
-    private val lotto = Lotto(listOf(1, 2, 3, 4,5,6))
+    private val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
@@ -15,7 +16,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {

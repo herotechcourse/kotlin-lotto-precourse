@@ -26,7 +26,7 @@
 		3.1.3. 3rd Prize: Match 5 numbers / 1,500,000 KRW
 		3.1.4. 4th Prize: Match 4 numbers / 50,000 KRW
 		3.1.5. 5th Prize: Match 3 numbers / 5,000 KRW
-
+    3.2. Depending the number of matches and the bonus number match, the prizes are calculated accoringly
 
 ### 4. Display winnings and profit rate
 
@@ -57,3 +57,5 @@
     4. The lottery tickets are generated
         4.1 Validation for the number of tickets generated is done
         4.2 Validation to check if the numbers inside the tickets are duplicates is done
+
+    5. Test case for the entire program was designed and passed

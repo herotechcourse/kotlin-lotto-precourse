@@ -19,6 +19,6 @@ class WinningNumbersValidationTest {
     fun `feature winning numbers split into list of integers test`() {
         val numbers = validator.SplitNumbersIntoList("1,2,3,4,5,6")
 
-        assertEquals(numbers,listOf(1,2,3,4,5,6))
+        assertEquals(numbers, listOf(1, 2, 3, 4, 5, 6))
     }
 }
