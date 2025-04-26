@@ -7,15 +7,27 @@ class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val purchaseAmount = Application().purchaseAmount()
+            val purchaseAmount = Inputview().purchaseAmount()
             val tickets = Application().generateLottoTickets(purchaseAmount)
-            Application().displayTickets(tickets)
-            val winningNumbers = Application().inputWinningNumbers()
-            Application().inputBonusNumbers(winningNumbers)
+            OutputView().displayTickets(tickets)
+            val winningNumbers = Inputview().inputWinningNumbers()
+            Inputview().inputBonusNumbers(winningNumbers)
         }
     }
 
-    private fun purchaseAmount(): Long {
+    private fun generateLottoTickets(purchaseAmount: Long): List<Lotto> {
+        val quantityOfTickets = (purchaseAmount / 1000).toInt()
+        val tickets = mutableListOf<Lotto>()
+        repeat(quantityOfTickets) {
+            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+            tickets.add(Lotto(numbers))
+        }
+        return tickets
+    }
+}
+
+class Inputview {
+    fun purchaseAmount(): Long {
         println("Please enter the purchase amount.")
         val input = Console.readLine()?.trim()
         val purchaseLotto = input?.toLongOrNull()
@@ -35,24 +47,7 @@ class Application {
         }
     }
 
-    private fun generateLottoTickets(purchaseAmount: Long): List<Lotto> {
-        val quantityOfTickets = (purchaseAmount / 1000).toInt()
-        val tickets = mutableListOf<Lotto>()
-        repeat(quantityOfTickets) {
-            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-            tickets.add(Lotto(numbers))
-        }
-        return tickets
-    }
-
-    private fun displayTickets(tickets: List<Lotto>) {
-        println("\nYou have purchased ${tickets.size} tickets.")
-        for (ticket in tickets) {
-            println(ticket)
-        }
-    }
-
-    private fun inputWinningNumbers(): List<Byte> {
+    fun inputWinningNumbers(): List<Byte> {
         println("\nPlease enter last week's winning numbers.")
         val input = Console.readLine()
 
@@ -83,7 +78,7 @@ class Application {
         }
     }
 
-    private fun inputBonusNumbers(winningNumbers: List<Byte>): Byte {
+    fun inputBonusNumbers(winningNumbers: List<Byte>): Byte {
         println("\nPlease enter the bonus numbers.")
         val input = Console.readLine()
 
@@ -105,6 +100,15 @@ class Application {
         }
         if (winningNumbers.contains(bonusNumbers)) {
             throw IllegalArgumentException("[ERROR] Bonus Number must not be the same as any of the Winning Numbers")
+        }
+    }
+}
+
+class OutputView {
+    fun displayTickets(tickets: List<Lotto>) {
+        println("\nYou have purchased ${tickets.size} tickets.")
+        for (ticket in tickets) {
+            println(ticket)
         }
     }
 }
