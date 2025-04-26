@@ -7,5 +7,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size != numbers.distinct().size) { "[ERROR] Lotto numbers must be unique." }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
 }
