@@ -23,7 +23,7 @@ class LottoServiceTest {
         @ValueSource(ints = [0, -1, -1000])
         @DisplayName("Should throw when amount is zero or negative")
         fun invalidZeroOrNegativeAmount(amount: Int) {
-            assertThatThrownBy {LottoService.validatePurchaseAmount(amount)}
+            assertThatThrownBy { LottoService.validatePurchaseAmount(amount) }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining("[ERROR] Invalid amount: $amount. The purchase amount must be a positive number and divisible by 1,000 KRW.")
         }
@@ -32,9 +32,35 @@ class LottoServiceTest {
         @ValueSource(ints = [10, 1100, 3001])
         @DisplayName("Should throw when amount is not divisible by 1000")
         fun invalidNonDivisibleAmount(amount: Int) {
-            assertThatThrownBy {LottoService.validatePurchaseAmount(amount)}
+            assertThatThrownBy { LottoService.validatePurchaseAmount(amount) }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining("[ERROR] Invalid amount: $amount. The purchase amount must be a positive number and divisible by 1,000 KRW.")
+        }
+    }
+
+    @Nested
+    @DisplayName("generateTickets() Test")
+    inner class GenerateTicketsTest {
+        @ParameterizedTest
+        @ValueSource(ints = [6, 12, 32])
+        @DisplayName("Should generate the correct number of tickets")
+        fun generateCorrectNumberTickets(amount: Int) {
+            val tickets = LottoService.generateTickets(amount)
+            assertThat(tickets).hasSize(amount)
+        }
+
+        @Test
+        @DisplayName("Should generate a six unique numbers ticket in the range of 1 .. 45")
+        fun eachTicketIsValid() {
+            val tickets = LottoService.generateTickets(50)
+
+            tickets.forEach { lotto ->
+                val numbers = lotto.getNumbers()
+                assertThat(numbers)
+                    .hasSize(6)
+                    .doesNotHaveDuplicates()
+                    .allMatch { it in 1..45 }
+            }
         }
     }
 }
