@@ -23,6 +23,12 @@
 
 ### 📚 Documentation
 
+- ****: update CHANGELOG.md ([5369982](https://github.com/yourname/yourrepo/commit/5369982449baa0173e8caaa04c9b44203fb21d0e))
+
+- **README.md**: correct max funtion lines from 15 to 10 ([e3222eb](https://github.com/yourname/yourrepo/commit/e3222eb5de4120ef3a4bb5b59c95b524345a29ca))
+
+- **CHANGELOG.md**: update Changelog.md ([cab98d2](https://github.com/yourname/yourrepo/commit/cab98d2b2a310e24913b2a46f5d749d2817d226c))
+
 - **README.md**: rewrite the compile method in README.md, update CHANGELOG.md ([c9b39a2](https://github.com/yourname/yourrepo/commit/c9b39a281da1b16619ae01255e7fd5d01df0fe2a))
 
 - **CHANGELOG.md**: create commit log ([ced7c1a](https://github.com/yourname/yourrepo/commit/ced7c1a375eea60b15768c6425b3bcc0e44f42e2))
@@ -39,7 +45,11 @@
 
 ### 🎨 Style
 
-- ****: refactor funtions, make sure function not exceed 10 lines ([48e8a77](https://github.com/yourname/yourrepo/commit/48e8a77a4239847568a855935a1c61a626b0a49f))
+- ****: remove printnewline ([845fe21](https://github.com/yourname/yourrepo/commit/845fe212ec29694a09010ecd6efea35ad311d9c6))
+
+- ****: conbine two println in to one line ([66e17cc](https://github.com/yourname/yourrepo/commit/66e17cc7744c9e32d8a1833439b7c3e84000eed2))
+
+- ****: refactor functions, make sure function does not exceed 10 lines ([48e8a77](https://github.com/yourname/yourrepo/commit/48e8a77a4239847568a855935a1c61a626b0a49f))
 
 - **Lotto**: move the generateTickets funcion to Lotto companion class, make InputView and OutputView cleaner ([a6b44ab](https://github.com/yourname/yourrepo/commit/a6b44ab35fea42cb1c79e89f341aca06ece33a16))
 
