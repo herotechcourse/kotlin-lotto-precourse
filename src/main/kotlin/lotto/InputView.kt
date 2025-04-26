@@ -19,13 +19,11 @@ class InputView {
     }
 
     private fun parsePurchaseAmount() {
-        var input: String? = null
         while (true) {
             try {
                 println()
                 println("Please enter the purchase amount.")
-                input = Console.readLine()
-                purchaseAmount = InputValidate.validateAmount(input)
+                purchaseAmount = InputValidate.validateAmount(Console.readLine())
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -34,12 +32,10 @@ class InputView {
     }
 
     private fun parseWinningNumber() {
-        var input: String? = null
         while (true) {
             try {
                 println("Please enter last week's winning numbers.")
-                input = Console.readLine()
-                winningNumber = InputValidate.validateWinningNumber(input)
+                winningNumber = InputValidate.validateWinningNumber(Console.readLine())
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -48,13 +44,11 @@ class InputView {
     }
 
     private fun parseBonusNumber() {
-        var input: String? = null
         while (true) {
             try {
                 println()
                 println("Please enter the bonus number.")
-                input = Console.readLine()
-                bonusNumber = InputValidate.validateBonusNumber(input, winningNumber)
+                bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumber)
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -64,10 +58,10 @@ class InputView {
 
     private fun generateTickets(purchaseAmount: Int): List<List<Int>> {
         ticketNumber = purchaseAmount / 1000
-        var rawTickets: MutableList<MutableList<Int>> = mutableListOf()
+        val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
 
         for (i in 0 until ticketNumber) {
-            val singleTicket: MutableList<Int> = generateSingleTicket()
+            val singleTicket = generateSingleTicket()
             rawTickets.add(singleTicket)
         }
         return InputValidate.validateTickets(rawTickets)
@@ -82,7 +76,6 @@ class InputView {
     fun getPurchaseAmount(): Int = purchaseAmount
 
     fun getTickets(): List<List<Int>> = tickets
-
 
 }
 

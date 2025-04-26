@@ -5,14 +5,14 @@ fun main() {
     inputView.initPrintTicket()
 
     var prize: Int = 0
-    var prizeList: MutableList<Prize> = mutableListOf()
+    var prizeRankList: MutableList<Prize> = mutableListOf()
 
     for (ticket in inputView.getTickets()) {
         val lotto = Lotto(ticket)
         var prizeNumber = lotto.findMatches(inputView.getWinningNumber(), inputView.getBonusNumber())
-        prizeList.add(prizeNumber)
-        prize += prizeNumber.prizeMoney // add all the price together
+        prizeRankList.add(prizeNumber)
+        prize += prizeNumber.prizeMoney
     }
-    OutputView.printPrizeStatics(prizeList, prize, inputView.getPurchaseAmount())
+    OutputView.printPrizeStatics(prizeRankList, prize, inputView.getPurchaseAmount())
 }
 
