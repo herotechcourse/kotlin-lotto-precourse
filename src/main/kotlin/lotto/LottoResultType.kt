@@ -20,6 +20,14 @@ enum class LottoResultType(val value: Int) {
                 else -> NO_PRIZE
             }
 
+        fun calculate(lottoResultTypes: List<LottoResultType>): Int {
+            var totalValue = 0
+            for (lottoResultType in lottoResultTypes) {
+                totalValue += lottoResultType.value
+            }
+            return totalValue
+        }
+
     }
 
 }
