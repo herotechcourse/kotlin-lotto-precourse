@@ -10,8 +10,8 @@ class Application {
             val purchaseAmount = Application().purchaseAmount()
             val tickets = Application().generateLottoTickets(purchaseAmount)
             Application().displayTickets(tickets)
-            Application().inputWinningNumbers()
-            Application().inputBonusNumbers()
+            val winningNumbers = Application().inputWinningNumbers()
+            Application().inputBonusNumbers(winningNumbers)
         }
     }
 
@@ -83,7 +83,7 @@ class Application {
         }
     }
 
-    private fun inputBonusNumbers(): Byte {
+    private fun inputBonusNumbers(winningNumbers: List<Byte>): Byte {
         println("\nPlease enter the bonus numbers.")
         val input = Console.readLine()
 
@@ -92,16 +92,19 @@ class Application {
         }
         try {
             val bonusNumbers = input.toByte()
-            validateBonusNumbers(bonusNumbers)
+            validateBonusNumbers(bonusNumbers, winningNumbers)
             return bonusNumbers
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Invalid number format. Please enter valid numbers.")
         }
     }
 
-    private fun validateBonusNumbers(bonusNumbers: Byte) {
+    private fun validateBonusNumbers(bonusNumbers: Byte, winningNumbers: List<Byte>) {
         if (bonusNumbers < 1 || bonusNumbers > 45) {
             throw IllegalArgumentException("[ERROR] Bonus Numbers should between 1 - 45")
+        }
+        if (winningNumbers.contains(bonusNumbers)) {
+            throw IllegalArgumentException("[ERROR] Bonus Number must not be the same as any of the Winning Numbers")
         }
     }
 }
