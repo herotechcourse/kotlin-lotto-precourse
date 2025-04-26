@@ -12,15 +12,11 @@ class LottoController(
     }
 
     private fun purchaseTickets(): List<Lotto> {
-        val lottoStore = InputHandler.retryOnInvalidInput { initLottoStore() }
-        val lottoTickets = lottoStore.generateLottoTickets()
+        val purchaseAmount = InputHandler.retryOnInvalidInput { LottoPurchaseAmount(InputView.readPurchaseAmount()) }
+        val lottoStore = LottoStore(lottoGenerator)
+        val lottoTickets = lottoStore.sellLottoTickets(purchaseAmount)
         OutputView.showLottoTickets(lottoTickets)
         return lottoTickets
-    }
-
-    private fun initLottoStore(): LottoStore {
-        val purchaseAmount = InputView.readPurchaseAmount()
-        return LottoStore(lottoGenerator, purchaseAmount)
     }
 
     private fun calculateWinningStatistics(lottoTickets: List<Lotto>) {
