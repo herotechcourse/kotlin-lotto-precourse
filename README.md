@@ -7,7 +7,7 @@
 - [ ] The ticket price is fixed at 1,000 KRW.
     - [ ] The purchase amount must be divisible by 1,000.
 - [ ] Generate a single lottery ticket with 6 random numbers.
-    - [ ] The numbers must be unique.
+    - [x] The numbers must be unique.
     - [ ] The numbers must be in the range 1 to 45 (inclusive).
 - [ ] Generate multiple lottery tickets based on the user's purchase amount.
     - [ ] There are no two different tickets with the same six numbers.
