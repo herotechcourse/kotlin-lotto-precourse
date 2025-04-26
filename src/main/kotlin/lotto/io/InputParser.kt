@@ -32,6 +32,7 @@ object InputParser {
 
     fun parseBonusNumber(input: String, numbers: List<Int>): Int {
         validateNotBlank(input)
+
         val bonusNumber = requireNotNull(input.toIntOrNull()) { "[ERROR] Invalid BonusNumber." }
 
         require(bonusNumber in START_INCLUSIVE..END_INCLUSIVE) { "[ERROR] BonusNumber must be between 1 and 45." }
