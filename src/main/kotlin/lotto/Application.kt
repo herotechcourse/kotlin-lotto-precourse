@@ -9,4 +9,6 @@ fun main() {
     val winningNumbers = readWinningNumbers() // TODO: decide whether to use instance of Lotto class
     val bonusNumber = readBonusNumber(winningNumbers)
     val numberOfTickets = (purchaseAmount / 1000u).toInt()
+
+    val game = LottoGame(purchaseAmount, winningNumbers, bonusNumber, numberOfTickets)
 }
