@@ -9,7 +9,7 @@
 - [x] Generate a single lottery ticket with 6 random numbers.
     - [x] The numbers must be unique.
     - [x] The numbers must be in the range 1 to 45 (inclusive).
-- [ ] Generate multiple lottery tickets based on the user's purchase amount.
+- [x] Generate multiple lottery tickets based on the user's purchase amount.
     - [ ] There are no two different tickets with the same six numbers.
 - [ ] Accept 6 winning numbers from the user.
     - [ ] The numbers must be unique.
