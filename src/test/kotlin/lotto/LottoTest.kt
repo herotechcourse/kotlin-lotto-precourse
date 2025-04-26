@@ -91,4 +91,12 @@ class LottoTest {
         val lotto = Lotto(numbers)
         assertEquals(numbers, lotto.getNumbers())
     }
+    
+    @Test
+    fun `getNumbers should return sorted numbers`() {
+        val unsortedNumbers = listOf(6, 3, 1, 4, 5, 2)
+        val lotto = Lotto(unsortedNumbers)
+        val expected = listOf(1, 2, 3, 4, 5, 6)
+        assertEquals(expected, lotto.getNumbers())
+    }
 }
