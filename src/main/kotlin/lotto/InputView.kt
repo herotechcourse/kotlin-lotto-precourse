@@ -2,52 +2,32 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-const val WINNING_NUMBER_RANGE_MIN = 1
-const val WINNING_NUMBER_RANGE_MAX = 45
-
 object InputView {
 
     fun getPurchaseAmount(): Int = retryUntilInputIsValid { getAndParsePurchaseAmount() }
-    fun getWinningAndBonusNumbers(): List<Int> {
-        val winningNumbers: MutableList<Int> = getWinningNumbers().toMutableList()
-        val bonusNumber: Int = getBonusNumber(winningNumbers)
-        winningNumbers.add(bonusNumber)
-        return winningNumbers
-    }
-
-    private fun getWinningNumbers(): List<Int> = retryUntilInputIsValid { getAndParseWinningNumbers() }
-    private fun getBonusNumber(winningNumbers: List<Int>): Int =
-        retryUntilInputIsValid { getAndParseBonusNumber(winningNumbers) }
+    fun getWinningNumbers(): List<Int> = retryUntilInputIsValid { getAndParseWinningNumbers() }
+    fun getBonusNumber(): Int = retryUntilInputIsValid { getAndParseBonusNumber() }
 
     private inline fun <T> retryUntilInputIsValid(getValue: () -> T): T {
         while (true) {
             try {
                 return getValue()
             } catch (e: IllegalArgumentException) {
-                OutputView.ERROR.printMessage(e.message ?: "Invalid input.")
+                println("[ERROR] ${e.message}")
             }
         }
     }
 
     private fun getAndParsePurchaseAmount(): Int {
-        OutputView.REQUEST_PURCHASE_AMOUNT.printMessage(null)
-        val amount = Console.readLine().toInt()
-        return amount
+        OutputView.requestPurchaseAmount()
+        return Console.readLine().toInt()
     }
-
     private fun getAndParseWinningNumbers(): List<Int> {
-        OutputView.REQUEST_WINNING_NUMBERS.printMessage(null)
-        val numbers: List<Int> = Console.readLine().split(',').map { it.toInt() }
-        return numbers
+        OutputView.requestWinningNumbers()
+        return Console.readLine().split(',').map { it.toInt() }
     }
-
-    private fun getAndParseBonusNumber(winningNumbers: List<Int>): Int {
-        OutputView.REQUEST_BONUS_NUMBER.printMessage(null)
-        val bonusNumber = Console.readLine().toInt()
-        if (bonusNumber !in WINNING_NUMBER_RANGE_MIN..WINNING_NUMBER_RANGE_MAX)
-            throw IllegalArgumentException("Lotto numbers must be between 1 and 45.")
-        if (bonusNumber in winningNumbers)
-            throw IllegalArgumentException("This bonus number is already in wining numbers.")
-        return bonusNumber
+    private fun getAndParseBonusNumber(): Int {
+        OutputView.requestBonusNumber()
+        return Console.readLine().toInt()
     }
 }
