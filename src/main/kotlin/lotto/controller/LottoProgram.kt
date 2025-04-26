@@ -18,7 +18,7 @@ class LottoProgram {
         val winningLotto = readWinningLotto()
 
         val lottoResult = LottoResult(lottoStorage, winningLotto)
-        printStatistics(lottoResult, purchaseAmount)
+        OutputView.winningStatistics(lottoResult, purchaseAmount)
     }
 }
 
@@ -76,11 +76,4 @@ fun issueLottery(purchaseAmount: Int): LottoStorage {
 
     OutputView.purchaseLottery(lottoStorage.getAll())
     return lottoStorage
-}
-
-fun printStatistics(result: LottoResult, purchaseAmount: Int) {
-    OutputView.newline()
-    OutputView.message(Messages.Output.WINNING_STATISTICS_TITLE)
-    OutputView.lottoStatistics(result)
-    OutputView.profitRate(result.calculateProfitRate(purchaseAmount))
 }

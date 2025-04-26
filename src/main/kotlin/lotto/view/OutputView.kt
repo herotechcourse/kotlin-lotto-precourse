@@ -44,4 +44,11 @@ object OutputView {
     fun error(message: String?) {
         println(Messages.Error.FORMAT.format(message))
     }
+
+    fun winningStatistics(result: LottoResult, purchaseAmount: Int) {
+        newline()
+        message(Messages.Output.WINNING_STATISTICS_TITLE)
+        lottoStatistics(result)
+        profitRate(result.calculateProfitRate(purchaseAmount))
+    }
 }

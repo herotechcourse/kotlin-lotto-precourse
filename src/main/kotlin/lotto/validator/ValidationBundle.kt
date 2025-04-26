@@ -3,7 +3,6 @@ package lotto.validator
 import lotto.constants.Constants
 
 object ValidationBundle {
-
     fun purchaseAmount(input: String) {
         InputValidator.notEmpty(input)
         InputValidator.onlyContainsDigits(input)
