@@ -15,4 +15,12 @@ class LottoBundle internal constructor(
             return LottoBundle(lottos, generator)
         }
     }
+
+    fun matchResults(winningLotto: WinningLotto): MatchResults {
+        val results = lottos
+            .map { winningLotto.match(it) }
+            .groupingBy { it }
+            .eachCount()
+        return MatchResults(results)
+    }
 }
