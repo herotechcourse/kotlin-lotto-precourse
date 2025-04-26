@@ -25,7 +25,15 @@ class InputView(private val io: IOInterface) {
             io.print("Please enter last week's winning numbers.")
             val input = io.read()
             val numbers = input.split(",").map { it.trim().toInt() }
-            validateNumbers(numbers)
+            if (numbers.size != 6) {
+                throw IllegalArgumentException("[ERROR] Please enter exactly 6 numbers.")
+            }
+            if (numbers.distinct().size != 6) {
+                throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+            }
+            if (numbers.any { it < 1 || it > 45 }) {
+                throw IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.")
+            }
             numbers
         }
     }
@@ -35,21 +43,10 @@ class InputView(private val io: IOInterface) {
             io.print("Please enter the bonus number.")
             val input = io.read()
             val number = input.toInt()
-            validateNumber(number)
+            if (number < 1 || number > 45) {
+                throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+            }
             number
-        }
-    }
-
-    private fun validateNumbers(numbers: List<Int>) {
-        if (numbers.size != 6 || numbers.toSet().size != 6) {
-            throw IllegalArgumentException("[ERROR] Winning numbers must be 6 unique numbers.")
-        }
-        numbers.forEach { validateNumber(it) }
-    }
-
-    private fun validateNumber(number: Int) {
-        if (number !in 1..45) {
-            throw IllegalArgumentException("[ERROR] Lotto numbers must be between 1 and 45.")
         }
     }
 
