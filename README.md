@@ -27,3 +27,5 @@
   - Is it a number?
   - Is it divisible by 1,000?
   - Are the winning numbers and bonus numbers between 1 and 45?
+  - Are the winning numbers duplicated?
+  - Are there exactly six winning numbers?
