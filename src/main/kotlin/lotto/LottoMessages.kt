@@ -14,7 +14,8 @@ object LottoMessages {
     val rangeOneToFortyfive = "[ERROR] All numbers must be between 1 and 45."
     val duplicate = "[ERROR] Numbers cannot contain duplicate numbers."
     val sixNumbers = "[ERROR] Ticket must contain 6 numbers."
-    val isANumber = "[ERROR] It contains a non numeric."
     val winningStatisticsTitle = "Winning Statistics"
     val dashSeparator = "---"
+    val invalidResults = "[ERROR] 404 - Something went wrong."
+    val mustHaveBonus = "[ERROR] SECOND prize must have a bonus number match."
 }
