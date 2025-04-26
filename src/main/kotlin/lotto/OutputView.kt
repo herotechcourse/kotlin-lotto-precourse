@@ -20,8 +20,9 @@ object OutputView {
 
     private fun printPrizeMap(prizeMap: Map<Prize, Int>) {
         prizeMap.forEach { (prize, count) ->
-            val prizeText = "${prize.numberOfMatches} Matches" +
-                    if (prize.bonus) " + Bonus Ball" else ""
+            var prizeText = "${prize.numberOfMatches} Matches"
+            if (prize.bonus)
+                prizeText += " + Bonus Ball"
             val prizeMoneyText = String.format("%,d", prize.prizeMoney)
             println("$prizeText ($prizeMoneyText KRW) – $count tickets")
         }

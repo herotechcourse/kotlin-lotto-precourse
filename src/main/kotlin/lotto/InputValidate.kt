@@ -9,7 +9,7 @@ object InputValidate {
             throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer")
         }
         if (amount <= 0 || amount % 1000 != 0)
-            throw IllegalArgumentException("[ERROR] PurchaseAmount must be positive integer and must be divided by 1000")
+            throw IllegalArgumentException("[ERROR] PurchaseAmount must be positive integer and divided by 1000")
         return amount
     }
 
