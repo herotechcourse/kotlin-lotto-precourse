@@ -1,5 +1,6 @@
 package lotto.controller
 
+import lotto.model.LottoTickets
 import lotto.model.Money
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -15,5 +16,8 @@ class LottoController(
 
         val ticketCount = money.getTicketCount()
         outputView.printTicketCount(ticketCount)
+
+        val lottoTickets = LottoTickets(ticketCount)
+        outputView.printLottoTickets(lottoTickets.getTickets())
     }
 }
