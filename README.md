@@ -36,6 +36,7 @@ The features will be implemented in the following order:
 - [x] Calculate how many lottery tickets the user can buy.
 - [x] Create lottery tickets for the user.
   - [x] Each ticket must have 6 unique random numbers between 1 and 45.
+- [x] Display the generated tickets as required.
 
 ### Prize Calculation
 
@@ -61,6 +62,7 @@ The features will be implemented in the following order:
 - `all` checks if all elements in a collection satisfy a given condition. It returns `true` if every element meets the condition, and `false` otherwise.
 - `in` checks if an element exists in a collection and returns a boolean result.
 - In IntelliJ IDEA, enabling "Reformat code on save" for all file types except Markdown ensures consistent formatting of source code.
+- Kotlin automatically generates setters for `var` properties. This simplifies code and reduces boilerplate.
 
 ## Considerations
 

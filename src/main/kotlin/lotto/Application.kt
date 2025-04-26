@@ -3,12 +3,17 @@ package lotto
 import lotto.utils.InputView.readBonusNumber
 import lotto.utils.InputView.readPurchaseAmount
 import lotto.utils.InputView.readWinningNumbers
+import lotto.utils.OutputView.printTicketsLn
 
 fun main() {
     val purchaseAmount = readPurchaseAmount()
-    val winningNumbers = readWinningNumbers() // TODO: decide whether to use instance of Lotto class
-    val bonusNumber = readBonusNumber(winningNumbers)
     val numberOfTickets = (purchaseAmount / 1000u).toInt()
+    println("\nYou have purchased $numberOfTickets tickets.")
 
-    val game = LottoGame(purchaseAmount, winningNumbers, bonusNumber, numberOfTickets)
+    val game = LottoGame(purchaseAmount, numberOfTickets = numberOfTickets)
+    printTicketsLn(game.getTickets())
+
+    game.winningNumbers = readWinningNumbers()
+    println()
+    game.bonusNumber = readBonusNumber(game.winningNumbers)
 }

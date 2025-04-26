@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class LottoGame(
     val purchaseAmount: UInt,
-    val winningNumbers: List<Int>,
-    val bonusNumber: Int,
+    var winningNumbers: List<Int> = emptyList(),
+    var bonusNumber: Int = 0,
     val numberOfTickets: Int
 ) {
     private val tickets = mutableListOf<Lotto>()
