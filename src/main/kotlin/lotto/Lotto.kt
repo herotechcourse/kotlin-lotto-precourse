@@ -16,5 +16,4 @@ class Lotto(private val numbers: List<Int>) {
     fun contains(number: Int): Boolean {
         return number in numbers
     }
-
 }

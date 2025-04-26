@@ -26,7 +26,6 @@ object OutputView {
         printRankResult(PrizeRank.THIRD, result)
         printRankResult(PrizeRank.SECOND, result)
         printRankResult(PrizeRank.FIRST, result)
-
     }
 
     private fun printRankResult(rank: PrizeRank, result: MatchResult) {

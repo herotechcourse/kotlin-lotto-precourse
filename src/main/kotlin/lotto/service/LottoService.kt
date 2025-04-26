@@ -34,5 +34,4 @@ class LottoService {
             purchaseAmount = lottoTickets.size * Rule.LOTTO_PRICE
         )
     }
-
 }
