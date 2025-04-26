@@ -1,0 +1,100 @@
+@startuml
+
+' Package structure
+package lotto {
+    class Application {
+        + main(args: Array<String>)
+    }
+    class Lotto {
+        - numbers: List<Int>
+        + getNumbers(): List<Int>
+        + countMatching(winningNumbers: List<Int>): Int
+        + contains(number: Int): Boolean
+    }
+}
+
+package "lotto.controller" {
+    class LottoController {
+        - lottoService: LottoService
+        + run()
+        - getValidLottoTickets(): List<Lotto>
+        - getValidWinningNumbers(): WinningNumbers
+    }
+}
+
+package "lotto.service" {
+    class LottoService {
+        + purchaseLottoTickets(amount: Int): List<Lotto>
+        + determineWinningResults(lottoTickets: List<Lotto>, winningNumbers: WinningNumbers): MatchResult
+    }
+}
+
+package "lotto.model" {
+    class MatchResult {
+        - rankCounts: Map<PrizeRank, Int>
+        - totalPrize: Int
+        - purchaseAmount: Int
+        + calculateProfitRate(): Double
+    }
+    class WinningNumbers {
+        - numbers: List<Int>
+        - bonusNumber: Int
+    }
+}
+
+package "lotto.util" {
+    enum PrizeRank {
+        FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE
+        + determineRank(matchCount: Int, hasBonus: Boolean): PrizeRank
+    }
+    class Rule <<singleton>> {
+        + LOTTO_PRICE: Int
+        + MIN_NUMBER: Int
+        + MAX_NUMBER: Int
+        + NUMBERS_COUNT: Int
+    }
+    class Validator {
+        + validatePurchaseAmount(amount: Int)
+        + validateLottoNumbers(numbers: List<Int>)
+        + validateBonusNumber(bonus: Int, winningNumbers: List<Int>)
+    }
+}
+
+package "lotto.exception" {
+    enum ExceptionMessage {
+        INSUFFICIENT_PURCHASE_AMOUNT,
+        INVALID_PURCHASE_AMOUNT_FORMAT,
+        INVALID_NUMBER_COUNT,
+        OUT_OF_RANGE_NUMBER,
+        DUPLICATE_NUMBERS,
+        INVALID_BONUS_NUMBER_RANGE,
+        DUPLICATE_BONUS_NUMBER
+    }
+}
+
+package "lotto.view" {
+    class InputView {
+        + readPurchaseAmount(): Int
+        + readWinningNumbers(): List<Int>
+        + readBonusNumber(winningNumbers: List<Int>): Int
+    }
+    class OutputView {
+        + printPurchasedTickets(count: Int, tickets: List<List<Int>>)
+        + printWinningStatistics(result: MatchResult)
+    }
+}
+
+' Relationships
+Application --> LottoController
+LottoController --> LottoService
+LottoController --> InputView
+LottoController --> OutputView
+LottoService --> Lotto
+LottoService --> MatchResult
+LottoService --> WinningNumbers
+MatchResult --> PrizeRank
+Validator ..> ExceptionMessage
+InputView ..> Validator
+InputView ..> ExceptionMessage
+
+@enduml
