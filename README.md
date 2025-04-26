@@ -12,8 +12,6 @@
 - Validate bonus number: numeric, range 1–45, and not included in winning numbers
 ### 3. Prize Evaluation
 - Determine prize rank for each ticket
-- Count tickets per prize rank (1st to 5th)
-- Calculate total prize winnings
 - Calculate and display total profit rate (rounded to one decimal place)
 ### 4. Output & Error Handling
 - Print all output in specified format
