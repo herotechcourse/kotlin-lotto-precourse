@@ -23,4 +23,8 @@ class LottoBundle internal constructor(
             .eachCount()
         return MatchResults(results)
     }
+
+    fun allLottoNumbers(): List<List<Int>> {
+        return lottos.map { it.numbers() }
+    }
 }
