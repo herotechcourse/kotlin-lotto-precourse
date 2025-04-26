@@ -14,3 +14,11 @@ enum class InputMessage(val message: String) {
     WINNING_NUMBER("Please enter last week's winning numbers."),
     BONUS_NUMBER("Please enter the bonus number.")
 }
+
+enum class OutputMessage {
+    TICKETS;
+
+    fun message(count: Int): String {
+        return "You have purchased $count tickets."
+    }
+}
