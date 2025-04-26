@@ -3,6 +3,8 @@ package lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.Arguments
@@ -67,6 +69,26 @@ class LottoTest {
         assertEquals(expectedMatchCount, user.compare(winningNumbers))
     }
 
+    @Test
+    fun `containsNumber should return true when number is in lotto`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertTrue(lotto.containsNumber(1))
+        assertTrue(lotto.containsNumber(3))
+        assertTrue(lotto.containsNumber(6))
+    }
 
+    @Test
+    fun `containsNumber should return false when number is not in lotto`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertFalse(lotto.containsNumber(7))
+        assertFalse(lotto.containsNumber(45))
+        assertFalse(lotto.containsNumber(0))
+    }
 
+    @Test
+    fun `getNumbers should return the correct list of numbers`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(numbers)
+        assertEquals(numbers, lotto.getNumbers())
+    }
 }
