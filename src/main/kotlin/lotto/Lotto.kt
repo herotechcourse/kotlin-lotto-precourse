@@ -16,6 +16,19 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.count { it in other.getNumbers() }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Lotto
+
+        return numbers == other.numbers
+    }
+
+    override fun hashCode(): Int {
+        return numbers.hashCode()
+    }
+
     override fun toString(): String {
         return "$numbers"
     }
