@@ -79,9 +79,8 @@ class Lotto(private val numbers: List<Int>) {
 * OutputView → Handles all console outputs.
 * Lotto → Represents a single lottery ticket (already provided).
 * LottoMachine → Generates tickets.
-* WinningLotto → Holds winning numbers + bonus number, and provides matching logic.
 * ResultAnalyzer → Compares user tickets to winning numbers and counts the matches.
-* PrizeRank → Enum class to define match conditions and prize money.
+* WinningRanks → Enum class to define match conditions and prize money.
 
 ### Unit Tests
 - [ ] Validate purchase amount (positive, multiple of 1,000).

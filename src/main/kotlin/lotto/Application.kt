@@ -47,7 +47,7 @@ object InputView {
 object OutputView {
     fun printTickets(lottoTickets: List<Lotto>) {
         for (lotto in lottoTickets) {
-            println(lotto.getNumbers().joinToString(prefix = "[", postfix = "]", separator = ", "))
+            println(lotto.getNumbers().joinToString(prefix="[", postfix="]", separator = ", "))
         }
     }
 
