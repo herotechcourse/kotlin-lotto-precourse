@@ -21,8 +21,13 @@ class Lotto(private val numbers: List<Int>) {
 
     companion object {
         fun create(): Lotto {
-            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            return try { Lotto(numbers.sorted()) } catch (e: IllegalArgumentException) { create() }
+            while (true) {
+                try {
+                    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+                    return Lotto(numbers.sorted())
+                } catch (_: IllegalArgumentException) {
+                }
+            }
         }
     }
 }
