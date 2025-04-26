@@ -15,6 +15,5 @@ fun main() {
         prize += prizeRank.prizeMoney
     }
     Lotto.calculatePrintPrize(prizeRankList, prize, inputView.getPurchaseAmount())
-   // OutputView.printPrizeStatics(prizeRankList, prize, inputView.getPurchaseAmount())
 }
 

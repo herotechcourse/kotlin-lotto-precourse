@@ -1,5 +1,7 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Randoms
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
@@ -39,6 +41,20 @@ class Lotto(private val numbers: List<Int>) {
             }
             return prizeMap
         }
+
+        fun generateTickets(purchaseAmount: Int): List<List<Int>> {
+            var numberOfTickets = purchaseAmount / 1000
+            val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
+
+            for (i in 0 until numberOfTickets) {
+                val singleTicket = generateSingleTicket()
+                rawTickets.add(singleTicket)
+            }
+            return InputValidate.validateTickets(rawTickets)
+        }
+
+        private fun generateSingleTicket(): MutableList<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+
     }
 
 }

@@ -1,9 +1,9 @@
 package lotto
 
 object OutputView {
-    fun printTickets(tickets: List<List<Int>>, ticketNumber: Int) {
+    fun printTickets(tickets: List<List<Int>>) {
         println()
-        println("You have purchased $ticketNumber tickets.")
+        println("You have purchased ${ tickets.size } tickets.")
         for (ticket in tickets) {
             if (ticket.isNotEmpty()) println(ticket)
         }

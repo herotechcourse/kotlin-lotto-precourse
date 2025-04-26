@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    private var numberOfTickets: Int = 0
     private var purchaseAmount: Int = 0
     private var tickets: List<List<Int>> = listOf(listOf())
     private var winningNumbers: List<Int> = listOf()
@@ -12,8 +11,8 @@ class InputView {
 
     fun initPrintTicket() {
         parsePurchaseAmount()
-        tickets = generateTickets(purchaseAmount)
-        OutputView.printTickets(tickets, numberOfTickets)
+        tickets = Lotto.generateTickets(purchaseAmount)
+        OutputView.printTickets(tickets)
         parseWinningNumbers()
         parseBonusNumber()
     }
@@ -56,19 +55,6 @@ class InputView {
         }
     }
 
-    private fun generateTickets(purchaseAmount: Int): List<List<Int>> {
-        numberOfTickets = purchaseAmount / 1000
-        val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
-
-        for (i in 0 until numberOfTickets) {
-            val singleTicket = generateSingleTicket()
-            rawTickets.add(singleTicket)
-        }
-        return InputValidate.validateTickets(rawTickets)
-    }
-
-    private fun generateSingleTicket(): MutableList<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-
     fun getWinningNumbers(): List<Int> = winningNumbers
 
     fun getBonusNumber(): Int = bonusNumber
@@ -78,20 +64,3 @@ class InputView {
     fun getTickets(): List<List<Int>> = tickets
 
 }
-
-
-// for test variables are initialized correct
-//class InputView {
-//
-//    fun parsePurchaseAmount(input: String): Int {
-//        return InputValidate.validateAmount(input)
-//    }
-//
-//    fun parseWinningNumber(input: String): List<Int> {
-//        return InputValidate.validateWinningNumber(input)
-//    }
-//
-//    fun parseBonusNumber(input: String, winningNumber: List<Int>): Int {
-//        return InputValidate.validateBonusNumber(input, winningNumber)
-//    }
-//}
