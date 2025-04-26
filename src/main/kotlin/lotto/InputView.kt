@@ -19,8 +19,7 @@ class InputView {
 
     private fun parsePurchaseAmount() {
         while (true) try {
-            println()
-            println("Please enter the purchase amount.")
+            println("\nPlease enter the purchase amount.")
             purchaseAmount = InputValidate.validateAmount(Console.readLine())
             break
         } catch (e: IllegalArgumentException) {
@@ -30,8 +29,7 @@ class InputView {
 
     private fun parseWinningNumbers() {
         while (true) try {
-            println()
-            println("Please enter last week's winning numbers.")
+            println("\nPlease enter last week's winning numbers.")
             winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
             break
         } catch (e: IllegalArgumentException) {
@@ -41,8 +39,7 @@ class InputView {
 
     private fun parseBonusNumber() {
         while (true) try {
-            println()
-            println("Please enter the bonus number.")
+            println("\nPlease enter the bonus number.")
             bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumbers)
             break
         } catch (e: IllegalArgumentException) {
