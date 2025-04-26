@@ -13,7 +13,7 @@ class LottoGeneratorTest {
     @Test
     fun `each lotto ticket contains 6 unique numbers`() {
         val lottoTickets = LottoGenerator.issue(10_000)
-        assertTrue(lottoTickets.all { it.copyNumbers.toSet().size == TICKET_SIZE })
+        assertTrue(lottoTickets.all { it.getNumbers().toSet().size == TICKET_SIZE })
     }
 
     companion object {

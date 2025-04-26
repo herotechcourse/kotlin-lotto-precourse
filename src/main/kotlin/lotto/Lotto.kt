@@ -5,6 +5,5 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    val copyNumbers: List<Int>
-        get() = numbers.toList()
+    fun getNumbers(): List<Int> = numbers.toList()
 }
