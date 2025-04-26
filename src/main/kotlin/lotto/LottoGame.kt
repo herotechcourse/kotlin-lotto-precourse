@@ -23,7 +23,9 @@ class LottoGame {
         println(result)
     }
 
-    private fun calculateTicketCount(purchaseAmount: String) = purchaseAmount.toInt() / LOTTO_PRICE
+        private fun calculateTicketCount(purchaseAmount: String): Int {
+            return purchaseAmount.toInt() / LOTTO_PRICE
+        }
 
     companion object {
         private const val LOTTO_PRICE = 1000
