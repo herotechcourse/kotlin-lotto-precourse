@@ -21,4 +21,8 @@ object OutputView {
         println("5 Matches + Bonus Ball (30,000,000 KRW) – ${MATCH.FIVE_AND_BONUS} tickets")
         println("6 Matches (2,000,000,000 KRW) – ${MATCH.SIX} tickets")
     }
+
+    fun printReturnRate(returnRate: Number) {
+        println("Total return rate is $returnRate%.")
+    }
 }

@@ -5,6 +5,7 @@ import lotto.model.PurchaseAmountParser
 import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.model.MatchCalculator
+import lotto.model.ReturnRateCalculator
 
 object LottoProgramStart {
 
@@ -19,10 +20,13 @@ object LottoProgramStart {
         val winningNumbers: List<String> = WinningNumbersHandler.readValidatedWinningNumbers()
         val bonusNumber: String = BonusNumberHandler.readValidatedBonusNumber(winningNumbers)
 
-        MatchCalculator.run(lottoNumber, winningNumbers, bonusNumber)
+        val winningAmount = MatchCalculator.run(lottoNumber, winningNumbers, bonusNumber)
+
+        val returnRate = ReturnRateCalculator.run(purchaseAmount, winningAmount)
 
         OutputView.printWinningStatisticsStartLine()
         OutputView.printWinningStatistics()
-    }
 
+        OutputView.printReturnRate(returnRate)
+    }
 }

@@ -38,5 +38,5 @@
 - [X] Print the number of winning tickets for 3, 4, 5, 5+bonus number, and 6 matched numbers.
 
 ### Print the total return rate.
-- [ ] Calculate the total return rate.
-- [ ] Print the return rate message. "Total return rate is $62.5 %."
+- [X] Calculate the total return rate.
+- [X] Print the return rate message. "Total return rate is $62.5 %."
