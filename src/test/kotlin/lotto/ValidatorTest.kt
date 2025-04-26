@@ -5,7 +5,6 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class ValidatorTest {
-
     @Test
     fun `purchase amount below minimum throws`() {
         assertThrows<IllegalArgumentException> {

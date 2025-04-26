@@ -6,14 +6,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Assertions.assertFalse
 import lotto.model.MatchResult
-
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import lotto.controller.LottoController
 import lotto.model.WinningNumbers
-import java.lang.reflect.Method
-
 
 class LottoTest {
     @Test
