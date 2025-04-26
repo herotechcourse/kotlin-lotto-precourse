@@ -26,6 +26,15 @@ object Validator {
         }
     }
 
+    fun validateBonusNumber(input: String): Int {
+        validateBlank(input)
+        validateNumber(input)
+        val number: Int = input.toInt()
+        validateRange(number)
+
+        return number
+    }
+
     private fun validateBlank(input: String) {
         if (input.isBlank()) {
             throw IllegalArgumentException(ErrorMessage.INPUT_IS_BLANK.message)
