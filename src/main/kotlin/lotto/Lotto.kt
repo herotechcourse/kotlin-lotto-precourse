@@ -1,7 +1,12 @@
 package lotto
 
-enum class Rank {
-    ZERO, THREE, FOUR, FIVE, FIVE_BONUS, SIX
+enum class Rank(val prize: Long) {
+    ZERO(0),
+    THREE(5_000),
+    FOUR(50_000),
+    FIVE(1_500_000),
+    FIVE_BONUS(30_000_000),
+    SIX(2_000_000_000)
 }
 
 class Lotto(private val numbers: List<Int>) {
