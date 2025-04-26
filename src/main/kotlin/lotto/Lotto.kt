@@ -1,29 +1,26 @@
 package lotto
 
 class Lotto(private val numbers: List<Number>) {
+
     init {
         require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_ERROR }
         require(numbers.toSet().size == numbers.size) { LOTTO_NUMBER_NOT_UNIQUE_ERROR }
     }
 
-    fun getMatchingCount(winningLotto: Lotto): Int {
-        return numbers().count { winningLotto.hasSameNumber(it) }
+    fun countMatchingNumber(winningLotto: Lotto): Int {
+        return numbers.count { winningLotto.hasSameNumber(it) }
     }
 
-    fun hasBonusNumber(bonusNumber: Number): Boolean {
-        return hasSameNumber(bonusNumber)
-    }
-
-    fun hasNotSameNumber(number: Number): Boolean {
+    fun doesNotContain(number: Number): Boolean {
         return !hasSameNumber(number)
     }
 
-    private fun hasSameNumber(number: Number): Boolean {
+    fun hasSameNumber(number: Number): Boolean {
         return numbers.contains(number)
     }
 
     fun numbers(): List<Number> {
-        return numbers
+        return numbers.toList()
     }
 
     companion object {
