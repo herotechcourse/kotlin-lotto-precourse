@@ -11,7 +11,7 @@ object LottoService {
     }
 
     fun generateTickets(amount: Int): List<Lotto> = List<Lotto>(amount) {
-            val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
             Lotto(ticketNumbers)
     }
 }
