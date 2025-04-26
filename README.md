@@ -26,8 +26,8 @@ This project is a application that simulates a lottery ticket machine. The goal 
 
 
 - **Lottery Mechanics**
-    - [ ] Compare ticket(s) numbers for winning numbers
-    - [ ] Compare ticket(s) numbers for bonus number
+    - [x] Compare ticket(s) numbers for winning numbers
+    - [x] Compare ticket(s) numbers for bonus number
     - [ ] Calculate profit rate
 
 
@@ -35,8 +35,8 @@ This project is a application that simulates a lottery ticket machine. The goal 
     - [x] Display number of tickets purchased
     - [x] Display each ticket each sorted in ascending order
     - [ ] Display winning statistics
-        - [ ] Display prize list
-        - [ ] Display number of winning ticket(s)
+        - [x] Display prize list
+        - [x] Display number of winning ticket(s)
         - [ ] Display rounded profit rate
 
 

@@ -6,7 +6,7 @@ class OutputView {
     }
 
     fun ticketAmount(count: Int) {
-        println("You have purchased $count tickets.")
+        println("\nYou have purchased $count tickets.")
     }
 
     fun tickets(tickets: List<Lotto>){
@@ -16,14 +16,29 @@ class OutputView {
     }
 
     fun promptWinningNumbers (){
-        println("Please enter last week's winning numbers (comma-separated) :")
+        println("\nPlease enter last week's winning numbers (comma-separated) :")
     }
 
     fun promptBonusNumber (){
-        println("Please enter the bonus number :")
+        println("\nPlease enter the bonus number :")
     }
 
     fun error(message: String)  {
         println("[ERROR] $message")
     }
+
+    fun displayWinningStats(results: Map<PrizeRanks, Int>) {
+        println("\nWinning Statistics")
+        println("------------------")
+        PrizeRanks.values()
+            .filter { it != PrizeRanks.NONE }
+            .forEach { tier ->
+                println(formatTierResult(tier, results.getOrDefault(tier, 0)))
+            }
+    }
+
+    private fun formatTierResult(tier: PrizeRanks, count: Int): String {
+        return "${tier.description} (${"%,d".format(tier.prizeMoney)} KRW) - $count tickets"
+    }
+
 }

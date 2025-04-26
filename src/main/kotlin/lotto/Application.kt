@@ -5,6 +5,7 @@ fun main() {
     val inputView = InputView(outputView)
     val validator = InputValidator()
     val lottoMachine = LottoMachine()
+    val evaluator = LottoEvaluator()
 
     val amount = inputView.validateWithReprompt(
         readAction = InputView::readPurchaseAmount,
@@ -29,4 +30,9 @@ fun main() {
         validation = { input -> validator.validateBonusNumber(input, winningNumbers) },
         outputView = outputView
     )
+
+    val results = evaluator.compareTickets(generation, winningNumbers, bonusNumber)
+
+    outputView.displayWinningStats(results)
+
 }
