@@ -37,4 +37,8 @@ Total return rate is %,.1f%%.
             )
         )
     }
+
+    fun printError(message: String) {
+        println(message)
+    }
 }

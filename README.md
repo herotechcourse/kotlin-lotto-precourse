@@ -14,7 +14,7 @@
 - [x] Read the bonus number
     - [x] Throw an `IllegalArgumentException` if the value is null or blank
     - [x] Throw an `IllegalArgumentException` if the value is not a number
-- [] Re-prompt input whenever an `IllegalArgumentException` occurs, resuming the process from the corresponding step.
+- [x] Re-prompt input whenever an `IllegalArgumentException` occurs, resuming the process from the corresponding step.
 
 ## ▪︎ Output
 
