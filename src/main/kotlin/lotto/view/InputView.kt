@@ -7,7 +7,13 @@ class InputView {
 
     fun getPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
-        val readLine = Console.readLine()
-        return parse.parsePurchaseAmount(readLine)
+        val input = Console.readLine()
+        return parse.parsePurchaseAmount(input)
+    }
+
+    fun getWinningNumbers(): List<Int> {
+        println("\nPlease enter last week's winning numbers.")
+        val input = Console.readLine()
+        return parse.parseWinningNumbers(input)
     }
 }

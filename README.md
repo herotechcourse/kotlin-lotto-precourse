@@ -34,7 +34,7 @@
 - [x] Prompt the user for the purchase amount.
     - [x] Validate that the input is numeric.
     - [x] Validate that the input is positive.
-- [ ] Prompt the user to enter 6 winning numbers.
+- [x] Prompt the user to enter 6 winning numbers.
     - [x] Validate that the input is numeric.
     - [x] Enter the Comma-Separated input
     - [x] Can input blank between Comma and data.
