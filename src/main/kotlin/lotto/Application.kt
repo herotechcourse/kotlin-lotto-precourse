@@ -6,7 +6,23 @@ import lotto.view.OutputView
 fun main() {
     val userInput = UserInput()
     val ticketPurchase = TicketPurchase()
+    val lottoResult = LottoResult()
 
+    runLotto(userInput, ticketPurchase, lottoResult)
+}
+
+fun runLotto(userInput: UserInput, ticketPurchase: TicketPurchase, lottoResult: LottoResult) {
+    promptPurchaseAmount(userInput)
+    ticketPurchase.buyTickets(userInput)
+    ticketPurchase.generateTickets()
+    displayTicketPurchase(ticketPurchase)
+    promptWinningNumbers(userInput)
+    promptBonusNumber(userInput)
+    generateLottoResults(userInput, ticketPurchase, lottoResult)
+    displayLottoResults(lottoResult)
+}
+
+fun promptPurchaseAmount(userInput: UserInput) {
     var isInputValid = false
     while (!isInputValid) {
         try {
@@ -16,13 +32,15 @@ fun main() {
             println(e.message)
         }
     }
+}
 
-    ticketPurchase.buyTickets(userInput)
-    ticketPurchase.generateTickets()
+fun displayTicketPurchase(ticketPurchase: TicketPurchase) {
     OutputView.displayPurchaseMessage(ticketPurchase)
     OutputView.displayBoughtTickets(ticketPurchase)
+}
 
-    isInputValid = false
+fun promptWinningNumbers(userInput: UserInput) {
+    var isInputValid = false
     while (!isInputValid) {
         try {
             InputView.promptWinningNumbers(userInput)
@@ -31,8 +49,10 @@ fun main() {
             println(e.message)
         }
     }
+}
 
-    isInputValid = false
+fun promptBonusNumber(userInput: UserInput) {
+    var isInputValid = false
     while (!isInputValid) {
         try {
             InputView.promptBonusNumber(userInput)
@@ -41,11 +61,14 @@ fun main() {
             println(e.message)
         }
     }
-
-    val lottoResult = LottoResult()
-    lottoResult.generateWinningStatistics(userInput, ticketPurchase)
-    OutputView.displayWinningStatistics(lottoResult)
-    lottoResult.calculateReturnRate(userInput)
-    OutputView.displayReturnRate(lottoResult)
 }
 
+fun generateLottoResults(userInput: UserInput, ticketPurchase: TicketPurchase, lottoResult: LottoResult) {
+    lottoResult.generateWinningStatistics(userInput, ticketPurchase)
+    lottoResult.calculateReturnRate(userInput)
+}
+
+fun displayLottoResults(lottoResult: LottoResult) {
+    OutputView.displayWinningStatistics(lottoResult)
+    OutputView.displayReturnRate(lottoResult)
+}
