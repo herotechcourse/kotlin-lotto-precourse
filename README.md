@@ -27,7 +27,7 @@
     5th Prize: Match 3 numbers / 5,000 KRW
     ```
 - [ ] Calculate total winnings based on all purchased tickets.
-- [ ] Calculate the profit rate from the winnings and the total purchase amount.
+- [x] Calculate the profit rate from the winnings and the total purchase amount.
 
 ## Input Rules
 
