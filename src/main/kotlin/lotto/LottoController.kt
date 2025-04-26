@@ -7,28 +7,29 @@ class LottoController(
     val lottoGenerator: LottoGenerator
 ) {
     fun run() {
-        val lottoTickets = purchaseTickets()
-        calculateWinningStatistics(lottoTickets)
+        val purchaseAmount = InputHandler.retryOnInvalidInput { LottoPurchaseAmount(InputView.readPurchaseAmount()) }
+        val lottoTickets = issueLottoTickets(purchaseAmount)
+        calculateWinningResult(lottoTickets, purchaseAmount)
     }
 
-    private fun purchaseTickets(): List<Lotto> {
-        val purchaseAmount = InputHandler.retryOnInvalidInput { LottoPurchaseAmount(InputView.readPurchaseAmount()) }
+    private fun issueLottoTickets(purchaseAmount: LottoPurchaseAmount): List<Lotto> {
         val lottoStore = LottoStore(lottoGenerator)
         val lottoTickets = lottoStore.sellLottoTickets(purchaseAmount)
         OutputView.showLottoTickets(lottoTickets)
         return lottoTickets
     }
 
-    private fun calculateWinningStatistics(lottoTickets: List<Lotto>) {
-        val prizeRankCalculator = InputHandler.retryOnInvalidInput { initPrizeRankCalculator() }
-        val result = prizeRankCalculator.calculateStatistics(lottoTickets)
-        val profitRate = result.calculateProfitRate(lottoTickets)
-        OutputView.showWinningStatistics(result.statistics, profitRate)
-    }
-
     private fun initPrizeRankCalculator(): PrizeRankCalculator {
         val winningNumbers = InputView.readWinningNumbers()
         val bonusNumber = InputView.readBonusNumber()
-        return PrizeRankCalculator(Lotto(winningNumbers.map { Number(it) }), Number(bonusNumber))
+        val winningLotto = Lotto(winningNumbers.map { Number(it) })
+        return PrizeRankCalculator(winningLotto, Number(bonusNumber))
+    }
+
+    private fun calculateWinningResult(lottoTickets: List<Lotto>, purchaseAmount: LottoPurchaseAmount) {
+        val prizeRankCalculator = InputHandler.retryOnInvalidInput { initPrizeRankCalculator() }
+        val result = prizeRankCalculator.calculateStatistics(lottoTickets)
+        val profitRate = result.calculateProfitRate(purchaseAmount)
+        OutputView.showWinningStatistics(result.statistics(), profitRate)
     }
 }
