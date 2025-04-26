@@ -38,6 +38,12 @@ object Input {
         }
     }
 
+    fun winningNumbersDuplication(input: List<Int>) {
+        if (input.size != input.toSet().size) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must not be duplicated.")
+        }
+    }
+
     fun bonusNumberDuplication(input: Int, numbers: List<Int>) {
         if (input in numbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with the winning numbers")
