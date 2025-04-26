@@ -1,7 +1,6 @@
 package lotto.view
 
 import lotto.Lotto
-import lotto.Rank
 import java.text.NumberFormat
 import java.util.*
 
@@ -15,10 +14,9 @@ class LottoViewFormatter(
         .map { it.getNumbers().sorted() }
         .joinToString(LN)
 
-    fun formatWinningStatistics(rankCounts: Map<Rank, Int>): String = Rank.entries
-        .filter { it != Rank.NONE }
-        .sortedBy { it.prize }
-        .joinToString(LN) { it.toStatisticsLine(rankCounts) }
+    fun formatWinningStatistics(rankCounts: List<CountRankResponse>): String = rankCounts
+        .sortedBy { it.matchCount }
+        .joinToString(LN) { it.toStatisticsLine() }
 
     fun formatProfitRate(profitRate: Double): String {
         val formatted = PROFIT_RATE_FORMAT.format(profitRate)
@@ -26,10 +24,9 @@ class LottoViewFormatter(
         return "Total return rate is $formatted%."
     }
 
-    private fun Rank.toStatisticsLine(rankCounts: Map<Rank, Int>): String {
-        val count = rankCounts[this] ?: 0
-        val formattedPrize = numberFormatter.format(this.prize.amount)
-        val bonusInfo = if (this == Rank.SECOND) "+ Bonus Ball " else ""
+    private fun CountRankResponse.toStatisticsLine(): String {
+        val formattedPrize = numberFormatter.format(this.prize)
+        val bonusInfo = if (bonusMatch) "+ Bonus Ball " else ""
 
         return "$matchCount Matches $bonusInfo(${formattedPrize} KRW) – $count tickets"
     }

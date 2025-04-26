@@ -49,10 +49,10 @@ class LottoViewFormatterTest {
     @Test
     fun `formatWinningStatistics should return formatted lines in prize order`() {
         // Arrange
-        val rankCounts = mapOf(
-            Rank.FIFTH to 1,
-            Rank.THIRD to 2,
-            Rank.FOURTH to 3
+        val rankCounts: List<CountRankResponse> = listOf(
+            CountRankResponse(Rank.FIFTH, 1),
+            CountRankResponse(Rank.THIRD, 2),
+            CountRankResponse(Rank.FOURTH, 3)
         )
 
         // Act
@@ -66,7 +66,6 @@ class LottoViewFormatterTest {
                 5 Matches (1,500,000 KRW) – 2 tickets
             """.trimIndent()
         )
-
     }
 
     @Test

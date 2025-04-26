@@ -1,7 +1,6 @@
 package lotto.view
 
 import lotto.Lotto
-import lotto.Rank
 
 class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter()) {
 
@@ -9,7 +8,7 @@ class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter(
         print(buildLottoTickets(lottoTickets))
     }
 
-    fun printFinalReport(rankCounts: Map<Rank, Int>, profitRate: Double) {
+    fun printFinalReport(rankCounts: List<CountRankResponse>, profitRate: Double) {
         println(buildFinalReport(rankCounts, profitRate))
     }
 
@@ -19,7 +18,7 @@ class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter(
         appendLine(formatter.formatLottoTickets(lottoTickets))
     }
 
-    private fun buildFinalReport(rankCounts: Map<Rank, Int>, profitRate: Double): String = buildString {
+    private fun buildFinalReport(rankCounts: List<CountRankResponse>, profitRate: Double): String = buildString {
         appendLine()
         appendLine("Winning Statistics")
         appendLine("---")

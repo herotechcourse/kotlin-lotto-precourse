@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.*
+import lotto.view.CountRankResponse
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -12,27 +13,32 @@ class Controller(
 
     fun run() {
         val lottoTickets: LottoTickets = purchase()
-        evaluate(lottoTickets)
+        outputView.printLottoTickets(lottoTickets.getTickets())
+
+        val winningStatistics: WinningStatistics = evaluate(lottoTickets)
+        outputView.printFinalReport(
+            rankCounts = winningStatistics.toCountRankResponses(),
+            profitRate = winningStatistics.profitRate()
+        )
     }
 
     private fun purchase(): LottoTickets {
         val amount: Money = retry { Money(inputView.readPurchaseAmount()) }
-        val lottoTickets: LottoTickets = store.sell(amount)
 
-        outputView.printLottoTickets(lottoTickets.getTickets())
-
-        return lottoTickets
+        return store.sell(amount)
     }
 
-    private fun evaluate(lottoTickets: LottoTickets) {
+    private fun evaluate(lottoTickets: LottoTickets): WinningStatistics {
         val winningNumbers: Lotto = retry { Lotto(inputView.readWinningNumbers()) }
         val winningLotto: WinningLotto = retry { WinningLotto(winningNumbers, inputView.readBonusNumber()) }
 
-        outputView.printFinalReport(
-            rankCounts = lottoTickets.matchAll(winningLotto),
-            profitRate = lottoTickets.evaluate(winningLotto).profitRate()
-        )
+        return lottoTickets.evaluate(winningLotto)
     }
+
+    private fun WinningStatistics.toCountRankResponses(): List<CountRankResponse> = Rank
+        .entries
+        .filter { it != Rank.NONE }
+        .map { CountRankResponse(it, getCount(it)) }
 
     private fun <T> retry(action: () -> T): T {
         while (true) {
