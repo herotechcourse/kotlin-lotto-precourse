@@ -13,7 +13,7 @@
     - Each ticket has 6 unique random numbers between 1 and 45
     - Numbers must be sorted in ascending order
 
-- [ ] Compare tickets with winning numbers
+- [X] Compare tickets with winning numbers
     - Count how many numbers match
     - Check if the bonus number matches
     - Determine prize rank based on match count and bonus

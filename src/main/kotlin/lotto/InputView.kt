@@ -20,7 +20,7 @@ object InputView {
         }
     }
 
-    fun inputWinningNumbers(): Set<Int> {
+    fun inputWinningNumbers(): Lotto {
         while (true) {
             try {
                 println("Please enter last week's winning numbers.")
@@ -35,7 +35,7 @@ object InputView {
         }
     }
 
-    private fun validateWinningNumbers(winningNumbers: List<String>): Set<Int> {
+    private fun validateWinningNumbers(winningNumbers: List<String>): Lotto {
         val numbers = winningNumbers.map {
             it.trim().toIntOrNull() ?: throw IllegalArgumentException("Invalid number found.")
         }
@@ -52,10 +52,10 @@ object InputView {
             throw IllegalArgumentException("Please provide 6 unique numbers")
         }
 
-        return unique
+        return Lotto(numbers.sorted())
     }
 
-    fun inputBonusNumber(winningNumbers: Set<Int>): Int {
+    fun inputBonusNumber(winningNumbers: Lotto): Int {
         while (true) {
             try {
                 println("Please enter the bonus number.")
@@ -70,12 +70,12 @@ object InputView {
     }
 
 
-    private fun validateBonusNumber(bonusNumber: Int, winningNumbers: Set<Int>): Int {
+    private fun validateBonusNumber(bonusNumber: Int, winningNumbers: Lotto): Int {
         if (bonusNumber !in 1..45) {
             throw IllegalArgumentException("Number must be between 1 and 45.")
         }
 
-        if (bonusNumber in winningNumbers) {
+        if (winningNumbers.containsNumber(bonusNumber)) {
             throw IllegalArgumentException("Bonus number cannot be one of the winning numbers.")
         }
 
