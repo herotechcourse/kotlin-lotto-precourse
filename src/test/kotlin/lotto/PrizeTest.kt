@@ -2,7 +2,6 @@ package lotto
 
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
@@ -58,20 +57,6 @@ class PrizeTest {
 
         // Assert
         assertThat(ratio).isEqualTo((prizeAmount.toDouble()) / moneyAmount)
-    }
-
-    @Test
-    fun `compareTo should return correct comparison result`() {
-        // Arrange
-        val prize1 = Prize(1_000L)
-        val prize2 = Prize(2_000L)
-
-        // Act
-        // Assert
-        SoftAssertions.assertSoftly {
-            assertThat(prize1 < prize2).isTrue()
-            assertThat(prize1 > prize2).isFalse()
-        }
     }
 
     @Test

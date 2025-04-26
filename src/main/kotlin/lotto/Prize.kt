@@ -1,7 +1,7 @@
 package lotto
 
 @JvmInline
-value class Prize(val amount: Long) : Comparable<Prize> {
+value class Prize(val amount: Long) {
 
     init {
         require(amount >= 0L) { "Prize must not be negative." }
@@ -13,8 +13,6 @@ value class Prize(val amount: Long) : Comparable<Prize> {
     operator fun times(other: Int): Prize = Prize(amount * other)
 
     operator fun div(other: Money): Double = (this.amount.toDouble() / other.amount)
-
-    override fun compareTo(other: Prize): Int = this.amount.compareTo(other.amount)
 
     companion object {
         private const val UNIT = 1_000L
