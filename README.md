@@ -4,8 +4,8 @@
 
 ## Game Rules
 
-- [ ] The ticket price is fixed at 1,000 KRW.
-    - [ ] The purchase amount must be divisible by 1,000.
+- [x] The ticket price is fixed at 1,000 KRW.
+    - [x] The purchase amount must be divisible by 1,000.
 - [x] Generate a single lottery ticket with 6 random numbers.
     - [x] The numbers must be unique.
     - [x] The numbers must be in the range 1 to 45 (inclusive).
