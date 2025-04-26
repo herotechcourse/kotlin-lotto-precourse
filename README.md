@@ -14,19 +14,25 @@ This feature list is organized in implementation order, following a test-driven 
   - Provide functionality to compare with winning numbers
   - Unit tests for validation and comparison logic
 
+- [x] testing
+
 - [x] **Rank (Enum)**
   - Define prize ranks (1st through 5th) with associated conditions and prize amounts
   - Implement method to determine rank based on match count and bonus match
   - Unit tests for each rank determination scenario
 
+- [x] testing
+
 ### 2. Service Layer
 
-- [ ] **LottoService**
+- [x] **LottoService**
   - Generate random lotto tickets based on purchase amount
   - Calculate match statistics across multiple tickets
   - Determine ranks and calculate win statistics
   - Coordinate business logic operations
   - Unit tests for ticket generation and rank determination
+
+- [x] testing
 
 ### 3. UI Layer
 
@@ -36,20 +42,20 @@ This feature list is organized in implementation order, following a test-driven 
   - Get bonus number from user with validation
   - Error handling with appropriate messages
 
+- [ ] testing
+
 - [ ] **OutputView**
   - Display purchased tickets in required format
   - Display winning statistics in required format
   - Display return rate in required format
 
+- [ ] testing
+- 
 ### 4. Application Layer
-
-- [ ] **LottoApplication**
-  - Coordinate between UI and service layers
-  - Manage overall program flow
-  - Error handling for application-level exceptions
 
 - [ ] **Application**
   - Main program entry point
+- [ ] testing
  
 ## Design Principles
 
