@@ -6,16 +6,43 @@ import camp.nextstep.edu.missionutils.Randoms
 const val TICKET_PRICE = 1000;
 
 fun main() {
-    // Lotto Purchase Flow
-    val amount: Int = promptAndTakeAmount()
-    val tickets: List<Lotto> = generateLottos(amount / TICKET_PRICE)
+    val purchaseAmount: Int = promptAndTakeAmount()
+    val tickets: List<Lotto> = generateLottos(purchaseAmount / TICKET_PRICE)
     val (winning, bonus) = promptAndTakeWinningAndBonus()
     val prizeRanks = determinePrizeRanks(tickets, winning, bonus)
-    evaluatePrizes(prizeRanks)
+    val profitRate = calculateProfitRate(prizeRanks, purchaseAmount)
+    printLottos(tickets)
+    print("Winning Statistics\n---\n")
+    printMatches(prizeRanks)
+    println("Total return rate is ${"%.1f".format(profitRate)}%.")
 }
 
-fun evaluatePrizes(prizeRank: List<PrizeRank?>) {
-   // TODO
+fun printMatches(prizeRanks: List<PrizeRank?>) {
+    val rankCounts = countPrizeRanks(prizeRanks)
+    PrizeRank.values()
+        .sortedWith(compareBy<PrizeRank> { it.matchCount }.thenBy { it.requiresBonus })
+        .forEach { rank ->
+            val count = rankCounts[rank] ?: 0
+            val formattedPrize = "%,d".format(rank.prizeAmount)
+            println("${rank.matchCount} Matches${if (rank.requiresBonus) " + Bonus Ball" else ""} (${formattedPrize} KRW) - $count ticket${if (count == 1) "" else "s"}")
+        }
+}
+
+fun calculateProfitRate(prizeRanks: List<PrizeRank?>, purchaseAmount: Int): Float {
+    val rankCounts = countPrizeRanks(prizeRanks)
+    val totalWinnings = rankCounts.entries.sumOf { (rank, count) ->
+        rank.prizeAmount * count
+    }
+    val profitRate = if (purchaseAmount == 0) 0f else (totalWinnings.toFloat() / purchaseAmount) * 100
+    return profitRate
+}
+
+
+fun countPrizeRanks(prizeRanks: List<PrizeRank?>): Map<PrizeRank, Int> {
+    return prizeRanks
+        .filterNotNull()
+        .groupingBy { it }
+        .eachCount()
 }
 
 fun determinePrizeRanks(tickets: List<Lotto>, winning: Lotto, bonus: Int): List<PrizeRank?> {
@@ -80,7 +107,7 @@ fun parseCommaSeparatedNumbers(input: String): List<Int>? = try {
     null
 }
 
-fun displayLottos(lottos: List<Lotto>) {
+fun printLottos(lottos: List<Lotto>) {
     println("You have purchased ${lottos.size} tickets.")
     lottos.forEach { println(it.getNumbers()) }
 }
