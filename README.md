@@ -44,7 +44,7 @@ This feature list is organized in implementation order, following a test-driven 
 
 - [ ] testing
 
-- [ ] **OutputView**
+- [x] **OutputView**
   - Display purchased tickets in required format
   - Display winning statistics in required format
   - Display return rate in required format
