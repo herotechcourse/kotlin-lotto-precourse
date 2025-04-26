@@ -21,7 +21,7 @@ This program simulates a lottery ticket machine where users can purchase tickets
  * Re-prompts on invalid input with [ERROR] message
 4. Bonus Number Input
  * Validates single number (1-45)
- * Validates the number is not in winning numbers
+ * Validates the number is not in last winning numbers
  * Re-prompts on invalid input with [ERROR] message
 5. Prize Calculation
  * Compares each ticket with winning numbers

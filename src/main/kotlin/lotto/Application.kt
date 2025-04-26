@@ -17,9 +17,11 @@ fun main() {
         val tickets = lottoMachine.generateTickets(ticketCount)
         outputHandler.printTickets(tickets)
 
-        // Get Winning numbers
+        // Get last Winning numbers
         val lastWinningNumbers = inputHandler.getWinningNumbers()
         println(lastWinningNumbers)
+        val bonusNumber = inputHandler.getBonusNumber(lastWinningNumbers)
+        println(bonusNumber)
 
 
 

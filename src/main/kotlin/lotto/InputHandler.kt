@@ -37,4 +37,22 @@ class InputHandler {
             }
         }
     }
+
+    fun getBonusNumber(winningNumbers: List<Int>): Int {
+        while(true){
+            try{
+                println("Please enter the bonus number.")
+                val input = Console.readLine().trim()
+                val bonus = input.toInt()
+                require(bonus in 1..45){"Bonus number must be between 1 and 45. "}
+                require(bonus !in winningNumbers){"Bonus number must not be in the last winning numbers"}
+                return bonus
+
+            }catch (e: NumberFormatException){
+                println("[ERROR]Please enter a valid number")
+            } catch (e: IllegalArgumentException){
+                println("[ERROR] ${e.message}")
+            }
+        }
+    }
 }
