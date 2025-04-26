@@ -14,9 +14,9 @@
 
 ### 🎮 Lotto Generation
 
-- [ ] Generate lotto tickets based on amount (1,000 KRW per ticket)
-- [ ] Each ticket contains 6 unique numbers in the range 1–45
-- [ ] Sort numbers in each ticket in ascending order
+- [x] Generate lotto tickets based on amount (1,000 KRW per ticket)
+- [x] Each ticket contains 6 unique numbers in the range 1–45
+- [x] Sort numbers in each ticket in ascending order
 
 ---
 
