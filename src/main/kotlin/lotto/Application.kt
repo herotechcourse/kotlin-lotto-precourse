@@ -12,6 +12,13 @@ fun main() {
         val ticketCount = amount / 1000
         outputHandler.printTicketNumber(ticketCount)
 
+        // Generate tickets
+        val lottoMachine = LottoMachine()
+        val tickets = lottoMachine.generateTickets(ticketCount)
+        outputHandler.printTickets(tickets)
+
+
+
 
     }catch (e: IllegalArgumentException){
         println("[ERROR]${e.message}")
