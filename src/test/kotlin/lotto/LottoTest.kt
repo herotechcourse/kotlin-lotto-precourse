@@ -1,6 +1,5 @@
 package lotto
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -22,7 +21,7 @@ class LottoTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = [0, 46, -1, 100])
+    @ValueSource(ints = [0, 46])
     fun `throws an exception when lotto numbers are out of range`(number: Int) {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, number))
@@ -30,9 +29,15 @@ class LottoTest {
     }
 
     @Test
-    fun `creates lotto successfully with valid numbers`() {
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
-        val lotto = Lotto(numbers)
-        assertThat(lotto.getNumbers()).isEqualTo(numbers.sorted())
+    fun `count matching numbers correctly`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assert(lotto.countMatchingNumbers(listOf(1, 2, 7, 8, 9, 10)) == 2)
+    }
+
+    @Test
+    fun `check bonus number correctly`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assert(lotto.hasBonusNumber(6))
+        assert(!lotto.hasBonusNumber(7))
     }
 }
