@@ -1,7 +1,6 @@
 // OutputView.kt
 package lotto.io
 
-import lotto.domain.LottoTicket
 import lotto.domain.LottoResult
 
 class OutputView(private val io: IOInterface) {
