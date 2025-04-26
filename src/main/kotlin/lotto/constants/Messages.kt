@@ -11,5 +11,6 @@ enum class ErrorMessage(val message: String) {
 
 enum class InputMessage(val message: String) {
     PURCHASE("Please enter the purchase amount."),
-    WINNING_NUMBER("Please enter last week's winning numbers.")
+    WINNING_NUMBER("Please enter last week's winning numbers."),
+    BONUS_NUMBER("Please enter the bonus number.")
 }
