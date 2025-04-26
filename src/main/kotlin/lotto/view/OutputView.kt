@@ -19,7 +19,7 @@ class OutputView {
     fun showResultStatistics (matchs: Map<Int, Int>, roi: Double) {
         println("Winning Statistics")
         println("---")
-        matchs.forEach { prize: Int, cnt: Int -> println("${printWinningCriteria[prize]} - $cnt tickets") }
+        matchs.forEach { prize: Int, cnt: Int -> if (prize != 0) println("${printWinningCriteria[prize]} – $cnt tickets") }
         println("Total return rate is $roi%.")
     }
 
