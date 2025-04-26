@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
-    // TODO: Implement the program
+    val inputView = InputView()
+    val outputView = OutputView()
+    val lottoController = LottoController(inputView, outputView)
+
+    lottoController.run()
 }

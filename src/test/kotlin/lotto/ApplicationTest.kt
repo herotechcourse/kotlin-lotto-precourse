@@ -42,10 +42,43 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test`() {
+    fun `print error message when purchase amount is not numeric`() {
         assertSimpleTest {
             runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThat(output()).contains("$ERROR_MESSAGE Purchase amount must be numeric number")
+        }
+    }
+
+    @Test
+    fun `print error message when purchase amount is negative`() {
+        assertSimpleTest {
+            runException("-1000")
+            assertThat(output()).contains("$ERROR_MESSAGE Purchase amount must be positive number")
+        }
+    }
+
+    @Test
+    fun `print error message when purchase amount is less than ticket cost`() {
+        assertSimpleTest {
+            runException((Lotto.COST - 1).toString())
+            assertThat(output()).contains("$ERROR_MESSAGE Purchase amount must be bigger than 1 ticket cost (${Lotto.COST})")
+        }
+    }
+
+
+    @Test
+    fun `print error message when bonus number is not unique`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains("$ERROR_MESSAGE Bonus Number must be a unique number")
+        }
+    }
+
+    @Test
+    fun `print error message when bonus number is out of bounds`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "46")
+            assertThat(output()).contains("$ERROR_MESSAGE Bonus Number must be in ${Lotto.FIRST_NUM..Lotto.LAST_NUM}")
         }
     }
 
