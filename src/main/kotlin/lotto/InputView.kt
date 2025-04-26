@@ -18,40 +18,35 @@ class InputView {
     }
 
     private fun parsePurchaseAmount() {
-        while (true) {
-            try {
-                println()
-                println("Please enter the purchase amount.")
-                purchaseAmount = InputValidate.validateAmount(Console.readLine())
-                break
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        while (true) try {
+            println()
+            println("Please enter the purchase amount.")
+            purchaseAmount = InputValidate.validateAmount(Console.readLine())
+            break
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
         }
     }
 
     private fun parseWinningNumbers() {
-        while (true) {
-            try {
-                println("Please enter last week's winning numbers.")
-                winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
-                break
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        while (true) try {
+            println()
+            println("Please enter last week's winning numbers.")
+            winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
+            break
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
         }
     }
 
     private fun parseBonusNumber() {
-        while (true) {
-            try {
-                println()
-                println("Please enter the bonus number.")
-                bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumbers)
-                break
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        while (true) try {
+            println()
+            println("Please enter the bonus number.")
+            bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumbers)
+            break
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
         }
     }
 

@@ -1,19 +1,22 @@
 package lotto
 
-fun main() {
-    var inputView = InputView()
-    inputView.initPrintTicket()
-
-    var prize: Int = 0
+fun determinePrizes(tickets: List<List<Int>>, winningNumbers: List<Int>, bonusNumber: Int): MutableList<Prize> {
     var prizeRankList: MutableList<Prize> = mutableListOf()
-
-    // create lotto instance for each ticket, determine the prize rank
-    for (ticket in inputView.getTickets()) {
+    for (ticket in tickets) {
         val lotto = Lotto(ticket)
-        var prizeRank = lotto.findMatches(inputView.getWinningNumbers(), inputView.getBonusNumber())
+        var prizeRank = lotto.findMatches(winningNumbers, bonusNumber)
         prizeRankList.add(prizeRank)
-        prize += prizeRank.prizeMoney
     }
-    Lotto.calculatePrintPrize(prizeRankList, prize, inputView.getPurchaseAmount())
+    return prizeRankList
 }
 
+fun main() {
+    val inputView = InputView().apply { initPrintTicket() }
+    val tickets = inputView.getTickets()
+    val winningNumbers = inputView.getWinningNumbers()
+    val bonusNumber = inputView.getBonusNumber()
+    val purchaseAmount = inputView.getPurchaseAmount()
+    val prizeRankList = determinePrizes(tickets, winningNumbers, bonusNumber)
+    val totalPrize = prizeRankList.sumOf { it.prizeMoney }
+    Lotto.calculatePrintPrize(prizeRankList, totalPrize, purchaseAmount)
+}

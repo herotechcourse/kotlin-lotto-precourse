@@ -10,28 +10,21 @@ class Lotto(private val numbers: List<Int>) {
 
     // find matches and determine the prize rank
     fun findMatches(winningNumbers: List<Int>, bonusNumber: Int): Prize {
-        var sameNumberCount = numbers.intersect(winningNumbers.toSet()).size
-
-        var prizeRank = when (sameNumberCount) {
+        val sameNumberCount = numbers.intersect(winningNumbers.toSet()).size
+        return when (sameNumberCount) {
             6 -> Prize.FirstPrize
-            5 -> Prize.ThirdPrize
+            5 -> if (numbers.contains(bonusNumber)) Prize.SecondPrize else Prize.ThirdPrize
             4 -> Prize.FourthPrize
             3 -> Prize.FifthPrize
             else -> Prize.None
         }
-        if (sameNumberCount == 5 && numbers.contains(bonusNumber))
-            prizeRank = Prize.SecondPrize
-
-        return prizeRank
     }
 
     companion object {
-        fun calculatePrintPrize(prizeRankList: MutableList<Prize>, prize: Int, purchaseAmount: Int) {
+        fun calculatePrintPrize(prizeRankList: List<Prize>, prize: Int, purchaseAmount: Int) {
             var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
-
             var rawPrizeMap: Map<Prize, Int> = initPrizeMap(prizeRankList)
             val prizeMap = rawPrizeMap.filterKeys { it != Prize.None }.toSortedMap()
-
             OutputView.printPrize(rate, prizeMap)
         }
 
@@ -45,7 +38,6 @@ class Lotto(private val numbers: List<Int>) {
         fun generateTickets(purchaseAmount: Int): List<List<Int>> {
             var numberOfTickets = purchaseAmount / 1000
             val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
-
             for (i in 0 until numberOfTickets) {
                 val singleTicket = generateSingleTicket()
                 rawTickets.add(singleTicket)
