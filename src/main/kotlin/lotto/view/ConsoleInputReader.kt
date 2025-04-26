@@ -1,8 +1,6 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.PurchaseAmount
-import lotto.domain.WinningNumbers
 
 class ConsoleInputReader: InputReader {
     override fun readPurchaseAmount(): PurchaseAmount {
