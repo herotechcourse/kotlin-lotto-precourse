@@ -12,4 +12,11 @@ class InputParserTest {
             parser.parsePurchaseAmount("1000j")
         }
     }
+
+    @Test
+    fun `throws an exception when purchase amount is not positive`() {
+        assertThrows<IllegalArgumentException> {
+            parser.parsePurchaseAmount("-1000")
+        }
+    }
 }
