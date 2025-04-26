@@ -11,8 +11,10 @@ class LottoNumberMakerTest {
         assertThat(lottoNumber)
             .hasSize(6)
             .doesNotHaveDuplicates()
-            .allSatisfy { number -> assertThat(number)
-            .isBetween(1, 45) }
+            .allSatisfy { number ->
+                assertThat(number)
+                    .isBetween(1, 45)
+            }
     }
 
     @Test

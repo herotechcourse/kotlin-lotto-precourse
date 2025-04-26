@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class MatchCalculatorTest {
-
     @BeforeEach
     fun resetMatch() {
         MATCH.THREE = 0
@@ -17,9 +16,12 @@ class MatchCalculatorTest {
 
     @Test
     fun `should calculate match counts correctly`() {
-        val lottoNumber = listOf(
-            listOf(1, 2, 3, 4, 5, 6), listOf(3, 5, 6, 16, 32, 38), listOf(7, 11, 16, 35, 36, 44)
-        )
+        val lottoNumber =
+            listOf(
+                listOf(1, 2, 3, 4, 5, 6),
+                listOf(3, 5, 6, 16, 32, 38),
+                listOf(7, 11, 16, 35, 36, 44),
+            )
         val winningNumbers = listOf("1", "2", "3", "4", "5", "6")
         val bonusNumber = "7"
 

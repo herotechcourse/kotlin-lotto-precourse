@@ -10,21 +10,12 @@ object PurchaseAmountValidator {
     private const val NOT_NUMBER_TYPE = "$ERROR_PREFIX Amount must be a number. $PROMPT_AGAIN"
 
     fun validate(purchaseAmount: String) {
-
-        if (purchaseAmount.isBlank()) {
-            throw IllegalArgumentException(EMPTY_INPUT)
-        }
+        if (purchaseAmount.isBlank()) throw IllegalArgumentException(EMPTY_INPUT)
 
         if (!(purchaseAmount.matches("\\d+".toRegex()))) throw IllegalArgumentException(NOT_NUMBER_TYPE)
 
-        if ((purchaseAmount.toInt() < 1000)) {
-            throw IllegalArgumentException(AMOUNT_BELOW_MINIMUM)
-        }
+        if ((purchaseAmount.toInt() < 1000)) throw IllegalArgumentException(AMOUNT_BELOW_MINIMUM)
 
-        if ((purchaseAmount.toInt() % 1000) != 0) {
-            throw IllegalArgumentException(NOT_DIVISIBLE_BY_UNIT)
-        }
-
-
+        if ((purchaseAmount.toInt() % 1000) != 0) throw IllegalArgumentException(NOT_DIVISIBLE_BY_UNIT)
     }
 }

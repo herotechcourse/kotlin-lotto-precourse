@@ -4,7 +4,7 @@ import lotto.model.MATCH
 
 object OutputView {
     fun printTicketCount(ticketCount: Int) {
-        println("")
+        println()
         println("You have purchased $ticketCount tickets.")
     }
 

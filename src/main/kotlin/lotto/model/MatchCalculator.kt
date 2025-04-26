@@ -15,21 +15,21 @@ const val FOURTH_PRIZE = 50000
 const val FIFTH_PRIZE = 5000
 
 object MatchCalculator {
-
-    fun run(lottoNumber: List<List<Int>>, winningNumbers: List<String>, bonusNumber: String): Int {
+    fun run(
+        lottoNumber: List<List<Int>>,
+        winningNumbers: List<String>,
+        bonusNumber: String,
+    ): Int {
         matchOneToSixCount(lottoNumber, winningNumbers)
         mathFiveAndBonusNumberCount(lottoNumber, winningNumbers, bonusNumber)
-
-//        println(MATCH.SIX)
-//        println(MATCH.FIVE_AND_BONUS)
-//        println(MATCH.FIVE)
-//        println(MATCH.FOUR)
-//        println(MATCH.THREE)
 
         return calculateWinningAmount()
     }
 
-    private fun matchOneToSixCount(lottoNumber: List<List<Int>>, winningNumbers: List<String>) {
+    private fun matchOneToSixCount(
+        lottoNumber: List<List<Int>>,
+        winningNumbers: List<String>,
+    ) {
         for (lottoNumberOneLine in lottoNumber) {
             val winningNumbers = winningNumbers.map { it -> it.toInt() }
             val intersectionNumber = lottoNumberOneLine.intersect(winningNumbers)
@@ -40,7 +40,9 @@ object MatchCalculator {
     }
 
     private fun mathFiveAndBonusNumberCount(
-        lottoNumber: List<List<Int>>, winningNumbers: List<String>, bonusNumber: String
+        lottoNumber: List<List<Int>>,
+        winningNumbers: List<String>,
+        bonusNumber: String,
     ) {
         for (lottoNumberOneLine in lottoNumber) {
             val winningNumbers = winningNumbers.map { it -> it.toInt() }
@@ -57,9 +59,13 @@ object MatchCalculator {
         }
     }
 
-    fun calculateWinningAmount() : Int{
+    fun calculateWinningAmount(): Int {
         val winningAmount =
-            (MATCH.SIX * FIRST_PRIZE) + (MATCH.FIVE_AND_BONUS * SECOND_PRIZE) + (MATCH.FIVE * THIRD_PRIZE) + (MATCH.FOUR * FOURTH_PRIZE) + (MATCH.THREE * FIFTH_PRIZE)
+            (MATCH.SIX * FIRST_PRIZE) +
+            (MATCH.FIVE_AND_BONUS * SECOND_PRIZE) +
+            (MATCH.FIVE * THIRD_PRIZE) +
+            (MATCH.FOUR * FOURTH_PRIZE) +
+            (MATCH.THREE * FIFTH_PRIZE)
 
         return winningAmount
     }

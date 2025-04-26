@@ -4,7 +4,6 @@ import lotto.validation.BonusNumberValidator
 import lotto.view.InputView
 
 object BonusNumberHandler {
-
     fun readValidatedBonusNumber(winningNumbers: List<String>): String {
         while (true) {
             val bonusNumber = InputView.readBonusNumber()

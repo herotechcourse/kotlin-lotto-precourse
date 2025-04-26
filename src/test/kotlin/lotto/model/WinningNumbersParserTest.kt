@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class WinningNumbersParserTest {
-
     @Test
     fun `should parse comma-separated string into list of string`() {
         val input = "1,2,3,4,5,6"

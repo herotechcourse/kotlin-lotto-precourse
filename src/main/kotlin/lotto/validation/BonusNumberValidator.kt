@@ -1,7 +1,6 @@
 package lotto.validation
 
 object BonusNumberValidator {
-
     private const val ERROR_PREFIX: String = "[ERROR]"
     private const val PROMPT_AGAIN: String = "Please enter it again"
 
@@ -20,7 +19,10 @@ object BonusNumberValidator {
         if (bonusNumber.toInt() !in 1..45) throw IllegalArgumentException(INVALID_RANGE)
     }
 
-    fun validateDuplicateWithWinningNumbers(bonusNumber: String, winningNumbers: List<String>) {
+    fun validateDuplicateWithWinningNumbers(
+        bonusNumber: String,
+        winningNumbers: List<String>,
+    ) {
         if ((winningNumbers.find { it == bonusNumber }) != null) {
             throw IllegalArgumentException(NOT_CONSIST_IF_WINNING_NUMBERS)
         }
