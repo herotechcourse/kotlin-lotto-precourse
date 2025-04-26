@@ -50,7 +50,9 @@ object InputValidate {
         if (tickets.isEmpty())
             throw IllegalArgumentException("[ERROR] Tickets are empty")
 
-        return tickets
+        val safeTickets = tickets.map { it.toList() }
+
+        return safeTickets
     }
 
 }
