@@ -25,7 +25,7 @@ This program simulates a lottery ticket machine's process:
 - Compare each lotto ticket against the winning numbers, and check the bonus number if there are 5 matches to determine the correct rank.
 - Calculate and display the number of tickets for each prize rank, the total prize money, and the return rate.
 - Validate all inputs and handle invalid input by throwing and catching IllegalArgumentException.
-- Follow Kotlin coding conventions (max 2 indentation levels, max 15-line functions)
+- Follow Kotlin coding conventions (max 2 indentation levels, max 10 lines functions)
 - Implement unit tests with JUnit 5 and AssertJ
 
 ---
