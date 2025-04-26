@@ -15,14 +15,17 @@ This program simulates a lottery ticket machine's process:
 
 ## Features To Implement
 
-- [ ] InputView: input purchase amount (must be divisible by 1,000) until input amount is valid
-- [ ] InputView: generate lotto tickets (each with 6 unique random numbers between 1 and 45)
-- [ ] OutputView: display all purchased tickets
-- [ ] InputView: input winning numbers (6 unique numbers between 1 and 45) until input is valid
-- [ ] InputView: input bonus number (must be between 1 and 45, and not a duplicate from winning number) until input is valid
-- [ ] Lotto: compare all tickets to winning numbers and determine ranks
-- [ ] OutputView: calculate total prize money and profit rate , display prize rank details and profit statistics
-- [ ] InputValidate: validate all inputs (throw and handle `IllegalArgumentException` on invalid input)
+- [ ] Allow the user to input a purchase amount, and keep prompting until the input is valid.
+- [ ] Validate that the purchase amount must be an integer, greater than 0, and divisible by 1,000.
+- [ ] Generate lotto tickets, each containing 6 unique random numbers between 1 and 45.
+- [ ] Display all purchased tickets to user.
+- [ ] Allow the user to input the winning numbers, and keep prompting until the input is valid.
+- [ ] Validate that the winning numbers must be 6 unique integers between 1 and 45.
+- [ ] Allow the user to input the bonus number, and keep prompting until the input is valid.
+- [ ] Validate that the bonus number must be a positive integer between 1 and 45, and not duplicate a winning number.
+- [ ] Compare each lotto ticket against the winning numbers, and check the bonus number if there are 5 matches to determine the correct rank.
+- [ ] Calculate and display the number of tickets for each prize rank, the total prize money, and the return rate.
+- [ ] Validate all inputs and handle invalid input by throwing and catching IllegalArgumentException.
 - [ ] Follow Kotlin coding conventions (max 2 indentation levels, max 15-line functions)
 - [ ] Implement unit tests with JUnit 5 and AssertJ
 
