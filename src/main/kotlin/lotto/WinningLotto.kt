@@ -11,4 +11,13 @@ class WinningLotto (
         require(bonusNumber in 1..45) { "[ERROR] Lotto numbers must be between 1 and 45." }
         require(winningNumbers.none { it == bonusNumber }) { "[ERROR] Lotto numbers must be unique." }
     }
+
+    fun match (purchaseLotto: Lotto) : Int {
+        val numbers : List<Int> = purchaseLotto.getNumbers()
+        return winningNumbers.intersect(numbers.toSet()).size
+    }
+
+    fun matchBonus (purchaseLotto: Lotto) : Boolean {
+        return bonusNumber in purchaseLotto.getNumbers()
+    }
 }
