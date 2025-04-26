@@ -13,7 +13,3 @@
 - Display issued tickets in ascending order
 - Determine prize rank for each ticket
 - Calculate and display total profit rate (rounded to one decimal place)
-### 4. Output & Error Handling
-- Print all output in specified format
-- Handle invalid input with specific exceptions
-- Re-prompt user on invalid input with `[ERROR]` message prefix
