@@ -10,4 +10,10 @@ class InputValidatorTest {
     fun `throw when input is not a number`(input: String) {
         Assertions.assertThatIllegalArgumentException().isThrownBy { InputValidator.validatePurchaseAmount(input) }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["  ", ""])
+    fun `throw when input is blank`(input: String) {
+        Assertions.assertThatIllegalArgumentException().isThrownBy { InputValidator.validateBlank(input) }
+    }
 }
