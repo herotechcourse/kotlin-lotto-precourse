@@ -40,9 +40,9 @@
     - [x] Can input blank between Comma and data.
 - [x] Prompt the user to enter a bonus number.
     - [x] Validate that the input is numeric.
-- [ ] If any input is invalid:
-    - [ ] Display an appropriate error message that starts with `ERROR`
-    - [ ] Re-prompt from the same step.
+- [x] If any input is invalid:
+    - [x] Display an appropriate error message that starts with `ERROR`
+    - [x] Re-prompt from the same step.
 
 ---
 

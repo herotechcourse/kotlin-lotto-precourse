@@ -6,22 +6,35 @@ import lotto.view.OutputView
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
-    val purchaseAmount = inputView.getPurchaseAmount()
-    val budget = Budget(purchaseAmount)
-
+    val budget = retry {
+        val purchaseAmount = inputView.getPurchaseAmount()
+        Budget(purchaseAmount)
+    }
     val lotteryMachine = LotteryMachine(budget, RandomNumbersStrategy())
 
     val tickets = lotteryMachine.generateTickets()
     outputView.printLottoTickets(tickets)
 
-    val numbers = inputView.getWinningNumbers()
-    val winningNumbers = Lotto(numbers)
+    val winningNumbers = retry {
+        val numbers = inputView.getWinningNumbers()
+        Lotto(numbers)
+    }
 
-    val bonusNumber = inputView.getBonusNumber()
-    val winningLotto = WinningLotto(winningNumbers, bonusNumber)
-
+    val winningLotto = retry {
+        val bonusNumber = inputView.getBonusNumber()
+        WinningLotto(winningNumbers, bonusNumber)
+    }
 
     val lottoRanks = winningLotto.match(tickets)
-
     outputView.printWinningStatistics(WinningResult(lottoRanks, budget))
+}
+
+private fun <T> retry(function: () -> T): T {
+    while (true) {
+        try {
+            return function()
+        } catch (exception: IllegalArgumentException) {
+            print("[ERROR] ${exception.message}")
+        }
+    }
 }
