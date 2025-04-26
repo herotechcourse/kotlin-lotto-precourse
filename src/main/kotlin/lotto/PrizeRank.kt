@@ -10,7 +10,7 @@ enum class PrizeRank(val matchingCount: Int, val prizeAmount: Int) {
     FIFTH(3, 5_000);
 
     companion object {
-        fun of(matchingCount: Int, hasBonusNumber: Boolean): PrizeRank {
+        fun findBy(matchingCount: Int, hasBonusNumber: Boolean): PrizeRank {
             if (matchingCount == SECOND.matchingCount) {
                 return judgeIfMatchingCountIsSame(hasBonusNumber)
             }
