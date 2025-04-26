@@ -47,4 +47,11 @@ class ValidationTest {
             Input.isEachInteger(listOf("1", "2", "a"))
         }
     }
+
+    @Test
+    fun `bonus number must not be duplicated with the winning numbers`() {
+        assertThrows<IllegalArgumentException> {
+            Input.bonusNumberDuplication(6, listOf(1, 2, 3, 4, 5, 6))
+        }
+    }
 }
