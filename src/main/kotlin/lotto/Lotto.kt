@@ -11,4 +11,9 @@ class Lotto(private val numbers: List<Int>) {
     fun getTicketNumbers(): List<Int> {
         return numbers
     }
+
+    fun getMatchingNumbers(winningNumbers: List<Int>): Int {
+        return numbers.count{ it in winningNumbers}
+    }
+
 }
