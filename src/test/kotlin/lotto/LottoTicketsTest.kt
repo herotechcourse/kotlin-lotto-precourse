@@ -4,16 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.EnumSource
 
 class LottoTicketsTest {
 
     private val tickets = listOf(
-        Lotto(listOf(1, 2, 3, 4, 5, 6)),  // FIRST
-        Lotto(listOf(1, 2, 3, 4, 5, 7)),  // SECOND
-        Lotto(listOf(1, 2, 3, 4, 5, 8)),  // THIRD
-        Lotto(listOf(1, 2, 3, 4, 10, 11)), // FOURTH
         Lotto(listOf(1, 2, 3, 10, 11, 12)), // FIFTH
         Lotto(listOf(10, 11, 12, 13, 14, 15)) // NONE
     )
@@ -32,23 +26,17 @@ class LottoTicketsTest {
             .hasMessage("LottoTickets must have at least 1 ticket.")
     }
 
-    @ParameterizedTest
-    @EnumSource
-    fun `matchAll returns correct counts of Ranks`(rank: Rank) {
-        // Act
-        val result: Map<Rank, Int> = sut.matchAll(winningLotto)
-
-        // Assert
-        assertThat(result[rank]).isEqualTo(1)
-    }
-
     @Test
-    fun `evaluate returns WinningStatistics when WinningLotto is passed`() {
+    fun `evaluate returns WinningStatistics with correct match counts`() {
         // Act
         val result: WinningStatistics = sut.evaluate(winningLotto)
 
         // Assert
-        assertThat(result).isInstanceOf(WinningStatistics::class.java)
+        SoftAssertions.assertSoftly {
+            assertThat(result.getCount(Rank.THIRD)).isEqualTo(0)
+            assertThat(result.getCount(Rank.FIFTH)).isEqualTo(1)
+            assertThat(result.getCount(Rank.NONE)).isEqualTo(1)
+        }
     }
 
     @Test

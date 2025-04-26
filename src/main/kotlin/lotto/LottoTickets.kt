@@ -10,7 +10,7 @@ class LottoTickets(private val tickets: List<Lotto>) {
 
     fun getTickets(): List<Lotto> = tickets.toList()
 
-    fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> = tickets
+    private fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> = tickets
         .map { winningLotto.match(it) }
         .groupingBy { it }
         .eachCount()
