@@ -10,7 +10,7 @@ class InputView {
     private var winningNumber: List<Int> = listOf()
     private var bonusNumber: Int = 0
 
-    fun initPrintTicket(){
+    fun initPrintTicket() {
         parsePurchaseAmount()
         tickets = generateTickets(purchaseAmount)
         OutputView.printTickets(tickets, ticketNumber)
@@ -19,26 +19,50 @@ class InputView {
     }
 
     private fun parsePurchaseAmount() {
-        println()
-        println("Please enter the purchase amount.")
-        val input = Console.readLine()
-        purchaseAmount = InputValidate.validateAmount(input)
+        var input: String? = null
+        while (true) {
+            try {
+                println()
+                println("Please enter the purchase amount.")
+                input = Console.readLine()
+                purchaseAmount = InputValidate.validateAmount(input)
+                break
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun parseWinningNumber() {
-        println("Please enter last week's winning numbers.")
-        val input = Console.readLine()
-        winningNumber = InputValidate.validateWinningNumber(input)
+        var input: String? = null
+        while (true) {
+            try {
+                println("Please enter last week's winning numbers.")
+                input = Console.readLine()
+                winningNumber = InputValidate.validateWinningNumber(input)
+                break
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
-    private fun parseBonusNumber(){
-        println()
-        println("Please enter the bonus number.")
-        val input = Console.readLine()
-        bonusNumber = InputValidate.validateBonusNumber(input, winningNumber)
+    private fun parseBonusNumber() {
+        var input: String? = null
+        while (true) {
+            try {
+                println()
+                println("Please enter the bonus number.")
+                input = Console.readLine()
+                bonusNumber = InputValidate.validateBonusNumber(input, winningNumber)
+                break
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
-    private fun generateTickets(purchaseAmount: Int): List<List<Int>>{
+    private fun generateTickets(purchaseAmount: Int): List<List<Int>> {
         ticketNumber = purchaseAmount / 1000
         var rawTickets: MutableList<MutableList<Int>> = mutableListOf()
 
@@ -53,9 +77,9 @@ class InputView {
 
     fun getWinningNumber(): List<Int> = winningNumber
 
-    fun getBonusNumber (): Int = bonusNumber
+    fun getBonusNumber(): Int = bonusNumber
 
-    fun getPurchaseAmount (): Int = purchaseAmount
+    fun getPurchaseAmount(): Int = purchaseAmount
 
     fun getTickets(): List<List<Int>> = tickets
 

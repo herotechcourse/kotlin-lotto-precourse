@@ -2,9 +2,9 @@ package lotto
 
 object InputValidate {
 
-    fun validateAmount(input: String): Int {
+    fun validateAmount(input: String?): Int {
         val amount = try {
-            input.toInt()
+            input!!.toInt()
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Input purchaseAmount must be integer")
         }
@@ -16,9 +16,9 @@ object InputValidate {
         return amount
     }
 
-    fun validateWinningNumber(input: String): List<Int> {
+    fun validateWinningNumber(input: String?): List<Int> {
 
-        val inputList: List<String> = input.split(",")
+        val inputList: List<String> = input!!.split(",")
             .map { it.trim() }.map { it.replace("\\s+".toRegex(), "") }
 
         val safeIntList: List<Int> = inputList.mapNotNull { it.toIntOrNull()?:
@@ -32,8 +32,8 @@ object InputValidate {
         return safeIntList
     }
 
-    fun validateBonusNumber(input: String, winningNumber: List<Int>): Int {
-        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Bonus number must be integer")
+    fun validateBonusNumber(input: String?, winningNumber: List<Int>): Int {
+        val bonus = input!!.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Bonus number must be integer")
 
         if (bonus !in 1..45)
             throw IllegalArgumentException("[ERROR] Bonus number must between 1 to 45")
