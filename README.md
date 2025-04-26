@@ -21,7 +21,7 @@
 - [x] Show the number of tickets issued and their numbers
     - [x] Sort numbers in ascending order
 - [x] Show the lotto result statistics
-- [] show the profit rate rounded to the nearest tenth
+- [x] show the profit rate rounded to the nearest tenth
 
 ## ▪︎ Domain
 
@@ -31,7 +31,6 @@
     - [x] Compare how many numbers match
 - [x] Calculate profit rate
     - [x] Formula: Total Prize Money / Lottery Purchase Amount
-    - [x] Round to the nearest tenth
 
 ## ▪︎ Exception
 

@@ -15,6 +15,7 @@ Winning Statistics
 "5 Matches (1,500,000 KRW) – %d tickets",
 "5 Matches + Bonus Ball (30,000,000 KRW) – %d tickets",
 "6 Matches (2,000,000,000 KRW) – %d tickets
+Total return rate is %,.1f%%.
 """
 
     fun showLottoTickets(lottoTickets: List<Lotto>) {
@@ -24,7 +25,7 @@ Winning Statistics
         }
     }
 
-    fun showWinningStatistics(result: Map<PrizeRank, Int>) {
+    fun showWinningStatistics(result: Map<PrizeRank, Int>, profitRate: Double) {
         println(
             LOTTO_STATISTICS_MESSAGE.format(
                 result[PrizeRank.FIFTH],
@@ -32,6 +33,7 @@ Winning Statistics
                 result[PrizeRank.THIRD],
                 result[PrizeRank.SECOND],
                 result[PrizeRank.FIRST],
+                profitRate
             )
         )
     }
