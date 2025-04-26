@@ -46,5 +46,5 @@ object InputParser {
 
         return bonusNumber
     }
-    
+
 }
