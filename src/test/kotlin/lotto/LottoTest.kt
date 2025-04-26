@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.util.Constants
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -59,14 +60,14 @@ class LottoTest {
     fun `countMatch should return 6 when all numbers match`() {
         val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val lotto2 = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assertThat(6).isEqualTo(lotto1.countMatch(lotto2))
+        assertThat(Constants.LOTTO_NUMBER_COUNT).isEqualTo(lotto1.countMatch(lotto2))
     }
 
     @Test
     fun `countMatch should correctly count matches regardless of the order`() {
         val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val lotto2 = Lotto(listOf(6, 5, 4, 3, 2, 1))
-        assertThat(6).isEqualTo(lotto1.countMatch(lotto2))
+        assertThat(Constants.LOTTO_NUMBER_COUNT).isEqualTo(lotto1.countMatch(lotto2))
     }
 
     @Test

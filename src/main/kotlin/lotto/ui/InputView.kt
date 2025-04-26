@@ -62,8 +62,8 @@ class InputView {
         }
 
         private fun validateBonusNumber(number: Int, winningNumbers: List<Int>) {
-            if (number !in 1..45) {
-                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Bonus number must be between 1 and 45.")
+            if (number !in Constants.MIN_LOTTO_NUMBER..Constants.MAX_LOTTO_NUMBER) {
+                throw IllegalArgumentException("${Constants.ERROR_PREFIX} Bonus number must be between ${Constants.MIN_LOTTO_NUMBER} and ${Constants.MAX_LOTTO_NUMBER}.")
             }
             if (number in winningNumbers) {
                 throw IllegalArgumentException("${Constants.ERROR_PREFIX} Bonus number must not be a duplicate of the winning numbers.")
