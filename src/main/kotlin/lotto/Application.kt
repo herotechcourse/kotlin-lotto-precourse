@@ -8,5 +8,7 @@ fun main() {
     var amount = InputView.getAmount()
     val purchase = Purchase.make(amount)
     purchase.displayPurchase()
+    InputView.getWinningNumbers()
+    InputView.getBonusNumber()
 
 }
