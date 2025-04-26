@@ -50,11 +50,7 @@ object OutputView {
     }
 
     private fun printCategoryStatistics(categoryName: String, prize: String, count: Int) {
-        var ticketText = "ticket"
-        if (count > 1)
-            ticketText = "tickets"
-
-        println("$categoryName ($prize KRW) - $count $ticketText")
+        println("$categoryName ($prize KRW) – $count tickets")
     }
 
     private fun printReturnRate(returnRate: Double) {
