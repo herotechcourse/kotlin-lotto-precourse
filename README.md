@@ -26,10 +26,16 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 ### Input
 
-- [ ] read input and validate
-    - [ ] purchase amount
+- [x] read input and validate
+    - [x] purchase amount
+        - [x] read
+        - [x] validate
     - [ ] winning numbers
+        - [x] read
+        - [x] validate
     - [ ] bonus number
+        - [x] read
+        - [x] validate
 
 ### Output
 
