@@ -17,4 +17,8 @@ class Lotto(private val numbers: List<Int>) {
         return winningLotto.evaluateLotto(this.numbers)
     }
 
+    override fun toString(): String {
+        return numbers.toString()
+    }
+
 }
