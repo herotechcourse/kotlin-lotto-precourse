@@ -1,0 +1,24 @@
+package lotto.domain
+
+import lotto.Lotto
+
+/**
+ * Represents the winning lottery numbers, including the bonus number.
+ *
+ * @property winningNumbers A list of 6 unique winning numbers.
+ * @property bonusNumber A unique bonus number not included in the winning numbers.
+ */
+
+class WinningLotto (private val winningNumbers: List<Int>, private val bonusNumber: Int){
+    init {
+        require(winningNumbers.size == 6) { "[ERROR] Winning numbers must contain 6 numbers." }
+        require(winningNumbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
+        require(bonusNumber !in winningNumbers) { "[ERROR] Bonus number must not duplicate winning numbers." }
+    }
+
+    fun getRank(ticket: Lotto): Rank {
+        val matchCount = ticket.matchCount(winningNumbers)
+        val hasBonus = ticket.contains(bonusNumber)
+        return Rank.of(matchCount, hasBonus)
+    }
+}
