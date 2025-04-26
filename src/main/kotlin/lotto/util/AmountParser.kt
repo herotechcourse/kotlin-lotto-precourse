@@ -26,6 +26,6 @@ class AmountParser {
 
     private fun validateAmount(amount: Int) {
         if (amount <= 0) throw IllegalArgumentException("[ERROR] Purchase amount must be greater than zero.")
-        if (amount % 1000 != 0) throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by ${LotteryConstants.TICKET_PRIZE}.")
+        if (amount % LotteryConstants.TICKET_PRIZE != 0) throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by ${LotteryConstants.TICKET_PRIZE}.")
     }
 }
