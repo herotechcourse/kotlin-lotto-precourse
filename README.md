@@ -11,11 +11,11 @@
     - [x] The numbers must be in the range 1 to 45 (inclusive).
 - [x] Generate multiple lottery tickets based on the user's purchase amount.
     - [ ] There are no two different tickets with the same six numbers.
-- [ ] Accept 6 winning numbers from the user.
-    - [ ] The numbers must be unique.
-    - [ ] The numbers must be in the range 1 to 45 (inclusive).
-- [ ] Accept 1 bonus number from the user.
-    - [ ] The bonus number must be different from the winning numbers.
+- [x] Accept 6 winning numbers from the user.
+    - [x] The numbers must be unique.
+    - [x] The numbers must be in the range 1 to 45 (inclusive).
+- [x] Accept 1 bonus number from the user.
+    - [x] The bonus number must be different from the winning numbers.
 - [ ] Compare each ticket with the winning numbers and bonus number.
 - [ ] Determine the prize rank based on the number of matches and the bonus number.
     ```

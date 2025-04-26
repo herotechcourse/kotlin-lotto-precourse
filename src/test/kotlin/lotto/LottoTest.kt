@@ -1,5 +1,7 @@
 package lotto
 
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -26,5 +28,13 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, value))
         }
+    }
+
+    @Test
+    fun `can be determined if a specific number is included`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        assertTrue(lotto.contains(1))
+        assertFalse(lotto.contains(7))
     }
 }
