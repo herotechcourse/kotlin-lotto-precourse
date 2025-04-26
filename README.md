@@ -8,34 +8,25 @@ This feature list is organized in implementation order, following a test-driven 
 
 ### 1. Domain Models
 
-- [ ] **Lotto (Core Model)**
+- [x] **Lotto (Core Model)**
   - Validate that lottery numbers are exactly 6 unique numbers
   - Validate that all numbers are between 1 and 45
   - Provide functionality to compare with winning numbers
   - Unit tests for validation and comparison logic
 
-- [ ] **Rank (Enum)**
+- [x] **Rank (Enum)**
   - Define prize ranks (1st through 5th) with associated conditions and prize amounts
   - Implement method to determine rank based on match count and bonus match
   - Unit tests for each rank determination scenario
 
-- [ ] **WinningNumbers**
-  - Store 6 winning numbers and 1 bonus number
-  - Validate input numbers meet requirements
-  - Provide method to calculate match results
-  - Unit tests for validation and matching logic
-
 ### 2. Service Layer
 
-- [ ] **LottoGenerator**
+- [ ] **LottoService**
   - Generate random lotto tickets based on purchase amount
-  - Calculate how many tickets can be purchased with given amount
-  - Unit tests with mocked random generator for predictable results
-
-- [ ] **LottoStatistics**
   - Calculate match statistics across multiple tickets
-  - Calculate total prize money and return rate
-  - Unit tests for different winning scenarios
+  - Determine ranks and calculate win statistics
+  - Coordinate business logic operations
+  - Unit tests for ticket generation and rank determination
 
 ### 3. UI Layer
 
@@ -52,14 +43,13 @@ This feature list is organized in implementation order, following a test-driven 
 
 ### 4. Application Layer
 
-- [ ] **LottoService**
-  - Coordinate between UI and domain layers
+- [ ] **LottoApplication**
+  - Coordinate between UI and service layers
   - Manage overall program flow
-  - Integration tests for full program flow
+  - Error handling for application-level exceptions
 
 - [ ] **Application**
   - Main program entry point
-  - Error handling for unexpected exceptions
  
 ## Design Principles
 
@@ -68,3 +58,30 @@ This feature list is organized in implementation order, following a test-driven 
 - Clear naming conventions: Names that reveal intent without abbreviations
 - Clean code formatting: Follow Kotlin coding conventions
 - Minimal comments: Express intent through code, not comments
+
+## File Structure
+```
+src
+├── main
+│   └── kotlin
+│       └── lotto
+│           ├── Application.kt
+│           ├── LottoApplication.kt
+│           ├── Lotto.kt
+│           ├── Rank.kt              
+│           ├── LottoService.kt      
+│           ├── InputView.kt         
+│           └── OutputView.kt        
+└── test
+    └── kotlin
+        └── lotto
+            ├── LottoTest.kt
+            ├── RankTest.kt          
+            └── LottoServiceTest.kt   
+```
+## REASON FOR DESISIONS?
+I decided to merge the LottoGenerator and LottoStatistics into just a single LottoService for simplicity. Having too many classes felt like overengineering for such a straightforward application. The service handles both ticket generation and statistics calculation, which made the data flow more direct and the code easier to follow.
+
+As for the bonus number, I chose not to include it in the Lotto class since it's really a separate concept from the main 6 numbers. The bonus only matters when comparing winning numbers, and it felt cleaner to handle it separately during that specific process rather than forcing it into the Lotto model where it doesn't really belong. This keeps the Lotto class focused on just representing a valid lottery ticket.
+
+Overall, I went with a simpler approach that still satisfies all the requirements without unnecessary complexity.
