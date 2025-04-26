@@ -2,6 +2,7 @@ package lotto.view
 
 import lotto.Lotto
 import lotto.domain.Rank
+import java.util.Locale
 import kotlin.math.round
 
 object OutputView {
@@ -48,6 +49,6 @@ object OutputView {
     }
 
     private fun formatReturnRate(rate: Double): String {
-        return (round(rate * 10) / 10).toString()
+        return String.format(Locale.US, "%.1f", round(rate * 10) / 10)
     }
 }
