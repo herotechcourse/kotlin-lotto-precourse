@@ -42,20 +42,20 @@ This feature list is organized in implementation order, following a test-driven 
   - Get bonus number from user with validation
   - Error handling with appropriate messages
 
-- [ ] testing
+- [x] testing
 
 - [x] **OutputView**
   - Display purchased tickets in required format
   - Display winning statistics in required format
   - Display return rate in required format
 
-- [ ] testing
+- [x] testing
 - 
 ### 4. Application Layer
 
 - [x] **Application**
   - Main program entry point
-- [ ] testing
+- [x] testing
  
 ## Design Principles
 
