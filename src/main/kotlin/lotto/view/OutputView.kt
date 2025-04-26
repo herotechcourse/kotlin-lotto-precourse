@@ -14,7 +14,7 @@ class OutputView {
     }
 
     fun displayWinningStatistics(results: LottoResults) {
-        println("\nWiWinning Statistics")
+        println("\nWinning Statistics")
         println("---")
         println("${PrizeRank.FIFTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FIFTH.prize)} KRW) - ${results.getCount(PrizeRank.FIFTH)} tickets")
         println("${PrizeRank.FOURTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FOURTH.prize)} KRW) - ${results.getCount(PrizeRank.FOURTH)} tickets")
