@@ -8,8 +8,8 @@ data class TicketResults(
 
 class TicketChecker() {
 
-    fun getPrize(lotto: Lotto, bonusNumber: Int, matchedNumbersQuantity: Int): Prize {
-        val hasBonusNumber = bonusNumber in lotto.numbers
+    fun getPrize(winningNumbers: List<Int>, bonusNumber: Int, matchedNumbersQuantity: Int): Prize {
+        val hasBonusNumber = bonusNumber in winningNumbers
 
         val prize = when (matchedNumbersQuantity) {
             3 -> Prize.FIFTH
@@ -24,19 +24,18 @@ class TicketChecker() {
 
     fun checkTicket(lotto: Lotto, winningNumbers: List<Int>, bonusNumber: Int): TicketResults {
         val matchedNumbers = lotto.numbers.count { it in winningNumbers }
-        val hasBonusNumber = bonusNumber in lotto.numbers
+        val hasBonusNumber = bonusNumber in winningNumbers
 
-        val resultPrize = getPrize(lotto, bonusNumber, matchedNumbers)
+        val resultPrize = getPrize(winningNumbers, bonusNumber, matchedNumbers)
         val oneTicketResult = TicketResults(matchedNumbers, hasBonusNumber, resultPrize)
 
         return oneTicketResult
     }
 
-    fun checkMultipleTickets(lottoList: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): List<Prize> {
-        val prizesList = lottoList.mapNotNull { lotto ->
-            checkTicket(lotto, winningNumbers, bonusNumber).prize.takeIf { it != Prize.NO_PRIZE }
-        }
+    fun calculateTicketsResults(lottoList: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): List<TicketResults> {
+        val allResults = lottoList.map { lotto -> checkTicket(lotto, winningNumbers, bonusNumber) }
+        val winningResults: List<TicketResults> = allResults.filter { it.prize != Prize.NO_PRIZE }
 
-        return prizesList
+        return winningResults
     }
 }
