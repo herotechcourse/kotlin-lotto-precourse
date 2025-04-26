@@ -1,4 +1,4 @@
-import lotto.view.*
+import lotto.view.InputView
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -29,7 +29,7 @@ class InputViewTest {
             run("abc\n")
             assertThatThrownBy {InputView.getPurchaseAmount()}
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageContaining("[ERROR] Invalid input: 'abc' is not a positive number")
+                .hasMessageContaining("[ERROR] Invalid input: 'abc'. Please enter a positive number without any letters or symbols.")
         }
 
         @Test
@@ -38,7 +38,7 @@ class InputViewTest {
             run("\n")
             assertThatThrownBy {InputView.getPurchaseAmount()}
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessageContaining("[ERROR] Invalid input: '' is not a positive number")
+                .hasMessageContaining("[ERROR] Invalid input: ''. Please enter a positive number without any letters or symbols.")
         }
     }
 }
