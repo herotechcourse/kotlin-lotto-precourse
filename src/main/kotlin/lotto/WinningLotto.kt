@@ -4,7 +4,7 @@ import lotto.util.LottoConstants.COUNT
 import lotto.util.LottoConstants.END_INCLUSIVE
 import lotto.util.LottoConstants.START_INCLUSIVE
 
-class WinningLotto(private val numbers: List<Int>, private val bonusNumber: Int) {
+class WinningLotto(private val numbers: List<Int>, private val bonusNumber: Int): LottoEvaluator {
     init {
         require(numbers.size == COUNT) { "[ERROR] WinningLotto must contain exactly 6 numbers." }
         require(numbers.size == numbers.distinct().size) { "[ERROR] WinningLotto numbers must be unique." }
@@ -15,7 +15,7 @@ class WinningLotto(private val numbers: List<Int>, private val bonusNumber: Int)
         require(bonusNumber !in numbers) { "[ERROR] Bonus number must not be in the winning numbers." }
     }
 
-    fun evaluateLotto(lottoNumbers: List<Int>): LottoResultType {
+    override fun evaluateLotto(lottoNumbers: List<Int>): LottoResultType {
         var matchCount = 0
         for (number in lottoNumbers) {
             if (number in numbers) {
