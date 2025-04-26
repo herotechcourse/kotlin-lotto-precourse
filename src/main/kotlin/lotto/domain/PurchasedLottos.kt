@@ -8,7 +8,7 @@ class PurchasedLottos(private val tickets: List<Lotto>) {
     }
 
     fun getAllTickets(): List<Lotto> {
-        return tickets
+        return tickets.toList()
     }
 
     fun calculateWinningStats(winningLotto: Lotto, bonusNumber: Int):WinningStats {
