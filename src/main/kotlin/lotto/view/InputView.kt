@@ -16,4 +16,10 @@ class InputView {
         val input = Console.readLine()
         return parse.parseWinningNumbers(input)
     }
+
+    fun getBonusNumber(): Int {
+        println("\nPlease enter the bonus number.")
+        val input = Console.readLine()
+        return parse.parseBonusNumber(input)
+    }
 }

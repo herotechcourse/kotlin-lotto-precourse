@@ -7,6 +7,9 @@ fun main() {
     val purchaseAmount = inputView.getPurchaseAmount()
     val budget = Budget(purchaseAmount)
 
-    val winningNumbers = inputView.getWinningNumbers()
-    Lotto(winningNumbers)
+    val numbers = inputView.getWinningNumbers()
+    val winningNumbers = Lotto(numbers)
+
+    val bonusNumber = inputView.getBonusNumber()
+    WinningLotto(winningNumbers, bonusNumber)
 }

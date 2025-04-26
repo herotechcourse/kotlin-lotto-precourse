@@ -38,7 +38,7 @@
     - [x] Validate that the input is numeric.
     - [x] Enter the Comma-Separated input
     - [x] Can input blank between Comma and data.
-- [ ] Prompt the user to enter a bonus number.
+- [x] Prompt the user to enter a bonus number.
     - [x] Validate that the input is numeric.
 - [ ] If any input is invalid:
     - [ ] Display an appropriate error message that starts with `ERROR`
