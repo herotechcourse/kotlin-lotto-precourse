@@ -17,12 +17,11 @@ class OutputView {
         println("---")
         
         // Print each rank in order (except NONE)
-        Rank.values().filter { it != Rank.NONE }.sortedByDescending { it.matchCount }
-            .forEach { rank ->
-                val count = rankCounts.getOrDefault(rank, 0)
-                val prizeFormatted = String.format("%,d", rank.prizeMoney)
-                println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${prizeFormatted} KRW) – ${count} tickets")
-            }
+        listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST).forEach { rank ->
+            val count = rankCounts.getOrDefault(rank, 0)
+            val prizeFormatted = String.format("%,d", rank.prizeMoney)
+            println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${prizeFormatted} KRW) – ${count} tickets")
+        }
         
         // Calculate return rate
         val totalPrize = rankCounts.entries.sumOf { (rank, count) -> rank.prizeMoney * count }
