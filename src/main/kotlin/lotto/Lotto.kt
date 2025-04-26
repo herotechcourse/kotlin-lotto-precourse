@@ -31,4 +31,7 @@ class Lotto(private val numbers: List<Int>) {
         return match(winningNumbers, bonusNumber)
     }
 
+    fun printNumbers() {
+        println(numbers.joinToString(prefix = "[", postfix = "]"))
+    }
 }
