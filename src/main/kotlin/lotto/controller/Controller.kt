@@ -13,7 +13,7 @@ class Controller(
 
     fun run() {
         val lottoTickets: LottoTickets = purchase()
-        outputView.printLottoTickets(lottoTickets.getTickets())
+        outputView.printLottoTickets(lottoTickets.getTickets().map { it.getNumbers() })
 
         val winningStatistics: WinningStatistics = evaluate(lottoTickets)
         outputView.printFinalReport(

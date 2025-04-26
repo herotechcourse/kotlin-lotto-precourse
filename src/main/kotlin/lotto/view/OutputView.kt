@@ -1,10 +1,8 @@
 package lotto.view
 
-import lotto.Lotto
-
 class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter()) {
 
-    fun printLottoTickets(lottoTickets: List<Lotto>) {
+    fun printLottoTickets(lottoTickets: List<List<Int>>) {
         print(buildLottoTickets(lottoTickets))
     }
 
@@ -12,7 +10,7 @@ class OutputView(private val formatter: LottoViewFormatter = LottoViewFormatter(
         println(buildFinalReport(rankCounts, profitRate))
     }
 
-    private fun buildLottoTickets(lottoTickets: List<Lotto>): String = buildString {
+    private fun buildLottoTickets(lottoTickets: List<List<Int>>): String = buildString {
         appendLine()
         appendLine(formatter.formatPurchaseMessage(lottoTickets))
         appendLine(formatter.formatLottoTickets(lottoTickets))

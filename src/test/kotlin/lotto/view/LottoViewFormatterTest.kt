@@ -1,6 +1,5 @@
 package lotto.view
 
-import lotto.Lotto
 import lotto.Rank
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
@@ -15,9 +14,9 @@ class LottoViewFormatterTest {
     @Nested
     inner class LottoTickets {
 
-        private val lottoTickets: List<Lotto> = listOf(
-            Lotto(listOf(8, 21, 23, 41, 42, 43)),
-            Lotto(listOf(3, 5, 11, 16, 32, 38))
+        private val lottoTickets: List<List<Int>> = listOf(
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38)
         )
 
         @Test
@@ -51,8 +50,8 @@ class LottoViewFormatterTest {
         // Arrange
         val rankCounts: List<CountRankResponse> = listOf(
             CountRankResponse(Rank.FIFTH, 1),
-            CountRankResponse(Rank.THIRD, 2),
-            CountRankResponse(Rank.FOURTH, 3)
+            CountRankResponse(Rank.FOURTH, 3),
+            CountRankResponse(Rank.SECOND, 2)
         )
 
         // Act
@@ -63,7 +62,7 @@ class LottoViewFormatterTest {
             """
                 3 Matches (5,000 KRW) – 1 tickets
                 4 Matches (50,000 KRW) – 3 tickets
-                5 Matches (1,500,000 KRW) – 2 tickets
+                5 Matches + Bonus Ball (30,000,000 KRW) – 2 tickets
             """.trimIndent()
         )
     }
