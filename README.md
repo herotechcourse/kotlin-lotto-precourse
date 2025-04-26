@@ -42,11 +42,11 @@
 
 ### 🚫 Validation
 
-- [ ] Validate purchase amount (must be numeric, ≥ 1000, divisible by 1000)
-- [ ] Validate winning numbers (6 unique numbers, 1–45)
-- [ ] Validate bonus number (1–45, not duplicated with winning numbers)
-- [ ] Throw `IllegalArgumentException` for invalid input and re-prompt user
-- [ ] All error messages start with `[ERROR]`
+- [x] Validate purchase amount (must be numeric, ≥ 1000, divisible by 1000)
+- [x] Validate winning numbers (6 unique numbers, 1–45)
+- [x] Validate bonus number (1–45, not duplicated with winning numbers)
+- [x] Throw `IllegalArgumentException` for invalid input and re-prompt user
+- [x] All error messages start with `[ERROR]`
 
 ---
 
