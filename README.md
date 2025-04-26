@@ -21,8 +21,7 @@ The application allows users to purchase lotto tickets, enter winning numbers an
     - 5th Prize: 3 matches — **5,000 KRW**
 - Displays lotto result statistics (number of winning tickets per rank).
 - Calculates and displays the **profit rate** (rounded to the nearest tenth).
-- Handles invalid input (throw and re-prompt on IllegalArgumentException).
-- Error messages start with `[ERROR]`.
+- Handles invalid input (throw and re-prompt on IllegalArgumentException) with specific error messages starting with `[ERROR]`.
 
 ---
 
