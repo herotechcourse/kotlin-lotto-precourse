@@ -7,11 +7,11 @@ class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val purchaseAmount = Inputview().purchaseAmount()
+            val purchaseAmount = InputView().purchaseAmount()
             val tickets = Application().generateLottoTickets(purchaseAmount)
             OutputView().displayTickets(tickets)
-            val winningNumbers = Inputview().inputWinningNumbers()
-            Inputview().inputBonusNumbers(winningNumbers)
+            val winningNumbers = InputView().inputWinningNumbers()
+            InputView().inputBonusNumbers(winningNumbers)
         }
     }
 
@@ -26,7 +26,7 @@ class Application {
     }
 }
 
-class Inputview {
+class InputView {
     fun purchaseAmount(): Long {
         println("Please enter the purchase amount.")
         val input = Console.readLine()?.trim()
