@@ -16,12 +16,11 @@ fun main() {
         }
     }
     val numberOfTickets = calculateNumberOfTickets(validPurchaseAmount!!)
-    val lottoGenerator = LottoGenerator()
+        val lottoGenerator = LottoGenerator()
     var purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
-//    for (ticket in purchasedTickets)
-//    {
-//        ticket.printLottoTicket()
-//    }
+    val outputView = OutputView()
+    outputView.printHeader("You have purchased $numberOfTickets tickets.")
+    outputView.printListOfTickets(purchasedTickets)
 }
 fun calculateNumberOfTickets(money: Int): Int
 {

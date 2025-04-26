@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 
-class LottoGenereatorTest {
+class LottoGeneratorTest {
     @Test
     fun `lotto generator creates ticket with 6 unique numbers between 1 and 45`() {
         val lottoGenerator = LottoGenerator()

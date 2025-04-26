@@ -10,9 +10,9 @@ class Lotto(private val numbers: List<Int>) {
     {
         return numbers
     }
-//    fun printLottoTicket() {
-//        val ticketValue = numbers.joinToString(", ")
-//        println("[$ticketValue]")
-//    }
+    fun numberToString(): String {
+        val ticketValues = numbers.joinToString(", ")
+        return ticketValues
+    }
 
 }
