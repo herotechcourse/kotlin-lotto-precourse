@@ -15,3 +15,5 @@
 | &#9744; | If error is thrown, re-prompt input from that step         | shared   |
 | &#9744; | Business logic unit test                                   | test     |
 
+### Limitations & Assumptions
+1. **Program stays alive after any `IllegalArgumentException`;** it prints `[ERROR] …` and re-prompts the current step only.  
