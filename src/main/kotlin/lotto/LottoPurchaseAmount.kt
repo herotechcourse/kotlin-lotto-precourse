@@ -16,7 +16,7 @@ class LottoPurchaseAmount(val value: Int) {
         private const val MAX_PURCHASE_AMOUNT: Int = 100_000
 
         private const val PURCHASE_AMOUNT_ERROR: String =
-            "[ERROR] Purchase amount can not exceed $MAX_PURCHASE_AMOUNT KRW."
+            "[ERROR] Purchase amount should be between $TICKET_PRICE and $MAX_PURCHASE_AMOUNT KRW."
         private const val PURCHASE_AMOUNT_NOT_DIVISIBLE_ERROR: String =
             "[ERROR] Purchase amount should be divisible by $TICKET_PRICE."
     }
