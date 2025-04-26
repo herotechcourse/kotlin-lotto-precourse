@@ -14,6 +14,7 @@ fun main() {
         prizeRankList.add(prizeRank)
         prize += prizeRank.prizeMoney
     }
-    OutputView.printPrizeStatics(prizeRankList, prize, inputView.getPurchaseAmount())
+    Lotto.calculatePrintPrize(prizeRankList, prize, inputView.getPurchaseAmount())
+   // OutputView.printPrizeStatics(prizeRankList, prize, inputView.getPurchaseAmount())
 }
 

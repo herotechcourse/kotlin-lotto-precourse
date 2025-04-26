@@ -23,4 +23,22 @@ class Lotto(private val numbers: List<Int>) {
         return prizeRank
     }
 
+    companion object {
+        fun calculatePrintPrize(prizeRankList: MutableList<Prize>, prize: Int, purchaseAmount: Int) {
+            var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
+
+            var rawPrizeMap: Map<Prize, Int> = initPrizeMap(prizeRankList)
+            val prizeMap = rawPrizeMap.filterKeys { it != Prize.None }.toSortedMap()
+
+            OutputView.printPrize(rate, prizeMap)
+        }
+
+        private fun initPrizeMap(prizeRankList: List<Prize>): Map<Prize, Int> {
+            val prizeMap = Prize.values().associateWith { prize ->
+                prizeRankList.count { it == prize }
+            }
+            return prizeMap
+        }
+    }
+
 }
