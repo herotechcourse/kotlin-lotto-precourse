@@ -1,4 +1,6 @@
-package lotto
+package lotto.lottogenerator
+
+import lotto.Lotto
 
 fun interface LottoGenerator {
 

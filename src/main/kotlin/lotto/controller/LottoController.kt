@@ -1,5 +1,12 @@
-package lotto
+package lotto.controller
 
+import lotto.InputHandler
+import lotto.Lotto
+import lotto.LottoNumber
+import lotto.LottoPurchaseAmount
+import lotto.LottoStore
+import lotto.PrizeRankCalculator
+import lotto.lottogenerator.LottoGenerator
 import lotto.view.InputView
 import lotto.view.OutputView
 
