@@ -31,7 +31,7 @@ fun validateBonusNum(input: String):Int{
 }
         private fun checkNotBlank(input: String) {
             if (input.isBlank()) {
-                throw IllegalArgumentException("[Error] Input cannot be null or empty.")
+                throw IllegalArgumentException("[ERROR] Input cannot be null or empty.")
             }
         }
 
@@ -39,13 +39,13 @@ fun validateBonusNum(input: String):Int{
             try {
                 return input.toInt()
             } catch (e: NumberFormatException) {
-                throw IllegalArgumentException("[Error] You entered an invalid number. Please enter a valid integer.")
+                throw IllegalArgumentException("[ERROR] You entered an invalid number. Please enter a valid integer.")
             }
         }
 
         private fun checkDivisibleByThousand(amount: Int) {
             if (amount % 1000 != 0) {
-                throw IllegalArgumentException("[Error] Amount must be divisible by 1000.")
+                throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
             }
         }
 
@@ -54,7 +54,7 @@ fun validateBonusNum(input: String):Int{
         }
         private fun isInRange(num : Int):Boolean{
             if (num !in 1..45){
-                throw IllegalArgumentException("[Error] The bonus number need to be in range 1 to 45.")
+                throw IllegalArgumentException("[ERROR] The bonus number need to be in range 1 to 45.")
             }
             return true
         }
