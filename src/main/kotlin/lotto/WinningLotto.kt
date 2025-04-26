@@ -5,13 +5,13 @@ class WinningLotto (
     private val bonusNumber: Int?) {
 
     init {
-        require(winningNumbers.none { it == null }) { "[ERROR]  Lotto numbers must be integer." }
-        require(bonusNumber != null) { "[ERROR]  Lotto number must be integer." }
-        require(winningNumbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
-        require(winningNumbers.size == winningNumbers.distinct().size) { "[ERROR] Lotto numbers must be unique." }
-        require(bonusNumber in (1..45)) { "[ERROR] Lotto numbers must be between 1 and 45." }
-        require(winningNumbers.none { it == bonusNumber }) { "[ERROR] Lotto numbers must be unique." }
+        require(winningNumbers.none { it == null }) { LottoErrorEnum.NULL_WINNING_NUMBER.message }
+        require(bonusNumber != null) { LottoErrorEnum.NULL_BONUS_NUMBER.message }
+        require(winningNumbers.size == 6) { LottoErrorEnum.INVALID_SIZE.message }
+        require(winningNumbers.all { it in 1..45 }) { LottoErrorEnum.NUMBER_OUT_OF_RANGE.message }
+        require(winningNumbers.size == winningNumbers.distinct().size) { LottoErrorEnum.DUPLICATED_NUMBER.message }
+        require(bonusNumber in (1..45)) { LottoErrorEnum.NUMBER_OUT_OF_RANGE.message }
+        require(winningNumbers.none { it == bonusNumber }) { LottoErrorEnum.DUPLICATED_NUMBER.message }
     }
 
     fun match (purchaseLotto: Lotto) : Int {
