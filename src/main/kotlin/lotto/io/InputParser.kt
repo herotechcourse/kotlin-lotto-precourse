@@ -7,7 +7,7 @@ import lotto.util.LottoConstants.START_INCLUSIVE
 object InputParser {
 
     fun parsePurchaseAmount(input: String): Int {
-        require(input.isNotBlank()) { "[ERROR] Invalid input." }
+        validateNotBlank(input)
 
         val amount = requireNotNull(input.toIntOrNull()) { "[ERROR] Invalid Amount." }
 
@@ -19,7 +19,7 @@ object InputParser {
     }
 
     fun parseWinningNumbers(input: String): List<Int> {
-        require(input.isNotBlank()) { "[ERROR] Invalid input." }
+        validateNotBlank(input)
 
         val stringNumbers = input.split(",")
         val winningNumbers = mutableListOf<Int>()
@@ -27,24 +27,30 @@ object InputParser {
         require(stringNumbers.size == COUNT) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(stringNumbers.size == stringNumbers.distinct().size) { "[ERROR] Lotto numbers must be unique." }
 
-        for (str in stringNumbers) {
-            val trimmed = str.trim()
-            val winningNumber = trimmed.toIntOrNull()
-            requireNotNull(winningNumber) { "[ERROR] Invalid WinningNumber." }
-            winningNumbers.add(winningNumber)
-        }
-
-        return winningNumbers
+        return convertToIntList(stringNumbers, winningNumbers)
     }
 
     fun parseBonusNumber(input: String, numbers: List<Int>): Int {
-        require(input.isNotBlank()) { "[ERROR] Invalid input." }
+        validateNotBlank(input)
         val bonusNumber = requireNotNull(input.toIntOrNull()) { "[ERROR] Invalid BonusNumber." }
 
         require(bonusNumber in START_INCLUSIVE..END_INCLUSIVE) { "[ERROR] BonusNumber must be between 1 and 45." }
         require(bonusNumber !in numbers) { "[ERROR] Bonus number must not be in the winning numbers." }
 
         return bonusNumber
+    }
+
+    private fun validateNotBlank(input: String) {
+        require(input.isNotBlank()) { "[ERROR] Invalid input." }
+    }
+
+    private fun convertToIntList(stringNumbers: List<String>, winningNumbers: MutableList<Int>): List<Int> {
+        for (str in stringNumbers) {
+            val winningNumber = str.trim().toIntOrNull()
+            requireNotNull(winningNumber) { "[ERROR] Invalid WinningNumber." }
+            winningNumbers.add(winningNumber)
+        }
+        return winningNumbers
     }
 
 }
