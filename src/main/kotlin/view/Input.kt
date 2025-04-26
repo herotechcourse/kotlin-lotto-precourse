@@ -4,16 +4,19 @@ import camp.nextstep.edu.missionutils.Console
 import util.Parser
 
 object Input {
-    fun readPurchaseAmountSafely(): Int = readSafely(Parser::toPurchaseAmount)
+    private const val EXIT_COMMAND = "EXIT"
 
-    fun readWinningNumbersSafely(): List<Int> = readSafely(Parser::toWinningNumbers)
+    fun readPurchaseAmountSafely(): Int? = readSafely(Parser::toPurchaseAmount)
 
-    fun readBonusNumberSafely(winningNumbers: List<Int>): Int = readSafely { input -> Parser.toBonusNumber(input, winningNumbers) }
+    fun readWinningNumbersSafely(): List<Int>? = readSafely(Parser::toWinningNumbers)
 
-    private fun <T> readSafely(block: (String) -> T): T {
+    fun readBonusNumberSafely(winningNumbers: List<Int>): Int? = readSafely { input -> Parser.toBonusNumber(input, winningNumbers) }
+
+    private fun <T> readSafely(block: (String) -> T): T? {
         while (true) {
             try {
                 val input = Console.readLine()
+                if (input.uppercase() == EXIT_COMMAND) return null
                 return block(input)
             } catch (exception: IllegalArgumentException) {
                 println(exception.message)
