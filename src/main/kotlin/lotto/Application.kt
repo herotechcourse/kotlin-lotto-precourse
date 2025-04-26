@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-        LottoGame().run()
+    LottoGame().run()
 }
 
 class LottoGame {
