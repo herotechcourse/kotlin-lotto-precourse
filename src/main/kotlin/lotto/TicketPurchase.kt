@@ -9,7 +9,7 @@ class TicketPurchase {
         private set
 
     fun buyTickets(userInput: UserInput) {
-        this.amountOfTicketsBought = userInput.purchaseAmount.floorDiv(TICKET_COST)
+        this.amountOfTicketsBought = userInput.purchaseAmount/TICKET_COST
     }
 
     fun generateTickets() {

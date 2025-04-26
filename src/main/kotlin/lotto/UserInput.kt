@@ -20,6 +20,7 @@ class UserInput{
         require(purchaseAmount != null) { "[ERROR] Purchase amount must be a number." }
         require(purchaseAmount >= 0) { "[ERROR] Purchase amount must be a positive number." }
         require(purchaseAmount >= TICKET_COST) { "[ERROR] Purchase amount must be equal or greater than $TICKET_COST." }
+        require(purchaseAmount % TICKET_COST == 0) { "[ERROR] Purchase amount must be a multiple of $TICKET_COST." }
 
         this.purchaseAmount = purchaseAmount
     }
