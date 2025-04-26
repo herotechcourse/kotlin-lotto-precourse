@@ -23,7 +23,7 @@ object OutputView {
         val totalWinnings = result.getTotalWinnings()
         val profitRate = calculateProfitRate(totalWinnings, amount)
 
-        println("\nTotal return rate is ${profitRate}%.")
+        println("Total return rate is ${profitRate}%.")
     }
 
     private fun calculateProfitRate(totalWinnings: Int, amount: Int): String {
