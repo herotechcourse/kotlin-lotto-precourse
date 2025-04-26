@@ -15,4 +15,17 @@ class WinningLotto(private val numbers: List<Int>, private val bonusNumber: Int)
         require(bonusNumber !in numbers) { "[ERROR] Bonus number must not be in the winning numbers." }
     }
 
+    fun evaluateLotto(lottoNumbers: List<Int>): LottoResultType {
+        var matchCount = 0
+        for (number in lottoNumbers) {
+            if (number in numbers) {
+                matchCount++
+            }
+        }
+
+        val isBonusMatched = bonusNumber in lottoNumbers
+
+        return LottoResultType.from(matchCount, isBonusMatched)
+    }
+
 }
