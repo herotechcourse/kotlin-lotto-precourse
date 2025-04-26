@@ -1,6 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.constants.HIGHEST_NUMBER
+import lotto.constants.LOWEST_NUMBER
+import lotto.constants.TICKET_COST
 
 class TicketPurchase {
     var amountOfTicketsBought: Int = 0
@@ -9,7 +12,7 @@ class TicketPurchase {
         private set
 
     fun buyTickets(userInput: UserInput) {
-        this.amountOfTicketsBought = userInput.purchaseAmount/TICKET_COST
+        this.amountOfTicketsBought = userInput.purchaseAmount / TICKET_COST
     }
 
     fun generateTickets() {

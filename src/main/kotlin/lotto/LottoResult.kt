@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.constants.Prizes
+
 class LottoResult {
     var winningStatics: MutableMap<String, Int> = mutableMapOf()
         private set
@@ -38,16 +40,14 @@ class LottoResult {
 
         for ((key, count) in this.winningStatics) {
             totalPrize += when (key) {
-                "three" -> count * FIFTH_PRIZE
-                "four" -> count * FOURTH_PRIZE
-                "five" -> count * THIRD_PRIZE
-                "bonus" -> count * SECOND_PRIZE
-                "six" -> count * FIRST_PRIZE
+                "three" -> count * Prizes.FIFTH.prizeMoney
+                "four" -> count * Prizes.FOURTH.prizeMoney
+                "five" -> count * Prizes.THIRD.prizeMoney
+                "bonus" -> count * Prizes.SECOND.prizeMoney
+                "six" -> count * Prizes.FIRST.prizeMoney
                 else -> 0
             }
         }
-
         this.returnRate = (totalPrize.toDouble() / userInput.purchaseAmount) * 100
     }
-
 }

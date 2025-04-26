@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.*
+import lotto.constants.Prizes
 import java.util.*
 
 class OutputView {
@@ -21,11 +22,11 @@ class OutputView {
         fun displayWinningStatistics(lottoResult: LottoResult) {
             println("Winning statistics")
             println("---")
-            println("3 Matches ($FIFTH_PRIZE) – ${lottoResult.winningStatics["three"]} tickets")
-            println("4 Matches ($FOURTH_PRIZE) – ${lottoResult.winningStatics["four"]} tickets")
-            println("5 Matches ($THIRD_PRIZE) – ${lottoResult.winningStatics["five"]} tickets")
-            println("5 Matches + Bonus Ball ($SECOND_PRIZE) – ${lottoResult.winningStatics["bonus"]} tickets")
-            println("6 Matches ($FIRST_PRIZE) ${lottoResult.winningStatics["six"]} tickets")
+            println("3 Matches (${Prizes.FIFTH.prizeMoney}) – ${lottoResult.winningStatics["three"]} tickets")
+            println("4 Matches (${Prizes.FOURTH.prizeMoney}) – ${lottoResult.winningStatics["four"]} tickets")
+            println("5 Matches (${Prizes.THIRD.prizeMoney}) – ${lottoResult.winningStatics["five"]} tickets")
+            println("5 Matches + Bonus Ball (${Prizes.SECOND.prizeMoney}) – ${lottoResult.winningStatics["bonus"]} tickets")
+            println("6 Matches (${Prizes.FIRST.prizeMoney}) ${lottoResult.winningStatics["six"]} tickets")
         }
 
         fun displayReturnRate(lottoResult: LottoResult) {
