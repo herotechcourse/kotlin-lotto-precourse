@@ -39,6 +39,8 @@
 
 ### 🎨 Style
 
+- ****: refactor funtions, make sure function not exceed 10 lines ([48e8a77](https://github.com/yourname/yourrepo/commit/48e8a77a4239847568a855935a1c61a626b0a49f))
+
 - **Lotto**: move the generateTickets funcion to Lotto companion class, make InputView and OutputView cleaner ([a6b44ab](https://github.com/yourname/yourrepo/commit/a6b44ab35fea42cb1c79e89f341aca06ece33a16))
 
 - ****: rename variables and function ([9ebf278](https://github.com/yourname/yourrepo/commit/9ebf278b5302f07bbc87e48f53b854c2c7eed64e))
@@ -54,5 +56,4 @@
 - ****: write more tests to check each edge cases ([28a3a68](https://github.com/yourname/yourrepo/commit/28a3a6864a1d7cb04c5a19a2c3c023aa5cadd499))
 
 - **ValidateTest.kt**: write tests for InputValidate class functions ([19acf89](https://github.com/yourname/yourrepo/commit/19acf89a438fbbc335ee2cfa829cdf4b24bb2df7))
-
 
