@@ -11,44 +11,71 @@ The program allows users to purchase tickets, input winning numbers, and receive
 - **Gradle** — Build tool (using `build.gradle.kts`).
 - **JUnit 5** — Unit testing framework.
 - **AssertJ** — Fluent assertions for tests.
+- **camp.nextstep.edu.missionutils**
+    - `Randoms.pickNumberInRange()` — Random number generator.
+    - `Console.readLine()` — User input reader.
+---
+
+## 🔍 Features
+
+- Buy multiple lotto tickets based on your input amount
+- Randomly generate lotto numbers for each ticket
+- Validate user inputs (amount, winning numbers, bonus number)
+- Match winning numbers against purchased tickets
+- Calculate and display total winnings and return on investment
+
+## 📈 Rules of the Lotto Game
+
+- Buy lotto tickets at 1,000 KRW per ticket
+- Each ticket has 6 unique numbers between 1 and 45
+- After purchase, input the week's winning numbers and a bonus number
+- Your earnings are calculated based on how many numbers match
+
+| Rank | Match Condition                      | Prize Money (KRW) |
+|:----:|:-------------------------------------:|:-----------------:|
+|  1   | 6 numbers match                       | 2,000,000,000     |
+|  2   | 5 numbers match + bonus number        | 30,000,000        |
+|  3   | 5 numbers match                       | 1,500,000         |
+|  4   | 4 numbers match                       | 50,000            |
+|  5   | 3 numbers match                       | 5,000             |
 
 ---
 
-🔍 Features
+## 🖥️ Input/Output Example
 
-1. Implement Lotto class to validate numbers
+**Input:**
 
-- Accept a list of 6 unique numbers (as provided in the input).
-- Validate that the list has exactly 6 numbers in the range of 1-45.
+```
+Please enter the purchase amount.
+8000
 
-2. Input Handling
+You have purchased 8 tickets.
+[8, 21, 23, 41, 42, 43]
+[3, 5, 11, 16, 32, 38]
+[7, 11, 16, 35, 36, 44]
+[1, 8, 11, 31, 41, 42]
+[13, 14, 16, 38, 42, 45]
+[7, 11, 30, 40, 42, 43]
+[2, 13, 22, 32, 38, 45]
+[1, 3, 5, 14, 22, 45]
 
-- Validate purchase amount (must be divisible by 1000)
-- Read and validate winning numbers (6 unique numbers between 1–45)
-- Read and validate bonus number (not in the winning numbers)
+Please enter last week's winning numbers.
+1,2,3,4,5,6
 
-3. Ticket Generation
+Please enter the bonus number.
+7
+```
+**Output:**
 
-- Generate correct number of tickets using Randoms API
-- Ensure each ticket has 6 unique sorted numbers
+```
+Winning Statistics
+---
+3 Matches (5,000 KRW) – 1 tickets
+4 Matches (50,000 KRW) – 0 tickets
+5 Matches (1,500,000 KRW) – 0 tickets
+5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets
+6 Matches (2,000,000,000 KRW) – 0 tickets
+Total return rate is 62.5%.
+```
 
-4. Winning Logic
-
-- Compare tickets with winning numbers and bonus
-- Determine ranking for each ticket
-
-5. Statistics
-
-- Count number of tickets per prize category
-- Calculate total winnings and profit rate
-
-6. Views
-
-- InputView: handles reading inputs
-- OutputView: handles displaying results and errors
-
-7. Unit Tests
-
-- Test Lotto number validation
-- Test rank logic
-- Test ticket matching and prize calculation
+#### Author: Dinely Shanuka
