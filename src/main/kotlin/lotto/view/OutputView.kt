@@ -27,7 +27,7 @@ object OutputView {
         println("---")
         Rank.entries
             .filter { it != Rank.NONE }
-            .sortedBy { it.matchCount }
+            .sortedWith(compareBy({ it.matchCount }, { it.requiresBonus }))
             .forEach {
                 val matchText = when (it) {
                     Rank.SECOND -> "5 Matches + Bonus Ball"

@@ -19,7 +19,7 @@ object InputView {
 
     fun readWinningNumbers(): List<Int> {
         while (true) {
-            println("Please enter last week's winning numbers (comma-separated).")
+            println("Please enter last week's winning numbers.")
             val input = Console.readLine()
             try {
                 return InputValidator.validateWinningNumbers(input)
