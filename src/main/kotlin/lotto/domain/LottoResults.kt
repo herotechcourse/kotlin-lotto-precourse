@@ -2,7 +2,7 @@ package lotto.domain
 
 class LottoResults(results: List<LottoMatchResult>) {
     private val statistics: Map<Prize, Int> = results
-        .map(RankDecider::decide)
+        .map(PrizeDecider::decidePrize)
         .groupingBy { it }
         .eachCount()
         .withDefault { 0 }

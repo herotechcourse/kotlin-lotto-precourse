@@ -1,7 +1,7 @@
 package lotto.domain
 
-object RankDecider {
-    fun decide(result: LottoMatchResult): Prize {
+object PrizeDecider {
+    fun decidePrize(result: LottoMatchResult): Prize {
         if (result.matchCount == 6) return Prize.FIRST
         if (result.matchCount == 5 && result.bonusMatched) return Prize.SECOND
         if (result.matchCount == 5) return Prize.THIRD
