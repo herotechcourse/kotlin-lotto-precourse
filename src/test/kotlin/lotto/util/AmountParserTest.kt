@@ -22,21 +22,21 @@ class AmountParserTest {
     }
 
     @Test
-    fun `throws an exception when input is a negative number`() {
+    fun `throws an exception when amount is a negative number`() {
         assertThrows<IllegalArgumentException> {
             amountParser.parse("-1000")
         }
     }
 
     @Test
-    fun `throws an exception when input is zero`() {
+    fun `throws an exception when amount is zero`() {
         assertThrows<IllegalArgumentException> {
             amountParser.parse("0")
         }
     }
 
     @Test
-    fun `throws an exception when input is not divisible by 1000`() {
+    fun `throws an exception when amount is not divisible by 1000`() {
         assertThrows<IllegalArgumentException> {
             amountParser.parse("500")
         }
