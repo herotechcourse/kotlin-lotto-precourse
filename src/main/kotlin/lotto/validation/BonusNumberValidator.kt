@@ -11,20 +11,15 @@ object BonusNumberValidator {
         "$ERROR_PREFIX Bonus number must not consist of winning numbers. $PROMPT_AGAIN"
 
     fun validate(bonusNumber: String) {
-        if (bonusNumber.isEmpty()) throw IllegalArgumentException(EMPTY_INPUT)
+        require(bonusNumber.isNotEmpty()) { EMPTY_INPUT }
 
         val digitRegex = Regex("\\d+")
-        if (!(bonusNumber.matches(digitRegex))) throw IllegalArgumentException(NOT_NUMBER_TYPE)
+        require(bonusNumber.matches(digitRegex)) { NOT_NUMBER_TYPE }
 
-        if (bonusNumber.toInt() !in 1..45) throw IllegalArgumentException(INVALID_RANGE)
+        require(bonusNumber.toInt() in 1..45) { INVALID_RANGE }
     }
 
-    fun validateDuplicateWithWinningNumbers(
-        bonusNumber: String,
-        winningNumbers: List<String>,
-    ) {
-        if ((winningNumbers.find { it == bonusNumber }) != null) {
-            throw IllegalArgumentException(NOT_CONSIST_IF_WINNING_NUMBERS)
-        }
+    fun validateDuplicateWithWinningNumbers(bonusNumber: String, winningNumbers: List<String>) {
+        require((winningNumbers.find { it == bonusNumber }) == null) { NOT_CONSIST_IF_WINNING_NUMBERS }
     }
 }

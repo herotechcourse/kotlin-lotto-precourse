@@ -9,11 +9,10 @@ object WinningNumbersValidator {
     private const val NOT_NUMBER_TYPE = "$ERROR_PREFIX Winning numbers must be a number. $PROMPT_AGAIN"
 
     fun validate(winningNumbers: List<String>) {
-        if (winningNumbers.isEmpty()) throw IllegalArgumentException(EMPTY_INPUT)
-
-        if (winningNumbers.size != 6) throw IllegalArgumentException(NOT_SIX_NUMBERS)
+        require(winningNumbers.isNotEmpty()) { EMPTY_INPUT }
+        require(winningNumbers.size == 6) { NOT_SIX_NUMBERS }
 
         val digitRegex = Regex("\\d+")
-        if (!(winningNumbers.all { it.matches(digitRegex) })) throw IllegalArgumentException(NOT_NUMBER_TYPE)
+        require(winningNumbers.all { it.matches(digitRegex) }) { NOT_NUMBER_TYPE }
     }
 }
