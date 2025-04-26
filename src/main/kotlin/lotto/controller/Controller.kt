@@ -1,7 +1,6 @@
 package lotto.controller
 
 import lotto.*
-import lotto.view.CountRankResponse
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -17,7 +16,7 @@ class Controller(
 
         val winningStatistics: WinningStatistics = evaluate(lottoTickets)
         outputView.printFinalReport(
-            rankCounts = winningStatistics.toCountRankResponses(),
+            rankCounts = CountRankMapper.toResponses(winningStatistics),
             profitRate = winningStatistics.profitRate()
         )
     }
@@ -34,11 +33,6 @@ class Controller(
 
         return lottoTickets.evaluate(winningLotto)
     }
-
-    private fun WinningStatistics.toCountRankResponses(): List<CountRankResponse> = Rank
-        .entries
-        .filter { it != Rank.NONE }
-        .map { CountRankResponse(it, getCount(it)) }
 
     private fun <T> retry(action: () -> T): T {
         while (true) {
