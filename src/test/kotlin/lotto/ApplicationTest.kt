@@ -42,6 +42,40 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `winning statistics test with different match levels`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("8000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "3 Matches (5,000 KRW)",
+                    "4 Matches (50,000 KRW)",
+                    "5 Matches (1,500,000 KRW)",
+                    "5 Matches + Bonus Ball (30,000,000 KRW)",
+                    "6 Matches (2,000,000,000 KRW)"
+                )
+                val outputText = output()
+                val thirdMatchesIndex = outputText.indexOf("3 Matches")
+                val fourthMatchesIndex = outputText.indexOf("4 Matches")
+                val fifthMatchesIndex = outputText.indexOf("5 Matches (1,500,000")
+                val secondMatchesIndex = outputText.indexOf("5 Matches + Bonus Ball")
+                val firstMatchesIndex = outputText.indexOf("6 Matches")
+                assertThat(thirdMatchesIndex).isLessThan(fourthMatchesIndex)
+                assertThat(fourthMatchesIndex).isLessThan(fifthMatchesIndex)
+                assertThat(fifthMatchesIndex).isLessThan(secondMatchesIndex)
+                assertThat(secondMatchesIndex).isLessThan(firstMatchesIndex)
+            },
+            listOf(1, 2, 3, 7, 8, 9),
+            listOf(1, 2, 3, 4, 8, 9),
+            listOf(1, 2, 3, 4, 5, 8),
+            listOf(1, 2, 3, 4, 5, 7),
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(10, 11, 12, 13, 14, 15),
+            listOf(1, 10, 11, 12, 13, 14),
+            listOf(1, 2, 10, 11, 12, 13)
+        )
+    }
+
+    @Test
     fun `exception test`() {
         assertSimpleTest {
             runException("1000j")
