@@ -70,6 +70,14 @@ class LottoTest {
     }
 
     @Test
+    fun `lotto objects with the same numbers should be equal`() {
+        val lotto1 = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val lotto2 = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        assertThat(lotto1).isEqualTo(lotto2)
+    }
+
+    @Test
     fun `toString should return the numbers in the expected format`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         assertThat("[1, 2, 3, 4, 5, 6]").isEqualTo(lotto.toString())
