@@ -13,4 +13,8 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun matchLotto(winningLotto: WinningLotto): LottoResultType {
+        return winningLotto.evaluateLotto(this.numbers)
+    }
+
 }
