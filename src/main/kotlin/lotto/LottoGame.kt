@@ -2,6 +2,14 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+enum class MatchCategory {
+    THREE_MATCHES,
+    FOUR_MATCHES,
+    FIVE_MATCHES,
+    FIVE_MATCHES_AND_BONUS,
+    SIX_MATCHES
+}
+
 class LottoGame(
     val purchaseAmount: UInt,
     var winningNumbers: List<Int> = emptyList(),
@@ -9,6 +17,7 @@ class LottoGame(
     val numberOfTickets: Int
 ) {
     private val tickets = mutableListOf<Lotto>()
+    private val results = mutableMapOf<MatchCategory, Int>()
 
     init {
         createMultipleTickets(numberOfTickets)
@@ -27,5 +36,49 @@ class LottoGame(
         repeat(numberOfTickets) {
             tickets.add(createSingleTicket())
         }
+    }
+
+    fun getResults(): Map<MatchCategory, Int> {
+        if (results.isEmpty()) {
+            calculateResults()
+        }
+        return results.toMap()
+    }
+
+    private fun calculateResults() {
+        initializeResults()
+        tickets.forEach { ticket ->
+            updateResultsForTicket(ticket)
+        }
+    }
+
+    private fun initializeResults() {
+        MatchCategory.entries.forEach { results[it] = 0 }
+    }
+
+    private fun updateResultsForTicket(ticket: Lotto) {
+        val matchCount = ticket.countMatchingNumbers(winningNumbers)
+        val hasBonus = ticket.containsBonusNumber(bonusNumber)
+        val category = getCategoryForTicket(matchCount, hasBonus)
+        if (category != null) {
+            results[category] = results.getOrDefault(category, 0) + 1
+        }
+    }
+
+    private fun getCategoryForTicket(matchCount: Int, hasBonus: Boolean): MatchCategory? {
+        when (matchCount) {
+            3 -> return MatchCategory.THREE_MATCHES
+            4 -> return MatchCategory.FOUR_MATCHES
+            5 -> return getFiveMatchCategory(hasBonus)
+            6 -> return MatchCategory.SIX_MATCHES
+        }
+        return null
+    }
+
+    private fun getFiveMatchCategory(hasBonus: Boolean): MatchCategory {
+        if (hasBonus) {
+            return MatchCategory.FIVE_MATCHES_AND_BONUS
+        }
+        return MatchCategory.FIVE_MATCHES
     }
 }

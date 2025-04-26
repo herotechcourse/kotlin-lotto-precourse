@@ -16,4 +16,6 @@ fun main() {
     game.winningNumbers = readWinningNumbers()
     println()
     game.bonusNumber = readBonusNumber(game.winningNumbers)
+
+    val results = game.getResults()
 }

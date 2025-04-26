@@ -40,10 +40,11 @@ The features will be implemented in the following order:
 
 ### Prize Calculation
 
-- [ ] Check if the user's tickets match the winning numbers.
-- [ ] Check if the user's tickets match the bonus number.
+- [x] Calculate results for the user's tickets.
+  - [x] Check if the user's tickets match the winning numbers.
+  - [x] Check if the user's tickets match the bonus number.
 
-- [ ] Define the criteria and prize amounts for the five prize ranks.
+- [ ] Define the prize amounts for the five prize ranks.
 - [ ] Calculate the user's winnings, if any.
 - [ ] Calculate the profit rate.
 
