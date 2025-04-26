@@ -5,15 +5,14 @@ object OutputView {
     fun requestWinningNumbers() = println("Please enter last week's winning numbers.")
     fun requestBonusNumber() = println("Please enter the bonus number.")
     fun printTickets(tickets: List<List<Int>>) {
-        println("You have purchased ${tickets.size} tickets.")
+        println("\nYou have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
-            println("[${ticket.sorted().joinToString(", ")}]")
+            println("[${ticket.sorted().joinToString(", ")}]\n")
         }
-        println()
     }
 
     fun printResults(results: Map<Rank, Int>) {
-        println("Winning Statistics\n---")
+        println("\nWinning Statistics\n---")
         for (entry in results) {
             println(
                 "${entry.key.matches} (${String.format("%,d", entry.key.winning)} KRW) " + "– ${entry.value} tickets"

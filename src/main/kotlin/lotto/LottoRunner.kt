@@ -2,13 +2,15 @@ package lotto
 
 class LottoRunner {
     private val ticketMachine = LottoInitializer.ticketMachineFromInput()
-    private val cashier:Cashier
+    private val lottoCalculator: LottoCalculator
+
     init {
         OutputView.printTickets(ticketMachine.tickets)
-        cashier = LottoInitializer.cashierFromInput()
+        lottoCalculator = LottoInitializer.lottoCalculatorFromInput()
     }
-    fun lottoResults(){
-        OutputView.printResults(cashier.checkWinningNumbers(ticketMachine.tickets))
-        OutputView.printStatistics(cashier.calculateStatistic(ticketMachine.purchaseAmount))
+
+    fun lottoResults() {
+        OutputView.printResults(lottoCalculator.checkWinningNumbers(ticketMachine.tickets))
+        OutputView.printStatistics(lottoCalculator.calculateStatistic(ticketMachine.purchaseAmount))
     }
 }

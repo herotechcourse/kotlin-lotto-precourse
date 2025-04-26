@@ -1,10 +1,10 @@
 package lotto
 
 object LottoInitializer {
-    fun cashierFromInput(): Cashier{
+    fun lottoCalculatorFromInput(): LottoCalculator{
         val lotto = lottoFromInput()
         val bonusNumber = bonusNumberFromInput(lotto)
-        return Cashier(lotto, bonusNumber)
+        return LottoCalculator(lotto, bonusNumber)
     }
     private fun lottoFromInput(): Lotto {
         while (true)
