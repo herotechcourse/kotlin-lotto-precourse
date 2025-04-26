@@ -29,13 +29,24 @@ class LottoController(
     }
 
     private fun getValidWinningNumbers(): WinningNumbers {
-        return try{
-            val numbers = InputView.readWinningNumbers()
-            val bonusNumber = InputView.readBonusNumber(numbers)
-            WinningNumbers(numbers, bonusNumber)
+        val numbers = readWinningNumbersWithRetry()
+        val bonus = readBonusWithRetry(numbers)
+        return WinningNumbers(numbers, bonus)
+    }
+
+    private fun readWinningNumbersWithRetry(): List<Int> =
+        try {
+            InputView.readWinningNumbers()
         } catch (e: IllegalArgumentException) {
             println(e.message)
-            getValidWinningNumbers()
+            readWinningNumbersWithRetry()
         }
-    }
+
+    private fun readBonusWithRetry(numbers: List<Int>): Int =
+        try {
+            InputView.readBonusNumber(numbers)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            readBonusWithRetry(numbers)
+        }
 }
