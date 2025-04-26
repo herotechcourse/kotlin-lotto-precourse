@@ -42,6 +42,52 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `feature test 2`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("2000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 2 tickets.",
+                    "[1, 2, 3, 4, 5, 7]",
+                    "[1, 2, 3, 4, 5, 40]",
+                    "3 Matches (5,000 KRW) – 0 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 1 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 1 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "Total return rate is 1,575,000.0%."
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 7),
+            listOf(1, 2, 3, 4, 5, 40)
+        )
+    }
+
+    @Test
+    fun `feature test 3`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("3000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 3 tickets.",
+                    "[1, 40, 41, 42, 43, 44]",
+                    "[1, 2, 40, 41, 42, 43]",
+                    "[1, 2, 3, 40, 41, 42]",
+                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "Total return rate is 166.7%."
+                )
+            },
+            listOf(1, 40, 41, 42, 43, 44),
+            listOf(1, 2, 40, 41, 42, 43),
+            listOf(1, 2, 3, 40, 41, 42)
+        )
+    }
+
+    @Test
     fun `exception test`() {
         assertSimpleTest {
             runException("1000j")
