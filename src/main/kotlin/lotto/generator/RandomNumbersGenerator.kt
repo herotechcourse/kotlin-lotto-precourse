@@ -5,9 +5,9 @@ import lotto.util.LottoConstants.COUNT
 import lotto.util.LottoConstants.END_INCLUSIVE
 import lotto.util.LottoConstants.START_INCLUSIVE
 
-class RandomNumbersGenerator: NumbersGenerator {
+class RandomNumbersGenerator {
 
-    override fun generate(): List<Int> {
+    fun generate(): List<Int> {
         val numbersInRange = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT).sorted()
 
         require(numbersInRange.size == COUNT) { "[ERROR] Lotto numbers size must be $COUNT." }
