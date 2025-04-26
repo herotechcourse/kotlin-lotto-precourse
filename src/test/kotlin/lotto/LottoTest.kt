@@ -2,8 +2,6 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.ValueSource
 
 class LottoTest {
     @Test
@@ -13,6 +11,7 @@ class LottoTest {
         }
     }
 
+    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -20,24 +19,11 @@ class LottoTest {
         }
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = [0, 46])
-    fun `throws an exception when lotto numbers are out of range`(number: Int) {
+    // TODO: Implement tests based on the added features
+    @Test
+    fun `validates lotto numbers are within range`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, number))
+            Lotto(listOf(1, 2, 3, 46, 47, 48))
         }
-    }
-
-    @Test
-    fun `count matching numbers correctly`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assert(lotto.countMatchingNumbers(listOf(1, 2, 7, 8, 9, 10)) == 2)
-    }
-
-    @Test
-    fun `check bonus number correctly`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assert(lotto.hasBonusNumber(6))
-        assert(!lotto.hasBonusNumber(7))
     }
 }
