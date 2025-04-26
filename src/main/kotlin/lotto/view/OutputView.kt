@@ -7,6 +7,6 @@ object OutputView {
         println(Message.PURCHASE_AMOUNT_PROMPT)
     }
     fun printErrorMessage(message: String?) {
-        println(message)
+        println(message ?: Message.UNKNOWN_ERROR)
     }
 }
