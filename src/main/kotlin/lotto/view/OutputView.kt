@@ -15,7 +15,7 @@ object OutputView {
         println()
     }
 
-    fun lottoStatistics(lottoResult: LottoResult) {
+    private fun lottoStatistics(lottoResult: LottoResult) {
         val ranksInOrder = listOf(
             LottoRank.FIFTH,
             LottoRank.FOURTH,
@@ -37,7 +37,7 @@ object OutputView {
         println(Messages.Output.PURCHASE_COUNT.format(count))
     }
 
-    fun profitRate(profitRate: Double) {
+    private fun profitRate(profitRate: Double) {
         println(Messages.Output.PROFIT_RATE.format(profitRate))
     }
 
