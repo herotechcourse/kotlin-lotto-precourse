@@ -2,11 +2,17 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Assertions.assertFalse
 import lotto.model.MatchResult
+
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
+import lotto.controller.LottoController
+import lotto.model.WinningNumbers
+import java.lang.reflect.Method
 
 
 class LottoTest {
@@ -24,6 +30,42 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
+    }
+
+    @Test
+    fun `getValidWinningNumbers should re-prompt only the failing step`() {
+        val inputs = listOf(
+            "1,2,3,4,5",
+            "1,2,3,4,5,6",
+            "6",
+            "7"
+        ).joinToString("\n") + "\n"
+
+        System.setIn(ByteArrayInputStream(inputs.toByteArray()))
+        val outCapture = ByteArrayOutputStream()
+        System.setOut(PrintStream(outCapture))
+
+        val controller = LottoController()
+        val method = controller.javaClass
+            .getDeclaredMethod("getValidWinningNumbers")
+            .also { it.isAccessible = true }
+
+        val result = method.invoke(controller) as WinningNumbers
+
+        assertEquals(listOf(1, 2, 3, 4, 5, 6), result.numbers)
+        assertEquals(7, result.bonusNumber)
+
+        val outputLines = outCapture.toString().lines()
+
+        assertEquals(
+            2,
+            outputLines.count { it.contains("Please enter last week's winning numbers.") }
+        )
+
+        assertEquals(
+            2,
+            outputLines.count { it.contains("Please enter the bonus number.") }
+        )
     }
 
     // TODO: Implement tests based on the added features
