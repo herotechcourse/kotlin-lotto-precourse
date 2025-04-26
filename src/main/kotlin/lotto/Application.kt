@@ -1,5 +1,6 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val lottoGame = LottoGame()
+    lottoGame.play()
 }
