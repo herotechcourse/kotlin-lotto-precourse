@@ -19,6 +19,8 @@ package "lotto.controller" {
         + run()
         - getValidLottoTickets(): List<Lotto>
         - getValidWinningNumbers(): WinningNumbers
+        - readWinningNumbersWithRetry(): List<Int>
+        - readBonusWithRetry(numbers: List<Int>): Int
     }
 }
 
