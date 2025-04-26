@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
 
 class ApplicationTest : NsTest() {
     @Test
@@ -55,5 +57,10 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
+    }
+    @Test
+    fun `calculates number of tickets correctly`() {
+        assertEquals(8, calculateNumberOfTickets(8000))
+        assertEquals(1, calculateNumberOfTickets(1000))
     }
 }
