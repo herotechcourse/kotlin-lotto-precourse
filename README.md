@@ -4,9 +4,9 @@
 
 ## 🛒 Purchasing
 
-- [ ] Read the purchase amount from the user.
-- [ ] Validate that the amount is a multiple of 1,000 KRW.
-- [ ] Calculate the number of lotto tickets based on the amount.
+- [x] Read the purchase amount from the user.
+- [x] Validate that the amount is a multiple of 1,000 KRW.
+- [x] Calculate the number of lotto tickets based on the amount.
 
 ## 🎟️ Ticket Generation
 
