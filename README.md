@@ -19,9 +19,4 @@ This is a simple Lotto simulation program built with Kotlin. The application all
 - Gradle or IntelliJ IDEA for running the application
 - JDK 11+
 
-### Running the Program
 
-You can run the program using the main function in `Application.kt`:
-
-```bash
-./gradlew run
