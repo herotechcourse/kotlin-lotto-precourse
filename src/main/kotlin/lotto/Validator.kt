@@ -5,40 +5,40 @@ import lotto.constants.LottoPrice
 
 object Validator {
     fun validatePurchaseAmount(input: String): Int {
-        this.isNotBlank(input)
-        this.isNumber(input)
-        this.isDivisible(input)
+        validateBlank(input)
+        validateNumber(input)
+        validateDivisibility(input)
 
         return input.toInt()
     }
 
     fun validateWinningNumbers(input: String): List<Int> {
-        isNotBlank(input)
+        validateBlank(input)
         val tokens: List<String> = input.split(',').map { it.trim() }
         validateCount(tokens)
         validateDuplication(tokens)
 
         return tokens.map {
-            isNumber(it)
+            validateNumber(it)
             val number = it.toInt()
             validateRange(number)
             number
         }
     }
 
-    private fun isNotBlank(input: String) {
+    private fun validateBlank(input: String) {
         if (input.isBlank()) {
             throw IllegalArgumentException(ErrorMessage.INPUT_IS_BLANK.message)
         }
     }
 
-    private fun isNumber(input: String) {
+    private fun validateNumber(input: String) {
         if (input.toIntOrNull() == null) {
             throw IllegalArgumentException(ErrorMessage.NOT_A_NUMBER.message)
         }
     }
 
-    private fun isDivisible(input: String) {
+    private fun validateDivisibility(input: String) {
         if (input.toInt() % LottoPrice.TICKET != 0) {
             throw IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_BY_UNIT.message)
         }
