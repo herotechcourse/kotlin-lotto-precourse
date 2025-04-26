@@ -11,6 +11,7 @@ fun main() {
     outputView.printTickets(tickets)
 
     readWinningNumbers(inputView)
+    readBonusNumber(inputView)
 }
 
 fun readPurchaseOrder(inputView: InputView): Order {
@@ -35,6 +36,20 @@ fun readWinningNumbers(inputView: InputView): List<Int> {
             return winningNumbers
         } catch (e: NumberFormatException) {
             println("[ERROR] Winning numbers must be valid integers.")
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
+fun readBonusNumber(inputView: InputView): Int {
+    while (true) {
+        try {
+            val bonusNumber = inputView.readBonusNumber().toInt()
+            require(bonusNumber in MIN_NUMBER..MAX_NUMBER) { "[ERROR] Bonus number must be between $MIN_NUMBER and $MAX_NUMBER." }
+            return bonusNumber
+        } catch (e: NumberFormatException) {
+            println("[ERROR] Bonus number must be a valid integer.")
         } catch (e: IllegalArgumentException) {
             println(e.message)
         }
