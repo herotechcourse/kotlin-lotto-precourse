@@ -8,17 +8,17 @@ This project implements a simple lottery ticket simulator that generates tickets
 
 ###  Input Requirements
 
-- [ ] User inputs the **purchase amount**:
+- [x] User inputs the **purchase amount**:
     -  Each ticket costs 1,000 KRW
     -  Amount must be divisible by 1,000
     -  If invalid, display error: `[ERROR]` and re-prompt
 
-- [ ] User inputs **winning numbers**:
+- [x] User inputs **winning numbers**:
     -  Exactly 6 unique numbers
     -  Each number must be between 1 and 45
     -  If invalid, display error: `[ERROR]` and re-prompt
 
-- [ ] User inputs **bonus number**:
+- [x] User inputs **bonus number**:
     -  Exactly one number
     -  Must be between 1 and 45
     -  Must not overlap with the winning numbers
@@ -29,14 +29,14 @@ This project implements a simple lottery ticket simulator that generates tickets
 ###  Output Requirements
 
 -  Display the list of purchased l`otto tickets
-    - [ ] Tickets must be sorted in ascending order
+    - [x] Tickets must be sorted in ascending order
 
 -  Display the lotto result statistics
-    - [ ] Number of tickets for each match count
-    - [ ] Corresponding prize amount
+    - [x] Number of tickets for each match count
+    - [x] Corresponding prize amount
 
 -  Display the profit rate
-    - [ ] Rounded to the nearest tenth (e.g., `62.5%`)
+    - [x] Rounded to the nearest tenth (e.g., `62.5%`)
 
 ---
 
