@@ -50,10 +50,10 @@
 
 - [x] Print the number of tickets purchased.
 - [x] Print each ticket's numbers.
-- [ ] After the game ends:
+- [x] After the game ends:
     - [x] Display the count of matches for each prize rank.
-    - [ ] Display the profit rate.
-        - [ ] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%)
+    - [x] Display the profit rate.
+        - [x] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%)
 
 # Programming Conventions
 

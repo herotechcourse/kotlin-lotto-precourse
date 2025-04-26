@@ -2,6 +2,7 @@ package lotto.view
 
 import lotto.Lotto
 import lotto.WinningResult
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
@@ -21,10 +22,20 @@ class OutputView {
             if (rank.key.isSecond()) print(" + Bonus Ball")
             println(" (${formatPrize(rank.key.prize)} KRW) – ${rank.value} tickets")
         }
+        printProfit(result.profit())
     }
 
     private fun formatPrize(prize: Int): String {
         val formatter = NumberFormat.getNumberInstance(Locale.US)
         return formatter.format(prize)
+    }
+
+    private fun printProfit(profit: Double) {
+        println("Total return rate is ${formatProfit(profit)}%.")
+    }
+
+    private fun formatProfit(profit: Double): String {
+        val formatter = DecimalFormat("#,##0.0") // 천 단위 콤마 + 소수 첫째 자리
+        return formatter.format(profit)
     }
 }
