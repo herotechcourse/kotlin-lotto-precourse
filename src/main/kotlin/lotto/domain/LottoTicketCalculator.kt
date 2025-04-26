@@ -1,7 +1,7 @@
 package lotto.domain
 
-class LottoAmountCounter() {
-    fun count(amount: Int): Int {
+class LottoTicketCalculator() {
+    fun calculateTicketCount(amount: Int): Int {
         require(amount % LOTTO_UNIT_PRICE == ZERO ) { INVALID_LOTTO_AMOUNT}
         return amount / LOTTO_UNIT_PRICE
     }

@@ -35,7 +35,7 @@ class LottoController(
     }
 
     private fun generateLottos(amount: Int): List<Lotto> {
-        val count = lottoAmountCounter.count(amount)
+        val count = lottoAmountCounter.calculateTicketCount(amount)
         outputView.printIssuedLottoCountMessage(count)
 
         val lottos = lottoGenerator.generate(count)
