@@ -10,10 +10,10 @@
 
 ## 🎟️ Ticket Generation
 
-- [ ] Generate lotto tickets using Randoms.pickUniqueNumbersInRange(1, 45, 6).
-- [ ] Each ticket must have 6 unique numbers between 1 and 45.
-- [ ] Sort the numbers in ascending order before displaying.
-- [ ] Create Lotto objects for each ticket.
+- [x] Generate lotto tickets using Randoms.pickUniqueNumbersInRange(1, 45, 6).
+- [x] Each ticket must have 6 unique numbers between 1 and 45.
+- [x] Sort the numbers in ascending order before displaying.
+- [x] Create Lotto objects for each ticket.
 
 ## 🏆 Winning Numbers Input
 
