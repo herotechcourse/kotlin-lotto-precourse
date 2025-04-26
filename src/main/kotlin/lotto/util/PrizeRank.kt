@@ -13,19 +13,14 @@ enum class PrizeRank(
     NONE(0, false, 0);
 
     companion object {
-        fun determineRank(matchCount: Int, hasBonus: Boolean): PrizeRank {
-            return when (matchCount) {
+        fun determineRank(matchCount: Int, hasBonus: Boolean): PrizeRank =
+            when (matchCount) {
                 FIRST.matchCount -> FIRST
-                SECOND.matchCount -> determineSecondOrThirdPrize(hasBonus)
+                SECOND.matchCount -> if (hasBonus) SECOND else THIRD
                 THIRD.matchCount -> THIRD
                 FOURTH.matchCount -> FOURTH
                 FIFTH.matchCount -> FIFTH
                 else -> NONE
             }
-        }
-
-        private fun determineSecondOrThirdPrize(hasBonus: Boolean): PrizeRank {
-            return if (hasBonus) SECOND else THIRD
-        }
     }
 }

@@ -1,6 +1,5 @@
 package lotto.util
 
-import lotto.util.Rule
 import lotto.exception.ExceptionMessage
 
 object Validator {

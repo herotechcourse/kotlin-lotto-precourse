@@ -1,10 +1,8 @@
 package lotto.controller
 
 import lotto.Lotto
-import lotto.model.MatchResult
 import lotto.model.WinningNumbers
 import lotto.service.LottoService
-import lotto.util.Validator
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -19,30 +17,25 @@ class LottoController(
     }
 
     private fun getValidLottoTickets(): List<Lotto> {
-        while (true) {
-            try {
-                val amount = InputView.readPurchaseAmount()
-                val tickets = lottoService.purchaseLottoTickets(amount)
-                OutputView.printPurchasedTickets(tickets.size, tickets.map { it.getNumbers() })
-                return tickets
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        return try {
+            val amount = InputView.readPurchaseAmount()
+            val tickets = lottoService.purchaseLottoTickets(amount)
+            OutputView.printPurchasedTickets(tickets.size, tickets.map { it.getNumbers() })
+            tickets
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            getValidLottoTickets()
         }
     }
 
     private fun getValidWinningNumbers(): WinningNumbers {
-        while (true) {
-            try{
-                val numbers = InputView.readWinningNumbers()
-                val bonusNumber = InputView.readBonusNumber(numbers)
-                return WinningNumbers(numbers, bonusNumber)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        return try{
+            val numbers = InputView.readWinningNumbers()
+            val bonusNumber = InputView.readBonusNumber(numbers)
+            WinningNumbers(numbers, bonusNumber)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            getValidWinningNumbers()
         }
     }
-
-
-
 }
