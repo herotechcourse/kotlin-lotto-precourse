@@ -21,7 +21,7 @@ object LottoMachine {
     ): LottoResult {
         val prizeCounts = tickets.groupingBy {
             val matchCount = it.matchCount(winningNumbers)
-            val hasBonus = winningNumbers.contains(bonusNumber)
+            val hasBonus = it.contains(bonusNumber)
             Prize.determinePrize(matchCount, hasBonus)
         }.eachCount().filterKeys { it != null }.mapKeys { it.key!! }
 

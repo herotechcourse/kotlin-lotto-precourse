@@ -35,13 +35,20 @@ object InputView {
 
     private inline fun <T> readLineWithValidation(errorMessage: String, validator: (String) -> T): T {
         while (true) {
-            try {
-                return validator(Console.readLine())
-            } catch (e: IllegalArgumentException) {
-                println("[ERROR] ${e.message ?: errorMessage}")
-            } catch (e: NumberFormatException) {
-                println("[ERROR] Please enter valid numbers.")
-            }
+            val result = tryValidation(errorMessage, validator)
+            if (result != null) return result
+        }
+    }
+
+    private inline fun <T> tryValidation(errorMessage: String, validator: (String) -> T): T? {
+        return try {
+            validator(Console.readLine())
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message ?: errorMessage}")
+            null
+        } catch (e: NumberFormatException) {
+            println("[ERROR] Please enter valid numbers.")
+            null
         }
     }
 }
