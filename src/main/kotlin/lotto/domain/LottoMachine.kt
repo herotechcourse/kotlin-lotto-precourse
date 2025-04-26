@@ -1,6 +1,7 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 object LottoMachine {
     private const val LOTTO_PRICE = 1000
