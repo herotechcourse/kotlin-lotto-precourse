@@ -8,38 +8,43 @@ import org.junit.jupiter.api.assertThrows
 class LottoTest {
 
     @Test
-    fun `throws an exception with message when lotto numbers exceed six`() {
+    fun `throws an exception with message when lotto numbers exceed required size`() {
+        val numbers = (1..(Lotto.REQUIRED_SIZE + 1)).toList()
         val exception = assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
+            Lotto(numbers)
         }
         assertThat(exception.message).isEqualTo(Lotto.ERROR_INVALID_SIZE)
     }
 
     @Test
-    fun `throws an exception with message when lotto numbers are less than six`() {
+    fun `throws an exception with message when lotto numbers are less than required size`() {
+        val numbers = (1..(Lotto.REQUIRED_SIZE - 1)).toList()
         val exception = assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5))
+            Lotto(numbers)
         }
         assertThat(exception.message).isEqualTo(Lotto.ERROR_INVALID_SIZE)
     }
 
     @Test
     fun `throws an exception with message when lotto numbers contain duplicates`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 5)
         val exception = assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
+            Lotto(numbers)
         }
         assertThat(exception.message).isEqualTo(Lotto.ERROR_DUPLICATE_NUMBERS)
     }
 
     @Test
     fun `throws an exception with message when lotto numbers are out of valid range`() {
+        val invalidLow = listOf(0, 2, 3, 4, 5, 6)
         val exception1 = assertThrows<IllegalArgumentException> {
-            Lotto(listOf(0, 2, 3, 4, 5, 6))
+            Lotto(invalidLow)
         }
         assertThat(exception1.message).isEqualTo(Lotto.ERROR_OUT_OF_RANGE)
 
+        val invalidHigh = listOf(1, 2, 3, 4, 5, Lotto.MAX_NUMBER + 1)
         val exception2 = assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 46))
+            Lotto(invalidHigh)
         }
         assertThat(exception2.message).isEqualTo(Lotto.ERROR_OUT_OF_RANGE)
     }
