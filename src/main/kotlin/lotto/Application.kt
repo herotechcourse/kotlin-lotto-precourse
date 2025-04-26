@@ -4,11 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-    try {
         LottoGame().run()
-    } catch (e: IllegalArgumentException) {
-        println(e.message)
-    }
 }
 
 class LottoGame {
@@ -50,8 +46,16 @@ class LottoGame {
     }
 
     private fun printTickets() {
-        println("\nYou have purchased ${tickets.size} tickets.")
-        tickets.forEach { println(it) }
+        println("You have purchased ${tickets.size} tickets.")
+        tickets.sortedWith(Comparator { a, b ->
+            val aNums = a.getNumbers()
+            val bNums = b.getNumbers()
+            for (i in aNums.indices) {
+                val cmp = aNums[i].compareTo(bNums[i])
+                if (cmp != 0) return@Comparator cmp
+            }
+            0
+        }).forEach { println(it) }
     }
 
     private fun getValidWinningNumbers(): List<Int> {
@@ -107,7 +111,7 @@ class LottoGame {
         val purchaseAmount = tickets.size * ticketPrice
         val profitRate = (totalPrize.toDouble() / purchaseAmount) * 100
 
-        println("\nWinning Statistics")
+        println("\nLotto result statistics:")
         println("---")
         Rank.values().filter { it != Rank.NONE }.reversed().forEach { rank ->
             val prizeFormatted = "%,d".format(rank.prize)
