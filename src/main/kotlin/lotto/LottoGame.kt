@@ -1,7 +1,7 @@
 package lotto
 
 class LottoGame {
-    fun run() {
+    fun run() { // Todo - method separate
         OutputView().askPurchaseAmount()
         val purchaseAmount = InputView().purchaseAmount()
         val ticketCount = calculateTicketCount(purchaseAmount)
@@ -18,6 +18,9 @@ class LottoGame {
         winningLotto.registerBonusNumber(lastWeekBonusNumber)
 
         OutputView().printWinningStatics()
+        val result = Result()
+        result.calculateResult(winningLotto, lottos, purchaseAmount)
+        println(result)
     }
 
     private fun calculateTicketCount(purchaseAmount: String) = purchaseAmount.toInt() / LOTTO_PRICE
