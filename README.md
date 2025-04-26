@@ -48,7 +48,7 @@
 
 ## Output Rules
 
-- [ ] Print the number of tickets purchased.
+- [x] Print the number of tickets purchased.
 - [ ] Print each ticket's numbers.
 - [ ] After the game ends:
     - [ ] Display the count of matches for each prize rank.

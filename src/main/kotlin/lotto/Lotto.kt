@@ -14,4 +14,8 @@ class Lotto(private val numbers: List<Int>) {
     fun match(other: Lotto): Int {
         return numbers.toSet().intersect(other.numbers.toSet()).size
     }
+
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
 }
