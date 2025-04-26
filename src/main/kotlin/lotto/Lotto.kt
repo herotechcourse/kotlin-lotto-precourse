@@ -6,4 +6,13 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: Implement additional functions
+    fun getNumbers(): List<Int>
+    {
+        return numbers
+    }
+//    fun printLottoTicket() {
+//        val ticketValue = numbers.joinToString(", ")
+//        println("[$ticketValue]")
+//    }
+
 }
