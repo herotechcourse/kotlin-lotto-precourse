@@ -1,5 +1,29 @@
 # kotlin-lotto-precourse
 
+## 0. Folder structure
+```bash
+.
+└── lotto
+    ├── Application.kt
+    ├── Lotto.kt
+    ├── controller
+    │   └── LottoController.kt
+    ├── exception
+    │   └── ExceptionMessage.kt
+    ├── model
+    │   ├── MatchResult.kt
+    │   └── WinningNumbers.kt
+    ├── service
+    │   └── LottoService.kt
+    ├── util
+    │   ├── PrizeRank.kt
+    │   ├── Rule.kt
+    │   └── Validator.kt
+    └── view
+        ├── InputView.kt
+        └── OutputView.kt
+```
+
 ## 1. Overview
 A simple command-line Lotto application.
 1. User enters a purchase amount (must be at least ₩1,000 and divisible by ₩1,000).
@@ -9,6 +33,8 @@ A simple command-line Lotto application.
     - Each ticket’s numbers
     - A summary of how many tickets hit 3, 4, 5 (+bonus), or 6 matches
     - Total return rate (prize / purchase * 100%)
+5. Result example:</br>
+<img src="docs/result.png" width="400px">
 
 ---
 
@@ -16,6 +42,11 @@ A simple command-line Lotto application.
 
 ### Application.kt (Entry Point)
 > - Calls `LottoController.run()` to start the flow.
+
+### lotto. `Lotto.kt`
+> - Represents a single ticket.
+> - Validates numbers on init.
+> - `countMatching(…)` and `contains(…)` helpers.
 
 ### controller/
 #### `LottoController.kt`
@@ -29,10 +60,6 @@ A simple command-line Lotto application.
 > - `determineWinningResults(…)`: compares each ticket to winning numbers + bonus, tallies counts and total prize.
 
 ### model/
-#### `Lotto.kt`
-> - Represents a single ticket.
-> - Validates numbers on init.
-> - `countMatching(…)` and `contains(…)` helpers.
 #### `WinningNumbers.kt`
 > - Holds the 6 winning numbers + bonus.
 #### `MatchResult.kt`
