@@ -2,6 +2,8 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class LottoTest {
     @Test
@@ -18,5 +20,11 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 0, 46, 100])
+    fun `throws an exception when lotto numbers not in 1 to 45`(value: Int) {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, value))
+        }
+    }
 }
