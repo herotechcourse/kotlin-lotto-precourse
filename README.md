@@ -17,3 +17,8 @@
 
 ### Limitations & Assumptions
 1. **Program stays alive after any `IllegalArgumentException`;** it prints `[ERROR] …` and re-prompts the current step only.  
+2. Winning numbers input must meet all of the following conditions.
+   - No empty values are allowed.(blank input is not valid).
+   - All inputs must be valid numbers.
+   - Each number must be between 1 and 45.
+   - Duplicate numbers are not allowed.
