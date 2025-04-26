@@ -1,11 +1,11 @@
 package lotto.domain.repo
 
-import lotto.domain.model.LottoTicket
+import lotto.Lotto
 import lotto.domain.model.WinningNumbers
 
 interface LottoRepository {
-  fun generateLottoTickets(purchaseAmount: Int): List<LottoTicket>
-  fun saveLottoTickets(tickets: List<LottoTicket>)
-  fun getLottoTickets(): List<LottoTicket>
+  fun generateLottoTickets(purchaseAmount: Int): List<Lotto>
+  fun saveLottoTickets(tickets: List<Lotto>)
+  fun getLottoTickets(): List<Lotto>
   fun createWinningNumbers(mainNumbers: List<Int>, bonusNumber: Int): WinningNumbers
 }
