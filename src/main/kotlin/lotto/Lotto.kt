@@ -1,6 +1,6 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { LottoMessages.sixNumbers }
         require(numbers.distinct().size == numbers.size) { LottoMessages.duplicate }

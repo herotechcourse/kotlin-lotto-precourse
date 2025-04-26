@@ -12,9 +12,9 @@ class TicketGeneratorTest : NsTest() {
         val generator = TicketGenerator()
         val ticket = generator.generateTicket()
         assertAll(
-            { assertEquals(6, ticket.size) },
-            { assertEquals(6, ticket.distinct().size) },
-            { assertTrue(ticket.all { it in 1..45 }) }
+            { assertEquals(6, ticket.numbers.size) },
+            { assertEquals(6, ticket.numbers.distinct().size) },
+            { assertTrue(ticket.numbers.all { it in 1..45 }) }
         )
     }
 
@@ -29,7 +29,7 @@ class TicketGeneratorTest : NsTest() {
     @Test
     fun `assert that generated tickets are unique across multiple calls`() {
         val generator = TicketGenerator()
-        val tickets = List(100) { generator.generateTicket().sorted() }
+        val tickets = List(100) { generator.generateTicket() }
         val uniqueTickets = tickets.distinct()
         assertEquals(tickets.size, uniqueTickets.size)
     }
