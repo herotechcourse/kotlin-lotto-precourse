@@ -40,8 +40,8 @@ class WinningNumbersParser {
             if (!uniqueWinningNumbers.add(winningNumber)) throw IllegalArgumentException(
                 "[ERROR] Duplicated winning number : $winningNumber"
             )
-            if (winningNumber < MIN_WINNING_NUMBER || winningNumber > MAX_WINNING_NUMBERS) throw IllegalArgumentException(
-                "[ERROR] Winning numbers must be within $MIN_WINNING_NUMBER - $MAX_WINNING_NUMBERS range."
+            if (winningNumber < MIN_WINNING_NUMBER || winningNumber > MAX_WINNING_NUMBER) throw IllegalArgumentException(
+                "[ERROR] Winning numbers must be within $MIN_WINNING_NUMBER - $MAX_WINNING_NUMBER range."
             )
         }
     }
@@ -49,6 +49,6 @@ class WinningNumbersParser {
     companion object {
         const val WINNING_NUMBERS_LENGTH = 6
         const val MIN_WINNING_NUMBER = 1
-        const val MAX_WINNING_NUMBERS = 45
+        const val MAX_WINNING_NUMBER = 45
     }
 }
