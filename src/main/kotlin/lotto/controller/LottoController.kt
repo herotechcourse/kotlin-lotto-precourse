@@ -19,7 +19,14 @@ class LottoController(
     //re-enter
     private fun purchaseLotteryTickets(): RandomLottos {
         val purchaseAmount = inputView.askPurchaseAmount()
+        val purchaseLotto = lottoService.createRandomLotto(purchaseAmount)
+        displayPurchaseTickets(purchaseLotto)
 
-        return lottoService.createRandomLotto(purchaseAmount)
+        return purchaseLotto
+    }
+
+    private fun displayPurchaseTickets(randomLotto: RandomLottos) {
+        val purchasedLottoDto = lottoService.createPurchasedDto(randomLotto)
+        outputView.printPurchasedLotto(purchasedLottoDto)
     }
 }
