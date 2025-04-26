@@ -28,4 +28,16 @@ object InputView {
             getWinningNumbers()
         }
     }
+
+    fun getBonusNumber(): Int {
+        return try{
+            println(InputMessage.BONUS_NUMBER.message)
+            val input: String = Console.readLine()
+
+            return Validator.validateBonusNumber(input)
+        } catch(e: IllegalArgumentException) {
+            println(e.message)
+            getBonusNumber()
+        }
+    }
 }
