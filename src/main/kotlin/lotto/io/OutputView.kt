@@ -1,18 +1,19 @@
-// OutputView.kt
 package lotto.io
 
+import lotto.domain.Lotto
 import lotto.domain.LottoResult
 
 class OutputView(private val io: IOInterface) {
-    fun printPurchasedTickets(tickets: List<LottoTicket>) {
+
+    fun printPurchasedTickets(tickets: List<Lotto>) {
         io.print("You have purchased ${tickets.size} tickets.")
-        tickets.forEach {
-            io.print(it.numbers.toString())
+        tickets.forEach { ticket ->
+            io.print(ticket.getNumbers().toString())
         }
     }
 
     fun printResult(result: LottoResult, profitRate: Double) {
-        io.print("Winning Statistics\n---")
+        io.print("\nWinning Statistics\n---")
         result.statistics.forEach { (prize, count) ->
             io.print("${prize.description()} – ${count} tickets")
         }
