@@ -12,7 +12,7 @@ class LottoNumberTest {
         // when & then
         assertThatThrownBy { LottoNumber(number) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] Number must be between $MIN_RANGE and $MAX_RANGE")
+            .hasMessage("[ERROR] Number must be between $MIN_RANGE and $MAX_RANGE.")
     }
 
     companion object {
