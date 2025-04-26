@@ -25,16 +25,16 @@
 - [x] Compare each ticket with winning numbers and bonus number
 - [x] Determine the prize rank (1st ~ 5th or no prize)
 - [x] Count the number of winning tickets per rank
-- [ ] Calculate and display total winnings
-- [ ] Calculate and display profit rate (percentage, rounded to first decimal)
+- [x] Calculate and display total winnings
+- [x] Calculate and display profit rate (percentage, rounded to first decimal)
 
 ---
 
 ### 🖨 Output
 
-- [ ] Print number of purchased tickets and their numbers
-- [ ] Print winning statistics by rank
-- [ ] Print total profit rate
+- [x] Print number of purchased tickets and their numbers
+- [x] Print winning statistics by rank
+- [x] Print total profit rate
 
 ---
 
