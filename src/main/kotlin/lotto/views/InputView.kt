@@ -7,25 +7,43 @@ class InputView {
 
     // Ask user to input the purchase amount
     fun getPurchaseAmount(): Int {
-        println("Purchase amount for lottery tickets: ")
-        val purchaseAmount = Console.readLine().toInt()
-        return validatePurchaseAmount(purchaseAmount)
+        while(true) {
+            try {
+                println("Purchase amount for lottery tickets: ")
+                val purchaseAmount = Console.readLine().toInt()
+                return validatePurchaseAmount(purchaseAmount)
+            }catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     // Ask user to input exactly 6 numbers  comma-separated and they should be between 1 and 45
     fun getWinningNumbers(): List<Int> {
-        println("Winning numbers (comma-separated): ")
-        val winningNumbersStr = Console.readLine()
-        val winningNumbers = parseWinningNumbers(winningNumbersStr)
-        validatedWinningNumbers = validateWinningNumbers(winningNumbers)
-        return validatedWinningNumbers
+        while(true) {
+            try {
+                println("Winning numbers (comma-separated): ")
+                val winningNumbersStr = Console.readLine()
+                val winningNumbers = parseWinningNumbers(winningNumbersStr)
+                validatedWinningNumbers = validateWinningNumbers(winningNumbers)
+                return validatedWinningNumbers
+            } catch(e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     // Ask user to input a bonus number different from the previous ones and between 1 and 45
     fun getBonusNumber(): Int {
-        println("Bonus number: ")
-        val bonusNumber = Console.readLine().toInt()
-        return validateBonusNumber(validatedWinningNumbers, bonusNumber)
+        while(true) {
+            try {
+                println("Bonus number: ")
+                val bonusNumber = Console.readLine().toInt()
+                return validateBonusNumber(validatedWinningNumbers, bonusNumber)
+            } catch(e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     companion object{
