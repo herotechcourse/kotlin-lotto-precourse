@@ -4,8 +4,12 @@ import lotto.domain.dto.NumbersDto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == VALID_SIZE) { "[ERROR] Lotto must contain exactly $VALID_SIZE numbers." }
     }
 
     fun toNumbersDto(): NumbersDto = NumbersDto(numbers.toList())
+
+    companion object {
+        private const val VALID_SIZE = 6
+    }
 }
