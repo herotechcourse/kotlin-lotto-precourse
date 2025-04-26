@@ -7,6 +7,7 @@ class PurchaseLottoUseCase(
     private val lottoRepository: LottoRepository
 ) {
     fun run(purchaseAmount: Int): List<Lotto> {
+
         return lottoRepository.generateLottoTickets(purchaseAmount)
     }
 
