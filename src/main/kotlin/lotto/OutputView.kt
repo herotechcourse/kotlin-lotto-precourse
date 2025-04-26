@@ -8,18 +8,17 @@ class OutputView {
     }
 
     fun displayStatistics(prizeCategories: Map<Prize, Int>) {
-        println("Lotto result statistics:\n")
+        println("Lotto result statistics:")
 
-        Prize.entries.forEach { prize ->
+        Prize.entries.reversed().forEach { prize ->
             if (prize != Prize.NONE) {
                 val count = prizeCategories.getOrDefault(prize, 0)
-                val ticketLabel = listOf("ticket", "tickets")[(count > 1).compareTo(false)]
-                println("${prize.description} - $count $ticketLabel")
+                println("${prize.description} – $count tickets")
             }
         }
     }
 
     fun displayProfitRate(profitRate: Double) {
-        println("Total return rate is %.1f%%".format(profitRate))
+        println("Total return rate is %.1f%%.".format(profitRate))
     }
 }
