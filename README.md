@@ -16,7 +16,7 @@
     - [x] The numbers must be in the range 1 to 45 (inclusive).
 - [x] Accept 1 bonus number from the user.
     - [x] The bonus number must be different from the winning numbers.
-- [ ] Compare each ticket with the winning numbers and bonus number.
+- [x] Compare each ticket with the winning numbers and bonus number.
 - [x] Determine the prize rank based on the number of matches and the bonus number.
     ```
     The criteria and prize amounts are as follows:
