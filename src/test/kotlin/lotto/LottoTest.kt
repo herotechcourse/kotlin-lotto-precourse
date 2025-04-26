@@ -38,7 +38,7 @@ class LottoTest {
     @Test
     fun `matchLotto call evaluateLotto once`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        val mockWinningLotto = MockWinningLotto(listOf(1, 2, 3, 4, 5, 6), 7)
+        val mockWinningLotto = MockFactory.createMockWinningLotto()
 
         lotto.matchLotto(mockWinningLotto)
 
