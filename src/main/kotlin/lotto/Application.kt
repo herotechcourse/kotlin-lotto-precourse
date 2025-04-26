@@ -7,8 +7,9 @@ fun main() {
     println("Please enter the purchase amount.")
     val amountInput = Console.readLine().toInt()
     val tickets = parseAmount(amountInput)
-    println("\nYou have purchased $tickets tickets.")
+
     // parse tickets to generate numbers
+    println("\nYou have purchased $tickets tickets.")
     val lottoNumbers = generateLotto(tickets)
     for (numbers in lottoNumbers) {
         println(numbers)
@@ -37,6 +38,7 @@ fun parseAmount(input: Int): Int {
 }
 
 fun generateLotto(tickets: Int): List<List<Int>> {
+    // generate 6 random numbers between 1 and 45 based on the number of tickets
     val result = mutableListOf<List<Int>>()
     repeat(tickets) {
         result.add(Randoms.pickUniqueNumbersInRange(1, 45, 6))
