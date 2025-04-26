@@ -34,8 +34,8 @@ The features will be implemented in the following order:
 ### Ticket Generation
 
 - [x] Calculate how many lottery tickets the user can buy.
-- [ ] Create lottery tickets for the user.
-  - [ ] Each ticket must have 6 unique random numbers between 1 and 45.
+- [x] Create lottery tickets for the user.
+  - [x] Each ticket must have 6 unique random numbers between 1 and 45.
 
 ### Prize Calculation
 
