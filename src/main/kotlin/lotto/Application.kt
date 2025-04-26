@@ -7,6 +7,7 @@ fun main() {
     var prize: Int = 0
     var prizeRankList: MutableList<Prize> = mutableListOf()
 
+    // create lotto instance for each ticket, determine the prize rank
     for (ticket in inputView.getTickets()) {
         val lotto = Lotto(ticket)
         var prizeNumber = lotto.findMatches(inputView.getWinningNumber(), inputView.getBonusNumber())

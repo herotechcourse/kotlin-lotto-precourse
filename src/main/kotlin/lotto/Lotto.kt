@@ -6,6 +6,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.toSet().size == numbers.size) { "[ERROR] Lotto must not contain duplicated numbers" }
     }
 
+    // find matches and determine the prize rank
     fun findMatches(winningNumber: List<Int>, bonusNumber: Int): Prize {
         var sameNumberCount = numbers.intersect(winningNumber.toSet()).size
 

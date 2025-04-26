@@ -5,8 +5,7 @@ object OutputView {
         println()
         println("You have purchased $ticketNumber tickets.")
         for (ticket in tickets) {
-            if (ticket.isNotEmpty())
-                println(ticket)
+            if (ticket.isNotEmpty()) println(ticket)
         }
         println()
     }
