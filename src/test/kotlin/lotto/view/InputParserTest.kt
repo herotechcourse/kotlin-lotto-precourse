@@ -19,4 +19,11 @@ class InputParserTest {
             parser.parsePurchaseAmount("-1000")
         }
     }
+
+    @Test
+    fun `throws an exception when winning numbers contains not numeric`() {
+        assertThrows<IllegalArgumentException> {
+            parser.parseWinningNumbers("1,2,3,4,5,six")
+        }
+    }
 }

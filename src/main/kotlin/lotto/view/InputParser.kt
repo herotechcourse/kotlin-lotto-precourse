@@ -1,5 +1,7 @@
 package lotto.view
 
+private const val WINNING_NUMBERS_DELIMITER = ","
+
 class InputParser {
     fun parsePurchaseAmount(input: String): Int {
         val amount = toInt(input)
@@ -13,5 +15,11 @@ class InputParser {
         } catch (exception: NumberFormatException) {
             throw IllegalArgumentException("Input is not a number.")
         }
+    }
+
+    fun parseWinningNumbers(input: String): List<Int> {
+        return input.split(WINNING_NUMBERS_DELIMITER)
+            .map { it.trim() }
+            .map { toInt(it) }
     }
 }
