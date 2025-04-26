@@ -18,7 +18,7 @@ class LottoManager {
         outputView.printStatistics(lottoResult, purchaseAmount)
     }
 
-    private fun getPurchaseAmount(): Int {
+    internal fun getPurchaseAmount(): Int {
         while (true) {
             try {
                 val amount = inputView.readPurchaseAmount()
@@ -30,12 +30,12 @@ class LottoManager {
         }
     }
 
-    private fun validatePurchaseAmount(amount: Int) {
+    internal fun validatePurchaseAmount(amount: Int) {
         require(amount % 1000 == 0) { "[ERROR] Purchase amount must be a multiple of 1000." }
         require(amount > 0) { "[ERROR] Purchase amount must be greater than 0." }
     }
 
-    private fun generateTickets(purchaseAmount: Int): List<Lotto> {
+    internal fun generateTickets(purchaseAmount: Int): List<Lotto> {
         val ticketCount = purchaseAmount / 1000
         return List(ticketCount) {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
@@ -43,7 +43,7 @@ class LottoManager {
         }
     }
 
-    private fun getWinningNumbers(): List<Int> {
+    internal fun getWinningNumbers(): List<Int> {
         while (true) {
             try {
                 val numbers = inputView.readWinningNumbers()
@@ -55,13 +55,13 @@ class LottoManager {
         }
     }
 
-    private fun validateWinningNumbers(numbers: List<Int>) {
+    internal fun validateWinningNumbers(numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
         require(numbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
         require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
     }
 
-    private fun getBonusNumber(winningNumbers: List<Int>): Int {
+    internal fun getBonusNumber(winningNumbers: List<Int>): Int {
         while (true) {
             try {
                 val bonusNumber = inputView.readBonusNumber()
@@ -73,7 +73,7 @@ class LottoManager {
         }
     }
 
-    private fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
+    internal fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
         require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
         require(bonusNumber !in winningNumbers) { "[ERROR] Bonus number must not be among the winning numbers." }
     }
