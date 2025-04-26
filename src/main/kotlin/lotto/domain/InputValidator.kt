@@ -1,13 +1,13 @@
 package lotto.domain
 
 import lotto.messages.PurchaseErrorMessage
+import lotto.messages.WinningNumberErrorMessage
 
 class InputValidator {
 
     fun validatePurchaseInput(input: String): Int {
 
-        val amount = input.toIntOrNull()
-            ?: throw IllegalArgumentException(PurchaseErrorMessage.NOT_A_NUMBER.message)
+        val amount = parseToIntOrThrow(input, PurchaseErrorMessage.NOT_A_NUMBER.message)
         if (amount < 0) {
             throw IllegalArgumentException(PurchaseErrorMessage.NEGATIVE_NUMBER.message)
         }
@@ -20,4 +20,42 @@ class InputValidator {
 
         return amount
     }
+
+    fun validateWinningNumbers(input: String): Set<Int> {
+
+        val numbers = input.split(",")
+            .map { parseToIntOrThrow(it, WinningNumberErrorMessage.NOT_A_NUMBER.message) }
+        if (numbers.size != 6) {
+            throw IllegalArgumentException(WinningNumberErrorMessage.NOT_SIX_NUMBERS.message)
+        }
+        numbers.forEach { validateLottoNumberRange(it, WinningNumberErrorMessage.NOT_IN_RANGE.message) }
+        if (numbers.toSet().size != numbers.size) {
+            throw IllegalArgumentException(WinningNumberErrorMessage.DUPLICATE_NUMBER.message)
+        }
+
+        return numbers.toSet()
+    }
+
+    fun validateBonusNumber(input: String, winningNumbers: Set<Int>): Int {
+
+        val bonus = parseToIntOrThrow(input, WinningNumberErrorMessage.NOT_A_NUMBER.message)
+        validateLottoNumberRange(bonus, WinningNumberErrorMessage.NOT_IN_RANGE.message)
+        if (bonus in winningNumbers) {
+            throw IllegalArgumentException(WinningNumberErrorMessage.BONUS_NUMBER_DUPLICATE.message)
+        }
+
+        return bonus
+    }
+
+    private fun parseToIntOrThrow(input: String, errorMessage: String): Int {
+        return input.trim().toIntOrNull()
+            ?: throw IllegalArgumentException(errorMessage)
+    }
+
+    private fun validateLottoNumberRange(number: Int, errorMessage: String) {
+        if (number !in 1..45) {
+            throw IllegalArgumentException(errorMessage)
+        }
+    }
+
 }
