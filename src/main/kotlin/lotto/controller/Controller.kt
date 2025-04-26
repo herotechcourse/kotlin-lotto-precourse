@@ -39,7 +39,7 @@ class Controller(
             try {
                 return action()
             } catch (ex: IllegalArgumentException) {
-                println("[ERROR] ${ex.message}")
+                outputView.printError(ex.message)
             }
         }
     }
