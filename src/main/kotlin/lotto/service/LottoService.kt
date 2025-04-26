@@ -4,7 +4,7 @@ import lotto.Lotto
 import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.LottoPurchase
-import lotto.LottoResult
+import lotto.LottoPrizeEnum
 import lotto.WinningLotto
 
 class LottoService (
@@ -40,14 +40,19 @@ class LottoService (
 
     private fun calcResult(purchase: LottoPurchase,
                            winningLotto: WinningLotto): Pair<Map<Int, Int>, Double> {
-        val results: List<LottoResult> = purchase.getLottos().map { lotto: Lotto ->
-            LottoResult(winningLotto.match(lotto), winningLotto.matchBonus(lotto))
+        val results: List<LottoPrizeEnum?> = purchase.getLottos().map { lotto: Lotto ->
+            LottoPrizeEnum.from(winningLotto.match(lotto), winningLotto.matchBonus(lotto))
         }
 
-        val prizes = listOf(5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000)
-        val counted = results.groupingBy { it.getPrize() }.eachCount()
-        val resultStatic: Map<Int, Int> = prizes.associateWith { prize -> counted[prize] ?: 0 }
-        val totalReward: Int = results.sumOf { it -> it.getPrize() }
+        val resultStatic: Map<Int, Int> = results.filterNotNull()
+            .groupingBy { it.prize }
+            .eachCount()
+            .let { counted ->
+                LottoPrizeEnum.entries.associate { prize ->
+                    prize.prize to (counted[prize.prize] ?: 0)
+                }
+            }
+        val totalReward: Int = results.filterNotNull().sumOf { it.prize }
         val roi: Double = (totalReward / purchase.getAmount().toDouble()) * 100
 
         return Pair(resultStatic, roi)
