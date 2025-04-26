@@ -1,4 +1,6 @@
 package lotto.io
 
-class IOInterface {
+interface IOInterface {
+    fun print(content: String)
+    fun read(): String
 }
