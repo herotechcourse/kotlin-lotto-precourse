@@ -14,6 +14,7 @@ object OutputView {
         var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
 
         println()
+
         println("Winning Statistics")
         println("---")
         println("3 Matches (5,000 KRW) – ${prizeRankList.count { it == Prize.FifthPrize }} tickets")

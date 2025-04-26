@@ -7,8 +7,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // find matches and determine the prize rank
-    fun findMatches(winningNumber: List<Int>, bonusNumber: Int): Prize {
-        var sameNumberCount = numbers.intersect(winningNumber.toSet()).size
+    fun findMatches(winningNumbers: List<Int>, bonusNumber: Int): Prize {
+        var sameNumberCount = numbers.intersect(winningNumbers.toSet()).size
 
         var prizeRank = when (sameNumberCount) {
             6 -> Prize.FirstPrize

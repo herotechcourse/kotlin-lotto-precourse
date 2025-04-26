@@ -10,9 +10,9 @@ fun main() {
     // create lotto instance for each ticket, determine the prize rank
     for (ticket in inputView.getTickets()) {
         val lotto = Lotto(ticket)
-        var prizeNumber = lotto.findMatches(inputView.getWinningNumber(), inputView.getBonusNumber())
-        prizeRankList.add(prizeNumber)
-        prize += prizeNumber.prizeMoney
+        var prizeRank = lotto.findMatches(inputView.getWinningNumbers(), inputView.getBonusNumber())
+        prizeRankList.add(prizeRank)
+        prize += prizeRank.prizeMoney
     }
     OutputView.printPrizeStatics(prizeRankList, prize, inputView.getPurchaseAmount())
 }

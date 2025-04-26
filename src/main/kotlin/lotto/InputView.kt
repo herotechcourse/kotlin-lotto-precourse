@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    private var ticketNumber: Int = 0
+    private var numberOfTickets: Int = 0
     private var purchaseAmount: Int = 0
     private var tickets: List<List<Int>> = listOf(listOf())
-    private var winningNumber: List<Int> = listOf()
+    private var winningNumbers: List<Int> = listOf()
     private var bonusNumber: Int = 0
 
     fun initPrintTicket() {
         parsePurchaseAmount()
         tickets = generateTickets(purchaseAmount)
-        OutputView.printTickets(tickets, ticketNumber)
-        parseWinningNumber()
+        OutputView.printTickets(tickets, numberOfTickets)
+        parseWinningNumbers()
         parseBonusNumber()
     }
 
@@ -31,11 +31,11 @@ class InputView {
         }
     }
 
-    private fun parseWinningNumber() {
+    private fun parseWinningNumbers() {
         while (true) {
             try {
                 println("Please enter last week's winning numbers.")
-                winningNumber = InputValidate.validateWinningNumber(Console.readLine())
+                winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -48,7 +48,7 @@ class InputView {
             try {
                 println()
                 println("Please enter the bonus number.")
-                bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumber)
+                bonusNumber = InputValidate.validateBonusNumber(Console.readLine(), winningNumbers)
                 break
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -57,10 +57,10 @@ class InputView {
     }
 
     private fun generateTickets(purchaseAmount: Int): List<List<Int>> {
-        ticketNumber = purchaseAmount / 1000
+        numberOfTickets = purchaseAmount / 1000
         val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
 
-        for (i in 0 until ticketNumber) {
+        for (i in 0 until numberOfTickets) {
             val singleTicket = generateSingleTicket()
             rawTickets.add(singleTicket)
         }
@@ -69,7 +69,7 @@ class InputView {
 
     private fun generateSingleTicket(): MutableList<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6)
 
-    fun getWinningNumber(): List<Int> = winningNumber
+    fun getWinningNumbers(): List<Int> = winningNumbers
 
     fun getBonusNumber(): Int = bonusNumber
 

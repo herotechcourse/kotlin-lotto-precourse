@@ -5,6 +5,7 @@ object InputValidate {
     fun validateAmount(input: String): Int {
         val amount = try {
             input.toInt()
+
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Input purchaseAmount must be integer")
         }
@@ -18,7 +19,7 @@ object InputValidate {
         return amount
     }
 
-    fun validateWinningNumber(input: String): List<Int> {
+    fun validateWinningNumbers(input: String): List<Int> {
         val inputList = input.split(",")
             .map { it.trim() }.map { it.replace("\\s+".toRegex(), "") }
 
