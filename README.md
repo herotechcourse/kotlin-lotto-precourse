@@ -33,16 +33,10 @@
     - [X] If the number must not consist of winning numbers.
 
 ### Print the winning statistics by match count.
-- [ ] Print a message for the winning statistics. "Winning Statistics"
-- [ ] Print a separator line.
-- [ ] Print the number of winning tickets for 3, 4, 6, 6+bonus, and 6 matched numbers.
+- [X] Print a message for the winning statistics. "Winning Statistics"
+- [X] Print a separator line.
+- [X] Print the number of winning tickets for 3, 4, 5, 5+bonus number, and 6 matched numbers.
 
 ### Print the total return rate.
 - [ ] Calculate the total return rate.
 - [ ] Print the return rate message. "Total return rate is $62.5 %."
-
-
-
-
-
-e nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%):
