@@ -29,7 +29,7 @@ class InputView {
 
     private fun parseWinningNumbers() {
         while (true) try {
-            println("\nPlease enter last week's winning numbers.")
+            println("Please enter last week's winning numbers.")
             winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
             break
         } catch (e: IllegalArgumentException) {
