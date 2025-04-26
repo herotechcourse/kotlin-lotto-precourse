@@ -108,7 +108,6 @@ class InputValidateTest {
     }
 
 
-
     // ------- validateBonusNumber Tests --------
 
     @Test
@@ -146,8 +145,8 @@ class InputValidateTest {
     @Test
     fun `validateTickets returns the same list if not empty`() {
         val tickets = mutableListOf(
-            listOf(1, 2, 3, 4, 5, 6),
-            listOf(7, 8, 9, 10, 11, 12)
+            mutableListOf(1, 2, 3, 4, 5, 6),
+            mutableListOf(7, 8, 9, 10, 11, 12)
         )
         val result = InputValidate.validateTickets(tickets)
         assertEquals(tickets, result)
