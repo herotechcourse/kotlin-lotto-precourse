@@ -26,4 +26,11 @@ class InputParserTest {
             parser.parseWinningNumbers("1,2,3,4,5,six")
         }
     }
+
+    @Test
+    fun `throws an exception when bonus number is not numeric`() {
+        assertThrows<IllegalArgumentException> {
+            parser.parseBonusNumber("ten")
+        }
+    }
 }

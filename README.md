@@ -31,15 +31,15 @@
 
 ## Input Rules
 
-- [x] Prompt the user for the purchase amount.
+- [ ] Prompt the user for the purchase amount.
     - [x] Validate that the input is numeric.
     - [x] Validate that the input is positive.
-- [x] Prompt the user to enter 6 winning numbers.
+- [ ] Prompt the user to enter 6 winning numbers.
     - [x] Validate that the input is numeric.
     - [x] Enter the Comma-Separated input
     - [x] Can input blank between Comma and data.
 - [ ] Prompt the user to enter a bonus number.
-    - [ ] Validate that the input is numeric.
+    - [x] Validate that the input is numeric.
 - [ ] If any input is invalid:
     - [ ] Display an appropriate error message that starts with `ERROR`
     - [ ] Re-prompt from the same step.
