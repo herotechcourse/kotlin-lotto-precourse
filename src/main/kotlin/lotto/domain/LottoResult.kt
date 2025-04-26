@@ -1,4 +1,6 @@
-class LottoResult(private val statistics: Map<Prize, Int>) {
+import lotto.domain.Prize
+
+class LottoResult( val statistics: Map<Prize, Int>) {
     fun totalWinnings(): Int {
         return statistics.entries.sumOf { (prize, count) -> prize.reward * count }
     }
