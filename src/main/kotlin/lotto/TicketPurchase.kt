@@ -17,7 +17,14 @@ class TicketPurchase {
 
     fun generateTickets() {
         for (i in 1..this.amountOfTicketsBought) {
-            this.tickets.add(Lotto(Randoms.pickUniqueNumbersInRange(LOWEST_NUMBER, HIGHEST_NUMBER, 6)))
+            this.tickets.add(
+                Lotto(
+                    Randoms.pickUniqueNumbersInRange(
+                    LOWEST_NUMBER,
+                    HIGHEST_NUMBER,
+                    6)
+                )
+            )
         }
     }
 }
