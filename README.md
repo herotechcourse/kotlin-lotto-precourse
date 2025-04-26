@@ -32,7 +32,8 @@
 ## Input Rules
 
 - [ ] Prompt the user for the purchase amount.
-    - [ ] Validate that the input is numeric and positive.
+    - [x] Validate that the input is numeric.
+    - [ ] Validate that the input is positive.
 - [ ] Prompt the user to enter 6 winning numbers.
     - [ ] Validate that the input is numeric.
     - [ ] Enter the Comma-Separated input
