@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.assertj.core.api.Assertions.assertThat
 
-class AmountValidationTest {
+class PurchaseAmountValidationTest {
     @Test
     fun `does not throw an exception for valid amount`() {
         validateAmount(1000) // if no exception, test passes
