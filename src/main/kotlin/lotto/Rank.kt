@@ -13,8 +13,8 @@ enum class Rank(val matchCount: Int, val hasBonus: Boolean, val prizeMoney: Int)
             if (matchCount == 5 && hasBonus) {
                 return SECOND
             }
-            
-            return values().filter { it.matchCount == matchCount && !it.hasBonus }
+            return values()
+                .filter { it.matchCount == matchCount && !it.hasBonus }
                 .firstOrNull() ?: NONE
         }
     }
