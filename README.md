@@ -1,5 +1,14 @@
 # kotlin-lotto-precourse
 
+## Purpose this mission
+
+To check lotto result
+
+## Functional
+
+1. input amount buying lotto
+2. input winning number and bonus number
+3. Get Lotto result & Total return rate
 
 ## Commit tag
 - feat (feature)
@@ -45,8 +54,7 @@
     - Error messages must start with [ERROR]:  
     `[ERROR] Lotto numbers must be between 1 and 45.`
 
-## Check
-
+## Requirement check
 - [x] You must use the Randoms and Console APIs provided by the camp.nextstep.edu.missionutils
   package.
     - To generate random values, use Randoms.pickUniqueNumbersInRange() from
@@ -54,3 +62,5 @@
     - To receive user input, use Console.readLine() from camp.nextstep.edu.missionutils.Console.
 - [x] Custom Exception (Error)
     - using huge try-catch
+- [ ] Separate business logic from UI logic. .
+- [ ] Implement unit tests for all logic, except for UI interactions (System.out, System.in).

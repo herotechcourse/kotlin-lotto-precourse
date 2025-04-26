@@ -12,6 +12,9 @@ fun main() {
 }
 
 fun playGame() {
+    //todo 비즈니스 로직과 UI 로직 분리 (InputView, OutputView 등).
+    // 모든 로직에 대해 단위 테스트 작성 (UI 입력/출력 제외).
+
     println("Please enter the purchase amount.")
 
     val money = try {
@@ -70,7 +73,7 @@ fun getLottoResult(
         val hit = lotto.getHitNumberResult(winningNumbers)
         val bonusHit = if (lotto.containsBonus(bonusNumber)) 1 else 0
 
-        when {
+        when { //todo enum class
             hit == 6 -> match6++
             hit == 5 && bonusHit == 1 -> match5Bonus++
             hit == 5 -> match5++
