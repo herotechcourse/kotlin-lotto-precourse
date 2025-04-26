@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.util.*
 
 class LottoGame {
 
@@ -9,17 +10,16 @@ class LottoGame {
         val winningLotto = createWinningLotto()
 
         val rankResult = winningLotto.getMultipleLottoRanks(tickets)
+        val countRanks = countRanks(rankResult)
         val profitRate = calculateProfitRateInPercentage(rankResult)
 
-        //TODO: output ranks
-        //TODO: output statics
-
+        OutputView.printResultStatistics(countRanks, profitRate)
     }
 
     fun purchaseLottoTickets(): List<Lotto> {
         val amountOfPurchase = InputView.inputAmountOfPurchase()
         val tickets = createLottoTickets(amountOfPurchase)
-        //TODO: output purchased tickets
+        OutputView.printPurchasedTickets(amountOfPurchase, tickets)
         return tickets
     }
 
@@ -54,7 +54,7 @@ class LottoGame {
         }.sum()
 
         val profitRate = sumOfPrize.toDouble() / cost * 100
-        val formattedProfitRate = String.format("%.1f%%", profitRate)
+        val formattedProfitRate = String.format(Locale.KOREA, "%.1f%%", profitRate)
 
         return formattedProfitRate
     }

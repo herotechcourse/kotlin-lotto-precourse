@@ -18,7 +18,7 @@
     - Check if the bonus number matches
     - Determine prize rank based on match count and bonus
 
-- [ ] Print results
+- [X] Print results
     - Display all issued lotto tickets
-    - Show winning statistics (tickets per prize rank)
-    - Calculate and print total return rate (rounded to 1 decimal place)
+    - Show result statistics (tickets per prize rank)
+    - Show total profit rate in % (rounded to 1 decimal place)
