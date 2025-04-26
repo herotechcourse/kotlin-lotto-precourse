@@ -15,7 +15,7 @@ object InputView {
     }
 
     fun getWinningNumbers(): Lotto {
-        println("\nPlease enter last week's winning numbers (comma-separated).")
+        println("\nPlease enter last week's winning numbers.")
         return readLineWithValidation("Please enter 6 unique numbers between 1 and 45.") { input ->
             input.split(",")
                 .map { it.trim().toInt() }
