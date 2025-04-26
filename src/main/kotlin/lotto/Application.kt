@@ -11,6 +11,7 @@ class Application {
             val tickets = Application().generateLottoTickets(purchaseAmount)
             Application().displayTickets(tickets)
             Application().inputWinningNumbers()
+            Application().inputBonusNumbers()
         }
     }
 
@@ -72,13 +73,35 @@ class Application {
             throw IllegalArgumentException("[ERROR] Winning Numbers cannot be empty")
         }
         if (winningNumbers.size != 6) {
-            throw IllegalArgumentException("[ERROR] Winning should have 6 numbers")
+            throw IllegalArgumentException("[ERROR] Winning Numbers should have 6 numbers")
         }
         if (winningNumbers.distinct().size != 6) {
-            throw IllegalArgumentException("[ERROR] Winning numbers must not be duplicated")
+            throw IllegalArgumentException("[ERROR] Winning Numbers must not be duplicated")
         }
         if (winningNumbers.any { it < 1 || it > 45 }) {
             throw IllegalArgumentException("[ERROR] Winning Numbers should between 1 - 45")
+        }
+    }
+
+    private fun inputBonusNumbers(): Byte {
+        println("\nPlease enter the bonus numbers.")
+        val input = Console.readLine()
+
+        if (input.isBlank()) {
+            throw IllegalArgumentException("[ERROR] Input cannot be empty")
+        }
+        try {
+            val bonusNumbers = input.toByte()
+            validateBonusNumbers(bonusNumbers)
+            return bonusNumbers
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Invalid number format. Please enter valid numbers.")
+        }
+    }
+
+    private fun validateBonusNumbers(bonusNumbers: Byte) {
+        if (bonusNumbers < 1 || bonusNumbers > 45) {
+            throw IllegalArgumentException("[ERROR] Bonus Numbers should between 1 - 45")
         }
     }
 }
