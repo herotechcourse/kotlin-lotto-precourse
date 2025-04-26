@@ -26,6 +26,10 @@ class LottoController(
         outputView.printUserLottos(userLottos)
 
         val countOfRanks = countRanks(userLottos)
+        outputView.printWinningStatistics(countOfRanks)
+
+        val returnRate = priceCalculator.calculateReturnRate(purchaseAmount, countOfRanks)
+        outputView.printReturnRate(returnRate)
     }
 
     private tailrec fun readValidPurchaseAmount(): Int {
