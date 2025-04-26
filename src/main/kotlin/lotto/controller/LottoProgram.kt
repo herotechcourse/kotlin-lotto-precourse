@@ -7,7 +7,7 @@ import lotto.model.LottoIssuer
 import lotto.model.LottoResult
 import lotto.model.LottoStorage
 import lotto.model.WinningLotto
-import lotto.validator.InputValidator
+import lotto.validator.ValidationBundle
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -22,26 +22,6 @@ class LottoProgram {
     }
 }
 
-fun validatePurchaseAmount(input: String) {
-    InputValidator.notEmpty(input)
-    InputValidator.onlyContainsDigits(input)
-
-    val purchaseAmount = input.toInt()
-    InputValidator.withinPurchaseRange(purchaseAmount)
-    InputValidator.isMultipleOfThousand(purchaseAmount)
-}
-
-fun validateWinningNumbers(input: String) {
-    InputValidator.notEmpty(input)
-    val numbers = input.split(Constants.SEPARATOR).map { it.trim() }
-    InputValidator.allAreDigits(numbers)
-}
-
-fun validateBonusNumber(input: String) {
-    InputValidator.notEmpty(input)
-    InputValidator.onlyContainsDigits(input)
-}
-
 fun readWinningLotto(): WinningLotto {
     val winningLotto = readValidLotto()
     OutputView.newline()
@@ -53,7 +33,7 @@ fun readValidPurchaseAmount(): Int {
     while (true) {
         try {
             val input = InputView.promptAndReadLine(Messages.Prompt.PURCHASE_AMOUNT)
-            validatePurchaseAmount(input)
+            ValidationBundle.purchaseAmount(input)
             return input.toInt()
         } catch (e: IllegalArgumentException) {
             OutputView.error(e.message)
@@ -65,7 +45,7 @@ fun readValidLotto(): Lotto {
     while (true) {
         try {
             val input = InputView.promptAndReadLine(Messages.Prompt.WINNING_NUMBERS)
-            validateWinningNumbers(input)
+            ValidationBundle.winningNumbers(input)
             val numbers = input.split(Constants.SEPARATOR).map { it.trim().toInt() }
             return Lotto(numbers)
         } catch (e: IllegalArgumentException) {
@@ -78,7 +58,7 @@ fun readValidBonusNumber(mainLotto: Lotto): WinningLotto {
     while (true) {
         try {
             val input = InputView.promptAndReadLine(Messages.Prompt.BONUS_NUMBER)
-            validateBonusNumber(input)
+            ValidationBundle.bonusNumber(input)
             val bonusNumber = input.toInt()
             return WinningLotto(mainLotto, bonusNumber)
         } catch (e: IllegalArgumentException) {
