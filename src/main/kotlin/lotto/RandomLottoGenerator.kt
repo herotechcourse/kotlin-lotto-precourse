@@ -8,7 +8,7 @@ class RandomLottoGenerator : LottoGenerator {
         return Lotto(
             Randoms.pickUniqueNumbersInRange(MIN_INCLUSIVE, MAX_INCLUSIVE, SIZE)
                 .sorted()
-                .map { (Number(it)) })
+                .map { (LottoNumber(it)) })
     }
 
     companion object {

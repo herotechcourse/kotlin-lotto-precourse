@@ -1,9 +1,9 @@
 package lotto
 
-class PrizeRankCalculator(val winningLotto: Lotto, val bonusNumber: Number) {
+class PrizeRankCalculator(val winningLotto: Lotto, val bonusLottoNumber: LottoNumber) {
 
     init {
-        require(winningLotto.doesNotContain(bonusNumber)) { DUPLICATED_NUMBER_ERROR }
+        require(winningLotto.doesNotContain(bonusLottoNumber)) { DUPLICATED_NUMBER_ERROR }
     }
 
     fun calculateStatistics(lottoTickets: List<Lotto>): PrizeRankResult {
@@ -15,7 +15,7 @@ class PrizeRankCalculator(val winningLotto: Lotto, val bonusNumber: Number) {
 
     private fun getPrizeRank(lotto: Lotto): PrizeRank {
         val matchingCount = lotto.countMatchingNumber(winningLotto)
-        val hasBonusNumber = lotto.hasSameNumber(bonusNumber)
+        val hasBonusNumber = lotto.hasSameNumber(bonusLottoNumber)
         return PrizeRank.findBy(matchingCount, hasBonusNumber)
     }
 

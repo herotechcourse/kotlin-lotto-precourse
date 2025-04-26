@@ -1,6 +1,6 @@
 package lotto
 
-class Lotto(private val numbers: List<Number>) {
+class Lotto(private val numbers: List<LottoNumber>) {
 
     init {
         require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_ERROR }
@@ -11,15 +11,15 @@ class Lotto(private val numbers: List<Number>) {
         return numbers.count { winningLotto.hasSameNumber(it) }
     }
 
-    fun doesNotContain(number: Number): Boolean {
-        return !hasSameNumber(number)
+    fun doesNotContain(lottoNumber: LottoNumber): Boolean {
+        return !hasSameNumber(lottoNumber)
     }
 
-    fun hasSameNumber(number: Number): Boolean {
-        return numbers.contains(number)
+    fun hasSameNumber(lottoNumber: LottoNumber): Boolean {
+        return numbers.contains(lottoNumber)
     }
 
-    fun numbers(): List<Number> {
+    fun numbers(): List<LottoNumber> {
         return numbers.toList()
     }
 

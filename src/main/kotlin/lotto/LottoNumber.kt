@@ -1,6 +1,6 @@
 package lotto
 
-data class Number(val value: Int) {
+data class LottoNumber(val value: Int) {
 
     init {
         require(value in MIN_RANGE..MAX_RANGE) { NUMBER_OUT_OF_RANGE_ERROR }

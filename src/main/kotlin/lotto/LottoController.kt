@@ -22,8 +22,8 @@ class LottoController(
     private fun initPrizeRankCalculator(): PrizeRankCalculator {
         val winningNumbers = InputView.readWinningNumbers()
         val bonusNumber = InputView.readBonusNumber()
-        val winningLotto = Lotto(winningNumbers.map { Number(it) })
-        return PrizeRankCalculator(winningLotto, Number(bonusNumber))
+        val winningLotto = Lotto(winningNumbers.map { LottoNumber(it) })
+        return PrizeRankCalculator(winningLotto, LottoNumber(bonusNumber))
     }
 
     private fun calculateWinningResult(lottoTickets: List<Lotto>, purchaseAmount: LottoPurchaseAmount) {
