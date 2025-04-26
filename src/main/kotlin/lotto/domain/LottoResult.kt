@@ -1,3 +1,10 @@
-package lotto.domain
+class LottoResult(private val statistics: Map<Prize, Int>) {
+    fun totalWinnings(): Int {
+        return statistics.entries.sumOf { (prize, count) -> prize.reward * count }
+    }
 
-class LottoResult(val statistics: Map<Prize, Int>)
+    fun profitRate(totalPurchaseAmount: Int): Double {
+        val totalWinnings = totalWinnings()
+        return (totalWinnings.toDouble() / totalPurchaseAmount) * 100
+    }
+}
