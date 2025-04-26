@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.presentation.InputViewImpl
+import lotto.utils.InputValidatorImpl
+
 fun main() {
-    // TODO: Implement the program
+    val lottoController = LottoController(
+        inputView = InputViewImpl(),
+        inputValidator = InputValidatorImpl(),
+    )
+    lottoController.run()
 }
