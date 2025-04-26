@@ -6,11 +6,11 @@ class PrizeRankCalculator(val winningLotto: Lotto, val bonusNumber: Number) {
         require(winningLotto.hasNotSameNumber(bonusNumber)) { DUPLICATED_NUMBER_ERROR }
     }
 
-    fun calculateStatistics(lottoTickets: List<Lotto>): Map<PrizeRank, Int> {
+    fun calculateStatistics(lottoTickets: List<Lotto>): PrizeRankResult {
         val rankCounts = lottoTickets.map { lotto -> getPrizeRank(lotto) }
             .groupingBy { it }
             .eachCount()
-        return PrizeRank.entries.associateWith { rankCounts[it] ?: 0 }
+        return PrizeRankResult(PrizeRank.entries.associateWith { rankCounts[it] ?: 0 })
     }
 
     private fun getPrizeRank(lotto: Lotto): PrizeRank {

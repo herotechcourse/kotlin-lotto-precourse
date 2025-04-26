@@ -29,9 +29,9 @@
 - [x] Issue lottery tickets based on the purchased amount
 - [x] Calculate result statistics
     - [x] Compare how many numbers match
-- [] Calculate profit rate
-    - [] Formula: Total Prize Money / Lottery Purchase Amount
-    - [] Round to the nearest tenth
+- [x] Calculate profit rate
+    - [x] Formula: Total Prize Money / Lottery Purchase Amount
+    - [x] Round to the nearest tenth
 
 ## ▪︎ Exception
 
