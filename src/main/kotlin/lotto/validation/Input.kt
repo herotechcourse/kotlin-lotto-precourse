@@ -44,6 +44,14 @@ object Input {
         }
     }
 
+    fun isEachInRange(input: List<Int>, start: Int, end: Int) {
+        input.forEach {
+            if (it < start || it > end) {
+                throw IllegalArgumentException("[ERROR] Each input must be between $start and $end inclusive.")
+            }
+        }
+    }
+
     fun bonusNumberDuplication(input: Int, numbers: List<Int>) {
         if (input in numbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with the winning numbers")
