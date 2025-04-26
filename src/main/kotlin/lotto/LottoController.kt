@@ -4,6 +4,7 @@ import lotto.domain.Rank
 import lotto.view.InputView
 import lotto.service.TicketMachine
 import lotto.service.Statistics
+import lotto.util.Config
 import lotto.view.OutputView
 
 class LottoController(
@@ -14,7 +15,7 @@ class LottoController(
     fun run() {
         println("***** Welcome to Lotto *****")
         println()
-        println("Each ticket costs 1,000 KRW.")
+        println("Each ticket costs ${Config.TICKET_PRICE} KRW.")
         println()
 
         val purchaseAmount = input.readPurchaseAmount()
