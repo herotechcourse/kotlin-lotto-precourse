@@ -26,7 +26,7 @@
     4th Prize: Match 4 numbers / 50,000 KRW
     5th Prize: Match 3 numbers / 5,000 KRW
     ```
-- [ ] Calculate total winnings based on all purchased tickets.
+- [x] Calculate total winnings based on all purchased tickets.
 - [x] Calculate the profit rate from the winnings and the total purchase amount.
 
 ## Input Rules
