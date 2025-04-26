@@ -1,8 +1,12 @@
 package lotto
+
+import camp.nextstep.edu.missionutils.Randoms
+
 fun main() {
     val inputView = InputView()
 
-    readPurchaseOrder(inputView)
+    val order = readPurchaseOrder(inputView)
+    val tickets = generateTickets(order.getLottoCount())
 }
 
 fun readPurchaseOrder(inputView: InputView): Order {
@@ -15,5 +19,12 @@ fun readPurchaseOrder(inputView: InputView): Order {
         } catch (e: IllegalArgumentException) {
             println(e.message)
         }
+    }
+}
+
+fun generateTickets(count: Int): List<Lotto> {
+    return List(count) {
+        val numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_COUNT)
+        Lotto(numbers)
     }
 }

@@ -9,8 +9,4 @@ class Order(private val amount: Int) {
     fun getLottoCount(): Int {
         return amount / LOTTO_PRICE
     }
-
-    companion object {
-        private const val LOTTO_PRICE = 1000
-    }
 }
