@@ -12,8 +12,8 @@ class RandomLottoGenerator : LottoGenerator {
     }
 
     companion object {
-        const val MIN_INCLUSIVE: Int = 1
-        const val MAX_INCLUSIVE: Int = 45
-        const val SIZE: Int = 6
+        private const val MIN_INCLUSIVE: Int = 1
+        private const val MAX_INCLUSIVE: Int = 45
+        private const val SIZE: Int = 6
     }
 }
