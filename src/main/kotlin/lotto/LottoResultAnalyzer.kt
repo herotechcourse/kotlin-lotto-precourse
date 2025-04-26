@@ -6,8 +6,7 @@ class LottoResultAnalyzer {
         val lottoResultTypes = mutableListOf<LottoResultType>()
 
         for (lotto in lottos) {
-            val matchWinningLotto = lotto.matchLotto(winningLotto)
-            lottoResultTypes.add(matchWinningLotto)
+            lottoResultTypes.add(lotto.matchLotto(winningLotto))
         }
 
         return lottoResultTypes
