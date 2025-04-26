@@ -5,6 +5,7 @@ class LottoMachine(private val reader: InputReader, private val printer: OutputP
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.
+        val purchaseAmount = reader.readPurchaseAmount()
         // 2. Print purchased lottery tickets with issued numbers (sorted)
         // 3. Input last week's numbers
         // 4. Input a bonus number.
