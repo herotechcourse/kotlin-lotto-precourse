@@ -27,8 +27,8 @@ class Application {
         if (purchaseLotto == null) {
             throw IllegalArgumentException("[ERROR] Amount cannot be empty and must be a valid number")
         }
-        if (purchaseLotto == 0L) {
-            throw IllegalArgumentException("[ERROR] Amount cannot be zero")
+        if (purchaseLotto <= 0L) {
+            throw IllegalArgumentException("[ERROR] Amount cannot be zero and negative")
         }
         if (purchaseLotto % 1000L != 0L) {
             throw IllegalArgumentException("[ERROR] Amount must be a multiply of 1000")
