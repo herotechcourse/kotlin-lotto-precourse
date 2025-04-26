@@ -1,10 +1,10 @@
 package lotto
 
-import lotto.generator.NumbersGenerator
+import lotto.generator.RandomNumbersGenerator
 
 class LottoTicketMachine {
 
-    fun purchase(count: Int, numbersGenerator: NumbersGenerator): List<Lotto> {
+    fun purchase(count: Int, numbersGenerator: RandomNumbersGenerator): List<Lotto> {
         val lottoTickets = mutableListOf<Lotto>()
         repeat(count) {
             lottoTickets.add(Lotto(numbersGenerator.generate()))
