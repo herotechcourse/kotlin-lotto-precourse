@@ -1,14 +1,14 @@
 package lotto
 
 class LottoRunner {
-    private val cashier = LottoInitializer.cashierFromInput()
     private val ticketMachine = LottoInitializer.ticketMachineFromInput()
-    private val tickets:List<List<Int>> = ticketMachine.tickets
+    private val cashier:Cashier
     init {
-        OutputView.PRINT_TICKETS.printMessage(tickets)
+        OutputView.printTickets(ticketMachine.tickets)
+        cashier = LottoInitializer.cashierFromInput()
     }
     fun lottoResults(){
-        val lottoResults = cashier.checkWinningNumbers(tickets)
-        OutputView.PRINT_RESULT.printMessage(lottoResults)
+        OutputView.printResults(cashier.checkWinningNumbers(ticketMachine.tickets))
+        OutputView.printStatistics(cashier.calculateStatistic(ticketMachine.purchaseAmount))
     }
 }
