@@ -45,6 +45,8 @@
 
 ### 🎨 Style
 
+- ****: remove unnecessary else ([cadc00b](https://github.com/yourname/yourrepo/commit/cadc00b6c93ddef054a69bbb7a5c27d9317e2a51))
+
 - ****: remove printnewline ([845fe21](https://github.com/yourname/yourrepo/commit/845fe212ec29694a09010ecd6efea35ad311d9c6))
 
 - ****: conbine two println in to one line ([66e17cc](https://github.com/yourname/yourrepo/commit/66e17cc7744c9e32d8a1833439b7c3e84000eed2))
@@ -66,4 +68,5 @@
 - ****: write more tests to check each edge cases ([28a3a68](https://github.com/yourname/yourrepo/commit/28a3a6864a1d7cb04c5a19a2c3c023aa5cadd499))
 
 - **ValidateTest.kt**: write tests for InputValidate class functions ([19acf89](https://github.com/yourname/yourrepo/commit/19acf89a438fbbc335ee2cfa829cdf4b24bb2df7))
+
 
