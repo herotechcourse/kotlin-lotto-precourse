@@ -1,1 +1,60 @@
 # kotlin-lotto-precourse
+
+# Feature Specification
+
+## Game Rules
+
+- [ ] The ticket price is fixed at 1,000 KRW.
+    - [ ] The purchase amount must be divisible by 1,000.
+- [ ] Generate a single lottery ticket with 6 random numbers.
+    - [ ] The numbers must be unique.
+    - [ ] The numbers must be in the range 1 to 45 (inclusive).
+- [ ] Generate multiple lottery tickets based on the user's purchase amount.
+    - [ ] There are no two different tickets with the same six numbers.
+- [ ] Accept 6 winning numbers from the user.
+    - [ ] The numbers must be unique.
+    - [ ] The numbers must be in the range 1 to 45 (inclusive).
+- [ ] Accept 1 bonus number from the user.
+    - [ ] The bonus number must be different from the winning numbers.
+- [ ] Compare each ticket with the winning numbers and bonus number.
+- [ ] Determine the prize rank based on the number of matches and the bonus number.
+    ```
+    The criteria and prize amounts are as follows:
+    1st Prize: Match 6 numbers / 2,000,000,000 KRW
+    2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
+    3rd Prize: Match 5 numbers / 1,500,000 KRW
+    4th Prize: Match 4 numbers / 50,000 KRW
+    5th Prize: Match 3 numbers / 5,000 KRW
+    ```
+- [ ] Calculate total winnings based on all purchased tickets.
+- [ ] Calculate the profit rate from the winnings and the total purchase amount.
+
+## Input Rules
+
+- [ ] Prompt the user for the purchase amount.
+    - [ ] Validate that the input is numeric and positive.
+- [ ] Prompt the user to enter 6 winning numbers.
+    - [ ] Validate that the input is numeric.
+    - [ ] Enter the Comma-Separated input
+- [ ] Prompt the user to enter a bonus number.
+    - [ ] Validate that the input is numeric.
+- [ ] If any input is invalid:
+    - [ ] Display an appropriate error message that starts with `ERROR`
+    - [ ] Re-prompt from the same step.
+
+---
+
+## Output Rules
+
+- [ ] Print the number of tickets purchased.
+- [ ] Print each ticket's numbers.
+- [ ] After the game ends:
+    - [ ] Display the count of matches for each prize rank.
+    - [ ] Display the total amount won.
+    - [ ] Display the profit rate.
+        - [ ] Profit rate rounded to the nearest tenth (e.g., 100.0%, 51.5%, 1,000,000.0%)
+
+# Programming Conventions
+
+- Do not catch generic exceptions (e.g., `Exception`).
+    - Only catch specific exceptions like `IllegalArgumentException` or `IllegalStateException`.
