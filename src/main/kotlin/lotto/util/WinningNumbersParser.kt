@@ -1,5 +1,7 @@
 package lotto.util
 
+import lotto.LotteryConstants
+
 class WinningNumbersParser {
     fun parse(input: String): List<Int> {
         val winningNumbers = parseInputToList(input)
@@ -34,21 +36,18 @@ class WinningNumbersParser {
     private fun validateWinningNumbers(winningNumbers: List<Int>) {
         val uniqueWinningNumbers = mutableSetOf<Int>()
 
-        if (winningNumbers.size != WINNING_NUMBERS_LENGTH) throw IllegalArgumentException("[ERROR] Winning numbers must contain exactly $WINNING_NUMBERS_LENGTH digits.")
+        if (winningNumbers.size != LotteryConstants.LOTTO_NUMBER_COUNT) throw IllegalArgumentException(
+            "[ERROR] Winning numbers must contain exactly ${LotteryConstants.LOTTO_NUMBER_COUNT} digits."
+        )
 
         winningNumbers.forEach { winningNumber ->
             if (!uniqueWinningNumbers.add(winningNumber)) throw IllegalArgumentException(
                 "[ERROR] Duplicated winning number : $winningNumber"
             )
-            if (winningNumber < MIN_WINNING_NUMBER || winningNumber > MAX_WINNING_NUMBER) throw IllegalArgumentException(
-                "[ERROR] Winning numbers must be within $MIN_WINNING_NUMBER - $MAX_WINNING_NUMBER range."
+
+            if (winningNumber < LotteryConstants.MIN_NUMBER || winningNumber > LotteryConstants.MAX_NUMBER) throw IllegalArgumentException(
+                "[ERROR] Winning numbers must be within ${LotteryConstants.MIN_NUMBER} - ${LotteryConstants.MAX_NUMBER} range."
             )
         }
-    }
-
-    companion object {
-        const val WINNING_NUMBERS_LENGTH = 6
-        const val MIN_WINNING_NUMBER = 1
-        const val MAX_WINNING_NUMBER = 45
     }
 }

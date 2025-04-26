@@ -1,5 +1,7 @@
 package lotto.util
 
+import lotto.LotteryConstants
+
 class BonusNumberParser {
     fun parse(input: String, winningNumbers: List<Int>): Int {
         validateInput(input)
@@ -24,13 +26,10 @@ class BonusNumberParser {
     }
 
     private fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
-        if (bonusNumber < MIN_BONUS_NUMBER || bonusNumber > MAX_BONUS_NUMBER) throw IllegalArgumentException("[ERROR] Bonus number must be between $MIN_BONUS_NUMBER and $MAX_BONUS_NUMBER.")
+        if (bonusNumber < LotteryConstants.MIN_NUMBER || bonusNumber > LotteryConstants.MAX_NUMBER) throw IllegalArgumentException(
+            "[ERROR] Bonus number must be between ${LotteryConstants.MIN_NUMBER} and ${LotteryConstants.MAX_NUMBER} range."
+        )
 
         if (winningNumbers.contains(bonusNumber)) throw IllegalArgumentException("[ERROR] Bonus number must not be one of the winning number.")
-    }
-
-    companion object {
-        private const val MIN_BONUS_NUMBER = 1
-        private const val MAX_BONUS_NUMBER = 45
     }
 }
