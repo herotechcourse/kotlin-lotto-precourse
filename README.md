@@ -46,4 +46,4 @@ This project is a application that simulates a lottery ticket machine. The goal 
     - [x] Bonus number
     - [x] Ticket generation
     - [x] Prize tier identification
-    - [ ] Profit calculation
+    - [x] Profit calculation
