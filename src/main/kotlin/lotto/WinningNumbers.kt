@@ -22,7 +22,4 @@ class WinningNumbers(
         return bonusNumber in ticket.getNumbers()
     }
 
-    fun getWinningNumbers(): List<Int> = winningNumbers.sorted()
-
-    fun getBonusNumber(): Int = bonusNumber
 }
