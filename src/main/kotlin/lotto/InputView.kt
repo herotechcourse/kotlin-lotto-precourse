@@ -14,7 +14,7 @@ class InputView {
 
             return input
         }
-        
+
         fun getPurchaseAmount(input: String): Int {
             if (input.toIntOrNull() == null || input.toInt() <= 0 || input.toInt() % 1000 != 0) {
                 throw IllegalArgumentException("[ERROR] Please enter the valid purchase amount.")
