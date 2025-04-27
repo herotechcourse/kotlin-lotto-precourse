@@ -10,11 +10,13 @@ fun main() {
 class Application {
 
     private val inputView = InputView()
+    private val outputView = OutputView()
     private val lottoService = LottoService()
 
     fun run() {
         val amount = inputView.readPurchaseAmount()
         val tickets = lottoService.generateTickets(amount)
+        outputView.printTickets(tickets)
     }
 }
 
@@ -49,5 +51,12 @@ class LottoService {
     private fun generateTicket(): Lotto {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         return Lotto(numbers)
+    }
+}
+
+class OutputView {
+    fun printTickets(tickets: List<Lotto>) {
+        println("You have purchased ${tickets.size} tickets.")
+        tickets.forEach { println(it.getNumbers()) }
     }
 }
