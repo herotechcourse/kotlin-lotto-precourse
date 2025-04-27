@@ -27,6 +27,7 @@ class OutputView(private val lottoMachine: LottoMachine) {
         val ranks = lottoMachine.setAllRank(guessNumbers, bonusNumber)
         LottoRank.entries
             .filter { it != LottoRank.NONE }
+            .reversed()
             .forEach { println(it.getResultMessage(ranks[it.ordinal])) }
     }
 
