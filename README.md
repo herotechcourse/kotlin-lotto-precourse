@@ -41,6 +41,7 @@ The features will be implemented in the following order:
 ### Prize Calculation
 
 - [x] Calculate results for the user's tickets.
+
   - [x] Check if the user's tickets match the winning numbers.
   - [x] Check if the user's tickets match the bonus number.
 
@@ -81,3 +82,4 @@ The features will be implemented in the following order:
 - [Kotlin documentation on unsigned integers](https://kotlinlang.org/docs/unsigned-integer-types.html#unsigned-integers-literals)
 - [The `map` function from Kotlin's standard library](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
 - [Parameterized Tests in JUnit 5](https://www.baeldung.com/parameterized-tests-junit-5)
+- [Kotlin documentation on enum classes](https://kotlinlang.org/docs/enum-classes.html)

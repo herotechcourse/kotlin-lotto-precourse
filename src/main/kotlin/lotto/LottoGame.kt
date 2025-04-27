@@ -8,15 +8,6 @@ class LottoGame(
     var bonusNumber: Int = 0,
     val numberOfTickets: Int
 ) {
-    companion object {
-        private val PRIZE_AMOUNTS = mapOf(
-            MatchCategory.THREE_MATCHES to 5_000,
-            MatchCategory.FOUR_MATCHES to 50_000,
-            MatchCategory.FIVE_MATCHES to 1_500_000,
-            MatchCategory.FIVE_MATCHES_AND_BONUS to 30_000_000,
-            MatchCategory.SIX_MATCHES to 2_000_000_000
-        )
-    }
 
     private val tickets = mutableListOf<Lotto>()
     private val results = mutableMapOf<MatchCategory, Int>()
@@ -87,7 +78,7 @@ class LottoGame(
     private fun calculateTotalWinnings(): Int {
         var totalWinnings = 0
         for ((matchCategory, ticketCount) in results) {
-            val prizeForCategory = PRIZE_AMOUNTS.getValue(matchCategory)
+            val prizeForCategory = matchCategory.prizeAmount
             val winningsForCategory = prizeForCategory * ticketCount
             totalWinnings += winningsForCategory
         }
