@@ -9,6 +9,8 @@ class WinningNumber(private val numbers: List<Int>) {
         require(numbers.all { it in Lotto.LOTTO_MIN_NUMBER..Lotto.LOTTO_MAX_NUMBER }) { LottoErrorMessage.INVALID_WINNING_NUMBER_RANGE.message }
     }
 
+    fun getNumbers() = this.numbers
+
     companion object {
         fun from(numbers: String): WinningNumber {
             val numberList = numbers.split(",").map { number ->
