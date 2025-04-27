@@ -11,7 +11,8 @@ class Application {
             val tickets = Application().generateLottoTickets(purchaseAmount)
             OutputView().displayTickets(tickets)
             val winningNumbers = InputView().inputWinningNumbers()
-            InputView().inputBonusNumbers(winningNumbers)
+            val bonusNumber = InputView().inputBonusNumber(winningNumbers)
+            Application().countWinningTickets(tickets, winningNumbers, bonusNumber)
         }
     }
 
@@ -23,6 +24,34 @@ class Application {
             tickets.add(Lotto(numbers))
         }
         return tickets
+    }
+
+    private fun countWinningTickets(
+        tickets: List<Lotto>,
+        winningNumbers: List<Byte>,
+        bonusNumber: Byte
+    ): Map<LottoPrize, Int> {
+        val results = mutableMapOf<LottoPrize, Int>()
+        LottoPrize.entries.forEach { results[it] = 0 }
+
+        for (ticket in tickets) {
+            val prize = determinePrize(ticket, winningNumbers, bonusNumber)
+            results[prize] = results[prize]!! + 1
+        }
+
+        return results
+    }
+
+    private fun determinePrize(
+        ticket: Lotto,
+        winningNumbers: List<Byte>,
+        bonusNumber: Byte
+    ): LottoPrize {
+        val ticketNumbers = ticket.getNumbers()
+        val matchCount = ticketNumbers.count { winningNumbers.contains(it.toByte()) }
+        val hasBonus = ticketNumbers.contains(bonusNumber.toInt())
+
+        return LottoPrize.fromMatchResult(matchCount, hasBonus)
     }
 }
 
@@ -78,7 +107,7 @@ class InputView {
         }
     }
 
-    fun inputBonusNumbers(winningNumbers: List<Byte>): Byte {
+    fun inputBonusNumber(winningNumbers: List<Byte>): Byte {
         println("\nPlease enter the bonus numbers.")
         val input = Console.readLine()
 
@@ -86,19 +115,19 @@ class InputView {
             throw IllegalArgumentException("[ERROR] Input cannot be empty")
         }
         try {
-            val bonusNumbers = input.toByte()
-            validateBonusNumbers(bonusNumbers, winningNumbers)
-            return bonusNumbers
+            val bonusNumber = input.toByte()
+            validateBonusNumber(bonusNumber, winningNumbers)
+            return bonusNumber
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Invalid number format. Please enter valid numbers.")
         }
     }
 
-    private fun validateBonusNumbers(bonusNumbers: Byte, winningNumbers: List<Byte>) {
-        if (bonusNumbers < 1 || bonusNumbers > 45) {
-            throw IllegalArgumentException("[ERROR] Bonus Numbers should between 1 - 45")
+    private fun validateBonusNumber(bonusNumber: Byte, winningNumbers: List<Byte>) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw IllegalArgumentException("[ERROR] Bonus Number should between 1 - 45")
         }
-        if (winningNumbers.contains(bonusNumbers)) {
+        if (winningNumbers.contains(bonusNumber)) {
             throw IllegalArgumentException("[ERROR] Bonus Number must not be the same as any of the Winning Numbers")
         }
     }
@@ -109,6 +138,28 @@ class OutputView {
         println("\nYou have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
             println(ticket)
+        }
+    }
+}
+
+enum class LottoPrize(val matchCount: Int, val hasBonus: Boolean, val prize: Long) {
+    FIRST(6, false, 2_000_000_000),
+    SECOND(5, true,  30_000_000),
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000),
+    NONE(0, false, 0);
+
+    companion object {
+        fun fromMatchResult(matchCount: Int, hasBonus: Boolean): LottoPrize {
+            return when {
+                matchCount == 6 -> FIRST
+                matchCount == 5 && hasBonus -> SECOND
+                matchCount == 5 -> THIRD
+                matchCount == 4 -> FOURTH
+                matchCount == 3 -> FIFTH
+                else -> NONE
+            }
         }
     }
 }
