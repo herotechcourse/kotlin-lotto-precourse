@@ -46,7 +46,7 @@ class LottoValidator {
 
     private fun validateSizeIsSix(winningNumbers: List<String>) {
         if (winningNumbers.size != 6) {
-            throw IllegalArgumentException("[ERROR] Winning numbers size should be 6.")
+            throw IllegalArgumentException("[ERROR] Winning numbers must contain exactly 6 numbers.")
         }
     }
 
