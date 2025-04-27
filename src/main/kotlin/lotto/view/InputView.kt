@@ -1,7 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.Validator
+import lotto.domain.Validator
 import lotto.constants.InputMessage
 
 object InputView {
@@ -17,7 +17,7 @@ object InputView {
         }
     }
 
-    fun getWinningNumbers(): List<Int> {
+    fun getWinningNumbers(): Set<Int> {
         return try {
             println(InputMessage.WINNING_NUMBER.message)
             val input: String = Console.readLine()
