@@ -10,4 +10,6 @@ object Message {
     // Prompt Messages
     const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
     const val PURCHASED_TICKETS_MESSAGE = "You have purchased %d tickets."
+    const val WINNING_TICKET_PROMPT = "Please enter last week's winning numbers."
+    const val BONUS_NUMBER_PROMPT = "Please enter the bonus number."
 }
