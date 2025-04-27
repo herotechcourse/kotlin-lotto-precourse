@@ -6,12 +6,12 @@ class LottoTickets(private val tickets: List<Lotto>) {
         require(tickets.isNotEmpty()) { "LottoTickets must have at least 1 ticket." }
     }
 
-    fun evaluate(winningLotto: WinningLotto): WinningStatistics = WinningStatistics(matchAll(winningLotto))
+    fun evaluate(winningLotto: WinningLotto): WinningStatistics = WinningStatistics(winningLotto.matchAll())
 
     fun getTickets(): List<Lotto> = tickets.toList()
 
-    private fun matchAll(winningLotto: WinningLotto): Map<Rank, Int> = tickets
-        .map { winningLotto.match(it) }
+    private fun WinningLotto.matchAll(): Map<Rank, Int> = tickets
+        .map { match(it) }
         .groupingBy { it }
         .eachCount()
 
