@@ -1,16 +1,20 @@
 package lotto
 import lotto.view.InputView
+import lotto.view.OutputView
 
 class Application {
     private val inputView = InputView()
+    private val outputView = OutputView()
     private val lottoMachine = LottoMachine()
 
     fun run() {
         val money = readPurchaseWithRetry()
         val tickets = lottoMachine.generateTickets(money)
+        outputView.printPurchasedTickets(tickets)
         val winningNumbers = readWinningNumbersWithRetry()
         val bonusNumber = readBonusNumberWithRetry(winningNumbers)
         val result = lottoMachine.calculateResult(tickets, winningNumbers, bonusNumber)
+        outputView.printResult(result, money)
 
     }
 

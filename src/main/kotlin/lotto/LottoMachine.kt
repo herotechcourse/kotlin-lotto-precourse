@@ -12,12 +12,12 @@ class LottoMachine {
         return List(ticketCount) { lottoGenerator.generate() }
     }
 
-    fun calculateResult(tickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): Map<LottoGrade, Int> {
+    fun calculateResult(tickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): LottoResult{
         val winningLotto = Lotto(winningNumbers)
         val rankCounts = tickets.map { calculateGrade(it, winningLotto, bonusNumber) }
             .groupingBy { it }
             .eachCount()
-        return rankCounts
+        return LottoResult(rankCounts)
     }
 
     private fun calculateGrade(ticket: Lotto, winningLotto: Lotto, bonusNumber: Int): LottoGrade {
