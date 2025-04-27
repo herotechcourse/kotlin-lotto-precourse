@@ -16,6 +16,6 @@ class WinningNumbers(private val numbers: List<Int>, private val bonusNumber: In
             throw LottoInputException.InvalidBonusWithWinningNumbers(bonusNumber)
     }
 
-    fun getWinningNumbers(): List<Int> = numbers.toList()
+    fun getNumbers(): List<Int> = numbers.toList()
     fun getBonusNumber(): Int = bonusNumber
 }

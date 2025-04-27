@@ -5,6 +5,8 @@ import lotto.view.OutputView
 import lotto.service.LottoService
 import lotto.exception.LottoInputException
 import lotto.domain.WinningNumbers
+import lotto.domain.LottoResult
+import lotto.service.ResultService
 
 fun <T> retryInputUntilSuccess(block: () -> T): T {
     while (true) {
@@ -31,4 +33,7 @@ fun main() {
             InputView.getBonusNumber().also { LottoService.validateBonusNumber(it, winningNumbersInput) }
         }
     val winningNumbers = WinningNumbers(winningNumbersInput, bonusNumber)
+    val lottoResults: List<LottoResult> = tickets.map { ResultService.evaluateTicket(it, winningNumbers)}
+
+    OutputView.printWinningStatistics(lottoResults)
 }
