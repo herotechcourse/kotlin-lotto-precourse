@@ -10,21 +10,11 @@ enum class Prize(val matchCount: Int, val prizeValue: Long, val description: Str
 
     companion object {
         fun prizeFinder(matchCount: Int, bonusMatch: Boolean): Prize {
-            if (matchCount == 6) {
-                return FIRST
-            }
-            if (matchCount == 5 && bonusMatch) {
-                return SECOND
-            }
-            if (matchCount == 5) {
-                return THIRD
-            }
-            if (matchCount == 4) {
-                return FOURTH
-            }
-            if (matchCount == 3) {
-                return FIFTH
-            }
+            if (matchCount == 6) return FIRST
+            if (matchCount == 5 && bonusMatch) return SECOND
+            if (matchCount == 5) return THIRD
+            if (matchCount == 4) return FOURTH
+            if (matchCount == 3) return FIFTH
             return NONE
         }
     }
