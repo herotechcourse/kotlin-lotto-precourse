@@ -16,11 +16,11 @@ class OutputView {
     fun displayWinningStatistics(results: LottoResults) {
         println("\nWinning Statistics")
         println("---")
-        println("${PrizeRank.FIFTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FIFTH.prize)} KRW) - ${results.getCount(PrizeRank.FIFTH)} tickets")
-        println("${PrizeRank.FOURTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FOURTH.prize)} KRW) - ${results.getCount(PrizeRank.FOURTH)} tickets")
-        println("${PrizeRank.THIRD.matchCnt} Matches (${String.format("%,d", PrizeRank.THIRD.prize)} KRW) - ${results.getCount(PrizeRank.THIRD)} tickets")
-        println("${PrizeRank.SECOND.matchCnt} Matches + Bonus Ball (${String.format("%,d", PrizeRank.SECOND.prize)} KRW) - ${results.getCount(PrizeRank.SECOND)} tickets")
-        println("${PrizeRank.FIRST.matchCnt} Matches (${String.format("%,d", PrizeRank.FIRST.prize)} KRW) - ${results.getCount(PrizeRank.FIRST)} tickets")
+        println("${PrizeRank.FIFTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FIFTH.prize)} KRW) – ${results.getCount(PrizeRank.FIFTH)} tickets")
+        println("${PrizeRank.FOURTH.matchCnt} Matches (${String.format("%,d", PrizeRank.FOURTH.prize)} KRW) – ${results.getCount(PrizeRank.FOURTH)} tickets")
+        println("${PrizeRank.THIRD.matchCnt} Matches (${String.format("%,d", PrizeRank.THIRD.prize)} KRW) – ${results.getCount(PrizeRank.THIRD)} tickets")
+        println("${PrizeRank.SECOND.matchCnt} Matches + Bonus Ball (${String.format("%,d", PrizeRank.SECOND.prize)} KRW) – ${results.getCount(PrizeRank.SECOND)} tickets")
+        println("${PrizeRank.FIRST.matchCnt} Matches (${String.format("%,d", PrizeRank.FIRST.prize)} KRW) – ${results.getCount(PrizeRank.FIRST)} tickets")
     }
 
     fun displayProfitRate(results: LottoResults, purchaseAmout: Int) {
