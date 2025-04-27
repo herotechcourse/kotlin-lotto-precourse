@@ -7,6 +7,8 @@ object Message {
     const val ERROR_INPUT_NOT_INT = "[ERROR] Input must be a number."
     const val UNKNOWN_ERROR = "[ERROR] Unknown error occurred."
     const val ERROR_LOTTO_NUMBERS_COUNT = "[ERROR] Lotto must contain exactly 6 numbers."
+    const val ERROR_BONUS_RANGE = "[ERROR] Bonus number must be between 1 and 45."
+    const val ERROR_WINNER_RANGE = "[ERROR] Winner numbers must be between 1 and 45."
     // Prompt Messages
     const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
     const val PURCHASED_TICKETS_MESSAGE = "You have purchased %d tickets."
