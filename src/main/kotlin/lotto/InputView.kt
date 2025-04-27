@@ -2,17 +2,17 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputView {
+object InputView {
     fun purchaseAmount(): Int {
         while (true) {
             try {
                 println("Please enter the purchase amount.")
                 val purchaseNumber = Console.readLine().trim()
                 if (purchaseNumber.toIntOrNull() == null) {
-                    throw IllegalArgumentException("Input must be numbers between 1 and 45")
+                    throw IllegalArgumentException("Input must be a number")
                 }
-                if (purchaseNumber.toInt() !in 1..45) {
-                    throw IllegalArgumentException("Lotto numbers must be between 1 and 45.")
+                if (purchaseNumber.toIntOrNull()!! < 1000) {
+                    throw IllegalArgumentException("Purchase amount must be more than 1000")
                 }
                 return purchaseNumber.toInt()
             } catch (e: IllegalArgumentException) {
