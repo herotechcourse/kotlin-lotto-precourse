@@ -3,8 +3,8 @@
 ## feature list
 ### input handling
 - [ ] purchase amount
-    - [ ] validate that purchase amount is divisible by 1,000
-    - [ ] throw exception if purchase amount is not divisible by 1,000
+    - [x] validate that purchase amount is divisible by 1,000
+    - [x] throw exception if purchase amount is not divisible by 1,000
 - [ ] 6 winning numbers + 1 bonus number
     - [ ] all 7 numbers must be unique in the range from 1 to 45
     - [ ] winning numbers are comma-separated
