@@ -5,14 +5,14 @@ import lotto.util.Constants
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == Constants.LOTTO_NUMBER_COUNT) {
-            "${Constants.ERROR_PREFIX} Lotto must contain exactly 6 numbers."
+            Constants.ERROR_INVALID_NUMBER_COUNT
         }
         require(numbers.toSet().size==Constants.LOTTO_NUMBER_COUNT){
-            "${Constants.ERROR_PREFIX} Lotto numbers must not contain duplicate numbers."
+            Constants.ERROR_DUPLICATE_NUMBER
         }
         numbers.forEach{number->
             require(number in Constants.MIN_LOTTO_NUMBER..Constants.MAX_LOTTO_NUMBER){
-                "${Constants.ERROR_PREFIX} Lotto numbers must be between 1 and 45."
+                Constants.ERROR_NUMBER_OUT_OF_RANGE
             }
         }
     }

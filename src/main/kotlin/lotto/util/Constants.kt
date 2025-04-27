@@ -22,6 +22,10 @@ object Constants {
     const val ERROR_BONUS_OUT_OF_RANGE = "$ERROR_PREFIX Bonus number must be between $MIN_LOTTO_NUMBER and $MAX_LOTTO_NUMBER."
     const val ERROR_DUPLICATE_BONUS_NUMBER = "$ERROR_PREFIX Bonus number must not be a duplicate of the winning numbers."
 
+    const val ERROR_INVALID_NUMBER_COUNT = "$ERROR_PREFIX Lotto must contain exactly $LOTTO_NUMBER_COUNT numbers."
+    const val ERROR_DUPLICATE_NUMBER = "$ERROR_PREFIX Lotto numbers must not contain duplicate numbers."
+    const val ERROR_NUMBER_OUT_OF_RANGE = "$ERROR_PREFIX Lotto numbers must be between $MIN_LOTTO_NUMBER and $MAX_LOTTO_NUMBER."
+
     const val PRIZE_FIRST = 2_000_000_000
     const val PRIZE_SECOND = 30_000_000
     const val PRIZE_THIRD = 1_500_000
