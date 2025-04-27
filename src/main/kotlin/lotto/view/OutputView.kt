@@ -7,7 +7,7 @@ import lotto.constants.OutputMessage
 object OutputView {
     fun printTickets(tickets: List<Lotto>) {
         println(OutputMessage.TICKETS.format(tickets.size))
-        tickets.forEach { println(it.getNumbers()) }
+        tickets.forEach { println(it) }
     }
 
     fun printStatistics(statistics: Map<LottoRank, Int>, profit: Double) {
