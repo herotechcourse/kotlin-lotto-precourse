@@ -35,7 +35,7 @@ class OutputView {
     }
 
     private fun formatProfit(profit: Double): String {
-        val formatter = DecimalFormat("#,##0.0") // 천 단위 콤마 + 소수 첫째 자리
+        val formatter = DecimalFormat("#,##0.0")
         return formatter.format(profit)
     }
 }
