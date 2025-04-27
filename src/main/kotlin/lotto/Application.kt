@@ -39,13 +39,15 @@ class InputView {
                 return validateAmount(input)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
+                // Re-prompt for purchase amount
             }
         }
     }
 
-    private fun validateAmount(input: String): Int {
-        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Amount must be a number")
-        if (amount % 100 != 0)  throw IllegalArgumentException("[ERROR] Amount must be divisible by 1,000.")
+
+    fun validateAmount(input: String): Int {
+        val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Amount must be a number.")
+        if (amount % 1000 != 0) throw IllegalArgumentException("[ERROR] Amount must be divisible by 1,000.")
         return amount
     }
 
@@ -62,7 +64,7 @@ class InputView {
         }
     }
 
-    private fun parseNumbers(input: String): List<Int> {
+    fun parseNumbers(input: String): List<Int> {
         val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Winning numbers must be integers.") }
         if (numbers.size != 6 || numbers.any { it !in 1..45 } || numbers.distinct().size != 6) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be 6 unique numbers between 1 and 45.")
@@ -83,7 +85,7 @@ class InputView {
         }
     }
 
-    private fun validateBonus(input: String, winningNumbers: List<Int>): Int {
+    fun validateBonus(input: String, winningNumbers: List<Int>): Int {
         val bonus = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Bonus number must be an integer.")
         if (bonus !in 1..45 || bonus in winningNumbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45 and not in winning numbers.")
