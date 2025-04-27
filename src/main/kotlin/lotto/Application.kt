@@ -19,6 +19,7 @@ fun main() {
     var profitRate = calculateProfitRate(lottoResults, validPurchaseAmount)
     //outputView.printListOfItems(lottoResults)
     //outputView.printNumber(profitRate)
+
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
@@ -72,6 +73,7 @@ fun calculateTotalEarnings(ranks: List<Rank>): Int {
 fun calculateProfitRate(ranks: List<Rank>, spentAmount: Int): Double {
     var totalEarnings = calculateTotalEarnings(ranks)
     var profitRate = 0.0
+    if (spentAmount <= 0) return 0.0
     if (totalEarnings > 0)
     {
         profitRate = totalEarnings.toDouble() / spentAmount * 100
