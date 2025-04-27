@@ -5,17 +5,9 @@ import lotto.Lotto
 
 object InputView {
     fun readPurchaseAmount(): Int {
-
-        while (true) {
-            try {
-                println("Please enter the purchase amount.")
-                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
-                return parsePurchaseAmount(input)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            } catch (e: NumberFormatException) {
-                println("[ERROR] Input must be a number.")
-            }
+        return readUntilValid("Please enter the purchase amount.") {
+            val input = Console.readLine()?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+            parsePurchaseAmount(input)
         }
     }
 
@@ -29,17 +21,11 @@ object InputView {
         return amount
     }
 
-    fun readWinningTicket(): Lotto{
-
-        while (true) {
-            try {
-                println("\nPlease enter last week's winning numbers (comma-separated).")
-                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
-                val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must contain 6 numbers.") }
-                return parseWinningTicket(numbers)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+    fun readWinningTicket(): Lotto {
+        return readUntilValid("\nPlease enter last week's winning numbers (comma-separated).") {
+            val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+            val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must contain valid numbers.") }
+            parseWinningTicket(numbers)
         }
     }
 
@@ -52,16 +38,12 @@ object InputView {
     }
 
     fun readBonusNumber(winningNumbers: Lotto): Int {
-        while (true) {
-            try {
-                println("\nPlease enter last week's bonus number.")
-                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
-                return parseBonusNumber(input, winningNumbers)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        return  readUntilValid("\nPlease enter last week's bonus number.") {
+            val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+            parseBonusNumber(input, winningNumbers)
         }
     }
+
 
     internal fun parseBonusNumber(input: String, winningNumbers: Lotto): Int {
         require(input.isNotBlank()) { "[ERROR] Input cannot be empty." }
@@ -71,5 +53,22 @@ object InputView {
         return number
     }
 
+    // Helper function that repeatedly prompts the user for input until a valid value is provided.
+    // @param prompt The message displayed to the user.
+    // @param parse A lambda that parses and validates the input, throwing an exception if invalid.
+    // @return A valid parsed value of type [T].
 
+    private fun <T> readUntilValid(prompt: String, parse: () -> T): T {
+
+        while (true) {
+            try {
+                println(prompt)
+                return parse()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            } catch (e: NumberFormatException) {
+                println("[ERROR] Input must be a number.")
+            }
+        }
+    }
 }
