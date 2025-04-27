@@ -44,25 +44,25 @@ class LottoController(
         return lottos
     }
 
-    private fun readWinningNumbers(): List<Int> {
+    private fun readWinningNumbers(): Lotto {
         outputView.printWinningNumbersInputPrompt()
         return runCatchingRepeatedly {
-            winningNumbersInputParser.parse(inputView.readWinningNumbers())
+            Lotto(winningNumbersInputParser.parse(inputView.readWinningNumbers()))
         }
     }
 
-    private fun readBonusNumber(winningNumbers: List<Int>): BonusNumber {
+    private fun readBonusNumber(winningNumbers: Lotto): BonusNumber {
         outputView.printBonusNumberInputPrompt()
         return runCatchingRepeatedly {
             val bonus = bonusNumberInputParser.parse(inputView.readBonusNumber())
-            bonus.validateNotDuplicateWith(Lotto(winningNumbers))
+            bonus.validateNotDuplicateWith(winningNumbers)
             bonus
         }
     }
 
     private fun printResults(
         lottos: List<Lotto>,
-        winningNumbers: List<Int>,
+        winningNumbers: Lotto,
         bonusNumber: BonusNumber,
         amount: Int
     ) {
