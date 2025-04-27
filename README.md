@@ -9,14 +9,15 @@
     - [Testing](#testing)
     - [Code Quality](#code-quality)
     - [Forbidden](#forbidden)
+- [Project Structure](#project-structure)
 
 ## Features
 #### Input Handling
-- [ ] Use `Console.readLine()` to receive input
-- [ ] Purchase amount validation (1,000+ KRW, divisible by 1,000)
-- [ ] Winning numbers validation (6 unique 1-45, comma-separated)
-- [ ] Bonus number validation (1-45, not in winning numbers)
-- [ ] Handle invalid input properly: 
+- [x] Use `Console.readLine()` to receive input
+- [x] Purchase amount validation (1,000+ KRW, divisible by 1,000)
+- [x] Winning numbers validation (6 unique 1-45, comma-separated)
+- [x] Bonus number validation (1-45, not in winning numbers)
+- [x] Handle invalid input properly: 
   - throw `IllegalArgumentException`
   - display error messages
   - re-prompt from same step
@@ -63,3 +64,27 @@
 - [ ] No generic Exception handling
 - [ ] No package/class restructuring
 - [ ] No build.gradle modifications
+
+## Project Structure
+*(`[x]` for writing/completed, `[ ]` for planned.)*
+
+##### controller (Application Flow Controller: input -> process -> output)
+- [x] **`LottoController.kt`**
+
+##### domain (Core Business Logic)
+- [x] **`Lotto.kt`** 
+- [x] **`LottoMachine.kt`** 
+- [x] **`WinningLotto.kt`** 
+- [x] **`BonusNumber.kt`** 
+- [ ] **`Rank.kt`** : Enum class defining the winning ranks.
+- [ ] **`PrizeCalculator.kt`**  
+- [ ] **`LottoComparator.kt`**  
+
+##### model (Data Models)
+- [ ] **`LottoTicket.kt`**  
+- [ ] **`PurchaseInfo.kt`**  
+
+##### view (User Input & Output)
+- [x] **`InputView.kt`**  
+- [x] **`OutputView.kt`**  
+
