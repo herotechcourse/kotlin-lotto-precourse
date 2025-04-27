@@ -5,12 +5,11 @@ import lotto.model.LottoNumberMaker
 import lotto.model.MatchCalculator
 import lotto.model.PurchaseAmountParser
 import lotto.model.ReturnRateCalculator
-import lotto.view.InputView
 import lotto.view.OutputView
 
 object LottoProgramStart {
     fun run() {
-        val purchaseAmount = InputView.readPurchaseAmount()
+        val purchaseAmount = PurchaseAmountHandler.readValidatedBonusNumber()
         val ticketCount = PurchaseAmountParser.parse(purchaseAmount)
         OutputView.printTicketCount(ticketCount)
 
