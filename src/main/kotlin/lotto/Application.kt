@@ -5,20 +5,15 @@ import lotto.OutputView.printTickets
 fun main() {
     try {
         val amount = getValidAmount()
-        println(amount)
 
         val (winningNumbers, bonus) = getValidWinningNumbers()
-        println(bonus)
 
         val machine = Lotto(winningNumbers)
-        machine.purchaseTickets(amount)
+        val tickets = machine.purchaseTickets(amount)
 
-        val tickets = machine.getTickets()
         printTickets(tickets)
 
-        machine.setWinningNumbers(winningNumbers, bonus)
-
-        val results = machine.calculateResults()
+        val results = machine.calculateResults(tickets, bonus)
         OutputView.printResults(results, amount)
     } catch (e: IllegalArgumentException) {
         println("[ERROR]: ${e.message}")
@@ -26,29 +21,17 @@ fun main() {
 }
 
 private fun getValidAmount(): Int {
-    while(true) {
-        try {
-            val amount = InputView.readAmount()
-            LotteryValidator.validateAmount(amount)
-            return amount
-        } catch (e: Exception) {
-            OutputView.printError("Invalid amount: ${e.message}")
-        }
-    }
+    val amount = InputView.readAmount()
+    LotteryValidator.validateAmount(amount)
+    return amount
 }
 
-private fun getValidWinningNumbers(): Pair<Set<Int>, Int> {
-    while(true) {
-        try {
-            val numbers = InputView.readWinningNumbers()
-            val bonus = InputView.readBonusNumber()
+private fun getValidWinningNumbers(): Pair<List<Int>, Int> {
+    val numbers = InputView.readWinningNumbers()
+    val bonus = InputView.readBonusNumber()
 
-            LotteryValidator.validateWinningNumbers(numbers)
-            LotteryValidator.validateBonusNumber(bonus, numbers)
+    LotteryValidator.validateWinningNumbers(numbers)
+    LotteryValidator.validateBonusNumber(bonus, numbers)
 
-            return numbers to bonus
-        } catch (e: Exception) {
-            OutputView.printError("Invalid numbers: ${e.message}")
-        }
-    }
+    return numbers to bonus
 }

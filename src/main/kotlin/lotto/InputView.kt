@@ -1,19 +1,20 @@
+import camp.nextstep.edu.missionutils.Console
+
 object InputView {
     fun readAmount(): Int {
-        println("Enter purchase amount (KRW):")
-        return readLine().orEmpty().toIntOrNull() ?: throw IllegalArgumentException()
+        println("Please enter the purchase amount.")
+        return Console.readLine().orEmpty().toIntOrNull() ?: throw IllegalArgumentException()
     }
 
-    fun readWinningNumbers(): Set<Int> {
-        println("Enter 6 winning numbers (space-separated):")
-        return readLine().orEmpty()
-            .split(" ")
+    fun readWinningNumbers(): List<Int> {
+        println("Please enter last week's winning numbers.")
+        return Console.readLine().orEmpty()
+            .split(",")
             .map { it.toInt() }
-            .toSet()
     }
 
     fun readBonusNumber(): Int {
-        println("Enter bonus number:")
-        return readLine().orEmpty().toInt()
+        println("Please enter the bonus number.")
+        return Console.readLine().orEmpty().toInt()
     }
 }

@@ -27,7 +27,7 @@ object OutputView {
             println("${rank.display} – $count tickets")
         }
 
-        println("Total return rate is ${(totalWon.toDouble() / totalSpent * 100).format(2)}.")
+        println("Total return rate is ${(totalWon.toDouble() / totalSpent * 100).format(1)}.")
     }
 
     private fun Double.format(decimals: Int) =
