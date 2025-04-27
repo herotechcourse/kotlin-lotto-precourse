@@ -2,6 +2,7 @@ package lotto
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.assertj.core.api.Assertions.assertThat
 
 class LotteryTicketMachineTest {
     @Test
@@ -9,6 +10,13 @@ class LotteryTicketMachineTest {
         assertThrows<IllegalArgumentException> {
             LotteryTicketMachine.validatePurchaseAmount(1500)
         }
+    }
+
+    @Test
+    fun `generates the correct number of tickets based on purchase amount`() {
+        val purchaseAmount = 8000
+        val tickets = LotteryTicketMachine.generateTickets(purchaseAmount)
+        assertThat(LotteryTicketMachine.tickets.size == 8)
     }
 
     @Test
