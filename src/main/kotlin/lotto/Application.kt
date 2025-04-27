@@ -11,18 +11,22 @@ class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val purchaseAmount = InputView().purchaseAmount()
-            val tickets = Application().generateLottoTickets(purchaseAmount)
-            OutputView().displayTickets(tickets)
+            try {
+                val purchaseAmount = InputView().purchaseAmount()
+                val tickets = Application().generateLottoTickets(purchaseAmount)
+                OutputView().displayTickets(tickets)
 
-            val winningNumbers = InputView().inputWinningNumbers()
-            val bonusNumber = InputView().inputBonusNumber(winningNumbers)
+                val winningNumbers = InputView().inputWinningNumbers()
+                val bonusNumber = InputView().inputBonusNumber(winningNumbers)
 
-            val results = Application().countWinningTickets(tickets, winningNumbers, bonusNumber)
-            val totalPrize = Application().calculateTotalPrize(results)
+                val results = Application().countWinningTickets(tickets, winningNumbers, bonusNumber)
+                val totalPrize = Application().calculateTotalPrize(results)
 
-            OutputView().displayResults(results)
-            OutputView().displayReturnRate(totalPrize, tickets.size)
+                OutputView().displayResults(results)
+                OutputView().displayReturnRate(totalPrize, tickets.size)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
         }
     }
 
@@ -79,20 +83,23 @@ class InputView {
     fun purchaseAmount(): Long {
         println("Please enter the purchase amount.")
         val input = Console.readLine()?.trim()
-        val purchaseLotto = input?.toLongOrNull()
-        validatePurchaseAmount(purchaseLotto)
-        return purchaseLotto!!
+        try {
+            val purchaseLotto = input?.toLongOrNull()
+                ?: throw IllegalArgumentException("[ERROR] Amount must be a valid number")
+            validatePurchaseAmount(purchaseLotto)
+            return purchaseLotto
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            throw e
+        }
     }
 
-    private fun validatePurchaseAmount(purchaseLotto: Long?) {
-        if (purchaseLotto == null) {
-            throw IllegalArgumentException("[ERROR] Amount cannot be empty and must be a valid number")
-        }
+    private fun validatePurchaseAmount(purchaseLotto: Long) {
         if (purchaseLotto <= 0L) {
-            throw IllegalArgumentException("[ERROR] Amount cannot be zero and negative")
+            throw IllegalArgumentException("[ERROR] Amount cannot be zero or negative")
         }
         if (purchaseLotto % 1000L != 0L) {
-            throw IllegalArgumentException("[ERROR] Amount must be a multiply of 1000")
+            throw IllegalArgumentException("[ERROR] Amount must be a multiple of 1000")
         }
     }
 
@@ -175,7 +182,7 @@ class OutputView {
                     else -> ""
                 }
                 val formattedPrize = "%,d".format(prize.prize)
-                println("$matchText (${formattedPrize} KRW) - ${results[prize]} tickets")
+                println("$matchText (${formattedPrize} KRW) – ${results[prize]} tickets")
             }
         }
     }
