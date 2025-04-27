@@ -27,7 +27,7 @@ This project focuses on clean OOP design, test-driven development, and user inpu
     - Includes unit tests.
 
 5. **User interface**
-    - `InputView` for reading input with re-prompting on errors
+    - `InputView` for reading and verifying user input
     - `OutputView` for printing tickets, results, and statistics
     - Output format matches the mission requirements exactly
     - Includes unit tests.
