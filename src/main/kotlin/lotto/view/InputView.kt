@@ -35,11 +35,20 @@ object InputView {
         return bonusNumber
     }
 
-    private fun parseNumbers(input: String): List<Int> {
+    private fun parseNumbers_(input: String): List<Int> {
         return try {
             input.split(",").map { it.toInt() }
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE_NUMBER.message)
         }
     }
+
+    private fun parseNumbers(input: String): List<Int> =
+        input.split(",").map { token ->
+            val num = token.trim().toIntOrNull()
+            if (num == null) {
+                throw IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE_NUMBER.message)
+            }
+            num
+        }
 }
