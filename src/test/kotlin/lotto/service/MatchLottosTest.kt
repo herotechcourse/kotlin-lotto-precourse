@@ -1,6 +1,7 @@
-package lotto.domain
+package lotto.service
 
 import lotto.Lotto
+import lotto.domain.Rank
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
@@ -19,8 +20,8 @@ class MatchLottosTest {
             Lotto(listOf(1, 2, 3, 4, 44, 45)),      // 4th
             Lotto(listOf(1, 2, 3, 43, 44, 45)),     // 5th
             Lotto(listOf(1, 2, 42, 43, 44, 45)),    // Miss(match: 2ea)
-            Lotto(listOf(1, 42, 42, 43, 44, 45)),   // Miss(match: 1ea)
-            Lotto(listOf(41, 42, 42, 43, 44, 45)),  // Miss(match: 0ea)
+            Lotto(listOf(1, 41, 42, 43, 44, 45)),   // Miss(match: 1ea)
+            Lotto(listOf(40, 41, 42, 43, 44, 45)),  // Miss(match: 0ea)
         )
 
         // when
