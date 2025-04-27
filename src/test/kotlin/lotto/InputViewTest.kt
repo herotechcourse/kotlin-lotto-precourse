@@ -5,7 +5,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-class LottoTests {
+class InputViewTest {
     @ParameterizedTest
     @ValueSource(strings = ["1000", "2000", "3000"])
     fun `test getPurchaseAmount valid input`(input: String) {
