@@ -1,6 +1,6 @@
 package lotto.ui
 
-interface ConsoleIoInterface {
-    fun read():String
-    fun print(message:String)
+interface ConsoleIoInterface : InputReader, OutputReader {
+    override fun read(): String
+    override fun print(message: String)
 }
