@@ -19,4 +19,10 @@ class TicketMachineTest {
             assertThat(it.getNumbers()).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
         }
     }
+
+    @Test
+    fun `generateTickets returns empty list when amount is zero`() {
+        val machine = TicketMachine { listOf(1,2,3,4,5,6) }
+        assertThat(machine.generateTickets(0)).isEmpty()
+    }
 }
