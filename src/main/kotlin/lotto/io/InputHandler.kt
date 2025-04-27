@@ -5,25 +5,60 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputHandler {
     fun getSumOfMoney(): Int {
-        println("Please enter the purchase amount.")
-        val input = Console.readLine()?.toIntOrNull()
+        var isValid = false
+        var validatedInput = 0
 
-        return InputValidator.validateSumOfMoney(input)
+        while (!isValid) {
+            println("Please enter the purchase amount.")
+            val input = Console.readLine()?.toIntOrNull()
+
+            try {
+                validatedInput = InputValidator.validateSumOfMoney(input)
+                isValid = true
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
+
+        return validatedInput
     }
 
     fun getWinningNumbers(): List<Int> {
-        println("Please enter last week's winning numbers.")
-        val input = Console.readLine().split(",").map {
-            it.trim().toIntOrNull()
+        var isValid = false
+        var validatedInput: List<Int> = listOf()
+
+        while (!isValid) {
+            try {
+                println("Please enter last week's winning numbers.")
+                val input = Console.readLine().split(",").map {
+                    it.trim().toIntOrNull()
+                }
+
+                validatedInput = InputValidator.validateNumbers(input)
+                isValid = true
+            } catch (e: Exception) {
+                println(e.message)
+            }
         }
 
-        return InputValidator.validateNumbers(input)
+        return validatedInput
     }
 
     fun getBonusNumber(): Int {
-        println("Please enter the bonus number.")
-        val input = Console.readLine()?.toIntOrNull()
+        var isValid = false
+        var validatedInput = 0
 
-        return InputValidator.validateNumberInRange(input)
+        while (!isValid) {
+            try {
+                println("Please enter the bonus number.")
+                val input = Console.readLine()?.toIntOrNull()
+                validatedInput = InputValidator.validateNumberInRange(input)
+                isValid = true
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
+
+        return validatedInput
     }
 }
