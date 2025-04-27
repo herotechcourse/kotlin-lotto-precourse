@@ -9,10 +9,15 @@ class InputView {
     fun getPurchaseAmount(): Int {
         while(true) {
             try {
-                println("Purchase amount for lottery tickets: ")
-                val purchaseAmount = Console.readLine().toInt()
-                return validatePurchaseAmount(purchaseAmount)
-            }catch (e: IllegalArgumentException) {
+                println("Please enter the purchase amount.")
+                val input = Console.readLine()
+                try {
+                    val purchaseAmount = input.toInt()
+                    return validatePurchaseAmount(purchaseAmount)
+                } catch (e: NumberFormatException) {
+                    println("[ERROR]")
+                }
+            } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
@@ -22,7 +27,7 @@ class InputView {
     fun getWinningNumbers(): List<Int> {
         while(true) {
             try {
-                println("Winning numbers (comma-separated): ")
+                println("Please enter last week's winning numbers.")
                 val winningNumbersStr = Console.readLine()
                 val winningNumbers = parseWinningNumbers(winningNumbersStr)
                 validatedWinningNumbers = validateWinningNumbers(winningNumbers)
@@ -37,7 +42,7 @@ class InputView {
     fun getBonusNumber(): Int {
         while(true) {
             try {
-                println("Bonus number: ")
+                println("Please enter the bonus number.")
                 val bonusNumber = Console.readLine().toInt()
                 return validateBonusNumber(validatedWinningNumbers, bonusNumber)
             } catch(e: IllegalArgumentException) {
@@ -50,6 +55,8 @@ class InputView {
         private fun validatePurchaseAmount(purchaseAmount: Int): Int{
             if (purchaseAmount%1000 != 0)
                 throw IllegalArgumentException("[ERROR] Not divisible by 1000")
+            if (purchaseAmount <= 0)
+                throw IllegalArgumentException("[ERROR] Purchase amount must be greater than 0")
             return purchaseAmount
         }
 
