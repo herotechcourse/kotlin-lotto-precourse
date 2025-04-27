@@ -60,8 +60,8 @@ class ApplicationTest : NsTest() {
     }
     @Test
     fun `calculates number of tickets correctly`() {
-        assertEquals(8, calculateNumberOfTickets(8000))
-        assertEquals(1, calculateNumberOfTickets(1000))
+        assertEquals(8, calculateNumberOfPurchasedTickets(8000))
+        assertEquals(1, calculateNumberOfPurchasedTickets(1000))
     }
 
     @Test

@@ -7,23 +7,27 @@ fun main() {
     val lottoGenerator = LottoGenerator()
     val game = LottoGame()
 
-    val validPurchaseAmount = readAndValidatePurchaseAmount(inputView, validator)
-    val numberOfTickets = calculateNumberOfTickets(validPurchaseAmount)
-    val purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
-
-    outputView.printHeader("You have purchased $numberOfTickets tickets.")
-    outputView.printListOfTickets(purchasedTickets)
+    val purchasedTickets = purchaseLottoTickets(inputView, outputView, validator, lottoGenerator)
 
     val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
     val bonusNumber = readAndValidateBonusNumber(inputView, validator, winningNumbers)
     val lottoResults = game.checkAllTickets(purchasedTickets, winningNumbers, bonusNumber)
-    var profitRate = calculateProfitRate(lottoResults, validPurchaseAmount)
 
-    val numberOfTicketsOfEachRank = countTicketsOfEachRank(lottoResults)
-    outputView.printHeader("Winning Statistics\n" + "---")
-    outputView.printResults(numberOfTicketsOfEachRank)
-    outputView.printMessage("Total return rate is $profitRate%.")
+    displayWinningStatistics(outputView, lottoResults, (purchasedTickets.size*1000))
 }
+
+fun purchaseLottoTickets(inputView: InputView, outputView: OutputView, validator : Validator,
+                         lottoGenerator: LottoGenerator): List<Lotto>
+{
+    val validPurchaseAmount = readAndValidatePurchaseAmount(inputView, validator)
+    val numberOfTickets = calculateNumberOfPurchasedTickets(validPurchaseAmount)
+    val purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
+
+    outputView.printHeader("You have purchased $numberOfTickets tickets.")
+    outputView.printListOfTickets(purchasedTickets)
+    return purchasedTickets
+}
+
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
         try {
@@ -36,11 +40,13 @@ fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): I
         }
     }
 }
-fun calculateNumberOfTickets(money: Int): Int
+
+fun calculateNumberOfPurchasedTickets(money: Int): Int
 {
-    var numberOfTickets = money / 1000
+    val numberOfTickets = money / 1000
     return numberOfTickets
 }
+
 fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator,): List<Int> {
     while (true) {
         try {
@@ -53,6 +59,7 @@ fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator,): 
         }
     }
 }
+
 fun readAndValidateBonusNumber(inputView: InputView, validator: Validator, winningNumbers: List<Int>): Int {
     while (true) {
         try {
@@ -65,6 +72,17 @@ fun readAndValidateBonusNumber(inputView: InputView, validator: Validator, winni
         }
     }
 }
+
+fun displayWinningStatistics (outputView: OutputView, lottoResults: List<Rank>, spentAmount: Int)
+{
+    val profitRate = calculateProfitRate(lottoResults, spentAmount)
+    val numberOfTicketsOfEachRank = countTicketsOfEachRank(lottoResults)
+
+    outputView.printHeader("Winning Statistics\n" + "---")
+    outputView.printResults(numberOfTicketsOfEachRank)
+    outputView.printMessage("Total return rate is $profitRate%.")
+}
+
 fun calculateTotalEarnings(ranks: List<Rank>): Int {
     var totalEarnings = 0
     for (rank in ranks)
@@ -73,8 +91,9 @@ fun calculateTotalEarnings(ranks: List<Rank>): Int {
     }
     return totalEarnings
 }
+
 fun calculateProfitRate(ranks: List<Rank>, spentAmount: Int): Double {
-    var totalEarnings = calculateTotalEarnings(ranks)
+    val totalEarnings = calculateTotalEarnings(ranks)
     var profitRate = 0.0
     if (spentAmount <= 0) return 0.0
     if (totalEarnings > 0)
@@ -83,6 +102,7 @@ fun calculateProfitRate(ranks: List<Rank>, spentAmount: Int): Double {
     }
     return profitRate
 }
+
 fun countTicketsOfEachRank(ranks: List<Rank>): List<Int> {
     var firstCount = 0
     var secondCount = 0
