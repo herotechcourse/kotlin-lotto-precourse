@@ -1,6 +1,13 @@
 package lotto
 
 object OutputView {
+    fun printTickets(tickets:  MutableList<Set<Int>> ) {
+        println("You have purchased ${tickets.size} tickets.")
+        for(ticket in tickets) {
+            println(ticket)
+        }
+    }
+
     fun printError(message: String) {
         println("\u001B[31mError: $message\u001B[0m")
     }
@@ -8,11 +15,19 @@ object OutputView {
     fun printResults(results: Map<PrizeRank, Int>, totalSpent: Int) {
         val totalWon = results.entries.sumOf { it.key.amount * it.value }
 
-        println("\n--- Results ---")
-        PrizeRank.entries.forEach { rank ->
-            println("${rank.name.lowercase().replaceFirstChar { it.uppercase() }}: ${results[rank] ?: 0}")
+        val orderedRanks = listOf(
+            PrizeRank.FIFTH,
+            PrizeRank.FOURTH,
+            PrizeRank.THIRD,
+            PrizeRank.SECOND,
+            PrizeRank.FIRST
+        )
+        for (rank in orderedRanks) {
+            val count = results[rank] ?: 0
+            println("${rank.display} – $count tickets")
         }
-        println("Total Return: ${(totalWon.toDouble() / totalSpent * 100).format(2)}%")
+
+        println("Total return rate is ${(totalWon.toDouble() / totalSpent * 100).format(2)}.")
     }
 
     private fun Double.format(decimals: Int) =

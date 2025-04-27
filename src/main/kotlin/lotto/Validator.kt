@@ -1,4 +1,5 @@
-import lotto.Lotto
+package lotto
+
 
 object LotteryValidator {
     fun validateAmount(amount: Int) {
@@ -11,7 +12,7 @@ object LotteryValidator {
     fun validateWinningNumbers(numbers: Set<Int>) {
         require(numbers.size == 6) { "Need exactly 6 winning numbers" }
         require(numbers.all { it in Lotto.MIN_NUMBER..Lotto.MAX_NUMBER }) {
-            "Numbers must be between in the range 1-45"
+            "Lotto numbers must be between 1 and 45."
         }
     }
 

@@ -1,7 +1,8 @@
 package lotto
 
-fun main() {
+import lotto.OutputView.printTickets
 
+fun main() {
     try {
         val amount = getValidAmount()
         println(amount)
@@ -10,8 +11,17 @@ fun main() {
         println(bonus)
 
         val machine = Lotto(winningNumbers)
+        machine.purchaseTickets(amount)
+
+        val tickets = machine.getTickets()
+        printTickets(tickets)
+
+        machine.setWinningNumbers(winningNumbers, bonus)
+
+        val results = machine.calculateResults()
+        OutputView.printResults(results, amount)
     } catch (e: IllegalArgumentException) {
-        println("Error: ${e.message}")
+        println("[ERROR]: ${e.message}")
     }
 }
 
