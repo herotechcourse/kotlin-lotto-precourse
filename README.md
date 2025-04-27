@@ -32,3 +32,5 @@
 - [x] bonus ball format
 - [x] separate controller logic
 - [] separate Lotto Machine with Interface
+- [] add test code
+- [] check requirement
