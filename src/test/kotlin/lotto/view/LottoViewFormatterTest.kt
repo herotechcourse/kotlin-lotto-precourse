@@ -1,0 +1,81 @@
+package lotto.view
+
+import lotto.Rank
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import java.text.NumberFormat
+import java.util.*
+
+class LottoViewFormatterTest {
+
+    private val sut: LottoViewFormatter = LottoViewFormatter(NumberFormat.getInstance(Locale.KOREA))
+
+    @Nested
+    inner class LottoTickets {
+
+        private val lottoTickets: List<List<Int>> = listOf(
+            listOf(8, 21, 23, 41, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38)
+        )
+
+        @Test
+        fun `formatPurchaseMessage should return ticket count message`() {
+            // Act
+            val result = sut.formatPurchaseMessage(lottoTickets)
+
+            // Assert
+            assertThat(result).isEqualTo("You have purchased 2 tickets.")
+        }
+
+
+        @Test
+        fun `formatLottoTickets should return sorted number lines`() {
+            // Act
+            val result = sut.formatLottoTickets(lottoTickets)
+
+            // Assert
+            assertThat(result).isEqualTo(
+                """
+                [8, 21, 23, 41, 42, 43]
+                [3, 5, 11, 16, 32, 38]
+            """.trimIndent()
+            )
+        }
+
+    }
+
+    @Test
+    fun `formatWinningStatistics should return formatted lines in prize order`() {
+        // Arrange
+        val rankCounts: List<CountRankResponse> = listOf(
+            CountRankResponse(Rank.FIFTH, 1),
+            CountRankResponse(Rank.FOURTH, 3),
+            CountRankResponse(Rank.SECOND, 2)
+        )
+
+        // Act
+        val result = sut.formatWinningStatistics(rankCounts)
+
+        // Assert
+        assertThat(result).contains(
+            """
+                3 Matches (5,000 KRW) – 1 tickets
+                4 Matches (50,000 KRW) – 3 tickets
+                5 Matches + Bonus Ball (30,000,000 KRW) – 2 tickets
+            """.trimIndent()
+        )
+    }
+
+    @Test
+    fun `formatProfitRate should return formatted profit percentage`() {
+        // Arrange
+        val profitRate = 127.54
+
+        // Act
+        val result = sut.formatProfitRate(profitRate)
+
+        // Assert
+        assertThat(result).isEqualTo("Total return rate is 127.5%.")
+    }
+}
