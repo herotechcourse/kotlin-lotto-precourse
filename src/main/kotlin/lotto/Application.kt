@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun readPurchaseAmount(): Int {
     println("Please enter the purchase amount.")
@@ -19,6 +20,19 @@ fun validatePurchaseAmount(amount: Int) {
     }
 }
 
+fun createOneTicket(): Lotto {
+    val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+    return Lotto(numbers)
+}
+
+fun createMultipleTickets(ticketCount: Int): List<Lotto> {
+    val lottoTickets = mutableListOf<Lotto>()
+    repeat(ticketCount){
+        lottoTickets.add(createOneTicket())
+    }
+    return lottoTickets
+}
+
 fun main() {
     var amount: Int
     while (true) {
@@ -33,4 +47,9 @@ fun main() {
     println()
     val ticketCount = amount / 1000
     println("You have purchased $ticketCount tickets.")
+    val tickets = createMultipleTickets(ticketCount)
+    for (ticket in tickets){
+        println(ticket)
+    }
+
 }
