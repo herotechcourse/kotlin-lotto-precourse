@@ -6,6 +6,7 @@ enum class ErrorMessage(val message: String) {
     NOT_DIVISIBLE_BY_UNIT("[ERROR] The amount must be a multiple of the ticket price."),
     NUMBER_OUT_OF_RANGE("[ERROR] Numbers must be between 1 and 45."),
     DUPLICATE_NUMBERS("[ERROR] Numbers must not be duplicated"),
+    DUPLICATE_BONUS_NUMBER("[ERROR] The bonus number must not duplicate any winning numbers."),
     INVALID_NUMBER_COUNT("[ERROR] Lotto must contain exactly 6 numbers.")
 }
 
