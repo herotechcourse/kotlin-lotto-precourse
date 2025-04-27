@@ -5,10 +5,9 @@
 - [x] purchase amount
     - [x] validate that purchase amount is divisible by 1,000
     - [x] throw exception if purchase amount is not divisible by 1,000
-- [ ] 6 winning numbers + 1 bonus number
-    - [ ] all 7 numbers must be unique in the range from 1 to 45
-    - [ ] winning numbers are comma-separated
-    - [ ] bonus number is a separately taken number
+- [x] 6 winning numbers + 1 bonus number
+    - [x] all 7 numbers must be unique in the range from 1 to 45
+    - [x] bonus number is a number separate from the winning numbers
 ### exception handling
 - [ ] re-prompt user in case of exceptions
 - [ ] start error message with [ERROR]
