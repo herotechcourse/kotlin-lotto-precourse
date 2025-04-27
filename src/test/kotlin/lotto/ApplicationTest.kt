@@ -54,6 +54,6 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
-        private const val ERROR_MESSAGE: String = "[ERROR]"
+         const val ERROR_MESSAGE: String = "[ERROR]"
     }
 }
