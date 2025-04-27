@@ -18,10 +18,10 @@ class OutputView {
         for (countOfRank in sortedCountOfRanks) {
             val rank = countOfRank.key
             if (rank == Rank.SECOND) {
-                println("%d Matches + Bonus Ball (%,d KRW) – %d tickets".format(rank.countOfMatch, rank.winningMoney, countOfRank.value))
+                print("%d Matches + Bonus Ball (%,d KRW) – %d tickets".format(rank.countOfMatch, rank.winningMoney, countOfRank.value))
                 continue
             }
-            println("%d Matches (%,d KRW) - %d tickets".format(rank.countOfMatch, rank.winningMoney, countOfRank.value))
+            print("%d Matches (%,d KRW) – %d tickets".format(rank.countOfMatch, rank.winningMoney, countOfRank.value))
         }
     }
 
