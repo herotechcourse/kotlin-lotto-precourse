@@ -90,7 +90,7 @@ A simple command-line Lotto application.
 #### `ExceptionMessage.kt`
 > - Enum of all error cases with consistent, localized messages.
 
-# 3. Validation Rules
+## 3. Validation Rules
 
 - **Purchase Amount**
   - Must be at least `Rule.LOTTO_PRICE`
@@ -106,14 +106,14 @@ A simple command-line Lotto application.
   - Must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
   - Must not duplicate any of the winning numbers
 
-# 4. UML
+## 4. UML
 > This image was generated using [PlantUML](https://www.planttext.com/) based on the contents of `docs/lotto.puml`.
 
 > Note: The `model` package contains only pure DTO classes (e.g., `WinningNumbers`, `MatchResult`) for data transfer between layers. The `lotto` package houses the domain entity `Lotto`, which performs validation via `Validator` on instantiation and provides business methods like `countMatching()` and `contains()`. This separation adheres to package constraints while clearly distinguishing domain logic from data transfer responsibilities, maintaining architectural consistency.
 
 ![UML Diagram](docs/lotto_uml.png)
 
-# 5. Execution Flow
+## 5. Execution Flow
 
 ```mermaid
 sequenceDiagram
