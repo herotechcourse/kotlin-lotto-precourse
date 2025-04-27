@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
 
 class ApplicationTest : NsTest() {
     @Test
@@ -56,4 +58,37 @@ class ApplicationTest : NsTest() {
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
     }
+    @Test
+    fun `calculates number of tickets correctly`() {
+        assertEquals(8, calculateNumberOfPurchasedTickets(8000))
+        assertEquals(1, calculateNumberOfPurchasedTickets(1000))
+    }
+
+    @Test
+    fun `calculates total earnings amount correctly`() {
+        assertEquals(55000, calculateTotalEarnings(listOf(Rank.FIFTH, Rank.FOURTH)))
+        assertEquals(2000000000, calculateTotalEarnings(listOf(Rank.FIRST)))
+    }
+
+    @Test
+    fun `calculates total earnings as 0 when no ranks`() {
+        assertEquals(0, calculateTotalEarnings(emptyList()))
+    }
+
+    @Test
+    fun `returns 0 profit rate when there are no earnings`() {
+        val ranks = emptyList<Rank>()
+        val spentAmount = 5000
+        val profitRate = calculateProfitRate(ranks, spentAmount)
+        assertEquals(0.0, profitRate)
+    }
+
+    @Test
+    fun `calculates profit rate correctly`() {
+        val ranks = listOf(Rank.FIRST)
+        val spentAmount = 1000
+        val profitRate = calculateProfitRate(ranks, spentAmount)
+        assertEquals(200_000_000.0, profitRate)
+    }
+
 }
