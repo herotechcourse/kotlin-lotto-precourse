@@ -51,8 +51,8 @@ class OutputView() {
         )
     }
 
-    fun printProfitRate (rate: Double) {
-        val formattedRate = String.format("%.1f", rate)
+    fun printProfitRate(rate: Double) {
+        val formattedRate = String.format("%.1f", rate).replace(',', '.')
         println("Total return rate is $formattedRate%.")
     }
 }
