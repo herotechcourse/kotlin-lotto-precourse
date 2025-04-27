@@ -10,4 +10,4 @@
 - [ ] Implement LottoResult to evaluate ticket matches
 - [ ] Create InputView and OutputView for user interaction
 - [ ] Implement main application flow to integrate all components
-- [ ] Add unit tests for Lotto, LottoTicket, and LottoResult
+- [ ] Complete LottoTest with validation and sorting tests

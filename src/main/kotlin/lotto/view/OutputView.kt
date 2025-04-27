@@ -11,7 +11,7 @@ object OutputView {
     }
 
     fun printStatistics(result: LottoResult, purchaseAmount: Int) {
-        println("\nWinning Statistics\n---")
+        println("\nLotto result Statistics\n---")
         result.getRankCounts().forEach { (rank, count) ->
             val bonusText = if (rank.requiresBonus) "+ Bonus Ball " else ""
             println("${rank.match} Matches $bonusText(${rank.prize} KRW) – $count tickets")
