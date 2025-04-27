@@ -19,6 +19,10 @@ class Application {
         outputView.printTickets(tickets)
         val winningNumbers = inputView.readWinningNumbers()
         val bonus = inputView.readBonusNumber(winningNumbers)
+
+        val prizes = lottoService.calculatePrizes(tickets, winningNumbers, bonus)
+        val totalWinnings = prizes.map { (prize, count) -> prize.amount * count }.sum()
+        val profitRate = lottoService.calculateProfitRate(totalWinnings, amount)
     }
 }
 
@@ -97,6 +101,25 @@ class LottoService {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         return Lotto(numbers)
     }
+
+    fun calculatePrizes(tickets: List<Lotto>, winningNumbers: List<Int>, bonus: Int): Map<Prize, Int> {
+        val prizeCounts = mutableMapOf<Prize, Int>()
+        tickets.forEach { ticket ->
+            val prize = determinePrize(ticket, winningNumbers, bonus)
+            if (prize != null) prizeCounts[prize] = (prizeCounts[prize] ?: 0) + 1
+        }
+        return prizeCounts
+    }
+
+    fun calculateProfitRate(totalWinnings: Long, amount: Int): Double {
+        return (totalWinnings.toDouble() / amount) * 100
+    }
+
+    fun determinePrize(ticket: Lotto, winningNumbers: List<Int>, bonus: Int): Prize? {
+        val matches = ticket.getNumbers().intersect(winningNumbers).size
+        val hasBonus = bonus in ticket.getNumbers()
+        return Prize.values().firstOrNull { it.matchCount == matches && (!it.bonusRequired || hasBonus) }
+    }
 }
 
 class OutputView {
@@ -104,4 +127,12 @@ class OutputView {
         println("You have purchased ${tickets.size} tickets.")
         tickets.forEach { println(it.getNumbers()) }
     }
+}
+
+enum class Prize(val matchCount: Int, val bonusRequired: Boolean, val amount: Long) {
+    FIRST(6, false, 2_000_000_000),
+    SECOND(5, true, 30_000_000),
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000)
 }
