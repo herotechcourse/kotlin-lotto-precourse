@@ -33,6 +33,6 @@ class OutputView {
         println("---")
         println(matchResultDto.output)
         println()
-        println("Total return rate is $returnRate%.")
+        println("Total return rate is ${String.format("%.1f", returnRate)}%.")
     }
 }
