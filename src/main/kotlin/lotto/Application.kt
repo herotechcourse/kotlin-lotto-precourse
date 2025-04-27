@@ -10,5 +10,7 @@ fun main() {
     val numbers = InputView.readWinningNumbers()
     val bonus = InputView.readBonusNumber()
 
+    val result = LottoService.calculateLottoResult(tickets,numbers,bonus)
+
 
 }
