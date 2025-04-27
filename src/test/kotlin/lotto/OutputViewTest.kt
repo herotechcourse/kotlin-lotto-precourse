@@ -50,6 +50,18 @@ class OutputViewTest : NsTest() {
         }
     }
 
+    @Test
+    fun `prints return rate in correct format`() {
+        assertSimpleTest {
+            OutputView(LottoMachine(5000)).printReturnRate()
+
+            val out = output()
+
+            assertThat(out).contains("%").contains(".")
+
+        }
+    }
+
     override fun runMain() {
 
     }
