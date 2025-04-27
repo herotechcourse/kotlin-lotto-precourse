@@ -34,4 +34,19 @@ class LottoService() {
         return bonusNumber
     }
 
+    fun compareTickets(): MutableMap<Rank, Int> {
+        val rankCounts = mutableMapOf<Rank, Int>()
+
+        for (rank in Rank.entries) {
+            rankCounts[rank] = 0
+        }
+        lottoTickets.forEach { ticket ->
+            val hits = ticket.countHits(winnerNumbers)
+            val hasBonus = ticket.containsBonus(bonusNumber)
+            val rank = Rank.from(hits, hasBonus)
+            rankCounts[rank] = rankCounts.getValue(rank) + 1
+        }
+        return rankCounts
+    }
+
 }
