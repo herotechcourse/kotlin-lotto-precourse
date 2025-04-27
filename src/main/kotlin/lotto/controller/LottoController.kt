@@ -66,11 +66,10 @@ class LottoControllerImpl(
         val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()
         val bonusNumber = processBonusNumber()
-        val result = statistics.calculateResult(
-            tickets = tickets,
-            winningNumbers = winningNumbers,
-            bonusNumber = bonusNumber,
-        )
+        val result = statistics.calculateResult(tickets, winningNumbers, bonusNumber)
+        outputView.printStatistics(result)
+        val profitRate = statistics.calculateProfitRate(purchaseAmount)
+        outputView.printProfitRate(profitRate)
     }
 
     companion object {
