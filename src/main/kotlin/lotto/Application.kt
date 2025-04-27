@@ -16,5 +16,15 @@ fun main() {
     val winningTicket = InputView.readWinningTicket()
     val bonusNumber = InputView.readBonusNumber(winningTicket)
 
+    val lottoGame = LottoGame(
+        winningTicket = winningTicket,
+        bonusNumber = bonusNumber
+    )
+
+    val result = lottoGame.evaluateTickets(
+        tickets = tickets
+    )
+
+    OutputView.printResult(result)
 
 }
