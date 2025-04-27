@@ -39,7 +39,8 @@ class InputValidatorTest{
     @Test
     fun `bonus validator throws an exception if number is not in range`(){
         val input = "56"
-        assertThatThrownBy{InputValidator.validateBonusNum(input)}
+        val numList = listOf(1,2,3,4,5,6)
+        assertThatThrownBy{InputValidator.validateBonusNum(input,numList)}
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("[ERROR] The bonus number need to be in range 1 to 45.")
     }

@@ -30,12 +30,12 @@ class InputView {
                 }
             }
         }
-        fun getBonusNumber():Int{
+        fun getBonusNumber(numList:List<Int>):Int{
             while (true){
                 try {
                     println("Please enter the bonus number.")
                     val bonusNumber = Console.readLine()
-                    return InputValidator.validateBonusNum(bonusNumber)
+                    return InputValidator.validateBonusNum(bonusNumber,numList)
                 }catch (e:IllegalArgumentException){
                     println("${e.message}")
                 }
