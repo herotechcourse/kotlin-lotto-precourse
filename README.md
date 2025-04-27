@@ -93,18 +93,18 @@ A simple command-line Lotto application.
 # 3. Validation Rules
 
 - **Purchase Amount**
-   - Must be at least `Rule.LOTTO_PRICE`
-   - Must be divisible by `Rule.LOTTO_PRICE`
+  - Must be at least `Rule.LOTTO_PRICE`
+  - Must be divisible by `Rule.LOTTO_PRICE`
+  - Must not exceed `Rule.MAX_PURCHASE_AMOUNT`
 
 - **Lotto Numbers**
-   - Must contain exactly `Rule.NUMBERS_COUNT` numbers
-   - Each number must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
-   - All numbers must be unique
+  - Must contain exactly `Rule.NUMBERS_COUNT` numbers
+  - Each number must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
+  - All numbers must be unique
 
 - **Bonus Number**
-   - Must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
-   - Must not duplicate any of the winning numbers
-
+  - Must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
+  - Must not duplicate any of the winning numbers
 
 # 4. UML
 > This image was generated using [PlantUML](https://www.planttext.com/) based on the contents of `docs/lotto.puml`.
