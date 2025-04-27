@@ -18,4 +18,30 @@ object InputHandler {
             null
         }
     }.first()
+
+    fun requestWinningTicket(): List<Int> = generateSequence {
+        try {
+            OutputView.printWinningTicketPrompt()
+            val ticket = InputView.getLineAsList()
+            Validator.validateWinningTicket(ticket)
+            ticket
+        }
+        catch (e: IllegalArgumentException){
+            OutputView.printErrorMessage(e.message)
+            null
+        }
+    }.first()
+
+    fun requestBonusNumber(): Int = generateSequence {
+        try {
+            OutputView.printBonusNumberPrompt()
+            val amount = InputView.getLineAsInt()
+            Validator.validateBonusNumber(amount)
+            amount
+        }
+        catch (e: IllegalArgumentException){
+            OutputView.printErrorMessage(e.message)
+            null
+        }
+    }.first()
 }
