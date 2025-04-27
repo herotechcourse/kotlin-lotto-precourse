@@ -1,4 +1,4 @@
-import lotto.domain.Lotto
+import lotto.Lotto
 import lotto.domain.PrizeCategory
 
 class WinningNumbers(private val numbers: List<Int>, private val bonus: Int) {

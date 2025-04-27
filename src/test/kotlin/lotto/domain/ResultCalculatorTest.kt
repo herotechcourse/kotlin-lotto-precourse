@@ -1,6 +1,7 @@
 package lotto.domain
 
 import WinningNumbers
+import lotto.Lotto
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 

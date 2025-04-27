@@ -1,6 +1,7 @@
 package lotto.domain
 
 import WinningNumbers
+import lotto.Lotto
 
 class ResultCalculator {
     fun calculate(tickets: List<Lotto>, winningNumbers: WinningNumbers): LottoResult {

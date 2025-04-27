@@ -1,6 +1,6 @@
 package lotto.io
 
-import lotto.domain.Lotto
+import lotto.Lotto
 import lotto.domain.LottoResult
 import lotto.domain.PrizeCategory
 
