@@ -1,5 +1,14 @@
 # kotlin-lotto-precourse
 
+## TO-DO Features
+	[ ] Class InputVIew
+		[ ] Implement Functions
+		[ ] Unit Test (Exception)
+	
+	[ ] Class OutputView
+		[ ] Implement Functions
+		[ ] Unit Test
+
 ## Structure With PseudoCode
 
 	Class InputView {
