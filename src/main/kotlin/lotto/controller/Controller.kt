@@ -12,11 +12,11 @@ class Controller(
 
     fun run() {
         val lottoTickets: LottoTickets = purchase()
-        outputView.printLottoTickets(lottoTickets.getTickets().map { it.getNumbers() })
+        outputView.printLottoTickets(ResponseMapper.toResponses(lottoTickets))
 
         val winningStatistics: WinningStatistics = evaluate(lottoTickets)
         outputView.printFinalReport(
-            rankCounts = CountRankMapper.toResponses(winningStatistics),
+            rankCounts = ResponseMapper.toResponses(winningStatistics),
             profitRate = winningStatistics.profitRate()
         )
     }
