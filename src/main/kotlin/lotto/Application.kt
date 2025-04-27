@@ -12,9 +12,8 @@ fun main() {
     val lottoComparator = LottoComparator()
     lottoComparator.compare(purchase, winningLotto,bonusNumber)
     var result = lottoComparator.getResult()
-    for(set in result){
-        println("${set.key.displayPrize()}"+" – ${set.value} tickets")
-    }
+    OutputView.displayResult(result)
     var profit = Accountant.analyse(result, amount)
-    println("Total return rate is ${profit}%.")
+    OutputView.displayReturnRate(profit)
+
 }
