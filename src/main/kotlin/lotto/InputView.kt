@@ -79,11 +79,16 @@ class InputView {
     fun validatePurchaseAmount(input: String) {
         require(input.isNotEmpty()) { "[ERROR] Input cannot be empty." }
         require(input.matches(Regex("\\d+"))) { "[ERROR] Input must be a number." }
+        val processedNumber = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Only number is allowed.")
+        require(processedNumber > ZERO) { "[ERROR] Purchase amount must be greater than zero." }
+        require(processedNumber % LOTTO_PRICE == 0) { "[ERROR] Purchase amount must be a multiple of the ticket price." }
     }
 
     companion object {
         private const val LOTTO_NUMBER_SIZE = 6
         private const val LOTTO_START_NUMBER = 1
         private const val LOTTO_END_NUMBER = 45
+        private const val ZERO = 0
+        private const val LOTTO_PRICE = 1000
     }
 }
