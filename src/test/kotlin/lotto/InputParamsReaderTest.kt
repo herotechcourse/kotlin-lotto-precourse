@@ -44,6 +44,14 @@ class InputParamsReaderTest {
         assertThat(result[5]).isEqualTo(11)
     }
 
+    @Test
+    fun `should retry until valid bonus number is entered`() {
+        provideInput("abc", "-1", "0", "1", "45")
+
+        val lastWeekWinningNumbers = listOf(1,2,3,4,5,6)
+        val result = reader.retrieveBonusNumberWithRetry(lastWeekWinningNumbers)
+        assertThat(result).isEqualTo(45)
+    }
 
     private fun provideInput(vararg inputs: String) {
         val input = inputs.joinToString(separator = "\n", postfix = "\n")

@@ -25,6 +25,23 @@ class InputParamsReader {
         }
     }
 
+    fun retrieveBonusNumberWithRetry(lastWeekWinningNumbers: List<Int>): Int {
+        while (true) {
+            try {
+                return retrieveBonusNumber(lastWeekWinningNumbers)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    private fun retrieveBonusNumber(lastWeekWinningNumbers: List<Int>): Int {
+        val input = Console.readLine()
+        val bonusNumber = input.toIntOrNull()
+        validator.validateBonusNumber(bonusNumber, lastWeekWinningNumbers)
+        return bonusNumber!!
+    }
+
     private fun retrieveLastWeekWinningNumbers(): List<Int> {
         val input = Console.readLine()
         val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
