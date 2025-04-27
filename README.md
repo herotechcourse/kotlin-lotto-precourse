@@ -23,9 +23,9 @@
   - re-prompt from same step
 
 #### Lotto Generation
-- [ ] Display the correct ticket count (price/1000)
-- [ ] Use `Randoms.pickUniqueNumbersInRange(1, 45, 6)` 
-- [ ] Numbers sorted ascending
+- [x] Display the correct ticket count (price/1000)
+- [x] Use `Randoms.pickUniqueNumbersInRange(1, 45, 6)` 
+- [x] Numbers sorted ascending
 
 #### Prize Calculation
 - [ ] 5-tier prize system with exact match criteria
@@ -78,11 +78,7 @@
 - [x] **`BonusNumber.kt`** 
 - [ ] **`Rank.kt`** : Enum class defining the winning ranks.
 - [ ] **`PrizeCalculator.kt`**  
-- [ ] **`LottoComparator.kt`**  
-
-##### model (Data Models)
-- [ ] **`LottoTicket.kt`**  
-- [ ] **`PurchaseInfo.kt`**  
+- [ ] **`LottoComparator.kt`**
 
 ##### view (User Input & Output)
 - [x] **`InputView.kt`**  
