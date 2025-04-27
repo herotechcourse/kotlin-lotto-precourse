@@ -8,10 +8,10 @@ class UserInput{
 
     init {
         require(TICKET_COST > 0) {
-            "[Error] TICKET_COST (${TICKET_COST}) must be greater than zero."
+            "[Error] TICKET_COST ($TICKET_COST) must be greater than zero."
         }
         require(LOWEST_NUMBER < HIGHEST_NUMBER) {
-            "[Error] LOWEST_NUMBER (${LOWEST_NUMBER}) must be smaller than HIGHEST_NUMBER (${HIGHEST_NUMBER})."
+            "[Error] LOWEST_NUMBER ($LOWEST_NUMBER) must be smaller than HIGHEST_NUMBER ($HIGHEST_NUMBER)."
         }
     }
 
@@ -32,17 +32,14 @@ class UserInput{
     }
 
     private fun sanitizePurchaseAmount(purchaseAmount: Int?) {
-        require(purchaseAmount != null) {
-            "[ERROR] Purchase amount must be a number."
-        }
-        require(purchaseAmount > 0) {
-            "[ERROR] Purchase amount must be greater than zero."
-        }
-        require(purchaseAmount >= TICKET_COST) {
-            "[ERROR] Purchase amount must be equal or greater than ${TICKET_COST}."
-        }
-        require(purchaseAmount % TICKET_COST == 0) {
-            "[ERROR] Purchase amount must be a multiple of ${TICKET_COST}."
+        "Purchase amount".sanitizePositiveNumber(purchaseAmount)
+        if (purchaseAmount != null) {
+            require(purchaseAmount >= TICKET_COST) {
+                "[ERROR] Purchase amount must be equal or greater than $TICKET_COST."
+            }
+            require(purchaseAmount % TICKET_COST == 0) {
+                "[ERROR] Purchase amount must be a multiple of $TICKET_COST."
+            }
         }
     }
 
@@ -63,15 +60,8 @@ class UserInput{
     }
 
     private fun sanitizeNumber(number: Int?){
-        require(number != null) {
-            "[ERROR] All numbers must be a number."
-        }
-        require(number > 0) {
-            "[ERROR] All numbers must be greater than zero."
-        }
-        require(number >= LOWEST_NUMBER && number <= HIGHEST_NUMBER) {
-            "[ERROR] All numbers must be between ${LOWEST_NUMBER} and ${HIGHEST_NUMBER}."
-        }
+        "All numbers".sanitizePositiveNumber(number)
+        "All numbers".sanitizeRangeOfNumbers(number)
     }
 
     private fun sanitizeNumbers(numbers: MutableList<Int>){
@@ -93,17 +83,29 @@ class UserInput{
     }
 
     private fun sanitizeBonusNumber(bonusNumber: Int?){
-        require(bonusNumber != null) {
-            "[ERROR] Bonus number must be a number."
+        "Bonus number".sanitizePositiveNumber(bonusNumber)
+        "Bonus number".sanitizeRangeOfNumbers(bonusNumber)
+        if (bonusNumber != null) {
+            require(!winningNumbers.contains(bonusNumber)) {
+                "[ERROR] Bonus number cannot be one of the winning numbers."
+            }
         }
-        require(bonusNumber > 0) {
-            "[ERROR] Bonus number must be greater than zero."
+    }
+
+    private fun String.sanitizePositiveNumber(number: Int?){
+        require(number != null) {
+            "[ERROR] $this must be a number."
         }
-        require(bonusNumber >= LOWEST_NUMBER && bonusNumber <= HIGHEST_NUMBER) {
-            "[ERROR] Bonus number must be between ${LOWEST_NUMBER} and ${HIGHEST_NUMBER}."
+        require(number > 0) {
+            "[ERROR] $this must be greater than zero."
         }
-        require(!winningNumbers.contains(bonusNumber)) {
-            "[ERROR] Bonus number cannot be one of the winning numbers."
+    }
+
+    private fun String.sanitizeRangeOfNumbers(number: Int?){
+        if (number != null) {
+            require(number >= LOWEST_NUMBER && number <= HIGHEST_NUMBER) {
+                "[ERROR] $this must be between $LOWEST_NUMBER and $HIGHEST_NUMBER."
+            }
         }
     }
 }
