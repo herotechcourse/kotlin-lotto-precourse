@@ -19,6 +19,9 @@ The user provides 6 winning numbers and a bonus number. Each ticket should be co
 - **Profit Calculation:**
 The profit will be calculated by dividing total winnings to the total money spent and will be shown in a percentage format.
 
+- **Process Lotto:**
+Main part of running process where it initiates different processes of input reading and creating statistics.
+
 ### Prize Class:
 
 Would be an enum class containing all prizes based on the number of matching cards necessary to win them, together with their monetary value in descending order.
