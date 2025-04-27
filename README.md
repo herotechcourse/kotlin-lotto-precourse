@@ -1,19 +1,18 @@
 # kotlin-lotto-precourse
 
-A simple lottery ticket machine written in Kotlin.  
-This project is part of the Woowacourse Pre-course and follows strict process, functional, and programming requirements.
+A Kotlin console application that issues lottery tickets, checks winning results, and calculates profit rate with clean architecture and strict input validation.
 
 ---
 
 ## Features
 
-- [ ] Accept user input for purchase amount
-  - [ ] Must be a positive number divisible by 1,000
-  - [ ] Re-prompt on invalid input (`IllegalArgumentException`)
-- [ ] Generate lottery tickets
-  - [ ] Each ticket has 6 unique random numbers from 1 to 45
-  - [ ] Number of tickets = purchase amount / 1,000
-  - [ ] Print all tickets sorted in ascending order
+- [X] Accept user input for purchase amount
+  - [X] Must be a positive number divisible by 1,000
+  - [X] Re-prompt on invalid input (`IllegalArgumentException`)
+- [X] Generate lottery tickets
+  - [X] Each ticket has 6 unique random numbers from 1 to 45
+  - [X] Number of tickets = purchase amount / 1,000
+  - [X] Print all tickets sorted in ascending order
 - [ ] Accept user input for winning numbers (comma-separated)
   - [ ] Validate that 6 unique numbers are given, all between 1 and 45
 - [ ] Accept user input for a bonus number
@@ -38,19 +37,12 @@ This project is part of the Woowacourse Pre-course and follows strict process, f
 ### Domain Logic
 
 - `Lotto.kt` – Represents a single valid lottery ticket
-- `LottoMachine.kt` – Generates tickets based on amount
-- `WinningLotto.kt` – Stores winning numbers and bonus number, checks matches
-- `Rank.kt` – Enum for prize ranks and prize money
-- `LottoResult.kt` – Aggregates match results, calculates profit rate
+- `LottoMachine.kt` – Generates tickets based on purchase amount
 
 ### View (UI)
 
-- `InputView.kt` – Handles all user inputs
-- `OutputView.kt` – Prints tickets, match results, and profit rate
-
-### Support
-
-- `Validator.kt` – Reusable input validation logic
+- `InputView.kt` – Handles user inputs (purchase amount)
+- `OutputView.kt` – Prints purchased tickets
 
 ## Testing
 
