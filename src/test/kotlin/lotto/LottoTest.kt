@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -11,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +19,17 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `throws an exception when numbers are out of range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6))
+        }
+    }
+
+    @Test
+    fun `successfully creates a valid lotto ticket`() {
+        val ticket = Lotto(listOf(3, 1, 2, 6, 5, 4))
+        assertThat(ticket.numbers).containsExactly(1, 2, 3, 4, 5, 6)
+    }
+
 }
