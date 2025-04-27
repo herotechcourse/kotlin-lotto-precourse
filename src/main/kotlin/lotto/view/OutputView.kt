@@ -25,8 +25,8 @@ object OutputView {
 
         val totalPrize = result.totalPrize()
         val profitRate = (totalPrize.toDouble() / purchaseAmount * 100)
-        val rounded = String.format("%.1f", profitRate)
+        val roundedRate = String.format("%.1f", profitRate)
 
-        println("Total return rate is $rounded%.")
+        println("Total return rate is $roundedRate%.")
     }
 }
