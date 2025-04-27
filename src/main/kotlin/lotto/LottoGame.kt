@@ -1,0 +1,71 @@
+package lotto
+
+import camp.nextstep.edu.missionutils.Randoms
+
+class LottoGame (
+    private val inputView: InputView,
+    private val outputView: OutputView,
+    private val lottoValidator: LottoValidator
+) {
+    private lateinit var winningCombination: WinningCombination
+
+    fun start(){
+        val numberOfTickets = getNumberOfTickets()
+
+        val lottoTickets = generateLottoTickets(numberOfTickets)
+        displayPurchasedTickets(lottoTickets)
+
+        initializeWinningNumbers()
+        initializeBonusNumber()
+
+        displayResult(lottoTickets)
+    }
+
+    private fun getNumberOfTickets(): Int = repeatUntilSuccess {
+        val amount = inputView.readPurchaseAmount()
+        lottoValidator.validatePurchaseAmount(amount)
+        amount.toInt() / 1000
+    }
+
+    private fun generateLottoTickets(numberOfTickets: Int): List<Lotto> {
+        val lottoTickets = mutableListOf<Lotto>()
+        repeat (numberOfTickets) {
+            val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+            lottoTickets.add(lotto)
+        }
+        return lottoTickets
+    }
+
+    private fun displayPurchasedTickets(lottoTickets: List<Lotto>) {
+        outputView.displayPurchasedTickets(lottoTickets)
+    }
+
+    private fun initializeWinningNumbers() = repeatUntilSuccess {
+        val winningNumberInput: List<String> = inputView.readWinningNumbers()
+        lottoValidator.validateWinningNumbers(winningNumberInput)
+        winningCombination = WinningCombination(winningNumberInput.map { it.toInt() }, 0, 0)
+    }
+
+    private fun initializeBonusNumber() = repeatUntilSuccess {
+        val bonusNumberInput = inputView.readBonusNumber()
+        lottoValidator.validateBonusNumber(bonusNumberInput, winningCombination.winningNumberList)
+        winningCombination = WinningCombination(winningCombination.winningNumberList, bonusNumberInput.toInt(), 0)
+    }
+
+    private fun <T> repeatUntilSuccess(actionToRetry: () -> T): T {
+        while (true) {
+            try {
+                return actionToRetry()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+                println()
+            }
+        }
+    }
+
+    private fun displayResult(lottoTickets: List<Lotto>) {
+        val prizeCountList = winningCombination.match(lottoTickets)
+        outputView.displayPrizeDistribution(prizeCountList)
+        outputView.displayTotalReturnRate(lottoTickets.size, winningCombination.getTotalPrize())
+    }
+}
