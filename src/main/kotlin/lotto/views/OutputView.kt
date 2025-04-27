@@ -1,4 +1,6 @@
-package lotto
+package lotto.views
+
+import lotto.Rank
 
 class OutputView {
     fun showTickets(lottoTickets: List<List<Int>>) {

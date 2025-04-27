@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.views.InputView
+
 class InputReader(private val inputView: InputView = InputView()){
     fun readPurchaseOrder(): Order {
         while (true) {

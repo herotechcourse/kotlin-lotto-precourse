@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.views.OutputView
+
 class OutputWriter(private val outputView: OutputView = OutputView()) {
     fun printTickets(lottoTickets: List<Lotto>) {
         val ticketList = lottoTickets.map { it.getNumbers() }
