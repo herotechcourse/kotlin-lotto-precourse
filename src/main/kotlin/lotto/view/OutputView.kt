@@ -16,6 +16,16 @@ object OutputView {
             println(ticket)
     }
 
+    fun printWinningTicketPrompt(){
+        println()
+        println(Message.WINNING_TICKET_PROMPT)
+    }
+
+    fun printBonusNumberPrompt(){
+        println()
+        println(Message.BONUS_NUMBER_PROMPT)
+    }
+
     fun printErrorMessage(message: String?) {
         println(message ?: Message.UNKNOWN_ERROR)
     }
