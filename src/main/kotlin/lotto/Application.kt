@@ -8,4 +8,6 @@ fun main() {
     val tickets = Random(noOfTickets).generateTickets()
 
     output.displayTickets(tickets)
+    val winningNumbers = input.getWinningNumbers()
+    val bonus= input.getBonus()
 }
