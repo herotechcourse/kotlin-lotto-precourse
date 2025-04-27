@@ -30,8 +30,15 @@ class InputView {
     }
 
     fun lastWeekBonusNumber(): String {
-        val input = Console.readLine()
-        return input
+        while (true) {
+            try {
+                val input = Console.readLine()
+                validateLastWeekBonusNumber(input)
+                return input
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     private fun inputSplitter(input: String): List<Int> {
@@ -44,6 +51,11 @@ class InputView {
         validateLastWeekLottoNumbers(numbers)
 
         return numbers
+    }
+
+    private fun validateLastWeekBonusNumber(input: String) {
+        require(input.isNotEmpty()) { "[ERROR] Bonus number cannot be empty." }
+        input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Only number is allowed.")
     }
 
     private fun validateLastWeekLottoNumbers(numbers: List<Int>) {
