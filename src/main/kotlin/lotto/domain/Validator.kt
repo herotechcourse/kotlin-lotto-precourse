@@ -26,11 +26,12 @@ object Validator {
         }.toSet()
     }
 
-    fun validateBonusNumber(input: String): Int {
+    fun validateBonusNumber(input: String, winningNumbers: Set<Int>): Int {
         validateBlank(input)
         validateNumber(input)
         val number: Int = input.toInt()
         validateRange(number)
+        validateDuplicateOfBonusNumber(number, winningNumbers)
 
         return number
     }
@@ -69,6 +70,12 @@ object Validator {
     private fun validateRange(number: Int) {
         if (number < LottoConstants.MIN_NUMBER || number > LottoConstants.MAX_NUMBER) {
             throw IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message)
+        }
+    }
+
+    private fun validateDuplicateOfBonusNumber(bonusNumber: Int, winningNumbers: Set<Int>) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER.message)
         }
     }
 }
