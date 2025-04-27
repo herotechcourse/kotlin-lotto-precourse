@@ -6,42 +6,42 @@ import lotto.support.Validator
 
 
 object InputHandler {
-    fun requestPurchaseAmount(): Int = generateSequence {
-        try {
-            OutputView.printPurchaseAmountPrompt()
-            val amount = InputView.getLineAsInt()
-            Validator.validatePurchaseAmount(amount)
-            amount
+    fun requestPurchaseAmount(): Int {
+        while (true) {
+            try {
+                OutputView.printPurchaseAmountPrompt()
+                val amount = InputView.getLineAsInt()
+                Validator.validatePurchaseAmount(amount)
+                return amount
+            } catch (e: IllegalArgumentException) {
+                OutputView.printErrorMessage(e.message)
+            }
         }
-        catch (e: IllegalArgumentException){
-            OutputView.printErrorMessage(e.message)
-            null
-        }
-    }.first()
+    }
 
-    fun requestWinningTicket(): List<Int> = generateSequence {
-        try {
-            OutputView.printWinningTicketPrompt()
-            val ticket = InputView.getLineAsList()
-            Validator.validateWinningTicket(ticket)
-            ticket
+    fun requestWinningTicket(): List<Int> {
+        while (true) {
+            try {
+                OutputView.printWinningTicketPrompt()
+                val ticket = InputView.getLineAsList()
+                Validator.validateWinningTicket(ticket)
+                return ticket
+            } catch (e: IllegalArgumentException) {
+                OutputView.printErrorMessage(e.message)
+            }
         }
-        catch (e: IllegalArgumentException){
-            OutputView.printErrorMessage(e.message)
-            null
-        }
-    }.first()
+    }
 
-    fun requestBonusNumber(): Int = generateSequence {
-        try {
-            OutputView.printBonusNumberPrompt()
-            val amount = InputView.getLineAsInt()
-            Validator.validateBonusNumber(amount)
-            amount
+    fun requestBonusNumber(ticket: List<Int>): Int {
+        while (true) {
+            try {
+                OutputView.printBonusNumberPrompt()
+                val bonus = InputView.getLineAsInt()
+                Validator.validateBonusNumber(bonus, ticket)
+                return bonus
+            } catch (e: IllegalArgumentException) {
+                OutputView.printErrorMessage(e.message)
+            }
         }
-        catch (e: IllegalArgumentException){
-            OutputView.printErrorMessage(e.message)
-            null
-        }
-    }.first()
+    }
 }
