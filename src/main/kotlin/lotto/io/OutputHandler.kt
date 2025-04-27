@@ -1,6 +1,8 @@
 package lotto.io
 
 import lotto.Lotto
+import lotto.LottoRanks
+import lotto.LottoResults
 
 object OutputHandler {
     fun showTickets(tickets: MutableList<Lotto>) {
@@ -10,11 +12,11 @@ object OutputHandler {
         }
     }
 
-    fun showStatistics(ticketMatchesMap: MutableMap<String, Int>) {
+    fun showStatistics(lottoResults: LottoResults) {
         println("Winning Statistics")
         println("---")
         println(
-            "3 Matches (5,000 KRW) – ${ticketMatchesMap["match3"]} tickets\n" + "4 Matches (50,000 KRW) – ${ticketMatchesMap["match4"]} tickets\n" + "5 Matches (1,500,000 KRW) – ${ticketMatchesMap["match5"]} tickets\n" + "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets\n" + "6 Matches (2,000,000,000 KRW) – ${ticketMatchesMap["match6"]} tickets"
+            "3 Matches (5,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_3)} tickets\n" + "4 Matches (50,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_4)} tickets\n" + "5 Matches (1,500,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_5)} tickets\n" + "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets\n" + "6 Matches (2,000,000,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_6)} tickets"
         )
     }
 

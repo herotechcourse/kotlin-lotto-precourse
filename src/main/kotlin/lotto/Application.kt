@@ -5,6 +5,7 @@ import lotto.io.InputHandler
 import lotto.io.OutputHandler
 import lotto.validators.InputValidator
 
+
 fun main() {
     val tickets = mutableListOf<Lotto>()
     val sumOfMoney = InputHandler.getSumOfMoney()
@@ -23,33 +24,22 @@ fun main() {
 
     val bonusNumber = InputHandler.getBonusNumber()
     InputValidator.validateNumberInRange(bonusNumber)
-    val ticketMatchesMap = mutableMapOf(
-        "match3" to 0,
-        "match4" to 0,
-        "match5" to 0,
-        "match5andBonus" to 0,
-        "match6" to 0,
-    )
+
+    val results = LottoResults()
 
     for (ticket in tickets) {
         val matches = ticket.calculateMatches(winNumbers.map { it.toInt() })
         when (matches) {
-            3 -> ticketMatchesMap["match3"] = ticketMatchesMap["match3"]!! + 1
-            4 -> ticketMatchesMap["match4"] = ticketMatchesMap["match4"]!! + 1
-            5 -> ticketMatchesMap["match5"] = ticketMatchesMap["match5"]!! + 1
-            6 -> ticketMatchesMap["match6"] = ticketMatchesMap["match6"]!! + 1
+            3 -> results.increaseMatchResult(LottoRanks.MATCH_3)
+            4 -> results.increaseMatchResult(LottoRanks.MATCH_4)
+            5 -> results.increaseMatchResult(LottoRanks.MATCH_5)
+            6 -> results.increaseMatchResult(LottoRanks.MATCH_6)
         }
     }
 
-    fun countReturnRate(): Double {
-        val returnRate =
-            (ticketMatchesMap["match3"]!! * 5000 + ticketMatchesMap["match4"]!! * 50000 + ticketMatchesMap["match5"]!! * 1500000 + ticketMatchesMap["match6"]!! * 2000000000).toDouble() * 100 / sumOfMoney
-        return returnRate
-    }
+    val totalRate = results.countReturnRate(sumOfMoney)
 
-    val totalRate = countReturnRate()
-
-    OutputHandler.showStatistics(ticketMatchesMap)
+    OutputHandler.showStatistics(results)
     OutputHandler.showTotalRate(totalRate)
 }
 
