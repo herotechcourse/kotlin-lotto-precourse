@@ -3,7 +3,6 @@ package lotto
 
 object WinningStatistics {
 
-
     fun getMapPrize(tickets: List<Lotto>, winningNumbers: WinningNumbers): MutableMap<Lotto.Prize, Int> {
         val mapPrizeNumber = Lotto.Prize.entries.associateWith { 0 }.toMutableMap()
         for (ticket in tickets) {
