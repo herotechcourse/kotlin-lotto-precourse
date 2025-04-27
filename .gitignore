@@ -36,5 +36,8 @@ out/
 ### VS Code ###
 .vscode/
 
+###  IntelliJ IDEA ###
+/untitled
+
 ### Mac OS ###
 .DS_Store
