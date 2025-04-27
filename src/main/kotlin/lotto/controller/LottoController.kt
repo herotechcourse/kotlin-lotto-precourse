@@ -1,5 +1,6 @@
 package lotto.controller
 
+import lotto.Lotto
 import lotto.presentation.InputView
 import lotto.presentation.OutputView
 import lotto.utils.InputValidator
@@ -22,6 +23,14 @@ class LottoController(
         }
     }
 
+    private fun processTickets(purchaseAmount : Int) : List<Lotto>{
+        val numberOfTickets = lottoTicketGenerator.generateNumberOfTickets(purchaseAmount)
+        outputView.printNumberOfTickets(numberOfTickets)
+        val tickets = lottoTicketGenerator.generateTickets(numberOfTickets)
+        outputView.printTickets(tickets)
+        return tickets
+    }
+
     private fun processWinningNumbers(): List<Int> {
         outputView.printInputPrompt(WINNING_NUMBERS_PROMPT)
         val input = inputView.readWinningNumbers()
@@ -33,12 +42,10 @@ class LottoController(
         }
     }
 
+
     fun run() {
         val purchaseAmount = processPurchaseAmount()
-        val numberOfTickets = lottoTicketGenerator.generateNumberOfTickets(purchaseAmount)
-        outputView.printNumberOfTickets(numberOfTickets)
-        val tickets = lottoTicketGenerator.generateTickets(numberOfTickets)
-        outputView.printTickets(tickets)
+        val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()
     }
 
