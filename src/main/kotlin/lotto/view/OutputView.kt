@@ -25,11 +25,11 @@ class OutputView {
 
             println("Winning statistics")
             println("---")
-            println("3 Matches (${formatter.format(Prizes.FIFTH.prizeMoney)} KRW) – ${lottoResult.winningStatics["three"]} tickets")
-            println("4 Matches (${formatter.format(Prizes.FOURTH.prizeMoney)} KRW) – ${lottoResult.winningStatics["four"]} tickets")
-            println("5 Matches (${formatter.format(Prizes.THIRD.prizeMoney)} KRW) – ${lottoResult.winningStatics["five"]} tickets")
-            println("5 Matches + Bonus Ball (${formatter.format(Prizes.SECOND.prizeMoney)} KRW) – ${lottoResult.winningStatics["bonus"]} tickets")
-            println("6 Matches (${formatter.format(Prizes.FIRST.prizeMoney)} KRW) – ${lottoResult.winningStatics["six"]} tickets")
+            println("3 Matches (${formatter.format(Prizes.FIFTH.prizeMoney)} KRW) – ${lottoResult.winningStatistics["three"]} tickets")
+            println("4 Matches (${formatter.format(Prizes.FOURTH.prizeMoney)} KRW) – ${lottoResult.winningStatistics["four"]} tickets")
+            println("5 Matches (${formatter.format(Prizes.THIRD.prizeMoney)} KRW) – ${lottoResult.winningStatistics["five"]} tickets")
+            println("5 Matches + Bonus Ball (${formatter.format(Prizes.SECOND.prizeMoney)} KRW) – ${lottoResult.winningStatistics["bonus"]} tickets")
+            println("6 Matches (${formatter.format(Prizes.FIRST.prizeMoney)} KRW) – ${lottoResult.winningStatistics["six"]} tickets")
         }
 
         fun displayReturnRate(lottoResult: LottoResult) {
