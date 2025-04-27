@@ -1,8 +1,8 @@
 package lotto.view
 
 import lotto.domain.LottoResult
-import lotto.domain.Rank
 import lotto.domain.LottoTicket
+import lotto.domain.Rank
 
 object OutputView {
     fun printPurchasedTickets(tickets: List<LottoTicket>) {
@@ -11,8 +11,11 @@ object OutputView {
     }
 
     fun printStatistics(result: LottoResult, purchaseAmount: Int) {
-        println("\nLotto result Statistics\n---")
-        result.getRankCounts().forEach { (rank, count) ->
+        println("\nWinning Statistics")
+        println("---")
+        val rankCounts = result.getRankCounts()
+        for (rank in listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST)) {
+            val count = rankCounts.getOrDefault(rank, 0)
             val bonusText = if (rank.requiresBonus) "+ Bonus Ball " else ""
             println("${rank.match} Matches $bonusText(${rank.prize} KRW) – $count tickets")
         }
