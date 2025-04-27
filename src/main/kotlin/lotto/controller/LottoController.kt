@@ -6,6 +6,7 @@ import lotto.model.Game
 import lotto.model.LottoTicketMachine
 import lotto.model.WinningLotto
 import lotto.view.*
+import net.bytebuddy.pool.TypePool.Resolution.Illegal
 
 class LottoController(private val inputView: InputView, private val outputView: OutputView, private val lottoTicketMachine: LottoTicketMachine) {
 
@@ -40,7 +41,7 @@ class LottoController(private val inputView: InputView, private val outputView: 
         try {
             outputView.askPurchaseAmount()
             return inputView.askPurchaseAmount()
-        } catch (ex: Exception) {
+        } catch (ex: IllegalArgumentException) {
             println(ex.message)
             return getPurchaseAmount()
         }
@@ -50,7 +51,7 @@ class LottoController(private val inputView: InputView, private val outputView: 
         try {
             outputView.askWinningNumbers()
             return inputView.askWinningNumbers()
-        } catch (ex: Exception) {
+        } catch (ex: IllegalArgumentException) {
             println(ex.message)
             return getWinningNumbers()
         }
@@ -60,7 +61,7 @@ class LottoController(private val inputView: InputView, private val outputView: 
         try {
             outputView.askBonusNumber()
             return inputView.askBonusNumber()
-        } catch (ex: Exception) {
+        } catch (ex: IllegalArgumentException) {
             println(ex.message)
             return getBonusNumber()
         }
