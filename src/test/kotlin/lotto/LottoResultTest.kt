@@ -72,7 +72,7 @@ class LottoResultTest {
         winningStatistics["five"] = 0
         winningStatistics["bonus"] = 0
         winningStatistics["six"] = 0
-        lottoResult.setWinningStatistics(winningStatistics)
+        lottoResult.setWinningStatisticsForTest(winningStatistics)
 
         lottoResult.calculateReturnRate(userInput)
 

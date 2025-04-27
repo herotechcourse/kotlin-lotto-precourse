@@ -58,7 +58,7 @@ class LottoResult {
         this.returnRate = (totalPrize.toDouble() / userInput.purchaseAmount) * 100
     }
 
-    fun setWinningStatistics(winningStatistics: MutableMap<String, Int>) {
+    fun setWinningStatisticsForTest(winningStatistics: MutableMap<String, Int>) {
         this.winningStatistics = winningStatistics
     }
 }
