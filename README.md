@@ -34,13 +34,7 @@ A simple Kotlin console application to simulate a Lotto ticket purchasing and re
 
 
 
-## 🚀 How to Build and Run
 
-
-```bash
-./gradlew clean build
-./gradlew run
-./gradlew test
 
 
 
