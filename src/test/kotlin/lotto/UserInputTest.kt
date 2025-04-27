@@ -35,7 +35,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be a number.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be a number."
+                )
         }
 
         @Test
@@ -46,7 +48,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be a number.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be a number."
+                )
         }
 
         @Test
@@ -61,11 +65,15 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be greater than zero.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be greater than zero."
+                )
 
             assertThat(thrownZero)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be greater than zero.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be greater than zero."
+                )
         }
 
         @Test
@@ -76,7 +84,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be equal or greater than $TICKET_COST.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be equal or greater than $TICKET_COST."
+                )
         }
 
         @Test
@@ -87,7 +97,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] Purchase amount must be a multiple of ${TICKET_COST}.")
+                .hasMessage(
+                    "[ERROR] Purchase amount must be a multiple of ${TICKET_COST}."
+                )
         }
     }
 
@@ -108,7 +120,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be a number.")
+                .hasMessage(
+                    "[ERROR] All numbers must be a number."
+                )
         }
 
         @Test
@@ -119,7 +133,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be a number.")
+                .hasMessage(
+                    "[ERROR] All numbers must be a number."
+                )
         }
 
         @Test
@@ -130,7 +146,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be a number.")
+                .hasMessage(
+                    "[ERROR] All numbers must be a number."
+                )
         }
 
         @Test
@@ -145,11 +163,15 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be greater than zero.")
+                .hasMessage(
+                    "[ERROR] All numbers must be greater than zero."
+                )
 
             assertThat(thrownZero)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be greater than zero.")
+                .hasMessage(
+                    "[ERROR] All numbers must be greater than zero."
+                )
         }
 
         @Test
@@ -160,7 +182,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be between $LOWEST_NUMBER and $HIGHEST_NUMBER.")
+                .hasMessage(
+                    "[ERROR] All numbers must be between $LOWEST_NUMBER and $HIGHEST_NUMBER."
+                )
         }
 
         @Test
@@ -171,7 +195,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] All numbers must be unique")
+                .hasMessage(
+                    "[ERROR] All numbers must be unique"
+                )
         }
 
         @Test
@@ -182,7 +208,9 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] There must be exactly 6 winning numbers.")
+                .hasMessage(
+                    "[ERROR] There must be exactly 6 winning numbers."
+                )
         }
 
         @Test
@@ -193,15 +221,96 @@ class UserInputTest {
 
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] There must be exactly 6 winning numbers.")
+                .hasMessage(
+                    "[ERROR] There must be exactly 6 winning numbers."
+                )
         }
     }
 
-//    @Nested
-//    inner class SetBonusNumberTests {
-//        @Test
-//        fun `test`() {
-//
-//        }
-//    }
+    @Nested
+    inner class SetBonusNumberTests {
+        @Test
+        fun `setBonusNumber should assign a valid value`() {
+            userInput.setBonusNumber("42")
+
+            assertEquals(42, userInput.bonusNumber)
+        }
+
+        @Test
+        fun `setBonusNumber should throw an exception when not a number is given`() {
+            val thrown = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("a")
+            }
+
+            assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number must be a number."
+                )
+        }
+
+        @Test
+        fun `setBonusNumber should throw an exception when nothing is given`() {
+            val thrown = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("")
+            }
+
+            assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number must be a number."
+                )
+        }
+
+        @Test
+        fun `setBonusNumber should throw an exception when a number equal or lower than zero is given`() {
+            val thrown = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("-42")
+            }
+
+            val thrownZero = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("0")
+            }
+
+            assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number must be greater than zero."
+                )
+
+            assertThat(thrownZero)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number must be greater than zero."
+                )
+        }
+
+        @Test
+        fun `setBonusNumber should throw an exception when a number is out of Lotto bounds`() {
+            val thrown = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("999")
+            }
+
+            assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number must be between $LOWEST_NUMBER and $HIGHEST_NUMBER."
+                )
+        }
+
+        @Test
+        fun `setBonusNumber should be different than all winning numbers`() {
+            userInput.setWinningNumbers("1,2,3,4,5,6")
+
+            val thrown = assertThrows<IllegalArgumentException> {
+                userInput.setBonusNumber("1")
+            }
+
+            assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(
+                    "[ERROR] Bonus number cannot be one of the winning numbers."
+                )
+        }
+    }
 }

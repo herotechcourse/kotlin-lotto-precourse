@@ -17,10 +17,11 @@
   * Lotto outcome [X]
   * Total return rate [X]
 * Implement overarching (main) logic [X]
-* Unit Tests [ ]
+* Unit Tests [X]
 * Refactor [ ]
   * User Input - DRY [ ]
 * Format [ ]
+  * Linter []
 
 ---
 
