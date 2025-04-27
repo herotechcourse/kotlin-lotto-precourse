@@ -7,14 +7,19 @@ import lotto.domain.Rank
 object OutputView {
     fun printPurchasedTickets(tickets: List<Lotto>) {
         println("You have purchased ${tickets.size} tickets.")
-        tickets.forEach { ticket -> println(ticket) }
+        tickets.forEach { ticket ->
+            println(ticket)
+        }
     }
 
     fun printResults(results: LottoResult, profitRate: Double) {
-        println("Winning Statistics\n---")
-        results.getResult().forEach { (rank, count) ->
-            println("${formatRank(rank)} – ${count} tickets")
-        }
+        println("Winning Statistics")
+        println("---")
+        println("${formatRank(Rank.FIFTH)} – ${results.getCountByRank(Rank.FIFTH)} tickets")
+        println("${formatRank(Rank.FOURTH)} – ${results.getCountByRank(Rank.FOURTH)} tickets")
+        println("${formatRank(Rank.THIRD)} – ${results.getCountByRank(Rank.THIRD)} tickets")
+        println("${formatRank(Rank.SECOND)} – ${results.getCountByRank(Rank.SECOND)} tickets")
+        println("${formatRank(Rank.FIRST)} – ${results.getCountByRank(Rank.FIRST)} tickets")
         println("Total return rate is ${"%.1f".format(profitRate)}%.")
     }
 

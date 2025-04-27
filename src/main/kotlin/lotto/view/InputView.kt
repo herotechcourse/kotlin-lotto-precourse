@@ -6,8 +6,8 @@ import lotto.utils.Validator
 object InputView {
     fun inputPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
-        return Console.readLine().toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] Please enter a valid integer.")
+        val input = Console.readLine()
+        return input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Please enter a valid integer.")
     }
 
     fun inputWinningNumbers(): List<Int> {

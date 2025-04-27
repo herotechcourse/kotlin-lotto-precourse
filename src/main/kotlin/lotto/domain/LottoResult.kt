@@ -13,4 +13,8 @@ class LottoResult {
         val totalPrize = results.entries.sumOf { (rank, count) -> rank.prize * count }
         return (totalPrize.toDouble() / totalPurchase) * 100
     }
+
+    fun getCountByRank(rank: Rank): Int {
+        return results[rank] ?: 0
+    }
 }

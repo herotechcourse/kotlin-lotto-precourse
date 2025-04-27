@@ -1,8 +1,9 @@
 package lotto.controller
 
-import lotto.view.*
-import lotto.domain.*
-import lotto.service.*
+import lotto.view.InputView
+import lotto.view.OutputView
+import lotto.domain.WinningLotto
+import lotto.service.LottoService
 
 class LottoController {
     private val service = LottoService()
@@ -16,9 +17,9 @@ class LottoController {
         val bonusNumber = InputView.inputBonusNumber(winningNumbers)
 
         val winningLotto = WinningLotto(winningNumbers, bonusNumber)
-        val lottoResult = service.calculateResults(tickets, winningLotto)  // ✅ 수정
-        val profitRate = service.calculateProfitRate(money, lottoResult)    // ✅ 수정
+        val lottoResult = service.calculateResults(tickets, winningLotto)
+        val profitRate = service.calculateProfitRate(money, lottoResult)
 
-        OutputView.printResults(lottoResult, profitRate)                    // ✅ 수정
+        OutputView.printResults(lottoResult, profitRate)
     }
 }
