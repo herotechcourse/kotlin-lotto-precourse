@@ -1,9 +1,8 @@
-package lotto
+package utils
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
-import utils.InputValidator
 
 class InputValidatorTest{
     @Test
