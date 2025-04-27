@@ -8,7 +8,7 @@ class InputView {
         while (true) {
             try {
                 val input = Console.readLine()
-                validateLasWeekWinningNumbers(input)
+                validateLastWeekWinningNumbers(input)
                 val numbers = inputSplitter(input)
                 return numbers
             } catch (e: IllegalArgumentException) {
@@ -29,12 +29,15 @@ class InputView {
         }
     }
 
-    fun lastWeekBonusNumber(): String {
+    fun lastWeekBonusNumber(lastWeekWinningNumbers: List<Int>): Int {
         while (true) {
             try {
                 val input = Console.readLine()
                 validateLastWeekBonusNumber(input)
-                return input
+                val bonusNumber =
+                    input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Only numbers are allowed.")
+                validateBonusNumber(bonusNumber, lastWeekWinningNumbers)
+                return bonusNumber
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -53,6 +56,11 @@ class InputView {
         return numbers
     }
 
+    private fun validateBonusNumber(bonusNumber: Int, lastWeekWinningNumbers: List<Int>) {
+        require(bonusNumber in LOTTO_START_NUMBER..LOTTO_END_NUMBER) { "[ERROR] Number must be between 1 and 45." }
+        require(bonusNumber !in lastWeekWinningNumbers) { "[ERROR] Duplicate numbers are not allowed." }
+    }
+
     private fun validateLastWeekBonusNumber(input: String) {
         require(input.isNotEmpty()) { "[ERROR] Bonus number cannot be empty." }
         input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Only number is allowed.")
@@ -64,7 +72,7 @@ class InputView {
         require(numbers.size == numbers.toSet().size) { "[ERROR] Duplicate numbers are not allowed." }
     }
 
-    private fun validateLasWeekWinningNumbers(input: String) {
+    private fun validateLastWeekWinningNumbers(input: String) {
         require(input.isNotEmpty()) { "[ERROR] Input cannot be empty." }
     }
 

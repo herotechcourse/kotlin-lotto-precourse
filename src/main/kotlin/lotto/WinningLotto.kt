@@ -16,8 +16,8 @@ class WinningLotto() {
         winningNumbers.addAll(input)
     }
 
-    fun registerBonusNumber(lastWeekBonusNumber: String) {
-        bonusNumber = lastWeekBonusNumber.toInt()
+    fun registerBonusNumber(lastWeekBonusNumber: Int) {
+        bonusNumber = lastWeekBonusNumber
     }
 
     companion object {

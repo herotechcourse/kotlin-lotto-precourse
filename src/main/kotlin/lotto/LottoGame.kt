@@ -27,7 +27,7 @@ class LottoGame {
         OutputView().askWinningNumbers()
         val lastWeekWinningNumbers = InputView().lastWeekWinningNumbers()
         OutputView().askBonusNumber()
-        val lastWeekBonusNumber = InputView().lastWeekBonusNumber()
+        val lastWeekBonusNumber = InputView().lastWeekBonusNumber(lastWeekWinningNumbers)
 
         return WinningLotto().apply {
             registerWinningNumbers(lastWeekWinningNumbers)
