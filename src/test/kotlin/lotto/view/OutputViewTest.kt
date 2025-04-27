@@ -1,7 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.test.NsTest
-import lotto.model.Lotto
+import lotto.Lotto
 import lotto.model.Prize
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

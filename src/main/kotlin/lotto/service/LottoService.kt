@@ -1,7 +1,7 @@
 package lotto.service
 
 import camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange
-import lotto.model.Lotto
+import lotto.Lotto
 import lotto.model.Prize
 
 class LottoService(private val winningNumbers: List<Int>, private val bonusNumber: Int) {

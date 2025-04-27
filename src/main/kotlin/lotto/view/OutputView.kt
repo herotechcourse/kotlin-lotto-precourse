@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.model.Lotto
+import lotto.Lotto
 import lotto.model.Prize
 import java.util.Locale
 

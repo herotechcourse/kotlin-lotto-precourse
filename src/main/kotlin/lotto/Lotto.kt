@@ -1,4 +1,4 @@
-package lotto.model
+package lotto
 
 class Lotto(numbers: List<Int>) {
     val numbers: List<Int>

@@ -1,8 +1,8 @@
-package lotto.model
+package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.assertj.core.api.Assertions.assertThat
 
 class LottoTest {
     @Test
