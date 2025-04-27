@@ -1,9 +1,10 @@
 package lotto
 
 import lotto.view.InputView
+import lotto.view.OutputView
 import lotto.service.LottoService
 import lotto.exception.LottoInputException
-import lotto.view.OutputView
+import lotto.domain.WinningNumbers
 
 fun <T> retryInputUntilSuccess(block: () -> T): T {
     while (true) {
@@ -21,4 +22,12 @@ fun main() {
     val tickets: List<Lotto> = LottoService.generateTickets(amount)
     println()
     OutputView.printTickets(tickets)
+    println()
+    val winningNumbersInput: List<Int> =
+        retryInputUntilSuccess { InputView.getWinningNumbers().also { LottoService.validateWinningNumbers(it) } }
+    println()
+    val bonusNumber: Int =
+        retryInputUntilSuccess { InputView.getBonusNumber().also { LottoService.validateBonusNumber(it) } }
+
+    val winningNumbers = WinningNumbers(winningNumbersInput, bonusNumber)
 }
