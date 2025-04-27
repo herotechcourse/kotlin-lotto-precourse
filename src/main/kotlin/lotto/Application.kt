@@ -1,5 +1,11 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val inputView = InputView()
+    val outputView = OutputView()
+    val lottoValidator = LottoValidator()
+
+    val lottoGame = LottoGame(inputView, outputView, lottoValidator)
+
+    lottoGame.start()
 }
