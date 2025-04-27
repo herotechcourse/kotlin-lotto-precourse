@@ -3,7 +3,8 @@ package lotto.io
 import lotto.Lotto
 import lotto.LottoResultType
 import lotto.LottoResultType.*
-import lotto.LottoResultType.Companion.countResultType
+import lotto.util.LottoResultCalculator
+import lotto.util.LottoResultCalculator.countResultType
 
 object OutputView {
 
@@ -23,9 +24,7 @@ object OutputView {
         println("5 Matches (1,500,000 KRW) – ${countResultType(lottoResultTypes, THIRD_PRIZE)} tickets")
         println("5 Matches + Bonus Ball (30,000,000 KRW) – ${countResultType(lottoResultTypes, SECOND_PRIZE)} tickets")
         println("6 Matches (2,000,000,000 KRW) – ${countResultType(lottoResultTypes, FIRST_PRIZE)} tickets")
-
-        val rate = LottoResultType.calculate(lottoResultTypes).toDouble() / (amount * 1000) * 100
-        println("Total return rate is ${String.format("%.1f", rate)}%.")
+        println("Total return rate is ${String.format("%.1f", LottoResultCalculator.calculateReturnRate(lottoResultTypes, amount))}%.")
     }
 
 }
