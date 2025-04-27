@@ -2,7 +2,7 @@ package lotto.domain
 
 enum class LottoRank (
     private val matchCount: Int,
-    private val prizeMoney: Int
+    val prizeMoney: Int
 ) {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),

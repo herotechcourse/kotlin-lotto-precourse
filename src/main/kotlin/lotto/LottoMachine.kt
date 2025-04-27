@@ -43,4 +43,16 @@ class LottoMachine(private val money: Int) {
     private fun checkBonusMatch(ticket: Lotto, bonusNumber: Int): Boolean {
         return ticket.getNumbers().contains(bonusNumber)
     }
+
+    fun calculateReturnRate(): String {
+        val returnRate = calculateTotalPrize() / money.toDouble() * 100
+        return "%.1f".format(returnRate)
+    }
+
+    private fun calculateTotalPrize(): Int {
+        return LottoRank.entries
+            .filter { it != LottoRank.NONE }
+            .sumOf { it.prizeMoney * ranks[it.ordinal] }
+    }
+
 }
