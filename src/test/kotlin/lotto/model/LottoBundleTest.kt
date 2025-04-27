@@ -12,7 +12,7 @@ class LottoBundleTest {
 
     @Test
     fun `creates LottoBundle correctly from purchase amount`() {
-        val purchaseAmount = LottoPurchaseAmount(2000) // 2개 구매
+        val purchaseAmount = LottoPurchaseAmount(2000)
         val generator = FakeLottoNumberGenerator(listOf(1, 2, 3, 4, 5, 6))
 
         val bundle = LottoBundle.from(purchaseAmount, generator)
@@ -32,8 +32,8 @@ class LottoBundleTest {
         val winningLotto = WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 6)), bonusNumber = 7)
         val matchResults = bundle.matchResults(winningLotto)
 
-        assertThat(matchResults.countOf(MatchRank.FIRST)).isEqualTo(1) // 6개 일치
-        assertThat(matchResults.countOf(MatchRank.FIFTH)).isEqualTo(1) // 3개 일치
+        assertThat(matchResults.countOf(MatchRank.FIRST)).isEqualTo(1)
+        assertThat(matchResults.countOf(MatchRank.FIFTH)).isEqualTo(1)
     }
 
     @Test

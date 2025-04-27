@@ -22,7 +22,7 @@ class LottoTest {
     @Test
     fun `throws an exception when lotto numbers are less than six`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5)) // 5개
+            Lotto(listOf(1, 2, 3, 4, 5))
         }
     }
 
