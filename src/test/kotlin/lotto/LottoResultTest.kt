@@ -25,4 +25,18 @@ class LottoResultTest {
         assertEquals(1, result[LottoResult.LottoPrize.PRIZE_4TH])
         assertEquals(1, result[LottoResult.LottoPrize.PRIZE_5TH])
     }
+
+    @Test
+    fun `calculates profit rate correctly`() {
+        val resultMap = mutableMapOf<LottoResult.LottoPrize, Int>().apply {
+            LottoResult.LottoPrize.entries.forEach { put(it, 0) }
+            put(LottoResult.LottoPrize.PRIZE_5TH, 1)
+        }
+        val lottoResult = LottoResult(resultMap)
+        val purchaseAmount = PurchaseAmount(1000)
+
+        val profitRate = lottoResult.getProfitRate(purchaseAmount)
+
+        assertEquals(500.0f, profitRate)
+    }
 }
