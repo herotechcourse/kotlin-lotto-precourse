@@ -96,27 +96,43 @@ class InputViewTest {
  @Test
  fun testParseBonusNumber_throwExceptionIfEmpty() {
   val input = "";
-  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber(input)}
+  val winningNumbers = Lotto(
+   listOf(1,2,3,4,5,6))
+  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber(input, winningNumbers)}
  }
 
  // 2. Input must be a number
  @Test
  fun testParseBonusNumber_throwExceptionIfNotANumber() {
   val input = "r";
-  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber(input)}
+  val winningNumbers = Lotto(
+   listOf(1,2,3,4,5,6))
+  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber(input, winningNumbers)}
  }
 
  // 3. Bonus must be in range 1-45
  @Test
- fun testParseBonusNumber_throwExceptionIfNotInRanger() {
-  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber("0")}
-  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber("46")}
+ fun testParseBonusNumber_throwExceptionIfNotInRange() {
+  val winningNumbers = Lotto(
+   listOf(1,2,3,4,5,6))
+  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber("0", winningNumbers)}
+  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber("46", winningNumbers)}
  }
 
  // 4. Parse a valid input
  @Test
  fun testParseBonusNumber_returnValidNumber() {
-  val bonusNumber = InputView.parseBonusNumber("1")
-  assertEquals(1, bonusNumber)
+  val winningNumbers = Lotto(
+   listOf(1,2,3,4,5,6))
+  val bonusNumber = InputView.parseBonusNumber("7", winningNumbers)
+  assertEquals(7, bonusNumber)
+ }
+
+ // 5. Bonus must not be included in the 6 winning numbers
+ @Test
+ fun testParseBonusNumber_throwExceptionIfNotUnique() {
+  val winningNumbers = Lotto(
+   listOf(1,2,3,4,5,6))
+  assertThrows<IllegalArgumentException>{InputView.parseBonusNumber("1", winningNumbers)}
  }
 }
