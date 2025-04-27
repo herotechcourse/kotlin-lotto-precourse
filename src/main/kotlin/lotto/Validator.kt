@@ -23,7 +23,7 @@ class Validator {
     }
     private fun validateInputIsNotNull(input: String)
     {
-        if (input == null)
+        if (input.isEmpty())
         {
             throw IllegalArgumentException("The input must be 6 numbers, comma separated.")
         }
