@@ -1,12 +1,12 @@
 package lotto
 
 class OutputView {
-    fun printTickets(lottoTickets: List<Lotto>) {
+    fun showTickets(lottoTickets: List<List<Int>>) {
         println("\nYou have purchased ${lottoTickets.size} tickets.")
-        lottoTickets.forEach { println(it.getNumbers()) }
+        lottoTickets.forEach { println(it) }
     }
 
-    fun printWinningStatistics(statistics: Map<Rank, Int>) {
+    fun showWinningStatistics(statistics: Map<Rank, Int>) {
         println("Winning Statistics:")
         println("---")
         statistics.forEach { (rank, count) ->
@@ -18,8 +18,7 @@ class OutputView {
         }
     }
 
-    fun totalReturnRate(totalPrizeMoney: Double, purchaseAmount: Int) {
-        val totalReturnRate = (totalPrizeMoney / purchaseAmount) * 100
+    fun showTotalReturnRate(totalReturnRate: Double) {
         println("Total return rate is ${totalReturnRate}%.")
     }
 }
