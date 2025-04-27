@@ -1,6 +1,7 @@
 package lotto.view
 
-import lotto.model.*
+import lotto.model.LottoRank
+import lotto.model.MATCH
 import java.text.DecimalFormat
 
 object OutputView {
@@ -8,10 +9,6 @@ object OutputView {
     private const val SEPARATOR_LINE_OUTPUT = "---"
 
     private const val CURRENCY_UNIT = "KRW"
-
-    private fun splitComma(amount: Int): String {
-        return DecimalFormat("#,###").format(amount)
-    }
 
     fun printTicketCount(ticketCount: Int) {
         println()
@@ -25,14 +22,26 @@ object OutputView {
     }
 
     fun printWinningStatistics() {
-        println("3 Matches (${splitComma(FIFTH_PRIZE)} $CURRENCY_UNIT) – ${MATCH.THREE} tickets")
-        println("4 Matches (${splitComma(FOURTH_PRIZE)} $CURRENCY_UNIT) – ${MATCH.FOUR} tickets")
-        println("5 Matches (${splitComma(THIRD_PRIZE)} $CURRENCY_UNIT) – ${MATCH.FIVE} tickets")
-        println("5 Matches + Bonus Ball (${splitComma(SECOND_PRIZE)} $CURRENCY_UNIT) – ${MATCH.FIVE_AND_BONUS} tickets")
-        println("6 Matches (${splitComma(FIRST_PRIZE)} $CURRENCY_UNIT) – ${MATCH.SIX} tickets")
+        LottoRank.values().forEach { rank ->
+            println("${rank.comment} (${splitComma(rank.prize)} $CURRENCY_UNIT) – ${matchCountOf(rank)} tickets")
+        }
     }
 
     fun printReturnRate(returnRate: Number) {
         println("Total return rate is $returnRate%.")
+    }
+
+    private fun splitComma(amount: Int): String {
+        return DecimalFormat("#,###").format(amount)
+    }
+
+    private fun matchCountOf(rank: LottoRank): Int {
+        return when (rank) {
+            LottoRank.FIFTH -> MATCH.THREE
+            LottoRank.FOURTH -> MATCH.FOUR
+            LottoRank.THIRD -> MATCH.FIVE
+            LottoRank.SECOND -> MATCH.FIVE_AND_BONUS
+            LottoRank.FIRST -> MATCH.SIX
+        }
     }
 }

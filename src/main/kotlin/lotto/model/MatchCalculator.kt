@@ -58,9 +58,9 @@ object MatchCalculator {
     }
 
     private fun calculateWinningAmount(): Int =
-        (MATCH.SIX * FIRST_PRIZE) +
-        (MATCH.FIVE_AND_BONUS * SECOND_PRIZE) +
-        (MATCH.FIVE * THIRD_PRIZE) +
-        (MATCH.FOUR * FOURTH_PRIZE) +
-        (MATCH.THREE * FIFTH_PRIZE)
+        (MATCH.SIX * LottoRank.FIRST.prize) +
+        (MATCH.FIVE_AND_BONUS * LottoRank.SECOND.prize) +
+        (MATCH.FIVE * LottoRank.THIRD.prize) +
+        (MATCH.FOUR * LottoRank.FOURTH.prize) +
+        (MATCH.THREE * LottoRank.FIFTH.prize)
 }
