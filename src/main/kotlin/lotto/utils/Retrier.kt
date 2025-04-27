@@ -1,4 +1,4 @@
-package lotto.util
+package lotto.utils
 
 object Retrier {
 

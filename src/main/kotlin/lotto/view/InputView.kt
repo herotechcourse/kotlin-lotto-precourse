@@ -1,8 +1,8 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.util.Validator
-import lotto.util.Retrier
+import lotto.utils.Validator
+import lotto.utils.Retrier
 
 object InputView {
 

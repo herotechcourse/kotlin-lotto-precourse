@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.util.Retrier
+import lotto.utils.Retrier
 import lotto.view.InputView
 import lotto.view.OutputView
 
