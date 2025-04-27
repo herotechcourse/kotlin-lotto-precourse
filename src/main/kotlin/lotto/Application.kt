@@ -1,20 +1,13 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.domain.LottoGenerator
+import lotto.domain.LottoRanker
 import lotto.view.InputView
 import lotto.view.OutputView
 
 fun main() {
-    val amount: Int = InputView.getPurchaseAmount()
+    val controller = LottoController(InputView, OutputView, LottoGenerator, LottoRanker())
 
-    val lottos: List<Lotto> = LottoGenerator.generate(amount)
-    OutputView.printTickets(lottos)
-
-    val winningNumbers: List<Int> = InputView.getWinningNumbers()
-    val bonusNumber: Int = InputView.getBonusNumber()
-
-    val ranker = LottoRanker(lottos, winningNumbers, bonusNumber)
-
-    val statistics = ranker.rankLotto()
-    val profit = ranker.calculateProfit(statistics)
-    OutputView.printStatistics(statistics, profit)
+    controller.run()
 }
