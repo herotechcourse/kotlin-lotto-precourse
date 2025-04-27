@@ -6,12 +6,16 @@ import lotto.presentation.OutputView
 import lotto.InputValidator
 import lotto.LottoTicketGenerator
 
-class LottoController(
+interface LottoController {
+    fun run()
+}
+
+class LottoControllerImpl(
     private val inputValidator: InputValidator,
     private val inputView: InputView,
     private val outputView: OutputView,
     private val lottoTicketGenerator: LottoTicketGenerator,
-) {
+) : LottoController {
     private fun processPurchaseAmount(): Int {
         outputView.printInputPrompt(PURCHASE_AMOUNT_PROMPT)
         val input = inputView.readPurchaseAmount()
@@ -46,16 +50,16 @@ class LottoController(
         outputView.printBlankLine()
         outputView.printInputPrompt(BONUS_NUMBER_PROMPT)
         val input = inputView.readBonusNumber()
-        return try{
+        return try {
             inputValidator.validateBonusNumber(input)
-        }catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             outputView.printErrorMessage(e.message)
             processBonusNumber()
         }
     }
 
 
-    fun run() {
+    override fun run() {
         val purchaseAmount = processPurchaseAmount()
         val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()

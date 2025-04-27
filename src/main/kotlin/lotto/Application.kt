@@ -1,11 +1,11 @@
 package lotto
 
-import lotto.controller.LottoController
+import lotto.controller.LottoControllerImpl
 import lotto.presentation.InputViewImpl
 import lotto.presentation.OutputViewImpl
 
 fun main() {
-    val lottoController = LottoController(
+    val lottoController = LottoControllerImpl(
         inputView = InputViewImpl(),
         inputValidator = InputValidatorImpl(),
         outputView = OutputViewImpl(),
