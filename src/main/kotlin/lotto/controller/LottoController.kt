@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.Lotto
+import lotto.enums.Rank
 import lotto.model.Game
 import lotto.model.LottoTicketMachine
 import lotto.model.WinningLotto
@@ -16,12 +17,17 @@ class LottoController(private val inputView: InputView, private val outputView: 
         outputView.printPurchasedLottoTicket(purchaseQuantity, lottoTicket)
 
         val winningLotto = getWinningLotto()
+
         val game = Game(purchaseAmount.amount, lottoTicket, winningLotto)
 
         val matchResult = game.match()
-        val matchResultDto = MatchResultDto.getMatchResultDto(matchResult)
         val returnRate = game.countReturnRate()
-        outputView.printWinningStatistics(matchResultDto, returnRate)
+        printMatchResult(matchResult, returnRate)
+    }
+
+    private fun printMatchResult(matchResult: Map<Rank, Int>, returnRate: Double) {
+        val matchResultDtoList = MatchResultDto.getMatchResultDto(matchResult)
+        outputView.printWinningStatistics(matchResultDtoList, returnRate)
     }
 
     private fun getWinningLotto(): WinningLotto {

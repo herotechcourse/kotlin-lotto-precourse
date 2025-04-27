@@ -27,12 +27,11 @@ class OutputView {
         println("Please enter the bonus number.")
     }
 
-    fun printWinningStatistics(matchResultDto: MatchResultDto, returnRate: Double) {
+    fun printWinningStatistics(matchResultDtoList: List<MatchResultDto>, returnRate: Double) {
         println()
         println("Winning Statistics")
         println("---")
-        println(matchResultDto.output)
-        println()
+        matchResultDtoList.forEach {println(it.output)}
         println("Total return rate is ${String.format("%.1f", returnRate)}%.")
     }
 }
