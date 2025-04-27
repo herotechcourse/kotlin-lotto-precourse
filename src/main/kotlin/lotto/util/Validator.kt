@@ -1,6 +1,7 @@
 package lotto.util
 
 import lotto.exception.InputException
+import lotto.util.StringUtil
 
 object Validator {
 
