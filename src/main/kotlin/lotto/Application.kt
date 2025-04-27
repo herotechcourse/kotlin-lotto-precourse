@@ -31,8 +31,7 @@ fun main() {
         outputView = outputView
     )
 
-    val results = evaluator.compareTickets(generation, winningNumbers, bonusNumber)
-
-    outputView.displayWinningStats(results)
+    val (results, profitRate) = evaluator.compareTickets(generation, winningNumbers, bonusNumber)
+    outputView.displayWinningStats(results, profitRate)
 
 }

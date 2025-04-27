@@ -27,7 +27,7 @@ class OutputView {
         println("[ERROR] $message")
     }
 
-    fun displayWinningStats(results: Map<PrizeRanks, Int>) {
+    fun displayWinningStats(results: Map<PrizeRanks, Int>, profitRate: Double) {
         println("\nWinning Statistics")
         println("------------------")
         PrizeRanks.values()
@@ -35,6 +35,7 @@ class OutputView {
             .forEach { tier ->
                 println(formatTierResult(tier, results.getOrDefault(tier, 0)))
             }
+        println("Total return rate is ${"%.1f".format(profitRate)}%.")
     }
 
     private fun formatTierResult(tier: PrizeRanks, count: Int): String {
