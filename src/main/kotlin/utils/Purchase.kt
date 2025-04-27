@@ -17,7 +17,7 @@ class Purchase (val item : List<Lotto>){
     }
     fun displayPurchase(){
         for (lotto in item){
-            println("[${lotto.displayLotto()}]")
+            OutputView.print("[${lotto.displayLotto()}]")
         }
     }
 }
