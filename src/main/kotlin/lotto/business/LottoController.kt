@@ -32,4 +32,15 @@ class LottoController {
             }
         }
     }
+
+    private fun inputBonusNumber(winningNumber: WinningNumber): BonusNumber {
+        while (true) {
+            try {
+                val bonusNumberInput = InputView.getBonusNumber()
+                return BonusNumber.from(number = bonusNumberInput, winningNumber = winningNumber)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
 }
