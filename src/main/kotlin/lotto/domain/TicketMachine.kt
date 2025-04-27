@@ -9,18 +9,13 @@ import lotto.view.OutputView
 
 object TicketMachine {
 
-    data class PlayerData(
-        val moneySpent: Int,
-        val tickets: List<Lotto>
-    )
-
     fun buy(): PlayerData {
         OutputView.requestUser("Please enter the amount of money you want to spend.")
         val moneySpent = InputView.getPayment(Console.readLine())
         val ticketCount = moneySpent / lotto.TICKET_PRICE
-        val ticketsDetails: List<Lotto> = List(ticketCount) { createdTicket() }
-        OutputView.showPurchase(ticketsDetails.map{it.getNumbers()})
-        return PlayerData(moneySpent, ticketsDetails)
+        val lottoTickets: List<Lotto> = List(ticketCount) { createdTicket() }
+        OutputView.showPurchase(lottoTickets.map{it.getNumbers()})
+        return PlayerData(moneySpent, lottoTickets)
     }
 
     private fun createdTicket(): Lotto {
