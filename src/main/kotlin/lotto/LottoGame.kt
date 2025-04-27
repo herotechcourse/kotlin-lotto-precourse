@@ -11,24 +11,22 @@ class LottoGame (
         initWinningNumbers()
     }
 
-    private fun getNumberOfTickets(): Int{
-        while (true) {
-            try {
-                val amount = inputView.readPurchaseAmount()
-                lottoValidator.validatePurchaseAmount(amount)
-                amount.toInt() / 1000
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
-        }
+    private fun getNumberOfTickets(): Int = repeatUntilSuccess {
+        val amount = inputView.readPurchaseAmount()
+        lottoValidator.validatePurchaseAmount(amount)
+        amount.toInt() / 1000
     }
 
-    private fun initWinningNumbers() {
+    private fun initWinningNumbers() = repeatUntilSuccess {
+        val input: List<String> = inputView.readWinningNumbers()
+        lottoValidator.validateWinningNumbers(input)
+        winningNumbers = input
+    }
+
+    private fun <T> repeatUntilSuccess(action: () -> T): T {
         while (true) {
             try {
-                val input: List<String> = inputView.readWinningNumbers()
-                lottoValidator.validateWinningNumbers(input)
-                winningNumbers = input
+                return action()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
