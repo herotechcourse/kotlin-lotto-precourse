@@ -5,10 +5,10 @@
 ### Lotto class
 
 ### Input 
-- [ ] Get lottery ticket purchase amount.
-- [ ] Get Winning numbers. (Consist of 6 unique numbers between 1~45)
-- [ ] Get bonus number. (A number between 1~45)
-- [ ] Throw IllegalArgumentException and get new input if the input is invalid.  
+- [x] Get lottery ticket purchase amount. (Higher than 1000)
+- [x] Get Winning numbers. (Consist of 6 unique numbers between 1~45)
+- [x] Get bonus number. (A number between 1~45)
+- [x] Throw IllegalArgumentException and get new input if the input is invalid.  
 
 ### Generate lottery ticket
 - [ ] Issue as many lottery tickets as the budget allows. (1000KRW per lottery ticket)
