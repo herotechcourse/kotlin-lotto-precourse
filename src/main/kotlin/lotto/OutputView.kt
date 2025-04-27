@@ -2,10 +2,8 @@ package lotto
 
 class OutputView {
     fun displayPurchasedTickets(lottoTickets: List<Lotto>) {
-        print(Messages.PURCHASED_TICKETS_PREFIX)
-        print(lottoTickets.size)
-        print(TICKET_UNIT)
-        lottoTickets.forEach { println(it.numberList) }
+        println(Messages.PURCHASED_TICKETS_PREFIX + lottoTickets.size + Messages.TICKET_UNIT)
+        lottoTickets.forEach { println(it.numberList.sorted()) }
     }
 
     fun displayPrizeDistribution(prizeCountList: MutableMap<Prize, Int>) {
