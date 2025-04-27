@@ -12,4 +12,5 @@ fun main() {
     val bonus= input.getBonus()
 
     val resultCount = Lotto(winningNumbers).checkLottery(tickets, bonus)
+    output.displayWinningStatistics(resultCount)
 }
