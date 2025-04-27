@@ -62,7 +62,25 @@ import org.junit.jupiter.api.Assertions.*
    assertThat(result).isEqualTo(Prize.NONE)
   }
 
-
+  // Test evaluateTickets()
 @Test
- fun evaluateTickets() {}
+ fun testEvaluateTickets() {
+   val tickets = listOf(
+    Lotto(listOf(1, 2, 3, 4, 5, 6)), // FIRST
+    Lotto(listOf(1, 2, 3, 4, 5, 7)), // SECOND
+    Lotto(listOf(1, 2, 3, 4, 5, 8)), // THIRD
+    Lotto(listOf(1, 2, 3, 4, 8, 9)), // FOURTH
+    Lotto(listOf(1, 2, 3, 8, 9, 10)), // FIFTH
+    Lotto(listOf(1, 2, 8, 9, 10, 11)) // NONE
+   )
+
+   val result = lottoGame.evaluateTickets(tickets)
+
+   assertThat(result[Prize.FIRST]).isEqualTo(1)
+   assertThat(result[Prize.SECOND]).isEqualTo(1)
+   assertThat(result[Prize.THIRD]).isEqualTo(1)
+   assertThat(result[Prize.FOURTH]).isEqualTo(1)
+   assertThat(result[Prize.FIFTH]).isEqualTo(1)
+   assertThat(result[Prize.NONE]).isEqualTo(1)
+ }
 }
