@@ -1,23 +1,31 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
-    @Test
-    fun `throws an exception when lotto numbers exceed six`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
-    }
 
-    // TODO: Implement production code to pass the test
-    @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
+  @Test
+  fun `throws exception if not exactly 6 numbers`() {
+    assertThatThrownBy {
+      Lotto(listOf(1, 2, 3, 4, 5)) // only 5 numbers
+    }.isInstanceOf(IllegalArgumentException::class.java)
+     .hasMessageContaining("[ERROR]")
+  }
 
-    // TODO: Implement tests based on the added features
+  @Test
+  fun `throws exception if there are duplicate numbers`() {
+    assertThatThrownBy {
+      Lotto(listOf(1, 2, 3, 3, 4, 5))
+    }.isInstanceOf(IllegalArgumentException::class.java)
+     .hasMessageContaining("[ERROR]")
+  }
+
+  @Test
+  fun `throws exception if a number is out of range`() {
+    assertThatThrownBy {
+      Lotto(listOf(0, 2, 3, 4, 5, 6))
+    }.isInstanceOf(IllegalArgumentException::class.java)
+     .hasMessageContaining("[ERROR]")
+  }
 }
