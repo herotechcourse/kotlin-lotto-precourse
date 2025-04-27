@@ -16,7 +16,7 @@ class WinningLotto(
     }
 
     fun match(lotto: Lotto): MatchRank {
-        val matchedCount = lotto.numbers().count { it in this.lotto.numbers() }
+        val matchedCount = this.lotto.matchCount(lotto)
         val bonusMatched = bonusNumber in lotto.numbers()
         return MatchRank.of(matchedCount, bonusMatched)
     }
