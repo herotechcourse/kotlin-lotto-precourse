@@ -17,5 +17,8 @@ sealed class LottoInputException(message: String) : IllegalArgumentException("[E
         LottoInputException("Invalid input: '$input'. Please enter a number in the range of 1 to 45 (inclusive), without any letters or special symbols.")
 
     class InvalidBonusNumber(bonusNumber: Int) :
-        LottoInputException("Invalid input: $bonusNumber. Please enter a number in the range of 1 to 45 (inclusive).")
+        LottoInputException("Invalid bonus number: $bonusNumber. Please enter a number in the range of 1 to 45 (inclusive).")
+
+    class InvalidBonusWithWinningNumbers(bonusNumber: Int):
+            LottoInputException("Invalid bonus number: $bonusNumber. Bonus number must not be one of the winning numbers.")
 }

@@ -27,7 +27,8 @@ fun main() {
         retryInputUntilSuccess { InputView.getWinningNumbers().also { LottoService.validateWinningNumbers(it) } }
     println()
     val bonusNumber: Int =
-        retryInputUntilSuccess { InputView.getBonusNumber().also { LottoService.validateBonusNumber(it) } }
-
+        retryInputUntilSuccess {
+            InputView.getBonusNumber().also { LottoService.validateBonusNumber(it, winningNumbersInput) }
+        }
     val winningNumbers = WinningNumbers(winningNumbersInput, bonusNumber)
 }

@@ -12,6 +12,8 @@ class WinningNumbers(private val numbers: List<Int>, private val bonusNumber: In
             throw LottoInputException.InvalidWinningNumbers("Numbers must be between 1 and 45.")
         if (bonusNumber !in 1..45)
            throw LottoInputException.InvalidBonusNumber(bonusNumber)
+        if (numbers.contains(bonusNumber))
+            throw LottoInputException.InvalidBonusWithWinningNumbers(bonusNumber)
     }
 
     fun getWinningNumbers(): List<Int> = numbers.toList()

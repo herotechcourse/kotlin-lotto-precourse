@@ -22,8 +22,10 @@ object LottoService {
             throw LottoInputException.InvalidWinningNumbers("Numbers must be between 1 and 45.")
     }
 
-    fun validateBonusNumber(bonus: Int) {
+    fun validateBonusNumber(bonus: Int, winningNumbers: List<Int>) {
         if (bonus !in 1..45)
             throw LottoInputException.InvalidBonusNumber(bonus)
+        if (winningNumbers.contains(bonus))
+            throw LottoInputException.InvalidBonusWithWinningNumbers(bonus)
     }
 }

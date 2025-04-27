@@ -63,4 +63,65 @@ class LottoServiceTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("validateWinningNumbers()")
+    inner class ValidateWinningNumbersTest {
+        @Test
+        @DisplayName("Should not throw any exception for valid numbers")
+        fun validateValidNumbers() {
+            val validNumbers = listOf(1, 2, 3, 4, 5, 6)
+            LottoService.validateWinningNumbers(validNumbers)
+        }
+
+        @Test
+        @DisplayName("Should throw InvalidWinningNumbers exception for numbers out of range")
+        fun validateOutRangeNumbers() {
+            val invalidNumbers = listOf(1, 2, 3, 4, 5, 50) // 50 is out of range
+            assertThatThrownBy { LottoService.validateWinningNumbers(invalidNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining("Numbers must be between 1 and 45.")
+       }
+
+        @Test
+        @DisplayName("Should throw InvalidWinningNumbers exception for duplicated numbers")
+        fun validateDuplicateNumbers() {
+            val invalidNumbers = listOf(1, 1, 3, 4, 5, 6)
+            assertThatThrownBy { LottoService.validateWinningNumbers(invalidNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining("Winning numbers must all be unique.")
+        }
+    }
+
+    @Nested
+    @DisplayName("validateBonusNumber()")
+    inner class ValidateBonusNumberTest {
+        @Test
+        @DisplayName("Should throw IllegalArgumentException for bonus number out of range")
+        fun validateBonusOutOfRange() {
+            val bonus = 50 // Out of range
+            val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+            assertThatThrownBy { LottoService.validateBonusNumber(bonus, winningNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining("50")
+        }
+
+        @Test
+        @DisplayName("Should throw IllegalArgumentException for bonus inside the winning numbers")
+        fun validateBonusInWinningNumbers() {
+            val bonus = 1 // Already in winning numbers
+            val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+            assertThatThrownBy { LottoService.validateBonusNumber(bonus, winningNumbers) }
+                .isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessageContaining("1")
+        }
+
+        @Test
+        @DisplayName("Should not throw any exception for a valid bonus number")
+        fun validateValidBonusNumber() {
+            val bonus = 7 // Valid bonus number
+            val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+            LottoService.validateBonusNumber(bonus, winningNumbers) // Should not throw exception
+        }
+    }
 }
