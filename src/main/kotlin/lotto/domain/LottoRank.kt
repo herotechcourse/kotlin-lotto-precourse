@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.messages.RankMessages
+
 enum class LottoRank (
     private val matchCount: Int,
     val prizeMoney: Int
@@ -13,9 +15,9 @@ enum class LottoRank (
 
     fun getResultMessage(count: Int): String {
         if (this == SECOND) {
-            return "5 Matches + Bonus Ball (${prizeMoney.format()}} KRW) – $count tickets"
+            return RankMessages.SECOND.with(prizeMoney.format(), count)
         }
-        return "$matchCount Matches (${prizeMoney.format()} KRW) – $count tickets"
+        return RankMessages.GENERAL.with(matchCount, prizeMoney.format(), count)
     }
 
     companion object {
