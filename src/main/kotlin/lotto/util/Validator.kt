@@ -6,6 +6,7 @@ object Validator {
     fun validatePurchaseAmount(amount: Int) {
         validateMinimumPurchaseAmount(amount)
         validateDivisibleByLottoPrice(amount)
+        validateMaximumPurchaseAmount(amount)
     }
 
     fun validateLottoNumbers(numbers: List<Int>) {
@@ -27,6 +28,12 @@ object Validator {
     private fun validateDivisibleByLottoPrice(amount: Int) {
         require(amount % Rule.LOTTO_PRICE == 0) {
             ExceptionMessage.INVALID_PURCHASE_AMOUNT_FORMAT.message
+        }
+    }
+
+    private fun validateMaximumPurchaseAmount(amount: Int) {
+        require(amount <= Rule.MAX_PURCHASE_AMOUNT) {
+            ExceptionMessage.EXCEEDS_MAX_PURCHASE_AMOUNT.message
         }
     }
 

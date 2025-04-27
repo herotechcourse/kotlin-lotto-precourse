@@ -9,6 +9,9 @@ enum class ExceptionMessage {
     INVALID_PURCHASE_AMOUNT_FORMAT {
         override val message: String get() = "[ERROR] Purchase amount must be divisible by ${Rule.LOTTO_PRICE}."
     },
+    EXCEEDS_MAX_PURCHASE_AMOUNT {
+        override val message: String get() = "[ERROR] Purchase amount must not exceed ${Rule.MAX_PURCHASE_AMOUNT} KRW."
+    },
     INVALID_NUMBER_COUNT {
         override val message: String get() = "[ERROR] Lotto must contain exactly ${Rule.NUMBERS_COUNT} numbers."
     },
