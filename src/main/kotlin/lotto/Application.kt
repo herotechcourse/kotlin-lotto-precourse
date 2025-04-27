@@ -1,16 +1,27 @@
 package lotto
 
 fun main() {
-    val amount = InputView.readPurchaseAmount()
+    val amount = repeatUntilValid { InputView.readPurchaseAmount() }
+
     val ticketCount = amount / 1000
     val tickets = LottoService.generateTickets(ticketCount)
 
     OutputView.printTickets(tickets)
 
-    val numbers = InputView.readWinningNumbers()
-    val bonus = InputView.readBonusNumber()
-
+    val numbers = repeatUntilValid { InputView.readWinningNumbers() }
+    val bonus = repeatUntilValid { InputView.readBonusNumber() }
     val result = LottoService.calculateLottoResult(tickets, numbers, bonus)
-
     OutputView.printResult(result)
+}
+
+fun <T> repeatUntilValid(action: () -> T): T {
+    while (true) {
+        try {
+            return action()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        } catch (e: IllegalStateException) {
+            println(e.message)
+        }
+    }
 }
