@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.view.InputView
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -20,4 +21,15 @@ class LottoTest {
     }
 
     // TODO: Implement tests based on the added features
+
+}
+class InputViewTest {
+    @Test
+    fun `throws an exception when purchase amount is not divisible by 1000`() {
+        System.setIn("2500\n".byteInputStream())
+
+        assertThrows<IllegalArgumentException> {
+            InputView.readPurchaseAmount()
+        }
+    }
 }

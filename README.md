@@ -6,7 +6,7 @@ Users can purchase lottery tickets, input winning numbers, and check their winni
 
 ## Features
 ### Input
-- [ ] Enter purchase amount (must be divisible by 1,000 KRW)
+- [x] Enter purchase amount (must be divisible by 1,000 KRW)
 - [ ] Enter winning numbers (6 unique numbers, comma-separated)
 - [ ] Enter bonus number (single number)
 
