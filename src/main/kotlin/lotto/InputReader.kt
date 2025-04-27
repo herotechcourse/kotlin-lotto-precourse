@@ -34,7 +34,6 @@ class InputReader(private val inputView: InputView = InputView()){
             try {
                 val bonusNumber = inputView.readBonusNumber().toInt()
                 require(bonusNumber in Configuration.MIN_NUMBER..Configuration.MAX_NUMBER) { Configuration.ErrorMessages.BONUS_NUMBER_INVALID_RANGE }
-                // TODO: Check if the bonus number is unique and not in the winning numbers
                 return bonusNumber
             } catch (e: NumberFormatException) {
                 println(Configuration.ErrorMessages.BONUS_NUMBER_INVALID)

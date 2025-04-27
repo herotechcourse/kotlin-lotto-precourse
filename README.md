@@ -78,7 +78,6 @@ Program is written in Kotlin 1.9.24.
     - The input must be a number.
     - The input must be greater than 0.
     - The input must be less than or equal to 45.
-    - The input must not be in the winning numbers.
   - If the input is invalid, throw `IllegalArgumentException` and re-prompt the question
     - Example:
       ```
