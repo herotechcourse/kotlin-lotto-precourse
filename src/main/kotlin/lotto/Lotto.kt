@@ -12,8 +12,9 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.sorted().toString()
     }
 
-    fun matchNumbers() : List<Int> {
-
-        return numbers
+    fun matchNumbers(winningLotto: WinningLotto) : Pair<Int, Boolean> {
+        val matchedCount = numbers.count { it in winningLotto.getWinningNumbers() }
+        val isBonusMatched = numbers.contains(winningLotto.getBonusNumber())
+        return Pair(matchedCount, isBonusMatched)
     }
 }
