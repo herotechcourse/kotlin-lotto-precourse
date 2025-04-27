@@ -12,10 +12,10 @@ enum class LottoRank (
     NONE(0, 0);
 
     fun getResultMessage(count: Int): String {
-        return when (this) {
-            SECOND -> "5 Matches + Bonus Ball (${prizeMoney.format()}} KRW) – $count tickets"
-            else -> "$matchCount Matches (${prizeMoney.format()} KRW) – $count tickets"
+        if (this == SECOND) {
+            return "5 Matches + Bonus Ball (${prizeMoney.format()}} KRW) – $count tickets"
         }
+        return "$matchCount Matches (${prizeMoney.format()} KRW) – $count tickets"
     }
 
     companion object {
