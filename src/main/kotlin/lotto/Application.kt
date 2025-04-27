@@ -11,14 +11,14 @@ fun main() {
     outputView.printHeader("You have purchased $numberOfTickets tickets.")
     outputView.printListOfTickets(purchasedTickets)
     val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
+    val bonusNumber = readAndValidateBonusNumber(inputView, validator, winningNumbers)
     //outputView.printListOfItems(winningNumbers)
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
         try {
-            var purchaseAmount = inputView.read("Please enter the purchase amount.")
+            val purchaseAmount = inputView.read("Please enter the purchase amount.")
             return validator.isPurchaseAmountValid(purchaseAmount)
-            break
         }
         catch (e: IllegalArgumentException)
         {
@@ -31,12 +31,23 @@ fun calculateNumberOfTickets(money: Int): Int
     var numberOfTickets = money / 1000
     return numberOfTickets
 }
-fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator): List<Int> {
+fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator,): List<Int> {
     while (true) {
         try {
-            var winningNumbersToCheck = inputView.read("Please enter last week's winning numbers.")
+            val winningNumbersToCheck = inputView.read("Please enter last week's winning numbers.")
             return validator.isWinningNumbersValid(winningNumbersToCheck)
-            break
+        }
+        catch (e: IllegalArgumentException)
+        {
+            println("[ERROR] ${e.message}")
+        }
+    }
+}
+fun readAndValidateBonusNumber(inputView: InputView, validator: Validator, winningNumbers: List<Int>): Int {
+    while (true) {
+        try {
+            val bonusNumberToCheck = inputView.read("Please enter the bonus number.")
+            return validator.isBonusNumberValid(bonusNumberToCheck, winningNumbers)
         }
         catch (e: IllegalArgumentException)
         {

@@ -2,7 +2,7 @@ package lotto
 
 class Validator {
     fun isPurchaseAmountValid(purchaseAmount: String): Int {
-        val number = purchaseAmount.toIntOrNull() ?:
+        val number = cleanStringfromSpace(purchaseAmount).toIntOrNull() ?:
         throw IllegalArgumentException("The purchase amount must be a number.")
         if (number < 0 ) {
             throw IllegalArgumentException("The purchase amount must be a positive number.")
@@ -25,7 +25,7 @@ class Validator {
     {
         if (input.isEmpty())
         {
-            throw IllegalArgumentException("The input must be 6 numbers, comma separated.")
+            throw IllegalArgumentException("The input must not be empty.")
         }
     }
     private fun cleanAndSplit (input: String): List<String>
@@ -63,5 +63,29 @@ class Validator {
         {
             throw IllegalArgumentException("Each of winning numbers must be unique")
         }
+    }
+    fun isBonusNumberValid(inputNumber: String, winningNumbers: List<Int>): Int {
+        val bonusNumber = cleanStringfromSpace(inputNumber).toIntOrNull() ?:
+        throw IllegalArgumentException("The bonus number must be a single integer number.")
+        validateNumberRange(bonusNumber)
+        validateBonusNumberIsDifferentFromWinning(bonusNumber, winningNumbers)
+        return bonusNumber
+    }
+    private fun validateNumberRange(number: Int) {
+        if (number < 1 || number > 45) {
+            throw IllegalArgumentException("The number must be between 1 and 45.")
+        }
+    }
+    private fun validateBonusNumberIsDifferentFromWinning(bonusNumber: Int, winningNumbers: List<Int>) {
+        for (number in winningNumbers) {
+            if (bonusNumber == number)
+            {
+                throw IllegalArgumentException("The bonus number must be different from winning numbers.")
+            }
+        }
+    }
+    private fun cleanStringfromSpace(input: String): String{
+        val inputCleaned = input.replace(" ","")
+        return inputCleaned
     }
 }
