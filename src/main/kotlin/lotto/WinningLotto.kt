@@ -2,7 +2,7 @@ package lotto
 
 class WinningLotto() {
     private var winningNumbers: MutableList<Int> = mutableListOf()
-    private var bonusNumber: Int = -1
+    private var bonusNumber: Int = DEFAULT_BONUS_NUMBER
 
     fun getBonusNumber(): Int {
         return bonusNumber
@@ -18,5 +18,9 @@ class WinningLotto() {
 
     fun registerBonusNumber(lastWeekBonusNumber: String) {
         bonusNumber = lastWeekBonusNumber.toInt()
+    }
+
+    companion object {
+        private const val DEFAULT_BONUS_NUMBER = -1
     }
 }
