@@ -15,7 +15,7 @@ object OutputView {
     fun printMatchResult(matchResult: MatchResult) {
         println("\nWinning Statistics")
         println("---")
-        Rank.values()
+        Rank.entries
             .filter { it != Rank.MISS }
             .sortedBy { it.prize }
             .forEach { rank ->
