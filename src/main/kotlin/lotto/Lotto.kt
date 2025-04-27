@@ -6,34 +6,32 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.toSet().size == numbers.size) { "[ERROR] Lotto must not contain duplicated numbers" }
+        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto Lotto number must between 1 to 45" }
     }
 
     // find matches and determine the prize rank
-    fun findMatches(winningNumbers: List<Int>, bonusNumber: Int): Prize {
+    fun findPrizeRank(winningNumbers: List<Int>, bonusNumber: Int): Prize {
         val sameNumberCount = numbers.intersect(winningNumbers.toSet()).size
         return when (sameNumberCount) {
-            6 -> Prize.FirstPrize
-            5 -> if (numbers.contains(bonusNumber)) Prize.SecondPrize else Prize.ThirdPrize
-            4 -> Prize.FourthPrize
-            3 -> Prize.FifthPrize
+            6 -> Prize.First
+            5 -> if (numbers.contains(bonusNumber)) Prize.Second else Prize.Third
+            4 -> Prize.Fourth
+            3 -> Prize.Fifth
             else -> Prize.None
         }
     }
 
     companion object {
-        fun calculatePrintPrize(prizeRankList: List<Prize>, prize: Int, purchaseAmount: Int) {
-            var rate: Double = prize.toDouble().div(purchaseAmount.toDouble()) * 100
+        fun calculatePrintPrize(prizeRankList: List<Prize>, purchaseAmount: Int) {
+            val totalPrizeMoney = prizeRankList.sumOf { it.money }
+            val rate: Double = totalPrizeMoney.toDouble().div(purchaseAmount.toDouble())
             var rawPrizeMap: Map<Prize, Int> = initPrizeMap(prizeRankList)
             val prizeMap = rawPrizeMap.filterKeys { it != Prize.None }.toSortedMap()
             OutputView.printPrize(rate, prizeMap)
         }
 
-        private fun initPrizeMap(prizeRankList: List<Prize>): Map<Prize, Int> {
-            val prizeMap = Prize.values().associateWith { prize ->
-                prizeRankList.count { it == prize }
-            }
-            return prizeMap
-        }
+        private fun initPrizeMap(prizeRankList: List<Prize>): Map<Prize, Int> =
+            Prize.entries.associateWith { prize -> prizeRankList.count { it == prize } }
 
         fun generateTickets(purchaseAmount: Int): List<List<Int>> {
             var numberOfTickets = purchaseAmount / 1000

@@ -9,14 +9,15 @@ object InputValidate {
             throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer")
         }
         if (amount <= 0 || amount % 1000 != 0)
-            throw IllegalArgumentException("[ERROR] PurchaseAmount must be positive integer and divided by 1000")
+            throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer and divided by 1000")
         return amount
     }
 
     fun validateWinningNumbers(input: String): List<Int> {
         val inputList = input.split(",").map { it.trim() }
-        val safeIntList = inputList.mapNotNull { it.toIntOrNull() ?:
-            throw IllegalArgumentException("[ERROR] Input must be integer") }
+        val safeIntList = inputList.mapNotNull {
+            it.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be integer")
+        }
         if (safeIntList.size != 6 || safeIntList.toSet().size != 6 || safeIntList.any { it !in 1..45 }) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be 6 and from range 1 to 45.")
         }

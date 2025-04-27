@@ -2,12 +2,12 @@ package lotto
 
 object OutputView {
     fun printTickets(tickets: List<List<Int>>) {
-        println()
-        println("You have purchased ${tickets.size} tickets.")
+        println("\nYou have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
-            if (ticket.isNotEmpty()) println(ticket)
+           val sortedTicket = ticket.toSortedSet()
+            if (sortedTicket.isNotEmpty())
+                println(sortedTicket)
         }
-        println()
     }
 
     fun printPrize(rate: Double, prizeMap: Map<Prize, Int>) {
@@ -15,7 +15,7 @@ object OutputView {
         println("Winning Statistics")
         println("---")
         printPrizeMap(prizeMap)
-        println("Total return rate is %.1f%%.".format(rate))
+        println("Total return rate is %.1f%%.".format(rate*100))
     }
 
     private fun printPrizeMap(prizeMap: Map<Prize, Int>) {
@@ -23,7 +23,7 @@ object OutputView {
             var prizeText = "${prize.numberOfMatches} Matches"
             if (prize.bonus)
                 prizeText += " + Bonus Ball"
-            val prizeMoneyText = String.format("%,d", prize.prizeMoney)
+            val prizeMoneyText = String.format("%,d", prize.money)
             println("$prizeText ($prizeMoneyText KRW) – $count tickets")
         }
     }

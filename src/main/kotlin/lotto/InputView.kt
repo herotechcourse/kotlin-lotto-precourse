@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    private var purchaseAmount: Int = 0
-    private var tickets: List<List<Int>> = listOf(listOf())
-    private var winningNumbers: List<Int> = listOf()
-    private var bonusNumber: Int = 0
+    var purchaseAmount: Int = 0
+    var tickets: List<List<Int>> = listOf(listOf())
+    var winningNumbers: List<Int> = listOf()
+    var bonusNumber: Int = 0
 
     fun initPrintTicket() {
         parsePurchaseAmount()
@@ -29,7 +29,7 @@ class InputView {
 
     private fun parseWinningNumbers() {
         while (true) try {
-            println("Please enter last week's winning numbers.")
+            println("\nPlease enter last week's winning numbers.")
             winningNumbers = InputValidate.validateWinningNumbers(Console.readLine())
             break
         } catch (e: IllegalArgumentException) {
@@ -46,13 +46,5 @@ class InputView {
             println(e.message)
         }
     }
-
-    fun getWinningNumbers(): List<Int> = winningNumbers
-
-    fun getBonusNumber(): Int = bonusNumber
-
-    fun getPurchaseAmount(): Int = purchaseAmount
-
-    fun getTickets(): List<List<Int>> = tickets
 
 }
