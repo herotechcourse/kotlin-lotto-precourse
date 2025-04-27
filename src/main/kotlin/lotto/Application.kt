@@ -3,6 +3,7 @@ package lotto
 import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.domain.LottoGenerator
+import lotto.domain.WinningLotto
 
 fun main() {
     val purchaseAmount = InputView.readPurchaseAmount()
@@ -16,9 +17,10 @@ fun main() {
 
     val winningNumbers = InputView.readWinningNumbers()
     val bonusNumber = InputView.readBonusNumber()
+    val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
-    println(" last week's winning numbers.: $winningNumbers")
-    println("the bonus number.: $bonusNumber")
+    println(" last week's winning numbers.: ${winningLotto.getWinningNumbers()}")
+    println("the bonus number.: ${winningLotto.getBonusNumber()}")
 }
 
 fun validatePurchaseAmount(amount: Int) {
