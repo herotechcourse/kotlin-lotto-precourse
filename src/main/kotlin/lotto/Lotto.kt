@@ -16,4 +16,8 @@ class Lotto(
     }
 
     fun numbers(): List<Int> = numbers.toList()
+
+    fun matchCount(other: Lotto): Int {
+        return numbers.count { it in other.numbers() }
+    }
 }
