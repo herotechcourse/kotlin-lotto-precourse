@@ -22,10 +22,17 @@ object OutputView {
         println("---")
         for ((rank, pair) in playerData.rankResults) {
             val (ticketCount, prizeMoney) = pair
-            println(
-                "${rank.displayName()} Matches ($prizeMoney KRW) - $ticketCount ticket ${if (ticketCount != 1) "s" else ""})"
-            )
-            println("Total return rate is {returnRate}")
+            println("${rank.displayName()} (${formatNumber(prizeMoney)} KRW) – $ticketCount tickets")
+
         }
+        println("Total return rate is {returnRate}")
+    }
+
+    private fun formatNumber(number: Int): String {
+        return number.toString()
+            .reversed()
+            .chunked(3)
+            .joinToString(",")
+            .reversed()
     }
 }

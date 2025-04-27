@@ -6,15 +6,22 @@ object WinningStatistics {
 
     private val rankCounts: MutableMap<Rank, Int> = mutableMapOf()
 
-    //TODO: find bug and fix
     fun get(playerData: PlayerData, winningLotto: Lotto, bonusNumber: Int) {
         playerData.rankResults = getRankDetails(playerData, winningLotto, bonusNumber)
     }
 
-    private fun getRankDetails(playerData: PlayerData, winningLotto: Lotto, bonusNumber: Int): Map<Rank, Pair<Int, Int>> {
+    private fun getRankDetails(
+        playerData: PlayerData,
+        winningLotto: Lotto,
+        bonusNumber: Int
+    ): Map<Rank, Pair<Int, Int>> {
         val rankingTable = mutableMapOf<Rank, Pair<Int, Int>>() // each Rank -> (matching tickets, prize money)
+        for (rank in Rank.entries) {
+            rankingTable[rank] = Pair(0, rank.prizeMoney)
+        }
+
         for (ticket in playerData.lottoTickets) {
-            rankTicket(ticket, winningLotto, bonusNumber,rankingTable)
+            rankTicket(ticket, winningLotto, bonusNumber, rankingTable)
         }
         return rankingTable
     }

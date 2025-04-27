@@ -1,13 +1,11 @@
 package lotto.domain
 
 enum class Rank(val matchCount: Int, val prizeMoney: Int, val bonusRequired: Boolean = false) {
-    MATCH_SIX(6, 2_000_000_000),
-    MATCH_BONUS(5, 30_000_000),
-    MATCH_FIVE(5, 1_500_000),
+    MATCH_THREE(3, 5_000),
     MATCH_FOUR(4, 50_000),
-    MATCH_THREE(3, 5_000);
-
-
+    MATCH_FIVE(5, 1_500_000),
+    MATCH_BONUS(5, 30_000_000),
+    MATCH_SIX(6, 2_000_000_000);
 
 
     companion object {
@@ -26,11 +24,11 @@ enum class Rank(val matchCount: Int, val prizeMoney: Int, val bonusRequired: Boo
 
     fun displayName(): String {
         return when (this) {
-            MATCH_THREE -> "3"
-            MATCH_FOUR -> "4"
-            MATCH_FIVE -> "5"
-            MATCH_BONUS -> "5 + Bonus Ball"
-            MATCH_SIX -> "6"
+            MATCH_THREE -> "3 Matches"
+            MATCH_FOUR -> "4 Matches"
+            MATCH_FIVE -> "5 Matches"
+            MATCH_BONUS -> "5 Matches + Bonus Ball"
+            MATCH_SIX -> "6 Matches"
         }
     }
 
