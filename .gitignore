@@ -25,6 +25,7 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+/untitled
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,9 +36,6 @@ out/
 
 ### VS Code ###
 .vscode/
-
-###  IntelliJ IDEA ###
-/untitled
 
 ### Mac OS ###
 .DS_Store
