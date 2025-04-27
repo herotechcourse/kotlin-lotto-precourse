@@ -1,5 +1,7 @@
 package lotto
 
+import kotlin.coroutines.coroutineContext
+
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
@@ -14,7 +16,9 @@ fun main() {
     val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
     val bonusNumber = readAndValidateBonusNumber(inputView, validator, winningNumbers)
     val lottoResults = game.checkAllTickets(purchasedTickets, winningNumbers, bonusNumber)
+    var profitRate = calculateProfitRate(lottoResults, validPurchaseAmount)
     //outputView.printListOfItems(lottoResults)
+    //outputView.printNumber(profitRate)
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
@@ -56,4 +60,21 @@ fun readAndValidateBonusNumber(inputView: InputView, validator: Validator, winni
             println("[ERROR] ${e.message}")
         }
     }
+}
+fun calculateTotalEarnings(ranks: List<Rank>): Int {
+    var totalEarnings = 0
+    for (rank in ranks)
+    {
+        totalEarnings = totalEarnings + rank.prizeMoney
+    }
+    return totalEarnings
+}
+fun calculateProfitRate(ranks: List<Rank>, spentAmount: Int): Double {
+    var totalEarnings = calculateTotalEarnings(ranks)
+    var profitRate = 0.0
+    if (totalEarnings > 0)
+    {
+        profitRate = totalEarnings.toDouble() / spentAmount * 100
+    }
+    return profitRate
 }

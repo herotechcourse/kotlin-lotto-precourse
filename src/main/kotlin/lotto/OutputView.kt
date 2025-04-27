@@ -13,11 +13,15 @@ class OutputView {
             println("[${item.numberToString()}]")
         }
     }
-    fun printListOfItems(ranks: List<Rank>)
-    {
+//    fun printListOfItems(ranks: List<Rank>)
+//    {
 //        for (item in items)
 //        {
 //            println(item.toString())
 //        }
-    }
+//    }
+//    fun printNumber(number: Double)
+//    {
+//        println(number)
+//    }
 }
