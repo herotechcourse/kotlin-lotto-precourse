@@ -6,6 +6,7 @@ enum class ExceptionMessage(val message: String) {
     INVALID_PURCHASE_FORMAT("[ERROR] Purchase amount must be a number."),
     INVALID_WINNING_NUMBER_FORMAT("[ERROR] Winning numbers must be valid integers."),
     INVALID_BONUS_FORMAT("[ERROR] Bonus number must be a valid integer."),
+    GENERIC_ERROR("[ERROR] An error occurred."),
     INVALID_LOTTO_RANGE("[ERROR] Lotto numbers must be between 1 and 45."),
     DUPLICATE_LOTTO_NUMBERS("[ERROR] Lotto numbers must be unique."),
     INVALID_WINNING_LOTTO_SIZE("[ERROR] Winning lotto must contain exactly 6 numbers."),
