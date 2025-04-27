@@ -4,7 +4,11 @@ import lotto.util.LottoConstants.COUNT
 import lotto.util.LottoConstants.END_INCLUSIVE
 import lotto.util.LottoConstants.START_INCLUSIVE
 
-class Lotto(private val numbers: List<Int>): LottoMatchable{
+class MockLotto(private val numbers: List<Int>): LottoMatchable {
+
+    var callCount = 0
+        private set
+
     init {
         require(numbers.size == COUNT) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.size == numbers.distinct().size) { "[ERROR] Lotto numbers must be unique." }
@@ -14,6 +18,7 @@ class Lotto(private val numbers: List<Int>): LottoMatchable{
     }
 
     override fun matchLotto(lottoEvaluator: LottoEvaluator): LottoResultType {
+        callCount++
         return lottoEvaluator.evaluateLotto(this.numbers)
     }
 
