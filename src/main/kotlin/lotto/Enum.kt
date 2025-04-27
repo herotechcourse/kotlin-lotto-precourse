@@ -1,6 +1,6 @@
 package lotto
 
-enum class Prize(val money: Int, val numberOfMatches: Int, val bonus: Boolean) {
+enum class Prize(val money: Int, val numberOfMatches: Int, val hasBonus: Boolean) {
     Fifth(5_000, 3, false),
     Fourth(50_000, 4, false),
     Third(1_500_000, 5, false),

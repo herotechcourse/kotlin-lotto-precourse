@@ -1,7 +1,7 @@
 package lotto
 
 fun main() {
-    val inputView = InputView().apply { initPrintTicket() }
+    val inputView = InputView().apply { init() }
     val prizeRankList: MutableList<Prize> = mutableListOf()
     inputView.tickets.forEach {
         var prizeRank = Lotto(it).findPrizeRank(inputView.winningNumbers, inputView.bonusNumber)

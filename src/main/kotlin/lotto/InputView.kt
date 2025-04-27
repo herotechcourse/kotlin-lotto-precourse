@@ -8,7 +8,7 @@ class InputView {
     var winningNumbers: List<Int> = listOf()
     var bonusNumber: Int = 0
 
-    fun initPrintTicket() {
+    fun init() {
         parsePurchaseAmount()
         tickets = Lotto.generateTickets(purchaseAmount)
         OutputView.printTickets(tickets)

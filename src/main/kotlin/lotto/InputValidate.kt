@@ -8,7 +8,7 @@ object InputValidate {
             throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer")
         }
         if (amount <= 0 || amount % 1000 != 0)
-            throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer and divided by 1000")
+            throw IllegalArgumentException("[ERROR] PurchaseAmount must be integer and divisive by 1000")
         return amount
     }
 
@@ -35,8 +35,7 @@ object InputValidate {
     fun validateTickets(tickets: MutableList<MutableList<Int>>): List<List<Int>> {
         if (tickets.isEmpty())
             throw IllegalArgumentException("[ERROR] Tickets are empty")
-        val safeTickets = tickets.map { it.toList() }
-        return safeTickets
+        return tickets.map { it.toList() }
     }
 
 }
