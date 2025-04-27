@@ -18,4 +18,11 @@ enum class Rank (val matchCount: Int, val hasBonus: Boolean, val prize: Int) {
             return MISS
         }
     }
+
+    fun getDescription(): String {
+        if (matchCount == 5 && hasBonus) {
+            return "5 Matches + Bonus Ball"
+        }
+        return "$matchCount Matches"
+    }
 }
