@@ -22,7 +22,7 @@ class BonusNumber(inputBonusNumber: String, winningNumbers: WinningNumbers) {
     }
 
     companion object {
-        private const val ERROR_BONUS_NOT_UNIQUE = "[ERROR] Bonus number must not be any of winning numbers."
+        private const val ERROR_BONUS_NOT_UNIQUE = "[ERROR] Bonus number can not be any of winning numbers."
     }
     
 }

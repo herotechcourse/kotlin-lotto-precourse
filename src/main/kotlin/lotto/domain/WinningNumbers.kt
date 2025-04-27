@@ -37,7 +37,7 @@ class WinningNumbers(inputWinningNumbers: String) {
 
     companion object {
         private const val DELIMITER = ","
-        private const val ERROR_HAS_DELIMITER = "[ERROR] Winning numbers input cannot end with a delimiter '$DELIMITER'."
+        private const val ERROR_HAS_DELIMITER = "[ERROR] Winning numbers can not end with a delimiter '$DELIMITER'."
     }
 
 }
