@@ -59,7 +59,8 @@ class InputView {
     }
 
     private fun validateLastWeekLottoNumbers(numbers: List<Int>) {
-        require(numbers.all { it in 1..45 }) { "[ERROR] Numbers must be between 1 and 45." }
+        require(numbers.size == LOTTO_NUMBER_SIZE) { "[ERROR] The number of lotto must be six." }
+        require(numbers.all { it in LOTTO_START_NUMBER..LOTTO_END_NUMBER }) { "[ERROR] Numbers must be between 1 and 45." }
         require(numbers.size == numbers.toSet().size) { "[ERROR] Duplicate numbers are not allowed." }
     }
 
@@ -70,5 +71,11 @@ class InputView {
     fun validatePurchaseAmount(input: String) {
         require(input.isNotEmpty()) { "[ERROR] Input cannot be empty." }
         require(input.matches(Regex("\\d+"))) { "[ERROR] Input must be a number." }
+    }
+
+    companion object {
+        private const val LOTTO_NUMBER_SIZE = 6
+        private const val LOTTO_START_NUMBER = 1
+        private const val LOTTO_END_NUMBER = 45
     }
 }
