@@ -10,6 +10,8 @@ fun main() {
     val purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
     outputView.printHeader("You have purchased $numberOfTickets tickets.")
     outputView.printListOfTickets(purchasedTickets)
+    val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
+    //outputView.printListOfItems(winningNumbers)
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
@@ -28,4 +30,17 @@ fun calculateNumberOfTickets(money: Int): Int
 {
     var numberOfTickets = money / 1000
     return numberOfTickets
+}
+fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator): List<Int> {
+    while (true) {
+        try {
+            var winningNumbersToCheck = inputView.read("Please enter last week's winning numbers.")
+            return validator.isWinningNumbersValid(winningNumbersToCheck)
+            break
+        }
+        catch (e: IllegalArgumentException)
+        {
+            println("[ERROR] ${e.message}")
+        }
+    }
 }
