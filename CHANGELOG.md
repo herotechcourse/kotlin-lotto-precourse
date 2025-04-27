@@ -122,6 +122,10 @@
 
 ### 🎨 Style
 
+- ****: remove unused library from InputView ([d3be307](https://github.com/yourname/yourrepo/commit/d3be3074d03e13724de313aa2e08bd10c3b0bb77))
+
+- ****: format code ([b950e3d](https://github.com/yourname/yourrepo/commit/b950e3dd98f3792a20f5994d2d07557f848ab66c))
+
 - ****: remove unnecessary else ([cadc00b](https://github.com/yourname/yourrepo/commit/cadc00b6c93ddef054a69bbb7a5c27d9317e2a51))
 
 - ****: remove printnewlin ([845fe21](https://github.com/yourname/yourrepo/commit/845fe212ec29694a09010ecd6efea35ad311d9c6))
@@ -145,5 +149,4 @@
 - ****: write more tests to check each edge cases ([28a3a68](https://github.com/yourname/yourrepo/commit/28a3a6864a1d7cb04c5a19a2c3c023aa5cadd499))
 
 - **ValidateTest.kt**: write tests for InputValidate class functions ([19acf89](https://github.com/yourname/yourrepo/commit/19acf89a438fbbc335ee2cfa829cdf4b24bb2df7))
-
 
