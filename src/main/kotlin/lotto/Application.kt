@@ -3,11 +3,14 @@ import lotto.view.InputView
 
 class Application {
     private val inputView = InputView()
+    private val lottoMachine = LottoMachine()
 
     fun run() {
         val money = readPurchaseWithRetry()
+        val tickets = lottoMachine.generateTickets(money)
         val winningNumbers = readWinningNumbersWithRetry()
         val bonusNumber = readBonusNumberWithRetry(winningNumbers)
+
 
     }
 
