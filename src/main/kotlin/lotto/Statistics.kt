@@ -9,5 +9,12 @@ class Statistics {
         totalWinnings += rank.prize
     }
 
+    fun calculateProfitRate(totalAmount: Int): String {
+        val rate = (totalWinnings.toDouble() / totalAmount) * 100
+        return "%.1f".format(rate)
+    }
+
+    val profitRate: String
+        get() = calculateProfitRate(rankCounts.entries.sumOf { it.value } * 1000)
 
 }

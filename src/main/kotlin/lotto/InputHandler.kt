@@ -6,7 +6,7 @@ class InputHandler {
     fun getPurchaseAmount():Int{
         while(true){
             try{
-                println("Please enter the purchase amount.")
+
                 val input = Console.readLine().trim()
                 val amount = input.toInt()
                 require(amount % 1000 == 0) { "Purchase amount must be divisible by 1000 but $amount is not" }
@@ -22,7 +22,7 @@ class InputHandler {
     fun getWinningNumbers():List<Int>{
         while (true){
             try {
-                println("Please enter last week's winning numbers (comma-separated).")
+
                 val input = Console.readLine().trim()
                 val numbers = input.split(",")
                     .map{it.trim().toInt()}
@@ -41,7 +41,6 @@ class InputHandler {
     fun getBonusNumber(winningNumbers: List<Int>): Int {
         while(true){
             try{
-                println("Please enter the bonus number.")
                 val input = Console.readLine().trim()
                 val bonus = input.toInt()
                 require(bonus in 1..45){"Bonus number must be between 1 and 45. "}

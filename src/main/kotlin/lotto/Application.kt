@@ -7,7 +7,7 @@ fun main() {
         val outputHandler = OutputHandler()
 
 
-        // Get purchase amount
+        println("Please enter the purchase amount.")
         val amount = inputHandler.getPurchaseAmount()
         val ticketCount = amount / 1000
         outputHandler.printTicketNumber(ticketCount)
@@ -17,22 +17,23 @@ fun main() {
         val tickets = lottoMachine.generateTickets(ticketCount)
         outputHandler.printTickets(tickets)
 
-        // Get last Winning numbers
-        val lastWinningNumbers = inputHandler.getWinningNumbers()
-        println(lastWinningNumbers)
-        val bonusNumber = inputHandler.getBonusNumber(lastWinningNumbers)
+        println("\nPlease enter last week's winning numbers.")
+        val winningNumbers = inputHandler.getWinningNumbers()
+
+        println("\nPlease enter the bonus number.")
+        val bonusNumber = inputHandler.getBonusNumber(winningNumbers)
         println(bonusNumber)
 
         //Calculate results
-        val prizeCalculator = PrizeCalculator(lastWinningNumbers,bonusNumber)
+        val prizeCalculator = PrizeCalculator(winningNumbers,bonusNumber)
         val statistics = prizeCalculator.calculateResults(tickets)
 
 
-
-
+        // Display results
+        outputHandler.printStatistics(statistics)
 
     }catch (e: IllegalArgumentException){
-        println("[ERROR]${e.message}")
+        println("[ERROR] ${e.message}")
 
     }
 }
