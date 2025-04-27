@@ -28,4 +28,10 @@ class LottoGame(private val winningTicket: Lotto, private val bonusNumber: Int) 
         return tickets.map { evaluateTicket(it) }.groupBy { it }.mapValues { it.value.size }
 
     }
+
+    fun calculateReturnRate(prizes: Map<Prize, Int>, purchaseAmount: Int): Double {
+
+        val totalWin = prizes.entries.sumOf { (prize, count) -> prize.winningPrize * count}
+        return (totalWin.toDouble() / purchaseAmount) * 100
+    }
 }
