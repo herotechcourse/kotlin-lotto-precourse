@@ -12,5 +12,13 @@ class Lotto(private val numbers: List<Int>) {
     fun calculateMatches(winningCombination: List<Int>): Int {
         return numbers.filter({ value -> winningCombination.contains(value) }).size
     }
-    // TODO: Implement additional functions
+
+    /**
+     * Bonus number logic is not define in requirements, so I assume, that we do a simple check without considering other matches.
+     * However, we could also do checks excluding existing matches in advance.
+     */
+    fun hasBonusNumber(bonusNumber: Int): Boolean {
+        return numbers.contains(bonusNumber)
+    }
 }
+
