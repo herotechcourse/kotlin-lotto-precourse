@@ -85,4 +85,12 @@ class ValidatorTest {
             Validator.validateBonusNumber(7, listOf(5, 12, 23, 34, 38, 41))
         }
     }
+
+    @Test
+    fun `purchase amount exceeds maximum limit throws`() {
+        val overMax = Rule.MAX_PURCHASE_AMOUNT + Rule.LOTTO_PRICE
+        assertThrows<IllegalArgumentException> {
+            Validator.validatePurchaseAmount(overMax)
+        }
+    }
 }
