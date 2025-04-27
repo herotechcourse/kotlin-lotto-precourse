@@ -5,19 +5,16 @@ import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
     @Test
-    fun `throws an exception when lotto numbers exceed six`() {
+    fun `throws an exception when lotto numbers are not six`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
+            Lotto(listOf(1, 2, 3, 4, 5, 6, 7)) // 7 numbers
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
+    fun `throws an exception when lotto numbers have duplicates`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
+            Lotto(listOf(1, 2, 3, 4, 5, 5)) // duplicate 5
         }
     }
-
-    // TODO: Implement tests based on the added features
 }
