@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Lotto
 
 object InputView {
     fun readPurchaseAmount(): Int {
@@ -13,5 +14,23 @@ object InputView {
         }
         return purchaseAmount
     }
+
+    fun readWinningNumbers(): Lotto {
+        println("\nPlease enter last week's winning numbers.")
+        val input = Console.readLine()
+        val numbers = input.split(",")
+            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Winning numbers must be numbers.") }
+
+        if (numbers.size != numbers.distinct().size) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must not contain duplicates.")
+        }
+
+        if (numbers.size != 6) {
+            throw IllegalArgumentException("[ERROR] Must enter exactly 6 winning numbers.")
+        }
+
+        return Lotto(numbers.sorted())
+    }
+
 }
 
