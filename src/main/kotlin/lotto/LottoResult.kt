@@ -1,6 +1,18 @@
 package lotto
 
+import kotlin.math.round
+
 class LottoResult(private val result: MutableMap<LottoPrize, Int>) {
+    fun getResult() = this.result
+
+    fun getProfitRate(purchaseAmount: PurchaseAmount): Float {
+        val prize = this.result.entries.sumOf { (key, value) ->
+            key.prize * value
+        }
+        val profitRate = prize.toFloat() / purchaseAmount.getPurchaseAmount() * 100
+        return round(profitRate * 10) / 10f
+    }
+
     private fun calculateRank(matchCount: Int, isBonusNumberMatched: Boolean) {
         val prize = when {
             matchCount == 5 && isBonusNumberMatched -> LottoPrize.PRIZE_2ND
