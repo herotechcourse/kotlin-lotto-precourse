@@ -6,9 +6,30 @@ import camp.nextstep.edu.missionutils.Console
 object InputView {
 
     fun getPurchaseAmount(): Int {
-        println(Constants.PURCHASE_QUESTION);
+        println(Constants.PURCHASE_QUESTION)
+
         val input = Console.readLine()
-        return input.toIntOrNull() ?: throw LottoInputException.InvalidInput(input)
+        return input.toIntOrNull() ?: throw LottoInputException.InvalidPurchaseInput(input)
+    }
+
+    fun getWinningNumbers(): List<Int> {
+        println(Constants.WINNING_NUMBERS_QUESTION)
+
+        val input = Console.readLine()
+        val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
+        if (numbers.size != 6)
+            throw LottoInputException.InvalidWinningNumbersInput(input)
+
+        return numbers
+    }
+
+    fun getBonusNumber(): Int {
+        println(Constants.BONUS_NUMBER_QUESTION)
+
+        val input = Console.readLine()
+        val bonus = input.toIntOrNull() ?: throw LottoInputException.InvalidBonusNumberInput(input)
+
+        return bonus
     }
 
     object Constants {
