@@ -2,11 +2,18 @@ package lotto
 
 class PurchaseService(private val inputView: LottoInputView, private val outputView: LottoOutputView) {
 
+    private var purchaseAmount: Int = 0
+
     fun getTicketCount(): Int {
         val userInput = inputView.getPurchaseAmount()
         val amount = parseAmount(userInput)
         validateAmount(amount)
+        purchaseAmount = amount
         return calculateTicketCount(amount)
+    }
+
+    fun getPurchaseAmount(): Int {
+        return purchaseAmount
     }
 
     private fun parseAmount(userInput: String): Int {

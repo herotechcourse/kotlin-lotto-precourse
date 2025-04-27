@@ -1,4 +1,4 @@
-/*package lotto
+package lotto
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
@@ -55,62 +55,5 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
-    }
-}
-*/
-
-package lotto
-
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
-
-class ApplicationTest {
-
-    @Test
-    fun `should create tickets with exactly 6 unique numbers`() {
-        val tickets = List(5) {
-            Lotto((1..45).shuffled().take(6))
-        }
-
-        // Assert that each ticket has 6 numbers
-        tickets.forEach { lotto ->
-            assertEquals(6, lotto.toString().split(",").size, "Each ticket should have exactly 6 numbers")
-        }
-    }
-
-    @Test
-    fun `all numbers in each ticket should be between 1 and 45`() {
-        val tickets = List(5) {
-            Lotto((1..45).shuffled().take(6))
-        }
-
-        tickets.forEach { lotto ->
-            val numbers = lotto.toString()
-                .removePrefix("[")
-                .removeSuffix("]")
-                .split(",")
-                .map { it.trim().toInt() }
-
-            numbers.forEach { number ->
-                assertEquals(true, number in 1..45, "Number $number is not between 1 and 45")
-            }
-        }
-    }
-
-    @Test
-    fun `no duplicate numbers in a single ticket`() {
-        val tickets = List(5) {
-            Lotto((1..45).shuffled().take(6))
-        }
-
-        tickets.forEach { lotto ->
-            val numbers = lotto.toString()
-                .removePrefix("[")
-                .removeSuffix("]")
-                .split(",")
-                .map { it.trim().toInt() }
-
-            assertEquals(numbers.size, numbers.distinct().size, "Ticket has duplicate numbers: $numbers")
-        }
     }
 }
