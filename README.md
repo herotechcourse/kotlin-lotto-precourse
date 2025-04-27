@@ -50,3 +50,4 @@
 - Use `Randoms.pickUniqueNumbersInRange()` for number generation.
 - Use `Console.readLine()` for user input.
 - Unit tests using JUnit5 + AssertJ for all logic except UI.
+ 
