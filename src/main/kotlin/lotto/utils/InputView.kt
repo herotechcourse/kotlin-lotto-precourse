@@ -68,12 +68,6 @@ object InputView {
         }
     }
 
-
-    /**
-     * Note: methods below were manually tested
-     * TODO: write integration tests at the end for all methods below
-     */
-
     fun readPurchaseAmount(): UInt {
         while (true) {
             try {

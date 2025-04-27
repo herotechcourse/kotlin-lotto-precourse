@@ -8,13 +8,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-/**
- * TODO: Decide whether tests for the methods `readInput` and `readLineSafe` are necessary.
- *  They require mocking the console like in the racingcar project and
- *  are therefore not small-scale tests as explained in feedback on pre-course week 1.
- *  Alternatively test them manually and mark them as tested in a comment and/or the readme.
- */
-
 class InputViewTest {
     @Test
     fun `validateInputNotEmpty returns input if it is valid`() {

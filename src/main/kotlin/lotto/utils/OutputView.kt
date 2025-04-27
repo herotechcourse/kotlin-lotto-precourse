@@ -10,7 +10,6 @@ object OutputView {
         println("You have purchased $numberOfTickets tickets.")
     }
 
-    // TODO: implement integration test
     fun printTicketsLn(tickets: List<Lotto>) {
         for (ticket in tickets) {
             println(ticket.getNumbers())

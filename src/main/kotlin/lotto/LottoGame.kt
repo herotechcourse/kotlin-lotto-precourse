@@ -84,7 +84,6 @@ class LottoGame(
         return MatchCategory.FIVE_MATCHES
     }
 
-    // TODO: add integration tests
     private fun calculateTotalWinnings(): Int {
         var totalWinnings = 0
         for ((matchCategory, ticketCount) in results) {
@@ -96,7 +95,6 @@ class LottoGame(
         return totalWinnings
     }
 
-    // TODO: add integration tests
     fun getReturnRate(): Double {
         val totalWinnings = calculateTotalWinnings()
         return (totalWinnings.toDouble() / purchaseAmount.toDouble()) * 100
