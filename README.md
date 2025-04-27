@@ -56,4 +56,16 @@ created to display the winning statistics in the next step
 - The output is the the result count which is a mutable list of list containing the lotto enum and the matching copunt for each ticket
 ### Test case:
 - Test case for the following
-- The result count for different scenario of the lotto enum is calculated correctly
+  - The result count for different scenario of the lotto enum is calculated correctly
+### 5. Display the winning statistics with the number of matches in each ticket
+## a. Responsibilities
+- Write a function to display the lotto winning statistics which displays the number of matching tickets for each scenario
+### b.Validation:
+- This code validates that for each number of matches between a ticket an winning number wuth bonus, the number of tickets gets mapped to the relevant lotto enum
+### c. IO args:
+- This code takes result count as input and displays the output as lotto winning statictics
+### d. Test case:
+- The case for the following
+  -Unit test case to check if the output displays correct winning statistics with the ticket count 
+
+### 6. Calculate total return rate and display as output
