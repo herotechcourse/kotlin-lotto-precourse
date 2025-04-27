@@ -26,3 +26,29 @@
   - No duplicate numbers exist.
   - All numbers are between 1 and 45.
 - Prints an error and re-prompts if the input is invalid.
+
+### Bonus Number Input
+
+- Prompts the user to enter the bonus number.
+- Parses the input into an integer.
+- Validates that:
+  - The bonus number must be between 1 and 45.
+  - The bonus number must not duplicate any of the winning numbers.
+- Prints a corresponding error message if input is invalid and re-prompts the user.
+
+### Improved Error Handling
+
+- Improved winning numbers input:
+  - Parses each number safely using `toIntOrNull()`.
+  - Prints an error message if any input is not a valid integer.
+- Improved bonus number input:
+  - Parses bonus number safely using `toIntOrNull()`.
+  - Prints an error message if input is not a valid integer.
+- Ensures consistent error handling without program crashes.
+
+### Helper Function for Input Validation
+
+- Introduced `promptUntilValid` helper function:
+  - Takes a block of input-reading and validation logic.
+  - Automatically retries until valid input is entered.
+  - Reduces duplication of `while (true) try-catch` logic across different inputs.

@@ -3,6 +3,16 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
+fun <T> promptUntilValid(prompt: () -> T): T {
+    while (true) {
+        try {
+            return prompt()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
 fun readPurchaseAmount(): Int {
     println("Please enter the purchase amount.")
     val userInput = Console.readLine()
@@ -37,7 +47,7 @@ fun readWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers. (comma-separated)")
     val winningNumbers = Console.readLine()
         .split(",")
-        .map { it.trim().toInt()}
+        .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Winning numbers must be integers.") }
     return winningNumbers
 }
 
@@ -53,32 +63,46 @@ fun validateWinningNumbers(winningNumbers: List<Int>) {
     }
 }
 
+fun readBonusNumber(): Int {
+    println("Please enter the bonus number.")
+    val bonusNumber = Console.readLine()
+        .toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] Bonus number must be an integer.")
+    return bonusNumber
+}
+
+fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
+    if (bonusNumber < 1 || bonusNumber > 45 ) {
+        throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+    }
+    if (winningNumbers.contains(bonusNumber)) {
+        throw IllegalArgumentException("[ERROR] Bonus number must not duplicate winning numbers.")
+    }
+}
+
 fun main() {
-    var amount: Int
-    while (true) {
-        try {
-            amount = readPurchaseAmount()
-            validatePurchaseAmount(amount)
-            break
-        } catch (e: IllegalArgumentException) {
-            println(e.message)
-        }
+    val purchaseAmount = promptUntilValid {
+        val amount = readPurchaseAmount()
+        validatePurchaseAmount(amount)
+        amount
     }
     println()
-    val ticketCount = amount / 1000
+    val ticketCount = purchaseAmount / 1000
     println("You have purchased $ticketCount tickets.")
     val tickets = createMultipleTickets(ticketCount)
     for (ticket in tickets){
         println(ticket)
     }
     println()
-    while (true){
-        try {
-            val winningNumbers = readWinningNumbers()
-            validateWinningNumbers(winningNumbers)
-            break
-        } catch (e: IllegalArgumentException) {
-            println(e.message)
-        }
+    val winningNumbers = promptUntilValid {
+        val numbers = readWinningNumbers()
+        validateWinningNumbers(numbers)
+        numbers
+    }
+    println()
+    val bonusNumber = promptUntilValid {
+        val bonus = readBonusNumber()
+        validateBonusNumber(bonus, winningNumbers)
+        bonus
     }
 }
