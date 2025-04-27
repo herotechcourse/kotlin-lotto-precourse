@@ -7,6 +7,8 @@ class BonusNumber(private val number: Int) {
         require(number in Lotto.LOTTO_MIN_NUMBER..Lotto.LOTTO_MAX_NUMBER) { LottoErrorMessage.INVALID_BONUS_NUMBER_RANGE.message }
     }
 
+    fun getNumbers() = this.number
+
     companion object {
         fun from(number: String, winningNumber: WinningNumber): BonusNumber {
             require(number.toIntOrNull() != null) { LottoErrorMessage.BONUS_NUMBER_NOT_INTEGER.message }
