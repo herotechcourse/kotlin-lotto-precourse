@@ -11,5 +11,15 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
-    // TODO: Implement additional functions
+    fun displayTicket() {
+        println(numbers)
+    }
+
+    fun contains(number: Int): Boolean {
+        return number in numbers
+    }
+
+    fun matchCount(winningNumbers: List<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
 }

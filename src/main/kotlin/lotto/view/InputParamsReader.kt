@@ -1,11 +1,13 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.PurchaseAmountValidator
 
 class InputParamsReader {
     private val validator = PurchaseAmountValidator()
 
     fun retrievePurchaseAmountWithRetry(): Int {
+        println("Please enter the purchase amount.")
         while (true) {
             try {
                 return retrievePurchaseAmount()
@@ -16,6 +18,7 @@ class InputParamsReader {
     }
 
     fun retrieveLastWeekWinningNumbersWithRetry(): List<Int> {
+        println("Please enter last week's winning numbers.")
         while (true) {
             try {
                 return retrieveLastWeekWinningNumbers()
@@ -26,6 +29,7 @@ class InputParamsReader {
     }
 
     fun retrieveBonusNumberWithRetry(lastWeekWinningNumbers: List<Int>): Int {
+        println("Please enter the bonus number.")
         while (true) {
             try {
                 return retrieveBonusNumber(lastWeekWinningNumbers)
