@@ -1,7 +1,6 @@
-package lotto.service.statistics
+package lotto.service
 
 import lotto.domain.Rank
-import lotto.service.Statistics
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
