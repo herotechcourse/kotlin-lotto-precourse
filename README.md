@@ -26,3 +26,20 @@
 ### b. IO args:
 - The function returns a mutable list of mutable list as output
 
+## 3. Implement a function to get winning number list and bonus number as user input
+### a.Responsibilities:
+- Write a function that gets winning numbers as input from the user. This winning number is a list of 6 elements which would be used in comparing with the tickets
+  containing random numbers generated in the previous step.A bonus number is also received as user input here
+### b. Validation:
+-This code validates the following
+- Winning numbers should not ne null or negative,should be a valid integer,should have a length of 6, should not be more than 45
+- Bonus number should not be null or negative, should be a valid integer, should not be more than 45
+### c. IO args:
+- This function takes the following input from the user
+  - Winning numbers-this is a list of 6 numbers
+  - Bonus number-This is an integer
+### d. Test cases
+- Test case for the following
+  - Winning numbers-not null, empty, length should be 6, not greater than 45
+  - Bonus-not null or zero, not greater than 45
+
