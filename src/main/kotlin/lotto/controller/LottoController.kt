@@ -5,6 +5,7 @@ import lotto.presentation.InputView
 import lotto.presentation.OutputView
 import lotto.InputValidator
 import lotto.LottoTicketGenerator
+import lotto.Statistics
 
 interface LottoController {
     fun run()
@@ -15,6 +16,7 @@ class LottoControllerImpl(
     private val inputView: InputView,
     private val outputView: OutputView,
     private val lottoTicketGenerator: LottoTicketGenerator,
+    private val statistics: Statistics,
 ) : LottoController {
     private fun processPurchaseAmount(): Int {
         outputView.printInputPrompt(PURCHASE_AMOUNT_PROMPT)
@@ -64,6 +66,11 @@ class LottoControllerImpl(
         val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()
         val bonusNumber = processBonusNumber()
+        val result = statistics.calculateResult(
+            tickets = tickets,
+            winningNumbers = winningNumbers,
+            bonusNumber = bonusNumber,
+        )
     }
 
     companion object {

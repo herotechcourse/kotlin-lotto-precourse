@@ -10,6 +10,7 @@ fun main() {
         inputValidator = InputValidatorImpl(),
         outputView = OutputViewImpl(),
         lottoTicketGenerator = LottoTicketGeneratorImpl(),
+        statistics = StatisticsImpl(),
     )
     lottoController.run()
 }

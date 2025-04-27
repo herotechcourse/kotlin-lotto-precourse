@@ -1,17 +1,18 @@
 package lotto
 
 interface Statistics {
-    fun calculateResult(tickets: List<Lotto>): Map<Rank, Int>
+    fun calculateResult(tickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): Map<Rank, Int>
     fun calculateProfitRate(purchaseAmount: Int): Double
 }
 
-class StatisticsImpl(
-    private val winningNumbers: List<Int>,
-    private val bonusNumber: Int
-) : Statistics {
+class StatisticsImpl : Statistics {
     private val results = mutableMapOf<Rank, Int>()
 
-    override fun calculateResult(tickets: List<Lotto>): Map<Rank, Int> {
+    override fun calculateResult(
+        tickets: List<Lotto>,
+        winningNumbers: List<Int>,
+        bonusNumber: Int,
+    ): Map<Rank, Int> {
         tickets.forEach { ticket ->
             val matchCount = ticket.matchCount(winningNumbers)
             val hasBonus = ticket.containsBonus(bonusNumber)
