@@ -4,7 +4,6 @@ class LottoResult(private val rankCounts: Map<Rank, Int>) {
     companion object {
         fun evaluate(tickets: List<LottoTicket>, winning: Set<Int>, bonus: Int): LottoResult {
             val result = mutableMapOf<Rank, Int>()
-
             for (ticket in tickets) {
                 val match = ticket.matchCount(winning)
                 val bonusMatch = ticket.containsBonus(bonus)

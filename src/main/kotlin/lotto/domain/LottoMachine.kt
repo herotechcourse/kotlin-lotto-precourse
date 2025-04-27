@@ -1,6 +1,7 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 object LottoMachine {
     fun generateTickets(count: Int): List<LottoTicket> {

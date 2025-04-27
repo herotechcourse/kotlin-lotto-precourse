@@ -24,7 +24,6 @@ object InputView {
         }
     }
 
-
     fun readBonusNumber(): Int {
         println("\nPlease enter the bonus number.")
         return retryInput {

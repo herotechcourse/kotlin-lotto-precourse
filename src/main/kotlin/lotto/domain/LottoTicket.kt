@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Lotto
+
 class LottoTicket(val lotto: Lotto) {
     fun matchCount(winningNumbers: Set<Int>): Int {
         return lotto.getNumbers().count { it in winningNumbers }
@@ -9,4 +11,3 @@ class LottoTicket(val lotto: Lotto) {
         return bonus in lotto.getNumbers()
     }
 }
-
