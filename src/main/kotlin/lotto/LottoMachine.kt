@@ -1,10 +1,12 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.domain.LottoRank
 
 class LottoMachine(private val money: Int) {
 
     val tickets: List<Lotto> = generateTickets()
+    private val ranks = mutableListOf(0, 0, 0, 0, 0, 0, 0)
 
     private fun generateTickets(): List<Lotto> {
         return List(money / 1000) {
@@ -15,6 +17,23 @@ class LottoMachine(private val money: Int) {
     private fun generateSingleTicket(): Lotto {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
         return Lotto(numbers)
+    }
+
+    fun setAllRank(guessNumbers: Set<Int>, bonusNumber: Int): List<Int> {
+        for (ticket in tickets) {
+            val actualNumbers = ticket.getNumbers()
+            val matchCount = countMatch(actualNumbers, guessNumbers)
+            val bonusMatch = checkBonusMatch(ticket, bonusNumber)
+            setRank(matchCount, bonusMatch)
+        }
+        return ranks
+    }
+
+    private fun setRank(matchCount: Int, bonusMatch: Boolean) {
+        val rank = LottoRank.findBy(matchCount, bonusMatch)
+        if (rank != LottoRank.NONE) {
+            ranks[rank.ordinal] += 1
+        }
     }
 
     private fun countMatch(actualNumbers: Set<Int>, guessNumbers: Set<Int>): Int {
