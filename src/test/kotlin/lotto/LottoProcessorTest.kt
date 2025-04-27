@@ -68,7 +68,7 @@ class LottoProcessorTest {
     }
 
     @Test
-    fun `calculateProfitRate should return correct profit rate`() {
+    fun `calculateProfitRate should return correct above 0 profit rate`() {
         val prizeDistribution = mapOf(
             Prize.FIRST to 1,
             Prize.SECOND to 2
@@ -80,12 +80,23 @@ class LottoProcessorTest {
     }
 
     @Test
-    fun `calculateProfitRate should return 0 when totalSpent is 0`() {
+    fun `calculateProfitRate should return correct profit rate`() {
         val prizeDistribution = mapOf(
-            Prize.FIRST to 1,
-            Prize.SECOND to 2
+            Prize.FIFTH to 1,
+            Prize.SECOND to 0
         )
-        val totalSpent = 0
+        val totalSpent = 8000
+        val profitRate = lottoProcessor.profitRateCalculator(totalSpent, prizeDistribution)
+
+        assertThat(profitRate).isEqualTo(62.5)
+    }
+
+    @Test
+    fun `calculateProfitRate should return correct 0 profit rate`() {
+        val prizeDistribution = mapOf(
+            Prize.NONE to 8,
+        )
+        val totalSpent = 8000
         val profitRate = lottoProcessor.profitRateCalculator(totalSpent, prizeDistribution)
 
         assertThat(profitRate).isEqualTo(0.0)
