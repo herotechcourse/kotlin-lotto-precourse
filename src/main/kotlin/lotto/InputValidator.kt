@@ -1,4 +1,4 @@
-package lotto.utils
+package lotto
 
 interface InputValidator {
     fun validatePurchaseAmount(purchaseAmountInput: String): Int

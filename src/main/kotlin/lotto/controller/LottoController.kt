@@ -3,8 +3,8 @@ package lotto.controller
 import lotto.Lotto
 import lotto.presentation.InputView
 import lotto.presentation.OutputView
-import lotto.utils.InputValidator
-import lotto.utils.LottoTicketGenerator
+import lotto.InputValidator
+import lotto.LottoTicketGenerator
 
 class LottoController(
     private val inputValidator: InputValidator,

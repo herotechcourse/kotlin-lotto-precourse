@@ -1,7 +1,6 @@
-package lotto.utils
+package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.Lotto
 
 interface LottoTicketGenerator {
     fun generateNumberOfTickets(purchaseAmount: Int): Int
