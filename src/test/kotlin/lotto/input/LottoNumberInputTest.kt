@@ -2,7 +2,6 @@ package lotto.input
 
 import lotto.Lotto
 import lotto.WinningLotto
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -68,7 +67,7 @@ class LottoNumberInputTest {
     @Test
     fun `should throw exception when bonus number is out of range`() {
         // given
-        val lotto: Lotto = Lotto(listOf(1,2,3,4,5,6))
+        val lotto = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber: Int = 46
 
         // when
@@ -83,7 +82,7 @@ class LottoNumberInputTest {
     @Test
     fun `should throw exception when bonus number is duplicated with main numbers`() {
         // given
-        val lotto: Lotto = Lotto(listOf(1,2,3,4,5,6))
+        val lotto = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber: Int = 6
 
         // when
