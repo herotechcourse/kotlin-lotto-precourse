@@ -25,6 +25,8 @@ fun main() {
         tickets = tickets
     )
 
-    OutputView.printResult(result)
+    val returnRate = lottoGame.calculateReturnRate(result, purchaseAmount)
+
+    OutputView.printResult(result, returnRate)
 
 }

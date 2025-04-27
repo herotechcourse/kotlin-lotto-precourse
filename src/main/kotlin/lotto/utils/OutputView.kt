@@ -11,12 +11,18 @@ object OutputView {
         }
     }
 
-    fun printResult(result: Map<Prize, Int>) {
+    fun printResult(
+        result: Map<Prize, Int>,
+        returnRate: Double
+    ) {
         println()
         val prizes = listOf(Prize.FIFTH, Prize.FOURTH, Prize.THIRD,Prize.SECOND, Prize.FIRST)
         prizes.forEach { prize ->
             val count = result.getOrDefault(prize, defaultValue = 0)
-            println("${prize.display} - $count tickets")
+            println("${prize.display} – $count tickets")
         }
+
+        println("Total return rate is %.1f%%.".format(returnRate))
     }
+
 }
