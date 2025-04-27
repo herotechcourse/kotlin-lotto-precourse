@@ -8,17 +8,12 @@ object LottoResult {
     fun run() {
         val amount = readAmount()
         val tickets = generateTickets(amount)
-
-        OutputView.printTicketCount(tickets.size)
-        OutputView.printTickets(tickets)
+        printTickets(tickets)
 
         val winningNumbers = readWinningNumbers()
-
         val ranks = matchTickets(tickets, winningNumbers)
         val statistics = LottoStatistics(ranks)
-
-        OutputView.printStatistics(statistics.getRankCounts())
-        OutputView.printProfitRate(statistics.calculateProfitRate(amount))
+        printStatistics(statistics, amount)
     }
 
     private fun readAmount(): Int {
@@ -43,6 +38,16 @@ object LottoResult {
             val bonusMatched = winningNumbers.isBonusMatch(ticket)
             Rank.find(matchCount, bonusMatched)
         }
+    }
+
+    private fun printTickets(tickets: List<Lotto>) {
+        OutputView.printTicketCount(tickets.size)
+        OutputView.printTickets(tickets)
+    }
+
+    private fun printStatistics(statistics: LottoStatistics, amount: Int) {
+        OutputView.printStatistics(statistics.getRankCounts())
+        OutputView.printProfitRate(statistics.calculateProfitRate(amount))
     }
 
     private fun <T> retryInput(action: () -> T): T {
