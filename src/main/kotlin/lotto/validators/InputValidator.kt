@@ -4,7 +4,7 @@ import lotto.TICKET_PRICE
 
 object InputValidator {
     fun validateSumOfMoney(sum: Int?): Int {
-        requireNotNull(sum) { "[ERROR] The purchase amount should be an integer." }
+        requireNotNull(sum) { ValidationErrors.MUST_BE_INTEGER.message }
 
         require(sum % TICKET_PRICE == 0) { ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message }
 
@@ -12,7 +12,7 @@ object InputValidator {
     }
 
     fun validateNumberInRange(number: Int?): Int {
-        requireNotNull(number) { "[ERROR] A number should be an integer." }
+        requireNotNull(number) { ValidationErrors.MUST_BE_INTEGER.message }
 
         require(number in 1..45) {
             ValidationErrors.MUST_BE_IN_RANGE.message
@@ -26,7 +26,7 @@ object InputValidator {
             ValidationErrors.MUST_ENTER_SIX_NUMBERS.message
         }
 
-        require(numbers.all { it != null }) { "[ERROR] The winning number should be an integer." }
+        require(numbers.all { it != null }) { ValidationErrors.MUST_BE_INTEGER.message }
 
         require(numbers.size == numbers.toSet().size) {
             ValidationErrors.MUST_ENTER_UNIQUE_NUMBERS.message
