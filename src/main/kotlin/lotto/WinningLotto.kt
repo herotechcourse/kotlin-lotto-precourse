@@ -4,6 +4,7 @@ class WinningLotto(
     private val winningLotto: Lotto,
     private val bonusNumber: Int
 ) {
+
     init {
         require(bonusNumber in NUMBER_RANGE) { "Bonus number must be between ${NUMBER_RANGE.first} and ${NUMBER_RANGE.last}." }
         require(bonusNumber !in winningLotto.getNumbers()) { "Bonus number must not be included in the winning numbers." }

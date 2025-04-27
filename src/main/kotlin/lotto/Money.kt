@@ -2,6 +2,7 @@ package lotto
 
 @JvmInline
 value class Money(val amount: Int) {
+
     init {
         require(amount in UNIT..MAX) { "Money must be between $UNIT and $MAX." }
         require(amount % UNIT == 0) { "Money must be divisible by $UNIT." }
