@@ -4,8 +4,7 @@ class LottoGame (
     private val inputView: InputView,
     private val lottoValidator: LottoValidator
 ) {
-    private var winningNumbers = emptyList<Int>()
-    private var bonusNumber = 0
+    private lateinit var winningCombination: WinningCombination
 
     fun start(){
         getNumberOfTickets()
@@ -22,13 +21,13 @@ class LottoGame (
     private fun initWinningNumbers() = repeatUntilSuccess {
         val input: List<String> = inputView.readWinningNumbers()
         lottoValidator.validateWinningNumbers(input)
-        winningNumbers = input.map { it.toInt() }
+        winningCombination = WinningCombination(input.map { it.toInt() }, 0)
     }
 
     private fun initBonusNumber() = repeatUntilSuccess {
         val input = inputView.readBonusNumber()
-        lottoValidator.validateBonusNumber(input, winningNumbers)
-        bonusNumber = input.toInt()
+        lottoValidator.validateBonusNumber(input, winningCombination.winningNumberList)
+        winningCombination = WinningCombination(winningCombination.winningNumberList, input.toInt())
     }
 
     private fun <T> repeatUntilSuccess(action: () -> T): T {
