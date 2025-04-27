@@ -1,8 +1,11 @@
 package lotto
 
+import lotto.validators.ValidationErrors
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == 6) { ValidationErrors.MUST_ENTER_SIX_NUMBERS.message }
+        require(numbers.size == numbers.toSet().size) { ValidationErrors.MUST_ENTER_UNIQUE_NUMBERS.message }
     }
 
     fun showNumbers() {
