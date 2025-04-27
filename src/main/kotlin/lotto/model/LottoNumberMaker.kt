@@ -2,9 +2,13 @@ package lotto.model
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val LOTTO_NUMBER_START = 1
+const val LOTTO_NUMBER_END = 45
+const val LOTTO_NUMBER_COUNT = 6
+
 object LottoNumberMaker {
     fun makeOneLineLottoNumber(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT)
     }
 
     fun makeTotalLottoNumber(ticketCount: Int): MutableList<List<Int>> {

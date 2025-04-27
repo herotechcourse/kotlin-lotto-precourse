@@ -1,5 +1,8 @@
 package lotto.validation
 
+import lotto.model.LOTTO_NUMBER_END
+import lotto.model.LOTTO_NUMBER_START
+
 object BonusNumberValidator {
     private const val ERROR_PREFIX: String = "[ERROR]"
     private const val PROMPT_AGAIN: String = "Please enter it again"
@@ -16,7 +19,7 @@ object BonusNumberValidator {
         val digitRegex = Regex("\\d+")
         require(bonusNumber.matches(digitRegex)) { NOT_NUMBER_TYPE }
 
-        require(bonusNumber.toInt() in 1..45) { INVALID_RANGE }
+        require(bonusNumber.toInt() in LOTTO_NUMBER_START..LOTTO_NUMBER_END) { INVALID_RANGE }
     }
 
     fun validateDuplicateWithWinningNumbers(bonusNumber: String, winningNumbers: List<String>) {
