@@ -1,4 +1,4 @@
-package lotto.service.logic
+package lotto.service
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertTrue
