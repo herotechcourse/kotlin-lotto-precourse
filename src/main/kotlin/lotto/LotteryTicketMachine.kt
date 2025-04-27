@@ -10,16 +10,28 @@ object LotteryTicketMachine {
         }
     }
 
-    fun validateWinningNumbers(numbers: List<Int>) {
+    fun validateAmountOfNumbers(numbers: List<Int>) {
         if (numbers.size != 6) {
             throw IllegalArgumentException("[ERROR] Exactly 6 winning numbers must be provided.")
         }
-        if (numbers.distinct().size != 6) {
+    }
+
+    fun validateUniqueness(numbers: List<Int>) {
+        if (numbers.distinct().size != numbers.size) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
         }
+    }
+
+    fun validateRange(numbers: List<Int>) {
         if (numbers.any { it !in 1..45}) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.")
         }
+    }
+
+    fun validateWinningNumbers(numbers: List<Int>) {
+        validateAmountOfNumbers(numbers)
+        validateUniqueness(numbers)
+        validateRange(numbers)
     }
 
     fun validateBonusNumber(winningNumbers: List<Int>, bonusNumber: Int) {
@@ -30,4 +42,6 @@ object LotteryTicketMachine {
             throw IllegalArgumentException("[ERROR] Bonus number must not be one of the winning numbers.")
         }
     }
+
+
 }
