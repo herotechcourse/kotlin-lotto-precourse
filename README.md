@@ -25,7 +25,7 @@
 
 
 - [] re-prompt input from that step - functional interface
-- [] print prize with comma(,) - Decimal Format
+- [x] print prize with comma(,) - StringFormat
 - [x] sort lotto number
 - [] % format
 - [] bonus ball format

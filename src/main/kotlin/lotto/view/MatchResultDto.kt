@@ -10,7 +10,11 @@ data class MatchResultDto(val output: String) {
                 .filter { it.key != Rank.NONE }
                 .entries
                 .sortedByDescending { it.key.rank }
-                .joinToString(separator = "\n") { it.key.matchCount.first.toString() + " Matches (" + it.key.price.toString() + " KRW) - " + it.value.toString() + " tickets" }
+                .joinToString(separator = "\n") { entry ->
+                    "${entry.key.matchCount.first} Matches " +
+                            (if (entry.key.isBonusNumberRequired) "+ Bonus Ball " else "") +
+                            "(${String.format("%,d", entry.key.price)} KRW) - ${entry.value} tickets"
+                }
             return MatchResultDto(matchResultForOutput)
         }
     }
