@@ -17,3 +17,12 @@
     - The purchase amount should be a valid integer and not string
     - It should not be empty or 0
     - It should be divisible by 1000
+  
+## 2. Generate Random number for the number of tickets purchased
+### a.Responsibilities:
+- Write a function to generate total ticket lists. With the total no of tickets calculated from the above step, generate that many number of tickets-
+  each having a list of 6 elements that are generated randomly having the range of 1 to 45. These n number of tickets havinglist of 6 random numbers are
+  then stored into another mutable list
+### b. IO args:
+- The function returns a mutable list of mutable list as output
+
