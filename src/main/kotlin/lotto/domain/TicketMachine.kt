@@ -1,7 +1,6 @@
 package lotto.domain
 
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
 import lotto.view.InputView
@@ -10,8 +9,7 @@ import lotto.view.OutputView
 object TicketMachine {
 
     fun buy(): PlayerData {
-        OutputView.requestUser("Please enter the amount of money you want to spend.")
-        val moneySpent = InputView.getPayment(Console.readLine())
+        val moneySpent = InputView.getPayment()
         val ticketCount = moneySpent / lotto.TICKET_PRICE
         val lottoTickets: List<Lotto> = List(ticketCount) { createdTicket() }
         OutputView.showPurchase(lottoTickets.map{it.getNumbers()})
