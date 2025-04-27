@@ -36,4 +36,18 @@ class LottoTest {
         val lotto = Lotto(numbers)
         assertEquals(numbers, lotto.getNumbers())
     }
+
+    @Test
+    fun `generateLottoList creates the correct number of lotto tickets`() {
+        val purchaseAmount = PurchaseAmount(3000)
+        val lottoList = Lotto.generateLottoList(purchaseAmount)
+
+        assertEquals(3, lottoList.size)
+        lottoList.forEach { lotto ->
+            assertEquals(6, lotto.getNumbers().size)
+            assertTrue(lotto.getNumbers().all { it in Lotto.LOTTO_MIN_NUMBER..Lotto.LOTTO_MAX_NUMBER })
+            assertEquals(lotto.getNumbers().toSet().size, lotto.getNumbers().size)
+            assertEquals(lotto.getNumbers(), lotto.getNumbers().sorted())
+        }
+    }
 }
