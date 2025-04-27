@@ -24,7 +24,7 @@ Main part of running process where it initiates different processes of input rea
 
 ### Prize Class:
 
-Would be an enum class containing all prizes based on the number of matching cards necessary to win them, together with their monetary value in descending order.
+Would be an enum class containing all prizes based on the number of matching numbers necessary to win them, together with their monetary value in descending order.
 
 ### Input and output views
 
