@@ -35,21 +35,11 @@ class LottoGame() {
     }
     fun determineRank(countOfMatchingNumbers: Int, countOfMatchingBonusNumber: Int): Rank
     {
-        if (countOfMatchingNumbers == 6) {
-            return Rank.FIRST
-        }
-        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 1) {
-            return Rank.SECOND
-        }
-        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 0) {
-            return Rank.THIRD
-        }
-        if (countOfMatchingNumbers == 4) {
-            return Rank.FOURTH
-        }
-        if (countOfMatchingNumbers == 3) {
-            return Rank.FIFTH
-        }
+        if (countOfMatchingNumbers == 6) { return Rank.FIRST }
+        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 1) { return Rank.SECOND }
+        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 0) { return Rank.THIRD }
+        if (countOfMatchingNumbers == 4) { return Rank.FOURTH }
+        if (countOfMatchingNumbers == 3) { return Rank.FIFTH }
         return Rank.NONE
     }
 }

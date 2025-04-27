@@ -33,7 +33,7 @@ Ths project is a console-based simulation of a simple ticket machine with the fo
 7. Calculate how many numbers match in each ticket
 8. Assign prize ranks to amount of matching numbers
 9. Determine tickets that correspond to a prize rank
-10. Calculate total earnings 
+10. Calculate total earnings
 11. Calculate profit rate
 12. Display winnings statistics and profit rate
 13. Implement unit tests for all logic except UI

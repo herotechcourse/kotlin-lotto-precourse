@@ -1,25 +1,28 @@
 package lotto
 
-import kotlin.coroutines.coroutineContext
-
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
     val validator = Validator()
     val lottoGenerator = LottoGenerator()
     val game = LottoGame()
+
     val validPurchaseAmount = readAndValidatePurchaseAmount(inputView, validator)
     val numberOfTickets = calculateNumberOfTickets(validPurchaseAmount)
     val purchasedTickets = lottoGenerator.getTickets(numberOfTickets)
+
     outputView.printHeader("You have purchased $numberOfTickets tickets.")
     outputView.printListOfTickets(purchasedTickets)
+
     val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
     val bonusNumber = readAndValidateBonusNumber(inputView, validator, winningNumbers)
     val lottoResults = game.checkAllTickets(purchasedTickets, winningNumbers, bonusNumber)
     var profitRate = calculateProfitRate(lottoResults, validPurchaseAmount)
-    //outputView.printListOfItems(lottoResults)
-    //outputView.printNumber(profitRate)
 
+    val numberOfTicketsOfEachRank = countTicketsOfEachRank(lottoResults)
+    outputView.printHeader("Winning Statistics\n" + "---")
+    outputView.printResults(numberOfTicketsOfEachRank)
+    outputView.printMessage("Total return rate is $profitRate%.")
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {
@@ -79,4 +82,19 @@ fun calculateProfitRate(ranks: List<Rank>, spentAmount: Int): Double {
         profitRate = totalEarnings.toDouble() / spentAmount * 100
     }
     return profitRate
+}
+fun countTicketsOfEachRank(ranks: List<Rank>): List<Int> {
+    var firstCount = 0
+    var secondCount = 0
+    var thirdCount = 0
+    var fourthCount = 0
+    var fifthCount = 0
+    for (rank in ranks) {
+        if (rank == Rank.FIRST) { firstCount++ }
+        if (rank == Rank.SECOND) { secondCount++ }
+        if (rank == Rank.THIRD) { thirdCount++ }
+        if (rank == Rank.FOURTH) { fourthCount++ }
+        if (rank == Rank.FIFTH) { fifthCount++ }
+    }
+    return listOf(fifthCount, fourthCount, thirdCount, secondCount, firstCount)
 }
