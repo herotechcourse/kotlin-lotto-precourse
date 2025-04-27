@@ -13,8 +13,8 @@ fun main() {
     outputView.printListOfTickets(purchasedTickets)
     val winningNumbers = readAndValidateWinningNumbers(inputView, validator)
     val bonusNumber = readAndValidateBonusNumber(inputView, validator, winningNumbers)
-    game.checkAllTickets(purchasedTickets, winningNumbers, bonusNumber)
-    //outputView.printListOfItems(winningNumbers)
+    val lottoResults = game.checkAllTickets(purchasedTickets, winningNumbers, bonusNumber)
+    //outputView.printListOfItems(lottoResults)
 }
 fun readAndValidatePurchaseAmount(inputView: InputView, validator: Validator): Int {
     while (true) {

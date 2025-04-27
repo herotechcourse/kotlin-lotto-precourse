@@ -1,15 +1,18 @@
 package lotto
 
 class LottoGame() {
-    fun checkAllTickets(purchasedTickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int){
+    fun checkAllTickets(purchasedTickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): List<Rank> {
+        var rank: Rank
+        val results = mutableListOf<Rank>()
         for (purchasedTicket in purchasedTickets) {
             val countOfMatchingNumbers = compareWinningNumbers(purchasedTicket, winningNumbers)
             val countOfMatchingBonusNumber = compareBonusNumber(purchasedTicket, bonusNumber)
-            if (countOfMatchingNumbers >= 3)
-            {
-                determineRank(countOfMatchingNumbers, countOfMatchingBonusNumber)
+            rank = determineRank(countOfMatchingNumbers, countOfMatchingBonusNumber)
+            if (rank != Rank.NONE) {
+                results.add(rank)
             }
         }
+        return results
     }
     fun compareWinningNumbers(ticket: Lotto, winningNumbers: List<Int>): Int
     {
@@ -30,8 +33,23 @@ class LottoGame() {
         }
         return countOfMatchingBonusNumber
     }
-    fun determineRank(countOfMatchingNumbers: Int, countOfMatchingBonusNumber: Int)
+    fun determineRank(countOfMatchingNumbers: Int, countOfMatchingBonusNumber: Int): Rank
     {
-
+        if (countOfMatchingNumbers == 6) {
+            return Rank.FIRST
+        }
+        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 1) {
+            return Rank.SECOND
+        }
+        if (countOfMatchingNumbers == 5 && countOfMatchingBonusNumber == 0) {
+            return Rank.THIRD
+        }
+        if (countOfMatchingNumbers == 4) {
+            return Rank.FOURTH
+        }
+        if (countOfMatchingNumbers == 3) {
+            return Rank.FIFTH
+        }
+        return Rank.NONE
     }
 }
