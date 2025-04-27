@@ -76,9 +76,8 @@
 - [x] **`LottoMachine.kt`** 
 - [x] **`WinningLotto.kt`** 
 - [x] **`BonusNumber.kt`** 
-- [ ] **`Rank.kt`** : Enum class defining the winning ranks.
-- [ ] **`PrizeCalculator.kt`**  
-- [ ] **`LottoComparator.kt`**
+- [ ] **`Rank.kt`**
+- [ ] **`ResultCalculator.kt`**  
 
 ##### view (User Input & Output)
 - [x] **`InputView.kt`**  
