@@ -3,12 +3,18 @@ package lotto.presentation
 import lotto.Lotto
 
 interface OutputView {
+    fun printInputPrompt(promptMessage: String)
     fun printErrorMessage(errorMessage: String?)
     fun printNumberOfTickets(numberOfTickets: Int)
-    fun printTickets(listOfTickets: List<Lotto>)
+    fun printTickets(tickets: List<Lotto>)
 }
 
 class OutputViewImpl : OutputView {
+
+    override fun printInputPrompt(promptMessage: String) {
+        println(promptMessage)
+    }
+
     override fun printErrorMessage(errorMessage: String?) {
         println("$ERROR_MESSAGE_PREFIX $errorMessage")
     }
@@ -18,8 +24,8 @@ class OutputViewImpl : OutputView {
         println(NUMBER_OF_TICKETS_MESSAGE.format(numberOfTickets))
     }
 
-    override fun printTickets(listOfTickets: List<Lotto>) {
-        listOfTickets.forEach { ticket ->
+    override fun printTickets(tickets: List<Lotto>) {
+        tickets.forEach { ticket ->
             println(ticket)
         }
         println()

@@ -3,17 +3,18 @@ package lotto.presentation
 import camp.nextstep.edu.missionutils.Console
 
 interface InputView {
-    fun promptInputForPurchaseAmount(): String
+    fun readPurchaseAmount(): String
+    fun readWinningNumbers(): String
 }
 
 class InputViewImpl : InputView {
-    override fun promptInputForPurchaseAmount(): String {
-        println(PURCHASE_AMOUNT_PROMPT)
+
+    override fun readPurchaseAmount(): String {
         return Console.readLine()
     }
 
-    companion object {
-        private const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
+    override fun readWinningNumbers(): String {
+        return Console.readLine()
     }
 
 }

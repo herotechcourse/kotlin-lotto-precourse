@@ -12,12 +12,24 @@ class LottoController(
     private val lottoTicketGenerator: LottoTicketGenerator,
 ) {
     private fun processPurchaseAmount(): Int {
-        val input = inputView.promptInputForPurchaseAmount()
+        outputView.printInputPrompt(PURCHASE_AMOUNT_PROMPT)
+        val input = inputView.readPurchaseAmount()
         return try {
-            inputValidator.validateInput(input)
+            inputValidator.validatePurchaseAmount(input)
         } catch (e: IllegalArgumentException) {
             outputView.printErrorMessage(e.message)
             processPurchaseAmount()
+        }
+    }
+
+    private fun processWinningNumbers(): List<Int> {
+        outputView.printInputPrompt(WINNING_NUMBERS_PROMPT)
+        val input = inputView.readWinningNumbers()
+        return try {
+            inputValidator.validateWinningNumbers(input)
+        } catch (e: IllegalArgumentException) {
+            outputView.printErrorMessage(e.message)
+            processWinningNumbers()
         }
     }
 
@@ -27,5 +39,11 @@ class LottoController(
         outputView.printNumberOfTickets(numberOfTickets)
         val tickets = lottoTicketGenerator.generateTickets(numberOfTickets)
         outputView.printTickets(tickets)
+        val winningNumbers = processWinningNumbers()
+    }
+
+    companion object {
+        private const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
+        private const val WINNING_NUMBERS_PROMPT = "Please enter last week's winning numbers."
     }
 }
