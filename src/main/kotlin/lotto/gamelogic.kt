@@ -34,7 +34,7 @@ fun checkWinningTickets(tickets: List<List<Int>>, winningNumbers: List<Int>, luc
             matchCount == 5 -> LottoResults.THIRD_PRIZE
             matchCount == 4 -> LottoResults.FOURTH_PRIZE
             matchCount == 3 -> LottoResults.FIFTH_PRIZE
-            else -> null // No prize
+            else -> null
         }
     }
 }
