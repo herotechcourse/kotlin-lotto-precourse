@@ -10,7 +10,7 @@ class Application {
         val tickets = lottoMachine.generateTickets(money)
         val winningNumbers = readWinningNumbersWithRetry()
         val bonusNumber = readBonusNumberWithRetry(winningNumbers)
-
+        val result = lottoMachine.calculateResult(tickets, winningNumbers, bonusNumber)
 
     }
 
