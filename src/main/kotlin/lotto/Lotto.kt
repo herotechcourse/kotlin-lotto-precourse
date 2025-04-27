@@ -1,9 +1,16 @@
 package lotto
+import lotto.support.Message
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == REQUIRED_NUMBER_COUNT) { Message.ERROR_LOTTO_NUMBERS_COUNT }
     }
 
-    // TODO: Implement additional functions
+    override fun toString(): String {
+        return numbers.sorted().toString()
+    }
+
+    companion object {
+        private const val REQUIRED_NUMBER_COUNT = 6
+    }
 }
