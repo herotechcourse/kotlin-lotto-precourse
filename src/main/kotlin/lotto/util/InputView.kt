@@ -2,13 +2,14 @@ package lotto.util
 
 import camp.nextstep.edu.missionutils.Console
 
-fun inputPurchasedAmount() {
+fun inputPurchasedAmount(): Int {
     printPurchasedAmountInputPhrase()
     val userInput = Console.readLine()
     validateNonNumeric(userInput)
     validateNumberRange(userInput)
     val amount = userInput.toInt()
     validateUnitOfAmount(amount)
+    return amount
 }
 
 fun validateNonNumeric(userInput: String) {
