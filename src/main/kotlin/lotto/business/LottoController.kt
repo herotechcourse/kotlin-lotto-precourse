@@ -15,4 +15,10 @@ class LottoController {
             }
         }
     }
+
+    private fun outputLotteryTickets(purchaseAmount: PurchaseAmount): List<Lotto> {
+        val lottoList = Lotto.generateLottoList(purchaseAmount = purchaseAmount)
+        OutputView.printLotteryTicketsOutputMessage(purchaseAmount, lottoList)
+        return lottoList
+    }
 }
