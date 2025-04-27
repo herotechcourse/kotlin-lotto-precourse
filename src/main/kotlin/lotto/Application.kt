@@ -10,11 +10,14 @@ fun main() {
 
     val purchaseAmount = inputView.getPurchaseAmount()
     val tickets = game.generateAllTickets(purchaseAmount)
+
     val ticketCount = game.getTicketCount(purchaseAmount)
 
     val winningNumbers = inputView.getWinningNumbers()
     val bonusNumber = inputView.getBonusNumber()
 
     outputView.printPurchasedTickets(tickets, ticketCount)
+    outputView.printResults(tickets, winningNumbers)
 }
+
 
