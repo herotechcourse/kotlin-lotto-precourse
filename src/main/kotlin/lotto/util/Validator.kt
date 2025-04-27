@@ -6,31 +6,31 @@ object Validator {
 
     fun validateAmount(input: String): Int {
         val number = input.toIntOrNull()
-            ?: throw IllegalArgumentException(InputException.INVALID_INTEGER.getMessage())
-        require(number >= 1000) { InputException.AMOUNT_TOO_SMALL.getMessage() }
-        require(number % 1000 == 0) { InputException.AMOUNT_NOT_DIVISIBLE.getMessage() }
+            ?: throw InputException.InvalidInteger()
+        require(number >= 1000) { throw InputException.AmountTooSmall() }
+        require(number % 1000 == 0) { throw InputException.AmountNotDivisible() }
         return number
     }
 
     fun validateWinningNumbers(input: String): List<Int> {
-        val numbers = input.split(",")
+        val numbers = StringUtil.convertToList(input)
             .map {
-                it.trim().toIntOrNull() ?: throw IllegalArgumentException(InputException.INVALID_INTEGER.getMessage())
+                it.toIntOrNull() ?: throw InputException.InvalidInteger()
             }
         require(numbers.size == 6 && numbers.toSet().size == 6) {
-            InputException.INVALID_WINNING_NUMBERS.getMessage()
+            throw InputException.InvalidWinningNumbers()
         }
         require(numbers.all { it in 1..45 }) {
-            InputException.NUMBER_OUT_OF_RANGE.getMessage()
+            throw InputException.NumberOutOfRange()
         }
         return numbers
     }
 
     fun validateBonusNumber(input: String): Int {
         val number = input.toIntOrNull()
-            ?: throw IllegalArgumentException(InputException.INVALID_INTEGER.getMessage())
+            ?: throw InputException.InvalidInteger()
         require(number in 1..45) {
-            InputException.NUMBER_OUT_OF_RANGE.getMessage()
+            throw InputException.NumberOutOfRange()
         }
         return number
     }
