@@ -23,6 +23,9 @@ class Application {
         val prizes = lottoService.calculatePrizes(tickets, winningNumbers, bonus)
         val totalWinnings = prizes.map { (prize, count) -> prize.amount * count }.sum()
         val profitRate = lottoService.calculateProfitRate(totalWinnings, amount)
+
+        outputView.printWinningStatistics(prizes)
+        outputView.printProfitRate(profitRate)
     }
 }
 
@@ -123,9 +126,28 @@ class LottoService {
 }
 
 class OutputView {
+
     fun printTickets(tickets: List<Lotto>) {
         println("You have purchased ${tickets.size} tickets.")
         tickets.forEach { println(it.getNumbers()) }
+    }
+
+    fun printWinningStatistics(prizes: Map<Prize, Int>) {
+        println("Winning Statistics")
+        println("---")
+        // List prizes from 3 matches to 6 matches (reversed order of Prize.values())
+        Prize.values().reversed().forEach { prize ->
+            val count = prizes[prize] ?: 0
+            val bonusText = if (prize.bonusRequired) " + Bonus Ball" else ""
+            // Format prize amount with commas
+            val formattedAmount = String.format("%,d", prize.amount)
+            // Use en dash (–) instead of hyphen (-)
+            println("${prize.matchCount} Matches$bonusText ($formattedAmount KRW) – $count tickets")
+        }
+    }
+
+    fun printProfitRate(profitRate: Double) {
+        println("Total return rate is %.1f%%.".format(profitRate))
     }
 }
 
