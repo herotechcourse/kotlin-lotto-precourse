@@ -7,6 +7,7 @@ fun main() {
     val inputView = InputView()
     val game = LotteryGame()
     val outputView = OutputView()
+    val lotteryResults = LotteryResults()
 
     val purchaseAmount = inputView.getPurchaseAmount()
     val tickets = game.generateAllTickets(purchaseAmount)
@@ -16,8 +17,10 @@ fun main() {
     val winningNumbers = inputView.getWinningNumbers()
     val bonusNumber = inputView.getBonusNumber()
 
+    val winningStatuses = lotteryResults.getStatistics(tickets, winningNumbers, bonusNumber)
+
     outputView.printPurchasedTickets(tickets, ticketCount)
-    outputView.printResults(tickets, winningNumbers)
+    outputView.printWinningStatuses(winningStatuses)
 }
 
 
