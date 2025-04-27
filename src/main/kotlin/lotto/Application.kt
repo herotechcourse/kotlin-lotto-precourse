@@ -1,11 +1,17 @@
 package lotto
+
 import lotto.view.InputView
 
 fun main() {
-    // TODO: Implement the program
     val purchaseAmount = InputView.readPurchaseAmount()
-    println("입력한 구매 금액: $purchaseAmount")
+    validatePurchaseAmount(purchaseAmount)
+}
 
-
-
+fun validatePurchaseAmount(amount: Int) {
+    if (amount <= 0) {
+        throw IllegalArgumentException("[ERROR] Purchase amount must be greater than 0.")
+    }
+    if (amount % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by 1,000.")
+    }
 }
