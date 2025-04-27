@@ -13,4 +13,5 @@ fun main() {
 
     val resultCount = Lotto(winningNumbers).checkLottery(tickets, bonus)
     output.displayWinningStatistics(resultCount)
+    output.calculateReturnRate(resultCount, noOfTickets)
 }
