@@ -3,11 +3,11 @@
 
 ##  Features to Implement
 
-- [ ] Input purchase amount and validate
-- [ ] Generate tickets (1 ticket = 1,000 KRW)
-- [ ] Generate each ticket with 6 unique numbers from 1 to 45
-- [ ] Input winning numbers and bonus number with validation
-- [ ] Match each ticket with winning numbers and rank accordingly
-- [ ] Display result statistics (match count, prize amount)
-- [ ] Calculate and display total profit rate
-- [ ] Validate all inputs and display `[ERROR]` messages
+- [ ] Modified initial feature list for Lotto project
+- [ ] Implement Lotto and LottoTicket classes with validation
+- [ ] Add LottoMachine to generate random lotto tickets
+- [ ] Define Rank enum for lotto result ranking
+- [ ] Implement LottoResult to evaluate ticket matches
+- [ ] Create InputView and OutputView for user interaction
+- [ ] Implement main application flow to integrate all components
+- [ ] Add unit tests for Lotto, LottoTicket, and LottoResult
