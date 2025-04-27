@@ -52,9 +52,9 @@
 
 ### 🧪 Testing
 
-- [ ] Add unit tests for Lotto number validation
-- [ ] Add unit tests for prize matching logic
-- [ ] Add unit tests for profit rate calculation
-- [ ] Add unit tests for Lotto class (ensures 6 unique numbers between 1–45)
+- [x] Add unit tests for Lotto number validation
+- [x] Add unit tests for prize matching logic
+- [x] Add unit tests for profit rate calculation
+- [x] Add unit tests for Lotto class (ensures 6 unique numbers between 1–45)
 
 ---
