@@ -12,6 +12,10 @@ enum class LottoErrorMessage(private val errorMessage: String) {
     WINNING_NUMBER_DUPLICATED("Winning numbers cannot be duplicated"),
     INVALID_WINNING_NUMBER_RANGE("Winning numbers must be between 1 and 45."),
     INVALID_WINNING_NUMBER_SIZE("Winning numbers must contain exactly 6 numbers."),
+
+    BONUS_NUMBER_NOT_INTEGER("Bonus number must be an integer."),
+    INVALID_BONUS_NUMBER_RANGE("Bonus number must be between 1 and 45."),
+    BONUS_NUMBER_DUPLICATED("Bonus number cannot be the same as one of the winning numbers."),
     ;
 
     val message: String
