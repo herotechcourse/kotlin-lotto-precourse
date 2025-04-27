@@ -3,10 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import lotto.exception.ApplicationException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class ApplicationExceptionTest : NsTest() {
     @Test
@@ -46,7 +44,8 @@ class ApplicationExceptionTest : NsTest() {
     @Test
     fun `exception test`() {
         assertSimpleTest {
-            assertThrows<ApplicationException> { runException("1000j") }
+            runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
 
