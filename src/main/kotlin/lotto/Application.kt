@@ -33,6 +33,26 @@ fun createMultipleTickets(ticketCount: Int): List<Lotto> {
     return lottoTickets
 }
 
+fun readWinningNumbers(): List<Int> {
+    println("Please enter last week's winning numbers. (comma-separated)")
+    val winningNumbers = Console.readLine()
+        .split(",")
+        .map { it.trim().toInt()}
+    return winningNumbers
+}
+
+fun validateWinningNumbers(winningNumbers: List<Int>) {
+    if (winningNumbers.size != 6) {
+        throw IllegalArgumentException("[ERROR] Exactly 6 numbers must be entered.")
+    }
+    if (winningNumbers.toSet().size != winningNumbers.size){
+        throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
+    }
+    if (winningNumbers.any { it < 1 || it > 45 }) {
+        throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+    }
+}
+
 fun main() {
     var amount: Int
     while (true) {
@@ -51,5 +71,14 @@ fun main() {
     for (ticket in tickets){
         println(ticket)
     }
-
+    println()
+    while (true){
+        try {
+            val winningNumbers = readWinningNumbers()
+            validateWinningNumbers(winningNumbers)
+            break
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
 }

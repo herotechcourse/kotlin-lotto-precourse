@@ -16,3 +16,13 @@
 - Generates multiple tickets based on the purchase amount.
 - Prints each ticket
 - Ensures tickets are displayed in a readable format by overriding the Lotto class's toString() method.
+
+### Winning Numbers Input
+
+- Prompts the user to enter last week's winning numbers, separated by commas.
+- Parses the input into a list of integers.
+- Validates that:
+  - Exactly 6 numbers are entered.
+  - No duplicate numbers exist.
+  - All numbers are between 1 and 45.
+- Prints an error and re-prompts if the input is invalid.
