@@ -1,10 +1,12 @@
 package lotto.validators
 
+import lotto.TICKET_PRICE
+
 object InputValidator {
     fun validateSumOfMoney(sum: Int?): Int {
         requireNotNull(sum) { "[ERROR] The purchase amount should be an integer." }
 
-        require(sum >= 1000) { ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message }
+        require(sum % TICKET_PRICE == 0) { ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message }
 
         return sum
     }

@@ -28,5 +28,5 @@ fun main() {
 }
 
 fun getNumberOfTickets(sum: Int): Int {
-    return sum / 1000
+    return sum / TICKET_PRICE
 }
