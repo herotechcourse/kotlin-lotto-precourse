@@ -1,0 +1,21 @@
+package lotto
+
+object LottoMessages {
+    val welcome = "Welcome to Lotto Machine! Please, insert the amount do you want to " +
+            "invest on your Lotto Ticket. (It has to be divisible by 1000):"
+    val tryAgainDivisible = " [ERROR] The amount has to be divisible by 1000! Please insert a correct amount value:"
+    val winningNumbers = "Please, enter last week's winning numbers (coma-separated):"
+    val invalidWinningNumbers = "[ERROR] Invalid input. Please enter 6 winning numbers (coma-separated):"
+    val bonusNumber = "Please enter the bonus number:"
+    val invalidInput = "[ERROR] Invalid Input. Please try again:"
+    val blankInput = "[ERROR] Input cannot be blank."
+    val smallThanOne = "[ERROR] Input cannot be smaller than 1."
+    val divisibleByThousand = "[ERROR] Input has to be divisible by 1000."
+    val rangeOneToFortyfive = "[ERROR] All numbers must be between 1 and 45."
+    val duplicate = "[ERROR] Numbers cannot contain duplicate numbers."
+    val sixNumbers = "[ERROR] Ticket must contain 6 numbers."
+    val winningStatisticsTitle = "Winning Statistics"
+    val dashSeparator = "---"
+    val invalidResults = "[ERROR] 404 - Something went wrong."
+    val mustHaveBonus = "[ERROR] SECOND prize must have a bonus number match."
+}
