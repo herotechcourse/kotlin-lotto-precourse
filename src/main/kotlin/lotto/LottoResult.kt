@@ -12,11 +12,11 @@ object LottoResult {
         OutputView.printTicketCount(tickets.size)
         OutputView.printTickets(tickets)
 
-        val winningNumbersInput = InputView.readWinningNumbers()
-        val bonusNumberInput = InputView.readBonusNumber()
-
-        val winningNumbers = WinningNumbers(winningNumbersInput, bonusNumberInput)
-
+        val winningNumbers = retryInput {
+            val winningNumbersInput = InputView.readWinningNumbers()
+            val bonusNumberInput = InputView.readBonusNumber()
+            WinningNumbers(winningNumbersInput, bonusNumberInput)
+        }
 
         val ranks = tickets.map { ticket ->
             val matchCount = winningNumbers.countMatch(ticket)
@@ -28,5 +28,14 @@ object LottoResult {
 
         OutputView.printStatistics(statistics.getRankCounts())
         OutputView.printProfitRate(statistics.calculateProfitRate(amount))
+    }
+
+    private fun <T> retryInput(action: () -> T): T {
+        return try {
+            action()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            retryInput(action)
+        }
     }
 }
