@@ -8,6 +8,8 @@ enum class Rank(val matchCount: Int, val prizeMoney: Int, val bonusRequired: Boo
     MATCH_THREE(3, 5_000);
 
 
+
+
     companion object {
         fun find(matchCount: Int, foundBonus: Boolean): Rank? {
             return when {
@@ -18,6 +20,17 @@ enum class Rank(val matchCount: Int, val prizeMoney: Int, val bonusRequired: Boo
                 matchCount == 3 -> MATCH_THREE
                 else -> null
             }
+        }
+
+    }
+
+    fun displayName(): String {
+        return when (this) {
+            MATCH_THREE -> "3"
+            MATCH_FOUR -> "4"
+            MATCH_FIVE -> "5"
+            MATCH_BONUS -> "5 + Bonus Ball"
+            MATCH_SIX -> "6"
         }
     }
 

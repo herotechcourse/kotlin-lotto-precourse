@@ -1,5 +1,7 @@
 package lotto.view
 
+import lotto.domain.PlayerData
+
 //import Rank
 
 object OutputView {
@@ -15,15 +17,15 @@ object OutputView {
         }
     }
 
-    fun printStats(
-        /*  params*/
-    ) {
+    fun printStats(playerData: PlayerData) {
         println("Winning Statistics")
         println("---")
-        // could loop through rank list? check with player data later
-        println(
-            "{rankList.type} Matches ({rankList.prizeMoney} KRW) - {rankList.count} ticket(if (count != 1) `s` else ``)"
-        )
-        println("Total return rate is {returnRate}")
+        for ((rank, pair) in playerData.rankResults) {
+            val (ticketCount, prizeMoney) = pair
+            println(
+                "${rank.displayName()} Matches ($prizeMoney KRW) - $ticketCount ticket ${if (ticketCount != 1) "s" else ""})"
+            )
+            println("Total return rate is {returnRate}")
+        }
     }
 }

@@ -6,7 +6,7 @@ object WinningStatistics {
 
     private val rankCounts: MutableMap<Rank, Int> = mutableMapOf()
 
-    //TODO: use junit5 to check if works corrently
+    //TODO: find bug and fix
     fun get(playerData: PlayerData, winningLotto: Lotto, bonusNumber: Int) {
         playerData.rankResults = getRankDetails(playerData, winningLotto, bonusNumber)
     }

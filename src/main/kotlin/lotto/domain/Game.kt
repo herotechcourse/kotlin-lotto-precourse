@@ -24,6 +24,6 @@ class Game {
         val winningLotto = Lotto(InputView.getWinningNumbers())
         val bonusNumber = InputView.getBonusNumber()
         WinningStatistics.get(playerData, winningLotto, bonusNumber)
-        OutputView.printStats(/* PlayerData*/)
+        OutputView.printStats(playerData)
     }
 }
