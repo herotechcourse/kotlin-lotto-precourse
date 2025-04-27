@@ -1,10 +1,12 @@
 package lotto.controller
 
+import lotto.Lotto
 import lotto.domain.BonusNumber
 import lotto.domain.LottoMachine
 import lotto.domain.WinningNumbers
 import lotto.view.InputView
 import lotto.view.OutputView
+import camp.nextstep.edu.missionutils.Randoms
 
 class LottoController(
     private val inputView: InputView,
@@ -12,10 +14,15 @@ class LottoController(
 ) {
     fun run() {
         val lottoMachine = createLottoMachine()
+        outputView.displayPurchaseCount(lottoMachine.numberOfLottos)
+
+        val purchasedLottos = generateLottos(lottoMachine.numberOfLottos)
+        outputView.displayLottoTickets(purchasedLottos)
+
         val winningNumbers = createWinningNumbers()
         val bonusNumber = createBonusNumber(winningNumbers)
 
-        //TODO: logic for ticket generation, comparison, result display
+        //TODO: logic for comparison, result display
     }
 
     private fun createLottoMachine(): LottoMachine {
@@ -27,6 +34,19 @@ class LottoController(
                 outputView.displayError(e.message)
             }
         }
+    }
+
+    private fun generateLottos(count: Int): List<Lotto>{
+        val lottos = mutableListOf<Lotto>()
+        repeat(count) {
+            val numbers = Randoms.pickUniqueNumbersInRange(
+                Lotto.MIN_LOTTO_NUMBER,
+                Lotto.MAX_LOTTO_NUMBER,
+                Lotto.VALID_NUMBER_COUNT
+            )
+            lottos.add(Lotto(numbers))
+        }
+        return lottos
     }
 
     private fun createWinningNumbers(): WinningNumbers {

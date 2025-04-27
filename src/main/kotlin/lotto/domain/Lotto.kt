@@ -20,6 +20,6 @@ class Lotto(private val numbers: List<Int>) {
         const val ERROR_NOT_VALID_NUMBER = "[ERROR] Input must be valid numbers."
     }
 
-    //fun getNumbers(): List<Int> = numbers.sorted()
+    fun getNumbers(): List<Int> = numbers.sorted()
 
 }

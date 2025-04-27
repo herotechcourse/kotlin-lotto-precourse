@@ -23,10 +23,6 @@ class LottoMachine(inputPurchaseAmount: String) {
 
     }
 
-    //OutputView
-//    fun displayNumberOfTickets(numbers: Int){
-//        println("\nYou have purchased $numbers tickets.")
-//    }
 
 
 }
