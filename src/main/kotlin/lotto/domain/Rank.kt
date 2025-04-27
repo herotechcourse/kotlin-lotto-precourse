@@ -1,0 +1,22 @@
+package lotto.domain
+
+enum class Rank(val match: Int, val prize: Int, val requiresBonus: Boolean = false) {
+    FIRST(6, 2_000_000_000),
+    SECOND(5, 30_000_000, true),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000);
+
+    companion object {
+        fun from(matchCount: Int, bonusMatch: Boolean): Rank? {
+            return when {
+                matchCount == 6 -> FIRST
+                matchCount == 5 && bonusMatch -> SECOND
+                matchCount == 5 -> THIRD
+                matchCount == 4 -> FOURTH
+                matchCount == 3 -> FIFTH
+                else -> null
+            }
+        }
+    }
+}
