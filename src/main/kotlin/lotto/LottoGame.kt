@@ -2,46 +2,53 @@ package lotto
 
 class LottoGame(
     private val tickets: List<Lotto>,
-    private val winningNumbers: Set<Int>,
+    private val winningNumbers: List<Int>,
     private val bonusNumber: Int
 ) {
-    private val result = mutableMapOf(
-        3 to 0, 4 to 0, 5 to 0, 52 to 0, 6 to 0
-    )
+    private val winningSet = winningNumbers.toSet()
 
-    fun evaluate() {
+    fun printResult() {
+        // Initialize counters for each prize category
+        var firstPrizeCount = 0
+        var secondPrizeCount = 0
+        var thirdPrizeCount = 0
+        var fourthPrizeCount = 0
+        var fifthPrizeCount = 0
+
+        // Count how many tickets match each prize category
         for (ticket in tickets) {
-            val match = ticket.matchCount(winningNumbers)
-            val hasBonus = ticket.contains(bonusNumber)
+            val matchCount = ticket.getNumbers().count { it in winningSet }
+            val hasBonus = ticket.getNumbers().contains(bonusNumber)
 
             when {
-                match == 6 -> result[6] = result[6]!! + 1
-                match == 5 && hasBonus -> result[52] = result[52]!! + 1
-                match == 5 -> result[5] = result[5]!! + 1
-                match == 4 -> result[4] = result[4]!! + 1
-                match == 3 -> result[3] = result[3]!! + 1
+                matchCount == 6 -> firstPrizeCount++ // 6 matches (First prize)
+                matchCount == 5 && hasBonus -> secondPrizeCount++ // 5 matches + bonus (Second prize)
+                matchCount == 5 -> thirdPrizeCount++ // 5 matches (Third prize)
+                matchCount == 4 -> fourthPrizeCount++ // 4 matches (Fourth prize)
+                matchCount == 3 -> fifthPrizeCount++ // 3 matches (Fifth prize)
             }
         }
-    }
 
-    fun getResults(): Map<Int, Int> {
-        return result
-    }
+        // Print the results
+        println("\nWinning Statistics")
+        println("---")
+        println("6 Matches (2,000,000,000 KRW) – $firstPrizeCount tickets")
+        println("5 Matches + Bonus Ball (30,000,000 KRW) – $secondPrizeCount tickets")
+        println("5 Matches (1,500,000 KRW) – $thirdPrizeCount tickets")
+        println("4 Matches (50,000 KRW) – $fourthPrizeCount tickets")
+        println("3 Matches (5,000 KRW) – $fifthPrizeCount tickets")
 
-    fun calculateProfit(): Double {
-        val prizeMoney = mapOf(
-            3 to 5_000,
-            4 to 50_000,
-            5 to 1_500_000,
-            52 to 30_000_000,
-            6 to 2_000_000_000
-        )
+        // Calculate and print the total return rate
+        val totalReward = (firstPrizeCount * 2_000_000_000) +
+                (secondPrizeCount * 30_000_000) +
+                (thirdPrizeCount * 1_500_000) +
+                (fourthPrizeCount * 50_000) +
+                (fifthPrizeCount * 5_000)
 
-        val totalEarned = result.entries.sumOf { (rank, count) ->
-            prizeMoney.getOrDefault(rank, 0) * count
-        }
-        val totalSpent = tickets.size * 1_000
+        val totalSpent = tickets.size * 1000
+        val returnRate = (totalReward.toDouble() / totalSpent) * 100
 
-        return (totalEarned.toDouble() / totalSpent) * 100
+        // Print the return rate rounded to one decimal place
+        println("Total return rate is ${"%.1f".format(returnRate)}%.")
     }
 }
