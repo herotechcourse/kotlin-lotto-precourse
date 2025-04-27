@@ -20,7 +20,7 @@ fun main() {
     outputView.displayTickets(tickets)
     // Input winning numbers and bonus number
     val winningNumbers = inputView.inputWinningNumbers()
-    val bonusNumber = inputView.inputBonusNumber()
+    val bonusNumber = inputView.inputBonusNumber(winningNumbers)
 
     // Calculate prizes
     val prizeCounts = ticketMachine.calculatePrizes(tickets, winningNumbers, bonusNumber)
@@ -149,11 +149,12 @@ class InputView {
         }
     }
 
-    fun inputBonusNumber(): Int {
+    fun inputBonusNumber(winningNumbers: List<Int>): Int {
         while (true) {
             try {
                 println("Bonus number:")
                 val input = Console.readLine().toInt()
+                require(input !in winningNumbers) { "[ERROR] Bonus number must not be one of the winning numbers." }
                 if (input !in 1..45) {
                     throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
                 }
