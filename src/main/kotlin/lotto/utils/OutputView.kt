@@ -5,6 +5,11 @@ import lotto.MatchCategory
 
 object OutputView {
 
+    fun printPurchaseSummary(numberOfTickets: Int) {
+        println()
+        println("You have purchased $numberOfTickets tickets.")
+    }
+
     // TODO: implement integration test
     fun printTicketsLn(tickets: List<Lotto>) {
         for (ticket in tickets) {
