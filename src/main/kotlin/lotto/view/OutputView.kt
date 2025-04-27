@@ -2,17 +2,32 @@ package lotto.view
 
 import lotto.LottoMachine
 import lotto.messages.PromptMessages
+import lotto.domain.LottoRank
 
-class OutputView {
+class OutputView(private val lottoMachine: LottoMachine) {
 
-    fun printTicketCount(lottoMachine: LottoMachine) {
+    fun printTicketCount() {
         val ticketCount = lottoMachine.tickets.size
         println(PromptMessages.TICKET_COUNT.with(ticketCount))
     }
 
-    fun printLottoNumbers(lottoMachine: LottoMachine) {
+    fun printLottoNumbers() {
         lottoMachine.tickets.forEach { lotto ->
-            println(lotto.getNumbers())
+            println(lotto.getNumbers().sorted())
         }
     }
+
+    fun printWinningStatistics(guessNumbers: Set<Int>, bonusNumber: Int) {
+        println(PromptMessages.WINNING_STATISTICS.message)
+        println("---")
+        printRank(guessNumbers, bonusNumber)
+    }
+
+    private fun printRank(guessNumbers: Set<Int>, bonusNumber: Int) {
+        val ranks = lottoMachine.setAllRank(guessNumbers, bonusNumber)
+        LottoRank.entries
+            .filter { it != LottoRank.NONE }
+            .forEach { println(it.getResultMessage(ranks[it.ordinal])) }
+    }
+
 }
