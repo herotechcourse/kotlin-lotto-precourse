@@ -35,17 +35,32 @@ class LottoController() {
     }
 
     private fun getPurchaseAmount(): PurchaseAmountDto {
-        outputView.askPurchaseAmount()
-        return inputView.askPurchaseAmount()
+        try {
+            outputView.askPurchaseAmount()
+            return inputView.askPurchaseAmount()
+        } catch (ex: Exception) {
+            println(ex.message)
+            return getPurchaseAmount()
+        }
     }
 
     private fun getWinningNumbers(): WinningNumbersDto {
-        outputView.askWinningNumbers()
-        return inputView.askWinningNumbers()
+        try {
+            outputView.askWinningNumbers()
+            return inputView.askWinningNumbers()
+        } catch (ex: Exception) {
+            println(ex.message)
+            return getWinningNumbers()
+        }
     }
 
     private fun getBonusNumber(): BonusNumberDto {
-        outputView.askBonusNumber()
-        return inputView.askBonusNumber()
+        try {
+            outputView.askBonusNumber()
+            return inputView.askBonusNumber()
+        } catch (ex: Exception) {
+            println(ex.message)
+            return getBonusNumber()
+        }
     }
 }

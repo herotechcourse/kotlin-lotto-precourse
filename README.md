@@ -24,7 +24,7 @@
   - [x] ask winning number
 
 
-- [] re-prompt input from that step - functional interface
+- [x] re-prompt input from that step
 - [x] print prize with comma(,) - StringFormat
 - [x] sort lotto number
 - [] % format
