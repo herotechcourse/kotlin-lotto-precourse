@@ -29,7 +29,7 @@ fun main() {
     outputView.printWinningStatistics(WinningResult(lottoRanks, budget))
 }
 
-private fun <T> retry(function: () -> T): T {
+private inline fun <T> retry(function: () -> T): T {
     while (true) {
         try {
             return function()
