@@ -5,7 +5,20 @@ It fulfills process, functional, and programming requirements provided in the mi
 
 ---
 
-## Features
+## Feature List (planned before implementation)
+
+1. Validate purchase amount and calculate number of tickets
+2. Generate random Lotto tickets
+3. Prompt user for winning numbers and bonus number
+4. Evaluate tickets and determine prizes
+5. Display purchased tickets and result statistics
+6. Handle invalid input with error messages
+7. Structure code into UI and core logic
+8. Write unit tests for all logic components
+
+---
+
+## Implemented Features
 
 ### 1. Purchase Flow
 - Validate purchase amount (must be divisible by 1,000)
@@ -49,6 +62,19 @@ It fulfills process, functional, and programming requirements provided in the mi
 ### 8. Testing
 - Write unit tests for each class and method using JUnit 5 and AssertJ
 - Ensure all tests pass with `./gradlew clean test`
+
+---
+
+## How to Run
+
+1. Open the project in IntelliJ IDEA.
+2. Locate `src/main/kotlin/lotto/Application.kt`.
+3. Run the `main()` function.
+4. Alternatively, run via terminal:
+    - Linux/macOS: `./gradlew run`
+    - Windows: `gradlew.bat run`
+5. Run all tests before submitting:
+    - `./gradlew clean test`
 
 ---
 
