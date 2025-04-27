@@ -7,7 +7,7 @@ object OutputView {
     private const val SEPARATOR_LINE_OUTPUT = "---"
 
     private const val THREE_MATCH_PRIZE = "5,000 KRW"
-    private const val FOUR_MATCH_PRIZE = "5,0000 KRW"
+    private const val FOUR_MATCH_PRIZE = "50,000 KRW"
     private const val FIVE_MATCH_PRIZE = "1,500,000 KRW"
     private const val FIVE_AND_BONUS_MATCH_PRIZE = "30,000,000 KRW"
     private const val SIX_MATCH_PRIZE = "2,000,000,000 KRW"

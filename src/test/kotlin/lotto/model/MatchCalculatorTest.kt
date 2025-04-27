@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -16,16 +17,15 @@ class MatchCalculatorTest {
 
     @Test
     fun `should calculate match counts correctly`() {
-        val lottoNumber =
-            listOf(
-                listOf(1, 2, 3, 4, 5, 6),
-                listOf(3, 5, 6, 16, 32, 38),
-                listOf(7, 11, 16, 35, 36, 44),
-            )
+        val totalLottoTicket = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(3, 5, 6, 16, 32, 38)),
+            Lotto(listOf(7, 11, 16, 35, 36, 44)),
+        )
         val winningNumbers = listOf("1", "2", "3", "4", "5", "6")
         val bonusNumber = "7"
 
-        MatchCalculator.run(lottoNumber, winningNumbers, bonusNumber)
+        MatchCalculator.run(totalLottoTicket, winningNumbers, bonusNumber)
 
         assertThat(MATCH.THREE).isEqualTo(1)
         assertThat(MATCH.FOUR).isEqualTo(0)
@@ -36,7 +36,7 @@ class MatchCalculatorTest {
 
     @Test
     fun `should calculate five and bonus match counts correctly`() {
-        val lottoNumber = listOf(listOf(1, 2, 3, 4, 5, 40))
+        val lottoNumber = listOf(Lotto(listOf(1, 2, 3, 4, 5, 40)))
         val winningNumbers = listOf("1", "2", "3", "4", "5", "7")
         val bonusNumber = "40"
 

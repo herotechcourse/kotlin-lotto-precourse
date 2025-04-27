@@ -1,29 +1,32 @@
 package lotto.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 const val LOTTO_NUMBER_START = 1
 const val LOTTO_NUMBER_END = 45
 const val LOTTO_NUMBER_COUNT = 6
 
 object LottoNumberMaker {
-    fun makeOneLineLottoNumber(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT).sorted()
+    fun makeLottoTicket(): Lotto {
+        val lottoNumbers =
+            Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT).sorted()
+        return Lotto(lottoNumbers)
     }
 
-    fun makeTotalLottoNumber(ticketCount: Int): MutableList<List<Int>> {
-        val totalLottoNumber = mutableListOf<List<Int>>()
+    fun makeTotalLottoTicket(ticketCount: Int): MutableList<Lotto> {
+        val totalLottoTicket = mutableListOf<Lotto>()
 
         repeat(ticketCount) {
-            totalLottoNumber.add(makeOneLineLottoNumber())
+            totalLottoTicket.add(makeLottoTicket())
         }
 
-        return totalLottoNumber
+        return totalLottoTicket
     }
 
-    fun printTotalLottoNumber(lottoNumber: List<List<Int>>) {
-        for (list in lottoNumber) {
-            println(list)
+    fun printTotalLottoTicket(lottoNumber: List<Lotto>) {
+        for (ticket in lottoNumber) {
+            println(ticket.getNumbers())
         }
     }
 }

@@ -1,5 +1,7 @@
 package lotto.model
 
+import lotto.Lotto
+
 object MATCH {
     var SIX = 0
     var FIVE_AND_BONUS = 0
@@ -15,19 +17,19 @@ const val FOURTH_PRIZE = 50000
 const val FIFTH_PRIZE = 5000
 
 object MatchCalculator {
-    fun run(lottoNumber: List<List<Int>>, winningNumbers: List<String>, bonusNumber: String): Int {
+    fun run(totalLottoTicket: List<Lotto>, winningNumbers: List<String>, bonusNumber: String): Int {
         val winningNumbers = winningNumbers.map { it -> it.toInt() }
         val bonusNumber = bonusNumber.toInt()
 
-        matchOneToSixCount(lottoNumber, winningNumbers)
-        matchFiveAndBonusNumberCount(lottoNumber, winningNumbers, bonusNumber)
+        matchOneToSixCount(totalLottoTicket, winningNumbers)
+        matchFiveAndBonusNumberCount(totalLottoTicket, winningNumbers, bonusNumber)
 
         return calculateWinningAmount()
     }
 
-    private fun matchOneToSixCount(lottoNumber: List<List<Int>>, winningNumbers: List<Int>) {
-        for (lottoNumberOneLine in lottoNumber) {
-            val intersectionNumber = lottoNumberOneLine.intersect(winningNumbers)
+    private fun matchOneToSixCount(totalLottoTicket: List<Lotto>, winningNumbers: List<Int>) {
+        for (lottoTicket in totalLottoTicket) {
+            val intersectionNumber = lottoTicket.getNumbers().intersect(winningNumbers)
             if (intersectionNumber.size == 3) MATCH.THREE++
             if (intersectionNumber.size == 4) MATCH.FOUR++
             if (intersectionNumber.size == 6) MATCH.SIX++
@@ -35,25 +37,25 @@ object MatchCalculator {
     }
 
     private fun matchFiveAndBonusNumberCount(
-        lottoNumbers: List<List<Int>>,
+        totalLottoTickets: List<Lotto>,
         winningNumbers: List<Int>,
         bonusNumber: Int,
     ) {
-        lottoNumbers.forEach { lottoTicket ->
+        totalLottoTickets.forEach { lottoTicket ->
             checkFiveMatchWithBonus(lottoTicket, winningNumbers, bonusNumber)
         }
     }
 
     private fun checkFiveMatchWithBonus(
-        lottoTicket: List<Int>,
+        lottoTicket: Lotto,
         winningNumbers: List<Int>,
         bonusNumber: Int,
     ) {
-        val intersection = lottoTicket.intersect(winningNumbers)
+        val intersection = lottoTicket.getNumbers().intersect(winningNumbers)
 
         if (intersection.size != 5) return
 
-        if (bonusNumber in lottoTicket) {
+        if (bonusNumber in lottoTicket.getNumbers()) {
             MATCH.FIVE_AND_BONUS++
             return
         }

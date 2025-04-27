@@ -18,6 +18,13 @@
 - [X] Sort the numbers in each lotto ticket in ascending order. 
 - [X] Print each lotto ticket's numbers, one per line.
 
+### Manage lotto tickets as Objects.
+- [X] Create a `Lotto` object for each purchased ticket.
+- [X] Validate that each `Lotto` object contains exactly six numbers.
+- [X] Validate that all numbers are between 1 and 45.
+- [X] Validate that all numbers are unique.
+- [X] Validate that the numbers in each ticket in ascending order.
+
 ### Receive the winning numbers for the lotto.
 - [X] Print a prompt message to enter the winning numbers. "Please enter last week's winning numbers."
 - [X] If the input is invalid, throw an 'IllegalArgumentException' and prompt the user again.
