@@ -18,7 +18,7 @@ class InputView {
 
     companion object RequestMessages {
         const val AMOUNT = "Please enter the purchase amount."
-        const val WINNING_NUMBERS = "Please enter last week's winning numbers."
-        const val BONUS_NUMBER = "Please enter the bonus number."
+        const val WINNING_NUMBERS = "/nPlease enter last week's winning numbers."
+        const val BONUS_NUMBER = "/nPlease enter the bonus number."
     }
 }
