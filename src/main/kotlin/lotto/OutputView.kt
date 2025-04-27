@@ -1,11 +1,28 @@
 package lotto
 
 class OutputView() {
+    fun printWelcomeMessage() {
+        println(LottoMessages.welcome)
+    }
+
+    fun printWinningNumbersPrompt() {
+        println(LottoMessages.winningNumbers)
+    }
+
+    fun printBonusNumberPrompt() {
+        println(LottoMessages.bonusNumber)
+    }
+
     fun printPurchasedTickets(paidNumber: Int, tickets: List<Lotto>) {
         println("You have purchased $paidNumber tickets.")
         tickets.forEach { ticket ->
             println("${ticket.numbers}")
         }
+    }
+
+    fun printWinningStatisticsTitle() {
+        println(LottoMessages.winningStatisticsTitle)
+        println(LottoMessages.dashSeparator)
     }
 
     fun printResults(winningResults: List<TicketResults>) {
@@ -26,11 +43,16 @@ class OutputView() {
         }
 
         println(
-            "3 Matches (5,000 KRW) - ${countFive} ticket\n" +
-                    "4 Matches (50,000 KRW) - ${countFour} tickets\n" +
-                    "5 Matches (1,500,000 KRW) - ${countThree} tickets\n" +
-                    "5 Matches + Bonus Ball (30,000,000 KRW) - ${countTwo}  tickets\n" +
-                    "6 Matches (2,000,000,000 KRW) - ${countOne}  tickets\n"
+            "3 Matches (5,000 KRW) – ${countFive} ticket\n" +
+                    "4 Matches (50,000 KRW) – ${countFour} tickets\n" +
+                    "5 Matches (1,500,000 KRW) – ${countThree} tickets\n" +
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – ${countTwo} tickets\n" +
+                    "6 Matches (2,000,000,000 KRW) – ${countOne} tickets\n"
         )
+    }
+
+    fun printProfitRate (rate: Double) {
+        val formattedRate = String.format("%.1f", rate)
+        println("Total return rate is $formattedRate%.")
     }
 }
