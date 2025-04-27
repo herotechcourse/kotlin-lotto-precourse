@@ -83,4 +83,14 @@ import org.junit.jupiter.api.Assertions.*
    assertThat(result[Prize.FIFTH]).isEqualTo(1)
    assertThat(result[Prize.NONE]).isEqualTo(1)
  }
+
+  // Test calculateReturnRate
+  @Test
+  fun testCalculateReturnRate() {
+   val totalPrizes = mapOf(Prize.FIFTH to 1)
+   val purchaseAmount = 8000
+   val returnRate = lottoGame.calculateReturnRate(prizes = totalPrizes, purchaseAmount )
+
+   assertEquals(62.5, returnRate)
+  }
 }
