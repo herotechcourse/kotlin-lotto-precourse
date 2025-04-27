@@ -5,21 +5,44 @@ fun main() {
     val outputView = OutputView()
     val lottoMachine = LottoMachine()
 
-    try {
-        // 1. Get purchase amount and generate tickets
-        val purchaseAmount = inputView.readPurchaseAmount()
-        val tickets = lottoMachine.generateTickets(purchaseAmount)
-        outputView.printTickets(tickets)
+    val purchaseAmount = getValidPurchaseAmount(inputView)
+    val tickets = lottoMachine.generateTickets(purchaseAmount)
+    outputView.printTickets(tickets)
 
-        // 2. Get winning numbers and bonus number
-        val winningNumbers = inputView.readWinningNumbers()
-        val bonusNumber = inputView.readBonusNumber(winningNumbers)
+    val winningNumbers = getValidWinningNumbers(inputView)
+    val bonusNumber = getValidBonusNumber(inputView, winningNumbers)
 
-        // 3. Calculate and display results
-        val results = lottoMachine.calculateResults(tickets, winningNumbers, bonusNumber)
-        val returnRate = lottoMachine.calculateReturnRate(results, purchaseAmount)
-        outputView.printStatistics(results, returnRate)
-    } catch (e: IllegalArgumentException) {
-        println(e.message)
+    val results = lottoMachine.calculateResults(tickets, winningNumbers, bonusNumber)
+    val returnRate = lottoMachine.calculateReturnRate(results, purchaseAmount)
+    outputView.printStatistics(results, returnRate)
+}
+
+private fun getValidPurchaseAmount(inputView: InputView): Int {
+    while (true) {
+        try {
+            return inputView.readPurchaseAmount()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
+private fun getValidWinningNumbers(inputView: InputView): List<Int> {
+    while (true) {
+        try {
+            return inputView.readWinningNumbers()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
+private fun getValidBonusNumber(inputView: InputView, winningNumbers: List<Int>): Int {
+    while (true) {
+        try {
+            return inputView.readBonusNumber(winningNumbers)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
     }
 }
