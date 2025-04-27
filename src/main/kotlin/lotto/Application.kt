@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.constants.TICKET_PRICE
 import lotto.io.InputHandler
 import lotto.io.OutputHandler
 

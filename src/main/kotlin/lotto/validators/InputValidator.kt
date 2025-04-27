@@ -1,6 +1,6 @@
 package lotto.validators
 
-import lotto.TICKET_PRICE
+import lotto.constants.TICKET_PRICE
 
 object InputValidator {
     fun validateSumOfMoney(sum: Int?): Int {
