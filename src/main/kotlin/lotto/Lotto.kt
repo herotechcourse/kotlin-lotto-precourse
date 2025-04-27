@@ -9,11 +9,14 @@ class Lotto(private val numbers: List<Int>) {
 
     // TODO: Implement additional functions
     fun getTicketNumbers(): List<Int> {
-        return numbers
+        return sortNumbers()
     }
 
     fun getMatchingNumbers(winningNumbers: List<Int>): Int {
         return numbers.count{ it in winningNumbers}
     }
 
+    private fun sortNumbers(): List<Int>{
+        return numbers.sorted()
+    }
 }
