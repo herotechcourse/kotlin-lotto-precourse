@@ -1,6 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     Application().run()
@@ -9,9 +10,11 @@ fun main() {
 class Application {
 
     private val inputView = InputView()
+    private val lottoService = LottoService()
 
     fun run() {
         val amount = inputView.readPurchaseAmount()
+        val tickets = lottoService.generateTickets(amount)
     }
 }
 
@@ -33,5 +36,18 @@ class InputView {
         val amount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Amount must be a number")
         if (amount % 100 != 0)  throw IllegalArgumentException("[ERROR] Amount must be divisible by 1,000.")
         return amount
+    }
+}
+
+class LottoService {
+
+    fun generateTickets(amount: Int): List<Lotto> {
+        val ticketCount = amount / 1000
+        return List(ticketCount) { generateTicket() }
+    }
+
+    private fun generateTicket(): Lotto {
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        return Lotto(numbers)
     }
 }
