@@ -29,9 +29,9 @@
 - [x] Receive 1 bonus number from the user.
   - [x] The bonus number must not overlap with any of the winning numbers.
   - [x] The bonus number must be in range (1 ~ 45).
-- [ ] Compare each lottery ticket to the winning numbers and count how many numbers match.
-  - [ ] If there are exactly 5 matches, check whether the ticket contains the bonus number.
-- [ ] Determine the result for each ticket and count the number of tickets for each prize rank.
+- [x] Compare each lottery ticket to the winning numbers and count how many numbers match.
+  - [x] If there are exactly 5 matches, check whether the ticket contains the bonus number.
+- [x] Determine the result for each ticket and count the number of tickets for each prize rank.
 - [ ] Calculate the return rate.
   - [ ] Return rate = (total prize money / total purchase amount) * 100.0, rounded to one decimal place.
 - [ ] Print the statistics of winning tickets and the return rate.

@@ -9,5 +9,9 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toSet().intersect(other.toSet()).size
     }
 
+    fun containsSingleNumber(number: Int): Boolean {
+        return numbers.contains(number)
+    }
+
     // TODO: Implement additional functions
 }
