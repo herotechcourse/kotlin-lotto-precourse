@@ -11,8 +11,10 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints formatted ticket count message`() {
         assertSimpleTest {
-            OutputView().printTicketCount(LottoMachine(5000))
+            OutputView(LottoMachine(5000)).printTicketCount()
+
             val output = output()
+
             assertThat(output).contains(PromptMessages.TICKET_COUNT.with(5))
         }
     }
@@ -20,14 +22,31 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints lotto numbers correctly`() {
         assertSimpleTest {
-            val machine = LottoMachine(5000)
-            OutputView().printLottoNumbers(machine)
+            OutputView(LottoMachine(5000)).printLottoNumbers()
 
             val output = output()
 
             assertThat(output).contains("[")
             assertThat(output).contains("]")
             assertThat(output.lines().size).isEqualTo(5)
+        }
+    }
+
+    @Test
+    fun `prints winning statistics correctly`() {
+        assertSimpleTest {
+
+            val guess = setOf(1, 2, 3, 4, 5, 6)
+            val bonus = 7
+
+            OutputView(LottoMachine(5000)).printWinningStatistics(guess, bonus)
+
+            val out = output()
+
+            assertThat(out).contains(PromptMessages.WINNING_STATISTICS.message)
+            assertThat(out).contains("---")
+            assertThat(out.lines().size).isEqualTo(7)
+            assertThat(out).contains("tickets").contains("Matches")
         }
     }
 
