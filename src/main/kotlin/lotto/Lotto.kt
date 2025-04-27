@@ -7,8 +7,10 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == LOTTO_SIZE) { LottoErrorMessage.INVALID_LOTTO_NUMBER_SIZE.message }
         require(numbers.distinct().size == numbers.size) { LottoErrorMessage.LOTTO_NUMBER_DUPLICATED.message }
-        require(numbers.all { it in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER }) { LottoErrorMessage.INVALID_LOTTO_NUMBER_RANGE.message}
+        require(numbers.all { it in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER }) { LottoErrorMessage.INVALID_LOTTO_NUMBER_RANGE.message }
     }
+
+    fun getNumbers() = this.numbers
 
     companion object {
         const val LOTTO_MIN_NUMBER = 1
