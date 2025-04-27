@@ -18,7 +18,7 @@ class LottoController(
         outputView.printTickets(lottos)
 
         val winningNumbers = inputView.getWinningNumbers()
-        val bonusNumber = inputView.getBonusNumber()
+        val bonusNumber = inputView.getBonusNumber(winningNumbers)
 
         val statistics = lottoRanker.rankLotto(lottos, winningNumbers, bonusNumber)
         val profit = lottoRanker.calculateProfit(lottos, statistics)
