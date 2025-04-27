@@ -14,21 +14,21 @@ class LotteryTicketMachineTest {
     @Test
     fun `throws exception when more than six winning numbers are provided`() {
         assertThrows<IllegalArgumentException> {
-            LotteryTicketMachine.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 6, 7))
+            LotteryTicketMachine.validateAmountOfNumbers(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
 
     @Test
     fun `throws exception when less than six winning numbers are provided`() {
         assertThrows<IllegalArgumentException> {
-            LotteryTicketMachine.validateWinningNumbers(listOf(1, 2, 3, 4, 5))
+            LotteryTicketMachine.validateAmountOfNumbers(listOf(1, 2, 3, 4, 5))
         }
     }
 
     @Test
     fun `throws exception when winning numbers have duplicate`() {
         assertThrows<IllegalArgumentException> {
-            LotteryTicketMachine.validateWinningNumbers(listOf(1, 2, 3, 4, 5, 5))
+            LotteryTicketMachine.validateUniqueness(listOf(1, 2, 3, 4, 5, 5))
         }
     }
 
