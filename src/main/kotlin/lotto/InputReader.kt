@@ -9,7 +9,7 @@ class InputReader(private val inputView: InputView = InputView()){
                 val purchaseAmount = inputView.readPurchaseAmount().toInt()
                 return Order(purchaseAmount)
             } catch (e: NumberFormatException) {
-                println("[ERROR] Purchase amount must be a valid number.")
+                println(Configuration.ErrorMessages.PURCHASE_AMOUNT_INVALID)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -22,7 +22,7 @@ class InputReader(private val inputView: InputView = InputView()){
                 val winningNumbers = inputView.readWinningNumbers().split(",").map { it.trim().toInt() }
                 return Lotto(winningNumbers)
             } catch (e: NumberFormatException) {
-                println("[ERROR] Winning numbers must be valid integers.")
+                println(Configuration.ErrorMessages.WINNING_NUMBERS_INVALID)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -33,11 +33,11 @@ class InputReader(private val inputView: InputView = InputView()){
         while (true) {
             try {
                 val bonusNumber = inputView.readBonusNumber().toInt()
-                require(bonusNumber in MIN_NUMBER..MAX_NUMBER) { "[ERROR] Bonus number must be between $MIN_NUMBER and $MAX_NUMBER." }
+                require(bonusNumber in Configuration.MIN_NUMBER..Configuration.MAX_NUMBER) { Configuration.ErrorMessages.BONUS_NUMBER_INVALID_RANGE }
                 // TODO: Check if the bonus number is unique and not in the winning numbers
                 return bonusNumber
             } catch (e: NumberFormatException) {
-                println("[ERROR] Bonus number must be a valid integer.")
+                println(Configuration.ErrorMessages.BONUS_NUMBER_INVALID)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }

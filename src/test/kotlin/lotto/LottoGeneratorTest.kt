@@ -17,9 +17,9 @@ class LottoGeneratorTest {
         val uniqueNumbers = mutableSetOf<Int>()
         for (ticket in tickets) {
             val numbers = ticket.getNumbers()
-            assert(numbers.size == LOTTO_NUMBER_COUNT) { "Each lotto ticket must contain exactly ${LOTTO_NUMBER_COUNT} numbers." }
+            assert(numbers.size == Configuration.LOTTO_NUMBER_COUNT) { "Each lotto ticket must contain exactly ${Configuration.LOTTO_NUMBER_COUNT} numbers." }
             assert(numbers.distinct().size == numbers.size) { "Lotto numbers must be unique." }
-            assert(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "Lotto numbers must be between ${MIN_NUMBER} and ${MAX_NUMBER}." }
+            assert(numbers.all { it in Configuration.MIN_NUMBER..Configuration.MAX_NUMBER }) { "Lotto numbers must be between ${Configuration.MIN_NUMBER} and ${Configuration.MAX_NUMBER}." }
             uniqueNumbers.addAll(numbers)
         }
     }

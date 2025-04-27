@@ -2,9 +2,9 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LOTTO_COUNT) { "[ERROR] Lotto must contain exactly $LOTTO_COUNT numbers." }
-        require(numbers.distinct().size == numbers.size) { "[ERROR] Lotto numbers must be unique." }
-        require(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] Lotto numbers must be between $MIN_NUMBER and $MAX_NUMBER." }
+        require(numbers.size == Configuration.LOTTO_COUNT) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_SIZE }
+        require(numbers.distinct().size == numbers.size) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_DUPLICATE }
+        require(numbers.all { it in (Configuration.MIN_NUMBER)..(Configuration.MAX_NUMBER) }) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_RANGE }
     }
 
     fun getNumbers(): List<Int> {
