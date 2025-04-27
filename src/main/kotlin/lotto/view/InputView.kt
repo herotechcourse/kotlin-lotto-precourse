@@ -14,7 +14,7 @@ object InputView {
         return validatePurchaseAmount(amount)
     }
 
-    private fun validatePurchaseAmount(input: String): Int {
+    internal fun validatePurchaseAmount(input: String): Int {
         val amount = input.toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] Invalid input. Please enter a valid integer.")
         require(amount >= 1000 && amount % 1000 == 0) {
