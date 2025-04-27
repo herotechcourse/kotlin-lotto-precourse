@@ -2,8 +2,8 @@ package views
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputView {
-    fun readLineFromConsole(): String? {
+open class InputView {
+    open fun readLineFromConsole(): String? {
         return Console.readLine()
     }
 
