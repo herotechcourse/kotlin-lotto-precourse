@@ -1,5 +1,7 @@
 package lotto
 
+import org.assertj.core.internal.Numbers
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
@@ -8,6 +10,13 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getNumbers(): List<Int> = numbers.sorted()
+
+    fun countMatches(winningNumbers: List<Int>):Int{
+        return numbers.intersect(winningNumbers.toSet()).size
+    }
+    fun hasBonus(bonusNumber: Int):Boolean{
+        return numbers.contains(bonusNumber)
+    }
 
 
 }

@@ -23,6 +23,11 @@ fun main() {
         val bonusNumber = inputHandler.getBonusNumber(lastWinningNumbers)
         println(bonusNumber)
 
+        //Calculate results
+        val prizeCalculator = PrizeCalculator(lastWinningNumbers,bonusNumber)
+        val statistics = prizeCalculator.calculateResults(tickets)
+
+
 
 
 
