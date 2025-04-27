@@ -10,7 +10,7 @@ fun main() {
     OutputView.printTickets(lottoMachine.tickets)
 
     val winningNumbers = InputView.inputLottoNumber()
-    val bonusNumber = InputView.inputBonusNumber()
+    val bonusNumber = InputView.inputBonusNumber(winningNumbers)
 
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
     val rankCounts = mutableMapOf<ResultRank, Int>()
@@ -27,50 +27,67 @@ fun main() {
     OutputView.printProfitRate(profitRate)
 }
 
-enum class ResultRank(val matchCount: Int, val prizeMoney: Int, val requiresBonus: Boolean = false) {
-    FIRST(6, 2_000_000_000),
-    SECOND(5, 30_000_000, true),
-    THIRD(5, 1_500_000),
-    FOURTH(4, 50_000),
-    FIFTH(3, 5_000),
-    NONE(0, 0);
+enum class ResultRank(
+    val matchCount: Int,
+    val prizeMoney: Int,
+    val bonusRequired: Boolean = false
+) {
+    NONE(0, 0),
+    THREE(3, 5_000),
+    FOUR(4, 50_000),
+    FIVE(5, 1_500_000),
+    FIVE_BONUS(5, 30_000_000, true),
+    SIX(6, 2_000_000_000);
 
-    companion object {
-        fun of(matchCount: Int, bonusMatch: Boolean): ResultRank {
-            return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && bonusMatch -> SECOND
-                matchCount == 5 -> THIRD
-                matchCount == 4 -> FOURTH
-                matchCount == 3 -> FIFTH
-                else -> NONE
-            }
-        }
-    }
+    val bonusText: String
+        get() = if (bonusRequired) " + Bonus Ball" else ""
 }
-
 
 object InputView {
     fun inputPurchaseAmount():Int {
         println("Please enter the purchase amount.")
-        val purchaseAmount = Console.readLine().toInt()
-        return purchaseAmount
+        return try {
+            val purchaseAmount = Console.readLine().toInt()
+            require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
+            require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
+            purchaseAmount
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] Invalid input. Please enter an integer.")
+            inputPurchaseAmount()
+        }
     }
 
     fun inputLottoNumber():List<Int> {
-        println()
-        println("Please enter last week's winning numbers.")
-        val winningNumbers = Console.readLine().removeWhiteSpaces().split(",").map { it.toInt() }
-        return winningNumbers
+        println("\nPlease enter last week's winning numbers.")
+        try {
+            val input = Console.readLine().removeWhiteSpaces()
+            val winningNumbers = input.split(",").map {
+                it.toIntOrNull() ?: throw IllegalArgumentException("All numbers must be valid integers")
+            }
+            require(winningNumbers.size == 6) { "[ERROR] You must enter exactly 6 numbers." }
+            require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] You cannot enter duplicate numbers." }
+            require(winningNumbers.all { it in 1..45 }) { "[ERROR] All numbers must be between 1 and 45." }
+            return winningNumbers
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message}")
+            return inputLottoNumber()
+        }
     }
 
     private fun String.removeWhiteSpaces() = replace("\\s".toRegex(), "")
 
-    fun inputBonusNumber():Int {
-        println()
-        println("Please enter the bonus number.")
-        val bonusNumber = Console.readLine().toInt()
-        return bonusNumber
+    fun inputBonusNumber(winningNumbers: List<Int>):Int {
+        println("\nPlease enter the bonus number.")
+        try {
+            val input = Console.readLine()
+            val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("Bonus number must be a valid integer.")
+            require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+            require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
+            return bonusNumber
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message}")
+            return inputBonusNumber(winningNumbers)
+        }
     }
 }
 
@@ -83,13 +100,13 @@ object OutputView {
         }
     }
 
-    fun printResultStatistics(rankCounts: Map<ResultRank, Int>) {
-        println()
+    fun printResultStatistics(result: Map<ResultRank, Int>) {
         println("Winning Statistics")
         println("---")
-        ResultRank.entries.filter { it != ResultRank.NONE }.forEach { rank ->
-                val count = rankCounts.getOrDefault(rank, 0)
-                println("${rank.matchCount} Matches${if (rank.requiresBonus) " + Bonus Ball" else ""} (${rank.prizeMoney} KRW) - $count tickets")
+        ResultRank.entries
+            .sortedBy { it.matchCount } // sort by number of matches
+            .forEach { rank ->
+                println("${rank.matchCount} Matches${rank.bonusText} (${rank.prizeMoney} KRW) - ${result[rank] ?: 0} tickets")
             }
     }
 
@@ -123,9 +140,24 @@ class LottoMachine (purchaseAmount: Int) {
 
 class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumber: Int)
 {
+    init {
+        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(winningNumbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
+        require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] Winning numbers cannot contain duplicates." }
+        require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
+    }
     fun match(ticket: Lotto): ResultRank {
         val matchCount = ticket.matchNumbers(winningNumbers)
-        val containsBonus = ticket.getNumbers().contains(bonusNumber)
-        return ResultRank.of(matchCount, containsBonus)
+        val containsBonus = ticket.contains(bonusNumber)
+
+        return when {
+            matchCount == 6 -> ResultRank.SIX
+            matchCount == 5 && containsBonus -> ResultRank.FIVE_BONUS
+            matchCount == 5 -> ResultRank.FIVE
+            matchCount == 4 -> ResultRank.FOUR
+            matchCount == 3 -> ResultRank.THREE
+            else -> ResultRank.NONE
+        }
     }
 }
