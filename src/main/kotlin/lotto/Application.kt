@@ -1,5 +1,7 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val input=Input()
+
+    val noOfTickets = input.getPurchaseAmount()
 }
