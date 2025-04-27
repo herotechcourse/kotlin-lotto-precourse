@@ -3,24 +3,26 @@ package lotto
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.io.InputHandler
 import lotto.io.OutputHandler
+import lotto.validators.InputValidator
 
 fun main() {
     val tickets = mutableListOf<Lotto>()
     val sumOfMoney = InputHandler.getSumOfMoney()
     val numberOfTickets = getNumberOfTickets(sumOfMoney)
-    validateSumOfMoney(sumOfMoney)
+//  validateSumOfMoney(sumOfMoney)
+    InputValidator.validateSumOfMoney(sumOfMoney)
     repeat(numberOfTickets) {
         val ticket = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
         tickets.add(ticket)
     }
     OutputHandler.showTickets(tickets)
     val winNumbers = InputHandler.getWinningNumbers()
-    validateNumbers(winNumbers.map {
+    InputValidator.validateNumbers(winNumbers.map {
         it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
     })
 
     val bonusNumber = InputHandler.getBonusNumber()
-    validateBonusNumber(bonusNumber)
+    InputValidator.validateNumberInRange(bonusNumber)
     val ticketMatchesMap = mutableMapOf(
         "match3" to 0,
         "match4" to 0,
@@ -53,31 +55,4 @@ fun main() {
 
 fun getNumberOfTickets(sum: Int): Int {
     return sum / 1000
-}
-
-fun validateSumOfMoney(sum: Int) {
-    if (sum < 1000) {
-        throw IllegalArgumentException("The amount must be divisible by 1,000")
-    }
-
-}
-
-fun validateNumbers(numbers: List<Int>) {
-    if (numbers.size != 6) {
-        throw IllegalArgumentException("You need to write 6 comma-separated numbers")
-    }
-    if (numbers.size != numbers.toSet().size) {
-        throw IllegalArgumentException("You need to write 6 unique numbers")
-    }
-    for (number in numbers) {
-        if (number !in 1..45) {
-            throw IllegalArgumentException("Lotto numbers must be between 1 and 45.")
-        }
-    }
-}
-
-fun validateBonusNumber(number: Number) {
-    if (number !in 1..45) {
-        throw IllegalArgumentException("Bonus number must be between 1 and 45.")
-    }
 }
