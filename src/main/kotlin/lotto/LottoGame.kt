@@ -2,15 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-// TODO: check whether enum should be in its own file
-enum class MatchCategory {
-    THREE_MATCHES,
-    FOUR_MATCHES,
-    FIVE_MATCHES,
-    FIVE_MATCHES_AND_BONUS,
-    SIX_MATCHES
-}
-
 class LottoGame(
     val purchaseAmount: UInt,
     var winningNumbers: List<Int> = emptyList(),
