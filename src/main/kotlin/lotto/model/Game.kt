@@ -25,7 +25,7 @@ class Game(private val purchaseAmount: Int, private val lottoTicket: List<Lotto>
         matchResult.forEach { (rank, count) ->
             profit += rank.price * count
         }
-        return profit / purchaseAmount.toDouble()
+        return profit.toDouble()/purchaseAmount*100
     }
 
     private fun countMatchesWithBonus(lotto: Lotto, winningLotto: WinningLotto): Pair<Int, Boolean> {
