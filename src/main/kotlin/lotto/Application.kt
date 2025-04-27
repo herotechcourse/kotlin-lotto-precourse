@@ -10,9 +10,15 @@ class Application {
             val purchaseAmount = InputView().purchaseAmount()
             val tickets = Application().generateLottoTickets(purchaseAmount)
             OutputView().displayTickets(tickets)
+
             val winningNumbers = InputView().inputWinningNumbers()
             val bonusNumber = InputView().inputBonusNumber(winningNumbers)
-            Application().countWinningTickets(tickets, winningNumbers, bonusNumber)
+
+            val results = Application().countWinningTickets(tickets, winningNumbers, bonusNumber)
+            val totalPrize = Application().calculateTotalPrize(results)
+
+            OutputView().displayResults(results)
+            OutputView().displayReturnRate(totalPrize, tickets.size)
         }
     }
 
@@ -52,6 +58,16 @@ class Application {
         val hasBonus = ticketNumbers.contains(bonusNumber.toInt())
 
         return LottoPrize.fromMatchResult(matchCount, hasBonus)
+    }
+
+    private fun calculateTotalPrize(results: Map<LottoPrize, Int>): Long {
+        var totalPrize = 0L
+        for (entry in results.entries) {
+            val prize = entry.key
+            val count = entry.value
+            totalPrize += prize.prize * count
+        }
+        return totalPrize
     }
 }
 
@@ -140,11 +156,36 @@ class OutputView {
             println(ticket)
         }
     }
+
+    fun displayResults(results: Map<LottoPrize, Int>) {
+        println("\nWinning Statistics")
+        println("--------------------")
+        for (prize in LottoPrize.entries) {
+            if (prize != LottoPrize.NONE) {
+                val matchText = when (prize) {
+                    LottoPrize.FIRST -> "6 Matches"
+                    LottoPrize.SECOND -> "5 Matches + Bonus Ball"
+                    LottoPrize.THIRD -> "5 Matches"
+                    LottoPrize.FOURTH -> "4 Matches"
+                    LottoPrize.FIFTH -> "3 Matches"
+                    else -> ""
+                }
+                val formattedPrize = "%,d".format(prize.prize)
+                println("$matchText (${formattedPrize} KRW) - ${results[prize]} tickets")
+            }
+        }
+    }
+
+    fun displayReturnRate(totalPrize: Long, ticketCount: Int) {
+        val purchaseAmount = ticketCount * 1000L
+        val returnRate = (totalPrize.toDouble() / purchaseAmount.toDouble()) * 100
+        println("Total return rate is %.1f%%.".format(returnRate))
+    }
 }
 
 enum class LottoPrize(val matchCount: Int, val hasBonus: Boolean, val prize: Long) {
     FIRST(6, false, 2_000_000_000),
-    SECOND(5, true,  30_000_000),
+    SECOND(5, true, 30_000_000),
     THIRD(5, false, 1_500_000),
     FOURTH(4, false, 50_000),
     FIFTH(3, false, 5_000),
