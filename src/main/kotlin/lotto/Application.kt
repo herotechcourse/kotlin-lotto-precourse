@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.view.InputView
+import lotto.view.OutputView
 import lotto.domain.LottoGenerator
 
 fun main() {
@@ -10,8 +11,7 @@ fun main() {
     val ticketCount = purchaseAmount / 1000
     val lottos = LottoGenerator.generateLottos(ticketCount)
 
-    println("You have purchased ${lottos.size} tickets.")
-    lottos.forEach { println(it.getNumbers()) }
+    OutputView.printPurchasedTickets(lottos)
 }
 
 fun validatePurchaseAmount(amount: Int) {
