@@ -49,6 +49,38 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `purchase amount should be divisible by 1000`() {
+        assertSimpleTest {
+            runException("2500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `bonus number should not be in winning numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "5")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `winning numbers should be 6 numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `bonus number should be between 1 and 45`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "50")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }
