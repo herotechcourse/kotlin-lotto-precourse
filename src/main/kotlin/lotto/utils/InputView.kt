@@ -33,7 +33,7 @@ object InputView {
 
         while (true) {
             try {
-                println("Please enter last week's winning numbers (comma-separated).")
+                println("\nPlease enter last week's winning numbers (comma-separated).")
                 val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
                 val numbers = input.split(",").map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must contain 6 numbers.") }
                 return parseWinningTicket(numbers)
@@ -54,7 +54,7 @@ object InputView {
     fun readBonusNumber(winningNumbers: Lotto): Int {
         while (true) {
             try {
-                println("Please enter last week's bonus number.")
+                println("\nPlease enter last week's bonus number.")
                 val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
                 return parseBonusNumber(input, winningNumbers)
             } catch (e: IllegalArgumentException) {

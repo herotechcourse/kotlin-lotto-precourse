@@ -1,6 +1,7 @@
 package lotto.utils
 
 import lotto.Lotto
+import lotto.core.Prize
 
 object OutputView {
     fun printTickets(tickets: List<Lotto>) {
@@ -10,4 +11,12 @@ object OutputView {
         }
     }
 
+    fun printResult(result: Map<Prize, Int>) {
+        println()
+        val prizes = listOf(Prize.FIFTH, Prize.FOURTH, Prize.THIRD,Prize.SECOND, Prize.FIRST)
+        prizes.forEach { prize ->
+            val count = result.getOrDefault(prize, defaultValue = 0)
+            println("${prize.display} - $count tickets")
+        }
+    }
 }
