@@ -2,9 +2,14 @@ package lotto
 
 import java.util.Locale
 
-class OutputView (val tickets: List<Lotto>, val winningNumbers: WinningNumbers) {
+class OutputView (private val tickets: List<Lotto>, private val winningNumbers: WinningNumbers) {
 
-    fun printOutput() {
+    fun printOutput(){
+        printLottoTickets()
+        printStatistics()
+
+    }
+    private fun printStatistics() {
 
         val winningStatistics = WinningStatistics(tickets, winningNumbers)
         winningStatistics.getMapPrize()
@@ -18,6 +23,13 @@ class OutputView (val tickets: List<Lotto>, val winningNumbers: WinningNumbers) 
         val returnRate: Double =  moneyTotal.toDouble()/(tickets.size * 1000)
         val formattedRate = String.format(Locale.US,"%.1f%%", returnRate * 100)
         println("Total return rate is ${formattedRate}.")
+    }
+
+    private fun printLottoTickets() {
+        println("You have purchased $numberTickets tickets.")
+        for (ticket in tickets) {
+        println(ticket.getTicket())
+        }
     }
 
 }

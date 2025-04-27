@@ -2,24 +2,24 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoTicketGeneration (private val numberTickets: Int) {
+object LottoTicketGeneration  {
 
-    val tickets = mutableListOf<Lotto>()
+    fun generateTicket(numberTickets: Int): List<Lotto> {
 
-
-    fun generateTicket(){
-        // val tickets = listOf<Lotto>()
+        val lottoTickets = mutableListOf<Lotto>()
         repeat(numberTickets) {
             val ticket = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-            tickets.add(Lotto(ticket))
+            lottoTickets.add(Lotto(ticket))
         }
-        //return tickets
+        return lottoTickets
+
     }
 
-    fun showTickets() {
-        println("You have purchased $numberTickets tickets.")
-        for (ticket in tickets) {
-            println(ticket.getTicket())
-        }
-    }
+//    fun showTickets() {
+//
+//        println("You have purchased $numberTickets tickets.")
+//        for (ticket in tickets) {
+//            println(ticket.getTicket())
+//        }
+//    }
 }
