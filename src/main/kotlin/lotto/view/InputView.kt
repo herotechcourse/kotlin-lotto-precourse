@@ -16,19 +16,19 @@ object InputView {
         return retryUntilValid(::readBonusNumber)
     }
 
-    fun readPurchaseAmount(): Int {
+    private fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount!")
         val amount = Console.readLine().trim()
         return validatePurchaseAmount(amount)
     }
 
-    fun readWinningNumbers(): List<Int> {
+    private fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers (comma-separated):")
         val input = Console.readLine().trim()
         return validateWinningNumbers(input)
     }
 
-    fun readBonusNumber(): Int {
+    private fun readBonusNumber(): Int {
         println("Please enter the bonus number:")
         val input = Console.readLine().trim()
         return validateBonusNumber(input)
