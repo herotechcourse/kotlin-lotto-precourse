@@ -37,3 +37,7 @@ Validate that all user inputs are correct (e.g., amounts must be divisible by 1,
 ### Error Handling:
 
 Handle exceptions such as invalid input would be in a way that user can enter a valid input again after receiving the error. 
+
+### Testing: 
+
+For all parts of the code unit tests are being created and different functionality of the program are being tested.
