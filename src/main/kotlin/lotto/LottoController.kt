@@ -8,9 +8,8 @@ import lotto.util.Config
 import lotto.view.OutputView
 
 class LottoController(
-    private val machine: TicketMachine,
-    private val input: InputView,
-    private val output: OutputView
+    private val machine: TicketMachine = TicketMachine()
+
 ) {
     fun run() {
         println("***** Welcome to Lotto *****")
@@ -18,13 +17,13 @@ class LottoController(
         println("Each ticket costs ${Config.TICKET_PRICE} KRW.")
         println()
 
-        val purchaseAmount = input.readPurchaseAmount()
+        val purchaseAmount = InputView.readPurchaseAmount()
         val tickets = machine.generateTickets(purchaseAmount)
 
-        output.printTickets(tickets.map { it.getNumbers() })
+        OutputView.printTickets(tickets.map { it.getNumbers() })
 
-        val winningNumbers = input.readWinningNumbers()
-        val bonusNumber = input.readBonusNumber(winningNumbers)
+        val winningNumbers = InputView.readWinningNumbers()
+        val bonusNumber = InputView.readBonusNumber(winningNumbers)
 
         val ranks = tickets.map { ticket ->
             val nums = ticket.getNumbers()
@@ -32,6 +31,6 @@ class LottoController(
         }
 
         val stats = Statistics.from(ranks, purchaseAmount)
-        output.printStatistics(stats)
+        OutputView.printStatistics(stats)
     }
 }
