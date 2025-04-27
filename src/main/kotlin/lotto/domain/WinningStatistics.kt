@@ -4,10 +4,26 @@ import lotto.Lotto
 
 object WinningStatistics {
 
-    private val rankCounts: MutableMap<Rank, Int> = mutableMapOf()
-
     fun get(playerData: PlayerData, winningLotto: Lotto, bonusNumber: Int) {
         playerData.rankResults = getRankDetails(playerData, winningLotto, bonusNumber)
+        playerData.prizeSum = calculateRankEarnings(playerData.rankResults)
+        playerData.returnRate = calculateProfitRate(playerData.moneySpent, playerData.prizeSum)
+    }
+
+    private fun calculateRankEarnings(rankResults: Map<Rank, Pair<Int, Int>>): Int {
+        var totalEarned = 0;
+        for ((rank, pair) in rankResults) {
+            val (ticketCount, prizeMoney) = pair
+            val rankEarnings = ticketCount * prizeMoney
+            totalEarned += rankEarnings
+        }
+        return totalEarned
+    }
+
+    private fun calculateProfitRate(moneySpent: Int, totalPrize: Int): Double {
+        if (moneySpent == 0)
+            return 0.0
+        return (totalPrize.toDouble() / moneySpent) * 100
     }
 
     private fun getRankDetails(

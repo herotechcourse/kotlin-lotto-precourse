@@ -2,8 +2,6 @@ package lotto.view
 
 import lotto.domain.PlayerData
 
-//import Rank
-
 object OutputView {
 
     fun requestUser(message: String) {
@@ -25,14 +23,24 @@ object OutputView {
             println("${rank.displayName()} (${formatNumber(prizeMoney)} KRW) – $ticketCount tickets")
 
         }
-        println("Total return rate is {returnRate}")
+        println("Total return rate is ${formatNumber(playerData.returnRate)}.")
+
     }
 
-    private fun formatNumber(number: Int): String {
-        return number.toString()
-            .reversed()
-            .chunked(3)
-            .joinToString(",")
-            .reversed()
+    private fun formatNumber(number: Any): String {
+        return when (number) {
+            is Int -> number.toString()
+                .reversed()
+                .chunked(3)
+                .joinToString(",")
+                .reversed()
+
+            is Double -> {
+                val rounded = (number * 10).toInt() / 10.0
+                "$rounded%"
+            }
+
+            else -> throw IllegalArgumentException("Unsupported number type")
+        }
     }
 }

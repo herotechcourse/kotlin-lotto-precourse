@@ -13,8 +13,8 @@ data class PlayerData(
     val moneySpent: Int,
     val lottoTickets: List<Lotto>,
     var rankResults: Map<Rank, Pair<Int, Int>> = emptyMap(),
-    val prizeSum: Int = 0,
-    val returnRate: Double = 0.0
+    var prizeSum: Int = 0,
+    var returnRate: Double = 0.0
 )
 
 class Game {
