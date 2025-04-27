@@ -15,6 +15,7 @@
 
 ### Print the purchased lotto tickets.
 - [X] Print a message to show the number of purchased tickets. "You have purchased $8 tickets."
+- [X] Sort the numbers in each lotto ticket in ascending order. 
 - [X] Print each lotto ticket's numbers, one per line.
 
 ### Receive the winning numbers for the lotto.

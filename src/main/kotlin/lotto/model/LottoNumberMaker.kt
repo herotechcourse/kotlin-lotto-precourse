@@ -8,7 +8,7 @@ const val LOTTO_NUMBER_COUNT = 6
 
 object LottoNumberMaker {
     fun makeOneLineLottoNumber(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT)
+        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_START, LOTTO_NUMBER_END, LOTTO_NUMBER_COUNT).sorted()
     }
 
     fun makeTotalLottoNumber(ticketCount: Int): MutableList<List<Int>> {
