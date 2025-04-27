@@ -9,10 +9,11 @@ object InputView {
         println("Please enter the purchase amount.")
         return retryInput {
             val input = Console.readLine().trim()
-            Validator.validateNumber(input)
+            Validator.validatePurchaseAmount(input)
             input.toInt()
         }
     }
+
 
     fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers (comma-separated).")
