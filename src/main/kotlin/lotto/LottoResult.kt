@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.util.Retrier
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -25,7 +26,7 @@ object LottoResult {
     }
 
     private fun readWinningNumbers(): WinningNumbers {
-        return retryInput {
+        return Retrier.retryInput {
             val winningNumbersInput = InputView.readWinningNumbers()
             val bonusNumberInput = InputView.readBonusNumber()
             WinningNumbers(winningNumbersInput, bonusNumberInput)
@@ -48,14 +49,5 @@ object LottoResult {
     private fun printStatistics(statistics: LottoStatistics, amount: Int) {
         OutputView.printStatistics(statistics.getRankCounts())
         OutputView.printProfitRate(statistics.calculateProfitRate(amount))
-    }
-
-    private fun <T> retryInput(action: () -> T): T {
-        return try {
-            action()
-        } catch (e: IllegalArgumentException) {
-            println(e.message)
-            retryInput(action)
-        }
     }
 }

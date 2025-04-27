@@ -2,12 +2,13 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.util.Validator
+import lotto.util.Retrier
 
 object InputView {
 
     fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
-        return retryInput {
+        return Retrier.retryInput {
             val input = Console.readLine().trim()
             Validator.validatePurchaseAmount(input)
             input.toInt()
@@ -17,7 +18,7 @@ object InputView {
 
     fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers (comma-separated).")
-        return retryInput {
+        return Retrier.retryInput {
             val input = Console.readLine().trim()
             val numbers = input.split(",").map { it.trim() }
             Validator.validateNumberListSize(numbers)
@@ -28,19 +29,10 @@ object InputView {
 
     fun readBonusNumber(): Int {
         println("Please enter the bonus number.")
-        return retryInput {
+        return Retrier.retryInput {
             val input = Console.readLine().trim()
             Validator.validateNumber(input)
             input.toInt()
-        }
-    }
-
-    private fun <T> retryInput(action: () -> T): T {
-        return try {
-            action()
-        } catch (e: IllegalArgumentException) {
-            println(e.message)  // Print [ERROR] message
-            retryInput(action)  // Retry input
         }
     }
 }
