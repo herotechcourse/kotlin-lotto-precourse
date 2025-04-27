@@ -44,23 +44,3 @@ fun calculateResultCounts(results: List<LottoResults>): Map<LottoResults, Int> {
         results.count { it == result }
     }
 }
-
-fun displayTotalPrize(resultCounts: Map<LottoResults, Int>, numberOfTickets: Int, ticketPrice: Int = 1000) {
-    var totalPrize = 0
-    resultCounts.forEach { (result, count) ->
-        totalPrize += result.prize * count
-    }
-
-    val totalSpent = numberOfTickets * ticketPrice
-    val percentage = (totalPrize.toDouble() / totalSpent) * 100
-
-    println("Total Prize: ${totalPrize} KRW")
-    println("Earnings Percentage: ${"%.2f".format(percentage)}%")
-}
-
-
-fun displayResults(resultCounts: Map<LottoResults, Int>) {
-    resultCounts.forEach { (result, count) ->
-        println("${result.message} – $count tickets")
-    }
-}
