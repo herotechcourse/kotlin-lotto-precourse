@@ -12,6 +12,13 @@ fun main() {
     val lottos = LottoGenerator.generateLottos(ticketCount)
 
     OutputView.printPurchasedTickets(lottos)
+
+
+    val winningNumbers = InputView.readWinningNumbers()
+    val bonusNumber = InputView.readBonusNumber()
+
+    println(" last week's winning numbers.: $winningNumbers")
+    println("the bonus number.: $bonusNumber")
 }
 
 fun validatePurchaseAmount(amount: Int) {
