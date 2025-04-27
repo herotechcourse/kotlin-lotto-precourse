@@ -41,21 +41,21 @@ class LottoGame (
     }
 
     private fun initializeWinningNumbers() = repeatUntilSuccess {
-        val input: List<String> = inputView.readWinningNumbers()
-        lottoValidator.validateWinningNumbers(input)
-        winningCombination = WinningCombination(input.map { it.toInt() }, 0, 0)
+        val winningNumberInput: List<String> = inputView.readWinningNumbers()
+        lottoValidator.validateWinningNumbers(winningNumberInput)
+        winningCombination = WinningCombination(winningNumberInput.map { it.toInt() }, 0, 0)
     }
 
     private fun initializeBonusNumber() = repeatUntilSuccess {
-        val input = inputView.readBonusNumber()
-        lottoValidator.validateBonusNumber(input, winningCombination.winningNumberList)
-        winningCombination = WinningCombination(winningCombination.winningNumberList, input.toInt(), 0)
+        val bonusNumberInput = inputView.readBonusNumber()
+        lottoValidator.validateBonusNumber(bonusNumberInput, winningCombination.winningNumberList)
+        winningCombination = WinningCombination(winningCombination.winningNumberList, bonusNumberInput.toInt(), 0)
     }
 
-    private fun <T> repeatUntilSuccess(action: () -> T): T {
+    private fun <T> repeatUntilSuccess(actionToRetry: () -> T): T {
         while (true) {
             try {
-                return action()
+                return actionToRetry()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
                 println()
