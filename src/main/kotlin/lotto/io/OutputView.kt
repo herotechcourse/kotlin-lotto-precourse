@@ -1,4 +1,8 @@
-package lotto
+package lotto.io
+
+import lotto.Lotto
+import lotto.domain.PrizeRank
+import kotlin.collections.iterator
 
 object OutputView {
     fun printUsertickets(userLottos :List<Lotto>) {
@@ -8,10 +12,10 @@ object OutputView {
         }
     }
 
-    fun printWinningStatistics(map: Map<MatchResult, Int>) {
+    fun printWinningStatistics(map: Map<PrizeRank, Int>) {
         println("\nWinning Statistics\n---")
         for(result in map) {
-            if(!MatchResult.NONE.equals(result.key)) {
+            if(!PrizeRank.NONE.equals(result.key)) {
                 print("${result.key.matchCount} Matches ")
                 if(result.key.bonusResult) {
                     print("+ Bonus Ball ")

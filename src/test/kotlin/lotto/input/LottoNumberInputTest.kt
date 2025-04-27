@@ -1,7 +1,7 @@
 package lotto.input
 
 import lotto.Lotto
-import lotto.WinningLotto
+import lotto.domain.WinningLotto
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

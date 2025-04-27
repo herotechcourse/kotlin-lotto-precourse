@@ -1,6 +1,7 @@
-package lotto
+package lotto.generator
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 object LottoGenerator {
     fun generate(count: Int): List<Lotto> {

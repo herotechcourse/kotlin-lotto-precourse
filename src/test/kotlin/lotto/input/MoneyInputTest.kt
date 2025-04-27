@@ -1,6 +1,6 @@
 package lotto.input
 
-import lotto.InputView
+import lotto.io.InputView
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
