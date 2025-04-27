@@ -19,7 +19,7 @@ class MoneyInputTest {
         val amount: Int = GOOD_AMOUNT_FOR_PURCHASING_TICKET
 
         // when
-        val result = InputView.purchaseAmountInput(amount)
+        val result = InputView.inputPurchaseAmount(amount)
 
         // then
         assertEquals(5, result)
@@ -32,7 +32,7 @@ class MoneyInputTest {
 
         // when & then
         assertThrows(IllegalArgumentException::class.java) {
-            InputView.purchaseAmountInput(amount)
+            InputView.inputPurchaseAmount(amount)
         }
     }
 
@@ -43,7 +43,7 @@ class MoneyInputTest {
 
         // when & then
         assertThrows(IllegalArgumentException::class.java) {
-            InputView.purchaseAmountInput(amount)
+            InputView.inputPurchaseAmount(amount)
         }
     }
 
