@@ -11,7 +11,6 @@ class LottoMachine (private val purchaseAmount: Int){
         require(purchaseAmount >= TICKET_PRICE) { Message.ERROR_AMOUNT_TOO_SMALL }
         require(purchaseAmount % TICKET_PRICE == 0) { Message.ERROR_AMOUNT_NOT_DIVISIBLE }
         tickets = generateTickets()
-        OutputView.printTickets(tickets)
     }
     private fun generateTickets(): List<Lotto> {
         val ticketCount = purchaseAmount / TICKET_PRICE
