@@ -19,23 +19,24 @@ class LottoController(
     private val lottoTicketCalculator = config.lottoTicketCalculator()
 
     fun run() {
-        val amount = readPurchaseAmount()
-        val lottos = generateLottos(amount)
+        val (amount, count) = readPurchaseAmount()
+        val lottos = generateLottos(count)
         val winningNumbers = readWinningNumbers()
         val bonusNumber = readBonusNumber(winningNumbers)
 
         printResults(lottos, winningNumbers, bonusNumber, amount)
     }
 
-    private fun readPurchaseAmount(): Int {
+    private fun readPurchaseAmount(): Pair<Int, Int> {
         outputView.printPurchaseLottoAmountPrompt()
         return runCatchingRepeatedly {
-            lottoAmountInputParser.parseToInt(inputView.readPurchaseLottoAmount())
+            val amount = lottoAmountInputParser.parseToInt(inputView.readPurchaseLottoAmount())
+            val count = lottoTicketCalculator.calculateTicketCount(amount)
+            amount to count
         }
     }
 
-    private fun generateLottos(amount: Int): List<Lotto> {
-        val count = lottoTicketCalculator.calculateTicketCount(amount)
+    private fun generateLottos(count: Int): List<Lotto> {
         outputView.printIssuedLottoCountMessage(count)
 
         val lottos = lottoGenerator.generate(count)
