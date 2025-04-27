@@ -35,9 +35,9 @@
 ### 1. Input
   - Exception
   - Amount
-    - [ ] Non-numeric characters are used
-    - [ ] The amount is not a unit of `1,000 KRW`
-    - [ ] The amount exceeds the range of an Integer
+    - [x] Non-numeric characters are used
+    - [x] The amount is not a unit of `1,000 KRW`
+    - [x] The amount exceeds the range of an Integer
   - Winning Numbers
     - [ ] Non-numeric characters are used(excluding commas)
     - [ ] Special characters other than commas(,) are used 
