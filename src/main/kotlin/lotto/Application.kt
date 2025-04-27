@@ -30,9 +30,9 @@ fun main() {
 enum class ResultRank(
     val matchCount: Int,
     val prizeMoney: Int,
-    val bonusRequired: Boolean = false
+    private val bonusRequired: Boolean = false
 ) {
-    NONE(0, 0),
+    //NONE(0, 0),
     THREE(3, 5_000),
     FOUR(4, 50_000),
     FIVE(5, 1_500_000),
@@ -52,7 +52,7 @@ object InputView {
             require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
             purchaseAmount
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] Invalid input. Please enter an integer.")
+            println("[ERROR] ${e.message}")
             inputPurchaseAmount()
         }
     }
@@ -93,10 +93,9 @@ object InputView {
 
 object OutputView {
     fun printTickets(lottoTickets: List<Lotto>) {
-        println()
-        println("You have purchased ${lottoTickets.size} tickets.")
+        println("\nYou have purchased ${lottoTickets.size} tickets.")
         for (lotto in lottoTickets) {
-            println(lotto.getNumbers().joinToString(prefix="[", postfix="]", separator = ", "))
+            println(lotto.getNumbers().sorted().joinToString(prefix="[", postfix="]", separator = ", "))
         }
     }
 
@@ -104,14 +103,19 @@ object OutputView {
         println("Winning Statistics")
         println("---")
         ResultRank.entries
-            .sortedBy { it.matchCount } // sort by number of matches
+            .sortedBy { it.matchCount }
             .forEach { rank ->
-                println("${rank.matchCount} Matches${rank.bonusText} (${rank.prizeMoney} KRW) - ${result[rank] ?: 0} tickets")
+                println("${rank.matchCount} Matches${rank.bonusText} (${formatMoney(rank.prizeMoney)} KRW) – ${result.getOrDefault(rank, 0)} tickets")
             }
     }
 
+    private fun formatMoney(amount: Int): String {
+        return amount.toString().replace(Regex("(?<=\\d)(?=(\\d{3})+(?!\\d))"), ",")
+    }
+
     fun printProfitRate(profitRate: Double) {
-        println("Total return rate is $profitRate%.")
+        val formattedProfitRate = String.format("%.1f", profitRate)
+        println("Total return rate is $formattedProfitRate%.")
     }
 }
 
@@ -157,7 +161,7 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
             matchCount == 5 -> ResultRank.FIVE
             matchCount == 4 -> ResultRank.FOUR
             matchCount == 3 -> ResultRank.THREE
-            else -> ResultRank.NONE
+//            else -> ResultRank.NONE
         }
     }
 }
