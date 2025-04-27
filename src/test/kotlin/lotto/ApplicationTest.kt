@@ -42,6 +42,22 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
+    fun `feature test with whitespace in winning numbers`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("1000", "1,  2,3 ,4, 5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 1 tickets.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "6 Matches (2,000,000,000 KRW) – 1 tickets",
+                    "Total return rate is 200000000.0%."
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6)
+        )
+    }
+
+    @Test
     fun `exception test`() {
         assertSimpleTest {
             runException("1000j")
