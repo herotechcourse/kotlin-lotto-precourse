@@ -14,8 +14,8 @@ object Validator {
     }
 
     fun validateWinningNumbers(input: String): List<Int> {
-        val numbers = input.split(",").map {
-            it.trim().toIntOrNull() ?: throw ApplicationException(InputException.INVALID_INTEGER)
+        val numbers = StringUtil.convertToList(input).map {
+            it.toIntOrNull() ?: throw ApplicationException(InputException.INVALID_INTEGER)
         }
         if (numbers.size != 6 || numbers.toSet().size != 6) {
             throw ApplicationException(InputException.INVALID_WINNING_NUMBERS)
