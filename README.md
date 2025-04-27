@@ -18,10 +18,9 @@
   * Total return rate [X]
 * Implement overarching (main) logic [X]
 * Unit Tests [X]
-* Refactor [ ]
-  * User Input - DRY [ ]
+* Refactor [X]
+  * User Input - DRY [X]
 * Format [ ]
-  * Linter []
 
 ---
 
