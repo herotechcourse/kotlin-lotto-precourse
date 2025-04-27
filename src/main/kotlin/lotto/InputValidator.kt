@@ -18,5 +18,4 @@ object InputValidator {
             throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45 and not duplicated.")
         }
     }
-
 }

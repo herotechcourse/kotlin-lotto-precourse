@@ -1,4 +1,5 @@
 package lotto
+import camp.nextstep.edu.missionutils.Randoms
 
 class LottoMachine {
     fun generateTickets(count: Int): List<Lotto> {
@@ -8,6 +9,6 @@ class LottoMachine {
     }
 
     private fun generateRandomNumbers(): List<Int> {
-        return (1..45).shuffled().take(6)
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
 }
