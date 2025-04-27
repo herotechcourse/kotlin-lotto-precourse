@@ -49,6 +49,46 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `should show error if amount is not divisible by 1000`() {
+        assertSimpleTest {
+            runException("1234")
+            assertThat(output()).contains("[ERROR] Amount must be divisible by 1000.")
+        }
+    }
+
+    @Test
+    fun `should generate correct number of tickets`() {
+        assertSimpleTest {
+            run("3000", "1,2,3,4,5,6", "7")
+            assertThat(output()).contains("You have purchased 3 tickets.")
+        }
+    }
+
+    @Test
+    fun `should show error if winning numbers are invalid`() {
+        assertSimpleTest {
+            runException("1000", "1,2,three,4,5,6")
+            assertThat(output()).contains("[ERROR] Lotto numbers must be numbers.")
+        }
+    }
+
+    @Test
+    fun `should show error if bonus number is duplicate`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains("[ERROR] Bonus number must not be in the winning numbers.")
+        }
+    }
+
+    @Test
+    fun `should calculate profit rate correctly`() {
+        assertSimpleTest {
+            run("8000", "1,2,3,4,5,6", "7")
+            assertThat(output()).contains("Total return rate is")
+        }
+    }
+
     override fun runMain() {
         main()
     }
