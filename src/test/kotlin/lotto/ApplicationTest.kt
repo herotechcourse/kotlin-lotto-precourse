@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
@@ -12,6 +13,7 @@ class ApplicationTest : NsTest() {
         assertRandomUniqueNumbersInRangeTest(
             {
                 run("8000", "1,2,3,4,5,6", "7")
+                println(output())
                 assertThat(output()).contains(
                     "You have purchased 8 tickets.",
                     "[8, 21, 23, 41, 42, 43]",
@@ -42,12 +44,13 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test`() {
+    fun `exception Amount Exception test`() {
         assertSimpleTest {
             runException("1000j")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+
 
     override fun runMain() {
         main()
