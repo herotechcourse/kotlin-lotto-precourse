@@ -6,11 +6,7 @@ import lotto.model.LottoTicketMachine
 import lotto.model.WinningLotto
 import lotto.view.*
 
-class LottoController() {
-
-    private val inputView: InputView = InputView()
-    private val outputView: OutputView = OutputView()
-    private val lottoTicketMachine: LottoTicketMachine = LottoTicketMachine()
+class LottoController(private val inputView: InputView, private val outputView: OutputView, private val lottoTicketMachine: LottoTicketMachine) {
 
     fun start() {
         val purchaseAmount = getPurchaseAmount()
