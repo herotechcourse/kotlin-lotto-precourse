@@ -11,31 +11,17 @@ fun main() {
     outputView.printTickets(tickets)
 
     val winningNumbers = readWinningNumbers(inputView)
-    val bonusNumbers = readBonusNumber(inputView)
+    val bonusNumber = readBonusNumber(inputView)
 
-    println("Winning Statistics:")
-    println("---")
-    var totalPrizeMoney = 0.0
-    Rank.values().sortedBy { it.matchedCount }.forEach { rank ->
-        val matchedCount = tickets.count { ticket ->
-            ticket.getNumbers().intersect(winningNumbers.toSet()).size == rank.matchedCount
-        }
-        val bonusMatched = tickets.count { ticket ->
-            ticket.getNumbers().intersect(winningNumbers.toSet()).size == rank.matchedCount && ticket.getNumbers().contains(bonusNumbers)
-        }
+    val statistics = WinningStatistics.calculate(tickets, winningNumbers, bonusNumber)
+    outputView.printWinningStatistics(statistics)
 
-        totalPrizeMoney += (matchedCount + bonusMatched) * rank.prizeMoney.toDouble()
+    var totalPrizeMoney = calculateTotalPrizeMoney(statistics)
+    outputView.totalReturnRate(totalPrizeMoney, order.getPurchaseAmount())
+}
 
-        if (rank.bonus) {
-            println("${rank.matchedCount} Matches + Bonus Ball (${rank.getPrizeMoneyInKRW()}) – ${matchedCount + bonusMatched} tickets")
-        } else {
-            println("${rank.matchedCount} Matches (${rank.getPrizeMoneyInKRW()}) – ${matchedCount} tickets")
-        }
-    }
-
-    val totalReturnRate = totalPrizeMoney / order.getPurchaseAmount().toDouble() * 100
-
-    println("Total return rate is ${totalReturnRate}%.")
+fun calculateTotalPrizeMoney(statistics: Map<Rank, Int>): Double {
+    return statistics.entries.sumOf { (rank, count) -> rank.prizeMoney.toDouble() * count }
 }
 
 fun readPurchaseOrder(inputView: InputView): Order {
@@ -51,13 +37,11 @@ fun readPurchaseOrder(inputView: InputView): Order {
     }
 }
 
-fun readWinningNumbers(inputView: InputView): List<Int> {
+fun readWinningNumbers(inputView: InputView): Lotto {
     while (true) {
         try {
             val winningNumbers = inputView.readWinningNumbers().split(",").map { it.trim().toInt() }
-            require(winningNumbers.size == LOTTO_COUNT) { "[ERROR] Winning numbers must contain exactly $LOTTO_COUNT numbers." }
-            require(winningNumbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] Winning numbers must be between $MIN_NUMBER and $MAX_NUMBER." }
-            return winningNumbers
+            return Lotto(winningNumbers)
         } catch (e: NumberFormatException) {
             println("[ERROR] Winning numbers must be valid integers.")
         } catch (e: IllegalArgumentException) {
