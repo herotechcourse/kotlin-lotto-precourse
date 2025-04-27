@@ -43,7 +43,7 @@ class OutputView() {
         }
 
         println(
-            "3 Matches (5,000 KRW) – ${countFive} ticket\n" +
+            "3 Matches (5,000 KRW) – ${countFive} tickets\n" +
                     "4 Matches (50,000 KRW) – ${countFour} tickets\n" +
                     "5 Matches (1,500,000 KRW) – ${countThree} tickets\n" +
                     "5 Matches + Bonus Ball (30,000,000 KRW) – ${countTwo} tickets\n" +
