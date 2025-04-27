@@ -31,7 +31,10 @@ class Input {
     }
 
     companion object {
+        const val LOTTO_MAX_SIZE = 6
         const val DIVISIBLE_AMOUNT = 1000
+        const val RANDOM_MIN_VALUE=1
+        const val RANDOM_MAX_VALUE=45
 
     }
 }
