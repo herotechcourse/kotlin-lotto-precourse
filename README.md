@@ -29,3 +29,4 @@
   - Are the winning numbers and bonus numbers between 1 and 45?
   - Are the winning numbers duplicated?
   - Are there exactly six winning numbers?
+  - Does the bonus number not duplicate any of the winning numbers?
