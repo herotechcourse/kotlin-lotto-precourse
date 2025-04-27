@@ -9,7 +9,9 @@ fun main() {
         inputView = InputViewImpl(),
         inputValidator = InputValidatorImpl(),
         outputView = OutputViewImpl(),
-        lottoTicketGenerator = LottoTicketGeneratorImpl(),
+        lottoTicketGenerator = LottoTicketGeneratorImpl(
+            randomNumbersGeneratorWrapper = RandomNumbersGeneratorWrapperImpl()
+        ),
         statistics = StatisticsImpl(),
     )
     lottoController.run()
