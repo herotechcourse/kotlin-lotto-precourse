@@ -9,12 +9,12 @@ adhering to the MVC pattern principles.
 ```
 └── lotto
     ├── Application.kt          // Entry point of the program
+    ├── Lotto.kt                // Represents a single lotto ticket
     ├── domain                  // Model (Business logic and data)
-    │   ├── Lotto.kt            // Represents a single lotto ticket (provided)
     │   ├── LottoTicket.kt      // Represents a purchased lotto ticket (utilizing Lotto)
     │   ├── LottoTickets.kt     // Manages a collection of purchased lotto tickets
     │   ├── WinningLotto.kt     // Manages the winning numbers and bonus number
-    │   ├── LottoResult.kt      // Result for a single lotto ticket
+    │   ├── LottoMatchResult.kt // Result for a single lotto ticket
     │   ├── LottoResults.kt     // Aggregates results for all tickets and calculates profit
     │   ├── PrizeRank.kt        // Information about prize ranks (Enum)
     │   └── LottoMachine.kt     // Handles core business logic like buying, calculation
@@ -33,9 +33,10 @@ adhering to the MVC pattern principles.
 
 ```
 └── test
-    └── racingcar
+    └── lotto
+        ├── ApplicationTest.kt
+        ├── LottoTest.kt
         ├── domain                  
-        │   ├── LottoTest.kt            // Tests for the Lotto class (number validity, etc.)
         │   ├── LottoTicketsTest.kt     // Unit tests for managing purchased tickets
         │   ├── WinningLottoTest.kt     // Unit tests for winning number matching logic
         │   ├── LottoResultsTest.kt     // Unit tests for result aggregation and profit calculation
@@ -49,31 +50,31 @@ adhering to the MVC pattern principles.
 
 ### ✅ Feature Requirements
 
-- [ ] **Receive purchase amout and issue tickets**
-    - [ ] Prompt the user to input purchase amount.
-    - [ ] Each ticket costs 1,000 KRW; the amount must be divisible by 1,000.
-    - [ ] Issue as many tickets as the budget allows.
+- [x] **Receive purchase amout and issue tickets**
+    - [x] Prompt the user to input purchase amount.
+    - [x] Each ticket costs 1,000 KRW; the amount must be divisible by 1,000.
+    - [x] Issue as many tickets as the budget allows.
 
-- [ ] **Generate Lotto numbers**
-    - [ ] Each tickets consists of 6 unique random numbers.
-    - [ ] Numbers must be in the range form 1 to 45.
-    - [ ] Print the numbers of the tickets sorted in ascending order.
+- [x] **Generate Lotto numbers**
+    - [x] Each tickets consists of 6 unique random numbers.
+    - [x] Numbers must be in the range form 1 to 45.
+    - [x] Print the numbers of the tickets sorted in ascending order.
 
-- [ ] **Receive winning and bonus numbers**
-    - [ ] Receive the 6 winning numbers, seperated by commas (`,`), from the user.
-    - [ ] Receive a single bonus number from the user
-    - [ ] Winning and bonus numbers must be in the range form 1 to 45.
-    - [ ] The bonus number must not be one of the 6 winning numbers.
+- [x] **Receive winning and bonus numbers**
+    - [x] Receive the 6 winning numbers, seperated by commas (`,`), from the user.
+    - [x] Receive a single bonus number from the user
+    - [x] Winning and bonus numbers must be in the range form 1 to 45.
+    - [x] The bonus number must not be one of the 6 winning numbers.
 
-- [ ] **Calculate winning results and statistic**
-    - [ ] Compare purchased tickets against the winning numbers and bonus number.
-    - [ ] Determine the prize rank for each ticket.
-    - [ ] Aggregate the count of tickets for each prize rank.
-    - [ ] Calculate the total winnings and the total profit rate.
+- [x] **Calculate winning results and statistic**
+    - [x] Compare purchased tickets against the winning numbers and bonus number.
+    - [x] Determine the prize rank for each ticket.
+    - [x] Aggregate the count of tickets for each prize rank.
+    - [x] Calculate the total winnings and the total profit rate.
 
-- [ ] **Handle invalid input**
-    - [ ] Throw an `IllegalArgumentException` if the input is invalid.
-    - [ ] Re-prompt input from that step upon catching the exception.
+- [x] **Handle invalid input**
+    - [x] Throw an `IllegalArgumentException` if the input is invalid.
+    - [x] Re-prompt input from that step upon catching the exception.
 
     
 
