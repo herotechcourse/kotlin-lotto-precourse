@@ -3,6 +3,7 @@ package lotto.io
 import lotto.Lotto
 import lotto.LottoRanks
 import lotto.LottoResults
+import java.util.Locale
 
 object OutputHandler {
     fun showTickets(tickets: MutableList<Lotto>) {
@@ -20,7 +21,7 @@ object OutputHandler {
                 lottoResults.getMatchResult(
                     LottoRanks.MATCH_4
                 )
-            } tickets\n" + "5 Matches (1,500,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_5)} tickets\n" + "5 Matches + Bonus Ball (30,000,000 KRW) –   ${
+            } tickets\n" + "5 Matches (1,500,000 KRW) – ${lottoResults.getMatchResult(LottoRanks.MATCH_5)} tickets\n" + "5 Matches + Bonus Ball (30,000,000 KRW) – ${
                 lottoResults.getMatchResult(
                     LottoRanks.MATCH_5_AND_BONUS
                 )
@@ -32,7 +33,7 @@ object OutputHandler {
         val formattedNumber = if (number % 1 == 0.0) {
             number.toInt().toString()
         } else {
-            "%.1f".format(number)
+            "%.1f".format(Locale.US, number)
         }
 
         println("Total return rate is ${formattedNumber}%. ")
