@@ -8,11 +8,11 @@
 | &#9745; | Issue lotto tickets                                        | business |
 | &#9745; | Output issued tickets sorted ascending                     | view     |
 | &#9745; | Input last week's winning numbers and bonus number         | view     |
-| &#9744; | Validate winning numbers and bonus number                  | business |
+| &#9745; | Validate winning numbers and bonus number                  | business |
 | &#9745; | Compare user's tickets to winning numbers and bonus number | business |
 | &#9745; | Calculate rank counts and profit rate                      | business |
 | &#9745; | Print result including winnings and profit rate            | view     |
-| &#9744; | If error is thrown, re-prompt input from that step         | shared   |
+| &#9745; | If error is thrown, re-prompt input from that step         | shared   |
 | &#9744; | Business logic unit test                                   | test     |
 
 ### Limitations & Assumptions
