@@ -4,6 +4,7 @@ import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.domain.LottoGenerator
 import lotto.domain.WinningLotto
+import lotto.domain.LottoManager
 
 fun main() {
     val purchaseAmount = InputView.readPurchaseAmount()
@@ -19,8 +20,10 @@ fun main() {
     val bonusNumber = InputView.readBonusNumber()
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
-    println(" last week's winning numbers.: ${winningLotto.getWinningNumbers()}")
-    println("the bonus number.: ${winningLotto.getBonusNumber()}")
+    val lottoManager = LottoManager(lottos)
+    val result = lottoManager.matchLottos(winningLotto)
+
+    OutputView.printStatistics(result, purchaseAmount)
 }
 
 fun validatePurchaseAmount(amount: Int) {
