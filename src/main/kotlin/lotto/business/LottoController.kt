@@ -21,4 +21,15 @@ class LottoController {
         OutputView.printLotteryTicketsOutputMessage(purchaseAmount, lottoList)
         return lottoList
     }
+
+    private fun inputWinningNumber(): WinningNumber {
+        while (true) {
+            try {
+                val winningNumberInput = InputView.getWinningNumbers()
+                return WinningNumber.from(numbers = winningNumberInput)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
 }
