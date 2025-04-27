@@ -28,6 +28,6 @@
 - [x] print prize with comma(,) - StringFormat
 - [x] sort lotto number
 - [] % format
-- [] bonus ball format
-- [] separate controller logic
+- [x] bonus ball format
+- [x] separate controller logic
 - [] separate Lotto Machine with Interface
