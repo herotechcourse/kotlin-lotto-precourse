@@ -6,7 +6,7 @@ This project is a console-based Kotlin application that simulates a lotto game. 
 
 Below you can find a quick demonstration of the program:
 
-https://github.com/user-attachments/assets/ca3ecccc-a4d8-4c94-9dda-386d9521523f
+https://github.com/user-attachments/assets/30746460-506f-4e27-af60-749ec28fc04e
 
 ## Table of Contents
 
