@@ -1,6 +1,4 @@
 package lotto.views
-
-import lotto.LotteryResults
 import lotto.Lotto
 
 class OutputView {
@@ -16,4 +14,9 @@ class OutputView {
             println(status)
         }
     }
+
+    fun printReturnRate(returnRate: String){
+        println("Total return rate is $returnRate%.")
+    }
 }
+
