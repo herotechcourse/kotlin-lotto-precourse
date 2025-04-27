@@ -42,4 +42,18 @@
 - Test case for the following
   - Winning numbers-not null, empty, length should be 6, not greater than 45
   - Bonus-not null or zero, not greater than 45
-
+## 4. Implement function to compare and Check the tickets with winning numbers
+### a.Responsibilities:
+- Write a function that compares each ticket in the total ticket list with the winning number list and the bonus number
+- Based on the number of elements matching, there are predefined amount that needs to be displayed in the winning statistics
+### b. Validation:
+-This code validates the following
+- A lotto enum class is created here to store the Amount for every matching count from 3 to 6
+- The Winning number is compared with each ticket in the tickets list and based on the matching result count a mutable list of list is 
+created to display the winning statistics in the next step
+### c. IO args:
+- This code takes winning numbers, ticket list and the bonus number ad input
+- The output is the the result count which is a mutable list of list containing the lotto enum and the matching copunt for each ticket
+### Test case:
+- Test case for the following
+- The result count for different scenario of the lotto enum is calculated correctly
