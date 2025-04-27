@@ -1,7 +1,7 @@
 package lotto
 
-object WinningStatistics {
-    fun calculate(lottoTickets: List<Lotto>, winningLotto: Lotto, bonusNumber: Int): Map<Rank, Int> {
+object WinningStatisticsCalulator {
+    fun run(lottoTickets: List<Lotto>, winningLotto: Lotto, bonusNumber: Int): Map<Rank, Int> {
         val winningStatistics = mutableMapOf<Rank, Int>()
 
 

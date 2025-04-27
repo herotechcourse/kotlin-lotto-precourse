@@ -1,11 +1,10 @@
 package lotto
 
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
-class WinningStatisticsTest {
+class WinningStatisticsCalculatorTest {
     @Test
-    fun `calculate() returns statistics`(){
+    fun `run() returns statistics`(){
         val lottoTickets = listOf(
             Lotto(listOf(8, 21, 23, 41, 42, 43)),
             Lotto(listOf(3, 5, 11, 16, 32, 38)),
@@ -19,7 +18,7 @@ class WinningStatisticsTest {
         val winningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = 7
 
-        val result = WinningStatistics.calculate(lottoTickets, winningLotto, bonusNumber)
+        val result = WinningStatisticsCalulator.run(lottoTickets, winningLotto, bonusNumber)
 
         assert(result[Rank.FIRST] == 0) { "First rank should be zero." }
         assert(result[Rank.SECOND] == 0) { "Second rank should be zero." }
