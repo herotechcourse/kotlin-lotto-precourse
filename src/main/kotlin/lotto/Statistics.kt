@@ -1,20 +1,21 @@
 package lotto
 
 class Statistics {
-    val rankCounts = mutableMapOf<Rank,Int>().withDefault { 0 }
-    private  var totalWinnings = 0L
+    private val rankCounts = mutableMapOf<Rank, Int>().withDefault { 0 }
+    private var totalWinnings = 0L
 
-    fun addResult(rank:Rank){
+    fun addResult(rank: Rank) {
         rankCounts[rank] = rankCounts.getValue(rank) + 1
         totalWinnings += rank.prize
     }
 
-    fun calculateProfitRate(totalAmount: Int): String {
-        val rate = (totalWinnings.toDouble() / totalAmount) * 100
-        return "%.1f".format(rate)
-    }
-
     val profitRate: String
-        get() = calculateProfitRate(rankCounts.entries.sumOf { it.value } * 1000)
+        get() {
+            val totalSpent = rankCounts.values.sum() * 1000
+            if (totalSpent == 0) return "0.0"
+            val rate = (totalWinnings.toDouble() / totalSpent) * 100
+            return "%.1f".format(rate)
+        }
 
+    fun getCount(rank: Rank): Int = rankCounts.getValue(rank)
 }
