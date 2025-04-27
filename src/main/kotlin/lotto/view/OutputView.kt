@@ -30,4 +30,8 @@ class OutputView(private val lottoMachine: LottoMachine) {
             .forEach { println(it.getResultMessage(ranks[it.ordinal])) }
     }
 
+    fun printReturnRate() {
+        println(PromptMessages.TOTAL_RETURN_RATE.with(lottoMachine.calculateReturnRate()))
+    }
+
 }
