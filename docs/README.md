@@ -58,6 +58,7 @@
         - Validator.kt   
         - ProfitCalculator.kt
         - NumberUtil.kt
+        - StringUtil.kt
     - exception
         - ApplicationException.kt
         - ErrorCode.kt
