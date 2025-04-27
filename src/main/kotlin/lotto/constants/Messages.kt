@@ -15,10 +15,11 @@ enum class InputMessage(val message: String) {
     BONUS_NUMBER("Please enter the bonus number.")
 }
 
-enum class OutputMessage {
-    TICKETS;
+enum class OutputMessage(private val template: String) {
+    TICKETS("You have purchased %d tickets."),
+    PROFIT_RATE("Total return rate is %.1f%%.");
 
-    fun message(count: Int): String {
-        return "You have purchased $count tickets."
+    fun format(vararg args: Any): String {
+        return template.format(*args)
     }
 }
