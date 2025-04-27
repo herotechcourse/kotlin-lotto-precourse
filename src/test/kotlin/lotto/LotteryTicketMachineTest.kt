@@ -7,8 +7,7 @@ class LotteryTicketMachineTest {
     @Test
     fun `throws exception when purchase amount is not divisible by 1,000`() {
         assertThrows<IllegalArgumentException> {
-            val machine = LotteryTicketMachine()
-            machine.validatePurchaseAmount(1500)
+            LotteryTicketMachine.validatePurchaseAmount(1500)
         }
     }
 }
