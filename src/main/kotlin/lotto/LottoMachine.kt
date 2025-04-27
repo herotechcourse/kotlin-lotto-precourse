@@ -25,28 +25,26 @@ class LottoMachine {
         }
     }
 
+    //Match the numbers on the tickets with the winning numbers and bonus number
+    //Also calculate the total prize
     fun MatchNumbers(bonusNumber: Int, tickets: List<List<Int>>, winningNumbers: List<Int>): Int {
         var totalPrize = 0
         val rankStats = mutableMapOf<PrizeRank, Int>()
-
         for (ticket in tickets) {
             val matchCount = ticket.count { it in winningNumbers }
             val hasBonus = bonusNumber in ticket
-
-            // Get prize rank based on match count and bonus
+            // Get the prize rank based on match count and bonus
             val prizeRank = PrizeRank.of(matchCount, hasBonus)
-
-            // Count how many tickets won this specific rank
+            // Count the number of tickets won in this specific rank
             rankStats[prizeRank] = rankStats.getOrDefault(prizeRank, 0) + 1
-
-            // Accumulate total prize money
+            // Add the total prize money
             totalPrize += prizeRank.prize
-
         }
         output.PrintPrizeRanks(rankStats)
         return totalPrize
     }
 
+    //Calculate the total return rate
     fun ProfitCalculation(totalPrize: Int, purchaseAmount: Int): Double {
         val profit = totalPrize.toDouble() / purchaseAmount.toDouble() * 100
         return profit

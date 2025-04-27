@@ -9,7 +9,7 @@ class BonusNumberValidationTest {
     private val amtValidator = AmountValidation()
 
     @Test
-    fun `exception Bonus number null exception test`() {
+    fun `exception bonus number is null exception test`() {
         val exception = assertThrows<IllegalArgumentException> {
             amtValidator.NullCheckNumber("")
         }
@@ -17,7 +17,7 @@ class BonusNumberValidationTest {
     }
 
     @Test
-    fun `exception Bonus number should be in range of 1-45 test`() {
+    fun `exception bonus number should be in range of 1-45 test`() {
         val exception = assertThrows<IllegalArgumentException> {
             validator.ValidateBonusNumberInRange1to45(100)
 
@@ -26,7 +26,7 @@ class BonusNumberValidationTest {
     }
 
     @Test
-    fun `exception Bonus number in list of winning numbers test`() {
+    fun `exception bonus number is in the list of winning numbers test`() {
         val exception = assertThrows<IllegalArgumentException> {
             validator.ValidateBonusNumberUniqueness(3, listOf(1, 2, 3, 5, 6, 4))
 
