@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.constants.LottoPrice
+import lotto.constants.LottoConstants
 import lotto.constants.LottoRank
 import kotlin.math.round
 
@@ -20,7 +20,7 @@ class LottoRanker(
 
     fun calculateProfit(statistics: Map<LottoRank, Int>): Double {
         val totalPrize = statistics.entries.sumOf { (rank, count) -> rank.prize * count }
-        val totalSpent = lottos.size * LottoPrice.TICKET
+        val totalSpent = lottos.size * LottoConstants.TICKET_PRICE
 
         val profitRate = (totalPrize / totalSpent.toDouble()) * 100
         return (round(profitRate * 10) / 10)

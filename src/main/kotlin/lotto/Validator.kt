@@ -1,7 +1,7 @@
 package lotto
 
 import lotto.constants.ErrorMessage
-import lotto.constants.LottoPrice
+import lotto.constants.LottoConstants
 
 object Validator {
     fun validatePurchaseAmount(input: String): Int {
@@ -48,26 +48,26 @@ object Validator {
     }
 
     private fun validateDivisibility(input: String) {
-        if (input.toInt() % LottoPrice.TICKET != 0) {
+        if (input.toInt() % LottoConstants.TICKET_PRICE != 0) {
             throw IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_BY_UNIT.message)
         }
     }
 
     private fun validateCount(input: List<String>) {
-        if (input.size != 6) {
+        if (input.size != LottoConstants.LOTTO_SIZE) {
             throw IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.message)
         }
     }
 
     private fun validateDuplication(input: List<String>) {
         val set = input.toSet()
-        if (set.size != 6) {
+        if (set.size != LottoConstants.LOTTO_SIZE) {
             throw IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.message)
         }
     }
 
     private fun validateRange(number: Int) {
-        if (number < 1 || number > 45) {
+        if (number < LottoConstants.MIN_NUMBER || number > LottoConstants.MAX_NUMBER) {
             throw IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message)
         }
     }
