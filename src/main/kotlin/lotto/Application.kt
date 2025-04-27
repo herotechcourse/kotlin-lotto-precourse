@@ -44,7 +44,7 @@ fun calculateNumberOfTickets(money: Int): Int
 fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator,): List<Int> {
     while (true) {
         try {
-            val winningNumbersToCheck = inputView.read("Please enter last week's winning numbers.")
+            val winningNumbersToCheck = inputView.read("\nPlease enter last week's winning numbers.")
             return validator.isWinningNumbersValid(winningNumbersToCheck)
         }
         catch (e: IllegalArgumentException)
@@ -56,7 +56,7 @@ fun readAndValidateWinningNumbers(inputView: InputView, validator: Validator,): 
 fun readAndValidateBonusNumber(inputView: InputView, validator: Validator, winningNumbers: List<Int>): Int {
     while (true) {
         try {
-            val bonusNumberToCheck = inputView.read("Please enter the bonus number.")
+            val bonusNumberToCheck = inputView.read("\nPlease enter the bonus number.")
             return validator.isBonusNumberValid(bonusNumberToCheck, winningNumbers)
         }
         catch (e: IllegalArgumentException)
