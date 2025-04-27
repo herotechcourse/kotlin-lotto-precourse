@@ -1,6 +1,5 @@
 package lotto.model
 
-import lotto.exception.ApplicationException
 import lotto.exception.WinningNumbersException
 
 class WinningNumbers(
@@ -8,12 +7,8 @@ class WinningNumbers(
     private val bonusNumber: Int,
 ) {
     init {
-        if (numbers.size != 6) {
-            throw ApplicationException(WinningNumbersException.INVALID_WINNING_NUMBERS)
-        }
-        if (numbers.contains(bonusNumber)) {
-            throw ApplicationException(WinningNumbersException.BONUS_DUPLICATE)
-        }
+        require(numbers.size == 6) { WinningNumbersException.INVALID_WINNING_NUMBERS.getMessage() }
+        require(numbers.contains(bonusNumber).not()) { WinningNumbersException.BONUS_DUPLICATE.getMessage() }
     }
 
     fun match(lotto: Lotto): Int {
