@@ -12,14 +12,5 @@ object LottoTicketGeneration  {
             lottoTickets.add(Lotto(ticket))
         }
         return lottoTickets
-
     }
-
-//    fun showTickets() {
-//
-//        println("You have purchased $numberTickets tickets.")
-//        for (ticket in tickets) {
-//            println(ticket.getTicket())
-//        }
-//    }
 }

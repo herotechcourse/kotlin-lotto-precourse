@@ -27,8 +27,6 @@ class Lotto(private val numbers: List<Int>) {
 
     fun getTicket(): List<Int> = numbers.sorted()
 
-
-
     fun checkPrize(winningNumbers: WinningNumbers): Prize {
         val winningNumber = winningNumbers.mainNumbers
         val bonusNumber = winningNumbers.bonusNumber

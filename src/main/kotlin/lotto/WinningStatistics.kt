@@ -1,21 +1,19 @@
 package lotto
 
 
-class WinningStatistics(private val tickets: List<Lotto>, private val winningNumbers: WinningNumbers) {
+object WinningStatistics {
 
-    val mapPrizeNumber = Lotto.Prize.entries.associateWith { 0 }.toMutableMap()
 
-    fun getMapPrize() {
-
+    fun getMapPrize(tickets: List<Lotto>, winningNumbers: WinningNumbers): MutableMap<Lotto.Prize, Int> {
+        val mapPrizeNumber = Lotto.Prize.entries.associateWith { 0 }.toMutableMap()
         for (ticket in tickets) {
             val prize = ticket.checkPrize(winningNumbers)
             mapPrizeNumber[prize] = (mapPrizeNumber[prize] ?: 0) + 1
-            // println("${ticket.getTicket()}: ${prize.namePrize}")
         }
-        //return mapPrizeNumber
+        return mapPrizeNumber
     }
 
-    fun getMoneyEach(): Map<String, Int> {
+    fun getMoneyEach(mapPrizeNumber: MutableMap<Lotto.Prize, Int>): Map<String, Int> {
         val moneyPrizeALl = mutableMapOf<String, Int>()
         for ((prize, number) in mapPrizeNumber) {
             if (prize != Lotto.Prize.NOPRIZE) {
@@ -25,10 +23,9 @@ class WinningStatistics(private val tickets: List<Lotto>, private val winningNum
         return  moneyPrizeALl
     }
 
-    fun getTotalMoney(): Int {
+    fun getTotalMoney(mapPrizeNumber: MutableMap<Lotto.Prize, Int>): Int {
         var totalMoney = 0
         for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize * number
         return totalMoney
     }
 }
-
