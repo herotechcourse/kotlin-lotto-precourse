@@ -7,8 +7,8 @@ class WinningNumbers(
     private val bonusNumber: Int,
 ) {
     init {
-        require(numbers.size == 6) { throw WinningNumbersException.InvalidCount() }
-        require(numbers.contains(bonusNumber).not()) { throw WinningNumbersException.BonusDuplicate() }
+        if (numbers.size != 6) throw WinningNumbersException.InvalidCount()
+        if (bonusNumber in numbers) throw WinningNumbersException.BonusDuplicate()
     }
 
     fun match(lotto: Lotto): Int {

@@ -5,8 +5,8 @@ import lotto.exception.LottoException
 class Lotto(private val numbers: List<Int>) {
 
     init {
-        require(numbers.size == 6) { throw LottoException.InvalidCount() }
-        require(numbers.toSet().size == 6) { throw LottoException.DuplicateNumbers() }
+        if (numbers.size != 6) throw LottoException.InvalidCount()
+        if (numbers.toSet().size != 6) throw LottoException.DuplicateNumbers()
     }
 
 
