@@ -150,3 +150,6 @@
 
 - **ValidateTest.kt**: write tests for InputValidate class functions ([19acf89](https://github.com/yourname/yourrepo/commit/19acf89a438fbbc335ee2cfa829cdf4b24bb2df7))
 
+### 🛠️ Maintenance
+
+- ****: rename function and variable ([18b8e8d](https://github.com/yourname/yourrepo/commit/18b8e8d4921eab8efafd97929d39d0f7a034ba28))
