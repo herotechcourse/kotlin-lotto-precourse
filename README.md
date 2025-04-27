@@ -2,6 +2,17 @@
 This is a simple Lotto program that allows users to purchase lottery ticket and check winning statistics based on user input.
 Program is written in Kotlin 1.9.24.
 
+# Code Design
+- The entry point of the program is in the `main` function of the `Application.kt` file.
+- Tried to follow the Clean Architecture principles and tried to maintain single responsibility for each class.
+- lotto.view package contains the view classes that are responsible for user input and output.
+- `Configuration` object is used to manage the configurations of the program logic.
+- All string literals are maintained in the Configuration object for easy localization.
+- `Rank` class is used to manage the rank of the tickets and enum class is used here
+- `Order` class is used to manage the purchase order for the ticket
+- `WinningStatisticsCalculator` will calculate the winning statistics based on the winning numbers and the bonus number.
+
+
 # Features
 - ### Feature 1: Input purchase amount
   - Read purchase amount from the user.
