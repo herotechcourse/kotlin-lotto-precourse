@@ -6,4 +6,9 @@ fun main() {
     val tickets = LottoService.generateTickets(ticketCount)
 
     OutputView.printTickets(tickets)
+
+    val numbers = InputView.readWinningNumbers()
+    val bonus = InputView.readBonusNumber()
+
+
 }
