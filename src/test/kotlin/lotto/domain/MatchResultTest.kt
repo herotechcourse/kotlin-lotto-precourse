@@ -80,3 +80,4 @@ class MatchResultTest {
         val expectedProfitRate = matchResult.totalPrize().toDouble() / purchaseAmount * 100
         assertEquals(expectedProfitRate, profitRate)
     }
+}
