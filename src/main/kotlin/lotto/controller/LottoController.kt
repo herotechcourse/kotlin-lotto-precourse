@@ -23,7 +23,7 @@ class LottoController(
         }
     }
 
-    private fun processTickets(purchaseAmount : Int) : List<Lotto>{
+    private fun processTickets(purchaseAmount: Int): List<Lotto> {
         val numberOfTickets = lottoTicketGenerator.generateNumberOfTickets(purchaseAmount)
         outputView.printNumberOfTickets(numberOfTickets)
         val tickets = lottoTicketGenerator.generateTickets(numberOfTickets)
@@ -42,15 +42,29 @@ class LottoController(
         }
     }
 
+    private fun processBonusNumber(): Int {
+        outputView.printBlankLine()
+        outputView.printInputPrompt(BONUS_NUMBER_PROMPT)
+        val input = inputView.readBonusNumber()
+        return try{
+            inputValidator.validateBonusNumber(input)
+        }catch (e: IllegalArgumentException){
+            outputView.printErrorMessage(e.message)
+            processBonusNumber()
+        }
+    }
+
 
     fun run() {
         val purchaseAmount = processPurchaseAmount()
         val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()
+        val bonusNumber = processBonusNumber()
     }
 
     companion object {
         private const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
         private const val WINNING_NUMBERS_PROMPT = "Please enter last week's winning numbers."
+        private const val BONUS_NUMBER_PROMPT = "Please enter the bonus number."
     }
 }

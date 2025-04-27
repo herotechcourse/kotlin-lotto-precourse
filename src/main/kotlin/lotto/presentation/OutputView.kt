@@ -3,6 +3,7 @@ package lotto.presentation
 import lotto.Lotto
 
 interface OutputView {
+    fun printBlankLine()
     fun printInputPrompt(promptMessage: String)
     fun printErrorMessage(errorMessage: String?)
     fun printNumberOfTickets(numberOfTickets: Int)
@@ -10,6 +11,10 @@ interface OutputView {
 }
 
 class OutputViewImpl : OutputView {
+
+    override fun printBlankLine() {
+        println()
+    }
 
     override fun printInputPrompt(promptMessage: String) {
         println(promptMessage)
