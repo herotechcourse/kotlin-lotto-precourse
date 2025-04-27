@@ -1,8 +1,8 @@
 package lotto.domain
 import lotto.Lotto
-import lotto.support.Message
+import lotto.support.*
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.view.OutputView
+
 
 class LottoMachine (private val purchaseAmount: Int){
     val tickets: List<Lotto>
@@ -12,13 +12,11 @@ class LottoMachine (private val purchaseAmount: Int){
         require(purchaseAmount % TICKET_PRICE == 0) { Message.ERROR_AMOUNT_NOT_DIVISIBLE }
         tickets = generateTickets()
     }
+
     private fun generateTickets(): List<Lotto> {
         val ticketCount = purchaseAmount / TICKET_PRICE
         return List(ticketCount) {
-            Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+            Lotto(Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, TICKET_NUMBERS_COUNT))
         }
-    }
-    companion object {
-        private const val TICKET_PRICE = 1000
     }
 }
