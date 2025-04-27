@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class LottosTest {
 
     @Test
-    fun `results returns correct LottoResults for multiple lottos`() {
+    fun `matchAgainst returns correct LottoResults for multiple lottos`() {
         // given
         val lottos = Lottos(
             listOf(
@@ -19,7 +19,7 @@ class LottosTest {
             )
         )
 
-        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val winningNumbers = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = BonusNumber(7)
 
         // when
