@@ -17,22 +17,29 @@ class LottoResult {
     }
 
     fun generateWinningStatistics(userInput: UserInput, ticketPurchase: TicketPurchase) {
-        val tickets = ticketPurchase.tickets
+        val tickets: MutableList<Lotto> = ticketPurchase.tickets
 
         for (ticket in tickets) {
-            val matches = ticket.getNumbers().count {it in userInput.winningNumbers }
-            when (matches) {
-                3 -> this.winningStatics["three"] = this.winningStatics.getOrDefault("three", 0) + 1
-                4 -> this.winningStatics["four"] = this.winningStatics.getOrDefault("four", 0) + 1
-                5 -> {
-                    if (userInput.bonusNumber in ticket.getNumbers())
-                        this.winningStatics["bonus"] = this.winningStatics.getOrDefault("bonus", 0) + 1
-                    else
-                        this.winningStatics["five"] = this.winningStatics.getOrDefault("five", 0) + 1
-                }
-                6 -> this.winningStatics["six"] = this.winningStatics.getOrDefault("six", 0) + 1
-            }
+            updateWinningStatistics(ticket, userInput)
         }
+    }
+
+    private fun updateWinningStatistics(ticket: Lotto, userInput: UserInput) {
+        val matches = ticket.getNumbers().count { it in userInput.winningNumbers }
+
+        when (matches) {
+            3 -> this.winningStatics["three"] = this.winningStatics.getOrDefault("three", 0) + 1
+            4 -> this.winningStatics["four"] = this.winningStatics.getOrDefault("four", 0) + 1
+            5 -> handleFiveMatches(userInput, ticket)
+            6 -> this.winningStatics["six"] = this.winningStatics.getOrDefault("six", 0) + 1
+        }
+    }
+
+    private fun handleFiveMatches(userInput: UserInput, ticket: Lotto) {
+        if (userInput.bonusNumber in ticket.getNumbers())
+            this.winningStatics["bonus"] = this.winningStatics.getOrDefault("bonus", 0) + 1
+        else
+            this.winningStatics["five"] = this.winningStatics.getOrDefault("five", 0) + 1
     }
 
     fun calculateReturnRate(userInput: UserInput) {
