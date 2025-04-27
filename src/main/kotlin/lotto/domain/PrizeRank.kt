@@ -17,7 +17,7 @@ enum class PrizeRank(
                 6 -> FIRST
                 5 -> if (hasBonus) SECOND else THIRD
                 4 -> FOURTH
-                3 -> THIRD
+                3 -> FIFTH
                 else -> null
             }
         }
