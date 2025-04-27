@@ -3,10 +3,6 @@ package lotto.model
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
 
-const val LOTTO_NUMBER_START = 1
-const val LOTTO_NUMBER_END = 45
-const val LOTTO_NUMBER_COUNT = 6
-
 object LottoNumberMaker {
     fun makeLottoTicket(): Lotto {
         val lottoNumbers =

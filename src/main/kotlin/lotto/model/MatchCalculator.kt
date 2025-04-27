@@ -2,19 +2,13 @@ package lotto.model
 
 import lotto.Lotto
 
-object MATCH {
+object MATCH{
     var SIX = 0
     var FIVE_AND_BONUS = 0
     var FIVE = 0
     var FOUR = 0
     var THREE = 0
 }
-
-const val FIRST_PRIZE = 2000000000
-const val SECOND_PRIZE = 30000000
-const val THIRD_PRIZE = 1500000
-const val FOURTH_PRIZE = 50000
-const val FIFTH_PRIZE = 5000
 
 object MatchCalculator {
     fun run(totalLottoTicket: List<Lotto>, winningNumbers: List<String>, bonusNumber: String): Int {
