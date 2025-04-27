@@ -51,6 +51,6 @@ Below is the class diagram representing the object-oriented structure of the Lot
   - [x] Represent the prize results and counts using a structured result object.
 
 ### 4. Statistics and Return Rate
-- [ ] Calculate the total return rate.
-  - [ ] Return rate = (total prize money / total purchase amount) × 100.0, rounded to one decimal place.
+- [x] Calculate the total return rate.
+  - [x] Return rate = (total prize money / total purchase amount) × 100.0, rounded to one decimal place.
 - [ ] Print the winning statistics and the return rate.

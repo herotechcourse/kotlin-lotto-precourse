@@ -4,7 +4,7 @@ import lotto.InputHandler.Companion.INPUT_NOT_DIVIDABLE
 import lotto.InputHandler.Companion.LOTTO_PRICE
 import lotto.InputHandler.Companion.NUMBER_NOT_POSITIVE
 
-class Money(private val amount: Int) {
+class Money(val amount: Int) {
     init {
         require(checkDivisibility(amount)) {
             INPUT_NOT_DIVIDABLE
