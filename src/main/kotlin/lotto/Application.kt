@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     // prompt user for purchase amount
     println("Please enter the purchase amount.")
-    val amountInput = Console.readLine().toInt()
+    val amountInput = Console.readLine().toIntOrNull()
+    if (amountInput == null) {
+        throw IllegalArgumentException("[ERROR] The amount must be number.")
+    }
     val tickets = parseAmount(amountInput)
 
     // parse tickets to generate numbers
@@ -18,15 +21,21 @@ fun main() {
     // prompt user for last week's winning numbers
     println("\nPlease enter last week's winning numbers.")
     val winningNumbers = mutableListOf<Int>()
-    val winningInput = Console.readLine()
-    val numbers = winningInput.split(",")
-    for (number in numbers) {
+    val winningInput = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+    val winningInputs = winningInput.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+    require(winningInputs.size == 6) { "[ERROR] You must enter exactly 6 numbers." }
+    for (number in winningInputs) {
         winningNumbers.add(number.toInt())
     }
+    require(winningNumbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
 
     // prompt user for the bonus number
     println("\nPlease enter the bonus number.")
-    val bonusNumber = Console.readLine().toInt()
+    // validate user input
+    val bonusInput = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be empty.")
+    val bonusNumbers = bonusInput.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+    require(bonusNumbers.size == 1) { "[ERROR] You must enter exactly 1 bonus number." }
+    val bonusNumber = bonusNumbers[0].toInt()
 
     // initialise key value pair with 0
     val results = mutableMapOf<String, Int>()
@@ -78,7 +87,7 @@ fun main() {
 fun parseAmount(input: Int): Int {
     // return input if amount if divisible by 1,000
     if (input % 1000 != 0) {
-        throw IllegalArgumentException("The amount must be divisible by 1,000.")
+        throw IllegalArgumentException("[ERROR] The amount must be divisible by 1,000.")
     }
     return input/1000
 }
