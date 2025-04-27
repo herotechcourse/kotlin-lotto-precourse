@@ -1,4 +1,4 @@
-# kotlin-lotto-precourse
+# Lotto
 
 ## Description
 
@@ -9,25 +9,26 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
 
 1. **Purchase Lottery Tickets**
 
-   - Accept user input for the purchase amount.
-   - Issue as many tickets as the budget allows (1 ticket = 1,000 KRW).
-   - Each ticket contains 6 unique random numbers between 1 and 45.
+    - Accept user input for the purchase amount.
+    - Ensure the purchase amount is divisible by 1,000.
+    - Calculate the number of tickets the customer can purchase: (1 ticket = 1,000 KRW).
 
 2. **Input Winning Numbers**
 
-   - Accept 6 unique winning numbers from the user.
-   - Accept a single bonus number.
+    - Accept 6 unique winning numbers from the user.
+    - Validate that all numbers are within the range of 1 to 45.
+    - Accept a single bonus number.
+    - Ensure the winning numbers and bonus number are unique.
 
-3. **Validate Input**
+3. **Generate Tickets**
 
-   - Ensure the purchase amount is divisible by 1,000.
-   - Validate that all numbers are within the range of 1 to 45.
-   - Ensure the winning numbers and bonus number are unique.
+    - Issue as many tickets as the customer purchased.
+    - Each ticket contains 6 unique random numbers between 1 and 45.
 
-4. **Compare Tickets to Winning Numbers**
+4. **Calculate the Win**
 
-   - Match the user's tickets against the winning numbers and bonus number.
-   - Determine the prize rank for each ticket:
+    - Match the user's tickets against the winning numbers and bonus number.
+    - Determine the prize rank for each ticket:
      - **1st Prize**: Match 6 numbers (2,000,000,000 KRW).
      - **2nd Prize**: Match 5 numbers + bonus number (30,000,000 KRW).
      - **3rd Prize**: Match 5 numbers (1,500,000 KRW).
@@ -39,10 +40,6 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
    - Print the number of tickets issued and their numbers (sorted in ascending order).
    - Display the winning statistics, including the number of tickets for each prize rank.
    - Calculate and display the total profit rate.
-
-6. **Error Handling**
-   - Throw an `IllegalArgumentException` for invalid input and re-prompt the user.
-   - Display error messages starting with `[ERROR]`.
 
 ## Install Dependencies
 
