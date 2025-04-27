@@ -73,3 +73,11 @@ For the following cases, throw an `IllegalArgumentException`, and re-prompt the 
 * **During Bonus Number Input:**
     * [x] If the number is outside the range of 1 to 45.
     * [x] If the bonus number is already present in the 6 winning numbers entered previously.
+
+---
+## Class Diagram
+### 1. `main` Class Diagram
+![image](https://github.com/user-attachments/assets/8d6e0d1a-d525-4768-a0ce-59a98d1f27de)
+### 2. `test` Class Diagram
+![image](https://github.com/user-attachments/assets/1ef44cb6-5c9b-44bc-a853-fc4d7a61aad1)
+
