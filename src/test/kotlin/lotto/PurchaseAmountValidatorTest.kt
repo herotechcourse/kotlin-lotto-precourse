@@ -27,6 +27,20 @@ class PurchaseAmountValidatorTest {
                 "Input must be greater than zero and divisible by 1,000")
     }
 
+    @ParameterizedTest
+    @MethodSource("validWinningNumbers")
+    fun `valid winning numbers should not throw an exception`(numbers: List<Int>) {
+        assertDoesNotThrow { purchaseAmountValidator.validateWinningNumbers(numbers) }
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidWinningNumbers")
+    fun `invalid winning numbers should throw an exception`(numbers: List<Int>) {
+        assertThrows<IllegalArgumentException> {
+            purchaseAmountValidator.validateWinningNumbers(numbers)
+        }
+    }
+
     companion object {
         @JvmStatic
         fun validPurchaseAmount(): List<Int?> = listOf(
@@ -44,6 +58,22 @@ class PurchaseAmountValidatorTest {
             999,
             1500,
             1234
+        )
+
+        @JvmStatic
+        fun validWinningNumbers(): List<List<Int>> = listOf(
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(10, 20, 30, 40, 41, 45),
+            listOf(7, 14, 21, 28, 35, 42)
+        )
+
+        @JvmStatic
+        fun invalidWinningNumbers(): List<List<Int>> = listOf(
+            listOf(1, 2, 3, 4, 5),
+            listOf(1, 2, 3, 4, 5, 5),
+            listOf(0, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 46),
+            listOf(1, 2, 3, 4, 5, 100)
         )
     }
 }
