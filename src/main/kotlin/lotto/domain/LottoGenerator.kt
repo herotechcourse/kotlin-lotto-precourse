@@ -1,6 +1,7 @@
-package lotto
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 import lotto.constants.LottoConstants
 
 object LottoGenerator {

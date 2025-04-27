@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 import lotto.constants.ErrorMessage
 import lotto.constants.LottoConstants
@@ -12,7 +12,7 @@ object Validator {
         return input.toInt()
     }
 
-    fun validateWinningNumbers(input: String): List<Int> {
+    fun validateWinningNumbers(input: String): Set<Int> {
         validateBlank(input)
         val tokens: List<String> = input.split(',').map { it.trim() }
         validateCount(tokens)
@@ -23,7 +23,7 @@ object Validator {
             val number = it.toInt()
             validateRange(number)
             number
-        }
+        }.toSet()
     }
 
     fun validateBonusNumber(input: String): Int {
