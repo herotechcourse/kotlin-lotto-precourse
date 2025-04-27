@@ -5,6 +5,16 @@ import lotto.ui.InputView
 import lotto.ui.OutputView
 
 class LottoController {
+    fun run() {
+        val purchaseAmount = inputPurchaseAmount()
+        val lottoList = outputLotteryTickets(purchaseAmount)
+
+        val winningNumber = inputWinningNumber()
+        val bonusNumber = inputBonusNumber(winningNumber)
+
+        outputWinningStatistics(purchaseAmount, lottoList, winningNumber, bonusNumber)
+    }
+
     private fun inputPurchaseAmount(): PurchaseAmount {
         while (true) {
             try {
