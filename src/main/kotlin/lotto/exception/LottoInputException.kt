@@ -1,6 +1,21 @@
 package lotto.exception
 
-sealed class LottoInputException(message: String): IllegalArgumentException("[ERROR] $message") {
-    class InvalidInput(input: String): LottoInputException("Invalid input: '$input'. Please enter a positive number without any letters or symbols.")
-    class InvalidAmount(amount: Int): LottoInputException("Invalid amount: $amount. The purchase amount must be a positive number and divisible by 1,000 KRW.")
+sealed class LottoInputException(message: String) : IllegalArgumentException("[ERROR] $message") {
+    class InvalidPurchaseInput(input: String) :
+        LottoInputException("Invalid input: '$input'. Please enter a positive number without any letters or symbols.")
+
+    class InvalidAmount(amount: Int) :
+        LottoInputException("Invalid amount: $amount. The purchase amount must be a positive number and divisible by 1,000 KRW.")
+
+    class InvalidWinningNumbersInput(input: String):
+        LottoInputException("Invalid input: '$input'. Please enter 6 unique numbers separated by commas (e.g., 1,2,3,4,5,6).")
+
+    class InvalidWinningNumbers(message: String) :
+        LottoInputException("Invalid Winning Numbers: $message.")
+
+    class InvalidBonusNumberInput(input: String) :
+        LottoInputException("Invalid input: '$input'. Please enter a number in the range of 1 to 45 (inclusive), without any letters or special symbols.")
+
+    class InvalidBonusNumber(bonusNumber: Int) :
+        LottoInputException("Invalid input: $bonusNumber. Please enter a number in the range of 1 to 45 (inclusive).")
 }
