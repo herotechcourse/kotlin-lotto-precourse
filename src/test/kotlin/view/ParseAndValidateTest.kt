@@ -91,6 +91,13 @@ class ParseAndValidateTest {
     }
 
     @Test
+    fun `exception test, invalid winning numbers input, numbers are not unique`() {
+        assertThrows<IllegalArgumentException> {
+            winningNumbers("1,2,2,4,5,6")
+        } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
     fun `exception test, invalid winning numbers input, one of numbers is negative`() {
         assertThrows<IllegalArgumentException> {
             winningNumbers("1,2,3,4,-5,6")
