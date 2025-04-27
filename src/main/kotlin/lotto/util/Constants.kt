@@ -10,6 +10,18 @@ object Constants {
     const val MIN_PURCHASE_AMOUNT = PURCHASE_AMOUNT_UNIT
     const val CURRENCY_UNIT = "KRW"
 
+    const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
+    const val WINNING_NUMBERS_PROMPT = "\nPlease enter last week's winning numbers."
+    const val BONUS_NUMBER_PROMPT = "\nPlease enter the bonus number."
+
+    const val ERROR_INVALID_NUMBER = "$ERROR_PREFIX Input must be a valid number."
+    const val ERROR_INVALID_PURCHASE_AMOUNT = "$ERROR_PREFIX Purchase amount must be at least $MIN_PURCHASE_AMOUNT $CURRENCY_UNIT."
+    const val ERROR_INVALID_PURCHASE_UNIT = "$ERROR_PREFIX Purchase amount must be in units of $PURCHASE_AMOUNT_UNIT $CURRENCY_UNIT."
+    const val ERROR_INVALID_WINNING_NUMBER = "$ERROR_PREFIX All Lotto numbers must be numbers."
+    const val ERROR_INVALID_BONUS_NUMBER = "$ERROR_PREFIX Bonus number must be a number."
+    const val ERROR_BONUS_OUT_OF_RANGE = "$ERROR_PREFIX Bonus number must be between $MIN_LOTTO_NUMBER and $MAX_LOTTO_NUMBER."
+    const val ERROR_DUPLICATE_BONUS_NUMBER = "$ERROR_PREFIX Bonus number must not be a duplicate of the winning numbers."
+
     const val PRIZE_FIRST = 2_000_000_000
     const val PRIZE_SECOND = 30_000_000
     const val PRIZE_THIRD = 1_500_000
