@@ -29,6 +29,12 @@ object OutputHandler {
     }
 
     fun showTotalRate(number: Double) {
-        println("Total return rate is ${number}%. ")
+        val formattedNumber = if (number % 1 == 0.0) {
+            number.toInt().toString()
+        } else {
+            "%.1f".format(number)
+        }
+
+        println("Total return rate is ${formattedNumber}%. ")
     }
 }
