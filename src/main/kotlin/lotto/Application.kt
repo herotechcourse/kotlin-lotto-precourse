@@ -13,6 +13,9 @@ fun main() {
     val winningNumbers = readWinningNumbers(inputView)
     val bonusNumbers = readBonusNumber(inputView)
 
+    println("Winning Statistics:")
+    println("---")
+    var totalPrizeMoney = 0.0
     Rank.values().sortedBy { it.matchedCount }.forEach { rank ->
         val matchedCount = tickets.count { ticket ->
             ticket.getNumbers().intersect(winningNumbers.toSet()).size == rank.matchedCount
@@ -20,12 +23,19 @@ fun main() {
         val bonusMatched = tickets.count { ticket ->
             ticket.getNumbers().intersect(winningNumbers.toSet()).size == rank.matchedCount && ticket.getNumbers().contains(bonusNumbers)
         }
+
+        totalPrizeMoney += (matchedCount + bonusMatched) * rank.prizeMoney.toDouble()
+
         if (rank.bonus) {
             println("${rank.matchedCount} Matches + Bonus Ball (${rank.getPrizeMoneyInKRW()}) – ${matchedCount + bonusMatched} tickets")
         } else {
             println("${rank.matchedCount} Matches (${rank.getPrizeMoneyInKRW()}) – ${matchedCount} tickets")
         }
     }
+
+    val totalReturnRate = totalPrizeMoney / order.getPurchaseAmount().toDouble() * 100
+
+    println("Total return rate is ${totalReturnRate}%.")
 }
 
 fun readPurchaseOrder(inputView: InputView): Order {

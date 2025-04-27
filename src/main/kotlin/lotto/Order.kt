@@ -9,4 +9,8 @@ class Order(private val amount: Int) {
     fun getLottoCount(): Int {
         return amount / LOTTO_PRICE
     }
+
+    fun getPurchaseAmount(): Int {
+        return amount
+    }
 }
