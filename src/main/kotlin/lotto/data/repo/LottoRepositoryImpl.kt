@@ -1,6 +1,7 @@
 package lotto.data.repo
 
 import lotto.Lotto
+import lotto.data.service.LottoConstants.LOTTO_TICKET_PRICE
 import lotto.data.service.LottoNumberService
 import lotto.domain.model.WinningNumbers
 import lotto.domain.repo.LottoRepository
@@ -9,7 +10,7 @@ class LottoRepositoryImpl(val lottoNumberService: LottoNumberService) : LottoRep
   private lateinit var generatedTickets: List<Lotto>
 
   override fun generateLottoTickets(purchaseAmount: Int): List<Lotto> {
-    val numberOfTickets = purchaseAmount / 1000
+    val numberOfTickets = purchaseAmount / LOTTO_TICKET_PRICE
     val tickets = List(numberOfTickets) {
       Lotto(lottoNumberService.generate())
     }
