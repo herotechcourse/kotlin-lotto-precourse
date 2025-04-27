@@ -3,18 +3,18 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    fun inputReader(message: String): String {
-        println(message)
-        val input = Console.readLine()
-
-        if (input.isNullOrBlank()) {
-            throw IllegalArgumentException("[ERROR] Input must be non-empty")
-        }
-
-        return input
-    }
-
     companion object {
+        fun inputReader(message: String): String {
+            println(message)
+            val input = Console.readLine()
+
+            if (input.isNullOrBlank()) {
+                throw IllegalArgumentException("[ERROR] Input must be non-empty")
+            }
+
+            return input
+        }
+        
         fun getPurchaseAmount(input: String): Int {
             if (input.toIntOrNull() == null || input.toInt() <= 0 || input.toInt() % 1000 != 0) {
                 throw IllegalArgumentException("[ERROR] Please enter the valid purchase amount.")
