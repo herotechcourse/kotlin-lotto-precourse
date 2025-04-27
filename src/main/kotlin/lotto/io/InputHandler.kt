@@ -1,25 +1,29 @@
 package lotto.io
 
+import lotto.validators.InputValidator
 import camp.nextstep.edu.missionutils.Console
 
 object InputHandler {
     fun getSumOfMoney(): Int {
         println("Please enter the purchase amount.")
-        return Console.readLine()?.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] The purchase amount should be an integer.")
+        val input = Console.readLine()?.toIntOrNull()
+
+        return InputValidator.validateSumOfMoney(input)
     }
 
     fun getWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers.")
-        return Console.readLine().split(",").map {
+        val input = Console.readLine().split(",").map {
             it.trim().toIntOrNull()
-                ?: throw IllegalArgumentException("[ERROR] The winning number should be an integer.")
         }
+
+        return InputValidator.validateNumbers(input)
     }
 
     fun getBonusNumber(): Int {
         println("Please enter the bonus number.")
-        return Console.readLine()?.toIntOrNull()
-            ?: throw IllegalArgumentException("The purchase amount should be an integer.")
+        val input = Console.readLine()?.toIntOrNull()
+
+        return InputValidator.validateNumberInRange(input)
     }
 }
