@@ -11,6 +11,7 @@ object ParseAndValidate {
         require(input.isNotEmpty() && input.isNotBlank()) { "[ERROR] Winning numbers must be numeric." }
         val numbers = input.split(",")
         require(numbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
+        require(numbers.toSet().size == 6) { "[ERROR] Winning numbers must be unique." }
         return numbers
             .map { it.trim()
             .toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Winning numbers must be numeric.") }
