@@ -65,7 +65,17 @@ created to display the winning statistics in the next step
 ### c. IO args:
 - This code takes result count as input and displays the output as lotto winning statictics
 ### d. Test case:
-- The case for the following
+- Test case for the following
   -Unit test case to check if the output displays correct winning statistics with the ticket count 
 
 ### 6. Calculate total return rate and display as output
+## a. Responsibilities:
+- Write a function to calculate return rate as percentage
+## b. Validation:
+- This code validates that the correct return rate is calculated based on the sum of matching count of the tickets according to the winning statistics
+## c. IO args:
+- This code takes result count and number of tickets as input.
+- The output is calculated by dividing total winning amount by the purchase amount and multiplying by 100 to get the percentage of return rate
+## d. Test case:
+- Test case for the following
+  - should calculate and return correct return rate
