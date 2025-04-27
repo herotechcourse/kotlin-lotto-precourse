@@ -8,6 +8,10 @@ class LotteryGame {
         return List(ticketCount) {generateLotteryTicket()}
     }
 
+    fun getTicketCount(purchaseAmount: Int): Int {
+        return purchaseAmount/1000
+    }
+
     companion object {
         private fun generateLotteryTicket(): Lotto {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
