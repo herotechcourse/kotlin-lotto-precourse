@@ -2,9 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+const val TICKET_PRICE = 1000
+
 class LottoProcessor {
     fun ticketGenerator(purchaseAmount: Int): List<Lotto> {
-        val ticketCount = purchaseAmount / 1000
+        val ticketCount = purchaseAmount / TICKET_PRICE
 
         return List(ticketCount) {
             Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
