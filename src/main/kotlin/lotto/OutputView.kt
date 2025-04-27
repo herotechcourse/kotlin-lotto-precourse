@@ -11,8 +11,7 @@ object OutputView {
     }
 
     fun printPrize(rate: Double, prizeMap: Map<Prize, Int>) {
-        println()
-        println("Winning Statistics")
+        println("\nWinning Statistics")
         println("---")
         printPrizeMap(prizeMap)
         println("Total return rate is %.1f%%.".format(rate*100))

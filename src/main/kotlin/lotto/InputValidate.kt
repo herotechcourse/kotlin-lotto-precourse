@@ -1,7 +1,6 @@
 package lotto
 
 object InputValidate {
-
     fun validateAmount(input: String): Int {
         val amount = try {
             input.toInt()

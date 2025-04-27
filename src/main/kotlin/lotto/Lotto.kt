@@ -6,7 +6,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.toSet().size == numbers.size) { "[ERROR] Lotto must not contain duplicated numbers" }
-        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto Lotto number must between 1 to 45" }
+        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto number must between 1 to 45" }
     }
 
     // find matches and determine the prize rank
@@ -34,7 +34,7 @@ class Lotto(private val numbers: List<Int>) {
             Prize.entries.associateWith { prize -> prizeRankList.count { it == prize } }
 
         fun generateTickets(purchaseAmount: Int): List<List<Int>> {
-            var numberOfTickets = purchaseAmount / 1000
+            val numberOfTickets = purchaseAmount / 1000
             val rawTickets: MutableList<MutableList<Int>> = mutableListOf()
             for (i in 0 until numberOfTickets) {
                 val singleTicket = generateSingleTicket()
