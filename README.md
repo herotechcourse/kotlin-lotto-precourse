@@ -4,6 +4,10 @@ This is the submission for the second week's mission of the pre-course for the "
 
 This project is a console-based Kotlin application that simulates a lotto game. After the user inputs a purchase amount, winning numbers, and a bonus number, the program generates tickets, validates inputs, calculates results, and displays winning statistics.
 
+Below you can find a quick demonstration of the program:
+
+https://github.com/user-attachments/assets/ca3ecccc-a4d8-4c94-9dda-386d9521523f
+
 ## Table of Contents
 
 - [Feature List](#feature-list)
