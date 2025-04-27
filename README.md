@@ -23,7 +23,7 @@
     - 5th Prize: Match 3 numbers / 5,000 KRW
 - Calculate the return rate based on total winnings and total amount spent. 
 - Display the complete lottery results. 
-  - Display the user's purchased tickets, the winning numbers (including the bonus number), the number of matched numbers for each ticket, the prize tier for each ticket, and the overall return rate.
+  - Display the user's purchased tickets(ascending order), the number of matched numbers for each ticket, the prize tier for each ticket, and the overall return rate.
 
 ## Functional Requirements
 - Input validation for purchase amount:
