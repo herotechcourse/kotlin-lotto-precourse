@@ -1,9 +1,27 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<Int>) : LottoValidator, BonusValidator {
+
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        validateNumbers(numbers)
     }
 
-    // TODO: Implement additional functions
+    fun simulate(
+        issuedTickets: List<List<Int>>,
+        bonusNumber: Int,
+        statistics: LottoStatistics,
+    ) {
+        issuedTickets.forEach {
+            statistics.updateTicketCount(getMatchCount(it), hasBonus(it, bonusNumber))
+        }
+    }
+
+    private fun getMatchCount(issuedTicket: List<Int>) = numbers.count { it in issuedTicket }
+
+    private fun hasBonus(issuedTicket: List<Int>, bonusNumber: Int) = bonusNumber in issuedTicket
+
+    override fun validateNumber(number: Int) {
+        validateInRange(number)
+        validateDuplicatedNumber(number, numbers)
+    }
 }
