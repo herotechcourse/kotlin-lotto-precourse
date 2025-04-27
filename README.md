@@ -90,7 +90,78 @@ A simple command-line Lotto application.
 #### `ExceptionMessage.kt`
 > - Enum of all error cases with consistent, localized messages.
 
-# UML
+# 3. Validation Rules
+
+- **Purchase Amount**
+   - Must be at least `Rule.LOTTO_PRICE`
+   - Must be divisible by `Rule.LOTTO_PRICE`
+
+- **Lotto Numbers**
+   - Must contain exactly `Rule.NUMBERS_COUNT` numbers
+   - Each number must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
+   - All numbers must be unique
+
+- **Bonus Number**
+   - Must be between `Rule.MIN_NUMBER` and `Rule.MAX_NUMBER`
+   - Must not duplicate any of the winning numbers
+
+
+# 4. UML
 > This image was generated using [PlantUML](https://www.planttext.com/) based on the contents of `docs/lotto.puml`.
 
+> Note: The `model` package contains only pure DTO classes (e.g., `WinningNumbers`, `MatchResult`) for data transfer between layers. The `lotto` package houses the domain entity `Lotto`, which performs validation via `Validator` on instantiation and provides business methods like `countMatching()` and `contains()`. This separation adheres to package constraints while clearly distinguishing domain logic from data transfer responsibilities, maintaining architectural consistency.
+
 ![UML Diagram](docs/lotto_uml.png)
+
+# 5. Execution Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Application
+    participant LottoController
+    participant InputView
+    participant Validator
+    participant LottoService
+    participant OutputView
+
+    User->>Application: main()
+    Application->>LottoController: run()
+
+    %% 구매 티켓 생성 흐름
+    LottoController->>InputView: readPurchaseAmount()
+    InputView->>Validator: validatePurchaseAmount(amount)
+    Validator-->>InputView: valid
+    InputView-->>LottoController: amount
+
+    LottoController->>LottoService: purchaseLottoTickets(amount)
+    LottoService-->>LottoController: List<Lotto>
+
+    LottoController->>OutputView: printPurchasedTickets(count, tickets)
+
+    %% 당첨 번호 입력 흐름
+    LottoController->>LottoController: readWinningNumbersWithRetry()
+    LottoController->>InputView: readWinningNumbers()
+    InputView->>Validator: validateLottoNumbers(numbers)
+    Validator-->>InputView: valid
+    InputView-->>LottoController: numbers
+    alt invalid
+        InputView-->>LottoController: throw IllegalArgumentException
+        LottoController-->>LottoController: retry readWinningNumbersWithRetry()
+    end
+
+    LottoController->>LottoController: readBonusWithRetry(numbers)
+    LottoController->>InputView: readBonusNumber(numbers)
+    InputView->>Validator: validateBonusNumber(bonus, numbers)
+    Validator-->>InputView: valid
+    InputView-->>LottoController: bonus
+    alt invalid
+        InputView-->>LottoController: throw IllegalArgumentException
+        LottoController-->>LottoController: retry readBonusWithRetry(numbers)
+    end
+
+    LottoController->>LottoService: determineWinningResults(tickets, WinningNumbers)
+    LottoService-->>LottoController: MatchResult
+
+    LottoController->>OutputView: printWinningStatistics(MatchResult)
+```
