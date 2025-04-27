@@ -16,6 +16,7 @@ This program simulates buying lottery tickets, and running lottery to check if u
 - Parse and validate unique bonus number
   - throw an exception if number already present in set of 6 numbers
   - throw an exception if number is not in range 1-45
+- After throwing an exception, recover and give a possibility to user to re-enter the values
 - Sort and display entered numbers in ascending order for all tickets
 - Find the number of matches per ticket
 - Group tickets based on the amount of matches between winning numbers and numbers in the ticket plus bonus number
