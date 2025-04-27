@@ -42,5 +42,24 @@ class OutputTest {
             "${LottoEnum.THREE.Output} – 5 tickets"
         )
     }
+
+    @Test
+    fun `should calculate and display correct return rate`() {
+
+        val resultCount = mutableMapOf(
+            LottoEnum.SIX to 1,
+            LottoEnum.FIVE to 2
+        )
+        val noOfTickets = 10
+        Output().calculateReturnRate(resultCount, noOfTickets)
+
+        val output = outputStream.toString().trim()
+
+        val expectedTotalWinning = LottoEnum.SIX.Amount * 1 + LottoEnum.FIVE.Amount * 2
+        val expectedActualAmount = noOfTickets * 1000
+        val expectedReturnRate = expectedTotalWinning.toDouble() / expectedActualAmount * 100
+
+        assertThat(output).isEqualTo("Total return rate is %.1f%%.".format(expectedReturnRate))
+    }
 }
 
