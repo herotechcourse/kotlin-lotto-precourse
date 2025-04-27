@@ -5,7 +5,6 @@ import org.junit.jupiter.api.assertThrows
 import org.assertj.core.api.Assertions.assertThat
 
 class LottoTest {
-
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
