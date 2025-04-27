@@ -10,8 +10,6 @@ class LottoTest {
             Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
-
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +17,17 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `throws an exception when lotto numbers are out of range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6))
+        }
+    }
+
+    @Test
+    fun  `returns sorted lotto numbers`() {
+        val lotto = Lotto(listOf(3, 1, 4, 2, 5, 6))
+        val sortedNumbers = lotto.getNumbers()
+        assert(sortedNumbers == listOf(1, 2, 3, 4, 5, 6)) { "Lotto numbers should be sorted." }
+    }
 }

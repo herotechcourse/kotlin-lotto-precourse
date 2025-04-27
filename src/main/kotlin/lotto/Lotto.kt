@@ -2,8 +2,20 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == Configuration.LOTTO_COUNT) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_SIZE }
+        require(numbers.distinct().size == numbers.size) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_DUPLICATE }
+        require(numbers.all { it in (Configuration.MIN_NUMBER)..(Configuration.MAX_NUMBER) }) { Configuration.ErrorMessages.LOTTO_COUNT_INVALID_RANGE }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> {
+        return numbers.sorted()
+    }
+
+    fun getMatchCount(winningNumbers: List<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
+
+    fun isBonusMatch(bonusNumber: Int): Boolean {
+        return numbers.contains(bonusNumber)
+    }
 }
