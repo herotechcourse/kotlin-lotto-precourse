@@ -18,7 +18,7 @@ class LottoResults {
     }
 
     fun countReturnRate(purchaseAmount: Int): Double {
-        var sumOfProfit = 0;
+        var sumOfProfit = 0
         for (rank in LottoRanks.entries) {
             sumOfProfit += results[rank.code]!! * rank.prize
         }

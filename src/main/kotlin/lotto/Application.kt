@@ -7,36 +7,25 @@ import lotto.validators.InputValidator
 
 
 fun main() {
-    val tickets = mutableListOf<Lotto>()
     val sumOfMoney = InputHandler.getSumOfMoney()
-    val numberOfTickets = getNumberOfTickets(sumOfMoney)
-//  validateSumOfMoney(sumOfMoney)
     InputValidator.validateSumOfMoney(sumOfMoney)
+
+    val numberOfTickets = getNumberOfTickets(sumOfMoney)
+    val tickets = mutableListOf<Lotto>()
     repeat(numberOfTickets) {
         val ticket = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
         tickets.add(ticket)
     }
     OutputHandler.showTickets(tickets)
-    val winNumbers = InputHandler.getWinningNumbers()
-    InputValidator.validateNumbers(winNumbers.map {
-        it.toIntOrNull() ?: throw IllegalArgumentException("Winning number should be an integer.")
-    })
+
+    val winningNumbers = InputHandler.getWinningNumbers()
+    InputValidator.validateNumbers(winningNumbers)
 
     val bonusNumber = InputHandler.getBonusNumber()
     InputValidator.validateNumberInRange(bonusNumber)
 
-    val results = LottoResults()
-
-    for (ticket in tickets) {
-        val matches = ticket.calculateMatches(winNumbers.map { it.toInt() })
-        when (matches) {
-            3 -> results.increaseMatchResult(LottoRanks.MATCH_3)
-            4 -> results.increaseMatchResult(LottoRanks.MATCH_4)
-            5 -> results.increaseMatchResult(LottoRanks.MATCH_5)
-            6 -> results.increaseMatchResult(LottoRanks.MATCH_6)
-        }
-    }
-
+    val game = LottoGame(tickets, winningNumbers, bonusNumber)
+    val results = game.start()
     val totalRate = results.countReturnRate(sumOfMoney)
 
     OutputHandler.showStatistics(results)
