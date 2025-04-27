@@ -9,8 +9,9 @@ fun main() {
 
 
     val inputView = InputView()
+
     val ticketNumber = inputView.readPurchase()
-    val lottoWinningNumbers = inputView.promptWinningNumber()
+    val lottoWinningNumbers = inputView.promptWinningNumbers()
 
     val ticketGeneration = LottoTicketGeneration(ticketNumber)
     ticketGeneration.generateTicket()

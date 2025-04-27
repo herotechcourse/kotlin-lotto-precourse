@@ -14,6 +14,7 @@ class WinningNumbers(val mainNumbers: List<Int?>, val bonusNumber: Int?) {
         require(mainNumbers.all { it in MIN_VALUE_LOTTO .. MAX_VALUE_LOTTO }) {
             "[ERROR] Numbers must be in the range [$MIN_VALUE_LOTTO, $MAX_VALUE_LOTTO]"
         }
+        require(bonusNumber in MIN_VALUE_LOTTO .. MAX_VALUE_LOTTO)
         require(!mainNumbers.contains(bonusNumber)) {
             "[ERROR] Bonus number is not contained in main numbers"
         }

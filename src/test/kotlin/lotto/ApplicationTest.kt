@@ -82,6 +82,14 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `exception test duplicate bonus number`() {
+        assertSimpleTest {
+            runException("10000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
     override fun runMain() {
         main()
     }

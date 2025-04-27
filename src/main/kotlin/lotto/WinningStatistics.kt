@@ -1,7 +1,7 @@
 package lotto
 
 
-class WinningStatistics(val tickets: List<Lotto>, val winningNumbers: WinningNumbers) {
+class WinningStatistics(private val tickets: List<Lotto>, private val winningNumbers: WinningNumbers) {
 
     val mapPrizeNumber = Lotto.Prize.entries.associateWith { 0 }.toMutableMap()
 
@@ -27,9 +27,7 @@ class WinningStatistics(val tickets: List<Lotto>, val winningNumbers: WinningNum
 
     fun getTotalMoney(): Int {
         var totalMoney = 0
-        for ((prize, number) in mapPrizeNumber) {
-            totalMoney += prize.valuePrize * number
-        }
+        for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize * number
         return totalMoney
     }
 }

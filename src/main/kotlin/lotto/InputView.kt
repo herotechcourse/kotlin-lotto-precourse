@@ -7,64 +7,59 @@ class InputView {
     fun readPurchase(): Int {
         while (true) {
             println("Please enter the purchase amount.")
-            val amountMoney = Console.readLine()!!.toIntOrNull()
+            val amountMoney = Console.readLine().toIntOrNull()
             try {
                 if ((amountMoney == null) || ((amountMoney % 1000) != 0)) {
-                    throw IllegalArgumentException("[ERROR] The amount must be divisible by 1,000")
+                    throw IllegalArgumentException("[ERROR] The amount must be integer and divisible by 1,000")
                 }
                 return amountMoney/1000
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
-
         }
-
     }
 
-    fun promptWinningNumber(): WinningNumbers {
-        println("Please enter last week's winning numbers (commas separated).")
-        val winningNumbers = Console.readLine()!!.split(",").map { it.trim() }.map { it.toIntOrNull() }
+    fun promptWinningNumbers(): WinningNumbers {
 
-        println("Please enter the bonus number.")
-        val bonusNumber = Console.readLine()!!.toIntOrNull()
+        val mainNumbers = readMainNumbers()
+        val bonusNumber = readBonusNumber(mainNumbers)
 
-        return WinningNumbers(winningNumbers, bonusNumber)
+        return WinningNumbers(mainNumbers, bonusNumber)
     }
 
-    fun readWinningNumber(): List<Int?> {
-
-        println("Please enter last week's winning numbers (commas separated).")
-        val winningNumbers = Console.readLine()!!.split(",").map { it.trim() }.map { it.toIntOrNull() }
-
-        if (winningNumbers.size != 6) {
-            throw IllegalArgumentException("[ERROR] List must contain exact 6 numbers")
+    fun readMainNumbers(): List<Int?> {
+        while (true){
+            println("Please enter last week's winning numbers (commas separated).")
+            val mainNumbers = Console.readLine().split(",").map { it.trim() }.map { it.toIntOrNull() }
+            try {
+                if ((mainNumbers.size != 6) || (mainNumbers.toSet().size != 6)) {
+                    throw IllegalArgumentException("[ERROR] Main numbers must contain exact 6 unique numbers")
+                }
+                if (mainNumbers.any {it !in 1..45}) {
+                    throw IllegalArgumentException("[ERROR] Main number must be in the range 1..45")
+                }
+                return mainNumbers
+            } catch (e: IllegalArgumentException){
+                println(e.message)
+            }
         }
+    }
 
-        if (winningNumbers.any{ !checkLottoNumber(it) }) {
-            throw IllegalArgumentException("[Error] Each number must be integer in the range [1,45]")
+    fun readBonusNumber(listNumber: List<Int?>): Int? {
+        while (true) {
+            println("Please enter the bonus number.")
+            val bonusNumber = Console.readLine().toIntOrNull()
+            try {
+
+                if ((bonusNumber !in 1 .. 45) || (listNumber.contains(bonusNumber) )) {
+                    throw IllegalArgumentException("[ERROR] Bonus numbers must be in the range 1 .. 45 and different to main numbers")
+                }
+                return bonusNumber
+
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
         }
-        return winningNumbers
     }
-
-    fun readBonusNumber(): Int? {
-        println("Please enter the bonus number.")
-        val bonusNumber = Console.readLine()!!.toIntOrNull()
-
-        if (!checkLottoNumber(bonusNumber)) {
-            throw IllegalArgumentException("[Error] Bonus number must be integer in the range [1,45]")
-        }
-
-        return bonusNumber
-    }
-
-    fun checkBonusNumber(listNumber: List<Int?>, number: Int?): Boolean {
-        return listNumber.contains(number)
-    }
-
-    private fun checkLottoNumber(number: Int?): Boolean {
-        return ((number != null) && (number >= 1) && (number <=45))
-    }
-
-
 
 }

@@ -19,5 +19,19 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `throw an exception when lotto numbers greater than 45`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 4, 6, 8, 50))
+        }
+    }
+
+    @Test
+    fun `throw an exception when lotto numbers less than 1`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 3, 5, -1, 7, 10))
+        }
+    }
+
     // TODO: Implement tests based on the added features
 }
