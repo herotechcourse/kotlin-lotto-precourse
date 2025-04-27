@@ -13,34 +13,44 @@
 - [ Feedback ] Feature must be written as small as possible.
 - [ Retrospect ] After implementing each features, write test codes that can verify the feature.
 
-## Feature list
-- [x] Receive the purchase amount from the user.
-  - [x] If the amount is not divisible by 1,000, throw an exception and prompt for input again.
-  - [x] If the amount is not positive, throw exception.
-- [x] Calculate how many lottery tickets can be purchased with the given amount.
-  - [x] Generate N lottery tickets.
-  - [ ] Each ticket must consist of 6 unique numbers between 1 and 45.
-  - [ ] The numbers must be sorted in ascending order when printed.
-- [x] Receive 6 winning numbers from the user. 
-  - [x] Winning numbers must not contain non-numeric values. 
-  - [x] Winning numbers must not have duplicates.
-  - [x] Winning numbers must be in range (1 ~ 45). 
-  - [x] Winning numbers must be 6 numbers.
-- [x] Receive 1 bonus number from the user.
-  - [x] The bonus number must not overlap with any of the winning numbers.
-  - [x] The bonus number must be in range (1 ~ 45).
-- [x] Compare each lottery ticket to the winning numbers and count how many numbers match.
-  - [x] If there are exactly 5 matches, check whether the ticket contains the bonus number.
-- [x] Determine the result for each ticket and count the number of tickets for each prize rank.
-- [ ] Calculate the return rate.
-  - [ ] Return rate = (total prize money / total purchase amount) * 100.0, rounded to one decimal place.
-- [ ] Print the statistics of winning tickets and the return rate.
-
-
 ## UML Object Design
 ### First Design
 Below is the class diagram representing the object-oriented structure of the Lotto mission.
 ![lotto-precourse-uml](/docs/lotto-precourse.drawio.png)
 
-### Advanced Design
+### Advanced Design(current)
 ![lotto-precourse-uml](/docs/lotto-precourse_1.drawio.png)
+
+## Feature list
+
+### 1. Purchase and Ticket Generation
+- [x] Receive the purchase amount from the user.
+  - [x] If the amount is not divisible by 1,000, throw an exception and prompt for input again.
+  - [x] If the amount is not positive, throw an exception and prompt for input again.
+- [x] Calculate how many lottery tickets can be purchased with the given amount.
+- [x] Generate N lottery tickets.
+  - [x] Each ticket must consist of exactly 6 unique numbers between 1 and 45.
+  - [x] When displaying ticket numbers, they must be sorted in ascending order.
+
+### 2. Winning Numbers and Bonus Number Input
+- [x] Receive 6 winning numbers from the user.
+  - [x] Winning numbers must not contain non-numeric values.
+  - [x] Winning numbers must be 6 numbers.
+  - [x] Winning numbers must not contain duplicates.
+  - [x] Winning numbers must be within the valid range (1–45).
+- [x] Receive 1 bonus number from the user.
+  - [x] The bonus number must be within the valid range (1–45).
+  - [x] The bonus number must not overlap with any of the winning numbers.
+- [x] Represent the winning numbers and bonus number as independent validated value objects.
+
+### 3. Matching and Ranking
+- [x] Compare each lottery ticket to the winning numbers and count how many numbers match.
+  - [x] If a ticket matches exactly 5 numbers, check whether the ticket also matches the bonus number.
+- [x] Determine the result (prize rank) for each ticket based on the number of matches and bonus number match.
+- [x] Aggregate the number of tickets for each prize rank.
+  - [x] Represent the prize results and counts using a structured result object.
+
+### 4. Statistics and Return Rate
+- [ ] Calculate the total return rate.
+  - [ ] Return rate = (total prize money / total purchase amount) × 100.0, rounded to one decimal place.
+- [ ] Print the winning statistics and the return rate.
