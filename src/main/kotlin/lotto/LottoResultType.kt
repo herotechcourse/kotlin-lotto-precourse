@@ -19,19 +19,6 @@ enum class LottoResultType(val value: Int) {
                 matchCount == 3 -> FIFTH_PRIZE
                 else -> NO_PRIZE
             }
-
-        fun countResultType(lottoResultTypes: List<LottoResultType>, targetType: LottoResultType): Int {
-            return lottoResultTypes.count { lottoResultType -> lottoResultType == targetType }
-        }
-
-        fun calculate(lottoResultTypes: List<LottoResultType>): Int {
-            var totalValue = 0
-            for (lottoResultType in lottoResultTypes) {
-                totalValue += lottoResultType.value
-            }
-            return totalValue
-        }
-
     }
 
 }
