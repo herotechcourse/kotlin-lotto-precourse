@@ -31,6 +31,7 @@ class LottoController(
                 val amount = inputValidator.validateAndParseAmount(amountString)
                 return amount
             } catch (e: IllegalArgumentException) {
+                outputView.displayError(e.message)
             }
         }
     }
@@ -42,6 +43,7 @@ class LottoController(
                 val numbers = inputValidator.validateAndParseWinningNums(numberString)
                 return numbers
             } catch (e: IllegalArgumentException) {
+                outputView.displayError(e.message)
             }
         }
     }
@@ -53,6 +55,7 @@ class LottoController(
                 val bonus = inputValidator.validateAndParseBonusNum(bonusString)
                 return bonus
             } catch (e: IllegalArgumentException) {
+                outputView.displayError(e.message)
             }
         }
     }

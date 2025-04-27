@@ -27,4 +27,8 @@ class OutputView {
         val profitRate = results.getprofitRate(purchaseAmout)
         println("Total return rate is ${String.format("%.1f", profitRate)}%.")
     }
+
+    fun displayError(message: String?) {
+        println(message)
+    }
 }
