@@ -33,4 +33,14 @@ class LottoProcessor {
 
         return (totalPrizeAmount.toDouble() / totalSpent) * 100
     }
+
+    fun processLotto(purchaseAmount: Int) {
+        val tickets = ticketGenerator(purchaseAmount)
+        OutputView.displayTickets(tickets)
+        val winningNumbers = InputView.getWinningNumbers(InputView.inputReader(WINNING_NUMBERS_TEXT))
+        val bonusNumber = InputView.getBonusNumber(InputView.inputReader(BONUS_NUMBER_TEXT))
+        val prizes = prizeCalculator(tickets, winningNumbers, bonusNumber)
+        val profitRate = profitRateCalculator(purchaseAmount, prizes)
+        OutputView.displayStatistics(prizes, profitRate)
+    }
 }
