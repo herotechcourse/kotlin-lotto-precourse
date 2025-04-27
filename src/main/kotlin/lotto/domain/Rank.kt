@@ -9,8 +9,13 @@ enum class Rank(val match: Int, val prize: Int, val requiresBonus: Boolean = fal
 
     companion object {
         fun from(matchCount: Int, bonusMatch: Boolean): Rank? {
-            return values().find {
-                it.match == matchCount && (it.requiresBonus == bonusMatch || !it.requiresBonus)
+            return when {
+                matchCount == 6 -> FIRST
+                matchCount == 5 && bonusMatch -> SECOND
+                matchCount == 5 -> THIRD
+                matchCount == 4 -> FOURTH
+                matchCount == 3 -> FIFTH
+                else -> null
             }
         }
     }
