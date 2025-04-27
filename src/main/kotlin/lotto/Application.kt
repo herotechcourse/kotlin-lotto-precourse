@@ -1,9 +1,6 @@
 package lotto
 
-import utils.InputValidator
-import utils.InputView
-import utils.LottoComparator
-import utils.Purchase
+import utils.*
 
 fun main() {
     // TODO: Implement the program
@@ -16,6 +13,8 @@ fun main() {
     lottoComparator.compare(purchase, winningLotto,bonusNumber)
     var result = lottoComparator.getResult()
     for(set in result){
-        println("${set.key.displayPrize()}"+" - ${set.value} tickets")
+        println("${set.key.displayPrize()}"+" – ${set.value} tickets")
     }
+    var profit = Accountant.analyse(result, amount)
+    println("Total return rate is ${profit}%.")
 }
