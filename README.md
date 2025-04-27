@@ -19,6 +19,8 @@
 * Implement overarching (main) logic [X]
 * Unit Tests [ ]
 * Refactor [ ]
+  * User Input - DRY [ ]
+* Format [ ]
 
 ---
 
