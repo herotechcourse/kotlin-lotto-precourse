@@ -7,7 +7,7 @@ import lotto.constants.TICKET_COST
 
 class TicketPurchase {
     var amountOfTicketsBought: Int = 0
-    private set
+        private set
     var tickets: MutableList<Lotto> = mutableListOf()
         private set
 
@@ -20,5 +20,9 @@ class TicketPurchase {
             val ticketNumbers = Randoms.pickUniqueNumbersInRange(LOWEST_NUMBER, HIGHEST_NUMBER, 6)
             this.tickets.add(Lotto(ticketNumbers))
         }
+    }
+
+    fun setTicketsForTest(tickets: List<Lotto>) {
+        this.tickets = tickets.toMutableList()
     }
 }
