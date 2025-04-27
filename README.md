@@ -4,7 +4,7 @@
 | Status  | Feature                                                    | Layer    |
 |---------|------------------------------------------------------------|----------|
 | &#9745; | Input purchase amount                                      | view     |
-| &#9744; | Validate purchase amount                                   | business |
+| &#9745; | Validate purchase amount                                   | business |
 | &#9745; | Issue lotto tickets                                        | business |
 | &#9745; | Output issued tickets sorted ascending                     | view     |
 | &#9745; | Input last week's winning numbers and bonus number         | view     |
