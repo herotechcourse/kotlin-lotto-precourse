@@ -6,7 +6,13 @@ class InputView {
         return readln()
     }
 
+    fun readWinningNumbers(): List<String> {
+        println(RequestMessages.WINNING_NUMBERS)
+        return readln().split(",").map {it.trim()}
+    }
+
     companion object RequestMessages {
         const val AMOUNT = "Please enter the purchase amount."
+        const val WINNING_NUMBERS = "Please enter last week's winning numbers."
     }
 }
