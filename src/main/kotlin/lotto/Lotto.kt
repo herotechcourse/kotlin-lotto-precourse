@@ -25,5 +25,8 @@ class Lotto(private val numbers: List<Int>) {
         var ticket = numbers.joinToString(", ")
         return ticket
     }
+    fun getNumber():List<Int>{
+        return numbers
+    }
 
 }
