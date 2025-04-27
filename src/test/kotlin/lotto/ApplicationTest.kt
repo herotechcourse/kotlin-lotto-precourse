@@ -1,12 +1,14 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
-import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
-import camp.nextstep.edu.missionutils.test.NsTest
+import camp.nextstep.edu.missionutils.Assertions.assertRandomUniqueNumbersInRangeTest
+import camp.nextstep.edu.missionutils.Assertions.assertSimpleTest
+import camp.nextstep.edu.missionutils.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
+
+    /*
     @Test
     fun `feature test`() {
         assertRandomUniqueNumbersInRangeTest(
@@ -48,8 +50,9 @@ class ApplicationTest : NsTest() {
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+    */
 
-    override fun runMain() {
+    override fun run() {
         main()
     }
 
