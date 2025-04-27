@@ -20,9 +20,9 @@ class OutputView {
     }
 
     companion object Messages {
-        const val PURCHASED_TICKETS_PREFIX = "/nYou have purchased "
-        const val TICKET_UNIT = " tickets/n"
-        const val WINNING_STATISTICS = "Winning Statistics\n---"
+        const val PURCHASED_TICKETS_PREFIX = "\nYou have purchased "
+        const val TICKET_UNIT = " tickets.\n"
+        const val WINNING_STATISTICS = "\nWinning Statistics\n---"
         const val TOTAL_RETURN_RATE_PREFIX = "Total return rate is "
         const val RETURN_RATE_UNIT = "%."
     }
