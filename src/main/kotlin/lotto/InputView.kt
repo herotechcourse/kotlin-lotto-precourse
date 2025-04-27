@@ -12,16 +12,23 @@ object InputView {
         return Console.readLine()
     }
 
-    fun purchaseAmountInput(amount: Int): Int {
+    fun inputPurchaseAmount(amount: Int): Int {
         if(amount % TICKET_PRICE != 0) {
-            throw IllegalArgumentException("Amount must be divisible by 1000.")
+            throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
         }
         if(amount < 0) {
-            throw IllegalArgumentException("Amount must be positive.")
+            throw IllegalArgumentException("[ERROR] Amount must be positive.")
         }
 
         return amount / TICKET_PRICE
     }
 
+    fun inputWinningNumbers(winningNumbers: String): Lotto {
+        return Lotto(winningNumbers.split(",").map { it.trim().toInt() })
+    }
 
+    fun inputBonusNumber(): Int {
+        println("\nPlease enter the bonus number.")
+        return Console.readLine().toInt()
+    }
 }
