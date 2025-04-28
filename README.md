@@ -57,11 +57,11 @@ Each of the following features will be implemented in a separate, small commit.
 - [x] Calculate number of winners for each rank.
 
 ### 6. Calculating Profit Rate 
-- [] Calculate total return rate rounded to the nearest tenth (e.g., 100.0%, 51.5%)
+- [ ] Calculate total return rate rounded to the nearest tenth (e.g., 100.0%, 51.5%)
 
 ### 6. Output Results
-- [ ] Print all purchased tickets clearly.
-- [ ] Print match statistics (how many tickets won each prize).
+- [x] Print all purchased tickets clearly.
+- [x] Print match statistics (how many tickets won each prize).
 - [ ] Print total return rate.
 - [ ] Check the format of execution(to match the output format with functional requirements).
 
