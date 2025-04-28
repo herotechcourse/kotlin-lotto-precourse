@@ -30,4 +30,8 @@ object TicketChecker {
         return rankStatistics
     }
 
+    fun setStatisticsForTest(rank: Rank, count: Int) {
+        rankStatistics[rank] = count
+    }
+
 }
