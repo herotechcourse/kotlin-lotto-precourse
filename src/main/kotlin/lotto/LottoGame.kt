@@ -7,26 +7,50 @@ class LottoGame(
 
     fun play() {
         val purchase = purchaseTickets()
+        outputView.displayTickets(purchase.tickets)
+
         val lotto = inputWinningNumbers()
+        inputBonusNumber(lotto)
+
         evaluateResults(lotto, purchase)
     }
 
     private fun purchaseTickets(): Purchase {
-        val amount = inputView.readPurchaseAmount()
-        val purchase = Purchase(amount)
-        outputView.displayTickets(purchase.tickets)
-
-        return purchase
+        repeat(MAX_RETRY) {
+            try {
+                val amount = inputView.readPurchaseAmount()
+                val purchase = Purchase(amount)
+                return purchase
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+        throw MaxRetryException(MAX_RETRY_MSG)
     }
 
     private fun inputWinningNumbers(): Lotto {
-        val winningNumbers = inputView.readWinningNumbers()
-        val lotto = Lotto(winningNumbers)
+        repeat(MAX_RETRY) {
+            try {
+                val winningNumbers = inputView.readWinningNumbers()
+                val lotto = Lotto(winningNumbers)
+                return lotto
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+        throw MaxRetryException(MAX_RETRY_MSG)
+    }
 
-        val bonusNumber = inputView.readBonusNumber()
-        lotto.addBonusNumber(bonusNumber)
-
-        return lotto
+    private fun inputBonusNumber(lotto: Lotto) {
+        repeat(MAX_RETRY) {
+            try {
+                val bonusNumber = inputView.readBonusNumber()
+                lotto.addBonusNumber(bonusNumber)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+        throw MaxRetryException(MAX_RETRY_MSG)
     }
 
     private fun evaluateResults(lotto: Lotto, purchase: Purchase) {
@@ -37,4 +61,11 @@ class LottoGame(
         val returnRate = purchase.calculateReturnRate(totalPrize)
         outputView.printReturnRate(returnRate)
     }
+
+    companion object {
+        private const val MAX_RETRY = 5
+        private const val MAX_RETRY_MSG = "[ERROR] Maximum retry attempts exceeded."
+    }
+
+    class MaxRetryException(message: String, cause: Throwable? = null): RuntimeException(message, cause)
 }
