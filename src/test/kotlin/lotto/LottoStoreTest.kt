@@ -20,6 +20,7 @@ class LottoStoreTest {
         val lottoTickets = lottoStore.issueLottoTickets(lottoPurchaseAmount)
         // then
         assertAll(
+            { assertThat(lottoTickets).hasSize(2) },
             { assertLottoNumbers(lottoTickets.first(), listOf(1, 2, 3, 4, 5, 6)) },
             { assertLottoNumbers(lottoTickets.last(), listOf(11, 12, 13, 14, 15, 16)) }
         )
