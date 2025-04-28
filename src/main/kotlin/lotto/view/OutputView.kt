@@ -11,7 +11,7 @@ object OutputView {
 
     fun printTickets(tickets: List<Lotto>) {
         tickets.forEach {
-            println(it.getNumbers().joinToString(prefix = "[", postfix = "]"))
+            println(it.getNumbers().sorted().joinToString(prefix = "[", postfix = "]"))
         }
     }
 
