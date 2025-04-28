@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.LottoConstants.LOTTO_PRICE
+
 object InputValidator {
     fun validateWinningNumbersInput(input: String) {
         require(input.isNotBlank()) { "[ERROR] Input must not be blank." }
@@ -25,7 +27,7 @@ object InputValidator {
         val purchaseAmount = cleanedInput.toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] Purchase amount must be an integer without decimal points.")
 
-        require(purchaseAmount >= 1000) { "[ERROR] Purchase amount must be at least 1,000 KRW." }
-        require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1,000." }
+        require(purchaseAmount >= LOTTO_PRICE) { "[ERROR] Purchase amount must be at least 1,000 KRW." }
+        require(purchaseAmount % LOTTO_PRICE == 0) { "[ERROR] Purchase amount must be divisible by 1,000." }
     }
 }

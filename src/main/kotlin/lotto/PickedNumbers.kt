@@ -1,14 +1,18 @@
 package lotto
 
+import lotto.LottoConstants.LOTTO_NUMBER_COUNT
+import lotto.LottoConstants.LOTTO_NUMBER_MAX
+import lotto.LottoConstants.LOTTO_NUMBER_MIN
+
 data class PickedNumbers(
     val winningNumbers: List<Int>,
     val bonusNumber: Int,
 ) {
     init {
-        require(winningNumbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
-        require(winningNumbers.toSet().size == 6) { "[ERROR] Winning numbers must not contain duplicates." }
-        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
-        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(winningNumbers.size == LOTTO_NUMBER_COUNT) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
+        require(winningNumbers.toSet().size == LOTTO_NUMBER_COUNT) { "[ERROR] Winning numbers must not contain duplicates." }
+        require(winningNumbers.all { it in LOTTO_NUMBER_MIN..LOTTO_NUMBER_MAX }) { "[ERROR] Winning numbers must be between 1 and 45." }
+        require(bonusNumber in LOTTO_NUMBER_MIN..LOTTO_NUMBER_MAX) { "[ERROR] Bonus number must be between 1 and 45." }
         require(bonusNumber !in winningNumbers) { "[ERROR] Bonus number must not overlap with winning numbers." }
     }
 

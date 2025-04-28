@@ -1,16 +1,23 @@
 package lotto
 
+import lotto.LottoConstants.LOTTO_FIFTH_PRIZE_AMOUNT
+import lotto.LottoConstants.LOTTO_FIRST_PRIZE_AMOUNT
+import lotto.LottoConstants.LOTTO_FOURTH_PRIZE_AMOUNT
+import lotto.LottoConstants.LOTTO_NONE_PRIZE_AMOUNT
+import lotto.LottoConstants.LOTTO_SECOND_PRIZE_AMOUNT
+import lotto.LottoConstants.LOTTO_THIRD_PRIZE_AMOUNT
+
 enum class Rank(
     val matchCount: Int,
     val prize: Int,
     val requireBonus: Boolean = false,
 ) {
-    FIRST(6, 2_000_000_000),
-    SECOND(5, 30_000_000, requireBonus = true),
-    THIRD(5, 1_500_000),
-    FOURTH(4, 50_000),
-    FIFTH(3, 5_000),
-    NONE(-1, 0);
+    FIRST(6, LOTTO_FIRST_PRIZE_AMOUNT),
+    SECOND(5, LOTTO_SECOND_PRIZE_AMOUNT, requireBonus = true),
+    THIRD(5, LOTTO_THIRD_PRIZE_AMOUNT),
+    FOURTH(4, LOTTO_FOURTH_PRIZE_AMOUNT),
+    FIFTH(3, LOTTO_FIFTH_PRIZE_AMOUNT),
+    NONE(-1, LOTTO_NONE_PRIZE_AMOUNT);
 
     companion object {
         fun from(matchCount: Int, matchBonus: Boolean): Rank {

@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.LottoConstants.DELIMITER
+import lotto.LottoConstants.LOTTO_NUMBER_MAX
+import lotto.LottoConstants.LOTTO_NUMBER_MIN
+import lotto.LottoConstants.LOTTO_PRICE
+
 class LottoMachine(
     private val inputView: InputView = InputView(),
 ) {
@@ -17,7 +22,7 @@ class LottoMachine(
             try {
                 val input = inputView.readPurchaseAmount()
                 InputValidator.validatePurchaseAmount(input)
-                return input.replace(",", "").trim().toInt()
+                return input.replace(DELIMITER, "").trim().toInt()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -25,7 +30,7 @@ class LottoMachine(
     }
 
     private fun generateLottoByPurchaseAmount(purchaseAmount: Int): List<Lotto> {
-        val count = purchaseAmount / 1000
+        val count = purchaseAmount / LOTTO_PRICE
         return LottoGenerator.generateLottos(count)
     }
 
@@ -48,7 +53,7 @@ class LottoMachine(
                 val input = inputView.readWinningNumber()
                 InputValidator.validateWinningNumbersInput(input)
                 val numbers = input.split(",").map { it.trim().toInt() }
-                val dummyBonus = (1..45).first { it !in numbers }
+                val dummyBonus = (LOTTO_NUMBER_MIN..LOTTO_NUMBER_MAX).first { it !in numbers }
                 PickedNumbers(numbers, dummyBonus)
                 return numbers
             } catch (e: IllegalArgumentException) {
