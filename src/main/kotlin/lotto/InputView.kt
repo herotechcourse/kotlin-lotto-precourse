@@ -34,12 +34,12 @@ object InputView {
         val purchase = Console.readLine()
         try {
             validatePurchaseAmount(purchase)
+            LotteryTicketMachine.purchaseAmount = purchase.toInt()
         }
         catch (e: IllegalArgumentException) {
             println(e.message)
-            getPurchaseAmount()
+            OutputView.askForPurchaseAmount()
         }
-        LotteryTicketMachine.purchaseAmount = purchase.toInt()
     }
 
     fun getWinningNumbers() {
@@ -47,11 +47,11 @@ object InputView {
         for (input in winningStrings) {
             try {
                 validateLottoNumber(input)
+                LotteryTicketMachine.winningNumbers.add(input.toInt())
             } catch (e: IllegalArgumentException) {
                 println(e.message)
-                getWinningNumbers()
+                OutputView.askForWinningNumbers()
             }
-            LotteryTicketMachine.winningNumbers.add(input.toInt())
         }
     }
 
@@ -59,10 +59,10 @@ object InputView {
         val input = Console.readLine()
         try {
             validateLottoNumber(input)
+            LotteryTicketMachine.bonusNumber = input.toInt()
         } catch (e: IllegalArgumentException) {
             println(e.message)
-            getBonusNumber()
+            OutputView.askForBonusNumber()
         }
-        LotteryTicketMachine.bonusNumber = input.toInt()
     }
 }
