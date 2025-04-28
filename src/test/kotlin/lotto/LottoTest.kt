@@ -23,7 +23,7 @@ class LottoTest {
     // TODO: Implement tests based on the added features
     // 로또 번호가 6개가 아니면 예외가 발생한다
     @Test
-    fun `throws an exception 04`() {
+    fun `throws an exception if the lotto number is not 6`() {
         val exception = assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5)) // 5개만 입력
         }
@@ -32,7 +32,7 @@ class LottoTest {
 
     // 로또 번호에 중복된 숫자가 있으면 예외가 발생한다
     @Test
-    fun `throws an exception 05`() {
+    fun `throws an exception if lotto numbers have duplicate numbers`() {
         val exception = assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5)) // 5가 중복
         }
@@ -41,7 +41,7 @@ class LottoTest {
 
     // 로또 번호가 1부터 45 사이가 아니면 예외가 발생한다
     @Test
-    fun `throws an exception 06`() {
+    fun `throws an exception if the lotto number is not between 1 and 45`() {
         val exception = assertThrows<IllegalArgumentException> {
             Lotto(listOf(0, 2, 3, 4, 5, 6)) // 0은 범위 밖
         }
@@ -50,7 +50,7 @@ class LottoTest {
 
     // 정상적인 로또 번호는 에러 없이 생성된다
     @Test
-    fun `throws an exception 07`() {
+    fun `generate lotto numbers without errors if they are valid`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         assert(lotto.getNumbers().containsAll(listOf(1, 2, 3, 4, 5, 6)))
     }
