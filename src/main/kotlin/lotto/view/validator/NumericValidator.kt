@@ -2,7 +2,7 @@ package lotto.view.validator
 
 object NumericValidator {
 
-    fun validate(input: String) {
+    fun validate(input: String): Int {
         val value = input.toIntOrNull()
 
         if (value == null)
@@ -10,6 +10,8 @@ object NumericValidator {
 
         if (value < 0)
             throw IllegalArgumentException("Amount must be positive")
+
+        return value
     }
 
 }
