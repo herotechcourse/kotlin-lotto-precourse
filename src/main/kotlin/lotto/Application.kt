@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.model.generator.AutoLottoNumberGenerator
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
-    // TODO: Implement the program
+    LottoController(InputView(), OutputView(), AutoLottoNumberGenerator()).run()
 }
