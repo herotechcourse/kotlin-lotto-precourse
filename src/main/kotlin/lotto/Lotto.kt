@@ -1,12 +1,13 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+open class Lotto(paramNumbers: List<Int>) {
+    val numbers:List<Int> = paramNumbers.sorted()
+
     val bitmask: Long
 
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-
-        bitmask = createBitmask(numbers)
+        require (numbers.size == 6) { "Lotto must contain exactly 6 numbers." }
+        bitmask = createBitmask(paramNumbers)
     }
 
     private fun createBitmask(numbers: List<Int>):Long{
@@ -16,6 +17,5 @@ class Lotto(private val numbers: List<Int>) {
         }
         return bitmask
     }
-
 
 }
