@@ -18,7 +18,7 @@ fun main() {
     val (prizeSummary, returnRate) = lotteryGame.getLotteryResults(tickets, winningNumbers,bonusNumber, purchaseAmount)
 
     outputView.printPurchasedTickets(tickets, ticketCount)
-    outputView.printWinningStatuses(prizeSummary)
+    outputView.printPrizeSummary(prizeSummary)
     outputView.printReturnRate(returnRate)
 }
 

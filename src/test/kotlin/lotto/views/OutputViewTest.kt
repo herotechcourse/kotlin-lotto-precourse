@@ -46,7 +46,7 @@ class OutputViewTest {
             "6 Matches (2,000,000,000 KRW) – 0 tickets"
         )
 
-        outputView.printWinningStatuses(winningStatuses)
+        outputView.printPrizeSummary(winningStatuses)
 
         val expectedOutput = winningStatuses.joinToString("\n")
         assertEquals(expectedOutput, outputStream.toString().trim())
