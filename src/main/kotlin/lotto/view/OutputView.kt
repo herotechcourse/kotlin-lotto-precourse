@@ -12,19 +12,19 @@ object OutputView {
     println("Winning Statistics")
     println("---")
 
-    listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST).forEach{
-      rank ->
-      val count = stats.getOrDefault(rank,0)
-      val label =
-        if(rank==Rank.SECOND) "5 Matches + Bonus Ball"
-        else  "${rank.matchCount} Matches"
-      println("$label (${"%,d".format(rank.prize)} KRW) - $count tickets")
+    listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST).forEach { rank ->
+      val count = stats.getOrDefault(rank, 0)
+      val label = when (rank) {
+        Rank.SECOND -> "5 Matches + Bonus Ball"
+        else -> "${rank.matchCount} Matches"
+      }
+      println("$label (${"%,d".format(rank.prize)} KRW)-$count tickets")
     }
-    var totalPrize = 0L;
+    var totalPrize = 0L
     for ((rank, count) in stats) {
       totalPrize += rank.prize * count
     }
-    val rate = totalPrize.toDouble()/purchase * 100
+    val rate = totalPrize.toDouble() / purchase * 100
     println("Total return rate is ${"%.1f".format(rate)}%.")
   }
 }
