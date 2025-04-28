@@ -1,4 +1,5 @@
 package lotto
+import camp.nextstep.edu.missionutils.Console
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -12,4 +13,14 @@ class Lotto(private val numbers: List<Int>) {
         private const val LOTTO_MIN_NUMBER = 1
         private const val LOTTO_MAX_NUMBER = 45
     }
+
+    // Returns a copy of the lotto numbers to prevent external modification
+    fun getNumbers(): List<Int> = numbers.toList()
+}
+
+// Reads the purchase amount from the user
+fun readPurchaseAmount(): Int {
+    println("Please enter the purchase amount.")
+    return Console.readLine().toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] Invalid input. Please enter a valid number.")
 }

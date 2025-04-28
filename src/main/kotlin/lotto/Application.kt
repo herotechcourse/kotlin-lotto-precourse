@@ -1,5 +1,8 @@
 package lotto
 
 fun main() {
-    LottoController().run()
+    // Temporary manual testing code
+    val amount = readPurchaseAmount()
+
+
 }
