@@ -20,6 +20,7 @@ class OutputView {
         println("5 Matches (1,500,000 KRW) – ${result[2]} tickets")
         println("5 Matches + Bonus Ball (30,000,000 KRW) – ${result[3]} tickets")
         println("6 Matches (2,000,000,000 KRW) – ${result[4]} tickets")
-        println("Total return rate is ${total}%.")
+        val formatted = String.format("%.1f", total)
+        println("Total return rate is ${formatted}%.")
     }
 }
