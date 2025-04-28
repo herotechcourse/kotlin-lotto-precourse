@@ -19,7 +19,7 @@ object PrintFormatter {
         return String.format(TOTAL_RETURN_RATE, statisticsDto.profitRate)
     }
 
-    private const val WINNING_WITH_ONLY_MATCHES: String = "%d Matches (%,d KRW) - %d ticket"
-    private const val WINNING_WITH_BONUS_BALL: String = "%d Matches + Bonus Ball (%,d KRW) - %d ticket"
+    private const val WINNING_WITH_ONLY_MATCHES: String = "%d Matches (%,d KRW) – %d tickets"
+    private const val WINNING_WITH_BONUS_BALL: String = "%d Matches + Bonus Ball (%,d KRW) – %d tickets"
     private const val TOTAL_RETURN_RATE: String = "Total return rate is %,.1f%%."
 }
