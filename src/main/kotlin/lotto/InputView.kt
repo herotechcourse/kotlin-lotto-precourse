@@ -15,7 +15,7 @@ object InputView {
     }
 
     fun readBonusNumber(): String {
-        println("Please enter the Please enter the bonus number.")
+        println("Please enter the bonus number.")
         return Console.readLine()
     }
 }
