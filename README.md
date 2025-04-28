@@ -58,8 +58,8 @@
 ---
 
 ### Winning Logic
-- [ ] Compare all issued tickets against the winning numbers and bonus number.  
-- [ ] Determine each ticket’s rank (1st–5th) based on the count of matches and bonus match.  
+- [x] Compare all issued tickets against the winning numbers and bonus number.  
+- [x] Determine each ticket’s rank (1st–5th) based on the count of matches and bonus match.  
     ```
     1st Prize: Match 6 numbers / 2,000,000,000 KRW
     2nd Prize: Match 5 numbers + bonus number / 30,000,000 KRW
@@ -68,7 +68,7 @@
     5th Prize: Match 3 numbers / 5,000 KRW
     ```
 
-- [ ] Tally the number of winning tickets per rank.  
+- [x] Tally the number of winning tickets per rank.  
 - [ ] Calculate the total return rate = (total winnings ÷ investment) and round to one decimal place.
 
 ---
@@ -225,6 +225,32 @@ Total return rate is 62.5%.
   - Input: `listOf(1, 2, 3, 4, 5, 5)`  
   - Expect: `IllegalArgumentException`
 
+- **matchCount returns correct number of matches**  
+  - Input:  
+    - `winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))`  
+    - `lotto = Lotto(listOf(1, 7, 8, 9, 10, 11))`  
+  - Expect: `lotto.matchCount(winning) == 1`
+
+- **matchCount returns zero when no numbers match**  
+  - Input: 
+    - `winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))`  
+    - `lotto = Lotto(listOf(7, 8, 9, 10, 11, 12))`  
+  - Expect: `lotto.matchCount(winning) == 0`
+
+- **containsNumber returns true when lotto contains the bonus number**  
+  - Input:  
+    - `winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))`  
+    - `bonus = BonusNumber(7)`  
+    - `lotto = Lotto(listOf(1, 2, 3, 4, 5, 7))`  
+  - Expect: `lotto.containsNumber(bonus) == true`
+
+- **containsNumber returns false when lotto does not contain the bonus number**  
+  - Input:  
+    - `winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))`  
+    - `bonus = BonusNumber(7)`  
+    - `lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))`  
+  - Expect: `lotto.containsNumber(bonus) == false`
+
 ### `LotteryMachineTest` (lotto.domain)
 
 - **returns correct count and valid tickets for non-zero purchase amount**  
@@ -233,3 +259,52 @@ Total return rate is 62.5%.
     - resulting list size equals `purchase.ticketCount`  
     - each ticket’s numbers: size 6, all values in `1..45`, and all unique
 
+### `RankTest` (lotto.domain)
+
+- **returns FIFTH for 3 matches without bonus**  
+  - Input: `matchCount = 3`, `bonus = false`  
+  - Expect: `Rank.FIFTH`
+
+- **returns FOURTH for 4 matches without bonus**  
+  - Input: `matchCount = 4`, `bonus = false`  
+  - Expect: `Rank.FOURTH`
+
+- **returns THIRD for 5 matches without bonus**  
+  - Input: `matchCount = 5`, `bonus = false`  
+  - Expect: `Rank.THIRD`
+
+- **returns SECOND for 5 matches with bonus**  
+  - Input: `matchCount = 5`, `bonus = true`  
+  - Expect: `Rank.SECOND`
+
+- **returns FIRST for 6 matches without bonus**  
+  - Input: `matchCount = 6`, `bonus = false`  
+  - Expect: `Rank.FIRST`
+
+- **returns null for invalid combinations**  
+  - Input: 
+    - `matchCount = 2`, `bonus = false`  
+    - `matchCount = 6`, `bonus = true`  
+  - Expect: `null`
+
+  ### `LottoResultCalculatorTest` (lotto.domain)
+
+- **calculateStats returns correct counts for each rank**  
+  - Input:  
+    - `winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))`  
+    - `bonus = BonusNumber(7)`  
+    - `lottos = listOf(`  
+      - `Lotto(listOf(1, 2, 3, 4, 5, 6))`    // FIRST  
+      - `Lotto(listOf(1, 2, 3, 4, 5, 7))`    // SECOND  
+      - `Lotto(listOf(1, 2, 3, 4, 5, 8))`    // THIRD  
+      - `Lotto(listOf(1, 2, 3, 4, 8, 9))`    // FOURTH  
+      - `Lotto(listOf(1, 2, 3, 8, 9, 10))`   // FIFTH  
+      - `Lotto(listOf(7, 8, 9, 10, 11, 12))` // no rank (ignored)  
+    - `)`  
+  - Expect:
+    - result map size equals `Rank.entries.size`  
+    - `stats[Rank.FIRST] == 1`  
+    - `stats[Rank.SECOND] == 1`  
+    - `stats[Rank.THIRD] == 1`  
+    - `stats[Rank.FOURTH] == 1`  
+    - `stats[Rank.FIFTH] == 1`
