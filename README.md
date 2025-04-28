@@ -12,9 +12,9 @@
 - [ ] re-prompt user in case of exceptions
 - [ ] start error message with [ERROR]
 ### lottery ticket machine
-- [ ] ticket generation
-    - [ ] generate number of tickets based on purchase amount - 1 ticket per 1,000
-    - [ ] each ticket consists on 6 random numbers in the range from 1 to 45
+- [x] ticket generation
+    - [x] generate number of tickets based on purchase amount - 1 ticket per 1,000
+    - [x] each ticket consists of 6 random and unique numbers in the range from 1 to 45
 - [ ] result generation
     - [ ] compare tickets with winning numbers to calculate winnings - see table below
     - [ ] calculate profit return rate based on winnings
