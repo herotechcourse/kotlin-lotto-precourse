@@ -1,7 +1,5 @@
-package lotto.views
+package lotto
 
-import lotto.LotteryResults
-import lotto.Lotto
 import lotto.PrizeRanking.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
