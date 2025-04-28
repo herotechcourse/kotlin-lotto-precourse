@@ -22,4 +22,8 @@ object InputProcessingService {
         require(numberList.size == 6) { "The number of winning numbers must be 6." }
         require(numberList.distinct().size == 6) { "The winning numbers must not contain duplicates." }
     }
+
+    fun validateBonusNumber(number:Int , numberList:List<Int>){
+        require(number !in numberList) { "The bonus number must be unique from the winning numbers." }
+    }
 }

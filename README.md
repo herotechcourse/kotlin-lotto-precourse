@@ -4,11 +4,11 @@
 ### take user's input (`view.InputView`)
 -[X] take user's input 
 ### process user's input (`service.InputProcessingService`)
--[ ] validate user's inputs for
+-[X] validate user's inputs for
   -[X] if the amount of money is divisible by 1000
   -[X] if there are total of 6 winning numbers
   -[X] if 6 winning numbers are each unique numbers
-  -[ ] if one bonus number is unique from 6 winning numbers
+  -[X] if one bonus number is unique from 6 winning numbers
   -[X] if all numbers (winning & bonus) are integers within 1 - 45
 -[X] if validation fails, throw `IllegalArgumentException`
 -[X] return comma-separated winning numbers in a list
