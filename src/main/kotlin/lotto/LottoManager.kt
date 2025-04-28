@@ -11,6 +11,8 @@ object LottoManager {
 
         val ticketCount = purchaseAmount / 1000
         val tickets = LottoMachine.issueTickets(ticketCount)
+
+        OutputView.printTickets(tickets)
     }
 
     private fun <T> retry(block: () -> T): T {
