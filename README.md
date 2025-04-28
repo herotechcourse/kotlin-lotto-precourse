@@ -2,7 +2,7 @@
 ![Build](https://img.shields.io/badge/build-in--progress-green)
 ![Test](https://img.shields.io/badge/test-in--progress-green) <br>
 ![Language](https://img.shields.io/badge/language-Kotlin-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.9.24-blue)
 ![Docs](https://img.shields.io/badge/docs-up--to--date-blue)<br>
 ![Commit Style](https://img.shields.io/badge/commit_style-Angular-orange)
 ![Code Style](https://img.shields.io/badge/code_style-Kotlin_Convention-7F52FF)
