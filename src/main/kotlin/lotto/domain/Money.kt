@@ -6,10 +6,10 @@ class Money(private val amount: Int) {
 
     init {
         require(amount >= TICKET_PRICE) {
-            Constants.ERROR_INVALID_PURCHASE_AMOUNT
+            Constants.ERROR_MINIMUM_PURCHASE_AMOUNT
         }
         require(amount % TICKET_PRICE == 0) {
-            Constants.ERROR_INVALID_PURCHASE_AMOUNT
+            Constants.ERROR_MULTIPLE_OF_TICKET_PRICE
         }
     }
 

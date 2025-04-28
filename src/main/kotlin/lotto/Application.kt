@@ -13,16 +13,16 @@ fun main() {
 //    println(lottoTickets)
     OutputView.printPurchasedTickets(lottoTickets)
 
-    val winningNumbers = WinningNumbers.from(InputView.readWinningNumbers())
+    val winningNumbersInput = InputView.readWinningNumbers()
+    val winningNumbers = WinningNumbers.from(winningNumbersInput)
 
-    val bonusNumberInput = InputView.readBonusNumber(winningNumbers.getNumbers().map { it.number })
+    val bonusNumberInput = InputView.readBonusNumber(winningNumbersInput)
     val bonusNumber = BonusNumber(LottoNumber(bonusNumberInput), winningNumbers)
 
-    val result = LottoRankEvaluator.evaluate(lottoTickets, winningNumbers, bonusNumber)
+    val rankCount = LottoRankEvaluator.evaluate(lottoTickets, winningNumbers, bonusNumber)
+    OutputView.printWinningStatistics(rankCount)
 
-    OutputView.printWinningStatistics(result)
-
-    val totalPrize = result.entries.sumOf { (rank, count) -> rank.prize * count }
+    val totalPrize = rankCount.entries.sumOf { (rank, count) -> rank.prize * count }
     val profitRate = ProfitCalculator.calculate(totalPrize, money.value())
     OutputView.printProfitRate(profitRate)
 }

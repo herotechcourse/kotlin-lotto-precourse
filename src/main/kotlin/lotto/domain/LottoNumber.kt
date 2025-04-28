@@ -6,7 +6,7 @@ class LottoNumber(val number: Int) : Comparable<LottoNumber> {
 
     init {
         require(number in MIN..MAX) {
-            Constants.ERROR_INVALID_NUMBER_RANGE
+            Constants.ERROR_LOTTO_NUMBER_RANGE
         }
     }
 

@@ -9,21 +9,21 @@ object InputView {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
         return input.toIntOrNull()
-            ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER)
+            ?: throw IllegalArgumentException(Constants.ERROR_INVALID_INPUT_NUMBER)
     }
 
     fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers")
         val input = Console.readLine()
         val numbers = input.split(",")
-            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER) }
+            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_INVALID_INPUT_NUMBER) }
 
         if (numbers.size != 6) {
-            throw IllegalArgumentException(Constants.ERROR_WRONG_WINNING_NUMBER_COUNT)
+            throw IllegalArgumentException(Constants.ERROR_NOT_SIX_WINNING_NUMBERS)
         }
 
         if (numbers.distinct().size != 6) {
-            throw IllegalArgumentException(Constants.ERROR_DUPLICATE_WINNING_NUMBERS)
+            throw IllegalArgumentException(Constants.ERROR_DUPLICATE_WINNING_NUMBER)
         }
 
         return numbers
@@ -32,7 +32,7 @@ object InputView {
     fun readBonusNumber(winningNumbers: List<Int>): Int {
         println("Please enter the bonus number.")
         val input = Console.readLine()
-        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER)
+        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_INVALID_INPUT_NUMBER)
 
         if (winningNumbers.contains(bonus)) {
             throw IllegalArgumentException(Constants.ERROR_DUPLICATE_BONUS_NUMBER)

@@ -5,8 +5,8 @@ import lotto.constant.Constants
 class Lotto(private val numbers: List<LottoNumber>) {
 
     init {
-        require(numbers.size == SIZE) { Constants.ERROR_WRONG_WINNING_NUMBER_COUNT }
-        require(numbers.distinct().size == SIZE) { Constants.ERROR_DUPLICATE_WINNING_NUMBERS }
+        require(numbers.size == SIZE) { Constants.ERROR_INVALID_LOTTO_SIZE }
+        require(numbers.distinct().size == SIZE) { Constants.ERROR_DUPLICATE_LOTTO_NUMBER }
     }
 
     fun getSortedNumbers(): List<Int> {
