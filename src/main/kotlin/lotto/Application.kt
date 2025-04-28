@@ -5,6 +5,8 @@ import lotto.view.InputView
 import lotto.service.LottoService
 import lotto.view.OutputView
 
+fun readPurchaseAmount(): Int = InputView.readPurchaseAmount()
+
 fun main() {
     val purchaseAmount = InputView.readPurchaseAmount()
     val tickets = LottoService.generateTickets(purchaseAmount)
