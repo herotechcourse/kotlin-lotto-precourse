@@ -14,17 +14,27 @@ class InputView {
     fun readPurchase(): ArrayList<List<Int>> {
         while (true) {
             println(QUEST_PURCHASE)
-            userPurchase = Console.readLine()
+//            userPurchase = Console.readLine()
             try {
-                if (checkPurchase(userPurchase).isNotBlank()) { //if userPurchase is invalid data -> readPurchase ->
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                return outputView.generateTickets(userPurchase)
+//                userPurchase = validatePurchase()
+//                if (checkPurchase(userPurchase).isNotBlank()) { //if userPurchase is invalid data -> readPurchase ->
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+                return outputView.generateTickets(validatePurchase())
             } catch (e: IllegalArgumentException) {
                 continue
             }
         }
     }
+
+    fun validatePurchase(): String {
+        userPurchase = Console.readLine()
+        if (checkPurchase(userPurchase).isNotBlank()) { //if userPurchase is invalid data -> readPurchase ->
+            throw IllegalArgumentException(errorMessage(errorType).toString())
+        }
+        return userPurchase
+    }
+
 
     fun getPurchase(): String {
         return this.userPurchase
@@ -33,43 +43,65 @@ class InputView {
     fun bonusNumber(winningNumbers: List<Int>): Int {
         while (true) {
             println(QUEST_BONUS_NUM)
-            val bonusNum = Console.readLine()
+//            val bonusNum = Console.readLine()
             try {
-                if (checkInRange(bonusNum).isNotBlank()) {
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                if  (winningNumbers.contains(bonusNum.toInt())){
-                    errorType= ERROR_MESSAGE_DUP_BONUS
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                return bonusNum.toInt()
+                return validBonusNum(winningNumbers)
+//                if (checkInRange(bonusNum).isNotBlank()) {
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+//                if (winningNumbers.contains(bonusNum.toInt())) {
+//                    errorType = ERROR_MESSAGE_DUP_BONUS
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+//                return bonusNum.toInt()
             } catch (e: IllegalArgumentException) {
                 continue
             }
         }
 
+    }
+
+    fun validBonusNum(winningNumbers: List<Int>): Int {
+        val bonusNum = Console.readLine()
+        if (checkInRange(bonusNum).isNotBlank()) {
+            throw IllegalArgumentException(errorMessage(errorType).toString())
+        }
+        duplicateBonusNum(bonusNum, winningNumbers)
+        return bonusNum.toInt()
     }
 
     fun readWinningNumbers(): List<Int> {
         while (true) {
             println(QUEST_WINNING_NUM)
-            val winNumber = Console.readLine()
             try {
-                if (checkWinType(winNumber).isNotBlank()) {
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                if (checkWinNumeric(winNumber).isNotBlank()) {
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                if (checkListInRange(winNumber).isNotBlank()){
-                    throw IllegalArgumentException(errorMessage(errorType).toString())
-                }
-                return generateWinNum(winNumber)
+//                val resWinnum = validWinningNum()
+//            val winNumber = Console.readLine()
+//            try {
+//                if (checkWinType(winNumber).isNotBlank()) {
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+//                if (checkWinNumeric(winNumber).isNotBlank()) {
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+//                if (checkListInRange(winNumber).isNotBlank()) {
+//                    throw IllegalArgumentException(errorMessage(errorType).toString())
+//                }
+                return generateWinNum(validWinningNum())
             } catch (e: IllegalArgumentException) {
                 continue
             }
         }
     }
+
+    fun validWinningNum(): String {
+        val winNumber = Console.readLine()
+        if (checkWinNum(winNumber).isNotBlank()){
+            throw IllegalArgumentException(errorMessage(errorType).toString())
+        }
+        return winNumber
+    }
+
+
 
     fun generateWinNum(input: String): List<Int> {
         val winList = listOf(*input.split(',').map { it.toInt() }.toTypedArray())
@@ -87,39 +119,79 @@ class InputView {
     }
 
     fun checkPurchase(purchase: String): String {
+        return errorPurchase(purchase)
+    }
+
+
+
+    fun errorPurchase(purchase: String): String {
         if (purchase.toDoubleOrNull() == null) {
-            errorType = ERROR_MESSAGE
+            errorType=ERROR_MESSAGE
             return ERROR_MESSAGE
         }
         if (purchase.toInt() % 1000 != 0) {
-            errorType = ERROR_MESSAGE_DIV
+            errorType= ERROR_MESSAGE_DIV
             return ERROR_MESSAGE_DIV
         }
         return ""
     }
 
-    fun checkWinType(input: String): String {
-        if (!input.contains(",")) {
-            errorType=ERROR_MESSAGE_COMMA
+    fun checkWinNum(winNumbers: String): String{
+        return errorWinNum(winNumbers)
+    }
+    fun errorWinNum(winNumbers: String): String {
+        if (hasSpecialInWinnum(winNumbers).isNotBlank()||checkWinType(winNumbers).isNotBlank()||checkWinNumeric(winNumbers).isNotBlank()||checkListInRange(winNumbers).isNotBlank())
+            return errorType
+//        if (checkWinNumeric(winNumbers).isNotBlank())
+//            return errorType
+//        if(checkListInRange(winNumbers).isNotBlank())
+//            return errorType
+        return ""
+    }
+
+    fun hasSpecialInWinnum(input: String): String{
+        if(Regex("^[1-45,]+\$").matches(input))
+        {
+            errorType=ERROR_MESSAGE_CONFUSE
             return errorType
         }
-        if (hasDuplicate(listOf(*input.split(',').toTypedArray()))) {
-            errorType=ERROR_MESSAGE_DUPL
+        return  ""
+    }
+    fun checkWinType(input: String): String {
+//        if (!containCommas(input))
+//            if (!input.contains(",")) {
+//                errorType = ERROR_MESSAGE_COMMA
+//                return errorType
+//            }
+        if(containCommas(input).isNotBlank()) {
+            errorType= ERROR_MESSAGE_COMMA
+            return errorType
+        }
+        if (hasDuplicate(listOf(*input.split(',').toTypedArray())).isNotBlank()) {
+          errorType = ERROR_MESSAGE_DUPL
             return errorType
         }
         return ""
     }
 
+    fun containCommas(input: String): String { //check input contains commas
+        if (!input.contains(",")) {
+            return ERROR_MESSAGE_COMMA
+        }
+        return ""
+    }
 
-    fun hasDuplicate(data: List<String>): Boolean {
-        return data.size != data.distinct().count()
+    fun hasDuplicate(data: List<String>): String {
+        if (data.size != data.distinct().count())
+            return ERROR_MESSAGE_DUPL
+        else return ""
     }
 
     fun checkWinNumeric(input: String): String {
         val data = listOf(*input.split(',').toTypedArray())
         data.forEach {
             if (!isNumeric(it)) {
-                errorType=ERROR_MESSAGE_WINNUM
+                errorType = ERROR_MESSAGE_WINNUM
                 return errorType
             }
         }
@@ -127,13 +199,26 @@ class InputView {
     }
 
     fun checkInRange(num: String): String {
+        if (num.toDoubleOrNull() == null || num.toInt() < 1 || num.toInt() > 45) {
+            return errorRange(num)
+        }
+//        if (num.toDoubleOrNull() == null) {
+//            errorType = ERROR_MESSAGE
+//            return errorType
+//        }
+//        if (num.toInt() < 1 || num.toInt() > 45) {
+//            errorType = ERROR_MESSAGE_RANGE
+//            return errorType
+//        }
+        return ""
+    }
+
+    fun errorRange(num: String): String {
         if (num.toDoubleOrNull() == null) {
-            errorType = ERROR_MESSAGE
-            return errorType
+            return ERROR_MESSAGE
         }
         if (num.toInt() < 1 || num.toInt() > 45) {
-            errorType = ERROR_MESSAGE_RANGE
-            return errorType
+            return ERROR_MESSAGE_RANGE
         }
         return ""
     }
@@ -143,13 +228,19 @@ class InputView {
         num.forEach {
             if (it < 1 || it > 45) {
 //                throw IllegalArgumentException(errorMessage(ERROR_MESSAGE_RANGE))
-                errorType=ERROR_MESSAGE_RANGE
+                errorType = ERROR_MESSAGE_RANGE
                 return errorType
             }
         }
         return ""
     }
 
+    fun duplicateBonusNum(bonus: String, winningNumbers: List<Int>) {
+        if (winningNumbers.contains(bonus.toInt())) {
+            errorType = ERROR_MESSAGE_DUP_BONUS
+            throw IllegalArgumentException(errorMessage(errorType).toString())
+        }
+    }
 
     fun errorMessage(error: String) {
         val message = "[ERROR] " + error
@@ -167,7 +258,8 @@ class InputView {
         const val ERROR_MESSAGE_COMMA = "Numbers should be separated by commas"
         const val ERROR_MESSAGE_DUPL = "Winning numbers should be unique numbers"
         const val ERROR_MESSAGE_WINNUM = "Winning numbers should be numbers"
-        const val ERROR_MESSAGE_DUP_BONUS="Bonus number is already in winning numbers"
 
+        const val ERROR_MESSAGE_DUP_BONUS = "Bonus number is already in winning numbers"
+        const val ERROR_MESSAGE_CONFUSE = "Unsupported format"
     }
 }
