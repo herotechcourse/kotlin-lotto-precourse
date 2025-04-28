@@ -8,6 +8,7 @@ class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size==numbers.distinct().count()) { throw IllegalArgumentException(InputView.ERROR_MESSAGE_DUPL)}
     }
 
     // TODO: Implement additional functions
