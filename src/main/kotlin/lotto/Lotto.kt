@@ -21,7 +21,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toList()
     }
 
-    fun match(winningNumbers: Set<Int>, bonusNumber: Int): Rank {
+    private fun match(winningNumbers: Set<Int>, bonusNumber: Int): Rank {
         val count = winningNumbers.intersect(numbers.toSet()).size
         if (count == 6) return Rank.SIX
         if (count == 5 && bonusNumber in numbers) return Rank.FIVE_BONUS
@@ -36,7 +36,4 @@ class Lotto(private val numbers: List<Int>) {
         return match(winningNumbers, bonusNumber)
     }
 
-    fun printNumbers() {
-        println(numbers.joinToString(prefix = "[", postfix = "]"))
-    }
 }
