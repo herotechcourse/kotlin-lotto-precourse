@@ -1,0 +1,28 @@
+package lotto.controller
+
+import lotto.domain.*
+import lotto.view.InputView
+import lotto.view.OutputView
+
+class LottoController {
+    fun run(){
+        val amount = InputView.readPurchaseAmount()
+        val money = Money(amount)
+
+        val lottoTickets = LottoGenerator.generateFrom(money)
+        OutputView.printPurchasedTickets(lottoTickets)
+
+        val winningNumbersInput = InputView.readWinningNumbers()
+        val winningNumbers = WinningNumbers.from(winningNumbersInput)
+
+        val bonusNumberInput = InputView.readBonusNumber(winningNumbers.getNumbers().map { it.number })
+        val bonusNumber = BonusNumber(LottoNumber(bonusNumberInput), winningNumbers)
+
+        val rankCount = LottoRankEvaluator.evaluate(lottoTickets, winningNumbers, bonusNumber)
+        OutputView.printWinningStatistics(rankCount)
+
+        val totalPrize = rankCount.entries.sumOf { (rank, count) -> rank.prize * count }
+        val profitRate = ProfitCalculator.calculate(totalPrize, money.value())
+        OutputView.printProfitRate(profitRate)
+    }
+}
