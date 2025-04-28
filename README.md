@@ -49,16 +49,17 @@ This project strictly follows these code quality guidelines:
 3. Right-click and select "Run 'ApplicationKt'" or click the green run button next to the `main` function
 4. Interact with the application in the console window
 
-### Using Command Line
+### Using Executable JAR (Simplest command-line method)
 
-1. Compile the project
 ```
-./gradlew compileKotlin
+./gradlew clean jar
+java -jar build/libs/kotlin-lotto-1.0-SNAPSHOT.jar
 ```
 
-2. Run the application
+### Using Gradle run task
+
 ```
-java -cp "build/classes/kotlin/main:KOTLIN_PATH/lib/kotlin-stdlib.jar" lotto.ApplicationKt
+./gradlew run
 ```
 
 ## Running Tests
