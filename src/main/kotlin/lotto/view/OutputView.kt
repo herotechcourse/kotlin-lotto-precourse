@@ -27,6 +27,10 @@ object OutputView {
         println("Total return rate is ${profitRate}%.")
     }
 
+    fun printError(message: String?) {
+        println(message ?: "[ERROR] An unknown error occurred.")
+    }
+
     // \u2013: (en dash) "–", not same with short hyphen ("-")
     private fun formatMatchResultLine(rank: Rank, count: Int): String {
         return "${rank.getDescription()} (${rank.prize.toKRWFormat()}) \u2013 ${count} tickets"
