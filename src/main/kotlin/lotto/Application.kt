@@ -13,6 +13,8 @@ fun main() {
         val lotto = Lotto(winningNumbers)
         val bonusNumber = inputView.readBonusNumber()
         lotto.addBonusNumber(bonusNumber)
+        val result = lotto.compareNumbers(purchase.tickets)
+        outputView.printStatistics(result)
     } catch (e: InputView.MaxRetryException) {
         println(e.message + " Exiting...")
         return
