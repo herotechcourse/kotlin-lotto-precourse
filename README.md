@@ -13,13 +13,13 @@
 -[ ] re-prompting input from the step that caused exception.
 -[ ] return comma-separated winning numbers in a list
 ### ticket process (`lotto.Ticket`)
--[ ] calculate how many tickets a user has bought
--[ ] generate 6 unique random numbers for each purchased ticket
--[ ] create lotto objects to store each ticket's winning numbers
+-[X] calculate how many tickets a user has bought
+-[X] generate 6 unique random numbers for each purchased ticket
+-[X] create lotto objects to store each ticket's winning numbers
 ### save lotto numbers (`lotto.Lotto`)
 -[X] save one ticket's generated lotto numbers
 -[X] create a number for bitmasking based on 6 numbers
--[ ] sort lotto's numbers in ascending order
+-[X] sort lotto's numbers in ascending order
 ### save winning numbers (`lotto.WinningNumber`)
 -[X] save winning numbers and a bonus number
 -[X] create a number for bitmasking 6 winnning numbers and one bonus number
