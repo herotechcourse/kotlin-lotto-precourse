@@ -14,6 +14,9 @@ class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumbe
     }
 
     fun match(ticket: Lotto): ResultRank {
+        if (winningNumbers.isEmpty()) {
+            throw IllegalStateException("[ERROR] Cannot match ticket when no winning numbers have been set.")
+        }
         val matchCount = ticket.matchNumbers(winningNumbers)
         val containsBonus = ticket.contains(bonusNumber)
         return getResultRank(matchCount, containsBonus)

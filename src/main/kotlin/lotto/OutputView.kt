@@ -2,6 +2,9 @@ package lotto
 
 object OutputView {
     fun printTickets(lottoTickets: List<Lotto>) {
+        if (lottoTickets.isEmpty()) {
+            throw IllegalStateException("[ERROR] No tickets have been purchased yet.]")
+        }
         println("\nYou have purchased ${lottoTickets.size} tickets.")
         for (lotto in lottoTickets) {
             println(lotto.getNumbers().sorted().joinToString(prefix="[", postfix="]", separator = ", "))

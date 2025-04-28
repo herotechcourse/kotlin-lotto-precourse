@@ -28,6 +28,9 @@ class LottoMachine (purchaseAmount: Int) {
     }
 
     fun calculateResults(tickets: List<Lotto>, winningLotto: WinningLotto): Map<ResultRank, Int> {
+        if (tickets.isEmpty()) {
+            throw IllegalStateException("[ERROR] Cannot calculate results when no tickets have been purchased.")
+        }
         val rankCounts = mutableMapOf<ResultRank, Int>()
 
         tickets.forEach { ticket ->
