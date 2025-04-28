@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.Lotto
 import lotto.constants.LottoConstants.LOTTO_NUMBER_COUNT
 import lotto.exception.WinningNumbersException
 

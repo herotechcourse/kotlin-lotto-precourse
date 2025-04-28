@@ -1,4 +1,4 @@
-package lotto.model
+package lotto
 
 import lotto.constants.LottoConstants.LOTTO_NUMBER_COUNT
 import lotto.exception.LottoException

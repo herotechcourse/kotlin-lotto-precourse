@@ -1,5 +1,6 @@
 package lotto.service
 
+import lotto.Lotto
 import lotto.model.*
 import lotto.util.RandomUtil
 
