@@ -39,7 +39,7 @@ object OutputView {
     }
 
     fun printProfitRate(rate: String) {
-        println("The profit rate is $rate")
+        println("Total return rate is $rate")
     }
 
 }

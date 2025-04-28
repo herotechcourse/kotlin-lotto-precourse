@@ -19,8 +19,8 @@
 - bitmasking logic to see if the ticket contains bonus number
 - determine the rank of each ticket based on matched numbers and bonus number
 - count how many tickets fall into each rank
-- calculate the lotto profit rate
-- round the profit rate of lotto to the nearest tenth
+- calculate the lotto return rate
+- round the return rate of lotto to the nearest tenth
 ### output process
 - print basic messages prompting user for input
     - "Please enter the purchase amount."
@@ -30,6 +30,6 @@
 - print how many tickets user has bought
 - print purchased tickets' numbers
 - print lotto result statistics
-- print rounded lotto profit rate e.g., `65.5%`
+- print rounded lotto return rate e.g., `65.5%`
 ### etc
 - use enums for prize money
