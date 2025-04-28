@@ -9,6 +9,10 @@ fun main() {
     val outputHandler = OutputHandler()
     outputHandler.printTickets(ticketCount, tickets)
 
+    val winningNumbers = InputHandler.readAndValidateWinningNumbers()
+    val bonusNumber = InputHandler.readAndValidateBonusNumber()
+
+    val resultChecker = ResultChecker(winningNumbers, bonusNumber)
 
 
 }
