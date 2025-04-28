@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.controller.LottoController
+import LottoController
 
 fun main() {
     LottoController().run()

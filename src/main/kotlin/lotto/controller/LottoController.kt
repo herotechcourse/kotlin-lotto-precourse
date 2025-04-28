@@ -1,5 +1,3 @@
-package lotto.controller
-
 import lotto.domain.LottoResult
 import lotto.domain.LottoTickets
 import lotto.domain.Money
@@ -9,41 +7,41 @@ import lotto.view.OutputView
 
 class LottoController {
     fun run() {
-        val money = readPurchaseAmount()
-        val tickets = LottoTickets.generate(money)
 
+        val money = retry({ InputView.readPurchaseAmount() }) { input ->
+            val amount = input.toIntOrNull()
+                ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+            Money(amount)
+        }
+
+        val tickets = LottoTickets.generate(money)
         OutputView.printPurchaseCount(money.getNumberOfTickets())
         OutputView.printLottoTickets(tickets.getTickets())
 
-        val winningNumbers = readWinningNumbersInput()
+        val numbers = retry({ InputView.readWinningNumbers() }, WinningNumbers.Companion::parseNumbers)
+        val bonus   = retry({ InputView.readBonusNumber() }) { WinningNumbers.parseBonus(it, numbers) }
+        val winningNumbers = WinningNumbers.of(numbers, bonus)
+
         val result = LottoResult(tickets.getTickets(), winningNumbers)
         val counts = result.getRankCounts()
-
         OutputView.printResultStatistics(counts)
         OutputView.printTotalYield(result.calculateYield(money))
     }
 
-    private fun readPurchaseAmount(): Money {
+    private inline fun <T> retry(
+        readInput: () -> String,
+        parse: (String) -> T
+    ): T {
         while (true) {
             try {
-                val input = InputView.readPurchaseAmount()
-                val amount = input.toIntOrNull()
-                    ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
-                return Money(amount)
+                val input = readInput()
+                return parse(input)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
-            }
-        }
-    }
-
-    private fun readWinningNumbersInput(): WinningNumbers {
-        while (true) {
-            try {
-                val numbersInput = InputView.readWinningNumbers()
-                val bonusInput = InputView.readBonusNumber()
-                return WinningNumbers.parse(numbersInput, bonusInput)
-            } catch (e: IllegalArgumentException) {
+                println()
+            } catch (e: IllegalStateException) {
                 println(e.message)
+                println()
             }
         }
     }
