@@ -7,4 +7,13 @@ object ResultCalculator {
             .groupingBy { it }
             .eachCount()
     }
+
+    fun calculateProfitRate(matchedLottoCount: Map<LottoRank, Int>, purchaseAmount: Int): Double {
+        val totalPrize = matchedLottoCount.entries.sumOf { (rank, count) ->
+            rank.prize * count
+        }
+
+        val profitRate = totalPrize.toDouble() / purchaseAmount * 100
+        return String.format("%.1f", profitRate).toDouble()
+    }
 }
