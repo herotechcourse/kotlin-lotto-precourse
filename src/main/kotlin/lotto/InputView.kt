@@ -8,6 +8,9 @@ object InputView {
 
         try {
             val input = Console.readLine()?.trim()?.toInt() ?: throw IllegalArgumentException("[ERROR] Input cannot be null")
+
+            println()
+
             return input
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Please enter a valid integer")
@@ -27,6 +30,8 @@ object InputView {
             throw IllegalArgumentException("You must enter exactly 6, non duplicate numbers.")
         }
 
+        println()
+
         return numbers
     }
 
@@ -38,6 +43,9 @@ object InputView {
             if (input < 1 || input > 45 || input in winningNumbers) {
                 throw IllegalArgumentException("[ERROR] bonus number must be between 1 and 45, not in winningNumbers.")
             }
+
+            println()
+
             return input
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("[ERROR] Please enter a valid integer")
