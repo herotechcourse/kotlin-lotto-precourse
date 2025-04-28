@@ -3,20 +3,20 @@ package lotto.domain
 import lotto.Lotto
 
 object LottoResult {
-    var totalPrize = 0
-        private set
-
-    fun checkResult(tickets: List<Lotto>, winningLotto: WinningLotto): Int {
+    fun checkResult(tickets: List<Lotto>, winningLotto: WinningLotto): PrizeResult {
+        val prizeResult = PrizeResult()
         tickets.forEach { ticket ->
-            val numbers = ticket.getNumbers()
-            ticket.settMatchCount( numbers.count { it in winningLotto.ticket } )
-            if (winningLotto.bonus in numbers) {
-                ticket.markBonusMatched()
-            }
-            val rank = Rank.of(ticket.matchCount, ticket.bonusMatched)
-            ticket.setRank(rank)
-            totalPrize += rank.prize
+            val rank = determineRank(ticket, winningLotto)
+            prizeResult.add(rank)
         }
-        return (totalPrize)
+        return prizeResult
     }
+
+    private fun determineRank(ticket: Lotto, winningLotto: WinningLotto): Rank {
+        val numbers = ticket.getNumbers()
+        val matchCount = numbers.count { it in winningLotto.ticket }
+        val bonusMatched = winningLotto.bonus in numbers
+        return Rank.of(matchCount, bonusMatched)
+    }
+
 }
