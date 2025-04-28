@@ -10,11 +10,10 @@ class InputValidatorImpl : InputValidator {
     override fun validatePurchaseAmount(purchaseAmountInput: String): Int {
         try {
             val purchaseAmount = purchaseAmountInput.toInt()
-            require(purchaseAmount > 0) { PURCHASE_AMOUNT_POSITIVE_INTEGER_ERROR_MESSAGE }
-            require(purchaseAmount % DIVISOR == 0) { PURCHASE_AMOUNT_DIVISIBLE_BY_THOUSAND_ERROR_MESSAGE }
+            require(purchaseAmount >= DIVISOR && purchaseAmount % DIVISOR == 0) { PURCHASE_AMOUNT_ERROR_MESSAGE }
             return purchaseAmount
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException(PURCHASE_AMOUNT_POSITIVE_INTEGER_ERROR_MESSAGE)
+            throw IllegalArgumentException(PURCHASE_AMOUNT_ERROR_MESSAGE)
         }
     }
 
@@ -45,15 +44,14 @@ class InputValidatorImpl : InputValidator {
     }
 
     companion object {
-        private const val PURCHASE_AMOUNT_POSITIVE_INTEGER_ERROR_MESSAGE =
-            "Purchase amount must be an integer number greater than or equal 1000."
-        private const val PURCHASE_AMOUNT_DIVISIBLE_BY_THOUSAND_ERROR_MESSAGE =
-            "Purchase amount must be divisible by 1000."
         private const val DIVISOR = 1000
         private const val LOWER_RANGE = 1
         private const val UPPER_RANGE = 45
-        private const val WINNING_NUMBERS_ERROR_MESSAGE = "Winning numbers must contain exactly 6 integer numbers separated by comma."
         private const val REQUIRED_COUNT = 6
+        private const val PURCHASE_AMOUNT_ERROR_MESSAGE =
+            "Purchase amount must be an integer number greater than or equal 1000 and divisible by 1000."
+        private const val WINNING_NUMBERS_ERROR_MESSAGE =
+            "Winning numbers must contain exactly 6 integer numbers separated by comma."
         private const val WINNING_NUMBERS_UNIQUE_ERROR_MESSAGE = "Winning numbers must be unique."
         private const val WINNING_NUMBERS_RANGE_ERROR_MESSAGE = "Winning numbers must be between 1 and 45."
         private const val BONUS_NUMBER_ERROR_MESSAGE = "Bonus number must be a positive integer between 1 and 45."
