@@ -1,0 +1,19 @@
+package lotto.config
+
+import lotto.domain.*
+import lotto.parser.BonusNumberInputParser
+import lotto.parser.LottoAmountInputParser
+import lotto.parser.WinningNumbersInputParser
+import lotto.view.InputView
+import lotto.view.OutputView
+
+class LottoConfig {
+    fun inputView(): InputView = InputView()
+    fun outputView(): OutputView = OutputView()
+    fun lottoAmountInputParser(): LottoAmountInputParser = LottoAmountInputParser()
+    fun winningNumbersInputParser(): WinningNumbersInputParser = WinningNumbersInputParser()
+    fun bonusNumberInputParser(): BonusNumberInputParser = BonusNumberInputParser()
+    fun lottoNumberGenerator(): LottoNumberGenerator = RandomNumberGenerator()
+    fun lottoTicketCalculator(): LottoTicketCalculator = LottoTicketCalculator()
+    fun lottoGenerator(): LottoGenerator = LottoGenerator(lottoNumberGenerator())
+}
