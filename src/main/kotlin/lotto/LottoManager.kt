@@ -13,6 +13,11 @@ object LottoManager {
         val tickets = LottoMachine.issueTickets(ticketCount)
 
         OutputView.printTickets(tickets)
+
+        val winningNumbers = retry {
+            val input = InputView.readWinningNumbers()
+            val numbers = InputParser.parseToNumbers(input)
+        }
     }
 
     private fun <T> retry(block: () -> T): T {
