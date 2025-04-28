@@ -25,12 +25,12 @@
 
 
 - [x] re-prompt input from that step
-  - [] use functional interface   
+  - [x] use a single lambda for input operations   
 - [x] print prize with comma(,) - StringFormat
 - [x] sort lotto number
 - [x] % format
 - [x] bonus ball format
 - [x] separate controller logic
-- [] separate Lotto Machine with Interface
+- [x] separate Lotto Machine with Interface
 - [] add test code
 - [] check requirement

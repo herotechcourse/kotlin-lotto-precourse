@@ -4,14 +4,13 @@ import lotto.Lotto
 import lotto.enums.Rank
 import lotto.model.Game
 import lotto.model.LottoTicketMachine
-import lotto.model.RandomLottoTicketMachine
 import lotto.model.WinningLotto
 import lotto.view.*
 
 class LottoController(private val inputView: InputView, private val outputView: OutputView, private val lottoTicketMachine: LottoTicketMachine) {
 
     fun start() {
-        val purchaseAmount = getPurchaseAmount()
+        val purchaseAmount = getInput {getPurchaseAmount()}
         val purchaseQuantity = purchaseAmount.amount / 1_000
 
         val lottoTicket = lottoTicketMachine.buyLotto(purchaseQuantity)
@@ -32,38 +31,34 @@ class LottoController(private val inputView: InputView, private val outputView: 
     }
 
     private fun getWinningLotto(): WinningLotto {
-        val winningNumbers = getWinningNumbers()
-        val bonusNumber = getBonusNumber()
+        val winningNumbers = getInput {getWinningNumbers()}
+        println()
+        val bonusNumber = getInput {getBonusNumber()}
         return WinningLotto(Lotto(winningNumbers.winningNumbers), bonusNumber.bonusNumber)
     }
 
     private fun getPurchaseAmount(): PurchaseAmountDto {
-        try {
-            outputView.askPurchaseAmount()
-            return inputView.askPurchaseAmount()
-        } catch (ex: IllegalArgumentException) {
-            println(ex.message)
-            return getPurchaseAmount()
-        }
+        outputView.askPurchaseAmount()
+        return inputView.askPurchaseAmount()
     }
 
     private fun getWinningNumbers(): WinningNumbersDto {
-        try {
-            outputView.askWinningNumbers()
-            return inputView.askWinningNumbers()
-        } catch (ex: IllegalArgumentException) {
-            println(ex.message)
-            return getWinningNumbers()
-        }
+        outputView.askWinningNumbers()
+        return inputView.askWinningNumbers()
     }
 
     private fun getBonusNumber(): BonusNumberDto {
-        try {
-            outputView.askBonusNumber()
-            return inputView.askBonusNumber()
-        } catch (ex: IllegalArgumentException) {
-            println(ex.message)
-            return getBonusNumber()
+        outputView.askBonusNumber()
+        return inputView.askBonusNumber()
+    }
+
+    private fun <T> getInput(input: () -> T):T {
+        while(true) {
+            try {
+                return input()
+            } catch (ex: IllegalArgumentException) {
+                println(ex.message)
+            }
         }
     }
 }

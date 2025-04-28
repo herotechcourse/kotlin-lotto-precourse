@@ -23,7 +23,6 @@ class OutputView {
     }
 
     fun askBonusNumber() {
-        println()
         println("Please enter the bonus number.")
     }
 
