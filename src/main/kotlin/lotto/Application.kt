@@ -45,7 +45,7 @@ object InputView {
             require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
             purchaseAmount
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] ${e.message}")
+            println("${e.message}")
             inputPurchaseAmount()
         }
     }
@@ -62,7 +62,7 @@ object InputView {
             require(winningNumbers.all { it in 1..45 }) { "[ERROR] All numbers must be between 1 and 45." }
             return winningNumbers
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] ${e.message}")
+            println("${e.message}")
             return inputLottoNumber()
         }
     }
@@ -78,7 +78,7 @@ object InputView {
             require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
             return bonusNumber
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] ${e.message}")
+            println("${e.message}")
             return inputBonusNumber(winningNumbers)
         }
     }
@@ -93,7 +93,7 @@ object OutputView {
     }
 
     fun printResultStatistics(result: Map<ResultRank, Int>) {
-        println("Winning Statistics")
+        println("\nWinning Statistics")
         println("---")
         ResultRank.entries
             .filter { it != ResultRank.NO_WIN }
