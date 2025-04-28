@@ -1,7 +1,7 @@
 package lotto
 
 class Purchase(private val amount: Int) {
-    val tickets: List<Ticket> = List(amount / TICKET_PRICE) { Ticket() }
+    val tickets: List<Ticket> = List(ticketCount()) { Ticket() }
 
     init {
         require(amount % TICKET_PRICE == 0) {
@@ -16,6 +16,8 @@ class Purchase(private val amount: Int) {
     fun calculateReturnRate(totalPrize: Int): Double {
         return (totalPrize / amount.toDouble() * 100) // converting one operand to Double to ensure a precise calculation
     }
+
+    private fun ticketCount(): Int = amount / TICKET_PRICE
 
     companion object {
         private const val TICKET_PRICE = 1000
