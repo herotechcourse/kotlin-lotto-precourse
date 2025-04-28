@@ -12,4 +12,13 @@ object LottoMatchService {
     fun hasBonus(ticket: Lotto,winningNumbers: WinningNumbers): Boolean =
         (ticket.bitmask and winningNumbers.bonusBitmask) != 0L
 
+    fun determineRank(matchCount:Int, hasBonus: Boolean): LottoRank? = when {
+        matchCount == 6 -> LottoRank.SIX
+        matchCount == 5 && hasBonus -> LottoRank.FIVE_BONUS
+        matchCount == 5 -> LottoRank.FIVE
+        matchCount == 4 -> LottoRank.FOUR
+        matchCount == 3 -> LottoRank.THREE
+        else -> null
+    }
+
 }
