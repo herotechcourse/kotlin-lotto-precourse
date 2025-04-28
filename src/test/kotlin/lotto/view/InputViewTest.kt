@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.domain.WinningNumbers
+import camp.nextstep.edu.missionutils.Console
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
@@ -10,10 +11,13 @@ class InputViewTest {
     private val originalIn = System.`in`
 
     @AfterEach
-    fun restore() = System.setIn(originalIn)
+    fun restore() {
+        System.setIn(originalIn)
+        Console.close()
+    }
 
     @Test
-    fun `readPurchaseAmount valid input`() {
+    fun readPurchaseAmount_valid_input() {
         System.setIn(ByteArrayInputStream("5000\n".toByteArray()))
         assertThat(InputView.readPurchaseAmount()).isEqualTo(5000)
     }

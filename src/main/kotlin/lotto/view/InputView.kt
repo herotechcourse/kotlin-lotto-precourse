@@ -3,39 +3,51 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.PurchaseAmount
 import lotto.domain.WinningNumbers
-import java.util.Scanner
 
 object InputView {
-    private fun resetConsoleScanner() {
-        try {
-            val field = Console::class.java.getDeclaredField("scanner")
-            field.isAccessible = true
-            field.set(null, Scanner(System.`in`))
-        } catch (_: Exception) { /* ignore */ }
-    }
 
     fun readPurchaseAmount(): Int {
-        resetConsoleScanner()
         println("Please enter the purchase amount.")
-        val raw = Console.readLine().orEmpty().trim()
-        val amount = raw.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] 숫자 형식이 올바르지 않습니다.")
-        PurchaseAmount(amount)
-        return amount
+        while (true) {
+            val raw = Console.readLine().orEmpty().trim()
+            val amount = raw.toIntOrNull()
+            if (amount == null) {
+                println("[ERROR] Invalid number format.")
+                continue
+            }
+            try {
+                PurchaseAmount(amount)
+                return amount
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun readWinningNumbers(): WinningNumbers {
-        resetConsoleScanner()
-        println("Please enter the winning numbers (comma separated).")
-        val main = Console.readLine().orEmpty()
-            .split(",")
-            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.") }
+        println("Please enter last week's winning numbers.")
+        while (true) {
+            val mainRaw = Console.readLine().orEmpty().trim()
+            val main = try {
+                mainRaw.split(",").map { it.trim().toInt() }
+            } catch (_: Exception) {
+                println("[ERROR] Winning numbers must be numeric.")
+                continue
+            }
 
-        resetConsoleScanner()
-        println("Please enter the bonus number.")
-        val bonus = Console.readLine().orEmpty().trim().toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.")
+            println("Please enter the bonus number.")
+            val bonusRaw = Console.readLine().orEmpty().trim()
+            val bonus = bonusRaw.toIntOrNull()
+            if (bonus == null) {
+                println("[ERROR] Bonus number must be numeric.")
+                continue
+            }
 
-        return WinningNumbers(main, bonus)
+            try {
+                return WinningNumbers(main, bonus)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 }

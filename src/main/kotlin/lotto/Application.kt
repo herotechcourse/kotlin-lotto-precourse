@@ -1,17 +1,14 @@
-// src/main/kotlin/lotto/Application.kt
 package lotto
 
-import lotto.view.InputView
+import lotto.domain.WinningNumbers
 import lotto.service.LottoService
+import lotto.view.InputView
 import lotto.view.OutputView
-
-fun readPurchaseAmount(): Int = InputView.readPurchaseAmount()
 
 fun main() {
     val purchaseAmount = InputView.readPurchaseAmount()
     val tickets = LottoService.generateTickets(purchaseAmount)
-    val ticketNumbers = tickets.map { it.numbers() }
-    OutputView.printTickets(ticketNumbers)
+    OutputView.printTickets(tickets.map { it.numbers() })
 
     val winningNumbers = InputView.readWinningNumbers()
     val stats = LottoService.calculateStatistics(tickets, winningNumbers)
