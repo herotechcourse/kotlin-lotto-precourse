@@ -48,7 +48,8 @@ class LottoMachine(
                 val input = inputView.readWinningNumber()
                 InputValidator.validateWinningNumbersInput(input)
                 val numbers = input.split(",").map { it.trim().toInt() }
-                PickedNumbers(numbers, 0)
+                val dummyBonus = (1..45).first { it !in numbers }
+                PickedNumbers(numbers, dummyBonus)
                 return numbers
             } catch (e: IllegalArgumentException) {
                 println(e.message)
