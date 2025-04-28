@@ -7,17 +7,36 @@ import lotto.view.OutputView
 import lotto.services.Lottery
 
 fun main() {
-    val inputView = InputView()
+    val application = Application()
+    application.run()
+}
 
+class Application {
+    private val inputView = InputView()
+    private val outputView = OutputView()
+    private val lottery = Lottery()
 
-    val budgetInput = inputView.GetBudget()
-    val budgetorNull = StringToNumber(budgetInput)
-    val budget = BudgetValidator().run(budgetorNull)
-    val ticketCount = Lottery().getLotteryCount(budget)
+    fun run() {
+        val budget = readBudget()
+        val ticketCount = calculateTicketCount(budget)
+        val tickets = issueTickets(ticketCount)
 
-    val outputView = OutputView()
-    outputView.purchasedTicket(ticketCount)
+        outputView.purchasedTicket(ticketCount)
+        outputView.ticketNumber(tickets)
+    }
 
-    val tickets = Lottery().run(ticketCount)
-    outputView.ticketNumber(tickets)
+    private fun readBudget(): Int {
+        val budgetInput = inputView.getBudget()
+        val budgetOrNull = StringToNumber(budgetInput)
+        return BudgetValidator().run(budgetOrNull)
+    }
+
+    private fun calculateTicketCount(budget: Int): Int {
+        return lottery.getLotteryCount(budget)
+    }
+
+    private fun issueTickets(ticketCount: Int): List<List<Int>> {
+        return lottery.run(ticketCount)
+    }
+
 }
