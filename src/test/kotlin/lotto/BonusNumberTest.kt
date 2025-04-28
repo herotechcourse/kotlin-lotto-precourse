@@ -36,6 +36,6 @@ class BonusNumberTest {
     fun `creates BonusNumber successfully when valid and not duplicated`() {
         val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = BonusNumber.from("7", winningNumber)
-        assertEquals(7, bonusNumber.getNumbers())
+        assertEquals(7, bonusNumber.getNumber())
     }
 }
