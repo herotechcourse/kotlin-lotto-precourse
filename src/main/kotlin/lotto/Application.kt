@@ -5,12 +5,15 @@ fun main() {
     val lottoMachine = LottoMachine(amount)
     lottoMachine.purchaseLottoTicket(amount)
     OutputView.printTickets(lottoMachine.tickets)
+
     val winningNumbers = InputView.inputLottoNumber()
     val bonusNumber = InputView.inputBonusNumber(winningNumbers)
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
+
     val rankCounts = lottoMachine.calculateResults(lottoMachine.tickets, winningLotto)
     val totalPrize = rankCounts.entries.sumOf { it.key.prizeMoney * it.value }
     val profitRate = (totalPrize.toDouble() / amount) * 100
+
     OutputView.printResultStatistics(rankCounts)
     OutputView.printProfitRate(profitRate)
 }
