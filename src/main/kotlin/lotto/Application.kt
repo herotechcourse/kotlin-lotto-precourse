@@ -1,42 +1,29 @@
 package lotto
 
-import lotto.domain.PrizeRank
 import lotto.domain.WinningLotto
 import lotto.generator.LottoGenerator
 import lotto.io.InputView
 import lotto.io.OutputView
+import lotto.service.LottoResultCalculator
 import lotto.service.ProfitCaculator
 
 fun main() {
-    println("Please enter the purchase amount.")
-    val ticket: Int = InputView.inputPurchaseAmount(InputView.input())
-    val userLottos: List<Lotto> = LottoGenerator.generate(ticket)
-
+    // purchase lottos
+    val ticket: Int = InputView.inputPurchaseAmount()
+    val userLottos: List<Lotto> = List(ticket){LottoGenerator.generate()}
     OutputView.printUsertickets(userLottos)
 
-    println("\nPlease enter last week's winning numbers.")
-    val winningNumbers: List<Int> = InputView.inputWinningNumbers(InputView.input())
+    // last week winning and bonus lotto
+    val winningNumbers: List<Int> = InputView.inputWinningNumbers()
     val bonusNumber: Int = InputView.inputBonusNumber()
-
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
-    val map = mutableMapOf<PrizeRank, Int>(
-        PrizeRank.FIFTH to 0,
-        PrizeRank.FOURTH to 0,
-        PrizeRank.THIRD to 0,
-        PrizeRank.SECOND to 0,
-        PrizeRank.FIRST to 0
-    )
+    // count matched ranks
+    val rankCountMap = LottoResultCalculator(userLottos, winningLotto).countRanks()
+    OutputView.printWinningStatistics(rankCountMap)
 
-    for (userLotto in userLottos) {
-        val matchResult: Pair<Int, Boolean> = userLotto.matchNumbers(winningLotto)
-        val result = PrizeRank.of(matchResult.first, matchResult.second)
-        map[result] = map.getOrDefault(result, 0) + 1
-    }
-
-    OutputView.printWinningStatistics(map)
-
-    val total = ProfitCaculator.calculate(map, ticket)
-    OutputView.printProfitResult(total)
+    // profit = total prize / amount
+    val totalProfit = ProfitCaculator.calculate(rankCountMap, ticket)
+    OutputView.printProfitResult(totalProfit)
 
 }
