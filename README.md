@@ -7,11 +7,11 @@ Users can purchase lottery tickets, input winning numbers, and check their winni
 ## Features
 ### Input
 - [x] Enter purchase amount (must be divisible by 1,000 KRW)
-- [ ] Enter winning numbers (6 unique numbers, comma-separated)
-- [ ] Enter bonus number (single number)
+- [x] Enter winning numbers (6 unique numbers, comma-separated)
+- [x] Enter bonus number (single number)
 
 ### Game logic
-- [ ] Each ticket consists of 6 unique random numbers between 1 and 45.
+- [x] Each ticket consists of 6 unique random numbers between 1 and 45.
 - [ ] Compare each ticket's numbers with the winning numbers and bonus number.
   - [ ] Prize ranks
     - [ ] 6 matches → 1st Prize (2,000,000,000 KRW)
@@ -22,15 +22,15 @@ Users can purchase lottery tickets, input winning numbers, and check their winni
 - [ ] Calculate total winnings and profit rate.
 
 ### Output
-- [ ] Display all purchased tickets (sorted numbers).
+- [x] Display all purchased tickets (sorted numbers).
 - [ ] Display the number of winning tickets for each prize rank.
 - [ ] Display total profit rate
 
 ### Error Handling
 - [ ] Throw `IllegalArgumentException` for invalid inputs
-  - [ ] Non-divisible purchase amount
-  - [ ] Invalid number ranges (must be 1–45)
-  - [ ] Duplicate numbers not allowed for winning numbers
+  - [x] Non-divisible purchase amount
+  - [x] Invalid number ranges (must be 1–45)
+  - [x] Duplicate numbers not allowed for winning numbers
 
 
 

@@ -32,5 +32,15 @@ object InputView {
         return Lotto(numbers.sorted())
     }
 
+    fun readBonusNumber(): Int {
+        println("\nPlease enter the bonus number.")
+        val input = Console.readLine()
+        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Bonus number must be a number.")
+        if (bonus !in 1..45) {
+            throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+        }
+        return bonus
+    }
+
 }
 
