@@ -6,11 +6,10 @@
 ### process user's input (`service.InputProcessingService`)
 -[ ] validate user's inputs for
   -[ ] if the amount of money is divisible by 1000
-    -[ ] if 6 winning numbers are each unique numbers
-    -[ ] if one bonus number is unique from 6 winning numbers
-    -[ ] if all numbers (winning & bonus) are within 1 - 45
--[ ]if validation fails, throw `IllegalArgumentException`
--[ ] re-prompting input from the step that caused exception.
+  -[ ] if 6 winning numbers are each unique numbers
+  -[ ] if one bonus number is unique from 6 winning numbers
+  -[X] if all numbers (winning & bonus) are integers within 1 - 45
+-[X] if validation fails, throw `IllegalArgumentException`
 -[ ] return comma-separated winning numbers in a list
 ### ticket process (`lotto.Ticket`)
 -[X] calculate how many tickets a user has bought
@@ -41,4 +40,5 @@
 -[X] print lotto result statistics
 -[X] print rounded lotto return rate e.g., `65.5%`
 ### etc
--[X] use enums for prize money
+-[X] use enums for prize money (`lotto.LottoRank`)
+-[ ] re-prompting input from the step that caused exception (`lotto.Application.kt`)

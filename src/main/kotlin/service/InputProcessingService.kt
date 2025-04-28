@@ -8,4 +8,9 @@ object InputProcessingService {
         require(number in 1..45) { "The input number must be between 1 and 45." }
         return number
     }
+
+    fun splitWinningNumbers(numbers:String):List<Int> {
+        return numbers.split(",").map { validateInputInteger(it) }
+    }
+
 }
