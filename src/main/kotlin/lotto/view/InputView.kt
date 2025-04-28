@@ -11,6 +11,7 @@ object InputView {
     }
 
     fun inputWinNumbers(): List<Int> {
+        println()
         println(MESSAGE_ENTER_WINNING_NUMBERS)
         val input = Console.readLine()
         validateWinNumber(input)
@@ -18,6 +19,7 @@ object InputView {
     }
 
     fun inputBonusNumbers(winNumbers: List<Int>): Int {
+        println()
         println(MESSAGE_ENTER_BONUS_NUMBER)
         val input = Console.readLine()
         return validateBonusNumber(input, winNumbers)
