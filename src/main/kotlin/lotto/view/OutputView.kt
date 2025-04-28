@@ -24,9 +24,9 @@ object OutputView {
 
         val results = result.getResults()
 
-        for (rank in PrizeRank.entries.toTypedArray().sortedByDescending { it.prizeMoney }) {
-            if (rank == PrizeRank.FAIL) continue
-
+        for (rank in PrizeRank.entries
+            .filter { it != PrizeRank.FAIL }
+            .sortedBy { it.matchCount }) {
             val count = results[rank] ?: 0
             printRank(rank, count)
         }
