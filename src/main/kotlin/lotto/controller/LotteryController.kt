@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.LotteryConstants
+import lotto.Lotto
 import lotto.model.LotteryResult
 import lotto.model.LottoGenerator
 import lotto.model.WinningLotto
@@ -19,6 +20,12 @@ class LotteryController(
     private val lottoGenerator: LottoGenerator,
 ) {
     fun start() {
+        val tickets = buyTickets()
+
+        calculateResult(tickets)
+    }
+
+    private fun buyTickets(): List<Lotto> {
         val purchaseAmount = getPurchaseAmount()
         val ticketCount = purchaseAmount / LotteryConstants.TICKET_PRIZE
         val tickets = lottoGenerator.generate(ticketCount)
@@ -26,12 +33,16 @@ class LotteryController(
         outputView.printTicketCount(ticketCount)
         outputView.printTickets(tickets)
 
+        return tickets
+    }
+
+    private fun calculateResult(tickets: List<Lotto>) {
         val winningNumbers = getWinningNumbers()
         val bonusNumber = getBonusNumber(winningNumbers)
         val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
-
         val result = LotteryResult(tickets, winningLotto)
+
         outputView.printResult(result)
         outputView.printReturnRate(result)
     }
