@@ -27,8 +27,6 @@ class LottoResult () {
         val total = result.indices.sumOf { i ->
             prizes[i].price * result[i]
         }
-        val percentage = total.toDouble() * 100 / amount
-        val res = String.format("%.1f", percentage)
-        return res.toDouble()
+        return total.toDouble() * 100 / amount
     }
 }
