@@ -1,12 +1,12 @@
 package lotto.model
 
-class LottoResult(prviate val results: Map<Prize, Int>, private val totalTickets: Int) {
+class LottoResult(private val results: Map<Prize, Int>, private val totalTickets: Int) {
   fun getResult(): Map<Prize, Int> {
     return results
   }
 
   fun getTotalPrize(): Int {
-    return results.entries.sumOf { it.key.getPrize() * it.value }
+    return results.entries.sumOf { (rank, count) -> rank.prize * count }
   }
 
   fun getProfitRate(): Double {

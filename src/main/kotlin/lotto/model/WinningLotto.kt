@@ -9,9 +9,9 @@ private const val LOTTO_MAX_NUMBER = 45
 
 class WinningLotto(private val numbers: List<Int>, private val bonusNumber: Int) {
   init {
-    require(winningNumbers.size == LOTTO_NUMBER_COUNT) { "[ERROR] Winning numbers must contain exactly $LOTTO_NUMBER_COUNT numbers." }
-    require(winningNumbers.all { it in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER }) { "[ERROR] Winning numbers must be between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER." }
-    require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] Winning numbers must be unique." }
+    require(numbers.size == LOTTO_NUMBER_COUNT) { "[ERROR] Winning numbers must contain exactly $LOTTO_NUMBER_COUNT numbers." }
+    require(numbers.all { it in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER }) { "[ERROR] Winning numbers must be between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER." }
+    require(numbers.distinct().size == numbers.size) { "[ERROR] Winning numbers must be unique." }
     require(bonusNumber in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER) { "[ERROR] Bonus number must be between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER." }
   }
 

@@ -21,9 +21,9 @@ class InputView {
   fun readWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers.")
     val input = Console.readLine()?.trim() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
-    val numbers = input.split(",").map { it.trim().toIntOrNull() }
-    if (numbers.size != LOTTO_NUMBER_COUNT || numbers.any { it == null } || numbers.any { it!! < LOTTO_MIN_NUMBER || it!! > LOTTO_MAX_NUMBER }) {
-      throw IllegalArgumentException("[ERROR] Please enter exactly $LOTTO_NUMBER_COUNT valid numbers between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER.")
+    val numbers = input.split(",").map { it.trim().toIntOrNull() }.filterNotNull()
+    if (numbers.size != LOTTO_NUMBER_COUNT || numbers.any { it < LOTTO_MIN_NUMBER || it > LOTTO_MAX_NUMBER }) {
+        throw IllegalArgumentException("[ERROR] Please enter exactly $LOTTO_NUMBER_COUNT valid numbers between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER.")
     }
     return numbers
   } 
@@ -31,7 +31,7 @@ class InputView {
   fun readBonusNumber(): Int {
     println("Please enter the bonus number.")
     val input = Console.readLine()?.trim() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
-    val bonusNumber = input.toIntOrNull()
+    val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid bonus number.")
     if (bonusNumber < LOTTO_MIN_NUMBER || bonusNumber > LOTTO_MAX_NUMBER) {
       throw IllegalArgumentException("[ERROR] Please enter a valid bonus number between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER.")
     }

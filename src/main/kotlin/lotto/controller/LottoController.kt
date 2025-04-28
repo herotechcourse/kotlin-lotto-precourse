@@ -1,6 +1,6 @@
 package lotto.controller
 
-import lotto.model.Lotto
+import lotto.Lotto
 import lotto.model.LottoResult
 import lotto.model.Prize
 import lotto.model.WinningLotto
@@ -26,6 +26,11 @@ class LottoController(private val inputView: InputView, private val outputView: 
       run()
     }
   }
+
+  private fun purchaseLottoTickets(purchaseAmount: Int): List<Lotto> {
+    return createController.createLottoTickets(purchaseAmount)
+  }
+
   private fun getPurchaseAmount(): Int {
     return inputView.readPurchaseAmount()
   }

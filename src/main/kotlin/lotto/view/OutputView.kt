@@ -8,13 +8,14 @@ class OutputView {
   fun printPurchasedTickets(tickets: List<Lotto>) {
     println("\nYou have purchased ${tickets.size} tickets.")
     tickets.forEach { ticket ->
-      println(ticket.getNumbers().joinToString(", ", "[", "]"))
+        println(ticket.getNumbers().joinToString(", ", "[", "]"))
     }
     println()
   }
 
   fun printLottoResult(result: LottoResult) {
-    println("Winning Statistics\n---")
+    println("Winning Statistics")
+    println("---")
 
     printPrize(Prize.FIFTH, result.getResult()[Prize.FIFTH] ?: 0)
     printPrize(Prize.FOURTH, result.getResult()[Prize.FOURTH] ?: 0)
@@ -37,6 +38,6 @@ class OutputView {
     }
 
     val formattedPrize = rank.prize.toString().reversed().chunked(3).joinToString(",").reversed()
-    println("$matchText ($formattedPrize KRW) - $count tickets")
+    println("$matchText ($formattedPrize KRW) – $count tickets")
   }
 }
