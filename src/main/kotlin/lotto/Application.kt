@@ -1,5 +1,13 @@
 package lotto
 
+import lotto.view.InputView
+import lotto.utils.StringToNumber
+import lotto.validator.BudgetValidator
+
 fun main() {
-    // TODO: Implement the program
+    val inputView = InputView()
+    val budgetInput = inputView.GetBudget()
+    val budget = StringToNumber(budgetInput)
+
+    BudgetValidator().run(budget)
 }
