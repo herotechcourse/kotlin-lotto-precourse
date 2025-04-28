@@ -13,7 +13,7 @@ class LottoRanker {
     }
 
     fun calculateProfit(lottos: List<Lotto>, statistics: Map<LottoRank, Int>): Double {
-        val totalPrize = statistics.entries.sumOf { (rank, count) -> rank.prize * count }
+        val totalPrize: Long = statistics.entries.sumOf { (rank, count) -> rank.prize * count }
         val totalSpent = lottos.size * LottoConstants.TICKET_PRICE
 
         val profitRate = (totalPrize / totalSpent.toDouble()) * 100

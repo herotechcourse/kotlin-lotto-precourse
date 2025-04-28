@@ -1,6 +1,6 @@
 package lotto.constants
 
-enum class LottoRank(val matchCount: Int, val prize: Int, val description: String, val order: Int) {
+enum class LottoRank(val matchCount: Int, val prize: Long, val description: String, val order: Int) {
     SIX_MATCH(6, 2_000_000_000, "6 Matches (2,000,000,000 KRW)", 5),
     FIVE_MATCH_WITH_BONUS(5, 30_000_000, "5 Matches + Bonus Ball (30,000,000 KRW)", 4),
     FIVE_MATCH(5, 1_500_000, "5 Matches (1,500,000 KRW)", 3),
