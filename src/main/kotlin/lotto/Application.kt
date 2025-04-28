@@ -8,10 +8,8 @@ import lotto.domain.LottoManager
 
 fun main() {
     val purchaseAmount = readValidPurchaseAmount()
-
     val ticketCount = purchaseAmount / 1000
     val lottos = LottoGenerator.generateLottos(ticketCount)
-
     OutputView.printPurchasedTickets(lottos)
 
 

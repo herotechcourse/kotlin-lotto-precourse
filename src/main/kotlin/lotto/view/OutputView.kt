@@ -1,8 +1,11 @@
 package lotto.view
+
 import lotto.Rank
 import lotto.Lotto
 
 object OutputView {
+
+    private val DASH = '\u2013' // U+2013: en dash
 
     fun printPurchasedTickets(lottos: List<Lotto>) {
         println("You have purchased ${lottos.size} tickets.")
@@ -14,13 +17,20 @@ object OutputView {
     fun printStatistics(result: Map<Rank, Int>, purchaseAmount: Int) {
         println("\nWinning Statistics")
         println("---")
-        Rank.values()
-            .filter { it != Rank.MISS }
-            .sortedByDescending { it.reward }
-            .forEach { rank ->
-                val count = result[rank] ?: 0
-                println("${formatRank(rank)} – ${count} tickets")
-            }
+
+        val ranksInOrder = listOf(
+            Rank.FIFTH,   // 3 matches
+            Rank.FOURTH,  // 4 matches
+            Rank.THIRD,   // 5 matches
+            Rank.SECOND,  // 5 matches + bonus
+            Rank.FIRST    // 6 matches
+        )
+
+        ranksInOrder.forEach { rank ->
+            val count = result[rank] ?: 0
+            println("${formatRank(rank)} $DASH $count tickets")
+        }
+
         printProfitRate(result, purchaseAmount)
     }
 
@@ -33,7 +43,6 @@ object OutputView {
             Rank.FIFTH -> "3 Matches (5,000 KRW)"
             else -> ""
         }
-
     }
 
     private fun printProfitRate(result: Map<Rank, Int>, purchaseAmount: Int) {
@@ -41,7 +50,4 @@ object OutputView {
         val profitRate = totalReward.toDouble() / purchaseAmount * 100
         println("Total return rate is ${"%.1f".format(profitRate)}%.")
     }
-
-
-
 }
