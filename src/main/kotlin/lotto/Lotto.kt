@@ -11,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
-    fun addBonusNumber(number: Int) {
+    fun setBonusNumber(number: Int) {
         require(number !in numbers) { "[ERROR] Bonus number has to be different than winning numbers." }
         require(number in 1..45) { "[ERROR] Bonus number must be in range 1..45." }
         bonusNumber = number

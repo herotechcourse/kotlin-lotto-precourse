@@ -41,7 +41,7 @@ class LottoTest {
         assertThatNoException().isThrownBy {
             val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
             assertThatIllegalArgumentException().isThrownBy {
-                lotto.addBonusNumber(input.toInt())
+                lotto.setBonusNumber(input.toInt())
             }
         }
     }
