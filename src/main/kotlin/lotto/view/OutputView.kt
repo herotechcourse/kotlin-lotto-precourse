@@ -1,6 +1,8 @@
 package lotto.view
 
 import lotto.Lotto
+import lotto.view.dto.LottoTicketDto
+import lotto.view.dto.MatchResultDto
 
 class OutputView {
     fun askPurchaseAmount() {

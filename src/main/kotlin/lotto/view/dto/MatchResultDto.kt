@@ -1,4 +1,4 @@
-package lotto.view
+package lotto.view.dto
 
 import lotto.enums.Rank
 
@@ -13,9 +13,11 @@ data class MatchResultDto(val output: String) {
                 .sortedByDescending { it.key.rank }
                 .forEach {
                         entry ->
-                    matchResultList.add(MatchResultDto("${entry.key.matchCount.first} Matches " +
+                    matchResultList.add(
+                        MatchResultDto("${entry.key.matchCount.first} Matches " +
                             (if (entry.key.isBonusNumberRequired) "+ Bonus Ball " else "") +
-                            "(${String.format("%,d", entry.key.price)} KRW) – ${entry.value} tickets"))
+                            "(${String.format("%,d", entry.key.price)} KRW) – ${entry.value} tickets")
+                    )
                 }
             return matchResultList.toList()
         }

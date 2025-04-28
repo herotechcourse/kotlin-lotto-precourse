@@ -2,6 +2,9 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.error.ExceptionMessage
+import lotto.view.dto.BonusNumberDto
+import lotto.view.dto.PurchaseAmountDto
+import lotto.view.dto.WinningNumbersDto
 
 class InputView {
 

@@ -1,4 +1,4 @@
-package lotto.view
+package lotto.view.dto
 
 import lotto.error.ExceptionMessage
 

@@ -6,6 +6,10 @@ import lotto.model.Game
 import lotto.model.LottoTicketMachine
 import lotto.model.WinningLotto
 import lotto.view.*
+import lotto.view.dto.BonusNumberDto
+import lotto.view.dto.MatchResultDto
+import lotto.view.dto.PurchaseAmountDto
+import lotto.view.dto.WinningNumbersDto
 
 class LottoController(private val inputView: InputView, private val outputView: OutputView, private val lottoTicketMachine: LottoTicketMachine) {
 
