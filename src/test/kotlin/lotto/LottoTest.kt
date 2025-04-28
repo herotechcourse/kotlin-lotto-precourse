@@ -19,5 +19,20 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `creates lotto successfully with six unique numbers within range`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+    }
+
+    @Test
+    fun `throws an exception when lotto numbers are out of range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6)) 
+        }
+
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 46)) 
+        }
+    }
 }
