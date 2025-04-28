@@ -52,8 +52,8 @@
 ---
 
 ### Ticket Issuance
-- [ ] Issue as many tickets as the purchase amount allows (1 ticket = 1,000 KRW).  
-- [ ] Each ticket consists of 6 unique random numbers between 1 and 45. 
+- [x] Issue as many tickets as the purchase amount allows (1 ticket = 1,000 KRW).  
+- [x] Each ticket consists of 6 unique random numbers between 1 and 45. 
 
 ---
 
@@ -214,3 +214,22 @@ Total return rate is 62.5%.
   - Given WinningNumbers:** `[1, 2, 3, 4, 5, 6]`  
   - Input: `7`  
   - Expect: no exception
+
+### `LottoTest` (lotto)
+
+- **throws exception when lotto numbers exceed six**  
+  - Input: `listOf(1, 2, 3, 4, 5, 6, 7)`  
+  - Expect: `IllegalArgumentException`
+
+- **throws exception when lotto numbers contain duplicates**  
+  - Input: `listOf(1, 2, 3, 4, 5, 5)`  
+  - Expect: `IllegalArgumentException`
+
+### `LotteryMachineTest` (lotto.domain)
+
+- **returns correct count and valid tickets for non-zero purchase amount**  
+  - Input: `PurchaseAmount(5000)`  
+  - Expect:  
+    - resulting list size equals `purchase.ticketCount`  
+    - each ticket’s numbers: size 6, all values in `1..45`, and all unique
+
