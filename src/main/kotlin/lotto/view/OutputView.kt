@@ -3,6 +3,7 @@ package lotto.view
 import lotto.Lotto
 import lotto.model.LottoResult
 import lotto.model.PrizeRank
+import lotto.util.PrizeRankSorter
 
 object OutputView {
 
@@ -24,9 +25,7 @@ object OutputView {
 
         val results = result.getResults()
 
-        for (rank in PrizeRank.entries
-            .filter { it != PrizeRank.FAIL }
-            .sortedBy { it.matchCount }) {
+        for (rank in PrizeRankSorter.sort()) {
             val count = results[rank] ?: 0
             printRank(rank, count)
         }
@@ -35,15 +34,18 @@ object OutputView {
     }
 
     private fun printRank(rank: PrizeRank, count: Int) {
+        val formattedPrizeMoney = String.format("%,d", rank.prizeMoney)
+
         when (rank) {
             PrizeRank.SECOND -> {
-                println("${rank.matchCount} Matches + Bonus Ball (${rank.prizeMoney} KRW) – $count tickets")
+                println("${rank.matchCount} Matches + Bonus Ball (${formattedPrizeMoney} KRW) – $count tickets")
             }
             else -> {
-                println("${rank.matchCount} Matches (${rank.prizeMoney} KRW) – $count tickets")
+                println("${rank.matchCount} Matches (${formattedPrizeMoney} KRW) – $count tickets")
             }
         }
     }
+
 
     private fun printProfitRate(profitRate: Double) {
         println("Total return rate is ${"%.1f".format(profitRate)}%.")
