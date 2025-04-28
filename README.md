@@ -1,28 +1,37 @@
 # kotlin-lotto-precourse
 
 ## Features
-### input process
-- taking user's input
+### take user's input (`view.InputView`)
+- take user's input
+### process user's input (`service.InputProcessingService`)
 - validate user's inputs for
-    - if amount of money is divisible by 1000
+    - if the amount of money is divisible by 1000
     - if 6 winning numbers are each unique numbers
     - if one bonus number is unique from 6 winning numbers
+    - if all numbers (winning & bonus) are within 1 - 45
 - if validation fails, throw `IllegalArgumentException`
 - re-prompting input from the step that caused exception.
-### ticket process
-- calculate how many tickets user has bought
-- random number generator that generates number from 1 to 45
-- 6 unique random number generation logic for purchased tickets
+- return comma-separated winning numbers in a list
+### ticket process (`lotto.Ticket`)
+- calculate how many tickets a user has bought
+- generate 6 unique random numbers for each purchased ticket
 - sort each ticket's numbers in ascending order
-### lotto match & result process
+- create lotto objects to store each ticket's winning numbers
+### save lotto numbers (`lotto.Lotto`)
+- save one ticket's generated lotto numbers
+- create a number for bitmasking based on 6 numbers
+### save winning numbers (`lotto.WinningNumber`)
+- save winning numbers and a bonus number
+- create a number for bitmasking 6 winnning numbers and one bonus number
+### lotto match & result process (`service.LottoMatchService`)
 - bitmasking logic to count matching numbers between a ticket and winning numbera
-- bitmasking logic to see if the ticket contains bonus number
+- bitmasking logic to see if the ticket contains a bonus number
 - determine the rank of each ticket based on matched numbers and bonus number
 - count how many tickets fall into each rank
 - calculate the lotto return rate
-- round the return rate of lotto to the nearest tenth
-### output process
-- print basic messages prompting user for input
+- round the return rate to the nearest tenth
+### output process (`view.OutputView`)
+- print basic messages prompting the user for input
     - "Please enter the purchase amount."
     - "Please enter last week's winning numbers."
     - "Please enter the bonus number."
