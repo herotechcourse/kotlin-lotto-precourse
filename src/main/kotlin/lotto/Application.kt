@@ -10,4 +10,5 @@ fun main() {
     val lottos: Array<Lotto> = getLottosFromTicketAmountThroughDialog(ticketAmount)
     val winningNumbers: Array<Int> = getWinningNumberFromDialog()
     val bonusNumber: Int = getBonusNumberFromDialog()
+    MatchManager.init(winningNumbers, bonusNumber)
 }

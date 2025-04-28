@@ -23,6 +23,10 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
+
     override fun toString(): String {
         return numbers.joinToString(prefix = "[", postfix = "]")
     }

@@ -9,11 +9,11 @@ object MatchManager {
         bonusNumber = bonus
     }
 
-    fun countMatches(list: List<Int>): Int {
-        return winningNumberSet.intersect(list.toSet()).size
+    fun countMatches(lotto: Lotto): Int {
+        return winningNumberSet.intersect(lotto.getNumbers().toSet()).size
     }
 
-    fun containsBonus(list: List<Int>): Boolean {
-        return list.contains(bonusNumber)
+    fun containsBonus(lotto: Lotto): Boolean {
+        return lotto.getNumbers().contains(bonusNumber)
     }
 }
