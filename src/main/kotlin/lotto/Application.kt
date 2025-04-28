@@ -1,8 +1,10 @@
 package lotto
 
-import lotto.domain.Game
+import lotto.domain.LottoGame
+import lotto.domain.LottoMachine
 
 fun main() {
-  val lottoGame = Game()
-  lottoGame.run()
+    val lottoMachineService = LottoMachine()
+    val controller = LottoGame(lottoMachineService)
+    controller.run()
 }

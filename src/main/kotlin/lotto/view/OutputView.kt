@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.domain.PlayerData
+import lotto.domain.LottoRank
 
 object OutputView {
 
@@ -15,15 +15,15 @@ object OutputView {
         }
     }
 
-    fun printStats(playerData: PlayerData) {
+    fun printStats(lottoRankResults: Map<LottoRank, Pair<Int, Int>>, returnRate: Double) {
         println("Winning Statistics")
         println("---")
-        for ((rank, pair) in playerData.rankResults) {
+        for ((rank, pair) in lottoRankResults) {
             val (ticketCount, prizeMoney) = pair
             println("${rank.displayName()} (${formatNumber(prizeMoney)} KRW) – $ticketCount tickets")
 
         }
-        println("Total return rate is ${formatNumber(playerData.returnRate)}.")
+        println("Total return rate is ${formatNumber(returnRate)}.")
 
     }
 
