@@ -51,13 +51,13 @@ The application allows users to buy lotto tickets, input winning numbers, and ca
 ---
 
 ### Testing
-- [ ] Write unit tests using **JUnit 5** and **AssertJ**.
-- [ ] Test the following cases:
-    - [ ] Valid input handling.
-    - [ ] Invalid input (throws exceptions).
-    - [ ] Ticket generation logic.
-    - [ ] Matching logic.
-    - [ ] Prize calculation and profit rate.
+- [x] Write unit tests using **JUnit 5** and **AssertJ**.
+- [x] Test the following cases:
+    - [x] Valid input handling.
+    - [x] Invalid input (throws exceptions).
+    - [x] Ticket generation logic.
+    - [x] Matching logic.
+    - [x] Prize calculation and profit rate.
 ---
 
 ## Notes
