@@ -18,6 +18,10 @@ class Lotto(private val numbers: List<Int>) {
         return bonusNumber in numbers
     }
 
+    fun getTickets(): List<Int> {
+        return sortedNumbers
+    }
+
     override fun toString(): String {
         return sortedNumbers.toString()
     }
