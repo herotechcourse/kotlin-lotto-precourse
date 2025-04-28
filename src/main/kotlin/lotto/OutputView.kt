@@ -5,7 +5,7 @@ import kotlin.collections.groupingBy
 object OutputView {
 
     fun printTicketCount(count: Int) {
-        println("You have purchased $count tickets.")
+        println("You have purchased $count tickets")
     }
 
     fun printTickets(tickets: List<Lotto>) {
@@ -18,7 +18,7 @@ object OutputView {
 
         val rankCount = ranks.groupingBy { it }.eachCount()
 
-        Rank.values()
+        Rank.entries
             .filter { it != Rank.NONE }
             .forEach { rank ->
                 val bonusText = if (rank.requiresBonus) ", bonus matched" else ""
