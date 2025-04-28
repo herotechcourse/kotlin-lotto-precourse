@@ -19,6 +19,6 @@ class BudgetValidatorTest {
         assertThatThrownBy {
             validator.run(500)
         }.isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Budget value must be greater than")
+            .hasMessageContaining("[ERROR] Budget value must be greater than 1000")
     }
 }

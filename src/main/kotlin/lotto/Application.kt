@@ -16,7 +16,7 @@ fun main() {
             application.run()
             break
         } catch (e: IllegalArgumentException) {
-            throw e
+            println("${e.message}")
         }
     }
 }

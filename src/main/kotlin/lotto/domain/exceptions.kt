@@ -1,6 +1,5 @@
 package lotto.domain
 
-fun throwInvalidBudgetException(message: String) {
-    println("${message}")
-    return
+fun throwInvalidBudgetException(message: String): Nothing {
+    throw IllegalArgumentException(message)
 }
