@@ -9,7 +9,6 @@
 
 ## 🚀 About This Program - Lotto
 
----
 
 This is a simple lottery program that simulates purchasing and evaluating lottery tickets.
 
@@ -44,7 +43,6 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ## ☑️ Feature List
 
----
 
 ### Lottery Purchase Amount Input
 
@@ -85,7 +83,6 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ## ✖️ Exception Cases
 
----
 
 ### Validation for Lottery Purchase Amount
 
@@ -111,11 +108,12 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 
 ## 🏛️ Architecture
 
----
 
 This project follows a clear MVC (Model-View-Controller) architecture.
 
 Below is the overall structure of how components interact with each other:
+<img width="1100" alt="seonghui_lotto_mvc" src="https://github.com/user-attachments/assets/c44a0038-768e-4d2b-8af4-f34e6352c4bb" />
+
 
 - **Controller**: Manages the flow of the program and coordinates between models and views.
 - **Model**: Represents the core business logic and domain entities such as Lotto, LottoStorage, WinningLotto, and
