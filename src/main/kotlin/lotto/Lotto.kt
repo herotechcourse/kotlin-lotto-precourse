@@ -14,6 +14,10 @@ class Lotto(private val numbers: List<Int>) {
         }
     }
 
+    fun formatForDisplay(): String {
+        return numbers.sorted().toString()
+    }
+
     companion object {
         private const val LOTTO_NUMBER_SIZE_ERROR: String = "Lotto must contain exactly 6 numbers."
         private const val LOTTO_DUPLICATED_NUMBER_ERROR: String = "Lotto numbers must not be duplicated."

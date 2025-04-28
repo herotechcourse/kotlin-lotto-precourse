@@ -10,6 +10,8 @@ class LottoController {
     fun run() {
         val purchaseAmount = getPurchaseAmount()
         val lottos = generateLottos(purchaseAmount.possibleLottoTicketCount)
+
+        OutputView.printGeneratedLottos(lottos)
     }
 
     fun getPurchaseAmount(): PurchaseAmount {
