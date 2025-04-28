@@ -9,48 +9,71 @@ fun main() {
     println("You have purchased ${ticketAmount.size} tickets.")
     ticketAmount.forEach { println(it.getNumbers()) }
     val winningNumbers = getWinningNumbers()
-    val bonusNumber = getBonusNumber()
+    val bonusNumber = getBonusNumber(winningNumbers)
 
     val prize = WinningNumbers(winningNumbers, bonusNumber)
-    val results = tickets.map { winningNumbers.match(it) }
-    printResults(results, purchaseAmount = tickets.size * 1000)
+    val results = ticketAmount.map { prize.match(it) }
+    printResult(results, totalPurchaseAmount = ticketAmount.size * 1000)
     
 }
 // get user Input
 fun totalPurchaseAmount(): Int{
     println("Please enter the purchase amount.")
     val inputMoney = Console.readLine()
-    val amount = inputMoney.toIntOrNull() ?: throw IllegalArgumentException("[ERROR]Input must be a number")
-    if(amount <= 0 || amount % 1000 != 0) {
-        throw IllegalArgumentException("[ERROR]input amount has to be divisible by 1000")
+    val amount = inputMoney.toIntOrNull()
+    if (amount == null) {
+        val errorMessage = "[ERROR] Input must be a number"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
     }
-    return amount;
+    if (amount <= 0 || amount % 1000 != 0) {
+        val errorMessage = "[ERROR] Input amount must be divisible by 1000"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
+    }
+    return amount
 }
 
 //get winning numbers
 fun getWinningNumbers() : List<Int> {
-    println("[ERROR]Please enter last week's winning numbers.")
+    println("Please enter last week's winning numbers.")
     val inputNumbers = Console.readLine()
-    val numbers = inputNumbers.split(",").map {it.trim().toIntOrNull() ? throw IllegalArgumentException("[ERROR]Input must be a number") }
-    if(numbers.toSet().size != 6 || numbers.any{it !in 1..45}){
-        throw IllegalArgumentException("[ERROR]Numbers must be 6 unique numbers between 1 and 45.")
+    val numbers = inputNumbers.split(",").map { it.trim().toIntOrNull() }
+    if (numbers.any { it == null }) {
+        val errorMessage = "[ERROR] Input must be a number"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
     }
-    return numbers
+    val finalNumbers = numbers.filterNotNull()
+    if (finalNumbers.toSet().size != 6 || finalNumbers.any { it !in 1..45 }) {
+        val errorMessage = "[ERROR] Numbers must be 6 unique numbers between 1 and 45"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
+    }
+    return finalNumbers
 }
+
 //get bonus numbers
-fun getBonusNumber() ( winningNumbers: List<Int>): Int  {
+fun getBonusNumber ( winningNumbers: List<Int>): Int  {
     println("Please enter the bonus number.")
     val input = Console.readLine()
-    val bonus = input.toIntOrNull()?: throw IllegalArgumentException("[ERROR]Input must be a number")
-    if(bonus !in 1..45 || winningNumbers.contains(bonus)){
-        throw IllegalArgumentException("[ERROR] Bonus number must be a seperate number between 1 and 45")
+    val bonus = input.toIntOrNull()
+    if (bonus == null) {
+        val errorMessage = "[ERROR] Input must be a number"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
+    }
+    if (bonus !in 1..45 || winningNumbers.contains(bonus)) {
+        val errorMessage = "[ERROR] Bonus number must be a separate number between 1 and 45"
+        println(errorMessage)
+        throw IllegalArgumentException(errorMessage)
     }
     return bonus
 }
 
 //print result format
-fum resultFormat(prize: Prize): String {
-    retur when (prize) {
+fun resultFormat(prize: Prize): String {
+    return when (prize) {
         Prize.FIFTH -> "3 Matches (5,000 KRW)"
         Prize.FOURTH -> "4 Matches (50,000 KRW)"
         Prize.THIRD -> "5 Matches (1,500,000 KRW)"
