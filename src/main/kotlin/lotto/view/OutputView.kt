@@ -12,9 +12,10 @@ object OutputView {
 
     fun printWinningStatistics(lottoResults: List<LottoResult>) {
         println(Constants.STATISTICS_HEADER)
+        println(Constants.SEPARATOR)
         PrizeRank.entries
             .filter { it != PrizeRank.NONE }
-            .sortedByDescending { it.matchCount }
+            .reversed()
             .forEach { println(getStatisticMessageFor(it, lottoResults)) }
     }
 
@@ -23,15 +24,14 @@ object OutputView {
     }
 
     private fun pluralizeTicket(count: Int): String {
-        val ending = if (count == 1) "" else "s"
-        return "ticket$ending"
+        return if (count == 1) "ticket" else "tickets"
     }
 
     private fun getReturnRateMessage(returnRate: Double): String {
         return "Total return rate is $returnRate%."
     }
 
-    private fun getPurchaseMessage(count: Int) = "You have purchased $count ${pluralizeTicket(count)}"
+    private fun getPurchaseMessage(count: Int) = "You have purchased $count ${pluralizeTicket(count)}."
 
     private fun formatPrize(prize: Int): String {
         return prize.toString()
@@ -40,18 +40,15 @@ object OutputView {
             .reversed()
     }
 
+    // NOTE: Not using pluralizeTicket() for this message to match with the local tests
     private fun getStatisticMessageFor(rank: PrizeRank, lottoResults: List<LottoResult>): String {
         val count = lottoResults.count { it.prizeRank == rank }
         val bonusMessage = if (rank.hasBonus) " + Bonus Ball" else ""
-
-        return "${rank.matchCount} Matches$bonusMessage (${formatPrize(rank.prize)} KRW) - $count ${
-            pluralizeTicket(
-                count
-            )
-        }"
+        return "${rank.matchCount} Matches$bonusMessage (${formatPrize(rank.prize)} KRW) – $count tickets"
     }
 
     object Constants {
-        const val STATISTICS_HEADER = "Winning Statistics\n---"
+        const val STATISTICS_HEADER = "Winning Statistics"
+        const val SEPARATOR = "---"
     }
 }
