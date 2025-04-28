@@ -1,5 +1,7 @@
 package view
 
+import lotto.LottoRank
+
 object OutputView {
     fun promptPurchaseAmount() {
         println("Please enter the purchase amount.")
@@ -24,6 +26,15 @@ object OutputView {
     fun printTickets(tickets: List<List<Int>>) {
         tickets.forEach { ticket ->
             println(ticket.joinToString(", ", "[", "]"))
+        }
+    }
+
+    fun printWinningStatistics(statistics: Map<LottoRank, Int>){
+        println("Winning Statistics")
+        println("---")
+        LottoRank.values().forEach { rank ->
+            val count = statistics.getOrDefault(rank, 0)
+            println("${rank.description} – $count tickets")
         }
     }
 
