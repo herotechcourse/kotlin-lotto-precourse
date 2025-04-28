@@ -11,8 +11,8 @@ object InputView {
                 if (purchaseNumber.toIntOrNull() == null) {
                     throw IllegalArgumentException("Input must be a number")
                 }
-                if (purchaseNumber.toIntOrNull()!! < 1000) {
-                    throw IllegalArgumentException("Purchase amount must be more than 1000")
+                if (purchaseNumber.toIntOrNull()!! % 1000 != 0) {
+                    throw IllegalArgumentException("Purchase amount must be divisible by 1000")
                 }
                 return purchaseNumber.toInt()
             } catch (e: IllegalArgumentException) {
@@ -24,7 +24,7 @@ object InputView {
     fun winningNum(): List<Int> {
         while (true) {
             try {
-                println("Please enter last week's winning numbers.")
+                println("\nPlease enter last week's winning numbers.")
                 val input = Console.readLine().trim()
                 val winningNumbers = input.split(",")
                     .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("All inputs must be numbers.") }
@@ -48,7 +48,7 @@ object InputView {
     fun bonusNum(): Int {
         while (true) {
             try {
-                println("Please enter the bonus number.")
+                println("\nPlease enter the bonus number.")
                 val input = Console.readLine().trim()
                 val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("Input must be a number.")
                 if (bonusNumber !in 1..45) {
