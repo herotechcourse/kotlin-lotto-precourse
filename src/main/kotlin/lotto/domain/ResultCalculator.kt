@@ -9,23 +9,27 @@ import lotto.Lotto
  * @param bonusNumber single bonus number
  */
 class ResultCalculator(
-    private val winningNumbers: Set<Int>,
-    private val bonusNumber: Int
+    private val winningNumbers: Set<Int>, private val bonusNumber: Int
 ) {
+
     /**
      * Tallies how many tickets fall into each PrizeRank.
      */
-    fun calculate(tickets: List<Lotto>): Map<PrizeRank, Int> {
-        val counts = mutableMapOf<PrizeRank, Int>().withDefault { 0 }
-        for (ticket in tickets) {
-            val nums = ticket.getNumbers().toSet()
-            val matchCount = nums.intersect(winningNumbers).size
-            val bonusMatch = ticket.getNumbers().contains(bonusNumber)
+    fun calculate(lottoes: List<Lotto>): Map<PrizeRank, Int> {
+        val rankFreq = mutableMapOf<PrizeRank, Int>().withDefault { 0 }
+
+        for (lotto in lottoes) {
+            val nums = lotto.getNumbers().toSet()
+
+            val matchCount: Int = nums.intersect(winningNumbers).size
+            val bonusMatch: Boolean = lotto.getNumbers().contains(bonusNumber)
+
             PrizeRank.of(matchCount, bonusMatch)?.let { rank ->
-                counts[rank] = counts.getValue(rank) + 1
+                rankFreq[rank] = rankFreq.getValue(rank) + 1
             }
         }
-        return counts
+
+        return rankFreq
     }
 
     /**
@@ -33,7 +37,9 @@ class ResultCalculator(
      */
     fun profitRate(resultCounts: Map<PrizeRank, Int>, purchaseAmount: Int): Double {
         val totalPrize = resultCounts.entries.sumOf { it.key.prize * it.value }
+
         val rate = totalPrize.toDouble() / purchaseAmount * 100
+
         return String.format("%.1f", rate).toDouble()
     }
 }
