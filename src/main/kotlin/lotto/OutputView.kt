@@ -4,7 +4,7 @@ object OutputView {
     fun myLotto (myLotto : List<Lotto>) {
         println("\nYou have purchased ${myLotto.size} tickets.")
         myLotto.forEach{ lotto ->
-            println(lotto.getLottoNumbers())
+            println(lotto.getNumbers())
         }
     }
 

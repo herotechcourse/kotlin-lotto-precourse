@@ -22,6 +22,6 @@ class LottoTest {
     @Test
     fun `lotto numbers must be between 1 and 45`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assert(lotto.getLottoNumbers().all { it in 1..45 })
+        assert(lotto.getNumbers().all { it in 1..45 })
     }
 }

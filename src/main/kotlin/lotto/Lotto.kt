@@ -6,16 +6,16 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.toSet().size == 6) { "[ERROR] Lotto must contain unique numbers." }
     }
 
-    fun getLottoNumbers () : List<Int> {
+    fun getNumbers () : List<Int> {
         return numbers
     }
 
-    fun countMatchingNumber (winningLotto : Lotto) : Int {
-        val winningNumbers = winningLotto.getLottoNumbers()
+    fun countMatchingNumbers (winningLotto : Lotto) : Int {
+        val winningNumbers = winningLotto.getNumbers()
         return numbers.count { it in winningNumbers }
     }
 
-    fun checkForBonusNumber (bonusNumber : Int) : Boolean {
-        return bonusNumber in numbers
+    fun containsNumber (number : Int) : Boolean {
+        return number in numbers
     }
 }

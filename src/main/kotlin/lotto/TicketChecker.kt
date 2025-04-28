@@ -12,12 +12,12 @@ object TicketChecker {
     }
 
     fun addStatistics ( myLotto : Lotto, winningNumbers : Lotto, bonusNumber : Int) {
-        val matchingNumbers = myLotto.countMatchingNumber(winningNumbers)
+        val matchingNumbers = myLotto.countMatchingNumbers(winningNumbers)
         if( matchingNumbers == 3 ){
             rankStatistics[Rank.THREE] = rankStatistics[Rank.THREE]!! + 1
         } else if ( matchingNumbers == 4 ) {
             rankStatistics[Rank.FOUR] = rankStatistics[Rank.FOUR]!! + 1
-        } else if ( matchingNumbers == 5 && myLotto.checkForBonusNumber(bonusNumber)) {
+        } else if ( matchingNumbers == 5 && myLotto.containsNumber(bonusNumber)) {
             rankStatistics[Rank.FIVE_BONUS] = rankStatistics[Rank.FIVE_BONUS]!! + 1
         } else if ( matchingNumbers == 5 ) {
             rankStatistics[Rank.FIVE] = rankStatistics[Rank.FIVE]!! + 1
