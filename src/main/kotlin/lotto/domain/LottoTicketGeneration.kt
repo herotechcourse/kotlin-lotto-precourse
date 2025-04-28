@@ -6,7 +6,7 @@ import lotto.Lotto
 object LottoTicketGeneration  {
 
     // Randomly generate list of tickets
-    fun generateTicket(numberTickets: Long): List<Lotto> {
+    fun generateTickets(numberTickets: Long): List<Lotto> {
 
         val lottoTickets = mutableListOf<Lotto>()
         for (i in 1 .. numberTickets) {

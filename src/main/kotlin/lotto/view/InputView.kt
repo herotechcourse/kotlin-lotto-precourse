@@ -2,7 +2,6 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.InputValidator
-import lotto.Lotto
 import lotto.WinningNumbers
 
 class InputView {
@@ -62,5 +61,4 @@ class InputView {
             }
         }
     }
-
 }

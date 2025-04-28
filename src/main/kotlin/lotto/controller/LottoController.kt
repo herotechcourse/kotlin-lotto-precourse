@@ -14,7 +14,7 @@ class LottoController {
 
         // Generate tickets
         val ticketNumber = amountMoney / Lotto.PRICE_TICKET
-        val lottoTickets = LottoTicketGeneration.generateTicket(ticketNumber)
+        val lottoTickets = LottoTicketGeneration.generateTickets(ticketNumber)
         LottoTicketGeneration.printLottoTickets(lottoTickets)
 
         //Show last week winning numbers

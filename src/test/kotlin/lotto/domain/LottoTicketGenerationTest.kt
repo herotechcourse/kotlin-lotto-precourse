@@ -12,7 +12,7 @@ class LottoTicketGenerationTest{
 
         assertRandomUniqueNumbersInRangeTest(
             {
-                val lottoTickets = LottoTicketGeneration.generateTicket(2)
+                val lottoTickets = LottoTicketGeneration.generateTickets(2)
                 assertThat(lottoTickets[0].getTicket()).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
                 assertThat(lottoTickets[1].getTicket()).isEqualTo(listOf(10, 11, 12, 13, 14, 15))
             },
