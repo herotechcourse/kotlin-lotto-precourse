@@ -13,6 +13,7 @@ fun main() {
     val tickets = generateTickets(ticketCount)
     tickets.forEach { println(it.getNumbers().sorted()) }   // 생성된 티켓들 내용 출력
 
+    val winningNumbers = readWinningNumbers()
 }
 
 // 입력 관련 함수. 값 입력받고 복권개수 리턴
@@ -32,4 +33,21 @@ fun generateTickets(count: Int): List<Lotto> {
         val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
         Lotto(numbers)
     }
+}
+
+// enter last week's winning numbers
+fun readWinningNumbers(): List<Int> {
+    println("Please enter last week's winning numbers.")
+    val input = Console.readLine()
+    val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
+
+    // 입력한 숫자가 6개인지, 중복 여부 체크
+    require(numbers.size == 6 && numbers.toSet().size == 6) {
+        "[ERROR] You must enter 6 unique numbers."
+    }
+    // 입력한 숫자가 1..45 사이에 있는지 체크
+    require(numbers.all { it in 1..45 }) {
+        "[ERROR] Lotto numbers must be between 1 and 45."
+    }
+    return numbers
 }
