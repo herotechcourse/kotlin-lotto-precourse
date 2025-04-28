@@ -1,5 +1,6 @@
 package lotto.controller
 
+import lotto.Lotto
 import lotto.model.LottoTickets
 import lotto.model.Money
 import lotto.view.InputView
@@ -19,5 +20,13 @@ class LottoController(
 
         val lottoTickets = LottoTickets(ticketCount)
         outputView.printLottoTickets(lottoTickets.getTickets())
+
+        val winningNumbersInput = inputView.readLastWinningNumber()
+        val winningNumbers = winningNumbersInput.split(",").map { it.trim().toInt() }
+        val winningLotto = Lotto(winningNumbers)
+
+        val bonusNumberInput = inputView.readLastBonusNumber()
+        val bonusNumber = bonusNumberInput.toInt()
+
     }
 }
