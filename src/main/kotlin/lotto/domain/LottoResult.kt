@@ -1,5 +1,7 @@
 package lotto.domain
 
+import java.util.Locale
+
 enum class Prize(val matchCount: Int, val hasBonus: Boolean, val amount: Int) {
     FIRST(6, false, 2_000_000_000),
     SECOND(5, true, 30_000_000),
@@ -33,10 +35,13 @@ class LottoResult private constructor(val results: Map<Prize, Int>) {
         return results.entries.sumOf { (prize, count) -> prize.amount * count }
     }
 
-    fun calculateReturnRate(purchaseAmount: Int): Double {
+    fun calculateReturnRate(purchaseAmount: Int): String {
         val totalPrize = calculateTotalPrize()
-        return (totalPrize.toDouble() / purchaseAmount * 100).let {
-            if (it % 1 == 0.0) it.toInt().toDouble() else it
+        val rate = (totalPrize.toDouble() / purchaseAmount * 100)
+        return if (rate % 1 == 0.0) {
+            rate.toInt().toString()
+        } else {
+            String.format(Locale.US, "%.1f", rate)
         }
     }
 } 
