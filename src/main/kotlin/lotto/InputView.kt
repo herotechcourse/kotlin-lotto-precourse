@@ -60,6 +60,7 @@ object InputView {
         try {
             validateLottoNumber(input)
             LotteryTicketMachine.bonusNumber = input.toInt()
+            LotteryTicketMachine.validateBonusNumber(LotteryTicketMachine.winningNumbers, LotteryTicketMachine.bonusNumber)
         } catch (e: IllegalArgumentException) {
             println(e.message)
             OutputView.askForBonusNumber()
