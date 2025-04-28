@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.controller.response.statistics.StatisticsDto
+import lotto.controller.response.StatisticsDto
 import lotto.domain.dto.PrizeResultDto
 
 object PrintFormatter {

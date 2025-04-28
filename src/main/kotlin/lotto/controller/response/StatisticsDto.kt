@@ -1,4 +1,4 @@
-package lotto.controller.response.statistics
+package lotto.controller.response
 
 import lotto.domain.dto.PrizeResultDto
 

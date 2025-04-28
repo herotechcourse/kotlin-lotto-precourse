@@ -1,7 +1,7 @@
 package lotto.view
 
 import lotto.controller.response.PurchasedTicketsDto
-import lotto.controller.response.statistics.StatisticsDto
+import lotto.controller.response.StatisticsDto
 
 class OutputView {
     fun printPurchasedLotto(purchasedLotto: PurchasedTicketsDto) {
