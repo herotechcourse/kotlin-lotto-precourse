@@ -55,7 +55,7 @@ class LottoGame(
     }
 
     private fun evaluateResults(lotto: Lotto, purchase: Purchase) {
-        val result = lotto.compareNumbers(purchase.tickets)
+        val result = lotto.compareTicketsAndLottoNumbers(purchase.tickets)
         outputView.printStatistics(result)
 
         val totalPrize = lotto.calculateTotalPrize(result)
