@@ -22,4 +22,14 @@ class InputView {
     }
     return numbers
   } 
+
+  fun readBonusNumber(): Int {
+    println("Please enter the bonus number.")
+    val input = Console.readLine()?.trim() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
+    val bonusNumber = input.toIntOrNull()
+    if (bonusNumber < 1 || bonusNumber > 45) {
+      throw IllegalArgumentException("[ERROR] Please enter a valid bonus number between 1 and 45.")
+    }
+    return bonusNumber
+  }
 }
