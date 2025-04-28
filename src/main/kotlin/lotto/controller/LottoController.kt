@@ -1,9 +1,10 @@
 package lotto.controller
 
+import lotto.domain.PurchaseAmount
 import lotto.view.InputView
 
 class LottoController {
     fun run() {
-        var purchaseAmount = InputView.readPurchaseAmount()
+        val purchaseAmount = PurchaseAmount.from(InputView.readPurchaseAmount())
     }
 }
