@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test
 class MatchCalculatorTest {
     @BeforeEach
     fun resetMatch() {
-        MATCH.THREE = 0
-        MATCH.FOUR = 0
-        MATCH.FIVE = 0
-        MATCH.FIVE_AND_BONUS = 0
-        MATCH.SIX = 0
+        Match.threeCount = 0
+        Match.fourCount = 0
+        Match.fiveCount = 0
+        Match.fiveAndBonusCount = 0
+        Match.sixCount = 0
     }
 
     @Test
-    fun `should calculate match counts correctly`() {
+    fun `should calculate Match counts correctly`() {
         val totalLottoTicket = listOf(
             Lotto(listOf(1, 2, 3, 4, 5, 6)),
             Lotto(listOf(3, 5, 6, 16, 32, 38)),
@@ -25,27 +25,27 @@ class MatchCalculatorTest {
         val winningNumbers = listOf("1", "2", "3", "4", "5", "6")
         val bonusNumber = "7"
 
-        MatchCalculator.run(totalLottoTicket, winningNumbers, bonusNumber)
+        MatchCalculator.calculate(totalLottoTicket, winningNumbers, bonusNumber)
 
-        assertThat(MATCH.THREE).isEqualTo(1)
-        assertThat(MATCH.FOUR).isEqualTo(0)
-        assertThat(MATCH.FIVE).isEqualTo(0)
-        assertThat(MATCH.FIVE_AND_BONUS).isEqualTo(0)
-        assertThat(MATCH.SIX).isEqualTo(1)
+        assertThat(Match.threeCount).isEqualTo(1)
+        assertThat(Match.fourCount).isEqualTo(0)
+        assertThat(Match.fiveCount).isEqualTo(0)
+        assertThat(Match.fiveAndBonusCount).isEqualTo(0)
+        assertThat(Match.sixCount).isEqualTo(1)
     }
 
     @Test
-    fun `should calculate five and bonus match counts correctly`() {
+    fun `should calculate five and bonus Match counts correctly`() {
         val lottoNumber = listOf(Lotto(listOf(1, 2, 3, 4, 5, 40)))
         val winningNumbers = listOf("1", "2", "3", "4", "5", "7")
         val bonusNumber = "40"
 
-        MatchCalculator.run(lottoNumber, winningNumbers, bonusNumber)
+        MatchCalculator.calculate(lottoNumber, winningNumbers, bonusNumber)
 
-        assertThat(MATCH.THREE).isEqualTo(0)
-        assertThat(MATCH.FOUR).isEqualTo(0)
-        assertThat(MATCH.FIVE).isEqualTo(0)
-        assertThat(MATCH.FIVE_AND_BONUS).isEqualTo(1)
-        assertThat(MATCH.SIX).isEqualTo(0)
+        assertThat(Match.threeCount).isEqualTo(0)
+        assertThat(Match.fourCount).isEqualTo(0)
+        assertThat(Match.fiveCount).isEqualTo(0)
+        assertThat(Match.fiveAndBonusCount).isEqualTo(1)
+        assertThat(Match.sixCount).isEqualTo(0)
     }
 }
