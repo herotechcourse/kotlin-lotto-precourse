@@ -11,12 +11,5 @@ enum class Rank(val matchCount: Int, val prize: Long, val bonusBallRequired: Boo
         require(matchCount in 0..6) { "[ERR] Match count must be between 0 and 6." }
         require(prize >= 0) { "[ERR] Prize must be non-negative." }
     }
-
-    companion object {
-        fun from(matchCount: Int, bonusBallMatched: Boolean): Rank {
-            return entries.firstOrNull { it.matchCount == matchCount && (!it.bonusBallRequired || bonusBallMatched) }
-                ?: throw IllegalArgumentException("No matching rank found for matchCount: $matchCount and bonusBallMatched: $bonusBallMatched")
-        }
-    }
 }
 
