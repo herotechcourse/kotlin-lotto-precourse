@@ -19,5 +19,8 @@ object ErrorMessage {
         const val LOTTO_WINING_NUMBER__ERROR =
             "ERROR] Please enter valid numbers separated by commas."
         const val NOT_DIVISIBLE_BY_1000_ERROR = "[ERROR] Amount must be divided by 1000."
+        const val NUMBERS_SIZE_ERROR = "[ERROR] Lotto must contain exactly $LOTTO_NUMBER_SIZE numbers."
+        const val NUMBERS_UNIQUE_ERROR = "[ERROR] Numbers must be unique."
+        const val NUMBERS_RANGE_ERROR = "[ERROR] Numbers must be between $MIN_LOTTO_NUMBER and $MAX_LOTTO_NUMBER."
     }
 }
