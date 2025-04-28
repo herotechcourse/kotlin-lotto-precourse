@@ -18,4 +18,25 @@ class InputHandler {
             throw IllegalArgumentException("[ERROR] Invalid number format.")
         }
     }
+
+    fun getWinningNumbers(): List<Int> {
+        println("Please enter last week's winning numbers.")
+        val input = Console.readLine()
+
+        return validateWinningNumbers(input)
+    }
+
+    private fun validateWinningNumbers(input: String): List<Int> {
+        try {
+            val numbers = input.split(",").map { it.trim().toInt() }
+            
+            require(numbers.size == 6) { "[ERROR] You must enter exactly 6 winning numbers." }
+            require(numbers.distinct().size == 6) { "[ERROR] Winning numbers must be unique." }
+            require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
+            
+            return numbers
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Invalid number format.")
+        }
+    }
 }

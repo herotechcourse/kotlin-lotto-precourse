@@ -11,4 +11,6 @@ fun main() {
     val lottos = lottoMachine.generateLottos(lottoCount)
 
     outputHandler.printPurchasedLottos(lottos)
+
+    val winningNumbers = inputHandler.getWinningNumbers()
 }
