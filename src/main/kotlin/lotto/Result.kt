@@ -7,14 +7,14 @@ class Result {
     private var fourthPrize: Int = 0
     private var fifthPrize: Int = 0
     private var rate: Float = 0f
+    var totalPrice : Float = 0f
 
     fun calculateResult(winningLotto: WinningLotto, lottos: Lottos, purchaseAmount: String) {
-        var totalPrice : Float = 0f
         lottos.getTickets().forEach { lotto ->
             val matchCount = lotto.getNumbers().intersect(winningLotto.getWinningNumbers().toSet()).size
             val hasBonus = lotto.getNumbers().contains(winningLotto.getBonusNumber())
 
-            updateResult(matchCount, hasBonus, totalPrice)
+            updateResult(matchCount, hasBonus)
         }
 
         if (totalPrice != 0f) {
@@ -24,28 +24,27 @@ class Result {
         rate = 0f
     }
 
-    private fun updateResult(matchCount: Int, hasBonus: Boolean, totalPrice: Float) {
-        var totalPrice1 = totalPrice
+    private fun updateResult(matchCount: Int, hasBonus: Boolean) {
         val rank = Rank.of(matchCount, hasBonus)
         if (rank.equals(Rank.FIRST)) {
             firstPrize += 1
-            totalPrice1 += Rank.FIRST.prize
+            totalPrice += Rank.FIRST.prize
         }
         if (rank.equals(Rank.SECOND)) {
             secondPrize += 1
-            totalPrice1 += Rank.SECOND.prize
+            totalPrice += Rank.SECOND.prize
         }
         if (rank.equals(Rank.THIRD)) {
             thirdPrize += 1
-            totalPrice1 += Rank.THIRD.prize
+            totalPrice += Rank.THIRD.prize
         }
         if (rank.equals(Rank.FOURTH)) {
             fourthPrize += 1
-            totalPrice1 += Rank.FOURTH.prize
+            totalPrice += Rank.FOURTH.prize
         }
         if (rank.equals(Rank.FIFTH)) {
             fifthPrize += 1
-            totalPrice1 += Rank.FIFTH.prize
+            totalPrice += Rank.FIFTH.prize
         }
     }
 
@@ -55,6 +54,6 @@ class Result {
                 "5 Matches (1,500,000 KRW) – ${thirdPrize} tickets\n" +
                 "5 Matches + Bonus Ball (30,000,000 KRW) – ${secondPrize} tickets\n" +
                 "6 Matches (2,000,000,000 KRW) – ${firstPrize} tickets\n" +
-                "Total return rate is ${rate}%."
+                "Total return rate is ${"%.1f".format(rate)}%."
     }
 }
