@@ -10,8 +10,8 @@
     - [x] all 7 numbers must be unique in the range from 1 to 45
     - [x] bonus number is a number separate from the winning numbers
 ### exception handling
-- [ ] re-prompt user in case of exceptions
-- [ ] start error message with [ERROR]
+- [x] re-prompt user in case of exceptions
+- [x] start error message with [ERROR]
 ### lottery ticket machine
 - [x] ticket generation
     - [x] generate number of tickets based on purchase amount - 1 ticket per 1,000
