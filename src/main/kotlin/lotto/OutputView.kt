@@ -9,17 +9,29 @@ object OutputView {
     }
 
     fun printResult(result: Map<Rank, Int>) {
-        println("\nLotto result statistics")
+        println("\nWinning Statistics")
         println("---")
         Rank.entries
             .filter { it != Rank.NONE }
-            .sortedByDescending { it.matchCount }
+            .sortedBy { it.matchCount }
             .forEach { rank ->
-                println("${rank.matchCount} Matches${if (rank.matchBonus) " + Bonus" else ""} (${rank.prizeAmount} KRW) - ${result.getOrDefault(rank, 0)} tickets")
+                println(
+                    "${rank.matchCount} Matches${if (rank.matchBonus) " + Bonus Ball" else ""} (${rank.prizeAmount.formatWithComma()} KRW) - ${
+                        result.getOrDefault(
+                            rank,
+                            0
+                        )
+                    } tickets"
+                )
             }
     }
 
     fun printProfitRate(profitRate: Double) {
         println("Total return rate is %.1f%%".format(profitRate))
     }
+
+    private fun Int.formatWithComma(): String {
+        return String.format("%,d", this)
+    }
+
 }
