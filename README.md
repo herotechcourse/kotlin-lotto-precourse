@@ -20,10 +20,10 @@
     - [ ] calculate profit return rate based on winnings
     - [ ] round profit return rate to nearest tenth
 ### output
-- [ ] ask user for input
-    - [ ] ask user for purchase amount
-    - [ ] ask user for winning numbers
-    - [ ] ask user for bonus number
+- [x] ask user for input
+    - [x] ask user for purchase amount
+    - [x] ask user for winning numbers
+    - [x] ask user for bonus number
 - [ ] generated tickets
     - [ ] number of tickets
     - [ ] tickets
