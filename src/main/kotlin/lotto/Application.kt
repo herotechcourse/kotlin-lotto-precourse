@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.orchestrator.LottoRankOrchestrator
+
+
 fun main() {
-    // TODO: Implement the program
+    val lottoRankOrchestrator = LottoRankOrchestrator()
+    lottoRankOrchestrator.executeLotto()
 }
