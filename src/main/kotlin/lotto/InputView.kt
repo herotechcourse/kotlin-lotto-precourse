@@ -45,10 +45,14 @@ object InputView {
     fun getWinningNumbers() {
         val winningStrings = Console.readLine().split(",")
         for (input in winningStrings) {
-            validateLottoNumber(input)
+            try {
+                validateLottoNumber(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+                getWinningNumbers()
+            }
             LotteryTicketMachine.winningNumbers.add(input.toInt())
         }
-        println()
     }
 
     fun getBonusNumber() {
@@ -60,6 +64,5 @@ object InputView {
             getBonusNumber()
         }
         LotteryTicketMachine.bonusNumber = input.toInt()
-        println()
     }
 }
