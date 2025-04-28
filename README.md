@@ -17,6 +17,7 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
 
     - Issue as many tickets as the customer purchased.
     - Each ticket contains 6 unique random numbers between 1 and 45.
+    - Print the number of tickets issued and their numbers (sorted in ascending order).
 
 3. **Input Winning Numbers**
 
@@ -37,7 +38,6 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
 
 5. **Display Results**
 
-   - Print the number of tickets issued and their numbers (sorted in ascending order).
    - Display the winning statistics, including the number of tickets for each prize rank.
    - Calculate and display the total profit rate.
 
