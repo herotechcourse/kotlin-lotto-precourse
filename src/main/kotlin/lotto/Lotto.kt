@@ -1,9 +1,25 @@
 package lotto
 
+import lotto.validation.LottoValidator
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        LottoValidator.validateLottoNumbers(numbers)
     }
 
-    // TODO: Implement additional functions
+    /** Returns the lotto numbers, sorted in ascending order. */
+    fun getNumbers(): List<Int> {
+        return numbers.sorted() // Always return sorted numbers
+    }
+
+    /** Checks if the Lotto ticket contains the given number. */
+    fun contains(number: Int): Boolean {
+        LottoValidator.validateNumberRange(number)
+        return numbers.contains(number)
+    }
+
+    /** Counts how many numbers in this Lotto ticket match the given winning numbers. */
+    fun countMatchingNumbers(winningNumbers: List<Int>): Int {
+        return numbers.count { winningNumbers.contains(it) }
+    }
 }
