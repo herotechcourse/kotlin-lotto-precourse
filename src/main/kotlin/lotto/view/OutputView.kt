@@ -18,6 +18,14 @@ object OutputView {
             .forEach { println(getStatisticMessageFor(it, lottoResults))}
     }
 
+    fun printReturnRate(returnRate: Double) {
+        println(getReturnRateMessage(returnRate))
+    }
+
+    private fun getReturnRateMessage(returnRate: Double): String {
+        return "Total return rate is $returnRate%."
+    }
+
     private fun getPurchaseMessage(count: Int) = "You have purchased $count tickets"
 
     private fun getStatisticMessageFor(rank: PrizeRank, lottoResults: List<LottoResult>): String {
