@@ -14,17 +14,19 @@ class InputViewTest {
     @Test
     fun `invalid purchase amount not divisible by 1000`() {
         val invalidAmount = 1500
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validatePurchaseAmount(invalidAmount)
         }
+        assertEquals("[ERROR] Not divisible by 1000", exception.message)
     }
 
     @Test
     fun `invalid purchase amount less than or equal to 0`() {
         val invalidAmount = 0
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validatePurchaseAmount(invalidAmount)
         }
+        assertEquals("[ERROR] Purchase amount must be greater than 0", exception.message)
     }
 
     @Test
@@ -37,25 +39,28 @@ class InputViewTest {
     @Test
     fun `validate that the length of winning numbers is 6`() {
         val invalidNumbers = listOf(1, 2, 3, 4, 5)
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validateWinningNumbers(invalidNumbers)
         }
+        assertEquals("[ERROR] There must be exactly 6 numbers", exception.message)
     }
 
     @Test
     fun `validate that there are no duplicate winning numbers`() {
         val invalidNumbers = listOf(1, 2, 3, 4, 5, 5)
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validateWinningNumbers(invalidNumbers)
         }
+        assertEquals("[ERROR] All numbers must be unique", exception.message)
     }
 
     @Test
     fun `validate if winning numbers are out of range or not`() {
         val invalidNumbers = listOf(1, 2, 3, 4, 5, 46)
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validateWinningNumbers(invalidNumbers)
         }
+        assertEquals("[ERROR] All numbers must be between 1 and 45", exception.message)
     }
 
     @Test
@@ -69,17 +74,19 @@ class InputViewTest {
     fun `validate duplicate bonus number`() {
         val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 6
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validateBonusNumber(winningNumbers, bonusNumber)
         }
+        assertEquals("[ERROR] Bonus number must be different from other numbers", exception.message)
     }
 
     @Test
     fun `validate if bonus number is out of range or not`() {
         val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 46
-        assertThrows<IllegalArgumentException> {
+        val exception = assertThrows<IllegalArgumentException> {
             InputView.validateBonusNumber(winningNumbers, bonusNumber)
         }
+        assertEquals("[ERROR] Bonus number must be between 1 and 45", exception.message)
     }
 }
