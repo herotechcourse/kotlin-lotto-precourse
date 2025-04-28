@@ -5,6 +5,7 @@
     - Purchase Amount should be postivie number
     - Purchase Amount should be a multiple of 1000
 - **Winning Numbers**
+    - Winning Numbers should be 6
     - Numbers must be in the range 1 ~ 45
     - Every numbers should be unique
 - **Bonus Number**
