@@ -3,40 +3,60 @@ package lotto
 object LottoManager {
 
     fun run() {
-        val purchaseAmount = retry {
-            val input = InputView.readPurchaseAmount()
-            val amount = InputParser.parseToInt(input)
-            InputValidator.validatePurchaseAmount(amount)
-        }
-
-        val ticketCount = purchaseAmount / 1000
-        val tickets = LottoMachine.issueTickets(ticketCount)
-
+        val purchaseAmount = readPurchaseAmount()
+        val tickets = issueTickets(purchaseAmount)
         OutputView.printTickets(tickets)
 
-        val winningNumbers = retry {
-            val input = InputView.readWinningNumbers()
-            val numbers = InputParser.parseToNumbers(input)
-            Lotto(numbers)
-        }
+        val winningNumbers = readWinningNumbers()
+        val bonusNumber = readBonusNumber(winningNumbers)
 
-        val bonusNumber = retry {
-            val input = InputView.readBonusNumber()
-            val bonus = InputParser.parseToInt(input)
-            InputValidator.validateBonusNumber(bonus, winningNumbers.getNumbers())
-            bonus
-        }
-
-        val lottoResult = LottoResult(winningNumbers, bonusNumber)
-        val ranks = lottoResult.calculateRanks(tickets)
-        val statistics = lottoResult.getStatistics(ranks)
-
+        val statistics = calculateStatistics(tickets, winningNumbers, bonusNumber)
         OutputView.printStatistics(statistics)
 
-        val totalWinningAmount = lottoResult.calculateWinningAmount(statistics)
-        val returnRate = lottoResult.calculateReturnRate(totalWinningAmount, purchaseAmount)
-
+        val returnRate = calculateReturnRate(statistics, purchaseAmount)
         OutputView.printReturnRate(returnRate)
+    }
+
+    private fun readPurchaseAmount(): Int = retry {
+        val input = InputView.readPurchaseAmount()
+        val amount = InputParser.parseToInt(input)
+        InputValidator.validatePurchaseAmount(amount)
+    }
+
+    private fun issueTickets(purchaseAmount: Int): List<Lotto> {
+        val ticketCount = purchaseAmount / 1000
+        return LottoMachine.issueTickets(ticketCount)
+    }
+
+    private fun readWinningNumbers(): Lotto = retry {
+        val input = InputView.readWinningNumbers()
+        val numbers = InputParser.parseToNumbers(input)
+        Lotto(numbers)
+    }
+
+    private fun readBonusNumber(winningNumbers: Lotto): Int = retry {
+        val input = InputView.readBonusNumber()
+        val bonus = InputParser.parseToInt(input)
+        InputValidator.validateBonusNumber(bonus, winningNumbers.getNumbers())
+        bonus
+    }
+
+    private fun calculateStatistics(
+        tickets: List<Lotto>,
+        winningNumbers: Lotto,
+        bonusNumber: Int
+    ): Map<LottoRank, Int> {
+        val lottoResult = LottoResult(winningNumbers, bonusNumber)
+        val ranks = lottoResult.calculateRanks(tickets)
+        return lottoResult.getStatistics(ranks)
+    }
+
+    private fun calculateReturnRate(
+        statistics: Map<LottoRank, Int>,
+        purchaseAmount: Int
+    ): Double {
+        val totalWinningAmount = statistics.entries.sumOf { it.key.prize.toLong() * it.value }
+        return (totalWinningAmount.toDouble() / purchaseAmount) * 100
     }
 
     private fun <T> retry(block: () -> T): T {
