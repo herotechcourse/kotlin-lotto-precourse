@@ -6,8 +6,7 @@ object RePromptHandler {
             try {
                 return inputAction()
             } catch (e: IllegalArgumentException) {
-                print(e.message)
-                println(" Please enter again.")
+                println("${e.message} Please enter again.")
             }
         }
     }
