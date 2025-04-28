@@ -8,7 +8,10 @@ class InputView {
         val amount = try {
             Console.readLine().toInt()
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("You must enter a valid number.")
+            throw IllegalArgumentException("[ERROR] You must enter a valid number.")
+        }
+        if (amount % 100 != 0) {
+            throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
         }
         return amount
     }
@@ -18,16 +21,16 @@ class InputView {
         val winningNumbers = try {
             Console.readLine().split(",").map { it.toInt() }
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("You must enter a valid number.")
+            throw IllegalArgumentException("[ERROR] You must enter a valid number.")
         }
         if (winningNumbers.size != 6) {
-            throw IllegalArgumentException("You must enter the 6 numbers.")
+            throw IllegalArgumentException("[ERROR] You must enter the 6 numbers.")
         }
         if (winningNumbers.distinct().size != winningNumbers.size) {
-            throw IllegalArgumentException("You must not enter duplicate numbers.")
+            throw IllegalArgumentException("[ERROR] You must not enter duplicate numbers.")
         }
         if (winningNumbers.any { it !in 1..45 }) {
-            throw IllegalArgumentException("You must enter numbers between 1 and 45.")
+            throw IllegalArgumentException("[ERROR] You must enter numbers between 1 and 45.")
         }
         return winningNumbers
     }
@@ -37,10 +40,10 @@ class InputView {
         val bonusNumber = try {
             Console.readLine().toInt()
         } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("You must enter a valid number.")
+            throw IllegalArgumentException("[ERROR] You must enter a valid number.")
         }
         if (bonusNumber !in 1..45) {
-            throw IllegalArgumentException("You must enter number between 1 and 45.")
+            throw IllegalArgumentException("[ERROR] You must enter number between 1 and 45.")
         }
         return bonusNumber
     }
