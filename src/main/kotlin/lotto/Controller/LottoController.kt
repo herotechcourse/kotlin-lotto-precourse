@@ -1,7 +1,7 @@
 package lotto.controller
 
-import lotto.model.Lotto
-import lotto.model.LottoGame
+import lotto.Lotto
+import lotto.LottoGame
 import lotto.view.InputView
 import lotto.view.OutputView
 

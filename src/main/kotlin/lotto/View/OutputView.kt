@@ -1,7 +1,7 @@
 package lotto.view
 
-import lotto.model.Lotto
-import lotto.model.LottoPrize
+import lotto.Lotto
+import lotto.LottoPrize
 
 object OutputView {
     private val PRIZE_FORMAT = listOf(

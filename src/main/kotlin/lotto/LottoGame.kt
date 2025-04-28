@@ -1,4 +1,4 @@
-package lotto.model 
+package lotto 
 import camp.nextstep.edu.missionutils.Randoms
 
 enum class LottoPrize(val match: Int, val isBonus: Boolean, val prize: Int) {
