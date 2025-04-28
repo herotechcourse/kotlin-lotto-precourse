@@ -2,7 +2,7 @@ package lotto.util
 
 import lotto.LotteryConstants
 
-class AmountParser {
+class PurchaseAmountParser {
     fun parse(input: String): Int {
         validateInput(input)
 
@@ -12,7 +12,7 @@ class AmountParser {
             throw IllegalArgumentException("[ERROR] Purchase amount must be a numeric value.")
         }
 
-        validateAmount(parsedInput)
+        validatePurchaseAmount(parsedInput)
 
         return parsedInput
     }
@@ -24,7 +24,7 @@ class AmountParser {
 
     }
 
-    private fun validateAmount(amount: Int) {
+    private fun validatePurchaseAmount(amount: Int) {
         if (amount <= 0) throw IllegalArgumentException("[ERROR] Purchase amount must be greater than zero.")
         if (amount % LotteryConstants.TICKET_PRIZE != 0) throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by ${LotteryConstants.TICKET_PRIZE}.")
     }

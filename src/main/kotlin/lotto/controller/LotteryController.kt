@@ -4,7 +4,7 @@ import lotto.LotteryConstants
 import lotto.model.LotteryResult
 import lotto.model.LottoGenerator
 import lotto.model.WinningLotto
-import lotto.util.AmountParser
+import lotto.util.PurchaseAmountParser
 import lotto.util.BonusNumberParser
 import lotto.util.WinningNumbersParser
 import lotto.view.InputView
@@ -13,7 +13,7 @@ import lotto.view.OutputView
 class LotteryController(
     private val inputView: InputView,
     private val outputView: OutputView,
-    private val amountParser: AmountParser,
+    private val purchaseAmountParser: PurchaseAmountParser,
     private val winningNumbersParser: WinningNumbersParser,
     private val bonusNumberParser: BonusNumberParser,
     private val lottoGenerator: LottoGenerator,
@@ -40,7 +40,7 @@ class LotteryController(
         while (true) {
             try {
                 val input = inputView.readPurchaseAmount()
-                return amountParser.parse(input)
+                return purchaseAmountParser.parse(input)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
