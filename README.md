@@ -2,7 +2,7 @@
 
 ## feature list
 ### input handling
-- [x] purchase amount
+- [x] ask user for purchase amount
     - [x] validate that purchase amount is divisible by 1,000
     - [x] throw exception if purchase amount is not divisible by 1,000
 - [x] 6 winning numbers + 1 bonus number
