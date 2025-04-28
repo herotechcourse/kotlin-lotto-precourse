@@ -3,7 +3,7 @@ package lotto
 import lotto.constants.HIGHEST_NUMBER
 import lotto.constants.LOWEST_NUMBER
 import lotto.constants.TICKET_COST
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
@@ -58,7 +58,6 @@ class UserInputTest {
             val thrown = assertThrows<IllegalArgumentException> {
                 userInput.setPurchaseAmount("-42")
             }
-
             val thrownZero = assertThrows<IllegalArgumentException> {
                 userInput.setPurchaseAmount("0")
             }
@@ -68,7 +67,6 @@ class UserInputTest {
                 .hasMessage(
                     "[ERROR] Purchase amount must be greater than zero."
                 )
-
             assertThat(thrownZero)
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage(
@@ -109,7 +107,7 @@ class UserInputTest {
         fun `setWinningNumbers should assign valid values`() {
             userInput.setWinningNumbers("1,2,3,4,5,6")
 
-            assertEquals(mutableListOf<Int>(1,2,3,4,5,6), userInput.winningNumbers)
+            assertEquals(mutableListOf<Int>(1, 2, 3, 4, 5, 6), userInput.winningNumbers)
         }
 
         @Test
@@ -156,7 +154,6 @@ class UserInputTest {
             val thrown = assertThrows<IllegalArgumentException> {
                 userInput.setWinningNumbers("1,2,3,4,-42,6")
             }
-
             val thrownZero = assertThrows<IllegalArgumentException> {
                 userInput.setWinningNumbers("1,2,3,4,0,6")
             }
@@ -166,7 +163,6 @@ class UserInputTest {
                 .hasMessage(
                     "[ERROR] All numbers must be greater than zero."
                 )
-
             assertThat(thrownZero)
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage(
@@ -267,7 +263,6 @@ class UserInputTest {
             val thrown = assertThrows<IllegalArgumentException> {
                 userInput.setBonusNumber("-42")
             }
-
             val thrownZero = assertThrows<IllegalArgumentException> {
                 userInput.setBonusNumber("0")
             }
@@ -277,7 +272,6 @@ class UserInputTest {
                 .hasMessage(
                     "[ERROR] Bonus number must be greater than zero."
                 )
-
             assertThat(thrownZero)
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage(

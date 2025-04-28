@@ -1,6 +1,7 @@
 package lotto.view
 
-import lotto.*
+import lotto.LottoResult
+import lotto.TicketPurchase
 import lotto.constants.Prizes
 import java.text.NumberFormat
 import java.util.*
@@ -21,10 +22,17 @@ class OutputView {
         }
 
         fun displayWinningStatistics(lottoResult: LottoResult) {
-            val formatter = NumberFormat.getNumberInstance(Locale.US)
+            displayWinningStatisticsHeader()
+            displayWinningStatisticsBody(lottoResult)
+        }
 
+        private fun displayWinningStatisticsHeader() {
             println("Winning statistics")
             println("---")
+        }
+
+        private fun displayWinningStatisticsBody(lottoResult: LottoResult) {
+            val formatter = NumberFormat.getNumberInstance(Locale.US)
             println("3 Matches (${formatter.format(Prizes.FIFTH.prizeMoney)} KRW) – ${lottoResult.winningStatistics["three"]} tickets")
             println("4 Matches (${formatter.format(Prizes.FOURTH.prizeMoney)} KRW) – ${lottoResult.winningStatistics["four"]} tickets")
             println("5 Matches (${formatter.format(Prizes.THIRD.prizeMoney)} KRW) – ${lottoResult.winningStatistics["five"]} tickets")

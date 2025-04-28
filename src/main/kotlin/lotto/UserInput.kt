@@ -4,7 +4,7 @@ import lotto.constants.HIGHEST_NUMBER
 import lotto.constants.LOWEST_NUMBER
 import lotto.constants.TICKET_COST
 
-class UserInput{
+class UserInput {
 
     init {
         require(TICKET_COST > 0) {
@@ -24,7 +24,6 @@ class UserInput{
 
     fun setPurchaseAmount(input: String) {
         val purchaseAmount = input.toIntOrNull()
-
         sanitizePurchaseAmount(purchaseAmount)
         if (purchaseAmount != null) {
             this.purchaseAmount = purchaseAmount
@@ -44,33 +43,34 @@ class UserInput{
     }
 
     fun setWinningNumbers(input: String) {
-        val splitNumbers = input.split(",").map { it.trim() }
-        val numbers = sanitizeSplitNumbers(splitNumbers)
+        val winningNumbers = input.split(",").map { it.trim() }
+        this.winningNumbers = sanitizeWinningNumbers(winningNumbers)
+    }
 
-        this.winningNumbers = numbers
+    private fun sanitizeWinningNumbers(splitNumbers: List<String>): MutableList<Int> {
+        val numbers = sanitizeSplitNumbers(splitNumbers)
+        sanitizeNumbers(numbers)
+        return numbers
     }
 
     private fun sanitizeSplitNumbers(splitNumbers: List<String>): MutableList<Int> {
         val numbers = mutableListOf<Int>()
-
         for (splitNumber in splitNumbers) {
             val number = splitNumber.toIntOrNull()
-            sanitizeNumber(number)
+            sanitizeSplitNumber(number)
             if (number != null) {
                 numbers.add(number)
             }
         }
-        sanitizeNumbers(numbers)
-
         return numbers
     }
 
-    private fun sanitizeNumber(number: Int?){
+    private fun sanitizeSplitNumber(number: Int?) {
         "All numbers".sanitizePositiveNumber(number)
         "All numbers".sanitizeRangeOfNumbers(number)
     }
 
-    private fun sanitizeNumbers(numbers: MutableList<Int>){
+    private fun sanitizeNumbers(numbers: MutableList<Int>) {
         require(numbers.size == numbers.toSet().size) {
             "[ERROR] All numbers must be unique"
         }
@@ -81,14 +81,13 @@ class UserInput{
 
     fun setBonusNumber(input: String) {
         val bonusNumber = input.toIntOrNull()
-
         sanitizeBonusNumber(bonusNumber)
         if (bonusNumber != null) {
             this.bonusNumber = bonusNumber
         }
     }
 
-    private fun sanitizeBonusNumber(bonusNumber: Int?){
+    private fun sanitizeBonusNumber(bonusNumber: Int?) {
         "Bonus number".sanitizePositiveNumber(bonusNumber)
         "Bonus number".sanitizeRangeOfNumbers(bonusNumber)
         if (bonusNumber != null) {
@@ -98,7 +97,7 @@ class UserInput{
         }
     }
 
-    private fun String.sanitizePositiveNumber(number: Int?){
+    private fun String.sanitizePositiveNumber(number: Int?) {
         require(number != null) {
             "[ERROR] $this must be a number."
         }
@@ -107,7 +106,7 @@ class UserInput{
         }
     }
 
-    private fun String.sanitizeRangeOfNumbers(number: Int?){
+    private fun String.sanitizeRangeOfNumbers(number: Int?) {
         if (number != null) {
             require(number >= LOWEST_NUMBER && number <= HIGHEST_NUMBER) {
                 "[ERROR] $this must be between $LOWEST_NUMBER and $HIGHEST_NUMBER."

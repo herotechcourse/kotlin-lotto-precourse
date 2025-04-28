@@ -1,9 +1,9 @@
 package lotto
 
 import lotto.constants.Prizes
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.assertj.core.api.Assertions.*
 
 class LottoResultTest {
     private lateinit var ticketPurchase: TicketPurchase
@@ -78,7 +78,6 @@ class LottoResultTest {
 
         val expectedTotalPrize = (Prizes.FIFTH.prizeMoney * 2) + (Prizes.FOURTH.prizeMoney * 3)
         val expectedReturnRate = (expectedTotalPrize.toDouble() / 14000) * 100
-
         assertThat(lottoResult.returnRate).isEqualTo(expectedReturnRate)
     }
 }

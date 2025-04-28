@@ -18,7 +18,6 @@ class LottoResult {
 
     fun generateWinningStatistics(userInput: UserInput, ticketPurchase: TicketPurchase) {
         val tickets: MutableList<Lotto> = ticketPurchase.tickets
-
         for (ticket in tickets) {
             updateWinningStatistics(ticket, userInput)
         }
@@ -26,7 +25,6 @@ class LottoResult {
 
     private fun updateWinningStatistics(ticket: Lotto, userInput: UserInput) {
         val matches = ticket.getNumbers().count { it in userInput.winningNumbers }
-
         when (matches) {
             3 -> this.winningStatistics["three"] = this.winningStatistics.getOrDefault("three", 0) + 1
             4 -> this.winningStatistics["four"] = this.winningStatistics.getOrDefault("four", 0) + 1
@@ -43,8 +41,12 @@ class LottoResult {
     }
 
     fun calculateReturnRate(userInput: UserInput) {
-        var totalPrize = 0
+        val totalPrize = calculateTotalPrize()
+        this.returnRate = (totalPrize.toDouble() / userInput.purchaseAmount) * 100
+    }
 
+    private fun calculateTotalPrize(): Int {
+        var totalPrize = 0
         for ((key, count) in this.winningStatistics) {
             totalPrize += when (key) {
                 "three" -> count * Prizes.FIFTH.prizeMoney
@@ -55,7 +57,7 @@ class LottoResult {
                 else -> 0
             }
         }
-        this.returnRate = (totalPrize.toDouble() / userInput.purchaseAmount) * 100
+        return totalPrize
     }
 
     fun setWinningStatisticsForTest(winningStatistics: MutableMap<String, Int>) {
