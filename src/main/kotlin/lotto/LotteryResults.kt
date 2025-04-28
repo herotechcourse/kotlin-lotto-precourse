@@ -5,7 +5,7 @@ import lotto.PrizeRanking.*
 class LotteryResults {
     private var sum: Long = 0
 
-    private fun getRank(matchCount: Int, hasBonus: Boolean): Long {
+    internal fun getRank(matchCount: Int, hasBonus: Boolean): Long {
         if (matchCount == 6)
             return FIRST.prize
         if (matchCount == 5 && hasBonus)
