@@ -1,26 +1,21 @@
 package lotto
 
+import lotto.domain.ErrorMessages
 import lotto.domain.LottoConstants
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LottoConstants.LOTTO_NUMBER_SIZE) { LOTTO_NUMBER_SIZE_ERROR }
-        require(numbers.toSet().size == LottoConstants.LOTTO_NUMBER_SIZE) { LOTTO_DUPLICATED_NUMBER_ERROR }
+        require(numbers.size == LottoConstants.LOTTO_NUMBER_SIZE) { ErrorMessages.LOTTO_NUMBER_SIZE_ERROR }
+        require(numbers.toSet().size == LottoConstants.LOTTO_NUMBER_SIZE) { ErrorMessages.LOTTO_DUPLICATED_NUMBER_ERROR }
 
         numbers.forEach {
             require(it in LottoConstants.MIN_LOTTO_NUMBER..LottoConstants.MAX_LOTTO_NUMBER) {
-                LOTTO_NUMBER_RANGE_ERROR
+                ErrorMessages.LOTTO_NUMBER_RANGE_ERROR
             }
         }
     }
 
     fun formatForDisplay(): String {
         return numbers.sorted().toString()
-    }
-
-    companion object {
-        private const val LOTTO_NUMBER_SIZE_ERROR: String = "Lotto must contain exactly 6 numbers."
-        private const val LOTTO_DUPLICATED_NUMBER_ERROR: String = "Lotto numbers must not be duplicated."
-        private const val LOTTO_NUMBER_RANGE_ERROR: String = "Lotto range must be between 1 and 45."
     }
 }
