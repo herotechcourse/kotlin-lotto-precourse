@@ -7,8 +7,8 @@ class InputView {
     companion object {
         fun promptPurchaseAmount(userInput: UserInput) {
             println("Please enter the purchase amount.")
-            val pruchaseAmount = Console.readLine()
-            userInput.setPurchaseAmount(pruchaseAmount)
+            val purchaseAmount = Console.readLine()
+            userInput.setPurchaseAmount(purchaseAmount)
             println()
         }
 
