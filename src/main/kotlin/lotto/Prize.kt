@@ -19,7 +19,7 @@ enum class Prize(val prizeMoney:Int, val matchType:String, val result:String, va
 
         fun getResultMatch(){
             Prize.entries.forEach{
-                println(it.result+" - "+it.cnt+" tickets")
+                println(it.result+" – "+it.cnt+" tickets")
             }
         }
     }
