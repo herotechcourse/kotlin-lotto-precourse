@@ -1,10 +1,13 @@
 package lotto
 
+import lotto.Constants.MAX_NUMBER
+import lotto.Constants.MIN_NUMBER
+
 class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumber: Int)
 {
     init {
-        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
-        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(winningNumbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+        require(bonusNumber in MIN_NUMBER..MAX_NUMBER) { "[ERROR] Bonus number must be between 1 and 45." }
         require(winningNumbers.size == 6) { "[ERROR] Winning numbers must contain exactly 6 numbers." }
         require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] Winning numbers cannot contain duplicates." }
         require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }

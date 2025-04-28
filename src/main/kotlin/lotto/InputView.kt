@@ -1,6 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Constants.MAX_NUMBER
+import lotto.Constants.MIN_NUMBER
+import lotto.Constants.TICKET_PRICE
 
 object InputView {
     fun inputPurchaseAmount():Int {
@@ -8,7 +11,7 @@ object InputView {
         return try {
             val purchaseAmount = Console.readLine().toInt()
             require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
-            require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
+            require(purchaseAmount % TICKET_PRICE == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
             purchaseAmount
         } catch (e: IllegalArgumentException) {
             println("${e.message}")
@@ -25,7 +28,7 @@ object InputView {
             }
             require(winningNumbers.size == 6) { "[ERROR] You must enter exactly 6 numbers." }
             require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] You cannot enter duplicate numbers." }
-            require(winningNumbers.all { it in 1..45 }) { "[ERROR] All numbers must be between 1 and 45." }
+            require(winningNumbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] All numbers must be between 1 and 45." }
             return winningNumbers
         } catch (e: IllegalArgumentException) {
             println("${e.message}")
@@ -40,7 +43,7 @@ object InputView {
         try {
             val input = Console.readLine()
             val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("Bonus number must be a valid integer.")
-            require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+            require(bonusNumber in MIN_NUMBER..MAX_NUMBER) { "[ERROR] Bonus number must be between 1 and 45." }
             require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
             return bonusNumber
         } catch (e: IllegalArgumentException) {

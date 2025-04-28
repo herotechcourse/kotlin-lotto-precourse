@@ -1,6 +1,9 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Constants.MAX_NUMBER
+import lotto.Constants.MIN_NUMBER
+import lotto.Constants.TICKET_PRICE
 
 class LottoMachine (purchaseAmount: Int) {
 
@@ -8,11 +11,11 @@ class LottoMachine (purchaseAmount: Int) {
 
     init {
         require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
-        require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000."}
+        require(purchaseAmount % TICKET_PRICE == 0) { "[ERROR] Purchase amount must be divisible by 1000."}
     }
 
     fun purchaseLottoTicket(purchaseAmount: Int) {
-        val ticketQuantity = purchaseAmount / 1000
+        val ticketQuantity = purchaseAmount / TICKET_PRICE
         repeat (ticketQuantity) {
             val lotto = Lotto(generateTicketNumbers())
             tickets.add(lotto)
@@ -20,7 +23,7 @@ class LottoMachine (purchaseAmount: Int) {
     }
 
     private fun generateTicketNumbers(): List<Int> {
-        val ticketNumbers : List<Int> = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        val ticketNumbers : List<Int> = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, 6).sorted()
         return ticketNumbers
     }
 

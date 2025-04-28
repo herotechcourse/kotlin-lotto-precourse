@@ -30,3 +30,9 @@ enum class ResultRank(
     val bonusText: String
         get() = if (bonusRequired) " + Bonus Ball" else ""
 }
+
+object Constants {
+    const val TICKET_PRICE = 1_000
+    const val MIN_NUMBER = 1
+    const val MAX_NUMBER = 45
+}
