@@ -55,10 +55,10 @@ class LottoController {
     }
 
     private fun outputWinningStatistics(
-        purchaseAmount: PurchaseAmount, lottoList: List<Lotto>, winningNumber: WinningNumber, bonusNumber: BonusNumber
+        lottoList: List<Lotto>, winningNumber: WinningNumber, bonusNumber: BonusNumber
     ) {
         val lottoResult = LottoResult.from(lottoList, winningNumber, bonusNumber)
-        val profitRate = lottoResult.getProfitRate(purchaseAmount)
+        val profitRate = lottoResult.getProfitRate()
         OutputView.printWinningStatisticsOutputMessage(lottoResult)
         OutputView.printProfitRateOutputMessage(profitRate)
     }
