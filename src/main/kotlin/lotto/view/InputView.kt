@@ -4,28 +4,28 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
     fun inputPurchase() : String {
-        println("Enter the price: ")
+        println("Please enter the purchase amount.")
         val input = Console.readLine()
         validatePriceInput(input)
         return input
     }
 
     fun inputWinNumbers() : List<Int> {
-        println("Enter winning numbers (comma-separated): ")
+        println("Please enter last week's winning numbers.")
         val input = Console.readLine()
         validateWinNumber(input)
         return input.split(",").map {it.trim().toInt()}
     }
 
-    fun inputBonusNumbers() : String {
-        println("Enter the bonus number: ")
+    fun inputBonusNumbers(winNumbers : List<Int>) : Int {
+        println("Please enter the bonus number.")
         val input = Console.readLine()
-        validateBonusNumber(input, inputWinNumbers())
-        return input
+        val bonus = validateBonusNumber(input, winNumbers)
+        return bonus
     }
 
     private fun validateWinNumber(input:String) {
-        // 입력갯수, 범위, 중복숫자, 콤마로 분리되어있는 지 체크
+        // TODO : 입력갯수, 범위, 중복숫자, 콤마로 분리되어있는 지 체크하기
         val num = input.split(",").map {it.trim()}
         require(num.size == 6) { "[ERROR] You must enter exactly 6 numbers." }
         require( num.all { it.all { ch-> ch.isDigit() }}) { "[ERROR] All winning numbers must be numeric." }
@@ -34,11 +34,12 @@ object InputView {
         require(intNumber.toSet().size == 6) { "[ERROR] Winning numbers must not contain duplicates." }
     }
 
-    private fun validateBonusNumber(input:String, winNum : List<Int>) {
+    private fun validateBonusNumber(input:String, winNum : List<Int>) : Int {
         require(input.all { it.isDigit() }) { "[ERROR] Bonus number must be numeric." }
         val bonus = input.toInt()
         require(bonus in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
         require(!winNum.contains(bonus)) { "[ERROR] Bonus number must not be one of the winning numbers." }
+        return bonus
     }
 
 
