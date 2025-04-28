@@ -51,4 +51,13 @@ class LottoTest {
         assertThat(lotto.numbers).containsExactly(1, 2, 3, 4, 5, 6)
     }
 
+    @Test
+    fun `creates correct bitmask for numbers`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+
+        val lotto = Lotto(numbers)
+
+        val expectedBitmask = (1L shl 1) or (1L shl 2) or (1L shl 3) or (1L shl 4) or (1L shl 5) or (1L shl 6)
+        assertThat(lotto.bitmask).isEqualTo(expectedBitmask)
+    }
 }
