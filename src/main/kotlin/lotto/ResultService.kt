@@ -1,7 +1,6 @@
 package lotto
 
 object ResultService {
-
     fun calculateResult(
         lottos: List<Lotto>,
         winningNumbers: List<Int>,
