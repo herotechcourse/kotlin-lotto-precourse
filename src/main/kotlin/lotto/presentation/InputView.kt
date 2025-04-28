@@ -1,6 +1,5 @@
 package lotto.presentation
 
-import camp.nextstep.edu.missionutils.Console
 import lotto.domain.BonusNumber
 import lotto.domain.PurchaseAmount
 import lotto.domain.WinningNumbers
@@ -20,12 +19,12 @@ object InputView {
         }
     }
 
-    fun readPurchaseAmount(): PurchaseAmount =
-        repeatRead("Please enter the purchase amount.") { PurchaseAmount(parseSingle(Console.readLine())) }
+    fun readPurchaseAmount(reader: () -> String): PurchaseAmount =
+        repeatRead("Please enter the purchase amount.") { PurchaseAmount(parseSingle(reader())) }
 
-    fun readWinningNumbers(): WinningNumbers =
-        repeatRead("Please enter last week's winning numbers.") { WinningNumbers(parseMultiple(Console.readLine())) }
+    fun readWinningNumbers(reader: () -> String): WinningNumbers =
+        repeatRead("Please enter last week's winning numbers.") { WinningNumbers(parseMultiple(reader())) }
 
-    fun readBonusNumber(): BonusNumber =
-        repeatRead("Please enter the bonus number.") { BonusNumber(parseSingle(Console.readLine())) }
+    fun readBonusNumber(reader: () -> String): BonusNumber =
+        repeatRead("Please enter the bonus number.") { BonusNumber(parseSingle(reader())) }
 }
