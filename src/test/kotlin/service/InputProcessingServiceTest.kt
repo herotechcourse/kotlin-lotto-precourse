@@ -75,4 +75,35 @@ class InputProcessingServiceTest {
             }
         }
     }
+
+    @Test
+    fun `validatePurchaseAmount accepts positive multiples of 1000`() {
+        val validAmounts = listOf(1000, 2000, 10000)
+
+        validAmounts.forEach { amount ->
+            InputProcessingService.validatePurchaseAmount(amount)
+        }
+    }
+
+    @Test
+    fun `validatePurchaseAmount throws exception for non-multiples of 1000`() {
+        val invalidAmounts = listOf(1, 500, 1500, 2001)
+
+        invalidAmounts.forEach { amount ->
+            assertThrows<IllegalArgumentException> {
+                InputProcessingService.validatePurchaseAmount(amount)
+            }
+        }
+    }
+
+    @Test
+    fun `validatePurchaseAmount throws exception for zero or negative amounts`() {
+        val invalidAmounts = listOf(0, -1000, -5000)
+
+        invalidAmounts.forEach { amount ->
+            assertThrows<IllegalArgumentException> {
+                InputProcessingService.validatePurchaseAmount(amount)
+            }
+        }
+    }
 }
