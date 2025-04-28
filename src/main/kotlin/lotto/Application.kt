@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    try {
+        val purchaseAmount = InputView.readPurchaseAmount()
+        println("Purchase Amount: $purchaseAmount") // TEMP: Check it works
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
