@@ -1,13 +1,12 @@
 package lotto
 
-import lotto.LottoGenerator.generateLottos
-
 class LottoMachine(
     private val inputView: InputView = InputView(),
 ) {
     fun run() {
         val purchaseAmount = readPurchaseAmount()
         val lottos = generateLottoByPurchaseAmount(purchaseAmount)
+        OutputView.printIssuedLottos(lottos)
     }
 
     private fun readPurchaseAmount(): Int {
@@ -24,6 +23,6 @@ class LottoMachine(
 
     private fun generateLottoByPurchaseAmount(purchaseAmount: Int): List<Lotto> {
         val count = purchaseAmount / 1000
-        return generateLottos(count)
+        return LottoGenerator.generateLottos(count)
     }
 }
