@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.domain.LotteryTicket
+import lotto.domain.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -8,7 +8,7 @@ class LottoTest {
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
-            LotteryTicket(listOf(1, 2, 3, 4, 5, 6, 7))
+            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
 
@@ -16,7 +16,7 @@ class LottoTest {
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
-            LotteryTicket(listOf(1, 2, 3, 4, 5, 5))
+            Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
     }
 

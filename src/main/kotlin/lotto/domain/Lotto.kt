@@ -1,6 +1,6 @@
 package lotto.domain
 
-class LotteryTicket(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }

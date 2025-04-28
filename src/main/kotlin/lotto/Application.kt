@@ -4,6 +4,6 @@ import lotto.view.ConsoleInputReader
 import lotto.view.ConsoleOutputPrinter
 
 fun main() {
-    val machine = Lotto(ConsoleInputReader(), ConsoleOutputPrinter())
+    val machine = LottoMachine(ConsoleInputReader(), ConsoleOutputPrinter())
     machine.run()
 }

@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.domain.Lotto
+import lotto.domain.PurchaseAmount
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThatThrownBy
 
@@ -18,7 +20,7 @@ class PurchaseAmountTest {
     @Test
     fun `throws an exception when purchase number is less than single lottery price`() {
         // given
-        val invalidNumber = LotteryTicket.PRICE - 1
+        val invalidNumber = Lotto.PRICE - 1
 
         // when & then
         assertThatThrownBy { PurchaseAmount(invalidNumber) }
