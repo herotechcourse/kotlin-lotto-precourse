@@ -12,20 +12,23 @@ object OutputView {
         }
     }
 
-    fun printWinningStatistics(map: Map<PrizeRank, Int>) {
+    fun printProfitResult(total: String) {
+        println("Total return rate is ${total}%.")
+    }
+
+    fun printWinningStatistics(rankCountMap: Map<PrizeRank, Int>) {
         println("\nWinning Statistics\n---")
-        for(result in map) {
-            if(!PrizeRank.NONE.equals(result.key)) {
-                print("${result.key.matchCount} Matches ")
-                if(result.key.bonusResult) {
-                    print("+ Bonus Ball ")
-                }
-                println("(${String.format("%,d", result.key.prize)} KRW) – ${result.value} tickets")
-            }
+        for (result in rankCountMap) {
+            if (result.key == PrizeRank.NONE) continue
+            printSingleRank(result.key, result.value)
         }
     }
 
-    fun printProfitResult(total: String) {
-        println("Total return rate is ${total}%.")
+    private fun printSingleRank(rank: PrizeRank, count: Int) {
+        print("${rank.matchCount} Matches ")
+        if (rank.bonusResult) {
+            print("+ Bonus Ball ")
+        }
+        println("(${String.format("%,d", rank.prize)} KRW) – ${count} tickets")
     }
 }
