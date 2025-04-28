@@ -21,6 +21,13 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `throws an exception when lotto numbers are not in range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 500))
+        }
+    }
+
     // TODO: Implement tests based on the added features
     @Test
     fun `calculateRank returns ZERO when zero numbers match`() {
