@@ -8,7 +8,7 @@ class ConsoleInputReader: InputReader {
     override fun readPurchaseAmount(): PurchaseAmount {
         println("Please enter the purchase amount.")
         val amount: Int? = Console.readLine().toIntOrNull()
-        require(amount != null) {"[ERR] Purchase amount must be a number. Please enter again."}
+        require(amount != null) {"[ERR] Purchase amount must be a number."}
 
         return PurchaseAmount(amount)
     }
