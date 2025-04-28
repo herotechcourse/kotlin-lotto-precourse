@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.Lotto
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -46,5 +46,11 @@ class PurchaseAmountTest {
         assertThrows<IllegalArgumentException> {
             PurchaseAmount.from("1001")
         }
+    }
+
+    @Test
+    fun `calculate possible lotto ticket count based on purchase amount`() {
+        assertThat(PurchaseAmount(1000).possibleLottoTicketCount).isEqualTo(1)
+        assertThat(PurchaseAmount(5000).possibleLottoTicketCount).isEqualTo(5)
     }
 }
