@@ -37,7 +37,7 @@ object OutputView {
 
             is Double -> {
                 val rounded = (number * 10).toInt() / 10.0
-                "$rounded%"
+                String.format("%.1f%%", rounded).replace(",", ".") // ✅ Force dot
             }
 
             else -> throw IllegalArgumentException("Unsupported number type")
