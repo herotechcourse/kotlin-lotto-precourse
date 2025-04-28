@@ -9,6 +9,14 @@ import view.OutputView
 fun main() {
     val tickets = readTickets()
     val winningNumbers = readWinningNumbers()
+
+    val statistics = LottoMatchService.calculateStatistics(tickets, winningNumbers)
+    val profitRate = LottoMatchService
+        .calculateReturnRate(tickets, statistics)
+        .let(LottoMatchService::roundNearestTenth) + "%"
+
+    OutputView.printWinningStatistics(statistics)
+    OutputView.printProfitRate(profitRate)
 }
 
 private fun readTickets(): Tickets =
