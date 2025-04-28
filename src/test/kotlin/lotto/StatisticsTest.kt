@@ -37,7 +37,7 @@ class StatisticsTest {
 
     @Test
     fun `profitRate should calculate correctly for winning tickets`() {
-      
+
         statistics.addResult(Rank.FIFTH)
         statistics.addResult(Rank.FOURTH)
 
