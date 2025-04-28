@@ -3,7 +3,7 @@ package lotto.service
 import lotto.controller.response.PurchasedTicketsDto
 import lotto.domain.LottoGenerator
 import lotto.domain.PurchaseAmount
-import lotto.domain.RandomLottos
+import lotto.domain.winning.RandomLottos
 
 class LottoService {
     fun createRandomLotto(amount: Int): RandomLottos {

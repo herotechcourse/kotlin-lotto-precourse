@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.domain.winning
 
 class BonusNumber(private val number: Int) {
     init {

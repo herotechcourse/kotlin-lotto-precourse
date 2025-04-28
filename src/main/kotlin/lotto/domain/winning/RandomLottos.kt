@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.domain.winning
 
 import lotto.Lotto
 import lotto.domain.dto.NumbersDto
