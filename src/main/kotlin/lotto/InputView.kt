@@ -10,7 +10,7 @@ object InputView {
         println("Please enter last week's winning numbers.")
         return Console.readLine().orEmpty()
             .split(",")
-            .map { it.toInt() }
+            .map { it.trim().toInt() }
     }
 
     fun readBonusNumber(): Int {
