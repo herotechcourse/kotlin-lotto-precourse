@@ -8,6 +8,7 @@ class LottoMachine(
         val lottos = generateLottoByPurchaseAmount(purchaseAmount)
         OutputView.printIssuedLottos(lottos)
         val winningNumbers = readWinningNumber()
+        val bonusNumber = readBonusNumber(winningNumbers)
     }
 
     private fun readPurchaseAmount(): Int {
@@ -33,6 +34,18 @@ class LottoMachine(
                 val input = inputView.readWinningNumber()
                 WinningNumberValidator.validate(input)
                 return input.split(",").map { it.trim().toInt() }
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+    }
+
+    private fun readBonusNumber(winningNumbers: List<Int>): Int {
+        while (true) {
+            try {
+                val input = inputView.readBonusNumber()
+                BonusNumberValidator.validate(input, winningNumbers)
+                return input.trim().toInt()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
