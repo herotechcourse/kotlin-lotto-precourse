@@ -85,20 +85,21 @@ src
             ├── RankTest.kt          
             └── LottoServiceTest.kt   
 ```
-## REASON FOR DESISIONS?
-I decided to merge the LottoGenerator and LottoStatistics into just a single LottoService for simplicity. Having too many classes felt like overengineering for such a straightforward application. The service handles both ticket generation and statistics calculation, which made the data flow more direct and the code easier to follow.
 
-As for the bonus number, I chose not to include it in the Lotto class since it's really a separate concept from the main 6 numbers. The bonus only matters when comparing winning numbers, and it felt cleaner to handle it separately during that specific process rather than forcing it into the Lotto model where it doesn't really belong. This keeps the Lotto class focused on just representing a valid lottery ticket.
+## Impressions on the progress of the project
 
-Overall, I went with a simpler approach that still satisfies all the requirements without unnecessary complexity.
+I decided to merge the LottoGenerator and LottoStatistics into a single LottoService class for simplicity. Having too many classes felt like overengineering for such a straightforward application. The service now handles both ticket generation and statistics calculation, which made the data flow more direct and the code easier to follow.
 
-I also decided that having validation in both input and lotto class as it provides an extra safety layer rather than trusting purley on input being valid even though somewhat redundent! "Defensive programming"
+Regarding the bonus number, I chose not to include it in the Lotto class since it is a separate concept from the main six numbers. The bonus number only matters when comparing winning numbers, so it felt cleaner to handle it separately during that process, rather than forcing it into the Lotto model where it doesn't truly belong. This keeps the Lotto class focused solely on representing a valid lottery ticket.
 
-and infered that divisible meant meaning no remainder!
-i.e:
-1234 is not divisible by 1000 because:
-1234 ÷ 1000 = 1.234
-This has a remainder of 234, so 1234 is not divisible by 1000.
-Numbers that are divisible by 1000 include: 1000, 2000, 3000, etc. These all divide by 1000 with no remainder. I could have used >= 1000 instead if this was not the case!
+Overall, I pursued a simpler approach that satisfies all the requirements without adding unnecessary complexity.
 
-saw that the input could be refactored with a generaic funcitons and learnt how to use lambda expression and any return types.
+I also decided to include validation both in the input handling and within the Lotto class. Even though this may seem somewhat redundant, it provides an extra layer of safety — following a "defensive programming" mindset — instead of fully trusting the input to always be valid.
+
+Regarding the interpretation of divisibility: I inferred that "divisible" should mean "no remainder." For example, 1234 is not divisible by 1000 because 1234 ÷ 1000 = 1.234, which leaves a remainder of 234. Numbers like 1000, 2000, and 3000 are divisible by 1000 because they divide exactly with no remainder. If the instruction had meant "greater than or equal to 1000," I would have used >= 1000 instead.
+
+During development, I noticed that the input-related code could be refactored using generic functions and learned how to use lambda expressions and flexible return types. I also cleanly separated the input and output responsibilities into InputView and OutputView classes. InputView focuses solely on collecting and validating user input, while delegating all console output to OutputView. This separation improves maintainability and aligns with the Single Responsibility Principle.
+
+Finally, for consistent UI spacing, I implemented a standardized approach to section breaks within the application interface. Rather than inserting newlines randomly, OutputView now handles all spacing through a dedicated method. This results in a more consistent user experience and makes the UI logic more modular.
+
+Throughout this project, I realized that there is always room for more refactoring and optimization. However, part of good software development is knowing when the code is clean, functional, and maintainable enough to meet the project's goals. Sometimes, it's better to accept the current state rather than endlessly chasing "perfect" code. I am satisfied with the balance I achieved between simplicity, clarity, and fulfilling all the requirements.
