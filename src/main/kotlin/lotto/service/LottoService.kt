@@ -1,33 +1,10 @@
 package lotto.service
 
-import lotto.model.*
-import lotto.util.RandomUtil
+import lotto.model.LottoTickets
+import lotto.model.Rank
 
-object LottoService {
+interface LottoService {
 
-    fun purchaseTickets(amount: Int): LottoTickets {
-        val count = amount / 1000
-        val tickets = List(count) { Lotto(RandomUtil.pickUniqueNumbers()) }
-        return LottoTickets(tickets)
-    }
-
-    fun calculateResult(
-        tickets: LottoTickets,
-        winningNumbers: List<Int>,
-        bonusNumber: Int
-    ): Map<Rank, Int> {
-        val winning = WinningNumbers(winningNumbers, bonusNumber)
-        val results = Rank.initialResult()
-
-        tickets.getTickets().forEach { lotto ->
-            val matchCount = winning.match(lotto)
-            val bonusMatch = winning.isBonusMatch(lotto)
-            val rank = Rank.from(matchCount, bonusMatch)
-
-            if (rank != Rank.NONE) {
-                results[rank] = results.getValue(rank) + 1
-            }
-        }
-        return results
-    }
+    fun purchaseTickets(amount: Int): LottoTickets
+    fun calculateResult(tickets: LottoTickets, winningNumbers: List<Int>, bonusNumber: Int): Map<Rank, Int>
 }
