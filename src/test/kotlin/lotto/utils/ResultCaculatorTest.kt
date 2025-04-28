@@ -14,7 +14,7 @@ class ResultCaculatorTest {
         val lottos = Lottos(mutableListOf(lotto),0)
         val expectedMatches = "3"
 
-        val result = ResultCaculator.calculateMatches(lottos, winningNumbers)
+        val result = ResultCalculator.calculateMatches(lottos, winningNumbers)
 
         assertEquals(1, result["3"])
     }
@@ -24,7 +24,7 @@ class ResultCaculatorTest {
         val lotto = Lotto(listOf(1,2,3,4,5,7))
         val lottos = Lottos(mutableListOf(lotto),0)
 
-        val result = ResultCaculator.calculateMatches(lottos, winningNumbers)
+        val result = ResultCalculator.calculateMatches(lottos, winningNumbers)
 
         assertEquals(1, result["5+bonus"])
     }
