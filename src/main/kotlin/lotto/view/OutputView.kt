@@ -11,7 +11,7 @@ object OutputView {
     }
 
     fun printGeneratedLottos(lottos: Lottos) {
-        println("\n ${GENERATED_LOTTO_HEADER.format(lottos.tickets.size)}")
+        println("\n${GENERATED_LOTTO_HEADER.format(lottos.tickets.size)}")
 
         lottos.tickets.forEach {
             println(it.formatForDisplay())
