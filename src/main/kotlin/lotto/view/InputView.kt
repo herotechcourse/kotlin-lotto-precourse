@@ -18,6 +18,7 @@ object InputView {
     }
 
     fun readBonusNumber(): String {
+        println()
         println(BONUS_NUMBER_PROMPT)
         return Console.readLine()
     }

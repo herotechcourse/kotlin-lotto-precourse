@@ -5,6 +5,7 @@ import lotto.domain.Rank
 
 object OutputView {
     fun printPurchaseCount(count: Int) {
+        println()
         println("You have purchased $count tickets.")
     }
 
@@ -12,10 +13,13 @@ object OutputView {
         tickets.forEach { ticket ->
             println(ticket.getNumbers())
         }
+        println()
     }
 
     fun printResultStatistics(counts: Map<Rank, Int>) {
-        println("Lotto result statistics:")
+        println()
+        println("Winning Statistics")
+        println("---")
         listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST).forEach { rank ->
             val bonusText = if (rank == Rank.SECOND) " + Bonus Ball" else ""
             println("${rank.matchCount} Matches${bonusText} (${formatCurrency(rank.prize)} KRW) – ${counts[rank]} tickets")
