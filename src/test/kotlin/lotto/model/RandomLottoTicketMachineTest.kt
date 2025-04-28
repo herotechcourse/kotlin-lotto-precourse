@@ -7,7 +7,7 @@ class RandomLottoTicketMachineTest {
 
     @Test
     fun `lotto ticket machine create lotto tickets`() {
-        val lottoTicketMachine = RandomLottoTicketMachine()
+        val lottoTicketMachine: LottoTicketMachine = RandomLottoTicketMachine()
         val lottoTicket = lottoTicketMachine.buyLotto(3)
         assertEquals(lottoTicket.size, 3)
     }
