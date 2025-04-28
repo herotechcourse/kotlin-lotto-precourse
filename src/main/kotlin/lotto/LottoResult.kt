@@ -1,5 +1,5 @@
 package lotto
-
+import kotlin.math.roundToInt
 class LottoResult(val winners: Map<Rank, Int>, val profitRate: Double) {}
 
 class LottoResultCalculator {
@@ -20,5 +20,9 @@ class LottoResultCalculator {
     val profitRate = (totalPrize.toDouble() / investment) * 100
 
     return LottoResult(resultCounts, profitRate)
+  }
+
+  private fun roundToNearestTenth(profitRate: Double): Double {
+    return (profitRate * 10).roundToInt() / 10.0
   }
 }
