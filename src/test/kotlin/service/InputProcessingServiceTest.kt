@@ -136,4 +136,22 @@ class InputProcessingServiceTest {
             InputProcessingService.validateWinningNumbers(invalidList)
         }
     }
+
+    @Test
+    fun `validateBonusNumber accepts number not in list`() {
+        val list = listOf(1, 2, 3, 4, 5, 6)
+        val validBonus = 7
+
+        InputProcessingService.validateBonusNumber(validBonus, list)
+    }
+
+    @Test
+    fun `validateBonusNumber throws exception for number in list`() {
+        val list = listOf(1, 2, 3, 4, 5, 6)
+        val invalidBonus = 3
+
+        assertThrows<IllegalArgumentException> {
+            InputProcessingService.validateBonusNumber(invalidBonus, list)
+        }
+    }
 }
