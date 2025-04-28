@@ -5,12 +5,18 @@ object InputProcessingService {
     fun validateInputInteger(input:String):Int {
         val number = input.toIntOrNull()
         require(number != null) { "The input must be a integer." }
-        require(number in 1..45) { "The input number must be between 1 and 45." }
         return number
     }
 
+    fun validateNumberInLottoRange(number:Int){
+        require(number in 1..45) { "The number must be between 1 and 45." }
+    }
+
     fun splitWinningNumbers(numbers:String):List<Int> {
-        return numbers.split(",").map { validateInputInteger(it) }
+        return numbers.split(",").map { string ->
+            string.let { validateInputInteger(it) }
+                .also { validateNumberInLottoRange(it) }
+        }
     }
 
     fun validatePurchaseAmount(number:Int) {
