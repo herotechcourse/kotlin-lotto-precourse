@@ -31,8 +31,9 @@ class LottoCalculator(
 
     private fun calculateProfitRate(ticketCount: Int, rankCount: Map<Rank, Int>, ticketPrice: Int = Lotto.PRICE): Double {
         val paid = ticketPrice * ticketCount
-        val profitPrize = rankCount.map { it.key.prize }.sum()
-        return profitPrize.toDouble() / paid
+        val profitPrize = rankCount.entries.sumOf { (rank, count) -> rank.prize * count }
+
+        return profitPrize.toDouble() / paid * 100
     }
 }
 
