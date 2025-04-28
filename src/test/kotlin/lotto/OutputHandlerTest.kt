@@ -81,10 +81,9 @@ class OutputHandlerTest {
     @Test
     fun `printStatistics should display correct profit rate`() {
         val statistics = Statistics().apply {
-            addResult(Rank.FIFTH)  // 5,000 won
-            addResult(Rank.FOURTH) // 50,000 won
-            // Total spent: 2,000 won
-            // Expected profit rate: (55,000 / 2,000) * 100 = 2750.0%
+            addResult(Rank.FIFTH)
+            addResult(Rank.FOURTH)
+
         }
 
         outputHandler.printStatistics(statistics)

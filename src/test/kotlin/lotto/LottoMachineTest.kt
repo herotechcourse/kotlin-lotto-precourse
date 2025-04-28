@@ -25,7 +25,7 @@ class LottoMachineTest {
     @Test
     @DisplayName("Numbers in each ticket should be sorted")
     fun `numbers should be sorted`() {
-        val tickets = lottoMachine.generateTickets(10) // Test multiple tickets
+        val tickets = lottoMachine.generateTickets(10)
         tickets.forEach { ticket ->
             val numbers = ticket.getNumbers()
             assertTrue(numbers == numbers.sorted(), "Numbers should be in ascending order")
@@ -35,7 +35,7 @@ class LottoMachineTest {
     @Test
     @DisplayName("All numbers should be within 1-45 range")
     fun `numbers should be within valid range`() {
-        val tickets = lottoMachine.generateTickets(10) // Test multiple tickets
+        val tickets = lottoMachine.generateTickets(10)
         tickets.forEach { ticket ->
             ticket.getNumbers().forEach { number ->
                 assertTrue(number in 1..45, "Each number should be between 1 and 45")
