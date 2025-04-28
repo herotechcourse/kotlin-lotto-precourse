@@ -1,6 +1,6 @@
 package lotto.domain
 
-class BonusNumber(number: Int) {
+class BonusNumber(val number: Int) {
     init {
         require(number > 0) { ErrorMessages.NOT_A_POSITIVE_NUMBER_ERROR }
         require(number in LottoConstants.MIN_LOTTO_NUMBER..LottoConstants.MAX_LOTTO_NUMBER) {
