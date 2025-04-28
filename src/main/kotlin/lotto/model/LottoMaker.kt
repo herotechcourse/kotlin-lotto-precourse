@@ -1,15 +1,17 @@
 package lotto.model
 
-class LottoMaker{
+import lotto.Lotto
 
-    fun generateLotteries(money: Int) :List<Lotto>{
+class LottoMaker {
+
+    fun generateLotteries(money: Int): List<Lotto> {
         val ticketQuantity = calculateLottoTicket(money)
-        val lotteries = List(ticketQuantity) {Lotto.generate()}
+        val lotteries = List(ticketQuantity) { Lotto.generate() }
         return lotteries
     }
 
-    private fun calculateLottoTicket(money: Int) :Int {
-        return money/1000
+    private fun calculateLottoTicket(money: Int): Int {
+        return money / 1000
     }
 
 
