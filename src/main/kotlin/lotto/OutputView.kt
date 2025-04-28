@@ -40,7 +40,7 @@ class OutputView {
 
     fun changeDecimalFormat(profitRate: Double): String {
         val roundTotenth = kotlin.math.round(profitRate * 100) / 100 //nearest tenth
-        val decimal = DecimalFormat("#,#00.0")
+        val decimal = DecimalFormat("#,##0.0")
         return decimal.format(roundTotenth)
     }
 
