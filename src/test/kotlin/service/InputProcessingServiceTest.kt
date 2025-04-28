@@ -32,4 +32,24 @@ class InputProcessingServiceTest {
         }
     }
 
+    @Test
+    fun `validateNumberInLottoRange accepts numbers in range`() {
+        val validNumbers = listOf(1, 10, 45)
+
+        validNumbers.forEach { number ->
+            InputProcessingService.validateNumberInLottoRange(number)
+        }
+    }
+
+    @Test
+    fun `validateNumberInLottoRange throws exception for numbers out of range`() {
+        val invalidNumbers = listOf(0, 46, -1, 100)
+
+        invalidNumbers.forEach { number ->
+            assertThrows<IllegalArgumentException> {
+                InputProcessingService.validateNumberInLottoRange(number)
+            }
+        }
+    }
+
 }
