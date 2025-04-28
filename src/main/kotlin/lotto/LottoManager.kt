@@ -26,6 +26,12 @@ object LottoManager {
             InputValidator.validateBonusNumber(bonus, winningNumbers.getNumbers())
             bonus
         }
+
+        val lottoResult = LottoResult(winningNumbers, bonusNumber)
+        val ranks = lottoResult.calculateRanks(tickets)
+        val statistics = lottoResult.getStatistics(ranks)
+
+        OutputView.printStatistics(statistics)
     }
 
     private fun <T> retry(block: () -> T): T {

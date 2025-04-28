@@ -10,4 +10,24 @@ object OutputView {
             println(sortedNumbers)
         }
     }
+
+    fun printStatistics(statistics: Map<LottoRank, Int>) {
+        println("Winning Statistics")
+        println("---")
+        getSortedRanks()
+            .forEach { rank ->
+                val count = statistics.getOrDefault(rank, 0)
+                println("${rank.prizeString} (${formatPrize(rank.prize)} KRW) – $count tickets")
+            }
+    }
+
+    private fun getSortedRanks(): List<LottoRank> {
+        return LottoRank.entries
+            .filter { it != LottoRank.NONE }
+            .sortedBy { it.matchCount }
+    }
+
+    private fun formatPrize(prize: Int): String {
+        return "%,d".format(prize)
+    }
 }
