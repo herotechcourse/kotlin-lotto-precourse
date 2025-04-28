@@ -27,10 +27,9 @@ class LottoController {
         while (true) {
             try {
                 val input = InputView.readPurchaseAmount()
-                val amount = input.toInt()
+                val amount = input.toIntOrNull()
+                    ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
                 return Money(amount)
-            } catch (e: NumberFormatException) {
-                println("[ERROR] Input must be a number.")
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -41,12 +40,8 @@ class LottoController {
         while (true) {
             try {
                 val numbersInput = InputView.readWinningNumbers()
-                val numbers = numbersInput.split(",").map { it.trim().toInt() }
                 val bonusInput = InputView.readBonusNumber()
-                val bonus = bonusInput.toInt()
-                return WinningNumbers(numbers, bonus)
-            } catch (e: NumberFormatException) {
-                println("[ERROR] Input must be a number.")
+                return WinningNumbers.parse(numbersInput, bonusInput)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
