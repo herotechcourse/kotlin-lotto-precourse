@@ -18,6 +18,8 @@ class PrizeResult(private val result: EnumMap<Rank, Int>) {
 
     fun count(rank: Rank): Int = result[rank] ?: 0
 
+    fun removeExcludedPrize() = result.remove(Rank.NONE)
+
     fun calculateProfitRate(purchaseAmount: PurchaseAmount): Float {
         return sumTotalPrizeAmount() / purchaseAmount.amount().toFloat() * PERCENT
     }

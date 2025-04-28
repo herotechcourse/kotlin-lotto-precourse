@@ -32,6 +32,7 @@ class LottoService {
             val bonusMatch = WinningDeterminer.determineBonusMatch(randomLotto, bonus)
             prizeResult.addRankBy(matchCount, bonusMatch)
         }
+        prizeResult.removeExcludedPrize()
 
         return prizeResult
     }
