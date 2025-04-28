@@ -1,5 +1,13 @@
 # Kotlin Lotto Precourse
 
+This project is part of the Tech Hero Course 2025.
+
+A lottery ticket machine written in Kotlin. Enter your purchase amount to generate tickets, input the winning numbers and bonus ball and see your prize statistics. The app demonstrates clean, single-responsibility classes, robust input validation and unit testing with JUnit 5 & AssertJ.
+
+## Usage
+Run tests with `./gradlew test`.
+
+
 ## Feature List
 
 ### 1. Input Handling
