@@ -5,12 +5,8 @@ import lotto.config.Messages
 
 class Money(val amount: Int) {
     init {
-        require(checkDivisibility(amount)) {
-            Messages.INPUT_NOT_DIVIDABLE
-        }
-        require(checkPositive(amount)) {
-            Messages.NUMBER_NOT_POSITIVE
-        }
+        require(checkDivisibility(amount)) { Messages.INPUT_NOT_DIVIDABLE }
+        require(checkPositive(amount)) { Messages.NUMBER_NOT_POSITIVE }
     }
 
     val ticketCount: Int = amount / LOTTO_PRICE

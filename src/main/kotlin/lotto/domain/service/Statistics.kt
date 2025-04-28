@@ -11,7 +11,6 @@ class Statistics {
         if (purchaseAmount == 0L) {
             return 0.0
         }
-
         return calculateReturnRate(totalPrize, purchaseAmount)
     }
 
@@ -22,7 +21,6 @@ class Statistics {
                 totalPrize += rank.prizeMoney.toLong() * count
             }
         }
-
         return totalPrize
     }
 

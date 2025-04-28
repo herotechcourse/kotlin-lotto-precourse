@@ -25,12 +25,11 @@ class ResultCalculator {
     }
 
     private fun determineRank(matchCount: Int, bonusMatch: Boolean): Rank {
-        return when {
-            matchCount == 6 -> Rank.FIRST
-            matchCount == 5 && bonusMatch -> Rank.SECOND
-            matchCount == 5 -> Rank.THIRD
-            matchCount == 4 -> Rank.FOURTH
-            matchCount == 3 -> Rank.FIFTH
+        if (matchCount == 6) return Rank.FIRST
+        if (matchCount == 5) return if (bonusMatch) Rank.SECOND else Rank.THIRD
+        return when (matchCount) {
+            4 -> Rank.FOURTH
+            3 -> Rank.FIFTH
             else -> Rank.NONE
         }
     }
