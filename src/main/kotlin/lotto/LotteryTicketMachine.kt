@@ -5,6 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms
 object LotteryTicketMachine {
 
     internal val tickets = mutableListOf<List<Int>>()
+    internal val winnings = mutableMapOf<PrizeRank, Int>()
+
+    init {
+        initWinnings()
+    }
+
+    fun initWinnings() {
+        for (rank in PrizeRank.entries) {
+            winnings[rank] = 0
+        }
+    }
 
     fun validatePurchaseAmount(amount: Int) {
         if (amount % 1000 != 0) {
@@ -52,4 +63,5 @@ object LotteryTicketMachine {
             throw IllegalArgumentException("[ERROR] Bonus number must not be one of the winning numbers.")
         }
     }
+
 }

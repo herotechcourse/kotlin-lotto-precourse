@@ -19,7 +19,6 @@
     - [ ] compare tickets with winning numbers to calculate winnings - see table below
     - [ ] calculate profit return rate based on winnings
     - [ ] round profit return rate to nearest tenth
-    - [ ] round profit return rate to nearest tenth
 ### output
 - [x] ask user for input
     - [x] ask user for purchase amount
