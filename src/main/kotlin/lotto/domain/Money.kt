@@ -1,16 +1,15 @@
 package lotto.domain
 
-import lotto.InputHandler.Companion.INPUT_NOT_DIVIDABLE
-import lotto.InputHandler.Companion.LOTTO_PRICE
-import lotto.InputHandler.Companion.NUMBER_NOT_POSITIVE
+import lotto.LottoConstants.LOTTO_PRICE
+import lotto.Messages
 
 class Money(val amount: Int) {
     init {
         require(checkDivisibility(amount)) {
-            INPUT_NOT_DIVIDABLE
+            Messages.INPUT_NOT_DIVIDABLE
         }
         require(checkPositive(amount)) {
-            NUMBER_NOT_POSITIVE
+            Messages.NUMBER_NOT_POSITIVE
         }
     }
 

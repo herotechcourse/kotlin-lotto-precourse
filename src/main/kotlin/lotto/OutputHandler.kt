@@ -1,8 +1,9 @@
 package lotto
 
+import lotto.LottoConstants.EN_DASH
+import lotto.LottoConstants.TICKETS
 import lotto.domain.Lotto
 import lotto.domain.Rank
-import lotto.domain.Statistics
 import lotto.domain.WinResult
 
 class OutputHandler {
@@ -21,10 +22,10 @@ class OutputHandler {
     }
 
     private fun printWinningResult(winResult: WinResult) {
-        println(Rank.FIFTH.message + " – " + winResult.getResult()[Rank.FIFTH]+ " tickets")
-        println(Rank.FOURTH.message + " – " + winResult.getResult()[Rank.FOURTH]+ " tickets")
-        println(Rank.THIRD.message + " – " + winResult.getResult()[Rank.THIRD]+ " tickets")
-        println(Rank.SECOND.message + " – " + winResult.getResult()[Rank.SECOND]+ " tickets")
-        println(Rank.FIRST.message + " – " + winResult.getResult()[Rank.FIRST]+ " tickets")
+        println(Rank.FIFTH.message + EN_DASH + winResult.getResult()[Rank.FIFTH]+ TICKETS)
+        println(Rank.FOURTH.message + EN_DASH + winResult.getResult()[Rank.FOURTH]+ TICKETS)
+        println(Rank.THIRD.message + EN_DASH + winResult.getResult()[Rank.THIRD]+ TICKETS)
+        println(Rank.SECOND.message + EN_DASH + winResult.getResult()[Rank.SECOND]+ TICKETS)
+        println(Rank.FIRST.message + EN_DASH + winResult.getResult()[Rank.FIRST]+ TICKETS)
     }
 }

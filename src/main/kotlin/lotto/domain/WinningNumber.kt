@@ -1,17 +1,16 @@
 package lotto.domain
 
-import lotto.InputHandler.Companion.LOTTO_NUMBER_ENDS
-import lotto.InputHandler.Companion.LOTTO_NUMBER_SIZE
-import lotto.InputHandler.Companion.LOTTO_NUMBER_STARTS
-import lotto.InputHandler.Companion.WINNING_NUMBER_DUPLICATE
-import lotto.InputHandler.Companion.WINNING_NUMBER_OVER_RANGE
-import lotto.InputHandler.Companion.WINNING_NUMBER_SIZE_NOT_SIX
+import lotto.LottoConstants.LOTTO_NUMBER_ENDS
+import lotto.LottoConstants.LOTTO_NUMBER_SIZE
+import lotto.LottoConstants.LOTTO_NUMBER_STARTS
+import lotto.Messages
+
 
 class WinningNumber(val numbers: List<Int>) {
     init {
-        require(checkDuplicates(numbers)) { WINNING_NUMBER_DUPLICATE }
-        require(checkRange(numbers)) { WINNING_NUMBER_OVER_RANGE }
-        require(checkSize(numbers)) { WINNING_NUMBER_SIZE_NOT_SIX }
+        require(checkDuplicates(numbers)) { Messages.WINNING_NUMBER_DUPLICATE }
+        require(checkRange(numbers)) { Messages.WINNING_NUMBER_OVER_RANGE }
+        require(checkSize(numbers)) { Messages.WINNING_NUMBER_SIZE_NOT_SIX }
     }
 
     private fun checkDuplicates(numbers: List<Int>) = numbers.toSet().size == numbers.size

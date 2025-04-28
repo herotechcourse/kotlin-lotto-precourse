@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.InputHandler.Companion.INPUT_NOT_DIVIDABLE
-import lotto.InputHandler.Companion.NUMBER_NOT_POSITIVE
+import lotto.Messages.INPUT_NOT_DIVIDABLE
+import lotto.Messages.NUMBER_NOT_POSITIVE
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
