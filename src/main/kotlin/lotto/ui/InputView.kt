@@ -5,7 +5,6 @@ import lotto.ui.console.ConsoleIOInterface
 import lotto.util.Constants
 
 class InputView(private val console: ConsoleIOInterface) {
-
     private fun <T> readValidatedInput(prompt: String, parseAndValidate: () -> T): T {
         while (true) {
             console.print(prompt)
@@ -19,7 +18,7 @@ class InputView(private val console: ConsoleIOInterface) {
 
     fun getPurchaseAmount(): Int {
         return readValidatedInput(Constants.PURCHASE_AMOUNT_PROMPT) {
-            val amount = validatePurchaseAmount(console.read())
+            val amount = InputValidation.validatePurchaseAmount(console.read())
             amount
         }
     }
@@ -33,22 +32,9 @@ class InputView(private val console: ConsoleIOInterface) {
 
     fun getBonusNumber(winningNumbers: Lotto): Int {
         return readValidatedInput(Constants.BONUS_NUMBER_PROMPT) {
-            val number = validateBonusNumber(console.read(), winningNumbers.getNumbers())
+            val number = InputValidation.validateBonusNumber(console.read(), winningNumbers.getNumbers())
             number
         }
-    }
-
-    private fun validatePurchaseAmount(input: String): Int {
-        val amount = input.toIntOrNull()
-            ?: throw IllegalArgumentException(Constants.ERROR_INVALID_NUMBER)
-
-        if (amount < Constants.MIN_PURCHASE_AMOUNT) {
-            throw IllegalArgumentException(Constants.ERROR_INVALID_PURCHASE_AMOUNT)
-        }
-        if (amount % Constants.PURCHASE_AMOUNT_UNIT != 0) {
-            throw IllegalArgumentException(Constants.ERROR_INVALID_PURCHASE_UNIT)
-        }
-        return amount
     }
 
     private fun parseWinningNumbers(input: String): List<Int> {
@@ -60,17 +46,4 @@ class InputView(private val console: ConsoleIOInterface) {
             }
         return numbers
     }
-
-    private fun validateBonusNumber(input: String, winningNumbers: List<Int>): Int {
-        val number = input.toIntOrNull()
-            ?: throw IllegalArgumentException(Constants.ERROR_INVALID_BONUS_NUMBER)
-        if (number !in Constants.MIN_LOTTO_NUMBER..Constants.MAX_LOTTO_NUMBER) {
-            throw IllegalArgumentException(Constants.ERROR_BONUS_OUT_OF_RANGE)
-        }
-        if (number in winningNumbers) {
-            throw IllegalArgumentException(Constants.ERROR_DUPLICATE_BONUS_NUMBER)
-        }
-        return number
-    }
-
 }
