@@ -1,6 +1,7 @@
 package views
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
 
 class InputViewTest {
@@ -21,10 +22,19 @@ class InputViewTest {
     }
 
     @Test
-    fun `getPurchaseAmount should return 0 on invalid input`() {
-        val inputView = TestableInputView(listOf("abc"))
-        val amount = inputView.getPurchaseAmount()
-        assertThat(amount).isEqualTo(0)
+    fun `getPurchaseAmount should throw exception on invalid input - letters`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("abc"))
+            val amount = inputView.getPurchaseAmount()
+        }
+    }
+
+    @Test
+    fun `getPurchaseAmount should throw exception on invalid input - negative`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("-3"))
+            val amount = inputView.getPurchaseAmount()
+        }
     }
 
     @Test
@@ -35,10 +45,51 @@ class InputViewTest {
     }
 
     @Test
-    fun `getWinningNumbers should return empty list on invalid input`() {
-        val inputView = TestableInputView(listOf("1,2,3"))
-        val winningNumbers = inputView.getWinningNumbers()
-        assertThat(winningNumbers).isEmpty()
+    fun `getWinningNumbers should throw exception on invalid input - small set`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("1,2,3"))
+            val winningNumbers = inputView.getWinningNumbers()
+        }
+    }
+
+    @Test
+    fun `getWinningNumbers should throw exception on invalid input - negative number`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("1,2,3,4,5,-1"))
+            val winningNumbers = inputView.getWinningNumbers()
+        }
+    }
+
+    @Test
+    fun `getWinningNumbers should throw exception on invalid input - repeated numbers`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("1,2,3,4,5,5"))
+            val winningNumbers = inputView.getWinningNumbers()
+        }
+    }
+
+    @Test
+    fun `getWinningNumbers should throw exception on invalid input - big number`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("1,2,3,4,5,55"))
+            val winningNumbers = inputView.getWinningNumbers()
+        }
+    }
+
+    @Test
+    fun `getWinningNumbers should throw exception on invalid input - null`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf())
+            val winningNumbers = inputView.getWinningNumbers()
+        }
+    }
+
+    @Test
+    fun `getWinningNumbers should throw exception on invalid input - empty number`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("1,2,,4,5,6"))
+            val winningNumbers = inputView.getWinningNumbers()
+        }
     }
 
     @Test
@@ -49,9 +100,34 @@ class InputViewTest {
     }
 
     @Test
-    fun `getBonusNumber should return 0 on invalid bonus`() {
-        val inputView = TestableInputView(listOf("50"))
-        val bonus = inputView.getBonusNumber()
-        assertThat(bonus).isEqualTo(0)
+    fun `getBonusNumber should throw exception on invalid bonus - big number`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("50"))
+            val bonus = inputView.getBonusNumber()
+        }
+    }
+
+    @Test
+    fun `getBonusNumber should throw exception on invalid bonus - negative number`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("-10"))
+            val bonus = inputView.getBonusNumber()
+        }
+    }
+
+    @Test
+    fun `getBonusNumber should throw exception on invalid bonus - null`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf())
+            val bonus = inputView.getBonusNumber()
+        }
+    }
+
+    @Test
+    fun `getBonusNumber should throw exception on invalid bonus - letter`() {
+        assertThrows<IllegalArgumentException> {
+            val inputView = TestableInputView(listOf("abc"))
+            val bonus = inputView.getBonusNumber()
+        }
     }
 }
