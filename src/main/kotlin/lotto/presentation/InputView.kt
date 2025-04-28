@@ -7,6 +7,6 @@ object InputView {
     fun readPurchaseAmount(): Int {
         println("Purchase amount for lottery tickets:")
 
-        return parseSingle(Console.readLine().trim());
+        return parseSingle(Console.readLine());
     }
 }
