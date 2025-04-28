@@ -1,9 +1,12 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
 
 object LotteryTicketMachine {
 
+    internal var purchaseAmount = 0
+    internal var returnRate = 0.0
     internal val tickets = mutableListOf<List<Int>>()
     internal val winnings = mutableMapOf<PrizeRank, Int>()
     internal val winningNumbers = mutableListOf<Int>()
@@ -103,5 +106,18 @@ object LotteryTicketMachine {
 
     fun increaseRankMatches(rank: PrizeRank) {
         winnings[rank] = winnings.getOrDefault(rank, 0) + 1
+    }
+
+    fun calculateReturnRate() {
+        val winningAmount = calculateWinningAmount().toDouble()
+        returnRate = round(winningAmount / purchaseAmount * 100 * 10) / 10
+    }
+
+    fun calculateWinningAmount(): Int {
+        var winningAmount = 0
+        for (rank in PrizeRank.entries) {
+            winningAmount += winnings.getOrDefault(rank, 0) * rank.amount
+        }
+        return winningAmount
     }
 }
