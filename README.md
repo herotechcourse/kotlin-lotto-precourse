@@ -18,8 +18,11 @@
 Below is the class diagram representing the object-oriented structure of the Lotto mission.
 ![lotto-precourse-uml](/docs/lotto-precourse.drawio.png)
 
-### Advanced Design(current)
+### Advanced Design
 ![lotto-precourse-uml](/docs/lotto-precourse_1.drawio.png)
+
+### Advanced Design2(current)
+![lotto-precourse-uml](/docs/lotto-precourse_2.drawio.png)
 
 ## Feature list
 
@@ -53,4 +56,4 @@ Below is the class diagram representing the object-oriented structure of the Lot
 ### 4. Statistics and Return Rate
 - [x] Calculate the total return rate.
   - [x] Return rate = (total prize money / total purchase amount) × 100.0, rounded to one decimal place.
-- [ ] Print the winning statistics and the return rate.
+- [x] Print the winning statistics and the return rate.

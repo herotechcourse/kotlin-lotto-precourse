@@ -23,7 +23,7 @@ class LottoGeneratorTest {
         val generator = LottoGenerator(FakeNumberGenerator())
 
         // when
-        val lotties = generator.generateLotties(money)
+        val lotties = generator.generateLotties(money.ticketCount)
 
         // then
         assertEquals(3, lotties.value.size)
@@ -41,7 +41,7 @@ class LottoGeneratorTest {
         val lottoGenerator = LottoGenerator(generator)
 
         // when
-        val lotties = lottoGenerator.generateLotties(money)
+        val lotties = lottoGenerator.generateLotties(money.ticketCount)
 
         // then
         assertEquals(lotties.value.first().matchCount(fixedNumbers), 6)

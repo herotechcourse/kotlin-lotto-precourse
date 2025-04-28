@@ -13,5 +13,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.contains(number)
     }
 
-    // TODO: Implement additional functions
+    override fun toString(): String {
+        return numbers.sorted().toString()
+    }
 }

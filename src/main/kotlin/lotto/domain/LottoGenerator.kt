@@ -5,9 +5,9 @@ import lotto.NumberGenerator
 
 class LottoGenerator(private val numberGenerator: NumberGenerator) {
 
-    fun generateLotties(money: Money): Lotties {
+    fun generateLotties(ticketCount: Int): Lotties {
         val lotties = mutableListOf<Lotto>()
-        for (i in 1..money.ticketCount) {
+        for (i in 1..ticketCount) {
             lotties.add(generateLotto(numberGenerator.generate()))
         }
         return Lotties(lotties)
