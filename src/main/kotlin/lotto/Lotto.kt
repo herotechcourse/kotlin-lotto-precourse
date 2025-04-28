@@ -8,4 +8,12 @@ class Lotto(private val numbers: List<Int>) {
     override fun toString(): String {
         return numbers.sorted().joinToString(", ", "[", "]")
     }
+
+    fun matchCount(winningNumbers: List<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
+
+    fun contains(number: Int): Boolean {
+        return numbers.contains(number)
+    }
 }
