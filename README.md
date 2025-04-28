@@ -51,8 +51,7 @@
 
 ### Ticket Issuance
 - [ ] Issue as many tickets as the purchase amount allows (1 ticket = 1,000 KRW).  
-- [ ] Each ticket consists of 6 unique random numbers between 1 and 45.  
-- [ ] Sort each ticket’s numbers in ascending order before printing.
+- [ ] Each ticket consists of 6 unique random numbers between 1 and 45. 
 
 ---
 
