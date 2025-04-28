@@ -17,4 +17,11 @@ class LottoMachine(private val purchaseAmount: Int) {
     private fun generateRandomNumbers(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(1,45,6).sorted()
     }
+
+    // Prints return rate
+    fun printReturnRate(results: List<LottoResult>, ticketCount: Int) {
+        val totalWinnings = results.sumOf { it.prize.amount }
+        val returnRate = (totalWinnings.toDouble() / (ticketCount * 1000)) * 100
+        println("Total return rate is %.1f%%.".format(returnRate))
+    }
 }

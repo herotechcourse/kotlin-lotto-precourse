@@ -66,3 +66,7 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 - add a small LottoResult class for the results
 - in the results checker check for bonus and match matches
 - implement a prize enum to simplify matching
+
+### 9. add the print results to output Handler
+- add print results to output handler
+- try it in the application class
