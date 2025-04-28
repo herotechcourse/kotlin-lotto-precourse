@@ -25,6 +25,7 @@ fun main() {
     }
 }
 
+
 // get user Input
 fun totalPurchaseAmount(): Int{
     val inputMoney = Console.readLine()
