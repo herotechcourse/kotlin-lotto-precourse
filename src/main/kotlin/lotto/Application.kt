@@ -4,6 +4,6 @@ import lotto.orchestrator.LottoRankOrchestrator
 
 
 fun main() {
-    val lottoRankOrchestrator = LottoRankOrchestrator();
+    val lottoRankOrchestrator = LottoRankOrchestrator()
     lottoRankOrchestrator.executeLotto()
 }
