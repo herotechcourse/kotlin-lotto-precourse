@@ -16,7 +16,7 @@ internal fun validateLottoNumber(num: Int) {
 
 fun validateAndReturnTicketAmount(amount: Int): Int {
     validateTicketAmount(amount)
-    return amount
+    return amount / TICKET_PRICE
 }
 
 internal fun validateTicketAmount(amount: Int) {

@@ -1,9 +1,9 @@
 package lotto
 
 import input.config.printTicketAmountMsg
+import input.dialog.getTicketAmountFromDialog
 
 fun main() {
-    // TODO: Implement the program
-    printTicketAmountMsg()
+    val ticketAmount = getTicketAmountFromDialog()
 
 }

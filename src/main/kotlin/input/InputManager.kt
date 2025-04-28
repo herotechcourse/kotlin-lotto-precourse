@@ -5,7 +5,7 @@ import input.util.getValidatedLottoNumbers
 import input.util.getValidatedTicketAmount
 import input.util.readLineAndProcess
 
-fun <T> processInput(operation: (String) -> T): T{
+internal fun <T> processInput(operation: (String) -> T): T{
     var result: T? = null
     while(result == null){
         val input: String = readLineAndProcess()

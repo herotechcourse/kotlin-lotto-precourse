@@ -2,10 +2,11 @@ package input.dialog
 
 import input.config.printTicketAmountMsg
 import input.config.printTicketResultMsgWithAmount
+import input.getTicketAmountFromInput
 
 fun getTicketAmountFromDialog(): Int{
     printTicketAmountMsg()
-
-    printTicketResultMsgWithAmount(0)
-    return 0
+    val ticketAmount = getTicketAmountFromInput();
+    printTicketResultMsgWithAmount(ticketAmount)
+    return ticketAmount
 }
