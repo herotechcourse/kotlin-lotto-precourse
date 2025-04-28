@@ -73,4 +73,21 @@ class ExceptionsTest {
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE)
     }
+
+    @Test
+    fun `throw an exception if bonus number is out of valid range`() {
+        val dummyWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        assertThatThrownBy {
+            Exceptions.validateBonusNumber(dummyWinningLotto, "0").getOrThrow()
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(WINNING_NUMBER_RANGE_ERROR_MESSAGE)
+
+        assertThatThrownBy {
+            Exceptions.validateBonusNumber(dummyWinningLotto, "46").getOrThrow()
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(WINNING_NUMBER_RANGE_ERROR_MESSAGE)
+    }
 }
