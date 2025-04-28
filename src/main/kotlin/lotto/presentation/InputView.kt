@@ -1,6 +1,9 @@
 package lotto.presentation
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.domain.BonusNumber
+import lotto.domain.PurchaseAmount
+import lotto.domain.WinningNumbers
 import lotto.presentation.IntParser.parseMultiple
 import lotto.presentation.IntParser.parseSingle
 import java.lang.IllegalArgumentException
@@ -17,12 +20,12 @@ object InputView {
         }
     }
 
-    fun readPurchaseAmount(): Int =
-        repeatRead("Please enter the purchase amount.") { parseSingle(Console.readLine()) }
+    fun readPurchaseAmount(): PurchaseAmount =
+        repeatRead("Please enter the purchase amount.") { PurchaseAmount(parseSingle(Console.readLine())) }
 
-    fun readWinningNumbers(): List<Int> =
-        repeatRead("Please enter last week's winning numbers.") { parseMultiple(Console.readLine()) }
+    fun readWinningNumbers(): WinningNumbers =
+        repeatRead("Please enter last week's winning numbers.") { WinningNumbers(parseMultiple(Console.readLine())) }
 
-    fun readBonusNumber(): Int =
-        repeatRead("Please enter the bonus number.") { parseSingle(Console.readLine()) }
+    fun readBonusNumber(): BonusNumber =
+        repeatRead("Please enter the bonus number.") { BonusNumber(parseSingle(Console.readLine())) }
 }

@@ -5,12 +5,12 @@ import lotto.presentation.InputView
 import lotto.presentation.OutputView
 
 fun main() {
-    val purchase = PurchaseAmount(InputView.readPurchaseAmount())
+    val purchase = InputView.readPurchaseAmount()
     val lottos = LottoMachine().buy(purchase)
     OutputView.printTickets(lottos)
     val calc = LottoResultCalculator(
-        WinningNumbers(InputView.readWinningNumbers()),
-        BonusNumber(InputView.readBonusNumber())
+        InputView.readWinningNumbers(),
+        InputView.readBonusNumber()
     )
     val stats = calc.calculateStats(lottos)
     OutputView.printStatistics(stats, calc.calculateRate(stats, purchase))
