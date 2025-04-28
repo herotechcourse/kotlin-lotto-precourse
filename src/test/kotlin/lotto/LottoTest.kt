@@ -50,4 +50,3 @@ class LottoTest {
         assertEquals(3, lotto.getMatchingNumbers(winningNumbers))
     }
 }
-

@@ -41,7 +41,7 @@ class LotteryGameTest {
         val bonusNumber = 7
         val purchaseAmount = 2000
 
-        val results = game.getLotteryResults(tickets, winningNumbers, bonusNumber, purchaseAmount)
+        val results = game.calculateLotteryResults(tickets, winningNumbers, bonusNumber, purchaseAmount)
 
         assertEquals(5, results.winningStatuses.size)
         assertTrue(results.returnRate.isNotEmpty())
