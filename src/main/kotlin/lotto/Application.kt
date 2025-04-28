@@ -5,6 +5,5 @@ fun main() {
     val lottoMachine = LottoMachine()
     val tickets = lottoMachine.generateTickets(purchaseAmount)
 
-    println("You have purchased ${tickets.size} tickets.")
-    tickets.forEach { println(it.getNumbers()) } // TEMP: will later move to OutputView
+    OutputView.printPurchasedTickets(tickets)
 }
