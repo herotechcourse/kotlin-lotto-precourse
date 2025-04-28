@@ -38,36 +38,18 @@ class LottoController {
     }
 
     private fun inputPurchaseAmount(): PurchaseAmount {
-        while (true) {
-            try {
-                val amount = InputView.readPurchaseAmount()
-                return PurchaseAmount(amount)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
-        }
+        val amount = InputView.readPurchaseAmount()
+        return PurchaseAmount(amount)
     }
 
     private fun inputWinningNumbers(): WinningNumbers {
-        while (true) {
-            try {
-                val numbers = InputView.readWinningNumbers()
-                return WinningNumbers(numbers)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
-        }
+        val numbers = InputView.readWinningNumbers()
+        return WinningNumbers(numbers)
     }
 
     private fun inputBonusNumber(winningNumbers: WinningNumbers): BonusNumber {
-        while (true) {
-            try {
-                val bonus = InputView.readBonusNumber()
-                return BonusNumber(bonus, winningNumbers.getNumbers())
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
-        }
+        val bonus = InputView.readBonusNumber()
+        return BonusNumber(bonus, winningNumbers.getNumbers())
     }
 
     private fun printResult(matchResult: MatchResult, purchaseAmount: PurchaseAmount) {
