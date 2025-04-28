@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.common.CommonValidator
+
 class WinningNumbers(private val numbers: List<Int>) {
     init {
         require(numbers.size == VALID_SIZE) { "[ERROR] Winning numbers must contain exactly $VALID_SIZE numbers." }
@@ -15,5 +17,15 @@ class WinningNumbers(private val numbers: List<Int>) {
         private const val VALID_SIZE = 6
         private const val START_INCLUSIVE = 1
         private const val END_INCLUSIVE = 45
+        private const val DELIMITER = ","
+
+        fun from(numbers: String): WinningNumbers {
+            val winningNumbers = numbers.split(DELIMITER)
+                .map { it.trim() }
+                .map { number -> CommonValidator.parseAndValidateNumber(number) }
+                .toList()
+
+            return WinningNumbers(winningNumbers)
+        }
     }
 }

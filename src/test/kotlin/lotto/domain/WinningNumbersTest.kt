@@ -1,43 +1,47 @@
 package lotto.domain
 
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 
 class WinningNumbersTest {
-    @Test
-    fun `throws an exception when winning numbers exceed six`() {
+    @ParameterizedTest
+    @MethodSource("makeNumbersWithWrongSize")
+    fun `throws an exception when winning numbers exceed six`(numbers: String) {
         assertThrows<IllegalArgumentException> {
-            WinningNumbers(listOf(1, 2, 3, 4, 5, 6, 7))
+            WinningNumbers.from(numbers)
         }
     }
 
-    @Test
-    fun `throws an exception when winning numbers are duplicated`() {
+    @ParameterizedTest
+    @MethodSource("makeDuplicatedNumbers")
+    fun `throws an exception when winning numbers are duplicated`(numbers: String) {
         assertThrows<IllegalArgumentException> {
-            WinningNumbers(listOf(1, 2, 3, 4, 5, 5))
+            WinningNumbers.from(numbers)
         }
     }
 
     @ParameterizedTest
     @MethodSource("makeInvalidNumbers")
     @DisplayName("[Exception] throws when winning numbers are not between 1 and 45")
-    fun `throws an exception when winning numbers are not valid range`(numbers: List<Int>) {
+    fun `throws an exception when winning numbers are not valid range`(numbers: String) {
         assertThrows<IllegalArgumentException> {
-            WinningNumbers(numbers)
+            WinningNumbers.from(numbers)
         }
     }
 
     companion object {
         @JvmStatic
-        private fun makeInvalidNumbers(): List<List<Int>> {
-            return listOf(
-                listOf(1, 2, 3, 4, 5, 46),
-                listOf(0, 20, 30, 40, 41, 42),
-                listOf(-5, 15, 25, 35, 45, 1)
-            )
-        }
+        private fun makeInvalidNumbers(): List<String> =
+            listOf("1, 2, 3, 4, 5, 46", "0, 20, 30, 40, 41, 42", "-5, 15, 25, 35, 45, 1")
+
+        @JvmStatic
+        private fun makeDuplicatedNumbers(): List<String> =
+            listOf("1, 2, 3, 4, 5, 5", "20, 20, 30, 40, 41, 42", "15, 15, 25, 35, 45, 1")
+
+        @JvmStatic
+        private fun makeNumbersWithWrongSize(): List<String> =
+            listOf("1, 2, 3, 4, 5, 6, 7", "20, 30, 40, 41, 42", "25, 35, 45, 1")
     }
 }
