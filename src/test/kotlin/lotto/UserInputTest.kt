@@ -83,7 +83,7 @@ class UserInputTest {
             assertThat(thrown)
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage(
-                    "[ERROR] Purchase amount must be equal or greater than $TICKET_COST."
+                    "[ERROR] Purchase amount must be equal to or a multiple of $TICKET_COST."
                 )
         }
 

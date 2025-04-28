@@ -34,7 +34,7 @@ class UserInput {
         "Purchase amount".sanitizePositiveNumber(purchaseAmount)
         if (purchaseAmount != null) {
             require(purchaseAmount >= TICKET_COST) {
-                "[ERROR] Purchase amount must be equal or greater than $TICKET_COST."
+                "[ERROR] Purchase amount must be equal to or a multiple of $TICKET_COST."
             }
             require(purchaseAmount % TICKET_COST == 0) {
                 "[ERROR] Purchase amount must be a multiple of $TICKET_COST."
