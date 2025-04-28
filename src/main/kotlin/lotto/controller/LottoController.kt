@@ -50,4 +50,5 @@ class LottoController(val lottoGenerator: LottoGenerator) {
         val winningNumbers = InputView.readWinningNumbers()
         return Lotto(winningNumbers.map { LottoNumber(it) })
     }
+
 }
