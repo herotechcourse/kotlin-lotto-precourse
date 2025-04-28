@@ -1,20 +1,23 @@
 package lotto.controller
 
 import lotto.service.LottoService
+import lotto.service.LottoServiceImpl
 import lotto.view.InputView
 import lotto.view.OutputView
 
-class LottoController {
+class LottoController(
+    private val lottoService: LottoService = LottoServiceImpl()
+) {
 
     fun run() {
         val purchaseAmount = InputView.readPurchaseAmount()
-        val lottoTickets = LottoService.purchaseTickets(purchaseAmount)
+        val lottoTickets = lottoService.purchaseTickets(purchaseAmount)
         OutputView.printTickets(lottoTickets.getTickets())
 
         val winningNumbers = InputView.readWinningNumbers()
         val bonusNumber = InputView.readBonusNumber()
 
-        val result = LottoService.calculateResult(lottoTickets, winningNumbers, bonusNumber)
+        val result = lottoService.calculateResult(lottoTickets, winningNumbers, bonusNumber)
         OutputView.printResult(result, lottoTickets.getTickets().size)
     }
 }
