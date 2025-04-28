@@ -120,7 +120,7 @@ fun main() {
     val result = checkResults(tickets, winningNumbers, bonusNumber)
     val totalPrize = result.entries.sumOf { it.key.prizeMoney * it.value }
 
-    // ✅ 무조건 5등~1등 모두 출력 (0장이어도)
+    // 무조건 5등~1등 모두 출력 (0장이어도)
     listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST)
         .forEach { rank ->
             val count = result[rank] ?: 0
