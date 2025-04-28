@@ -17,9 +17,8 @@ object OutputView {
         println("3 Matches (5,000 KRW) – ${matched[Prize.MATCHED3.index]} tickets")
         println("4 Matches (50,000 KRW) – ${matched[Prize.MATCHED4.index]} tickets")
         println("5 Matches (1,500,000 KRW) – ${matched[Prize.MATCHED5.index]} tickets")
-        println("5 Matches +Bonus Ball (30,000,000 KRW) – ${matched[Prize.`MATCHED-BONUS`.index]} tickets")
+        println("5 Matches + Bonus Ball (30,000,000 KRW) – ${matched[Prize.`MATCHED-BONUS`.index]} tickets")
         println("6 Matches (2,000,000,000 KRW) – ${matched[Prize.MATCHED6.index]} tickets")
-        println("Total return rate is ${String.format("%.1f", returnRate)} %.")
-        println()
+        println("Total return rate is ${String.format("%.1f", returnRate)}%.\n")
     }
 }

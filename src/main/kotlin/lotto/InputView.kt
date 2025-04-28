@@ -13,6 +13,7 @@ object InputView {
 
             return input
         } catch (e: NumberFormatException) {
+            println("[ERROR] Please enter a valid integer")
             throw IllegalArgumentException("[ERROR] Please enter a valid integer")
         }
     }
