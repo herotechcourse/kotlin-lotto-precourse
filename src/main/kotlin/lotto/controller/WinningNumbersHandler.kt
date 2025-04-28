@@ -17,9 +17,9 @@ object WinningNumbersHandler {
     }
 
     private fun validateAndReturn(winningNumberInput: String): List<String> {
-        val parsedWinningNumbers = WinningNumbersParser.parse(winningNumberInput)
-        WinningNumbersValidator.validate(parsedWinningNumbers)
+//        val parsedWinningNumbers = WinningNumbersParser.parse(winningNumberInput)
+        WinningNumbersValidator.validate(winningNumberInput)
 
-        return parsedWinningNumbers
+        return winningNumberInput.split(',')
     }
 }
