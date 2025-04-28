@@ -1,10 +1,10 @@
 package lotto
 
-import lotto.domain.Lotto
+import lotto.domain.LotteryTicket
 import lotto.view.InputReader
 import lotto.view.OutputPrinter
 
-class LottoMachine(private val reader: InputReader, private val printer: OutputPrinter) {
+class Lotto(private val reader: InputReader, private val printer: OutputPrinter) {
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.
@@ -19,7 +19,7 @@ class LottoMachine(private val reader: InputReader, private val printer: OutputP
     }
 
     companion object {
-        private const val TICKET_PRICE: Int = Lotto.PRICE
+        private const val TICKET_PRICE: Int = LotteryTicket.PRICE
     }
 
 }
