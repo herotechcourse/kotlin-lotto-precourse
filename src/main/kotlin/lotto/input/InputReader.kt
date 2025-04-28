@@ -47,7 +47,6 @@ object InputReader {
             }
         }
 
-
     }
 
 }

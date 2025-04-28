@@ -8,7 +8,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must not be duplicated." }
-        require( numbers.all { it in START_NUMBER..END_NUMBER }) {"[ERROR] Each number must be between $START_NUMBER and $END_NUMBER inclusive."}
+        require(numbers.all { it in START_NUMBER..END_NUMBER }) { "[ERROR] Each number must be between $START_NUMBER and $END_NUMBER inclusive." }
     }
 
     // TODO: Implement additional functions
@@ -27,7 +27,7 @@ class Lotto(private val numbers: List<Int>) {
         return Rank.ZERO
     }
 
-    fun calculateRank(lotto: Lotto, bonusNumber: Int) : Rank {
+    fun calculateRank(lotto: Lotto, bonusNumber: Int): Rank {
         val winningNumbers = lotto.getNumbers().toSet()
         return match(winningNumbers, bonusNumber)
     }
