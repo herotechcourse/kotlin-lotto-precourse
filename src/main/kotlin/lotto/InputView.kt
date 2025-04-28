@@ -4,20 +4,28 @@ import camp.nextstep.edu.missionutils.Console
 
 object InputView {
     fun purchaseAmount(): Int {
-        while (true) {
-            try {
-                println("Please enter the purchase amount.")
-                val purchaseNumber = Console.readLine().trim()
-                if (purchaseNumber.toIntOrNull() == null) {
-                    throw IllegalArgumentException("Input must be a number")
-                }
-                if (purchaseNumber.toIntOrNull()!! % 1000 != 0) {
-                    throw IllegalArgumentException("Purchase amount must be divisible by 1000")
-                }
-                return purchaseNumber.toInt()
-            } catch (e: IllegalArgumentException) {
-                println("[ERROR] ${e.message}")
-            }
+        println("Please enter the purchase amount.")
+        return readAndValidateAmount()
+    }
+
+    private fun readAndValidateAmount(): Int {
+        try {
+            val input = Console.readLine().trim()
+            val amount = input.toIntOrNull() ?: throw IllegalArgumentException("Input must be a number.")
+            validateAmount(amount)
+            return amount
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message}")
+            return readAndValidateAmount()
+        }
+    }
+
+    private fun validateAmount(amount: Int) {
+        if (amount % 1000 != 0) {
+            throw IllegalArgumentException("Purchase amount must be divisible by 1000.")
+        }
+        if (amount <= 0) {
+            throw IllegalArgumentException("Purchase amount must be greater than 0.")
         }
     }
 
