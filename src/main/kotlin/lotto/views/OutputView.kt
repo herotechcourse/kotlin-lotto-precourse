@@ -22,4 +22,3 @@ class OutputView {
         println("Total return rate is $returnRate%.")
     }
 }
-

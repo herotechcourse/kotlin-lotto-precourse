@@ -7,5 +7,4 @@ enum class PrizeRanking(val prize: Long) {
     FOURTH(50_000),
     FIFTH(5_000),
     NONE(0);
-
 }

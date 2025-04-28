@@ -1,13 +1,10 @@
 package lotto.views
 
-
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class InputViewTest {
-    private val inputView = InputView()
-
     @Test
     fun `valid purchase amount divisible by 1000`() {
         val validAmount = 5000
@@ -85,5 +82,4 @@ class InputViewTest {
             InputView.validateBonusNumber(winningNumbers, bonusNumber)
         }
     }
-
 }

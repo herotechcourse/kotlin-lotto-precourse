@@ -19,7 +19,6 @@ class LotteryResultsTest {
         val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
 
-
         val statistics = lotteryResults.calculatePrizeStatistics(tickets, winningNumbers, bonusNumber)
 
         assertEquals(5, statistics.size)

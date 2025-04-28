@@ -21,7 +21,6 @@ class LottoTest {
         }
     }
 
-
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
