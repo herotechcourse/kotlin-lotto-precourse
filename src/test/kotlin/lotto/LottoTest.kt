@@ -42,5 +42,13 @@ class LottoTest {
         assertThat(lotto.numbers).containsExactly(1, 2, 3, 4, 5, 6)
     }
 
+    @Test
+    fun `sorts numbers in ascending order`() {
+        val unsortedNumbers = listOf(6, 1, 3, 5, 4, 2)
+
+        val lotto = Lotto(unsortedNumbers)
+
+        assertThat(lotto.numbers).containsExactly(1, 2, 3, 4, 5, 6)
+    }
 
 }
