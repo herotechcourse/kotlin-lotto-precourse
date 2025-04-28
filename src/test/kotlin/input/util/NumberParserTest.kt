@@ -1,5 +1,6 @@
 package input.util
 
+import input.getLottoNumberArrayFromInput
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -12,7 +13,8 @@ class NumberParserTest {
         val input = "1,23,45"
 
         // when
-        val result = getNumbersFromInput(input)
+        val result = getValidatedLottoNumbers(input)
+
 
         // then
         assertArrayEquals(arrayOf(1, 23, 45), result)
@@ -25,7 +27,7 @@ class NumberParserTest {
 
         // then
         assertThrows<IllegalArgumentException> {
-            getNumbersFromInput(input)
+            getValidatedLottoNumbers(input)
         }
     }
 
@@ -36,7 +38,7 @@ class NumberParserTest {
 
         // then
         assertThrows<IllegalArgumentException> {
-            getNumbersFromInput(input)
+            getValidatedLottoNumbers(input)
         }
     }
 
@@ -47,7 +49,7 @@ class NumberParserTest {
 
         // then
         assertThrows<NumberFormatException> {
-            getNumbersFromInput(input)
+            getValidatedLottoNumbers(input)
         }
     }
 }
