@@ -16,7 +16,7 @@ fun main() {
             application.run()
             break
         } catch (e: IllegalArgumentException) {
-            println("${e.message}")
+            throw e
         }
     }
 }
@@ -64,12 +64,11 @@ class Application {
         val winningValidator = WinningNumberValidator()
 
         val winningNumbersInput = inputView.getWinnings()
-        val bonusInput = inputView.getBonusNumber()
-
         val winningNumberList = StringToList(winningNumbersInput)
-        val bonusNumber = StringToNumber(bonusInput)
-
         val winningNumbers = winningValidator.run(winningNumberList)
+
+        val bonusInput = inputView.getBonusNumber()
+        val bonusNumber = StringToNumber(bonusInput)
         val bonus = winningValidator.getBonus(bonusNumber)
 
         return Pair(winningNumbers, bonus)

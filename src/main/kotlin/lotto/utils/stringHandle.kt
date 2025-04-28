@@ -9,7 +9,7 @@ fun StringToNumber(input: String): Int {
         throwInvalidBudgetException("[ERROR] Entered value must be a number")
     }
 
-    return value
+    return input.toInt()
 }
 
 fun StringToList(input: String): List<Int> {

@@ -29,7 +29,6 @@ class OutputView {
                     Rank.FIVE -> "5 Matches (1,500,000 KRW) – $count tickets"
                     Rank.FIVE_BONUS -> "5 Matches + Bonus Ball (30,000,000 KRW) – $count tickets"
                     Rank.SIX -> "6 Matches (2,000,000,000 KRW) – $count tickets"
-                    else -> ""
                 }
             )
         }
