@@ -7,8 +7,7 @@ import lotto.domain.WinningLotto
 import lotto.domain.LottoManager
 
 fun main() {
-    val purchaseAmount = InputView.readPurchaseAmount()
-    validatePurchaseAmount(purchaseAmount)
+    val purchaseAmount = readValidPurchaseAmount()
 
     val ticketCount = purchaseAmount / 1000
     val lottos = LottoGenerator.generateLottos(ticketCount)
@@ -34,3 +33,15 @@ fun validatePurchaseAmount(amount: Int) {
         throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by 1,000.")
     }
 }
+
+fun readValidPurchaseAmount(): Int {
+    try {
+        val amount = InputView.readPurchaseAmount()
+        validatePurchaseAmount(amount)
+        return amount
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        return readValidPurchaseAmount()
+    }
+}
+
