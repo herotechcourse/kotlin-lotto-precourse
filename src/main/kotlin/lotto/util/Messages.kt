@@ -1,4 +1,4 @@
-package lotto
+package lotto.util
 
 object Messages {
     const val PURCHASE_AMOUNT = "Please enter the purchase amount."

@@ -1,4 +1,6 @@
-package lotto
+package lotto.model
+
+import lotto.util.LottoConstants
 
 enum class Rank(val prize: Int) {
     FIRST(LottoConstants.FIRST_PRIZE),

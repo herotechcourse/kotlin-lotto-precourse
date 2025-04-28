@@ -1,4 +1,7 @@
-package lotto
+package lotto.model
+
+import lotto.Lotto
+import lotto.util.LottoConstants
 
 class LottoService() {
 

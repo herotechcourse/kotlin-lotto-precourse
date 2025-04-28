@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.util.LottoConstants
+import lotto.util.Messages
+
 class
 Lotto(private val numbers: List<Int>) {
     init {

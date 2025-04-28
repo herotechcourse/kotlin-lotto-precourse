@@ -1,4 +1,8 @@
-package lotto
+package lotto.controller
+
+import lotto.model.LottoService
+import lotto.view.InputView
+import lotto.view.OutputView
 
 class LottoApp(
     private val lottoService: LottoService,
