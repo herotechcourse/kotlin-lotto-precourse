@@ -21,8 +21,11 @@ Below is the class diagram representing the object-oriented structure of the Lot
 ### Advanced Design
 ![lotto-precourse-uml](/docs/lotto-precourse_1.drawio.png)
 
-### Advanced Design2(current)
+### Advanced Design2
 ![lotto-precourse-uml](/docs/lotto-precourse_2.drawio.png)
+
+### Final Design
+![lotto-precourse-uml](/docs/lotto-precourse_3.drawio.png)
 
 ## Feature list
 
