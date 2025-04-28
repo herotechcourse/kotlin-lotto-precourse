@@ -13,13 +13,13 @@ object OutputView {
 
     fun printResult(lottoResult: LottoResult) {
         println("Winning Statistics")
-        println("---")
+        println("–––")
         Rank.entries
             .filter { it != Rank.NONE }
             .sortedBy { it.prize }
             .reversed()
             .forEach { rank ->
-                println("${rank.matchCount} Matches${if (rank.hasBonus) " + Bonus Ball" else ""} (${rank.prize} KRW) – ${lottoResult.getMatchCounts()[rank] ?: 0} tickets")
+                println("${rank.matchCount} Matches${if (rank.hasBonus) " + Bonus Ball" else ""} (${String.format("%,d", rank.prize)} KRW) – ${lottoResult.getMatchCounts()[rank] ?: 0} tickets")
             }
     }
 
