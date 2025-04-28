@@ -14,6 +14,7 @@
 - [🏗️ Hierarchy](#-hierarchy)
 - [🗂️ Feature List](#-feature-list)
 - [🖥 Domain and Service Layer](#-domain-and-service-layer)
+- [✅ Checklist](#-checklist)
 
 ---
 
@@ -54,6 +55,7 @@
 | [Execution Flow](./docs/execution-flow.md)                   | Step-by-step flow of UI and service logic          |
 | [Action Plan](./docs/action-plan.md)                         | Step-by-step development plan (FDD → TDD → MVC)    |
 | [Feature List](./docs/feature-list.md)                       | Core functions broken down by feature              |
+| [Submission Checklist](./docs/submission-checklist.md)       | To verify all requirements before submission       |
 
 ---
 ## 🏗️ Hierarchy
@@ -101,7 +103,7 @@ lotto/
 ---
 
 ## 🗂️ Feature List
-- ### Detailed Feature Table → [Click here](./docs/feature-list.md)
+- ### [Click here](./docs/feature-list.md)
 
 ---
 
@@ -144,3 +146,8 @@ lotto/
       - Creates a list of Rank objects based on the matching results.
     - Returns
       - A list of Rank objects that will be passed to `MatchResult`.
+
+---
+
+## ✅ Checklist
+- ### [Click here](./docs/submission-checklist.md)
