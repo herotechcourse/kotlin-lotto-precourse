@@ -54,13 +54,13 @@ fun generateTickets(amount: Int): List<Lotto> {
 
 // Prints the generated lotto tickets
 fun printTickets(tickets: List<Lotto>) {
-    println("${tickets.size} tickets purchased.")
+    println("You have purchased ${tickets.size} tickets.")
     tickets.forEach { println(it.getNumbers().sorted()) }
 }
 
 // Reads last week's winning numbers from the user
 fun readWinningNumbers(): List<Int> {
-    println("Please enter last week's winning numbers (comma-separated).")
+    println("Please enter last week's winning numbers.")
     val input = Console.readLine()
         .split(",")
         .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning number input.") }
