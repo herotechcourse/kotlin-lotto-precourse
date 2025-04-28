@@ -21,7 +21,7 @@ class LottoCalculator(
 
         tickets.forEach {
             val matchCount = it.countMatches(winningNumbers.toList())
-            val bonusBallMatched = winningNumbers.contains(bonusNumber) && !it.contains(bonusNumber.value)
+            val bonusBallMatched = it.contains(bonusNumber)
             val foundRank = ranks.getOrNull(matchCount, bonusBallMatched) ?: return@forEach
             rankCounter[foundRank] = rankCounter[foundRank]?.plus(1) ?: 0
         }

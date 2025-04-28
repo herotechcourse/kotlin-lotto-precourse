@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.CurrencyType
+import lotto.domain.LottoNumber
 import lotto.domain.LottoNumber.Companion.MAX_NUMBER
 import lotto.domain.LottoNumber.Companion.MIN_NUMBER
 
@@ -17,6 +18,10 @@ class Lotto private constructor(private val numbers: List<Int>) {
 
     fun contains(number: Int): Boolean {
         return numbers.contains(number)
+    }
+
+    fun contains(number: LottoNumber): Boolean {
+        return numbers.contains(number.value)
     }
 
     override fun toString(): String {
