@@ -42,4 +42,4 @@
 -[X] print rounded lotto return rate e.g., `65.5%`
 ### etc
 -[X] use enums for prize money (`lotto.LottoRank`)
--[ ] re-prompting input from the step that caused exception (`lotto.Application.kt`)
+-[X] re-prompting input from the step that caused exception (`lotto.Application.kt`)
