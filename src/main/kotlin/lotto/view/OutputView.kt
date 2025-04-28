@@ -17,21 +17,15 @@ class OutputView {
     println("---")
     for (rank in Rank.values()) {
       if (rank == Rank.FIVE_MATCHES_WITH_BONUS) {
-        println(
-                "${rank.matchingCount} Matches + Bonus Ball (${Rank.formattedPrize(rank.prize)} KRW) – ${winners[rank] ?: 0} tickets"
-        )
+        println("${rank.matchingCount} Matches + Bonus Ball (${Rank.formattedPrize(rank.prize)} KRW) – ${winners[rank] ?: 0} tickets")
         continue
       }
-      println(
-              "${rank.matchingCount} Matches (${Rank.formattedPrize(rank.prize)} KRW) – ${winners[rank] ?: 0} tickets"
-      )
+      println("${rank.matchingCount} Matches (${Rank.formattedPrize(rank.prize)} KRW) – ${winners[rank] ?: 0} tickets")
     }
   }
-  
+
   fun printProfitRate(rate: Double) {
     val formattedRate = "%.1f".format(rate).replace(',', '.')
     println("Total return rate is ${formattedRate}%.")
   }
 }
-
-
