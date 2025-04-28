@@ -77,7 +77,9 @@ For the following cases, throw an `IllegalArgumentException`, and re-prompt the 
 ---
 ## Class Diagram
 ### 1. `main` Class Diagram
-![image](https://github.com/user-attachments/assets/8d6e0d1a-d525-4768-a0ce-59a98d1f27de)
+![image](https://github.com/user-attachments/assets/fa0ce229-9d32-49bc-90c5-5c7e9ee8ae06)
+
 ### 2. `test` Class Diagram
-![image](https://github.com/user-attachments/assets/1ef44cb6-5c9b-44bc-a853-fc4d7a61aad1)
+![image](https://github.com/user-attachments/assets/bd4e1bc5-e9b0-43a5-9f26-0368e2d0ace0)
+
 
