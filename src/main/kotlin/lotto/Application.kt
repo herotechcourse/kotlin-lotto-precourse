@@ -6,5 +6,5 @@ fun main() {
     validateAmount(amount)
 
     val tickets = generateTickets(amount)
-
+    printTickets(tickets)
 }

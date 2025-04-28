@@ -40,4 +40,11 @@ fun generateTickets(amount: Int): List<Lotto> {
     }
 }
 
+// Prints the generated lotto tickets
+fun printTickets(tickets: List<Lotto>) {
+    println("${tickets.size} tickets purchased.")
+    tickets.forEach { println(it.getNumbers().sorted()) }
+}
+
+
 
