@@ -7,4 +7,7 @@ fun main() {
     val amount = InputView.readPurchaseAmount()
     val tickets = LottoGenerator.generateTicket(amount)
     OutputView.printTickets(tickets)
+
+    val winningNumbers = InputView.readWinningNumbers()
+    val bonusNumber = InputView.readBonusNumber(winningNumbers)
 }
