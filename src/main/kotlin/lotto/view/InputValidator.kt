@@ -1,17 +1,11 @@
 package lotto.view
 
+import lotto.common.CommonValidator
+
 object InputValidator {
     fun validatePurchaseAmount(input: String): Int {
-        val purchaseAmount = parseAndValidateNumber(input)
+        val purchaseAmount = CommonValidator.parseAndValidateNumber(input)
         return purchaseAmount
-    }
-
-    private fun parseAndValidateNumber(input: String): Int {
-        try {
-            return input.toInt()
-        } catch (e: NumberFormatException) {
-            throw IllegalArgumentException("[ERROR] This input must be a number.")
-        }
     }
 
     fun validateBlank(input: String): String {
@@ -21,6 +15,6 @@ object InputValidator {
 
     fun validateBonusNumber(input: String): Int {
         val bonusNumber = validateBlank(input)
-        return parseAndValidateNumber(bonusNumber)
+        return CommonValidator.parseAndValidateNumber(bonusNumber)
     }
 }
