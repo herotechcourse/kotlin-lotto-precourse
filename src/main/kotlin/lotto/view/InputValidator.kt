@@ -3,7 +3,7 @@ package lotto.view
 import lotto.common.CommonValidator
 
 object InputValidator {
-    fun validatePurchaseAmount(input: String): Int {
+    fun parseAndValidateNumber(input: String): Int {
         val purchaseAmount = CommonValidator.parseAndValidateNumber(input)
         return purchaseAmount
     }
@@ -13,7 +13,7 @@ object InputValidator {
         return input
     }
 
-    fun validateBonusNumber(input: String): Int {
+    fun validateBlankAndParseNumber(input: String): Int {
         val bonusNumber = validateBlank(input)
         return CommonValidator.parseAndValidateNumber(bonusNumber)
     }

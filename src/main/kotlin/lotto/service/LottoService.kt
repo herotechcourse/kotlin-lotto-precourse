@@ -11,8 +11,8 @@ import lotto.domain.winning.WinningDeterminer
 import lotto.domain.winning.WinningNumbers
 
 class LottoService {
-    fun createRandomLotto(amount: Int): RandomLottos {
-        val ticketAmount = PurchaseAmount(amount).toTicketAmount()
+    fun createRandomLotto(purchaseAmount: PurchaseAmount): RandomLottos {
+        val ticketAmount = purchaseAmount.toTicketAmount()
         val randomLottos = LottoGenerator.generate(ticketAmount)
 
         return RandomLottos(randomLottos)
