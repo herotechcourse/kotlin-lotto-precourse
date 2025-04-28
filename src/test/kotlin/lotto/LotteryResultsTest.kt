@@ -20,7 +20,7 @@ class LotteryResultsTest {
         val bonusNumber = 7
 
 
-        val statistics = lotteryResults.getStatistics(tickets, winningNumbers, bonusNumber)
+        val statistics = lotteryResults.calculatePrizeStatistics(tickets, winningNumbers, bonusNumber)
 
         assertEquals(5, statistics.size)
         assertTrue(statistics.any { it.contains("6 Matches") })
@@ -39,7 +39,7 @@ class LotteryResultsTest {
         val bonusNumber = 7
         val purchaseAmount = 1000
 
-        lotteryResults.getStatistics(tickets, winningNumbers, bonusNumber)
+        lotteryResults.calculatePrizeStatistics(tickets, winningNumbers, bonusNumber)
         val returnRate = lotteryResults.calculateReturnRate(purchaseAmount)
 
         assertEquals("200000000.0", returnRate)

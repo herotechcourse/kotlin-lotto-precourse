@@ -10,15 +10,15 @@ class InputView {
         while(true) {
             try {
                 println("Please enter the purchase amount.")
-                val input = Console.readLine()
+                val purchaseAmountInput = Console.readLine()
                 try {
-                    val purchaseAmount = input.toInt()
+                    val purchaseAmount = purchaseAmountInput.toInt()
                     return validatePurchaseAmount(purchaseAmount)
                 } catch (e: NumberFormatException) {
-                    println("[ERROR]")
+                    println("[ERROR] Invalid input. Please enter a valid number for the purchase amount.")
                 }
             } catch (e: IllegalArgumentException) {
-                println(e.message)
+                println("[ERROR] ${e.message}")
             }
         }
     }
@@ -28,12 +28,12 @@ class InputView {
         while(true) {
             try {
                 println("Please enter last week's winning numbers.")
-                val winningNumbersStr = Console.readLine()
-                val winningNumbers = parseWinningNumbers(winningNumbersStr)
+                val winningNumbersInput = Console.readLine()
+                val winningNumbers = parseWinningNumbers(winningNumbersInput)
                 validatedWinningNumbers = validateWinningNumbers(winningNumbers)
                 return validatedWinningNumbers
             } catch(e: IllegalArgumentException) {
-                println(e.message)
+                println("[ERROR] ${e.message}")
             }
         }
     }
@@ -46,12 +46,13 @@ class InputView {
                 val bonusNumber = Console.readLine().toInt()
                 return validateBonusNumber(validatedWinningNumbers, bonusNumber)
             } catch(e: IllegalArgumentException) {
-                println(e.message)
+                println("[ERROR] ${e.message}")
             }
         }
     }
 
     companion object{
+        // Validates that the purchase amount
         internal fun validatePurchaseAmount(purchaseAmount: Int): Int{
             if (purchaseAmount%1000 != 0)
                 throw IllegalArgumentException("[ERROR] Not divisible by 1000")
@@ -60,14 +61,15 @@ class InputView {
             return purchaseAmount
         }
 
+        // Parses a comma-separated string of winning numbers into a list of integers
         internal fun parseWinningNumbers(winningNumbersStr: String): List<Int> {
             val winningNumbers = winningNumbersStr.split(",")
                 .map { it.trim() }
-                .filter { it.isNotEmpty() }
                 .mapNotNull { it.toIntOrNull() }
             return winningNumbers
         }
 
+        // Validates the list of winning numbers.
         internal fun validateWinningNumbers(winningNumbers: List<Int>): List<Int> {
             if (winningNumbers.size != 6)
                 throw IllegalArgumentException("[ERROR] There must be exactly 6 numbers")
@@ -80,6 +82,7 @@ class InputView {
             return winningNumbers
         }
 
+        // Validates the bonus number
         fun validateBonusNumber(winningNumbers: List<Int>, bonusNumber: Int): Int {
             if (bonusNumber in winningNumbers)
                 throw IllegalArgumentException("[ERROR] Bonus number must be different from other numbers")
