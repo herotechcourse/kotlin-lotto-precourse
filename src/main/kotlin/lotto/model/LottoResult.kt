@@ -1,5 +1,7 @@
 package lotto.model
 
+import lotto.Lotto
+
 class LottoResult(private val winningNumber: WinningNumber, private val lotteries: List<Lotto>) {
 
     private val result: MutableMap<PrizeRank, Int> = mutableMapOf()
@@ -16,11 +18,11 @@ class LottoResult(private val winningNumber: WinningNumber, private val lotterie
     }
 
     private fun countMatchingNumbers(lotto: Lotto): Int {
-        return lotto.numbers.count { it in winningNumber.winningNumbers }
+        return lotto.getNumbers().count { it in winningNumber.winningNumbers }
     }
 
     private fun checkBonusNumber(lotto: Lotto): Boolean {
-        return winningNumber.bonusNumber in lotto.numbers
+        return winningNumber.bonusNumber in lotto.getNumbers()
     }
 
     fun getResult(): Map<PrizeRank, Int> {
