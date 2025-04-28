@@ -35,6 +35,6 @@ object OutputView {
             }
             println("(${rank.prize}) – ${winnings.getValue(rank)} tickets")
         }
-        println("Total return rate is ${LotteryTicketMachine.returnRate}%")
+        println("Total return rate is ${LotteryTicketMachine.returnRate}%.")
     }
 }
