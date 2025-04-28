@@ -24,12 +24,12 @@ class MoneyTest {
     @Test
     fun `returns correct ticket count`() {
         val money = Money(5000)
-        assertThat(money.getTicketCount()).isEqualTo(5)
+        assertThat(money.countTickets()).isEqualTo(5)
     }
 
     @Test
     fun `returns correct amount value`() {
         val money = Money(3000)
-        assertThat(money.toInt()).isEqualTo(3000)
+        assertThat(money.value()).isEqualTo(3000)
     }
 }

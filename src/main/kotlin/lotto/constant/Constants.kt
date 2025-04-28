@@ -21,6 +21,7 @@ object Constants {
     const val ERROR_DUPLICATE_WINNING_NUMBER = "[ERROR] Duplicate numbers are not allowed."
 
     // Profit calculation related
+    const val ERROR_INVALID_PURCHASE_AMOUNT = "[ERROR] Purchase amount must be greater than 0."
 
     // Lotto basic constants
     const val LOTTO_NUMBER_MIN = 1
