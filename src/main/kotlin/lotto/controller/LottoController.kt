@@ -42,6 +42,8 @@ class LottoController {
     fun calculateMatchedNumbers(purchasedLottos: List<PurchasedLotto>, winningNumbers: Lotto, bonusNumber: Int) {
         for (lotto in purchasedLottos) {
             val matchCount = lotto.countMatchedNumbersWithWinningNumbers(winningNumbers)
+            val isMatchedBonusNumber = lotto.isMatchedWithBonusNumber(bonusNumber)
+
         }
     }
 }

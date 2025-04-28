@@ -9,6 +9,10 @@ class PurchasedLotto(val lottoNumbers: List<Int>) {
         return lottoNumbers.count { it in winningNumbers.getNumbers() }
     }
 
+    fun isMatchedWithBonusNumber(bonusNumber: Int): Boolean {
+        return bonusNumber in lottoNumbers
+    }
+
     companion object {
         fun generateLottoNumbers(ticketCount: Int): List<PurchasedLotto> {
             return List(ticketCount) { createPurchasedLotto() }
