@@ -17,7 +17,7 @@ object InputView {
     }
 
     fun readLastBonusNumber(): String {
-        println(INPUT_LAST_WINNING_NUMBER_MESSAGE)
+        println(INPUT_LAST_BONUS_NUMBER_MESSAGE)
         return readln()
     }
 
