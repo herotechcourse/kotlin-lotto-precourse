@@ -10,4 +10,6 @@ class RandomLottos(private val tickets: List<Lotto>) {
         return tickets.map { ticket -> ticket.toNumbersDto() }
             .toList()
     }
+
+    fun tickets(): List<Lotto> = tickets.toList()
 }
