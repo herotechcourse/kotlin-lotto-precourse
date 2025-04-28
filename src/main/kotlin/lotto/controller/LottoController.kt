@@ -13,4 +13,13 @@ class LottoController(private val inputView: InputView) {
       println(e.message)
     }
   }
+  private fun getPurchaseAmount(): Int {
+    return inputView.readPurchaseAmount()
+  }
+  private fun getWinningNumbers(): List<Int> {
+    return inputView.readWinningNumbers()
+  }
+  private fun getBonusNumber(): Int {
+    return inputView.readBonusNumber()
+  }
 }
