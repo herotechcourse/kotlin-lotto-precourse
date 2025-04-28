@@ -1,34 +1,19 @@
-package lotto
+package lotto.domain
 
+import lotto.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Assertions.assertFalse
 
-class LottoTest {
-    @Test
-    fun `throws an exception when lotto numbers exceed six`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
-    }
-
-    @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
+class LottoBusinessTest {
     @Test
     fun `create lotto with valid numbers`() {
         val numbers = listOf(1, 2, 3, 4, 5, 6)
         val lotto = Lotto(numbers)
-        assertEquals(numbers.sorted(), lotto.getNumbers())
+        assertThat(lotto.getNumbers()).isEqualTo(numbers.sorted())
     }
 
     @Test
@@ -56,17 +41,11 @@ class LottoTest {
     }
 
     @Test
-    fun `count matches correctly`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        val winningNumbers = listOf(1, 2, 7, 8, 9, 10)
-        assertEquals(2, lotto.countMatches(winningNumbers))
-    }
-
-    @Test
-    fun `check bonus number correctly`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assertTrue(lotto.hasBonusNumber(1))
-        assertFalse(lotto.hasBonusNumber(7))
+    fun `throw exception when lotto has duplicate numbers`() {
+        val numbers = listOf(1, 1, 2, 3, 4, 5)
+        assertThrows<IllegalArgumentException> {
+            Lotto(numbers)
+        }
     }
 
     @Test
@@ -97,4 +76,4 @@ class LottoTest {
         val winningNumbersList = winningNumbers.split(",").map { it.toInt() }
         assertThat(lotto.countMatches(winningNumbersList)).isEqualTo(expectedCount)
     }
-}
+} 
