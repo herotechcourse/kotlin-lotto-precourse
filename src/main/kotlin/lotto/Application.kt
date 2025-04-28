@@ -1,25 +1,71 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Randoms
-
 fun main() {
-        val lotteryMachine = LotteryMachine()
+    val lotteryMachine = LotteryMachine()
+    lotteryMachine.run()
+}
 
-    while (amount == null || amount < 1000) {
-        println("Please enter the amount you want to spend:")
-        amount = readlnOrNull()?.toIntOrNull()
+class LotteryMachine {
+    private val ticketPrice = 1000
 
-        if (amount == null || amount < 1000) {
-            println("Invalid amount. Please enter a valid number greater than or equal to 1000.")
+    fun run() {
+        try {
+            val amount = InputView.readPurchaseAmount()
+            val tickets = generateTickets(amount)
+            OutputView.printPurchasedTickets(tickets)
+
+            val winningLotto = Lotto(InputView.readWinningNumbers())
+            val bonusNumber = InputView.readBonusNumber()
+
+            val statistics = analyzeResults(tickets, winningLotto, bonusNumber)
+            val totalWinnings = calculateTotalWinnings(statistics)
+
+            OutputView.printWinningStatistics(statistics, amount, totalWinnings)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            run()
+        } catch (e: IllegalStateException) {
+            println(e.message)
+            run()
         }
     }
-    val numberOfTickets = amount / 1000
-    println("You can buy $numberOfTickets ticket(s).")
 
-    repeat(numberOfTickets) {
-        val ticket = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            .sorted()
+    private fun generateTickets(amount: Int): List<Lotto> {
+        val ticketCount = amount / ticketPrice
+        val lottoTickets = mutableListOf<Lotto>()
 
-        println("You entered: $amount")
+        repeat(ticketCount) {
+            val numbers = camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            lottoTickets.add(Lotto(numbers))
+        }
+
+        return lottoTickets
+    }
+
+    fun analyzeResults(
+        tickets: List<Lotto>,
+        winningLotto: Lotto,
+        bonusNumber: Int
+    ): Map<Prize, Int> {
+        val statistics = mutableMapOf<Prize, Int>()
+
+        for (ticket in tickets) {
+            val matchCount = ticket.countMatches(winningLotto)
+            val hasBonusMatch = ticket.contains(bonusNumber)
+            val rank = Prize.getRank(matchCount, hasBonusMatch)
+
+            if (rank != Prize.NONE) {
+                statistics[rank] = statistics.getOrDefault(rank, 0) + 1
+            }
+        }
+
+        return statistics
+    }
+
+    fun calculateTotalWinnings(statistics: Map<Prize, Int>): Long {
+        return statistics.entries.sumOf { (rank, count) ->
+            rank.prizeAmount * count
+        }
     }
 }
+
