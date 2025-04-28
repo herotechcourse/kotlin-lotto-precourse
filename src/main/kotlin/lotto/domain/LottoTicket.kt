@@ -1,8 +1,8 @@
 package lotto.domain
 
-class LottoTicket (private val amount: Long) {
+class LottoTicket (private val numbers: List<Int>) {
     init {
-//        require (amount % 1000 == 0) { "[ERROR] Amount must be divisible by 1,000."}
+        require (numbers.size == 6) { "[ERROR] A lotto ticket must have exactly 6 numbers." }
     }
-    fun ticketCount() : Long = amount / 1000
+    fun getNumbers(): List<Int> = numbers.sorted()
 }
