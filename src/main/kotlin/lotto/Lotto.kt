@@ -61,6 +61,26 @@ fun readBonusNumber(): Int {
         ?: throw IllegalArgumentException("[ERROR] Invalid bonus number input.")
 }
 
+// Manages the winning lotto numbers and the bonus number
+class WinningNumbers(
+    private val winningNumbers: Lotto,
+    private val bonusNumber: Int
+) {
+    init {
+        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+        require(bonusNumber !in winningNumbers.getNumbers()) { "[ERROR] Bonus number must not duplicate winning numbers." }
+    }
+
+    // Counts how many numbers match between a ticket and the winning numbers
+    fun countMatch(ticket: Lotto): Int {
+        return ticket.getNumbers().count { it in winningNumbers.getNumbers() }
+    }
+
+    // Checks whether the ticket contains the bonus number
+    fun isBonusMatched(ticket: Lotto): Boolean {
+        return bonusNumber in ticket.getNumbers()
+    }
+}
 
 
 

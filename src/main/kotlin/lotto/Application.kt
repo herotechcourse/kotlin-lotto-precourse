@@ -10,7 +10,8 @@ fun main() {
 
     val winningNumbersInput = readWinningNumbers()
     val bonusNumber = readBonusNumber()
+    val winningNumbers = WinningNumbers(Lotto(winningNumbersInput), bonusNumber)
 
-    println("Winning Numbers: $winningNumbersInput")
+    println("Winning Numbers: $winningNumbers")
     println("Bonus Number: $bonusNumber")
 }
