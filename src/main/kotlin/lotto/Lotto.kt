@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import lotto.utils.LottoGenerator
 import lotto.validator.LottoValidator
 
-class Lotto(private val numbers: List<Int> = LottoGenerator.generateLottoNumbers()) {
+class Lotto(private val numbers: List<Int> = LottoGenerator.generateLottoNumbers().sorted()) {
     init {
         LottoValidator.validate(numbers)
     }
