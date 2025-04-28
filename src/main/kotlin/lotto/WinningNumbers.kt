@@ -1,4 +1,4 @@
-package lotto.dto
+package lotto
 
 import lotto.validator.BonusNumberValidator
 import lotto.validator.WinningNumbersValidator
