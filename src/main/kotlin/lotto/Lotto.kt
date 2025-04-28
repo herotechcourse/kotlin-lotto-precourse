@@ -1,7 +1,6 @@
 package lotto
 
-import lotto.domain.ErrorMessages
-import lotto.domain.LottoConstants
+import lotto.domain.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -17,5 +16,12 @@ class Lotto(private val numbers: List<Int>) {
 
     fun formatForDisplay(): String {
         return numbers.sorted().toString()
+    }
+
+    fun match(winningNumbers: WinningNumbers, bonusNumber: BonusNumber): LottoRank {
+        val matchCount = numbers.count { it in winningNumbers.numbers }
+        val matchBonus = bonusNumber.number in numbers
+
+        return LottoRank.from(matchCount, matchBonus)
     }
 }
