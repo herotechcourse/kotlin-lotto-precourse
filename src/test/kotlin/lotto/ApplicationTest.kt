@@ -39,6 +39,48 @@ class ApplicationTest : NsTest() {
             listOf(2, 13, 22, 32, 38, 45),
             listOf(1, 3, 5, 14, 22, 45),
         )
+          // multiple winner tickets test
+          assertRandomUniqueNumbersInRangeTest(
+            {
+                run("3000", "1,2,3,4,5,6", "7")
+                assertThat(output())
+                        .contains(
+                                "You have purchased 3 tickets.",
+                                "[1, 2, 3, 4, 5, 6]", // 6 matches
+                                "[1, 2, 3, 4, 5, 7]", // 5 matches + bonus
+                                "[1, 2, 3, 4, 5, 8]", // 5 matches
+                                "3 Matches (5,000 KRW) – 0 tickets",
+                                "4 Matches (50,000 KRW) – 0 tickets",
+                                "5 Matches (1,500,000 KRW) – 1 tickets",
+                                "5 Matches + Bonus Ball (30,000,000 KRW) – 1 tickets",
+                                "6 Matches (2,000,000,000 KRW) – 1 tickets",
+                                "Total return rate is 67716666.7%.",
+                        )
+            },
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 7),
+            listOf(1, 2, 3, 4, 5, 8),
+    )
+    // no winner ticket test
+    assertRandomUniqueNumbersInRangeTest(
+        {
+            run("2000", "1,2,3,4,5,6", "7")
+            assertThat(output())
+                    .contains(
+                            "You have purchased 2 tickets.",
+                            "[7, 8, 9, 10, 11, 12]",
+                            "[13, 14, 15, 16, 17, 18]",
+                            "3 Matches (5,000 KRW) – 0 tickets",
+                            "4 Matches (50,000 KRW) – 0 tickets",
+                            "5 Matches (1,500,000 KRW) – 0 tickets",
+                            "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                            "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                            "Total return rate is 0.0%.",
+                    )
+        },
+        listOf(7, 8, 9, 10, 11, 12),
+        listOf(13, 14, 15, 16, 17, 18),
+)
     }
 
     @Test
