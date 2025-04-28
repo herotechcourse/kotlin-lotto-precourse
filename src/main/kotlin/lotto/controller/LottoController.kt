@@ -17,11 +17,6 @@ class LottoController {
         calculateMatchedNumbers(purchasedLottos, winningNumbers, bonusNumber)
     }
 
-    fun getPurchasedAmount(): Int {
-        val purchasedAmount = inputPurchasedAmount()
-        return purchasedAmount
-    }
-
     fun buyLottos(): List<PurchasedLotto> {
         val purchasedAmount = getPurchasedAmount() / 1000
         printUserPurchasedTicketPhrase(purchasedAmount)
@@ -31,12 +26,33 @@ class LottoController {
         return  purchasedLottos
     }
 
+    fun getPurchasedAmount(): Int {
+        try {
+            val purchasedAmount = inputPurchasedAmount()
+            return purchasedAmount
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return getPurchasedAmount()
+        }
+    }
+
     fun getWinningNumbers(): Lotto {
-        return inputUserWinningNumbers()
+        try {
+            return inputUserWinningNumbers()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return getWinningNumbers()
+        }
+
     }
 
     fun getBonusNumber(winningNumbers: Lotto): Int {
-        return inputUserBonusNumber(winningNumbers)
+        try {
+            return inputUserBonusNumber(winningNumbers)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return getBonusNumber(winningNumbers)
+        }
     }
 
     fun calculateMatchedNumbers(purchasedLottos: List<PurchasedLotto>, winningNumbers: Lotto, bonusNumber: Int) {

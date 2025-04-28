@@ -34,6 +34,7 @@
 # Architecture
 ### 1. Input
   - Exception
+  - [x] If the user inputs invalid data, re-prompt input from that step
   - Amount
     - [x] Non-numeric characters are used
     - [x] The amount is not a unit of `1,000 KRW`
