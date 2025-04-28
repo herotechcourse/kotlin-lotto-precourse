@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.input.end
+import lotto.input.start
+
 enum class Rank(val label: String, val prize: Long) {
     ZERO("0 Matches", 0),
     THREE("3 Matches", 5_000),
@@ -13,6 +16,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must not be duplicated." }
+        require( numbers.all { it in start..end }) {"[ERROR] Each number must be between $start and $end inclusive."}
     }
 
     // TODO: Implement additional functions

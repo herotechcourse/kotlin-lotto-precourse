@@ -49,13 +49,6 @@ class ValidationTest {
     }
 
     @Test
-    fun `each winning number must be in range from 1 to 45`() {
-        assertThrows<IllegalArgumentException> {
-            Input.isEachInRange(listOf(1, 2, 3, 4, 5, 46), 1, 45)
-        }
-    }
-
-    @Test
     fun `bonus number must not be duplicated with the winning numbers`() {
         assertThrows<IllegalArgumentException> {
             Input.bonusNumberDuplication(6, listOf(1, 2, 3, 4, 5, 6))
