@@ -8,7 +8,7 @@ object InputView {
     fun readPurchaseAmount(): String {
         println(PURCHASE_AMOUNT_MESSAGE)
 
-        val purchaseAmount = Console.readLine()
+        val purchaseAmount = Console.readLine().trim()
 
         return purchaseAmount
     }
