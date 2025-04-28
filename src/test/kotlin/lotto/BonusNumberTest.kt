@@ -1,4 +1,5 @@
 package lotto
+
 import lotto.view.InputView
 import lotto.view.InputView.Companion.validateBonusNumberRange
 import org.junit.jupiter.api.Test
