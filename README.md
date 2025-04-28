@@ -71,8 +71,8 @@ A Kotlin console application that issues lottery tickets, checks winning results
 
 ## Testing
 
-- [] All business logic is tested with **JUnit 5** and **AssertJ**.
-- [] Tests are located under `src/test/kotlin/`.
+- [X] All business logic is tested with **JUnit 5** and **AssertJ**.
+- [X] Tests are located under `src/test/kotlin/`.
 - [x] Run all tests using:
   ```bash
   ./gradlew clean test      # macOS/Linux
