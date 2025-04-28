@@ -49,7 +49,7 @@ object InputView {
     }
 }
 
-private object InputValidation {
+object InputValidation {
     fun payment(input: String): Int {
         val parsedInput = input.trim().toIntOrNull() ?: throw IllegalArgumentException(ErrorMessage.NON_NUMERIC)
         require(parsedInput > 0) { ErrorMessage.NEGATIVE_NUMBER }

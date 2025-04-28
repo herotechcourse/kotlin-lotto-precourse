@@ -40,7 +40,7 @@ class LottoMachine {
     }
 }
 
-private object Calculator {
+object Calculator {
     fun getRankDetails(player: Player, winningDraw: WinningDraw): Map<LottoRank, Pair<Int, Int>> {
         val rankingTable = mutableMapOf<LottoRank, Pair<Int, Int>>()
         for (rank in LottoRank.entries) {
