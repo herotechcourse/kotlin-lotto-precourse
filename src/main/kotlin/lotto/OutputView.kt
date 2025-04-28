@@ -25,4 +25,16 @@ object OutputView {
         }
         println()
     }
+
+    fun printWinnings(winnings: Map<PrizeRank, Int>, ranks: List<PrizeRank>, returnRate: Double) {
+        println("Winning Statistics\n---")
+        for (rank in ranks) {
+            print("${rank.matches} Matches ")
+            if (rank.bonusNumber == 1) {
+                print("+ Bonus Ball ")
+            }
+            println("(${rank.prize}) – ${winnings.getValue(rank)} tickets")
+        }
+        println("Total return rate is ${returnRate}%")
+    }
 }

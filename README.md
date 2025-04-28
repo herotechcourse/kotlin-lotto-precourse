@@ -19,6 +19,7 @@
     - [ ] compare tickets with winning numbers to calculate winnings - see table below
     - [ ] calculate profit return rate based on winnings
     - [ ] round profit return rate to nearest tenth
+    - [ ] round profit return rate to nearest tenth
 ### output
 - [x] ask user for input
     - [x] ask user for purchase amount
@@ -28,11 +29,9 @@
     - [x] number of tickets
     - [x] tickets
         - [x] numbers must be sorted in ascending order
-- [ ] results
-    - [ ] matches per prize rank
-    - [ ] profit return rate
-        - [ ] round profit return rate to nearest tenth
-
+- [x] results
+    - [x] matches per prize rank
+    - [x] profit return rate
 
 
 ## prize ranks
