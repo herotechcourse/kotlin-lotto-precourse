@@ -1,5 +1,6 @@
 package lotto.domain
 
+import lotto.Lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -29,4 +30,20 @@ class LottoGameTest {
         }
     }
 
+    @Test
+    fun `calculate the match result for each lotto ticket`() {
+        val lottos = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(6, 7, 8, 9, 10, 11))
+        )
+        val winningNumbers = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 7
+
+        val results = lottoGame.result(lottos, winningNumbers, bonusNumber)
+
+        assertThat(results[0].matchedCount).isEqualTo(6)
+        assertThat(results[0].hasBonus).isFalse()
+        assertThat(results[1].matchedCount).isEqualTo(1)
+        assertThat(results[1].hasBonus).isTrue()
+    }
 }
