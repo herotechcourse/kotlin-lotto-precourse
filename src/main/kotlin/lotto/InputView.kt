@@ -9,10 +9,10 @@ object InputView {
         val input = Console.readLine()
 
         val amount = input.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] Input must be a valid number")
+            ?: throw IllegalArgumentException("[ERROR]Invalid number format")
 
         if (amount % 1000 != 0 ) {
-            throw IllegalArgumentException("[ERROR] Amount must be divisible by 1, 000. ")
+            throw IllegalArgumentException("[ERROR]Amount must be multiples of 1000")
         }
         return  amount
     }
