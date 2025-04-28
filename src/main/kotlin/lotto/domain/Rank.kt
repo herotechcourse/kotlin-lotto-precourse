@@ -9,17 +9,17 @@ enum class Rank(val matchCount: Int, val bonus: Boolean, val reward: Int) {
     NONE(0, false, 0);
 
     companion object {
-        fun of(matchCount: Int, bonus: Boolean): Rank {
-            return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && bonus -> SECOND
-                matchCount == 5 -> THIRD
-                matchCount == 4 -> FOURTH
-                matchCount == 3 -> FIFTH
-                else -> NONE
-            }
+    fun of(matchCount: Int, bonus: Boolean): Rank {
+        return when {
+            matchCount == 6 -> FIRST
+            matchCount == 5 && bonus -> SECOND
+            matchCount == 5 -> THIRD
+            matchCount == 4 -> FOURTH
+            matchCount == 3 -> FIFTH
+            else -> NONE
         }
     }
+}
 
     fun description(): String {
         return when (this) {

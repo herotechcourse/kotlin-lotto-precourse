@@ -9,7 +9,7 @@ class LottoTicketTest {
 
     @Test
     fun `3개 번호가 일치하면 5등이다`() {
-        val lottoTicket = LottoTicket(Lotto(listOf(1, 2, 3, 10, 11, 12)))
+        val lottoTicket = LottoTicket(Lotto(listOf(1, 2, 3, 5, 6, 7)))
         val winningNumbers = listOf(1, 2, 3, 20, 21, 22)
         val bonusNumber = 7
 
@@ -31,9 +31,9 @@ class LottoTicketTest {
 
     @Test
     fun `5개 번호와 보너스 번호가 일치하면 2등이다`() {
-        val lottoTicket = LottoTicket(Lotto(listOf(1, 2, 3, 4, 7, 8)))
         val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
+        val lottoTicket = LottoTicket(Lotto(listOf(1, 2, 3, 5, 6, 7)))
 
         val rank = lottoTicket.match(winningNumbers, bonusNumber)
 
