@@ -114,6 +114,26 @@ Tests the behavior of Money objects:
 
 ### Winner Test
 
+#### Constructor Validation Tests
+
+These tests verify that the `Winner` constructor properly validates its input parameters:
+
+- Ensures that a valid list of numbers and bonus number can create a Winner instance
+- Verifies exceptions are thrown for the following invalid inputs:
+  - Empty numbers list
+  - Numbers list with incorrect size (not 6 numbers)
+  - Numbers outside the valid range (1-45)
+  - Duplicate numbers in the list
+  - Bonus number outside valid range (1-45)
+  - Bonus number that appears in the winning numbers list
+
+## Methods Tests
+
+These tests verify the behavior of the `Winner` class methods:
+
+- `getNumbers()` returns the correct list of winning numbers
+- `getBonus()` returns the correct bonus number
+
 ### Lotto Util Test
 
 ### Lotto Machine Test
