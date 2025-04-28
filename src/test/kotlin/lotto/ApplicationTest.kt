@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ApplicationTest : NsTest() {
     @Test
@@ -44,8 +45,10 @@ class ApplicationTest : NsTest() {
     @Test
     fun `exception test`() {
         assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThrows<IllegalStateException> {
+                runException("1000j")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
         }
     }
 
@@ -54,6 +57,6 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
-        private const val ERROR_MESSAGE: String = "[ERROR]"
+        private const val ERROR_MESSAGE: String = "[ERR]"
     }
 }
