@@ -3,12 +3,12 @@ package lotto.domain
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class LotteryMachineTest {
+class LottoMachineTest {
     @Test
     fun `buy with non-zero purchase amount returns correct count and valid tickets`() {
         // given
         val purchase = PurchaseAmount(5000);
-        val machine = LotteryMachine()
+        val machine = LottoMachine()
 
         // when
         val lottos = machine.buy(purchase)
