@@ -9,18 +9,18 @@ The application allows users to buy lotto tickets, input winning numbers, and ca
 ## Feature Checklist
 
 ### Input Handling
-- [ ] Prompt user for purchase amount.
-- [ ] Validate that the purchase amount is a positive integer divisible by 1,000.
-- [ ] Throw IllegalArgumentException and terminate if the purchase amount is invalid.
-- [ ] Prompt user for last week's winning numbers (comma-separated).
-- [ ] Validate that winning numbers:
-    - [ ] Are exactly 6 numbers.
-    - [ ] Are within 1-45 and non-duplicated.
-- [ ] Prompt user for bonus number.
-- [ ] Validate that the bonus number:
-    - [ ] Is within 1-45.
-    - [ ] Does not duplicate the winning numbers.
-- [ ] Throw IllegalArgumentException and terminate if input is invalid.
+- [x] Prompt user for purchase amount.
+- [x] Validate that the purchase amount is a positive integer divisible by 1,000.
+- [x] Throw IllegalArgumentException and terminate if the purchase amount is invalid.
+- [x] Prompt user for last week's winning numbers (comma-separated).
+- [x] Validate that winning numbers:
+    - [x] Are exactly 6 numbers.
+    - [x] Are within 1-45 and non-duplicated.
+- [x] Prompt user for bonus number.
+- [x] Validate that the bonus number:
+    - [x] Is within 1-45.
+    - [x] Does not duplicate the winning numbers.
+- [x] Throw IllegalArgumentException and terminate if input is invalid.
 
 ---
 
@@ -42,11 +42,11 @@ The application allows users to buy lotto tickets, input winning numbers, and ca
 ---
 
 ### Output Handling
-- [ ] Print the number of tickets purchased and the numbers of each ticket (sorted).
-- [ ] Display the winning statistics:
-    - [ ] Show the count of tickets for each winning rank.
-    - [ ] Show the total profit rate rounded to one decimal place.
-- [ ] Ensure error messages start with [ERROR].
+- [x] Print the number of tickets purchased and the numbers of each ticket (sorted).
+- [x] Display the winning statistics:
+    - [x] Show the count of tickets for each winning rank.
+    - [x] Show the total profit rate rounded to one decimal place.
+- [x] Ensure error messages start with [ERROR].
 
 ---
 
