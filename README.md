@@ -29,10 +29,11 @@
 - 보너스 번호가 중복되거나 범위를 벗어날 경우 예외 발생 (재입력 요구)
 
 ## Application.kt          ← 진입점(main 함수)
-- └── InputView.kt        ← 사용자 입력
+- └── InputView.kt        ← 사용자 입력(구매 금액 → 당첨 번호 → 보너스 번호)
 - └── OutputView.kt       ← 출력 담당
 - └── LottoMachine.kt     ← 로또 발행 로직
 - └── Lotto.kt            ← 로또 한 장 클래스
 - └── LottoResult.kt      ← 당첨 통계 계산
 - └── Rank.kt (enum)      ← 당첨 등수 정의
 - └── WinningNumbers.kt   ← 당첨 번호 + 보너스 번호
+
