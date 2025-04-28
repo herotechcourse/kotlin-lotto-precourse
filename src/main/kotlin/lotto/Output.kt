@@ -2,7 +2,7 @@ package lotto
 
 class OutputView {
     fun promptPurchase (){
-        println("Please enter the purchase amount :")
+        print("Please enter the purchase amount : ")
     }
 
     fun ticketAmount(count: Int) {
@@ -16,11 +16,11 @@ class OutputView {
     }
 
     fun promptWinningNumbers (){
-        println("\nPlease enter last week's winning numbers (comma-separated) :")
+        print("\nPlease enter last week's winning numbers (comma-separated) : ")
     }
 
     fun promptBonusNumber (){
-        println("\nPlease enter the bonus number :")
+        print("\nPlease enter the bonus number : ")
     }
 
     fun error(message: String)  {
@@ -35,11 +35,11 @@ class OutputView {
             .forEach { tier ->
                 println(formatTierResult(tier, results.getOrDefault(tier, 0)))
             }
-        println("Total return rate is ${"%.1f".format(profitRate)}%.")
+        println("Total return rate is ${"%.1f".format(profitRate).replace(',', '.')}%.")
     }
 
     private fun formatTierResult(tier: PrizeRanks, count: Int): String {
-        return "${tier.description} (${"%,d".format(tier.prizeMoney)} KRW) - $count tickets"
+        return "${tier.description} (${"%,d".format(tier.prizeMoney).replace('\u202F', ',')} KRW) – $count tickets"
     }
 
 }

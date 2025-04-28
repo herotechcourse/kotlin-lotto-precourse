@@ -34,7 +34,7 @@ This project is a application that simulates a lottery ticket machine. The goal 
 - **Lottery Display**
     - [x] Display number of tickets purchased
     - [x] Display each ticket each sorted in ascending order
-    - [ ] Display winning statistics
+    - [x] Display winning statistics
         - [x] Display prize list
         - [x] Display number of winning ticket(s)
         - [x] Display rounded profit rate
