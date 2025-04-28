@@ -7,7 +7,7 @@ fun printPurchasedAmountInputPhrase() {
 }
 
 fun printUserPurchasedTicketPhrase(ticketCount: Int) {
-    println("You have purchased 8 tickets.")
+    println("You have purchased $ticketCount tickets.")
 }
 
 fun printAllPurchasedLottoNumbers(lottoNumbers: List<PurchasedLotto>) {

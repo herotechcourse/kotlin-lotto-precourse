@@ -2,7 +2,6 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
-import java.util.*
 
 class PurchasedLotto(val lottoNumbers: List<Int>) {
     fun countMatchedNumbersWithWinningNumbers(winningNumbers: Lotto): Int {

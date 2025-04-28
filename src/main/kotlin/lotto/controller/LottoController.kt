@@ -3,7 +3,6 @@ package lotto.controller
 import lotto.Lotto
 import lotto.domain.PurchasedLotto
 import lotto.domain.WinningStatics
-import lotto.repository.PurchasedLottoRepository
 import lotto.service.PurchasedLottoService
 import lotto.util.*
 
