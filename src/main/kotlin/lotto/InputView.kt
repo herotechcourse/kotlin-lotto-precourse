@@ -30,12 +30,16 @@ class InputView {
         return this.userPurchase
     }
 
-    fun bonusNumber(): Int {
+    fun bonusNumber(winningNumbers: List<Int>): Int {
         while (true) {
             println(QUEST_BONUS_NUM)
             val bonusNum = Console.readLine()
             try {
                 if (checkInRange(bonusNum).isNotBlank()) {
+                    throw IllegalArgumentException(errorMessage(errorType).toString())
+                }
+                if  (winningNumbers.contains(bonusNum.toInt())){
+                    errorType= ERROR_MESSAGE_DUP_BONUS
                     throw IllegalArgumentException(errorMessage(errorType).toString())
                 }
                 return bonusNum.toInt()
@@ -163,6 +167,7 @@ class InputView {
         const val ERROR_MESSAGE_COMMA = "Numbers should be separated by commas"
         const val ERROR_MESSAGE_DUPL = "Winning numbers should be unique numbers"
         const val ERROR_MESSAGE_WINNUM = "Winning numbers should be numbers"
+        const val ERROR_MESSAGE_DUP_BONUS="Bonus number is already in winning numbers"
 
     }
 }
