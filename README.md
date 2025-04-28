@@ -33,7 +33,8 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
     - WinningNumbers.kt
     - ResultChecker.kt
     - LottoController.kt
-    - LottoView.kt
+    - OutputHandler.kt
+    - InputHandler.kt
 ```
 
 ### 3. Define the Input Handler 
@@ -47,7 +48,10 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 - Create the feature to generate tickets
 - Calculate ticket prices
 
-### 5. add a getNumber in the Lotto class to capture the numbers created
+### 5. Add a getNumber in the Lotto class to capture the numbers created
 - add a getter to lotto
 - make the code more idiomatic
 - test the class in the application class
+
+### 6. Implement an outputHandler
+- refactor LottoView earlier created to Input Handler

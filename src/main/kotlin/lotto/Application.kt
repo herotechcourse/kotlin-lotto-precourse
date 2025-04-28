@@ -5,7 +5,10 @@ fun main() {
     val lottoMachine = LottoMachine(purchaseAmount)
     val ticketCount = lottoMachine.calculateTicketCount()
     val tickets = lottoMachine.generateTickets(ticketCount)
-    tickets.forEach { println(it.getNumbers()) }
+
+    val outputHandler = OutputHandler()
+    outputHandler.printTickets(ticketCount, tickets)
+
 
 
 }
