@@ -1,5 +1,6 @@
 package lotto.model
 
+// Represents the ranking based on the number of matching numbers and bonus match
 enum class PrizeRank (
     val matchCount: Int,
     val matchBonus: Boolean,
@@ -13,6 +14,7 @@ enum class PrizeRank (
     FAIL(0, false, 0);
 
     companion object {
+        // Determines the PrizeRank based on match count and bonus match
         fun find(matchCount: Int, bonusMatch: Boolean): PrizeRank {
             return when {
                 matchCount == 6 -> FIRST
