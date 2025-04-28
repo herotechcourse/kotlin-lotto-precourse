@@ -27,7 +27,8 @@ object OutputView {
     }
 
     fun printTotalYield(yield: Double) {
-        println("Total return rate is ${yield}%.")
+        val formattedYield = String.format("%.1f", yield)
+        println("Total return rate is ${formattedYield}%.")
     }
 
     private fun formatCurrency(amount: Long): String {
