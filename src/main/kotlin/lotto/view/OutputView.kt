@@ -7,7 +7,7 @@ object OutputView {
     private const val ERROR_HEAD = "[ERROR]"
     private const val GENERATED_LOTTO_HEADER = "You have purchased %d tickets."
     private const val MATCHED_LOTTO_COUNT_HEADER = "\nWinning Statistics\n---";
-    private const val MATCHED_LOTTO_COUNT = "%s - %d tickets"
+    private const val MATCHED_LOTTO_COUNT = "%s – %d tickets"
     private const val PROFIT_RATE_HEADER = "Total return rate is %.1f%%.";
 
     fun printError(message: String) {
@@ -27,6 +27,7 @@ object OutputView {
 
         LottoRank.entries
             .filter { it != LottoRank.NONE }
+            .reversed()
             .forEach { rank ->
                 val count = matchedLottoCount[rank] ?: 0
                 println(MATCHED_LOTTO_COUNT.format(rank.message, count))
