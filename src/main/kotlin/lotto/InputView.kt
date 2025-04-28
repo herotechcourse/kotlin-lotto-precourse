@@ -53,7 +53,12 @@ object InputView {
 
     fun getBonusNumber() {
         val input = Console.readLine()
-        validateLottoNumber(input)
+        try {
+            validateLottoNumber(input)
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            getBonusNumber()
+        }
         LotteryTicketMachine.bonusNumber = input.toInt()
         println()
     }
