@@ -19,6 +19,13 @@ object LottoManager {
             val numbers = InputParser.parseToNumbers(input)
             Lotto(numbers)
         }
+
+        val bonusNumber = retry {
+            val input = InputView.readBonusNumber()
+            val bonus = InputParser.parseToInt(input)
+            InputValidator.validateBonusNumber(bonus, winningNumbers.getNumbers())
+            bonus
+        }
     }
 
     private fun <T> retry(block: () -> T): T {

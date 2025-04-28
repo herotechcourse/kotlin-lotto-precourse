@@ -8,4 +8,13 @@ object InputValidator {
         }
         return input
     }
+
+    fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
+        if (bonusNumber !in 1..45) {
+            throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+        }
+        if (bonusNumber in winningNumbers) {
+            throw IllegalArgumentException("[ERROR] Bonus number must not duplicate winning numbers.")
+        }
+    }
 }
