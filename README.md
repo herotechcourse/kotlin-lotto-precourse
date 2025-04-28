@@ -4,7 +4,8 @@
 
 - [Built With](#built-with)  
 - [Conventions](#conventions)  
-- [Features](#features)  
+- [Features](#features)
+- [Unit Tests](#unit-tests)  
 
 
 ## Built With
@@ -21,10 +22,10 @@
 
 ## Features
 ### User Input
-- [ ] The user can enter the purchase amount.  
-  - [ ] If the input is not a single number, throw `IllegalArgumentException`  
+- [x] The user can enter the purchase amount.  
+  - [x] If the input is not a single number, throw `IllegalArgumentException`  
     - “[ERROR] Purchase amount is not a single number.”  
-  - [ ] If the amount is not divisible by 1,000 KRW, throw `IllegalArgumentException`  
+  - [x] If the amount is not divisible by 1,000 KRW, throw `IllegalArgumentException`  
     - “[ERROR] Purchase amount must be in multiples of 1,000 KRW.”
 
 - [ ] The user can enter the winning numbers.  
@@ -98,11 +99,6 @@
 
 ---
 
-### Testing and Structure
-- [ ] Write unit tests for core business logic (ticket generation, rank determination, return-rate calculation).  
-- [ ] Separate UI input/output into `InputView` and `OutputView` classes.  
-- [ ] Implement retry logic at the Application level to catch exceptions and re-prompt input.  
-
 ## Example Execution
 ```
 Please enter the purchase amount.
@@ -133,3 +129,23 @@ Winning Statistics
 6 Matches (2,000,000,000 KRW) – 0 tickets
 Total return rate is 62.5%.
 ```
+
+## Unit Tests
+
+### `PurchaseAmountTest` (lotto.domain)
+- **throws exception when amount is not divisible by `1,000`**  
+  Verifies that constructing `PurchaseAmount` with a non-multiple of `1,000` throws  
+  `IllegalArgumentException(INVALID_PURCHASE_UNIT)`.
+
+- **initializes successfully when amount is exactly `1,000`**  
+  Verifies that `PurchaseAmount(1000)` succeeds and `amount` is set to `1000`.
+
+### `IntParserTest` (lotto.presentation)
+- **throws exception when input contains multiple numbers**  
+  Verifies that passing `"1 2"` throws `IllegalArgumentException(INVALID_NUMBER)`.
+
+- **throws exception when input is non-numeric**  
+  Verifies that passing `"kdozlo"` throws `IllegalArgumentException(INVALID_NUMBER)`.
+
+- **parses and returns integer when input is a single valid number**  
+  Verifies that passing `"8"` returns `8`.
