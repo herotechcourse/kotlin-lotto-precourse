@@ -23,4 +23,7 @@ fun main() {
     println("5 matches + Bonus (30,000,000 won) - ${results.getOrDefault(2, 0)} tickets")
     println("6 matches (2,000,000,000 won) - ${results.getOrDefault(1, 0)} tickets")
 
+    // Calculate and print total return rate
+    val totalRate = calculateTotalRate(results, amount)
+    println("Total return rate: %.1f%%".format(totalRate))
 }

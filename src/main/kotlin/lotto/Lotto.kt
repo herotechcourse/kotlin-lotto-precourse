@@ -107,6 +107,22 @@ fun calculateResults(tickets: List<Lotto>, winningNumbers: WinningNumbers): Map<
     return resultMap
 }
 
+// Calculates the total return rate based on winnings and purchase amount
+fun calculateTotalRate(results: Map<Int, Int>, totalAmount: Int): Double {
+    val prizeMoney = mapOf(
+        1 to 2_000_000_000,
+        2 to 30_000_000,
+        3 to 1_500_000,
+        4 to 50_000,
+        5 to 5_000
+    )
+
+    val totalWinnings = results.entries.sumOf { (rank, count) ->
+        (prizeMoney[rank] ?: 0) * count
+    }
+
+    return (totalWinnings.toDouble() / totalAmount) * 100
+}
 
 
 
