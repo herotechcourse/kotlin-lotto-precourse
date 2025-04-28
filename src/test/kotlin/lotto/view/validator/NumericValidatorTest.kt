@@ -1,7 +1,5 @@
 package lotto.view.validator
 
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -12,7 +10,7 @@ class NumericValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = ["a", " ", "", "1a", "1-2"])
     fun `Throws when value is not numeric`(input: String) {
-        assertThrows<IllegalArgumentException>("input ${input} shold throw error") { NumericValidator.validate(input) }
+        assertThrows<IllegalArgumentException>("input ${input} should throw error") { NumericValidator.validate(input) }
     }
 
     @ParameterizedTest
