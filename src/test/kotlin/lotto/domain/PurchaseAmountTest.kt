@@ -20,6 +20,19 @@ class PurchaseAmountTest {
     }
 
     @Test
+    fun `thows exception when amount is zero`() {
+        // given
+        val amount = 0
+
+        // when
+
+        // then
+        assertThatThrownBy { PurchaseAmount(amount) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(ErrorMessages.INVALID_ZERO_PURCHASE_AMOUNT)
+    }
+
+    @Test
     fun `initializes successfully when amount is exactly 1_000`() {
         // given
         val amount = 1000
