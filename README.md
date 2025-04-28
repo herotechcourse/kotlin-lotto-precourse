@@ -5,12 +5,13 @@
 -[X] take user's input 
 ### process user's input (`service.InputProcessingService`)
 -[ ] validate user's inputs for
-  -[ ] if the amount of money is divisible by 1000
-  -[ ] if 6 winning numbers are each unique numbers
+  -[X] if the amount of money is divisible by 1000
+  -[X] if there are total of 6 winning numbers
+  -[X] if 6 winning numbers are each unique numbers
   -[ ] if one bonus number is unique from 6 winning numbers
   -[X] if all numbers (winning & bonus) are integers within 1 - 45
 -[X] if validation fails, throw `IllegalArgumentException`
--[ ] return comma-separated winning numbers in a list
+-[X] return comma-separated winning numbers in a list
 ### ticket process (`lotto.Ticket`)
 -[X] calculate how many tickets a user has bought
 -[X] generate 6 unique random numbers for each purchased ticket

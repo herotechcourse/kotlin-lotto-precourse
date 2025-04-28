@@ -13,4 +13,13 @@ object InputProcessingService {
         return numbers.split(",").map { validateInputInteger(it) }
     }
 
+    fun validatePurchaseAmount(number:Int) {
+        require(number > 0) { "The purchase amount must be greater than 0." }
+        require(number % 1000 == 0) { "The purchase amount must be a multiple of 1000." }
+    }
+
+    fun validateWinningNumbers(numberList:List<Int>) {
+        require(numberList.size == 6) { "The number of winning numbers must be 6." }
+        require(numberList.distinct().size == 6) { "The winning numbers must not contain duplicates." }
+    }
 }
