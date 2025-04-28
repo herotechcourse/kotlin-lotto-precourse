@@ -30,10 +30,11 @@ class LottoMachineTest {
 
     @Test
     fun `checkMatches should correctly update match map`() {
+        val lottoMachine=LottoMachine()
+
         val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
         val bonusNumber = 7
-        val lottoMachine=LottoMachine()
-        
+
         val winningTicket = Lotto(listOf(1, 2, 3, 4, 5, 6))
         val noMatchTicket = Lotto(listOf(11, 12, 13, 14, 15, 16))
 
@@ -43,5 +44,20 @@ class LottoMachineTest {
 
         assertEquals(1, lottoMachine.matchMap[MatchCondition.MATCH_6]?.count)
         assertEquals(0, lottoMachine.matchMap[MatchCondition.MATCH_3]?.count)
+    }
+
+    @Test
+    fun `calcReturnRate should return correct return percentage`() {
+        val lottoMachine=LottoMachine()
+
+        val purchaseAmount = 10000
+
+        lottoMachine.matchMap[MatchCondition.MATCH_4]?.count = 1 // 50,000
+        lottoMachine.matchMap[MatchCondition.MATCH_5]?.count = 1 // 1,500,000
+
+        val returnRate = lottoMachine.calcReturnRate(purchaseAmount)
+
+        // (50,000 + 1,500,000) / 10,000 * 100 = 15,500%
+        assertEquals(15500.0, returnRate)
     }
 }
