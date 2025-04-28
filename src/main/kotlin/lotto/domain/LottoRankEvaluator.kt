@@ -10,7 +10,7 @@ object LottoRankEvaluator {
         return tickets.getAll()
             .map { ticket ->
                 val matchCount = winningNumbers.matchCount(ticket)
-                val hasBonus = ticket.contains(bonusNumber.number)
+                val hasBonus = ticket.contains(bonusNumber.number.number)
                 Rank.of(matchCount, hasBonus)
             }
             .groupingBy { it }

@@ -10,8 +10,8 @@ class WinningNumbers(private val numbers: List<LottoNumber>) {
     }
 
     fun matchCount(lotto: Lotto): Int {
-        return lotto.getSortedNumbers().count { number ->
-            numbers.any { it.number == number }
+        return lotto.getSortedNumbers().count { lottoNumber ->
+            numbers.any { it.number == lottoNumber }
         }
     }
 

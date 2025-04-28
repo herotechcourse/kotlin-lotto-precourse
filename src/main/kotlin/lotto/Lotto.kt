@@ -1,24 +1,22 @@
 package lotto
 
-import lotto.domain.LottoNumber
-
-class Lotto(private val numbers: List<LottoNumber>) {
+class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == SIZE) { "[ERROR] Lotto must contain exactly $SIZE numbers." }
         require(numbers.distinct().size == SIZE) { "[ERROR] Lotto numbers must not contain duplicates." }
+
     }
 
     fun getSortedNumbers(): List<Int> {
-        return numbers.map { it.number }.sorted()
+        return numbers.sorted()
     }
 
     companion object {
         const val SIZE = 6
 
         fun of(rawNumbers: List<Int>): Lotto {
-            val lottoNumbers = rawNumbers.map { LottoNumber(it) }
-            return Lotto(lottoNumbers)
+            return Lotto(rawNumbers)
         }
     }
 
@@ -26,8 +24,7 @@ class Lotto(private val numbers: List<LottoNumber>) {
         return getSortedNumbers().toString()
     }
 
-    fun contains(number: LottoNumber): Boolean {
+    fun contains(number: Int): Boolean {
         return numbers.contains(number)
     }
-
 }
