@@ -27,23 +27,23 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 ### Common
 
 - [x] Parser (input parser)
-- [ ] Lotto util (lotto simulator utility functions)
+- [x] Lotto util (lotto simulator utility functions)
 - [x] Error message (include sysytem error messages)
 
 ### Model
 
-- [ ] Lotto machine (lotto seller and simulator)
-- [ ] Money (contain purchase amount)
-- [ ] Prize (prize details by lotto ranking)
-- [ ] Rank (lotto rank enum)
-- [ ] Winner (contain winning numbers and bonus number)
+- [x] Lotto machine (lotto seller and simulator)
+- [x] Money (contain purchase amount)
+- [x] Prize (prize details by lotto ranking)
+- [x] Rank (lotto rank enum)
+- [x] Winner (contain winning numbers and bonus number)
 
 ### View
 
 - [x] Read input
   - [x] Safe Read
-- [ ] Print output
-  - [ ] Print result
+- [x] Print output
+  - [x] Print result
 
 ### Controller
 
