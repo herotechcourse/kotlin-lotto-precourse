@@ -64,4 +64,13 @@ class LottoTest {
 
         assertThat(lotto.containsBonus(bonus)).isFalse()
     }
+
+    @Test
+    fun `should return sorted numbers when getTickets is called`() {
+        val lotto = Lotto(listOf(5, 12, 39, 1, 28, 44))
+
+        val tickets = lotto.getTickets()
+
+        assertThat(tickets).isEqualTo(listOf(1, 5, 12, 28, 39, 44))
+    }
 }
