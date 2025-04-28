@@ -4,16 +4,28 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.Lotto
 
 object InputView {
+     fun printErrorAndThrow(message: String): Nothing {
+        println(message)
+        throw IllegalArgumentException(message)
+    }
+
     fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
-        val purchaseAmount = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
+        val purchaseAmount = input?.toIntOrNull()
 
-        if (purchaseAmount % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] The purchase amount must be divisible by 1000.")
+        if (purchaseAmount == null) {
+            printErrorAndThrow("[ERROR] Purchase amount must be a valid number.")
         }
+
+        if (purchaseAmount <= 0 || purchaseAmount % 1000 != 0) {
+            printErrorAndThrow("[ERROR] The purchase amount must be a positive number divisible by 1000.")
+        }
+
         return purchaseAmount
     }
+
+
 
     fun readWinningNumbers(): Lotto {
         println("\nPlease enter last week's winning numbers.")
