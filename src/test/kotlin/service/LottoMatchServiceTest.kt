@@ -55,4 +55,20 @@ class LottoMatchServiceTest {
         assertThat(hasBonus).isFalse()
     }
 
+    @Test
+    fun `determineRank returns correct rank for different match counts`() {
+        assertThat(LottoMatchService.determineRank(3, false)).isEqualTo(LottoRank.THREE)
+        assertThat(LottoMatchService.determineRank(4, false)).isEqualTo(LottoRank.FOUR)
+        assertThat(LottoMatchService.determineRank(5, false)).isEqualTo(LottoRank.FIVE)
+        assertThat(LottoMatchService.determineRank(5, true)).isEqualTo(LottoRank.FIVE_BONUS)
+        assertThat(LottoMatchService.determineRank(6, false)).isEqualTo(LottoRank.SIX)
+    }
+
+    @Test
+    fun `determineRank returns null for less than 3 matches`() {
+        assertThat(LottoMatchService.determineRank(0, false)).isNull()
+        assertThat(LottoMatchService.determineRank(1, false)).isNull()
+        assertThat(LottoMatchService.determineRank(2, false)).isNull()
+    }
+
 }
