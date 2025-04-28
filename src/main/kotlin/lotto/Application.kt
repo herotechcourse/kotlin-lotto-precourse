@@ -1,9 +1,10 @@
 package lotto
 
+import lotto.controller.LottoController
 import lotto.view.ConsoleInputReader
 import lotto.view.ConsoleOutputPrinter
 
 fun main() {
-    val machine = LottoMachine(ConsoleInputReader(), ConsoleOutputPrinter())
-    machine.run()
+    val lottoController = LottoController(ConsoleInputReader(), ConsoleOutputPrinter())
+    lottoController.run()
 }
