@@ -1,5 +1,6 @@
 package lotto
 import lotto.support.*
+import lotto.domain.Rank
 
 class Lotto(private val numbers: List<Int>) {
     var matchCount: Int = 0
