@@ -52,4 +52,27 @@ class InputProcessingServiceTest {
         }
     }
 
+    @Test
+    fun `splitWinningNumbers converts comma-separated string to list of integers`() {
+        val input = "1,2,3,4,5,6"
+
+        val result = InputProcessingService.splitWinningNumbers(input)
+
+        assertThat(result).containsExactly(1, 2, 3, 4, 5, 6)
+    }
+
+    @Test
+    fun `splitWinningNumbers throws exception for invalid numbers`() {
+        val invalidInputs = listOf(
+            "1,2,3,4,5,a",
+            "1,2,3,4,5,0",
+            "1,2,3,4,5,46"
+        )
+
+        invalidInputs.forEach { input ->
+            assertThrows<IllegalArgumentException> {
+                InputProcessingService.splitWinningNumbers(input)
+            }
+        }
+    }
 }
