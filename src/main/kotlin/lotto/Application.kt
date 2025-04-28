@@ -1,5 +1,15 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val inputHandler = InputHandler()
+    val outputHandler = OutputHandler()
+    val lottoMachine = LottoMachine()
+
+    val lottoGame = LottoGame(
+        lottoMachine,
+        inputHandler,
+        outputHandler
+    )
+    
+    lottoGame.run()
 }
