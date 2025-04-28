@@ -1,4 +1,5 @@
 package lotto.service
+
 import lotto.Lotto
 import camp.nextstep.edu.missionutils.Randoms
 
@@ -10,9 +11,9 @@ object LottoService {
             throw LottoInputException.InvalidAmount(amount)
     }
 
-    fun generateTickets(amount: Int): List<Lotto> = List<Lotto>(amount) {
-            val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
-            Lotto(ticketNumbers)
+    fun generateTickets(amount: Int) = List<Lotto>(amount) {
+        val ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()
+        Lotto(ticketNumbers)
     }
 
     fun validateWinningNumbers(numbers: List<Int>) {
