@@ -7,6 +7,7 @@ open class Lotto(paramNumbers: List<Int>) {
 
     init {
         require (numbers.size == 6) { "Lotto must contain exactly 6 numbers." }
+        require (numbers.distinct().size == 6) { "Lotto numbers must be unique." }
         bitmask = createBitmask(paramNumbers)
     }
 
