@@ -79,7 +79,7 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### Project Structure (UML)
-<br>
+<pre>
 
                           +----------------+
                           |  Application    |
@@ -122,3 +122,5 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
                   +------------------+
                   | ProfitCalculator |
                   +------------------+
+
+</pre>
