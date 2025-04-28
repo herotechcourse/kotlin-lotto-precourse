@@ -14,7 +14,7 @@ class OutputHandler {
         
         Rank.values().reversed().forEach { rank ->
             val count = winningStatistics.getOrDefault(rank, 0)
-            println("${rank.description} - $count tickets")
+            println("${rank.description} – $count tickets")
         }
         
         val totalWinningAmount = calculateTotalWinnings(winningStatistics)
