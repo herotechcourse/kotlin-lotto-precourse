@@ -9,7 +9,8 @@
     - Numbers must be in the range 1 ~ 45
     - Every numbers should be unique
 - **Bonus Number**
-    - Bonus number should not be duplicated with the winning numbers
+    - Bonus Number must be in the range 1 ~ 45
+    - Bonus Number should not be duplicated with the winning numbers
 
 ### Lotto
 - Lotto must be initiated by 6 Numbers
