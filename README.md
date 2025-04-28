@@ -1,5 +1,9 @@
 # kotlin-lotto-precourse
 
+## Project Introduction
+- This project implements a simple lottery ticket machine.
+- Users can purchase lottery tickets based on their input amount, enter winning numbers and bonus number, and view the lottery results along with their profit rate.
+
 ## Feature List
 | Status  | Feature                                                    | Layer    |
 |---------|------------------------------------------------------------|----------|
