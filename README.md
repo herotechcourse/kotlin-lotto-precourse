@@ -81,19 +81,24 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ### Project Structure (UML)
 <pre>
 
-                          +----------------+
-                          |  Application    |
-                          |  (main entry)   |
-                          +----------------+
-                                   |
-         +-------------------------+---------------------------+
-        |                                                       |
-+---------------+                                       +----------------+
-|   InputView   |                                       |   OutputView    |
-| (Input Layer) |                                       |  (Output Layer) |
-+---------------+                                       +----------------+
-        |
-        v
+                    +------------------+
+                    |   Application     |
+                    |   (main entry)     |
+                    +------------------+
+                             |
+                             v
+                    +------------------+
+                    | LottoController   |
+                    +------------------+
+                             |
+       +---------------------+---------------------+
+       |                                           |
++----------------+                         +----------------+
+|   InputView    |                         |   OutputView    |
+| (Input Layer)  |                         |  (Output Layer) |
++----------------+                         +----------------+
+       |                                           |
+       v                                           v
 +---------------+      generates      +----------------+      evaluate     +--------------------+
 |    Money      | ----------------->  | LottoGenerator | ----------------> | LottoRankEvaluator |
 +---------------+                     +----------------+                   +--------------------+
@@ -116,7 +121,7 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
                       compare
                           v 
                     +----------------+
-                   |   Rank (Enum)   | 
+                   |   Rank (Enum)    | 
                     +----------------+
                           |
                   +------------------+
@@ -124,3 +129,10 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
                   +------------------+
 
 </pre>
+
+### Architecture Overview
+- **Application**: Entry point, delegates execution to `LottoController`.
+- **LottoController**: Coordinates the overall flow between input, domain logic, and output.
+- **InputView**: Handles user inputs.
+- **OutputView**: Displays results to the user.
+- **Domain**: Core business logic classes (`Money`, `Lotto`, `WinningNumbers`, `Rank`, etc.)
