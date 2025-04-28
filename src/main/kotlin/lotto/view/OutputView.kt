@@ -2,6 +2,7 @@ package lotto.view
 
 import lotto.domain.Lotto
 import lotto.domain.Prize
+import java.util.Locale
 
 object OutputView {
 
@@ -46,6 +47,6 @@ object OutputView {
     }
 
     private fun formatMoney(amount: Int): String {
-        return "%,d".format(amount)
+        return String.format(Locale.US, "%,d", amount)
     }
 }
