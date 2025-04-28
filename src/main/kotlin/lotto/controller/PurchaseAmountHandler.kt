@@ -4,18 +4,18 @@ import lotto.validation.PurchaseAmountValidator
 import lotto.view.InputView
 
 object PurchaseAmountHandler {
-    fun readValidatedBonusNumber(): Int {
+    fun readValidated(): Int {
         while (true) {
             val purchaseAmount = InputView.readPurchaseAmount()
             try {
-                return handlePurchaseAmount(purchaseAmount)
+                return validateAndReturn(purchaseAmount)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
-    private fun handlePurchaseAmount(purchaseAmount: String): Int {
+    private fun validateAndReturn(purchaseAmount: String): Int {
         PurchaseAmountValidator.validate(purchaseAmount)
 
         return purchaseAmount.toInt()

@@ -1,7 +1,7 @@
 package lotto.view
 
 import lotto.model.LottoRank
-import lotto.model.MATCH
+import lotto.model.Match
 import java.text.DecimalFormat
 
 object OutputView {
@@ -22,7 +22,7 @@ object OutputView {
     }
 
     fun printWinningStatistics() {
-        LottoRank.values().forEach { rank ->
+        LottoRank.entries.forEach { rank ->
             println("${rank.comment} (${splitComma(rank.prize)} $CURRENCY_UNIT) – ${matchCountOf(rank)} tickets")
         }
     }
@@ -37,11 +37,11 @@ object OutputView {
 
     private fun matchCountOf(rank: LottoRank): Int {
         return when (rank) {
-            LottoRank.FIFTH -> MATCH.THREE
-            LottoRank.FOURTH -> MATCH.FOUR
-            LottoRank.THIRD -> MATCH.FIVE
-            LottoRank.SECOND -> MATCH.FIVE_AND_BONUS
-            LottoRank.FIRST -> MATCH.SIX
+            LottoRank.FIFTH -> Match.threeCount
+            LottoRank.FOURTH -> Match.fourCount
+            LottoRank.THIRD -> Match.fiveCount
+            LottoRank.SECOND -> Match.fiveAndBonusCount
+            LottoRank.FIRST -> Match.sixCount
         }
     }
 }

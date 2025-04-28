@@ -1,6 +1,5 @@
 package lotto.controller
 
-import lotto.Lotto
 import lotto.model.LottoNumberMaker
 import lotto.model.MatchCalculator
 import lotto.model.PurchaseAmountParser
@@ -9,17 +8,17 @@ import lotto.view.OutputView
 
 object LottoProgramStart {
     fun run() {
-        val purchaseAmount = PurchaseAmountHandler.readValidatedBonusNumber()
+        val purchaseAmount = PurchaseAmountHandler.readValidated()
         val ticketCount = PurchaseAmountParser.parse(purchaseAmount)
         OutputView.printTicketCount(ticketCount)
 
-        val lottoNumber: List<Lotto> = LottoNumberMaker.makeTotalLottoTicket(ticketCount)
-        LottoNumberMaker.printTotalLottoTicket(lottoNumber)
+        val lottoNumber = LottoNumberMaker.makeTotalTicket(ticketCount)
+        LottoNumberMaker.printTotalTicket(lottoNumber)
 
-        val winningNumbers: List<String> = WinningNumbersHandler.readValidatedWinningNumbers()
-        val bonusNumber: String = BonusNumberHandler.readValidatedBonusNumber(winningNumbers)
+        val winningNumbers = WinningNumbersHandler.readValidated()
+        val bonusNumber = BonusNumberHandler.readValidated(winningNumbers)
 
-        val winningAmount = MatchCalculator.run(lottoNumber, winningNumbers, bonusNumber)
+        val winningAmount = MatchCalculator.calculate(lottoNumber, winningNumbers, bonusNumber)
         val returnRate = ReturnRateCalculator.run(purchaseAmount, winningAmount)
 
         OutputView.printWinningStatisticsStartLine()

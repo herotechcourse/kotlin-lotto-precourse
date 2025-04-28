@@ -5,19 +5,19 @@ import lotto.validation.WinningNumbersValidator
 import lotto.view.InputView.readWinningNumbers
 
 object WinningNumbersHandler {
-    fun readValidatedWinningNumbers(): List<String> {
+    fun readValidated(): List<String> {
         while (true) {
             val winningNumbers = readWinningNumbers()
             try {
-                return handleWinningNumbers(winningNumbers)
+                return validateAndReturn(winningNumbers)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
-    private fun handleWinningNumbers(winningNumberInput: String): List<String> {
-        var parsedWinningNumbers: List<String> = WinningNumbersParser.parse(winningNumberInput)
+    private fun validateAndReturn(winningNumberInput: String): List<String> {
+        val parsedWinningNumbers = WinningNumbersParser.parse(winningNumberInput)
         WinningNumbersValidator.validate(parsedWinningNumbers)
 
         return parsedWinningNumbers

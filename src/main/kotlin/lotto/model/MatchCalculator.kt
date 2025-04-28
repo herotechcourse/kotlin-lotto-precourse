@@ -2,45 +2,45 @@ package lotto.model
 
 import lotto.Lotto
 
-object MATCH{
-    var SIX = 0
-    var FIVE_AND_BONUS = 0
-    var FIVE = 0
-    var FOUR = 0
-    var THREE = 0
+object Match{
+    var sixCount = 0
+    var fiveAndBonusCount = 0
+    var fiveCount = 0
+    var fourCount = 0
+    var threeCount = 0
 }
 
 object MatchCalculator {
-    fun run(totalLottoTicket: List<Lotto>, winningNumbers: List<String>, bonusNumber: String): Int {
+    fun calculate(totalLottoTicket: List<Lotto>, winningNumbers: List<String>, bonusNumber: String): Int {
         val winningNumbers = winningNumbers.map { it -> it.toInt() }
         val bonusNumber = bonusNumber.toInt()
 
-        matchOneToSixCount(totalLottoTicket, winningNumbers)
-        matchFiveAndBonusNumberCount(totalLottoTicket, winningNumbers, bonusNumber)
+        countMatchesThreeFourSix(totalLottoTicket, winningNumbers)
+        countTotalFiveMatchesWithBonus(totalLottoTicket, winningNumbers, bonusNumber)
 
         return calculateWinningAmount()
     }
-
-    private fun matchOneToSixCount(totalLottoTicket: List<Lotto>, winningNumbers: List<Int>) {
+    
+    private fun countMatchesThreeFourSix(totalLottoTicket: List<Lotto>, winningNumbers: List<Int>) {
         for (lottoTicket in totalLottoTicket) {
             val intersectionNumber = lottoTicket.getNumbers().intersect(winningNumbers)
-            if (intersectionNumber.size == 3) MATCH.THREE++
-            if (intersectionNumber.size == 4) MATCH.FOUR++
-            if (intersectionNumber.size == 6) MATCH.SIX++
+            if (intersectionNumber.size == 3) Match.threeCount++
+            if (intersectionNumber.size == 4) Match.fourCount++
+            if (intersectionNumber.size == 6) Match.sixCount++
         }
     }
 
-    private fun matchFiveAndBonusNumberCount(
+    private fun countTotalFiveMatchesWithBonus(
         totalLottoTickets: List<Lotto>,
         winningNumbers: List<Int>,
         bonusNumber: Int,
     ) {
         totalLottoTickets.forEach { lottoTicket ->
-            checkFiveMatchWithBonus(lottoTicket, winningNumbers, bonusNumber)
+            countFiveMatchWithBonus(lottoTicket, winningNumbers, bonusNumber)
         }
     }
 
-    private fun checkFiveMatchWithBonus(
+    private fun countFiveMatchWithBonus(
         lottoTicket: Lotto,
         winningNumbers: List<Int>,
         bonusNumber: Int,
@@ -50,17 +50,16 @@ object MatchCalculator {
         if (intersection.size != 5) return
 
         if (bonusNumber in lottoTicket.getNumbers()) {
-            MATCH.FIVE_AND_BONUS++
+            Match.fiveAndBonusCount++
             return
         }
-
-        MATCH.FIVE++
+        Match.fiveCount++
     }
 
     private fun calculateWinningAmount(): Int =
-        (MATCH.SIX * LottoRank.FIRST.prize) +
-        (MATCH.FIVE_AND_BONUS * LottoRank.SECOND.prize) +
-        (MATCH.FIVE * LottoRank.THIRD.prize) +
-        (MATCH.FOUR * LottoRank.FOURTH.prize) +
-        (MATCH.THREE * LottoRank.FIFTH.prize)
+        (Match.sixCount * LottoRank.FIRST.prize) +
+        (Match.fiveAndBonusCount * LottoRank.SECOND.prize) +
+        (Match.fiveCount * LottoRank.THIRD.prize) +
+        (Match.fourCount * LottoRank.FOURTH.prize) +
+        (Match.threeCount * LottoRank.FIFTH.prize)
 }
