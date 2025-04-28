@@ -16,7 +16,7 @@ class LottoMachine(
         while (true) {
             try {
                 val input = inputView.readPurchaseAmount()
-                PurchaseAmountValidator.validate(input)
+                InputValidator.validatePurchaseAmount(input)
                 return input.replace(",", "").trim().toInt()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
