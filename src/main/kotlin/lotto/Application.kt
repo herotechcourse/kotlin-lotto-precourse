@@ -14,4 +14,8 @@ fun main() {
 
     val winningNumbers = inputHandler.getWinningNumbers()
     val bonusNumber = inputHandler.getBonusNumber(winningNumbers)
+
+    val winningStatistics = lottoMachine.calculateWinningStatistics(lottos, winningNumbers, bonusNumber)
+    
+    outputHandler.printWinningStatistics(winningStatistics, purchaseAmount)
 }
