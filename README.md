@@ -51,7 +51,7 @@
 
 ### 2. Output
   - Purchased Lotto Numbers
-    - [ ] print `(purchase amount / 1,000)` sets of numbers, enclosed in square brackets and separated by comma(,)
+    - [x] print `(purchase amount / 1,000)` sets of numbers, enclosed in square brackets and separated by comma(,)
   - Winning Statistics
     - [ ] Print the results in ascending order.
   - Rate of Return
@@ -62,7 +62,7 @@
 ### 3. Business Logic
   - [ ] Rank is implemented using an `Enum` class.
     - (rank, prize amount)
-  - [ ] Purchased lotto numbers are stored in a List.
+  - [x] Purchased lotto numbers are stored in a List.
   - List Iteration
     - [ ] For each purchased lotto ticket, check how many numbers including the bonus number match the winning numbers.
     - [ ] Store winning tickets in a `Map`
