@@ -8,34 +8,40 @@ import lotto.view.InputView
 import lotto.view.OutputView
 
 fun main() {
-
-    val inputView = InputView()
     val validator = InputValidator()
+    val input = InputView()
+    val view = OutputView()
 
-    val purchaseAmount = getValidatedInput(
+    val machine = LottoMachine(readPurchaseAmount(input, validator))
+    view.printTicketCount(machine.tickets.size)
+    view.printLottoNumbers(machine.tickets)
+
+    val winningNumbers = readWinningNumbers(input, validator)
+    val bonusNumber = readBonusNumber(input, validator, winningNumbers)
+    view.printWinningStatistics(machine.setAllRank(winningNumbers, bonusNumber))
+    view.printReturnRate(machine.calculateReturnRate())
+}
+
+private fun readPurchaseAmount(inputView: InputView, validator: InputValidator): Int {
+    return getValidatedInput(
         prompt = PromptMessages.PURCHASE_AMOUNT.message,
         readInput = { inputView.readOneLine(it) },
         validate = { validator.validatePurchaseInput(it) }
     )
+}
 
-    val lottoMachine = LottoMachine(purchaseAmount)
-    val outputView = OutputView(lottoMachine)
-
-    outputView.printTicketCount()
-    outputView.printLottoNumbers()
-
-    val winningNumbers = getValidatedInput(
+private fun readWinningNumbers(inputView: InputView, validator: InputValidator): Set<Int> {
+    return getValidatedInput(
         prompt = PromptMessages.WINNING_NUMBERS.message,
         readInput = { inputView.readOneLine(it) },
         validate = { validator.validateWinningNumbers(it) }
     )
+}
 
-    val bonusNumber = getValidatedInput(
+private fun readBonusNumber(inputView: InputView, validator: InputValidator, winningNumbers: Set<Int>): Int {
+    return getValidatedInput(
         prompt = PromptMessages.BONUS_NUMBER.message,
         readInput = { inputView.readOneLine(it) },
         validate = { validator.validateBonusNumber(it, winningNumbers) }
     )
-
-    outputView.printWinningStatistics(winningNumbers, bonusNumber)
-    outputView.printReturnRate()
 }
