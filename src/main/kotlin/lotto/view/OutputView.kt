@@ -1,4 +1,8 @@
-package lotto
+package lotto.view
+
+import lotto.Lotto
+import lotto.domain.LottoRank
+import kotlin.collections.forEach
 
 object OutputView {
 

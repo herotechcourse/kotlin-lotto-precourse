@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.util.InputParser
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

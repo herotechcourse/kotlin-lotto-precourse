@@ -1,4 +1,13 @@
-package lotto
+package lotto.controller
+
+import lotto.Lotto
+import lotto.domain.LottoMachine
+import lotto.domain.LottoRank
+import lotto.domain.LottoResult
+import lotto.util.InputParser
+import lotto.util.InputValidator
+import lotto.view.InputView
+import lotto.view.OutputView
 
 object LottoManager {
     private const val TICKET_PRICE = 1000
