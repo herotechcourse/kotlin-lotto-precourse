@@ -3,10 +3,20 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.PurchaseAmount
 import lotto.domain.WinningNumbers
+import java.util.Scanner
 
 object InputView {
+    private fun resetConsoleScanner() {
+        try {
+            val field = Console::class.java.getDeclaredField("scanner")
+            field.isAccessible = true
+            field.set(null, Scanner(System.`in`))
+        } catch (_: Exception) { /* ignore */ }
+    }
+
     fun readPurchaseAmount(): Int {
-        println("구매 금액을 입력해 주세요.")
+        resetConsoleScanner()
+        println("Please enter the purchase amount.")
         val raw = Console.readLine().orEmpty().trim()
         val amount = raw.toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] 숫자 형식이 올바르지 않습니다.")
@@ -15,13 +25,17 @@ object InputView {
     }
 
     fun readWinningNumbers(): WinningNumbers {
-        println("당첨 번호를 입력해 주세요. (쉼표로 구분)")
+        resetConsoleScanner()
+        println("Please enter the winning numbers (comma separated).")
         val main = Console.readLine().orEmpty()
             .split(",")
             .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.") }
-        println("보너스 번호를 입력해 주세요.")
+
+        resetConsoleScanner()
+        println("Please enter the bonus number.")
         val bonus = Console.readLine().orEmpty().trim().toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.")
+
         return WinningNumbers(main, bonus)
     }
 }
