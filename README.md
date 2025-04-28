@@ -12,10 +12,10 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 3. Input bonus number, number must be between 1 and 45
 4. Lottery simulator show result
 
-## Lottery winning condition
+## Prize Tiers
 
 | Match | Condition       | Prize             |
-|-------|-----------------|-------------------|
+| ----- | --------------- | ----------------- |
 | 6     | Matches         | 2,000,000,000 KRW |
 | 5     | Matches + Bonus | 30,000,000 KRW    |
 | 5     | Matches         | 1,500,000 KRW     |
@@ -24,29 +24,27 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 ## Features
 
-### Input
+### Common
 
-- [x] read input and validate
-    - [x] purchase amount
-        - [x] read
-        - [x] validate
-    - [ ] winning numbers
-        - [x] read
-        - [x] validate
-    - [ ] bonus number
-        - [x] read
-        - [x] validate
+- [ ] Parser (input parser)
+- [ ] Lotto util (lotto simulator utility functions)
+- [ ] Error message (include sysytem error messages)
 
-### Output
+### Model
 
-### Main Logic
+- [ ] Lotto machine (lotto seller and simulator)
+- [ ] Money (contain purchase amount)
+- [ ] Prize (prize details by lotto ranking)
+- [ ] Rank (lotto rank enum)
+- [ ] Winner (contain winning numbers and bonus number)
 
-## Test
+### View
 
-### Input
+- [ ] Read input
+  - [ ] Safe Read
+- [ ] Print output
+  - [ ] Print result
 
-- [ ] Validator
+### Controller
 
-### Output
-
-### Main Logic
+- [ ] Lotto controller (main controller class that orchestrates the flow of the lottery application.)
