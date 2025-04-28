@@ -7,6 +7,7 @@ fun printPurchasedAmountInputPhrase() {
 }
 
 fun printUserPurchasedTicketPhrase(ticketCount: Int) {
+    println()
     println("You have purchased $ticketCount tickets.")
 }
 
@@ -17,15 +18,18 @@ fun printAllPurchasedLottoNumbers(lottoNumbers: List<PurchasedLotto>) {
 }
 
 fun printWinningNumbersInputPhrase() {
+    println()
     println("Please enter last week's winning numbers.")
 }
 
 fun printBonusNumberInputPhrase() {
+    println()
     println("Please enter the bonus number.")
 }
 
 fun printWinningStatisticsPhrase() {
     println("""
+        
         Winning Statistics
         ---
     """.trimIndent())
