@@ -1,6 +1,8 @@
 # Lotto
 
-## Flow (View)
+Lotto is a console application where users can purchase lottery tickets, input winning numbers, and calculate their profit rate based on the results.
+
+## Flow
 
 1. Input purchase amount for buy the lottery tickets.
 2. Print purchased lottery tickets with issued numbers (sorted)
@@ -40,17 +42,62 @@ Winning Statistics
 Total return rate is 62.5%.
 ```
 
-## Feature Planning
+## Feature List
 
-1. Input purchase amount for buy the lottery tickets.
-    - issue lottery tickets you can purchase.
-    - the lottery tickets contains 6 numbers of 1-45 and each is unique.
-2. Print purchased lottery tickets with issued numbers (sorted)
-    - output each sorted numbers of lottery tickets
-3. Input last week's numbers
-4. Input a bonus number.
-   - compare last week's number with purchased every lottery tickets
-5. Print lotto result statistics.
-   - calculate lotto number matches. and print prize KRW
-6. Print calculated Profit rate.
-   - calculate used profit rate.
+- **Purchase Lotto Tickets**
+   - Allows users to input a purchase amount and issues the corresponding number of lottery tickets.
+   - Each ticket contains 6 unique numbers ranging from 1 to 45, sorted in ascending order.
+   - Prompts the user to re-enter if the input is invalid (e.g., negative numbers, non-numeric input).
+
+- **Input Last Week's Winning Numbers**
+   - Allows users to input the 6 winning numbers from the previous week.
+   - Validates inputs to ensure there are no duplicates and all numbers are within the valid range.
+
+- **Input Bonus Number**
+   - Allows users to input a single bonus number.
+   - Validates that the bonus number is within the range of 1 to 45 (it may overlap with the winning numbers).
+
+- **Print Lotto Result Statistics**
+   - Compares each purchased ticket against the winning numbers.
+   - Categorizes results into 3 Matches, 4 Matches, 5 Matches, 5 Matches + Bonus Ball, and 6 Matches.
+   - Displays the number of tickets and corresponding prize money for each category.
+
+- **Calculate Profit Rate**
+   - Calculates the total profit rate by comparing the total prize winnings to the total purchase amount.
+   - Outputs the profit rate as a percentage.
+
+- **Input Validation and Re-Prompting**
+   - Performs input validation at every stage.
+   - If invalid input is detected, displays an error message and re-prompts for correct input.
+
+## Project Structure
+```text
+src/
+├── main/
+│    └── kotlin/
+│         ├── lotto/            # Application entry point, views, and controllers
+│         └── lotto/domain/     # Domain models (Lotto, LottoNumber, Rank, etc.)
+└── test/
+└── kotlin/
+└── lotto/            # Unit and integration tests
+```
+- lotto/ : Main application logic such as input reading, output display, and game controller.
+- lotto/domain/ : Core domain models and business logic (e.g., Lotto ticket, winning numbers, prize ranking).
+- test/lotto/ : Test codes for verifying application and domain logic correctness.
+
+## Build
+
+```bash
+./gradlew build
+```
+
+## Run
+
+```bash
+./gradlew run
+```
+
+## Run Test
+```bash
+./gradlew test
+```
