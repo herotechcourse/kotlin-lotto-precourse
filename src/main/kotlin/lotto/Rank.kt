@@ -11,8 +11,8 @@ enum class Rank(val matchCount: Int, val reward: Int, val matchBonus: Boolean = 
     companion object {
         fun from(matchCount: Int, matchBonus: Boolean): Rank {
             return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && matchBonus -> SECOND
+                matchCount == 6 -> FIRST       // matchCount가 6이면 무조건 Rank.FIRST 반환
+                matchCount == 5 && matchBonus -> SECOND   // 5개 맞고 보너스 번호 일치하면 Rank.SECOND
                 matchCount == 5 -> THIRD
                 matchCount == 4 -> FOURTH
                 matchCount == 3 -> FIFTH
@@ -20,4 +20,5 @@ enum class Rank(val matchCount: Int, val reward: Int, val matchBonus: Boolean = 
             }
         }
     }
+
 }

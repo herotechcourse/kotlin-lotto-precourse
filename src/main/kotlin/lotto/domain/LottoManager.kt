@@ -13,7 +13,10 @@ class LottoManager(private val lottos: List<Lotto>) {
             val hasBonus = lotto.containsBonusNumber(winningLotto.getBonusNumber())
             val rank = Rank.from(matchCount, hasBonus)
 
-            result[rank] = result.getOrDefault(rank, 0) + 1
+            // 디버깅용: matchCount와 result 상태 출력
+            println("matchCount: $matchCount, rank: $rank, result: $result")
+            result[rank] = (result[rank] ?: 0) + 1
+
         }
 
         return result
