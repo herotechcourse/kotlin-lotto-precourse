@@ -21,6 +21,9 @@ class Lotto(private val numbers: List<Int>) {
         fun generateLottoArray(ticketAmount: Int): Array<Lotto> {
             return Array(ticketAmount) { generateLotto() }
         }
+    }
 
+    override fun toString(): String {
+        return numbers.joinToString(prefix = "[", postfix = "]")
     }
 }

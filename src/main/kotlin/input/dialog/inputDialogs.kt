@@ -6,7 +6,5 @@ import input.getTicketAmountFromInput
 
 fun getTicketAmountFromDialog(): Int{
     printTicketAmountMsg()
-    val ticketAmount = getTicketAmountFromInput();
-    printTicketResultMsgWithAmount(ticketAmount)
-    return ticketAmount
+    return getTicketAmountFromInput()
 }
