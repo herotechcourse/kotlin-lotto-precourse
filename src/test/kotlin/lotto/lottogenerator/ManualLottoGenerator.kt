@@ -8,7 +8,6 @@ class ManualLottoGenerator(val numbers: MutableList<List<Int>>) : LottoGenerator
         return Lotto(
             numbers.removeFirst()
                 .sorted()
-                .map { it }
         )
     }
 }
