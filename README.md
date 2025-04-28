@@ -69,7 +69,7 @@
     ```
 
 - [x] Tally the number of winning tickets per rank.  
-- [ ] Calculate the total return rate = (total winnings ÷ investment) and round to one decimal place.
+- [x] Calculate the total return rate = (total winnings ÷ investment)
 
 ---
 
@@ -287,7 +287,8 @@ Total return rate is 62.5%.
     - `matchCount = 6`, `bonus = true`  
   - Expect: `null`
 
-  ### `LottoResultCalculatorTest` (lotto.domain)
+
+### `LottoResultCalculatorTest` (lotto.domain)
 
 - **calculateStats returns correct counts for each rank**  
   - Input:  
@@ -308,3 +309,10 @@ Total return rate is 62.5%.
     - `stats[Rank.THIRD] == 1`  
     - `stats[Rank.FOURTH] == 1`  
     - `stats[Rank.FIFTH] == 1`
+
+- **calculateRate returns correct percent for mixed prize statistics**  
+  - Input:  
+    - `stats = mapOf(Rank.FIFTH to 2, Rank.FOURTH to 1)`  
+    - `purchase = PurchaseAmount(3_000)`  
+  - Expect:  
+    - `rate` ≈ `2000.0` (i.e. (2×5_000 + 1×50_000) ÷ 3_000 × 100 = 2_000%)
