@@ -32,6 +32,9 @@ object LottoManager {
         val statistics = lottoResult.getStatistics(ranks)
 
         OutputView.printStatistics(statistics)
+
+        val totalWinningAmount = lottoResult.calculateWinningAmount(statistics)
+        val returnRate = lottoResult.calculateReturnRate(totalWinningAmount, purchaseAmount)
     }
 
     private fun <T> retry(block: () -> T): T {

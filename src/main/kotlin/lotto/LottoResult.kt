@@ -19,4 +19,17 @@ class LottoResult(
             .groupingBy { it }
             .eachCount()
     }
+
+    fun calculateWinningAmount(statistics: Map<LottoRank, Int>): Long {
+        var totalAmount = 0L
+        statistics.forEach { (rank, count) ->
+            totalAmount += rank.prize * count.toLong()
+        }
+        return totalAmount
+    }
+
+    fun calculateReturnRate(winningAmount: Long, purchaseAmount: Int): Double {
+        val returnRate = (winningAmount.toDouble() / purchaseAmount ) * 100
+        return returnRate
+    }
 }
