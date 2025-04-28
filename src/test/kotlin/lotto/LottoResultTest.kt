@@ -50,4 +50,29 @@ class LottoResultTest {
         val rank = lottoResult.calculateRanks(listOf(ticket))
         assertThat(rank).containsExactly(LottoRank.NONE)
     }
+
+    @Test
+    fun `should count each rank correctly`() {
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 7)),
+            Lotto(listOf(1, 2, 3, 7, 8, 9)),
+        )
+        val ranks = lottoResult.calculateRanks(tickets)
+        val statistics = lottoResult.getStatistics(ranks)
+
+        assertThat(statistics[LottoRank.SECOND]).isEqualTo(1)
+        assertThat(statistics[LottoRank.FIFTH]).isEqualTo(1)
+    }
+
+    @Test
+    fun `should correctly count multiple tickets for the same rank`() {
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+        )
+        val ranks = lottoResult.calculateRanks(tickets)
+        val statistics = lottoResult.getStatistics(ranks)
+
+        assertThat(statistics[LottoRank.FIRST]).isEqualTo(2)
+    }
 }
