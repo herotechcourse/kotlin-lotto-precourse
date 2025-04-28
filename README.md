@@ -40,12 +40,9 @@ User can buy lottery tickets and then compare if their numbers match the winning
 
 - Compare each ticket´s numbers to the winning numbers
 - Determine prize rank based on the matchs
+- Calculate return rate based in total winnings and spent amount
 - Display the amount of tickets per rank
-
-### 7. Show return rate
-
-- Calculate return rate, rounded to one decimal place
-- Display the return percentage on screen
+- Display the return percentage on screen (rounded to one decimal place)
 
 ## Testing
 
@@ -75,11 +72,11 @@ Please enter the bonus number.
 7
 
 Winning Statistics
----
-3 Matches (5,000 KRW) - 1 ticket
-4 Matches (50,000 KRW) - 0 tickets
-5 Matches (1,500,000 KRW) - 0 tickets
-5 Matches + Bonus Ball (30,000,000 KRW) - 0 tickets
-6 Matches (2,000,000,000 KRW) - 0 tickets
+–––
+3 Matches (5,000 KRW) – 1 tickets
+4 Matches (50,000 KRW) – 0 tickets
+5 Matches (1,500,000 KRW) – 0 tickets
+5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets
+6 Matches (2,000,000,000 KRW) – 0 tickets
 Total return rate is 62.5%.
 ```
