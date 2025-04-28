@@ -4,7 +4,8 @@ import lotto.view.InputView
 import lotto.view.OutputView
 import camp.nextstep.edu.missionutils.Randoms
 class LottoGame(private val inputView: InputView = InputView(),
-                private val outputView: OutputView = OutputView()) {
+                private val outputView: OutputView = OutputView(),
+                private val resultCalculator: LottoResultCalculator = LottoResultCalculator()) {
 
   fun play() {
   
@@ -18,7 +19,7 @@ class LottoGame(private val inputView: InputView = InputView(),
     // get bonus
     val bonusNumber = inputView.readBonusNumber()
 	  // calculate winnings
-    
+    val result = resultCalculator.calculate(tickets, winningNumbers, bonusNumber)
     // display result
   }
 
