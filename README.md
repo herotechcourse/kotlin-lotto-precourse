@@ -25,7 +25,7 @@
         - Show an error message
         - Prompt the user to enter the correct number again **at this stage**
 
-- **Program can compare the user's numbers with the winning combination and splits tickets in six buckets:**
+- **Program compares the user's numbers with the winning combination and splits tickets in six buckets:**
     1. 6 matches
     2. 5 matches + bonus number
     3. 5 matches
@@ -36,4 +36,4 @@
 
 - **Program calculates and displays the profit**
 
-- **Run tests to verify the logic**
+- **Program is covered by Unit tests to validate the functionality.**
