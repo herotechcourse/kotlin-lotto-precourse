@@ -1,6 +1,5 @@
-package lotto.service
-
 import lotto.Lotto
+import lotto.service.ResultService
 import lotto.domain.WinningNumbers
 import lotto.domain.PrizeRank
 import org.assertj.core.api.Assertions.assertThat
