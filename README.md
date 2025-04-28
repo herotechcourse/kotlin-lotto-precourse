@@ -20,7 +20,7 @@
 * Unit Tests [X]
 * Refactor [X]
   * User Input - DRY [X]
-* Format [ ]
+* Format [X]
 
 ---
 
