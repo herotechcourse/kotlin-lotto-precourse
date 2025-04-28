@@ -14,7 +14,7 @@ object ResultService {
      */
     fun evaluateTicket(ticket: Lotto, winningNumbers: WinningNumbers): LottoResult {
         val matchedNumbers = ticket.getNumbers().intersect(winningNumbers.getNumbers()).toList()
-        val hasBonus = ticket.getNumbers().contains(winningNumbers.getBonusNumber())
+        val hasBonus = ticket.getNumbers().contains(winningNumbers.bonusNumber)
         val prizeRank = PrizeRank.findByMatch(matchedNumbers.size, hasBonus)
 
         return LottoResult(ticket, prizeRank, matchedNumbers, hasBonus)

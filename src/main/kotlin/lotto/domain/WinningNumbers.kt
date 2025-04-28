@@ -2,7 +2,14 @@ package lotto.domain
 
 import lotto.exception.LottoInputException
 
-class WinningNumbers(private val numbers: List<Int>, private val bonusNumber: Int) {
+/**
+ * Represents the winning lottery numbers, including the main numbers and a bonus number.
+ * Ensures that the numbers follow lottery rules (6 unique numbers between 1-45 and a bonus number).
+ */
+class WinningNumbers(private val numbers: List<Int>, bonusNumber: Int) {
+    var bonusNumber = bonusNumber
+        private set
+
     init {
         if (numbers.size != 6)
             throw LottoInputException.InvalidWinningNumbers("You must provide exactly 6 numbers.")
@@ -11,11 +18,10 @@ class WinningNumbers(private val numbers: List<Int>, private val bonusNumber: In
         if (numbers.any { it !in 1..45 })
             throw LottoInputException.InvalidWinningNumbers("Numbers must be between 1 and 45.")
         if (bonusNumber !in 1..45)
-           throw LottoInputException.InvalidBonusNumber(bonusNumber)
+            throw LottoInputException.InvalidBonusNumber(bonusNumber)
         if (numbers.contains(bonusNumber))
             throw LottoInputException.InvalidBonusWithWinningNumbers(bonusNumber)
     }
 
     fun getNumbers(): List<Int> = numbers.toList()
-    fun getBonusNumber(): Int = bonusNumber
 }
