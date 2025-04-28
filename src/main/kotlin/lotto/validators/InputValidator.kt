@@ -6,7 +6,7 @@ object InputValidator {
     fun validateSumOfMoney(sum: Int?): Int {
         requireNotNull(sum) { ValidationErrors.MUST_BE_INTEGER.message }
 
-        require(sum % TICKET_PRICE == 0 && sum != 0) { ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message }
+        require(sum % TICKET_PRICE == 0 && sum > 0) { ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message }
 
         return sum
     }

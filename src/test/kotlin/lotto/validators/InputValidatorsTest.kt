@@ -38,6 +38,14 @@ class InputValidatorsTest {
             }.isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage(ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message)
         }
+
+        @Test
+        fun `should fail if the purchase amount is negative`() {
+            assertThatThrownBy {
+                InputValidator.validateSumOfMoney(-1000)
+            }.isInstanceOf(IllegalArgumentException::class.java)
+                .hasMessage(ValidationErrors.MUST_DIVIDE_BY_TICKET_PRICE.message)
+        }
     }
 
     @Nested
