@@ -1,8 +1,9 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class LottoResult {
+class LottoResultTest {
 
     @Test
     fun `3 numbers matched results in 5th place`() {
@@ -32,7 +33,7 @@ class LottoResult {
     fun `profit rate is correctly calculated`() {
         val tickets = listOf(Lotto(listOf(1, 2, 3, 4, 5, 6)))
         val result = LottoResult().calculateStatics(listOf(1, 2, 3, 4, 5, 6), 7, tickets)
-        val totalRate = LottoResult().calculateTotal(result, 1000) // 1장 1000원 구매
+        val totalRate = LottoResult().calculateTotal(result, 1000)
 
         assertThat(totalRate).isEqualTo(2000000000.0)
     }
