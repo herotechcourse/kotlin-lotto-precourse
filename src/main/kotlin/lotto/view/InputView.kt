@@ -14,7 +14,7 @@ class InputView {
   }
   
   fun readWinningNumbers(): List<Int> {
-    println("Please enter the winning numbers (comma-separated):")
+    println("Please enter last week's winning numbers.")
     val input = Console.readLine()?.trim() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
     val numbers = input.split(",").map { it.trim().toIntOrNull() }
     if (numbers.size != 6 || numbers.any { it == null } || numbers.any { it!! < 1 || it!! > 45 }) {
