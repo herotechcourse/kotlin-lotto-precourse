@@ -3,6 +3,8 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 object InputView {
+    private lateinit var lastWinningNumbers: List<Int>
+
     fun purchaseAmount(): Int {
         println("Please enter the purchase amount.")
         return readAndValidateAmount()
@@ -36,21 +38,25 @@ object InputView {
                 val input = Console.readLine().trim()
                 val winningNumbers = input.split(",")
                     .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("All inputs must be numbers.") }
-                if (winningNumbers.size != 6) {
-                    throw IllegalArgumentException("Exactly 6 numbers must be entered.")
-                }
-                if (winningNumbers.toSet().size != 6) {
-                    throw IllegalArgumentException("Numbers must not be duplicated.")
-                }
-                if (winningNumbers.any { it !in 1..45 }) {
-                    throw IllegalArgumentException("Numbers must be between 1 and 45.")
-                }
+                validateWinningNumbers(winningNumbers)
+                lastWinningNumbers = winningNumbers  // 당첨 번호 저장
                 return winningNumbers
             } catch (e: IllegalArgumentException) {
                 println("[ERROR] ${e.message}")
             }
         }
+    }
 
+    private fun validateWinningNumbers(numbers: List<Int>) {
+        if (numbers.size != 6) {
+            throw IllegalArgumentException("Exactly 6 numbers must be entered.")
+        }
+        if (numbers.toSet().size != 6) {
+            throw IllegalArgumentException("Numbers must not be duplicated.")
+        }
+        if (numbers.any { it !in 1..45 }) {
+            throw IllegalArgumentException("Numbers must be between 1 and 45.")
+        }
     }
 
     fun bonusNum(): Int {
@@ -59,13 +65,20 @@ object InputView {
                 println("\nPlease enter the bonus number.")
                 val input = Console.readLine().trim()
                 val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("Input must be a number.")
-                if (bonusNumber !in 1..45) {
-                    throw IllegalArgumentException("Bonus number must be between 1 and 45.")
-                }
+                validateBonusNumber(bonusNumber)
                 return bonusNumber
             } catch (e: IllegalArgumentException) {
                 println("[ERROR] ${e.message}")
             }
+        }
+    }
+
+    private fun validateBonusNumber(number: Int) {
+        if (number !in 1..45) {
+            throw IllegalArgumentException("Bonus number must be between 1 and 45.")
+        }
+        if (::lastWinningNumbers.isInitialized && number in lastWinningNumbers) {
+            throw IllegalArgumentException("Bonus number cannot be one of the winning numbers.")
         }
     }
 }
