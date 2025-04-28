@@ -2,15 +2,17 @@ package lotto.generator
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
+import lotto.common.Constants
 
 object LottoGenerator {
-    fun generate(count: Int): List<Lotto> {
-        return List(count) {
-            Lotto(generateSingleTicket())
-        }
-    }
+    fun generate(): Lotto {
+        return Lotto(
+            Randoms.pickUniqueNumbersInRange(
+                Constants.MIN_LOTTO_NUMBER,
+                Constants.MAX_LOTTO_NUMBER,
+                Constants.LOTTO_SIZE
+            )
+        )
 
-    private fun generateSingleTicket(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6)
     }
 }
