@@ -7,4 +7,6 @@ fun main() {
 
     val tickets = generateTickets(amount)
     printTickets(tickets)
+
+    val winningNumbers = readWinningNumbers()
 }

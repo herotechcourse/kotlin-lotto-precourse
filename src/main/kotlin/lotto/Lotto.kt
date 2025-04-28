@@ -46,5 +46,13 @@ fun printTickets(tickets: List<Lotto>) {
     tickets.forEach { println(it.getNumbers().sorted()) }
 }
 
+// Reads last week's winning numbers from the user
+fun readWinningNumbers(): List<Int> {
+    println("Please enter last week's winning numbers (comma-separated).")
+    return Console.readLine()
+        .split(",")
+        .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning number input.") }
+}
+
 
 
