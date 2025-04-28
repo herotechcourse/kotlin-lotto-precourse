@@ -1,14 +1,15 @@
 package lotto
 
+import lotto.LottoConstants.NUMBERS_PER_TICKET
 import lotto.domain.BonusNumber
 import lotto.domain.ErrorMessages
 import lotto.domain.WinningNumbers
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == NUMBERS_PER_TICKET) { "[ERROR] Lotto must contain exactly 6 numbers." }
 
-        require(numbers.distinct().size == 6) { ErrorMessages.INVALID_WINNING_NUMBERS_DUPLICATED }
+        require(numbers.distinct().size == NUMBERS_PER_TICKET) { ErrorMessages.INVALID_WINNING_NUMBERS_DUPLICATED }
 
         numbers.forEach {
             require(it in 1..45) { ErrorMessages.INVALID_NUMBERS_RANGE }
