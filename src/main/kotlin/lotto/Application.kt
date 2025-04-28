@@ -5,20 +5,20 @@ import lotto.views.OutputView
 
 fun main() {
     val inputView = InputView()
-    val game = LotteryGame()
     val outputView = OutputView()
+    val lotteryGame = LotteryGame()
 
     val purchaseAmount = inputView.getPurchaseAmount()
-    val tickets = game.generateAllTickets(purchaseAmount)
-    val ticketCount = game.getTicketCount(purchaseAmount)
+    val tickets = lotteryGame.generateAllTickets(purchaseAmount)
+    val ticketCount = lotteryGame.getTicketCount(purchaseAmount)
 
     val winningNumbers = inputView.getWinningNumbers()
     val bonusNumber = inputView.getBonusNumber()
 
-    val (winningStatuses, returnRate) = game.getLotteryResults(tickets, winningNumbers,bonusNumber, purchaseAmount)
+    val (prizeSummary, returnRate) = lotteryGame.getLotteryResults(tickets, winningNumbers,bonusNumber, purchaseAmount)
 
     outputView.printPurchasedTickets(tickets, ticketCount)
-    outputView.printWinningStatuses(winningStatuses)
+    outputView.printWinningStatuses(prizeSummary)
     outputView.printReturnRate(returnRate)
 }
 

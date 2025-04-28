@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms
 class LotteryGame {
     companion object {
         private const val TICKET_COST = 1000
+        private const val MIN_NUMBER = 1
+        private const val MAX_NUMBER = 45
+        private const val NUMBER_COUNT = 6
     }
 
     fun generateAllTickets(purchaseAmount: Int): List<Lotto> {
@@ -23,13 +26,13 @@ class LotteryGame {
                           purchaseAmount:Int
     ): LotteryResults{
         val lotteryResults = LotteryResults()
-        val winningStatuses = lotteryResults.getStatistics(tickets, winningNumbers, bonusNumber)
+        val prizeSummary = lotteryResults.calculatePrizeStatistics(tickets, winningNumbers, bonusNumber)
         val returnRate = lotteryResults.calculateReturnRate(purchaseAmount)
-        return LotteryResults(winningStatuses, returnRate)
+        return LotteryResults(prizeSummary, returnRate)
     }
 
     private fun generateLotteryTicket(): Lotto {
-        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        val numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT)
         return Lotto(numbers)
     }
 
