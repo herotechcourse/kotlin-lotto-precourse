@@ -12,6 +12,8 @@ fun main() {
     val bonusNumber = getBonusNumber()
 
     val prize = WinningNumbers(winningNumbers, bonusNumber)
+    val results = tickets.map { winningNumbers.match(it) }
+    printResults(results, purchaseAmount = tickets.size * 1000)
     
 }
 // get user Input
@@ -44,4 +46,31 @@ fun getBonusNumber() ( winningNumbers: List<Int>): Int  {
         throw IllegalArgumentException("[ERROR] Bonus number must be a seperate number between 1 and 45")
     }
     return bonus
+}
+
+//print result format
+fum resultFormat(prize: Prize): String {
+    retur when (prize) {
+        Prize.FIFTH -> "3 Matches (5,000 KRW)"
+        Prize.FOURTH -> "4 Matches (50,000 KRW)"
+        Prize.THIRD -> "5 Matches (1,500,000 KRW)"
+        Prize.SECOND -> "5 Matches + Bonus Ball (30,000,000 KRW)"
+        Prize.FIRST -> "6 Matches (2,000,000,000 KRW)"
+        else -> ""
+    }
+}
+
+//print result
+fun printResult(result: List<Prize>, totalPurchaseAmount: Int){
+    println("Winning Statistics")
+    println("---")
+
+    Prize.values().filter { it!= Prize.NONE}.forEach { prize ->
+    val count = result.count {it == prize}
+    println("${resultFormat(prize)} – $count tickets")
+    }
+
+    val totalPrize = result.sumOf{it.reward}
+    val profitRate = (totalPrize.toDouble() / totalPurchaseAmount) * 100
+    println("Total return rate is ${"%.1f".format(profitRate)}%.")
 }
