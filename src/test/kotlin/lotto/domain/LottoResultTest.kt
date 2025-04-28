@@ -15,7 +15,7 @@ class LottoResultTest {
             Lotto(listOf(1, 2, 3, 10, 11, 12)), // FIFTH
             Lotto(listOf(1, 2, 10, 11, 12, 13)) // MISS
         )
-        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6), 7)
+        val winningNumbers = WinningNumbers.of(listOf(1, 2, 3, 4, 5, 6), 7)
         val result = LottoResult(tickets, winningNumbers)
 
         val counts = result.getRankCounts()
