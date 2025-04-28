@@ -17,20 +17,20 @@
 
 ## 🏆 Winning Numbers Input
 
-- [ ] Read last week's winning numbers (comma-separated).
-- [ ] Validate that exactly 6 unique numbers between 1 and 45 are entered.
-- [ ] Read a bonus number separately.
-- [ ] Validate that the bonus number is between 1 and 45 and not a duplicate of winning numbers.
+- [x] Read last week's winning numbers (comma-separated).
+- [x] Validate that exactly 6 unique numbers between 1 and 45 are entered.
+- [x] Read a bonus number separately.
+- [x] Validate that the bonus number is between 1 and 45 and not a duplicate of winning numbers.
 
 ## 🧮 Result Calculation
 
-- [ ] Compare each purchased lotto ticket with the winning numbers.
-- [ ] Determine the number of matches and check if the bonus number matches.
-- [ ] Categorize each ticket into prize ranks (1st to 5th).
+- [x] Compare each purchased lotto ticket with the winning numbers.
+- [x] Determine the number of matches and check if the bonus number matches.
+- [x] Categorize each ticket into prize ranks (1st to 5th).
 
 ## 📊 Output
 
-- [ ] Print the list of purchased tickets in ascending order.
+- [x] Print the list of purchased tickets in ascending order.
 - [ ] Print the winning statistics (number of tickets for each rank).
 - [ ] Calculate the total prize money.
 - [ ] Calculate and display the profit rate, rounded to one decimal place.
