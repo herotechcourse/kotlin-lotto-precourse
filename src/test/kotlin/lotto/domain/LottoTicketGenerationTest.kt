@@ -1,4 +1,4 @@
-package lotto.util
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest
 import org.assertj.core.api.Assertions.assertThat

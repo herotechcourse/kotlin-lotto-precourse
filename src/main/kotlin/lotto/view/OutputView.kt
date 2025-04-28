@@ -2,7 +2,7 @@ package lotto.view
 
 import lotto.Lotto
 import lotto.WinningNumbers
-import lotto.util.WinningStatistics
+import lotto.domain.WinningStatistics
 
 class OutputView (private val lottoTickets: List<Lotto>, private val winningNumbers: WinningNumbers) {
 

@@ -178,9 +178,17 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test`() {
+    fun `exception test not integer input`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `exception test not divisible by 1000`() {
+        assertSimpleTest {
+            runException("2500")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
@@ -194,7 +202,7 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test duplicate number out of the range`() {
+    fun `exception test bonus number of the range`() {
         assertSimpleTest {
             runException("10000", "1,2,3,4,5,6", "0")
             assertThat(output()).contains(ERROR_MESSAGE)
