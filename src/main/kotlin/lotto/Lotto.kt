@@ -24,3 +24,11 @@ fun readPurchaseAmount(): Int {
     return Console.readLine().toIntOrNull()
         ?: throw IllegalArgumentException("[ERROR] Invalid input. Please enter a valid number.")
 }
+
+// Validates if the purchase amount is divisible by 1000
+fun validateAmount(amount: Int) {
+    if (amount % 1000 != 0) {
+        throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
+    }
+}
+
