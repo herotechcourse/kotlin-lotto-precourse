@@ -1,55 +1,153 @@
-# kotlin-lotto-precourse
+# Kotlin Lotto Application
 
-## Feature List
+## Lessons Learned
 
-1. Input validation for purchase amount (must be divisible by 1,000)
-2. Generate lottery tickets (each ticket has 6 unique numbers between 1 and 45)
-3. Display issued tickets (sorted)
-4. Accept winning numbers (6 unique numbers) and a bonus number
-5. Compare tickets to winning numbers and determine prize ranks
-6. Calculate and display winning statistics and total return rate
-7. Re-prompt on invalid input with proper error messages
-8. Follow Kotlin coding conventions and low nesting (≤ 2 levels)
-9. Unit tests using JUnit 5 and AssertJ (excluding UI logic)
+### What I Learned
+- **Modularization in Kotlin**:
+    - How to break down code into reusable modules.
+    - Strategies for managing overlapping logic across modules (e.g., interfaces, dependency injection).
+- **Testing Tools**:
+    - Experimented with testing frameworks like JUnit 5, overcoming the initial learning curve (e.g., parameterized tests, assertions).
+    - The importance of isolating tests for modular components.
+
+### Why These Resources Were Used
+- **[Kotlin Docs](https://kotlinlang.org/docs/home.html)**: Official documentation for understanding modularization, visibility modifiers, and Kotlin-specific patterns.
+- **[Kotlin Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)**: Practical examples of modular architecture in large-scale Kotlin projects.
+- **[JUnit 5 Docs](https://junit.org/junit5/docs/current/user-guide/)**: Learned advanced testing techniques (e.g., `@Nested` classes, dynamic tests) to validate modular logic.
+
+---
+
+## Feature Implementation
+
+### Core Features
+1. **Purchase Validation**
+    - Validates input amount is divisible by 1,000 KRW
+    - Handles non-numeric input with proper error messaging
+
+2. **Ticket Generation**
+    - Creates specified number of lottery tickets
+    - Each ticket contains 6 unique numbers (1-45 range)
+    - Automatic sorting of numbers for display
+
+3. **Winning Calculation**
+    - Accepts and validates winning numbers (6 unique numbers)
+    - Accepts and validates bonus number (distinct from winning numbers)
+    - Compares tickets against winning combination
+    - Calculates prize ranks according to official rules
+
+4. **Result Presentation**
+    - Displays purchased tickets
+    - Shows detailed winning statistics
+    - Calculates and formats return rate
+
+5. **Error Handling**
+    - Comprehensive input validation
+    - Clear error messages with [ERROR] prefix
+    - Graceful recovery from invalid inputs
+
+## Architecture Overview
+
+### Application Flow
+```mermaid
+graph TD
+    A[Main] --> B[LottoGame.run]
+    B --> C[InputView.readPurchaseAmount]
+    B --> D[LottoMachine.generateTickets]
+    B --> E[OutputView.printTickets]
+    B --> F[InputView.readWinningNumbers]
+    B --> G[InputView.readBonusNumber]
+    B --> H[Rank Calculation]
+    B --> I[OutputView.printResult]
+```
+### Key Components
+1. **LottoGame (Controller)**
+- Orchestrates application workflow
+- Coordinates between input, processing, and output
+- Maintains single responsibility principle
+
+2. **InputView (Singleton)**
+
+#### Responsibilities:    
 
 
-## App Step-by-Step
-
-### step 1: Initialise the application entry point
-- `fun main()` is the standard entry point in kotlin
-- `LottoGame().run()` creates an instance of the game and runs it.
-
-### step 2: Create a Controller for controlling program flow
-
-- `InputView` : Allows us to read input     
-
-####  The controller:
-   - Calculates how many lotto tickets to generate
-   - Hands the lotto ticket generation to `LottoMachine`
-   - Prints ticket data using `OutputView`
-
-### step 3: Handle the input and Output
-- We use `InputView` to read and validate user input.
-- We use `ÒutputView` to print messages to the user
-- In Kotlin `object` is a Singleton pattern (only one instance of this class exists in the entire application, we can use it anywhere)
-- `console.readLine()` is provided by MissionUtils.
-- Validation makes sure that users don't crash the program with invalid inputs
-
-### step 4: Build Lotto Ticket generator
-- We use `Randoms.pickUniqueNumbersInRange` to generate 6 unique 1-45. It returns to us a list of `Lotto` objects.
-- We use `List(count) {block}` to generate a list the size of `count`.
+ - Purchase amount validation  
 
 
-### step 5: Update Lotto.tk
-- The `Lotto.tk` class represents one lotto ticket
-- We use `require` to validate the input
-- We use `toSet().size == 6` to make sure that all input values are unique
-- We use `getNumbers()` method to make the numbers accessible.
+- Winning number input parsing  
 
-### step 6: Update InputView.kt to read winning numbers and bonus
-- We use `Inputview` to read and validate user input
 
-### step 7: Update OutputView
-- We initialize Rank files
-- We update `OutputView` for readability and modularity
+- Bonus number validation
 
+#### Validation Includes:  
+
+
+- Numeric checks  
+
+
+- Range validation (1-45)  
+
+
+- Uniqueness verification  
+
+
+- Bonus number distinctness  
+
+
+3. **LottoMachine (Singleton)**  
+
+- Generates random lottery tickets using:  
+````
+Randoms.pickUniqueNumbersInRange(1, 45, 6)
+````
+- Ensures proper ticket count based on purchase amount
+
+
+4. **Lotto (Model)**
+   Immutable representation of single ticket
+
+Validation rules:
+
+- Exactly 6 numbers
+
+- All numbers unique
+
+- Numbers within 1-45 range
+
+##### Provides:
+
+- Number retrieval (sorted)
+
+- Match counting functionality
+
+- Bonus number checking
+
+5. **OutputView (Singleton)**  
+
+   **Display Functions:**
+
+- Ticket count confirmation
+
+- Formatted ticket display
+
+- Winning statistics table
+
+- Return rate calculation
+
+**Formatting:**
+
+- Consistent number presentation
+
+- Proper currency formatting
+
+- Clear section separation
+
+6. **Rank (Enum)**
+   **Defines prize tiers with:**
+
+- Match requirements
+
+- Prize amounts
+
+- Bonus number conditions
+
+- Provides conversion from match counts to ranks
