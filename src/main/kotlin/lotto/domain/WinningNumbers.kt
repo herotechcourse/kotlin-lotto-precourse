@@ -7,6 +7,9 @@ class WinningNumbers(val numbers: List<Int>) {
 
         numbers.forEach {
             require(it > 0) { ErrorMessages.NOT_A_POSITIVE_NUMBER_ERROR }
+            require(it in LottoConstants.MIN_LOTTO_NUMBER..LottoConstants.MAX_LOTTO_NUMBER) {
+                ErrorMessages.LOTTO_NUMBER_RANGE_ERROR
+            }
         }
     }
 
