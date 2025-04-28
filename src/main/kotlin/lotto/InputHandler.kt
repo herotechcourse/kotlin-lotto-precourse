@@ -1,5 +1,6 @@
 package lotto
 
+import camp.nextstep.edu.missionutils.Console
 import lotto.LottoConstants.LOTTO_NUMBER_ENDS
 import lotto.LottoConstants.LOTTO_NUMBER_SIZE
 import lotto.LottoConstants.LOTTO_NUMBER_STARTS
@@ -8,24 +9,33 @@ import lotto.LottoConstants.LOTTO_PRICE
 class InputHandler {
 
     fun readPurchaseAmount(readLine: () -> String): Int {
-        while (true) {
-            println(Messages.INPUT_PURCHASE)
-            return validateAmount { readLine() }
-        }
+            return try {
+                println(Messages.INPUT_PURCHASE)
+                validateAmount(readLine)
+            } catch (e: Exception) {
+                println(errorMessage(e))
+                validateAmount(readLine)
+            }
     }
 
     fun readWinningNumbers(readLine: () -> String): List<Int> {
-        while (true) {
-            println(Messages.INPUT_WINNING_NUMBERS)
-            return validateWinningNumbers(readLine)
-        }
+            return try {
+                println(Messages.INPUT_WINNING_NUMBERS)
+                validateWinningNumbers(readLine)
+            } catch (e: Exception) {
+                println(errorMessage(e))
+                validateWinningNumbers(readLine)
+            }
     }
 
-    fun readBonusNumbers(readLine: () -> String, winningNumbers: List<Int>) : Int{
-        while (true) {
-            println(Messages.INPUT_BONUS_NUMBER)
-            return validateBonusNumbers(readLine, winningNumbers)
-        }
+    fun readBonusNumbers(readLine: () -> String, winningNumbers: List<Int>): Int {
+            return try {
+                println(Messages.INPUT_BONUS_NUMBER)
+                validateBonusNumbers(readLine, winningNumbers)
+            } catch (e: Exception) {
+                println(errorMessage(e))
+                validateBonusNumbers(readLine, winningNumbers)
+            }
     }
 
     private fun validateWinningNumbers(readLine: () -> String): List<Int> {
@@ -56,7 +66,6 @@ class InputHandler {
             validatePurchaseAmount(amount)
             return amount
         } catch (e: Exception) {
-            println(errorMessage(e))
             throw e
         }
     }
