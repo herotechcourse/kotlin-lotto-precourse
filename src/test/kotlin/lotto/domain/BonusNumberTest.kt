@@ -7,43 +7,47 @@ class BonusNumberTest {
     @Test
     fun `throws an exception when bonus number is empty string`() {
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("")
+            BonusNumber.from("", winningNumber)
         }
     }
 
     @Test
     fun `throws an exception when bonus number is blank`() {
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("       ")
+            BonusNumber.from("       ", winningNumber)
         }
     }
 
     @Test
     fun `throws an exception when bonus number is not a number`() {
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("abc")
+            BonusNumber.from("abc", winningNumber)
         }
     }
 
     @Test
     fun `throws an exception when bonus number is not positive number`() {
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("-5")
+            BonusNumber.from("-5", winningNumber)
         }
 
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("0")
+            BonusNumber.from("0", winningNumber)
         }
     }
 
     @Test
     fun `throws an exception when bonus number is not in range`() {
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("-1")
+            BonusNumber.from("-1", winningNumber)
         }
 
         assertThrows<IllegalArgumentException> {
-            BonusNumber.from("46")
+            BonusNumber.from("46", winningNumber)
         }
+    }
+
+    companion object {
+        val winningNumber = WinningNumbers.from(listOf("1", "2", "3", "4", "5", "6"))
     }
 }
