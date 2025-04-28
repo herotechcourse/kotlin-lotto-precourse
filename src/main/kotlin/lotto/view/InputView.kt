@@ -12,4 +12,14 @@ class InputView {
     }
     return amount
   }
+  
+  fun readWinningNumbers(): List<Int> {
+    println("Please enter the winning numbers (comma-separated):")
+    val input = Console.readLine()?.trim() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
+    val numbers = input.split(",").map { it.trim().toIntOrNull() }
+    if (numbers.size != 6 || numbers.any { it == null } || numbers.any { it!! < 1 || it!! > 45 }) {
+      throw IllegalArgumentException("[ERROR] Please enter exactly 6 valid winning numbers.")
+    }
+    return numbers
+  } 
 }
