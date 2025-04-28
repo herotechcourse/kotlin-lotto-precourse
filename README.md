@@ -34,7 +34,7 @@
 
 
 ## VM Configuration
-- '-Dfile.encoding=UTF-8'git 
+- '-Dfile.encoding=UTF-8'
 
 
 ## Project Structure
