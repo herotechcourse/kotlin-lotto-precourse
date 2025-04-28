@@ -11,7 +11,8 @@ object OutputView {
   fun printResult(stats : Map<Rank,Int>, purchase: Int){
     println("Winning Statistics")
     println("---")
-    Rank.values().filter { it!=Rank.NONE }.forEach{
+
+    listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST).forEach{
       rank ->
       val count = stats.getOrDefault(rank,0)
       val label =
