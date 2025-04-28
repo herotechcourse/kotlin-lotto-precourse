@@ -1,6 +1,9 @@
 package lotto.domain
 
 class PurchaseAmount(val amount: Int) {
+    val possibleLottoTicketCount: Int
+        get() = amount / LOTTO_PRICE
+
     companion object {
         fun from(input: String): PurchaseAmount {
             require(input.isNotBlank()) { BLANK_ERROR }
