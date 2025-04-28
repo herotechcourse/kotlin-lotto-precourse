@@ -31,5 +31,24 @@ class OutputViewTest {
         assertTrue(output.contains("7, 8, 9, 10, 11, 12"))
     }
 
+    @Test
+    fun `printMatches should print match results`() {
+        
+        val matchMap = mutableMapOf(
+            MatchCondition.MATCH_3 to CountAndPrize(2, 5000),
+            MatchCondition.MATCH_4 to CountAndPrize(1, 50000)
+        )
+        val outputStream = ByteArrayOutputStream()
+        System.setOut(PrintStream(outputStream))
+        val outputView = OutputView()
+
+       
+        outputView.printMatches(matchMap)
+
+        val output = outputStream.toString()
+        assertTrue(output.contains("Winning Statistics"))
+        assertTrue(output.contains("3 Matches (5,000 KRW) – 2 tickets"))
+        assertTrue(output.contains("4 Matches (50,000 KRW) – 1 tickets"))
+    }
     
 }
