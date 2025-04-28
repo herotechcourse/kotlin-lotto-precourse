@@ -119,7 +119,7 @@ class ParseAndValidateTest {
     @Test
     fun `parse valid winning numbers input, quantity of numbers is 6`() {
         val numbers = winningNumbers("1,2,3,4,5,6")
-        assertTrue(numbers.size == 6)
+        assertEquals(numbers.size, 6)
     }
 
     @Test
@@ -171,7 +171,7 @@ class ParseAndValidateTest {
 
     @Test
     fun `valid bonus number input, number in range 1 to 45`() {
-        assertTrue(bonusNumber("21", WINNING_NUMBERS) == 21)
+        assertEquals(bonusNumber("21", WINNING_NUMBERS), 21)
     }
 
     companion object {
