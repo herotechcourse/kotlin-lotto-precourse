@@ -6,7 +6,7 @@ import org.junit.jupiter.api.assertThrows
 class LottoTest {
     @Test
     fun `create Lotto object successfully`() {
-            Lotto(listOf(1, 4, 38, 11, 31, 45))
+        Lotto(listOf(1, 4, 38, 11, 31, 45))
     }
 
     @Test
