@@ -60,3 +60,13 @@ Below is the class diagram representing the object-oriented structure of the Lot
 - [x] Calculate the total return rate.
   - [x] Return rate = (total prize money / total purchase amount) × 100.0, rounded to one decimal place.
 - [x] Print the winning statistics and the return rate.
+
+
+## Note about Lotto.kt
+
+As per the provided specifications, the `Lotto` class must:
+- Remain in the `lotto` package
+- Not be moved into any other sub-packages (e.g., `domain.model`)
+- Not have its package declaration changed
+
+Thus, the `Lotto.kt` file is intentionally placed directly under `lotto/`, while other domain-related classes are organized under `domain/`.

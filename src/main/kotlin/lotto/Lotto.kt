@@ -1,4 +1,4 @@
-package lotto.domain.model
+package lotto
 
 import lotto.config.Messages
 

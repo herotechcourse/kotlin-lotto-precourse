@@ -1,5 +1,6 @@
 package lotto.domain.service
 
+import lotto.Lotto
 import lotto.config.NumberGenerator
 import lotto.domain.model.*
 import org.junit.jupiter.api.Assertions.assertEquals

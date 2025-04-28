@@ -2,7 +2,7 @@ package lotto.view
 
 import lotto.config.LottoConstants.EN_DASH
 import lotto.config.LottoConstants.TICKETS
-import lotto.domain.model.Lotto
+import lotto.Lotto
 import lotto.domain.model.Rank
 import lotto.domain.service.WinResult
 

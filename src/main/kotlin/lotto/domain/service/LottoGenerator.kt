@@ -2,7 +2,7 @@ package lotto.domain.service
 
 import lotto.config.NumberGenerator
 import lotto.domain.model.Lotties
-import lotto.domain.model.Lotto
+import lotto.Lotto
 
 
 class LottoGenerator(private val numberGenerator: NumberGenerator) {

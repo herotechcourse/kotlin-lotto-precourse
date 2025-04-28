@@ -1,5 +1,6 @@
 package lotto.domain.service
 
+import lotto.Lotto
 import lotto.domain.model.*
 
 class ResultCalculator {
