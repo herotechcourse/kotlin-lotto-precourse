@@ -3,9 +3,11 @@ package lotto
 object OutputView {
     fun displayTickets(lottoList: List<Lotto>) {
         println("You have purchased ${lottoList.size} tickets.")
+
         for (lotto in lottoList) {
             lotto.displayNumbers()
         }
+
         println()
     }
 
