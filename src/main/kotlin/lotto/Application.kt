@@ -3,70 +3,66 @@ package lotto
 import camp.nextstep.edu.missionutils.Console
 
 fun main() {
+    try {
+        // 여기서만 프롬프트 출력
+        println("Please enter the purchase amount.")
+        val amount = totalPurchaseAmount()
 
-    val amount = totalPurchaseAmount()
-    val ticketAmount = List(amount / 1000){generateLotto()}
-    println("You have purchased ${ticketAmount.size} tickets.")
-    ticketAmount.forEach { println(it.getNumbers()) }
-    val winningNumbers = getWinningNumbers()
-    val bonusNumber = getBonusNumber(winningNumbers)
+        val ticketAmount = List(amount / 1000) { generateLotto() }
+        println("You have purchased ${ticketAmount.size} tickets.")
+        ticketAmount.forEach { println(it.getNumbers()) }
 
-    val prize = WinningNumbers(winningNumbers, bonusNumber)
-    val results = ticketAmount.map { prize.match(it) }
-    printResult(results, totalPurchaseAmount = ticketAmount.size * 1000)
-    
+        println("Please enter last week's winning numbers.")
+        val winningNumbers = getWinningNumbers()
+
+        println("Please enter the bonus number.")
+        val bonusNumber = getBonusNumber(winningNumbers)
+
+        val prize = WinningNumbers(winningNumbers, bonusNumber)
+        val results = ticketAmount.map { prize.match(it) }
+        printResult(results, totalPurchaseAmount = ticketAmount.size * 1000)
+    } catch (e: IllegalArgumentException) {
+        // 예외 발생 시 여기서만 에러 메시지 출력!
+        println(e.message)
+    }
 }
+
 // get user Input
 fun totalPurchaseAmount(): Int{
-    println("Please enter the purchase amount.")
     val inputMoney = Console.readLine()
     val amount = inputMoney.toIntOrNull()
     if (amount == null) {
-        val errorMessage = "[ERROR] Input must be a number"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Input must be a number")
     }
     if (amount <= 0 || amount % 1000 != 0) {
-        val errorMessage = "[ERROR] Input amount must be divisible by 1000"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Input amount must be divisible by 1000")
     }
     return amount
 }
 
 //get winning numbers
 fun getWinningNumbers() : List<Int> {
-    println("Please enter last week's winning numbers.")
     val inputNumbers = Console.readLine()
     val numbers = inputNumbers.split(",").map { it.trim().toIntOrNull() }
     if (numbers.any { it == null }) {
-        val errorMessage = "[ERROR] Input must be a number"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Input must be a number")
     }
     val finalNumbers = numbers.filterNotNull()
     if (finalNumbers.toSet().size != 6 || finalNumbers.any { it !in 1..45 }) {
-        val errorMessage = "[ERROR] Numbers must be 6 unique numbers between 1 and 45"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Numbers must be 6 unique numbers between 1 and 45")
     }
     return finalNumbers
 }
 
 //get bonus numbers
 fun getBonusNumber ( winningNumbers: List<Int>): Int  {
-    println("Please enter the bonus number.")
     val input = Console.readLine()
     val bonus = input.toIntOrNull()
     if (bonus == null) {
-        val errorMessage = "[ERROR] Input must be a number"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Input must be a number")
     }
     if (bonus !in 1..45 || winningNumbers.contains(bonus)) {
-        val errorMessage = "[ERROR] Bonus number must be a separate number between 1 and 45"
-        println(errorMessage)
-        throw IllegalArgumentException(errorMessage)
+        throw IllegalArgumentException("[ERROR] Bonus number must be a separate number between 1 and 45")
     }
     return bonus
 }
