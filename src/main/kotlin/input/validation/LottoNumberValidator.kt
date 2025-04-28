@@ -20,7 +20,7 @@ fun validateAndReturnTicketAmount(amount: Int): Int {
 }
 
 internal fun validateTicketAmount(amount: Int) {
-    if(amount > 0)
+    if(amount <= 0)
         throw IllegalArgumentException(TICKET_AMOUNT_MUST_BE_POSITIVE_MSG)
     if(amount % TICKET_PRICE > 0)
         throw IllegalArgumentException(TICKET_AMOUNT_MUST_BE_MULTIPLE_MSG)
