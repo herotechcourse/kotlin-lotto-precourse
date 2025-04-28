@@ -16,6 +16,12 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.sorted() == numbers) { ErrorMessage.INVALID_ORDER }
     }
 
+    fun matchCount(winningNumbers: List<Int>): Int =
+        numbers.count { it in winningNumbers }
+
+    fun contains(number: Int): Boolean =
+        number in numbers
+
     fun getNumbers(): List<Int> = numbers
 
 }

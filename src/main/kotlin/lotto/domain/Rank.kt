@@ -1,11 +1,11 @@
 package lotto.domain
 
 enum class Rank(val matchCount: Int, val prizeMoney: Int, val bonusRequired: Boolean = false) {
-    MATCH_THREE(3, 5_000),
-    MATCH_FOUR(4, 50_000),
-    MATCH_FIVE(5, 1_500_000),
-    MATCH_BONUS(5, 30_000_000),
-    MATCH_SIX(6, 2_000_000_000);
+    MATCH_THREE(3, lotto.FIFTH_PRIZE),
+    MATCH_FOUR(4, lotto.FOURTH_PRIZE),
+    MATCH_FIVE(5, lotto.THIRD_PRIZE),
+    MATCH_BONUS(5, lotto.SECOND_PRIZE),
+    MATCH_SIX(6, lotto.FIRST_PRIZE);
 
 
     companion object {
