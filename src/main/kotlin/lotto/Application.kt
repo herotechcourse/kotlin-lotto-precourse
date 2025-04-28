@@ -7,7 +7,6 @@ fun main() {
     val userInput = UserInput()
     val ticketPurchase = TicketPurchase()
     val lottoResult = LottoResult()
-
     runLotto(userInput, ticketPurchase, lottoResult)
 }
 
