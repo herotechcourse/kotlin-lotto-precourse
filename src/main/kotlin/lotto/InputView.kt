@@ -24,31 +24,48 @@ object InputView {
     }
 
     fun readPurchaseAmount(): Int {
-        println("Please enter the purchase amount.")
-        val input = Console.readLine().toIntOrNull()
-        validatePurchaseAmount(input)
-        return input!!
+        while (true) {
+            println("Please enter the purchase amount.")
+            val input = Console.readLine().toIntOrNull()
+            try {
+                validatePurchaseAmount(input)
+                return input!!
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
 
     fun readWinningNumbers(): List<Int> {
-        println("\nPlease enter last week's winning numbers.")
-        val winningNumbers = Console.readLine().split(",").map {
-            val parsedNumber = it.trim().toIntOrNull()
-            validateLotteryNumber(parsedNumber)
-            parsedNumber!!
+        while (true) {
+            println("Please enter last week's winning numbers.")
+            val input = Console.readLine()
+            try {
+                val winningNumbers = input.split(",").map {
+                    val parsedNumber = it.trim().toIntOrNull()
+                    validateLotteryNumber(parsedNumber)
+                    parsedNumber!!
+                }
+                validateLotteryNumbers(winningNumbers)
+                return winningNumbers
+            } catch (e: IllegalArgumentException) {
+                println(e.message) // [ERROR] 메시지 출력
+            }
         }
-
-        validateLotteryNumbers(winningNumbers)
-
-        return winningNumbers
     }
 
     fun readBonusNumber(winningNumbers: List<Int>): Int {
-        println("\nPlease enter the bonus number.")
-        val bonusNumber = Console.readLine().toIntOrNull()
-        validateLotteryNumber(bonusNumber)
-        validateBonusNumber(bonusNumber!!, winningNumbers)
-        return bonusNumber
+        while (true) {
+            println("Please enter the bonus number.")
+            val input = Console.readLine().toIntOrNull()
+            try {
+                validateLotteryNumber(input)
+                validateBonusNumber(input!!, winningNumbers)
+                return input
+            } catch (e: IllegalArgumentException) {
+                println(e.message) // [ERROR] 메시지 출력
+            }
+        }
     }
 }

@@ -2,21 +2,23 @@ package lotto
 
 object OutputView {
     fun printLottos(lottos: List<Lotto>) {
-        println("\nYou have purchased ${lottos.size} tickets.")
+        println()
+        println("You have purchased ${lottos.size} tickets.")
         for (lotto in lottos) {
             println(lotto.toString())
         }
     }
 
     fun printResult(result: Map<Rank, Int>) {
-        println("\nWinning Statistics")
+        println()
+        println("Winning Statistics")
         println("---")
         Rank.entries
             .filter { it != Rank.NONE }
             .sortedBy { it.matchCount }
             .forEach { rank ->
                 println(
-                    "${rank.matchCount} Matches${if (rank.matchBonus) " + Bonus Ball" else ""} (${rank.prizeAmount.formatWithComma()} KRW) - ${
+                    "${rank.matchCount} Matches${if (rank.matchBonus) " + Bonus Ball" else ""} (${rank.prizeAmount.formatWithComma()} KRW) – ${
                         result.getOrDefault(
                             rank,
                             0
@@ -27,7 +29,7 @@ object OutputView {
     }
 
     fun printProfitRate(profitRate: Double) {
-        println("Total return rate is %.1f%%".format(profitRate))
+        println("Total return rate is ${"%.1f".format(profitRate)}%.")
     }
 
     private fun Int.formatWithComma(): String {
