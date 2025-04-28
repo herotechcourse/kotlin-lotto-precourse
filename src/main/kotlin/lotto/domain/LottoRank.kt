@@ -1,9 +1,7 @@
 package lotto.domain
 
-import lotto.view.messages.RankMessages
-
-enum class LottoRank (
-    private val matchCount: Int,
+enum class LottoRank(
+    val matchCount: Int,
     val prizeMoney: Int
 ) {
     FIRST(6, 2000000000),
@@ -12,13 +10,6 @@ enum class LottoRank (
     FOURTH(4, 50000),
     FIFTH(3, 5000),
     NONE(0, 0);
-
-    fun getResultMessage(count: Int): String {
-        if (this == SECOND) {
-            return RankMessages.SECOND.with(prizeMoney.format(), count)
-        }
-        return RankMessages.GENERAL.with(matchCount, prizeMoney.format(), count)
-    }
 
     companion object {
 
@@ -33,6 +24,4 @@ enum class LottoRank (
             }
         }
     }
-
-    private fun Int.format() = "%,d".format(this)
 }
