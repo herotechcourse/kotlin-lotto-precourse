@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto.domain.service
+
+import lotto.domain.model.*
 
 class ResultCalculator {
     private fun calculateSingleMatch(lotto: Lotto, winningNumber: WinningNumber): Int {

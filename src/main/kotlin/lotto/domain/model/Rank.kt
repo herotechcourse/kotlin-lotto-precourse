@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.domain.model
 
 enum class Rank(
     val matchCount: Int,

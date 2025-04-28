@@ -1,4 +1,4 @@
-package lotto
+package lotto.config
 
 object Messages {
     const val ERROR = "[ERROR] "

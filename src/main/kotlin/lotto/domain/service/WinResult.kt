@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto.domain.service
+
+import lotto.domain.model.Rank
 
 class WinResult(
     private val result: MutableMap<Rank, Int> = initializeResult()

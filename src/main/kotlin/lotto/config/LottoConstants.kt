@@ -1,4 +1,4 @@
-package lotto
+package lotto.config
 
 object LottoConstants {
     const val LOTTO_PRICE = 1_000

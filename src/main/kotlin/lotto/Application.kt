@@ -1,7 +1,12 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.*
+import lotto.domain.model.Lotties
+import lotto.domain.model.Money
+import lotto.domain.model.WinningNumbers
+import lotto.domain.service.*
+import lotto.view.InputHandler
+import lotto.view.OutputHandler
 
 fun main() {
     val inputHandler = InputHandler()

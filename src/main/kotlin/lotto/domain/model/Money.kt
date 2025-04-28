@@ -1,7 +1,7 @@
-package lotto.domain
+package lotto.domain.model
 
-import lotto.LottoConstants.LOTTO_PRICE
-import lotto.Messages
+import lotto.config.LottoConstants.LOTTO_PRICE
+import lotto.config.Messages
 
 class Money(val amount: Int) {
     init {

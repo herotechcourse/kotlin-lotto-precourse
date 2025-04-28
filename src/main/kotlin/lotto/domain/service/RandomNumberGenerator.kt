@@ -1,10 +1,10 @@
-package lotto.domain
+package lotto.domain.service
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.LottoConstants.LOTTO_NUMBER_ENDS
-import lotto.LottoConstants.LOTTO_NUMBER_SIZE
-import lotto.LottoConstants.LOTTO_NUMBER_STARTS
-import lotto.NumberGenerator
+import lotto.config.LottoConstants.LOTTO_NUMBER_ENDS
+import lotto.config.LottoConstants.LOTTO_NUMBER_SIZE
+import lotto.config.LottoConstants.LOTTO_NUMBER_STARTS
+import lotto.config.NumberGenerator
 
 class RandomNumberGenerator : NumberGenerator {
     override fun generate(): List<Int> {

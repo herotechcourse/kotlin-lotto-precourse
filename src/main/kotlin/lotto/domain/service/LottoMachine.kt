@@ -1,4 +1,8 @@
-package lotto.domain
+package lotto.domain.service
+
+import lotto.domain.model.Lotties
+import lotto.domain.model.Money
+import lotto.domain.model.WinningNumbers
 
 class LottoMachine(
     private val lottoGenerator: LottoGenerator,

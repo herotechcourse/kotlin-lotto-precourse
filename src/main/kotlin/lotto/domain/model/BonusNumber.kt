@@ -1,8 +1,8 @@
-package lotto.domain
+package lotto.domain.model
 
-import lotto.LottoConstants.LOTTO_NUMBER_ENDS
-import lotto.LottoConstants.LOTTO_NUMBER_STARTS
-import lotto.Messages
+import lotto.config.LottoConstants.LOTTO_NUMBER_ENDS
+import lotto.config.LottoConstants.LOTTO_NUMBER_STARTS
+import lotto.config.Messages
 
 class BonusNumber(val number: Int, winningNumbers: List<Int>) {
     init {

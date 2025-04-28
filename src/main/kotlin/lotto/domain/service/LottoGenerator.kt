@@ -1,6 +1,8 @@
-package lotto.domain
+package lotto.domain.service
 
-import lotto.NumberGenerator
+import lotto.config.NumberGenerator
+import lotto.domain.model.Lotties
+import lotto.domain.model.Lotto
 
 
 class LottoGenerator(private val numberGenerator: NumberGenerator) {

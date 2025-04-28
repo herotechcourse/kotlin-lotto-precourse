@@ -1,6 +1,7 @@
-package lotto.domain
+package lotto.domain.service
 
-import lotto.NumberGenerator
+import lotto.config.NumberGenerator
+import lotto.domain.model.Money
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

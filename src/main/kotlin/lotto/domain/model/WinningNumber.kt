@@ -1,9 +1,9 @@
-package lotto.domain
+package lotto.domain.model
 
-import lotto.LottoConstants.LOTTO_NUMBER_ENDS
-import lotto.LottoConstants.LOTTO_NUMBER_SIZE
-import lotto.LottoConstants.LOTTO_NUMBER_STARTS
-import lotto.Messages
+import lotto.config.LottoConstants.LOTTO_NUMBER_ENDS
+import lotto.config.LottoConstants.LOTTO_NUMBER_SIZE
+import lotto.config.LottoConstants.LOTTO_NUMBER_STARTS
+import lotto.config.Messages
 
 
 class WinningNumber(val numbers: List<Int>) {

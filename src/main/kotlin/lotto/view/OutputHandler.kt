@@ -1,10 +1,10 @@
-package lotto
+package lotto.view
 
-import lotto.LottoConstants.EN_DASH
-import lotto.LottoConstants.TICKETS
-import lotto.domain.Lotto
-import lotto.domain.Rank
-import lotto.domain.WinResult
+import lotto.config.LottoConstants.EN_DASH
+import lotto.config.LottoConstants.TICKETS
+import lotto.domain.model.Lotto
+import lotto.domain.model.Rank
+import lotto.domain.service.WinResult
 
 class OutputHandler {
     fun printLotties(lotties: List<Lotto>) {

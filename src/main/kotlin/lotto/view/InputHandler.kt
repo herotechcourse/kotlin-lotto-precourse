@@ -1,10 +1,10 @@
-package lotto
+package lotto.view
 
-import camp.nextstep.edu.missionutils.Console
-import lotto.LottoConstants.LOTTO_NUMBER_ENDS
-import lotto.LottoConstants.LOTTO_NUMBER_SIZE
-import lotto.LottoConstants.LOTTO_NUMBER_STARTS
-import lotto.LottoConstants.LOTTO_PRICE
+import lotto.config.LottoConstants.LOTTO_NUMBER_ENDS
+import lotto.config.LottoConstants.LOTTO_NUMBER_SIZE
+import lotto.config.LottoConstants.LOTTO_NUMBER_STARTS
+import lotto.config.LottoConstants.LOTTO_PRICE
+import lotto.config.Messages
 
 class InputHandler {
 

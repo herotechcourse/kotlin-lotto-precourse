@@ -1,4 +1,7 @@
-package lotto.domain
+package lotto.domain.service
+
+import lotto.domain.model.Money
+import lotto.domain.model.Rank
 
 class Statistics {
     fun calculateTotalReturnRate(money: Money, winResult: WinResult): Double {
