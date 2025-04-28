@@ -48,14 +48,14 @@
 ---
 
 ## Documentation
-| Title                                                        | Description                                        |
-|:-------------------------------------------------------------|:---------------------------------------------------|
-| [Project Guidelines](./docs/project-guidelines.md)           | Coding conventions, architecture rules, test, ...  |
-| [Functional Requirements](./docs/functional-requirements.md) | Ticket rules, input, matching logic, results       |
-| [Execution Flow](./docs/execution-flow.md)                   | Step-by-step flow of UI and service logic          |
-| [Action Plan](./docs/action-plan.md)                         | Step-by-step development plan (FDD → TDD → MVC)    |
-| [Feature List](./docs/feature-list.md)                       | Core functions broken down by feature              |
-| [Submission Checklist](./docs/submission-checklist.md)       | To verify all requirements before submission       |
+| Title                                                        | Description                                       |
+|:-------------------------------------------------------------|:--------------------------------------------------|
+| [Project Guidelines](./docs/project-guidelines.md)           | Coding conventions, architecture rules, test, ... |
+| [Functional Requirements](./docs/functional-requirements.md) | Lotto rules, input, matching logic, results       |
+| [Execution Flow](./docs/execution-flow.md)                   | Step-by-step flow of UI and service logic         |
+| [Action Plan](./docs/action-plan.md)                         | Step-by-step following development plan           |
+| [Feature List](./docs/feature-list.md)                       | Core functions broken down by feature             |
+| [Submission Checklist](./docs/submission-checklist.md)       | To verify all requirements before submission      |
 
 ---
 ## Hierarchy
@@ -74,9 +74,9 @@ lotto/
 ├── service/                    # Service layer
 │   ├── GenerateLottos.kt
 │   └── MatchLottos.kt
+│   └── InputValidator.kt
 │
 ├── view/                       # UI Layer (Input / Output)
-│   ├── InputValidator.kt
 │   ├── InputView.kt
 │   └── OutputView.kt
 │
