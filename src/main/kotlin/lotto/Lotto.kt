@@ -9,5 +9,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toString()
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
 }
