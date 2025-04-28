@@ -33,11 +33,22 @@ object OutputView {
 
     private fun getPurchaseMessage(count: Int) = "You have purchased $count ${pluralizeTicket(count)}"
 
+    private fun formatPrize(prize: Int): String {
+        return prize.toString()
+            .reversed()
+            .replace("([0-9]{3})(?=[0-9])".toRegex(), "$1,")
+            .reversed()
+    }
+
     private fun getStatisticMessageFor(rank: PrizeRank, lottoResults: List<LottoResult>): String {
         val count = lottoResults.count { it.prizeRank == rank }
         val bonusMessage = if (rank.hasBonus) " + Bonus Ball" else ""
 
-        return "${rank.matchCount} Matches$bonusMessage (${rank.prize} KRW) - $count ${pluralizeTicket(count)}"
+        return "${rank.matchCount} Matches$bonusMessage (${formatPrize(rank.prize)} KRW) - $count ${
+            pluralizeTicket(
+                count
+            )
+        }"
     }
 
     object Constants {
