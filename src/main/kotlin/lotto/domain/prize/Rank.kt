@@ -13,12 +13,18 @@ enum class Rank(
 
     private interface WinningStrategy {
         fun matches(matchCount: Int, bonusMatch: Boolean): Boolean
+        fun matchCount(): Int
+        fun bonusMatch(): Boolean
     }
 
     private class MatchCountStrategy(private val matchCount: Int) : WinningStrategy {
         override fun matches(matchCount: Int, bonusMatch: Boolean): Boolean {
             return matchCount == this.matchCount
         }
+
+        override fun matchCount() = matchCount
+
+        override fun bonusMatch() = false
     }
 
     private class MatchCountAndBonusStrategy(private val matchCount: Int, private val bonusMath: Boolean) :
@@ -26,9 +32,19 @@ enum class Rank(
         override fun matches(matchCount: Int, bonusMatch: Boolean): Boolean {
             return this.matchCount == matchCount && this.bonusMath == bonusMatch
         }
+
+        override fun matchCount() = matchCount
+
+        override fun bonusMatch() = this.bonusMath
     }
 
     fun multiplyPrizeAmount(count: Int): Long = prizeAmount * count
+
+    fun matchCount() = winningStrategy.matchCount()
+
+    fun bonusMatch() = winningStrategy.bonusMatch()
+
+    fun prizeAmount() = prizeAmount
 
     companion object {
         fun find(matchCount: Int, bonusMatch: Boolean): Rank {

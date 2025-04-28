@@ -1,6 +1,7 @@
 package lotto.domain.prize
 
 import lotto.domain.PurchaseAmount
+import lotto.domain.dto.PrizeResultDto
 import java.util.*
 
 class PrizeResult(private val result: EnumMap<Rank, Int>) {
@@ -27,6 +28,12 @@ class PrizeResult(private val result: EnumMap<Rank, Int>) {
         }
 
         return summary.toFloat()
+    }
+
+    fun toPrizeResultDto(): List<PrizeResultDto> {
+        return result.map { (rank, count) ->
+            PrizeResultDto(rank.matchCount(), rank.bonusMatch(), rank.prizeAmount(), count)
+        }
     }
 
     companion object {

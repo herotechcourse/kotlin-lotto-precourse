@@ -1,6 +1,7 @@
 package lotto.service
 
 import lotto.controller.response.PurchasedTicketsDto
+import lotto.controller.response.statistics.StatisticsDto
 import lotto.domain.LottoGenerator
 import lotto.domain.PurchaseAmount
 import lotto.domain.prize.PrizeResult
@@ -33,5 +34,9 @@ class LottoService {
         }
 
         return prizeResult
+    }
+
+    fun createStatisticsDto(purchaseAmount: PurchaseAmount, prizeResult: PrizeResult): StatisticsDto {
+        return StatisticsDto(prizeResult.toPrizeResultDto(), prizeResult.calculateProfitRate(purchaseAmount))
     }
 }
