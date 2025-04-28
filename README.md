@@ -7,9 +7,9 @@ The project aims to allow users to purchase lottery tickets, generate winning nu
 
 ## Planned Features
 
-- [ ] Ask the user for the amount they want to spend
-- [ ] Automatically issue lottery tickets based on the amount (each ticket costs 1000 won)
-- [ ] Generate random lottery numbers for each ticket (numbers from 1 to 45, no duplicates, sorted)
+- [x] Ask the user for the amount they want to spend
+- [x] Automatically issue lottery tickets based on the amount (each ticket costs 1000 won)
+- [x] Generate random lottery numbers for each ticket (numbers from 1 to 45, no duplicates, sorted)
 - [ ] Allow the user to input the winning numbers and bonus number
 - [ ] Compare purchased tickets with the winning numbers
 - [ ] Determine the prize for each ticket (1st ~ 5th prizes based on matches)
