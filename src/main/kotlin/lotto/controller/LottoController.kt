@@ -4,10 +4,7 @@ import lotto.Lotto
 import lotto.domain.PurchasedLotto
 import lotto.repository.PurchasedLottoRepository
 import lotto.service.PurchasedLottoService
-import lotto.util.inputPurchasedAmount
-import lotto.util.inputUserWinningNumbers
-import lotto.util.printAllPurchasedLottoNumbers
-import lotto.util.printUserPurchasedTicketPhrase
+import lotto.util.*
 
 class LottoController {
     val purchasedLottoRepository = PurchasedLottoRepository()
@@ -17,6 +14,7 @@ class LottoController {
         val purchasedAmount = getPurchasedAmount() / 1000
         buyLottos(purchasedAmount)
         val winningNumbers = getWinningNumbers()
+        val bonusNumber = getBonusNumber(winningNumbers)
     }
 
     fun getPurchasedAmount(): Int {
@@ -33,5 +31,9 @@ class LottoController {
 
     fun getWinningNumbers(): Lotto {
         return inputUserWinningNumbers()
+    }
+
+    fun getBonusNumber(winningNumbers: Lotto): Int {
+        return inputUserBonusNumber(winningNumbers)
     }
 }

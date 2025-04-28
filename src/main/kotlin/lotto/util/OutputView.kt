@@ -19,3 +19,7 @@ fun printAllPurchasedLottoNumbers(lottoNumbers: List<PurchasedLotto>) {
 fun printWinningNumbersInputPhrase() {
     println("Please enter last week's winning numbers.")
 }
+
+fun printBonusNumberInputPhrase() {
+    println("Please enter the bonus number.")
+}

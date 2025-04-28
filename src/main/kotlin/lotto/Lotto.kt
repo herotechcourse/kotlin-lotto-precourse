@@ -7,5 +7,9 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) { "[ERROR] Numbers outside the range of 1 to 45 are entered" }
     }
 
-    // TODO: Implement additional functions
+    fun validateDuplicateWithBonusNumber(bonusNumber: Int) {
+        if (numbers.contains(bonusNumber)) {
+            throw IllegalArgumentException("[ERROR] Bonus number is not duplicate with winning numbers")
+        }
+    }
 }

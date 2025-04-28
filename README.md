@@ -44,9 +44,9 @@
     - [x] Duplicate numbers are entered
     - [x] Numbers outside the range of 1 to 45 are entered
   - Bonus Number
-    - [ ] Non-numeric characters are used
-    - [ ] The input is not exactly one number
-    - [ ] The number is not within the range of 1 to 45
+    - [x] Non-numeric characters are used
+    - [x] The number is not within the range of 1 to 45
+    - [x] Bonus number is not duplicate with winning numbers
 
 ### 2. Output
   - Purchased Lotto Numbers
@@ -56,7 +56,7 @@
   - Rate of Return
     - [ ] Print the value rounded to the first decimal place.
   - Exception
-    - [ ] Throw an error message starting with `[ERROR]`
+    - [x] Throw an error message starting with `[ERROR]`
 
 ### 3. Business Logic
   - [ ] Rank is implemented using an `Enum` class.

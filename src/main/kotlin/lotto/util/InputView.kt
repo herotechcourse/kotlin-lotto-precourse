@@ -21,11 +21,21 @@ fun inputUserWinningNumbers(): Lotto {
     return Lotto(winningNumbers)
 }
 
+fun inputUserBonusNumber(winningNumbers: Lotto): Int {
+    printBonusNumberInputPhrase()
+    val userInput = Console.readLine()
+    validateNonNumeric(userInput)
+    val bonusNumber = userInput.toInt()
+    validateRangeOfNumber(bonusNumber)
+    validateDuplicateWithWinningNumbers(winningNumbers, bonusNumber)
+    return bonusNumber
+}
+
 fun validateNonNumeric(userInput: String) {
     val regex = Regex("[0-9]")
     val removeCharacters =regex.replace(userInput, "")
     if (removeCharacters.isNotEmpty()) {
-        throw IllegalArgumentException("[ERROR] Numeric characters must be used")
+        throw IllegalArgumentException("[ERROR] Numeric character must be used")
     }
 }
 
@@ -45,6 +55,16 @@ fun validateNonNumericWithoutComma(userInput: String) {
     val regex = Regex("[0-9,]")
     val removeCharacters = regex.replace(userInput, "")
     if (removeCharacters.isNotEmpty()) {
-        throw IllegalArgumentException("Non-numeric characters excluding commas are used")
+        throw IllegalArgumentException("[ERROR] Non-numeric characters excluding commas are used")
     }
+}
+
+fun validateRangeOfNumber(bonusNumber: Int) {
+    if (bonusNumber !in (1..45)) {
+        throw IllegalArgumentException("[ERROR] Bonus number is within the range of 1 to 45")
+    }
+}
+
+fun validateDuplicateWithWinningNumbers(winningNumbers: Lotto, bonusNumber: Int) {
+    winningNumbers.validateDuplicateWithBonusNumber(bonusNumber)
 }
