@@ -54,5 +54,11 @@ fun readWinningNumbers(): List<Int> {
         .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning number input.") }
 }
 
+// Reads the bonus number from the user
+fun readBonusNumber(): Int {
+    println("Please enter the bonus number.")
+    return Console.readLine().toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] Invalid bonus number input.")
+}
 
 

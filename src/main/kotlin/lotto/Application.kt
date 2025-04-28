@@ -9,4 +9,8 @@ fun main() {
     printTickets(tickets)
 
     val winningNumbers = readWinningNumbers()
+    val bonusNumber = readBonusNumber()
+
+    println("Winning Numbers: $winningNumbers")
+    println("Bonus Number: $bonusNumber")
 }
