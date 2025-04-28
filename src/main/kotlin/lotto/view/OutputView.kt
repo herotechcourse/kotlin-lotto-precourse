@@ -3,6 +3,8 @@ package lotto.view
 import lotto.domain.LottoResult
 import lotto.domain.LottoStatistics
 import lotto.domain.LottoTicket
+import java.text.NumberFormat
+import java.util.Locale
 
 object OutputView {
 
@@ -16,10 +18,23 @@ object OutputView {
 
     fun printStatistics(statistics: LottoStatistics) {
         println("Lotto result statistics:")
-        LottoResult.entries.forEach { rank ->
-            val count = statistics.count(rank)
-            println("${rank.matchCount} Matches (${rank.prize} KRW) – $count tickets")
+        listOf(
+            LottoResult.FIFTH,
+            LottoResult.FOURTH,
+            LottoResult.THIRD,
+            LottoResult.SECOND,
+            LottoResult.FIRST
+        ).forEach { rank ->
+            val prizeFormatted = NumberFormat
+                .getNumberInstance(Locale.US)
+                .format(rank.prize)
+            val line = if (rank == LottoResult.SECOND) {
+                "${rank.matchCount} Matches + Bonus Ball ($prizeFormatted KRW) – ${statistics.count(rank)} tickets"
+            } else {
+                "${rank.matchCount} Matches ($prizeFormatted KRW) – ${statistics.count(rank)} tickets"
+            }
+            println(line)
         }
-        println("Total return rate is ${"%.1f".format(statistics.profitRate)}%.")
+        println("Total return rate is ${"%.1f".format(Locale.US, statistics.returnRate)}%.")
     }
 }
