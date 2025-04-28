@@ -19,3 +19,14 @@ object LottoMachine {
         }
     }
 }
+class WinningLotto(private val winningNumbers: List<Int>, private val bonusNumber: Int) {
+    init {
+        require(winningNumbers.size == 6) { "[ERROR] Must have exactly 6 winning numbers." }
+        require(winningNumbers.toSet().size == 6) { "[ERROR] Winning numbers must be unique." }
+        require(winningNumbers.all { it in 1..45 }) { "[ERROR] Numbers must be between 1 and 45." }
+        require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+    }
+
+    fun matchCount(lotto: Lotto): Int = lotto.numbers.count { it in winningNumbers }
+    fun matchBonus(lotto: Lotto): Boolean = bonusNumber in lotto.numbers
+}
