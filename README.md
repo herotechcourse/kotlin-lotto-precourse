@@ -8,17 +8,17 @@
 ![Code Style](https://img.shields.io/badge/code_style-Kotlin_Convention-7F52FF)
 
 ## 📝 Table of Contents
-- [📌 Program Summary](#-program-summary)
-- [🛠️ Development Flow](#-development-flow)
-- [📂 Documentation](#-documentation)
-- [🏗️ Hierarchy](#-hierarchy)
-- [🗂️ Feature List](#-feature-list)
-- [🖥 Domain and Service Layer](#-domain-and-service-layer)
-- [✅ Checklist](#-checklist)
+- [📌 Program Summary](#program-summary)
+- [🛠️ Development Flow](#development-flow)
+- [📂 Documentation](#documentation)
+- [🏗️ Hierarchy](#hierarchy)
+- [🗂️ Feature List](#feature-list)
+- [🖥 Domain and Service Layer](#domain-and-service-layer)
+- [✅ Checklist](#checklist)
 
 ---
 
-## 📌 Program Summary
+## Program Summary
 - Implemented a Console-based Lotto simulator<br>
     according to the pre-course mission guidelines.
 - Users can purchase lotto tickets and input winning numbers.
@@ -27,7 +27,7 @@
 
 ---
 
-## 🛠️ Development Flow
+## Development Flow
 - Developed with a structured flow to enhance clarity, testability, and maintainability.
 
     ### 1. **FDD (Feature-Driven Development)**
@@ -47,7 +47,7 @@
 
 ---
 
-## 📂 Documentation
+## Documentation
 | Title                                                        | Description                                        |
 |:-------------------------------------------------------------|:---------------------------------------------------|
 | [Project Guidelines](./docs/project-guidelines.md)           | Coding conventions, architecture rules, test, ...  |
@@ -58,7 +58,7 @@
 | [Submission Checklist](./docs/submission-checklist.md)       | To verify all requirements before submission       |
 
 ---
-## 🏗️ Hierarchy
+## Hierarchy
 ```
 lotto/
 ├── controller/                 # Controller layer
@@ -102,12 +102,12 @@ lotto/
 
 ---
 
-## 🗂️ Feature List
+## Feature List
 - ### [Click here](./docs/feature-list.md)
 
 ---
 
-## 🖥 Domain and Service Layer
+## Domain and Service Layer
 ### Domain Layer
   - **Lotto**
     - Represents a single lotto.
@@ -149,5 +149,5 @@ lotto/
 
 ---
 
-## ✅ Checklist
+## Checklist
 - ### [Click here](./docs/submission-checklist.md)
