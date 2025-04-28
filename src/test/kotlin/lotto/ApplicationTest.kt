@@ -40,6 +40,63 @@ class ApplicationTest : NsTest() {
             listOf(1, 3, 5, 14, 22, 45),
         )
     }
+    
+    @Test
+    fun `should handle game with 5 tickets and 2 wins`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("5000", "2,6,9,14,25,36", "7")
+                assertThat(output()).contains(
+                    "You have purchased 5 tickets.",
+                    "[2, 21, 25, 36, 42, 43]",
+                    "[3, 5, 11, 16, 32, 38]",
+                    "[2, 11, 14, 35, 36, 44]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "3 Matches (5,000 KRW) – 2 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "Total return rate is 200%.",
+                )
+            },
+            listOf(2, 21, 25, 36, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+            listOf(2, 11, 14, 35, 36, 44),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+        )
+    }
+
+
+    @Test
+    fun `should handle game with 5 tickets and 0 wins`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("5000", "1,3,5,19,33,40", "7")
+                assertThat(output()).contains(
+                    "You have purchased 5 tickets.",
+                    "[2, 21, 25, 36, 42, 43]",
+                    "[3, 5, 11, 16, 32, 38]",
+                    "[2, 11, 14, 35, 36, 44]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "3 Matches (5,000 KRW) – 0 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "Total return rate is 0%.",
+                )
+            },
+            listOf(2, 21, 25, 36, 42, 43),
+            listOf(3, 5, 11, 16, 32, 38),
+            listOf(2, 11, 14, 35, 36, 44),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+        )
+    }
 
     @Test
     fun `exception test`() {
