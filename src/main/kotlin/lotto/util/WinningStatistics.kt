@@ -1,4 +1,8 @@
-package lotto
+package lotto.util
+
+import lotto.Lotto
+import lotto.WinningNumbers
+import java.util.*
 
 
 object WinningStatistics {
@@ -22,9 +26,15 @@ object WinningStatistics {
         return  moneyPrizeALl
     }
 
-    fun getTotalMoney(mapPrizeNumber: MutableMap<Lotto.Prize, Int>): Int {
-        var totalMoney = 0
-        for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize * number
+    fun getTotalMoney(mapPrizeNumber: MutableMap<Lotto.Prize, Int>): Long {
+        var totalMoney: Long = 0
+        for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize.toLong() * number
         return totalMoney
+    }
+
+    fun getReturnRate(moneyTotal: Long, numberTickets: Int): String {
+        val returnRate = moneyTotal.toDouble()/(numberTickets * Lotto.PRICE_TICKET)
+        val formattedRate = String.format(Locale.US,"%.1f%%", returnRate * 100)
+        return formattedRate
     }
 }

@@ -33,7 +33,7 @@ class WinningNumbersTest {
         }
 
     @Test
-    fun `throw exeption when bonus number greater than 45`() {
+    fun `throw exception when bonus number greater than 45`() {
         assertThrows<IllegalArgumentException> {
             WinningNumbers(listOf(1, 2, 3, 4, 5, 6), 50)
         }

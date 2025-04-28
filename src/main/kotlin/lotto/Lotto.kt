@@ -5,20 +5,22 @@ class Lotto(private val numbers: List<Int>) {
     companion object {
         const val MIN_VALUE_LOTTO = 1
         const val MAX_VALUE_LOTTO = 45
+        const val SIZE_LOTTO = 6
+        const val PRICE_TICKET = 1_000
     }
 
     enum class Prize(val namePrize: String, val valuePrize: Int) {
         NOPRIZE ( "Less than 3 matches", 0),
-        FIFTH ("3 Matches (5,000 KRW)", 5000),
-        FOURTH ("4 Matches (50,000 KRW)", 50000),
-        THIRD ("5 Matches (1,500,000 KRW)", 1500000),
-        SECOND ("5 Matches + Bonus Ball (30,000,000 KRW)", 30000000),
-        FIRST ("6 Matches (2,000,000,000 KRW)", 2000000000)
+        FIFTH ("3 Matches (5,000 KRW)", 5_000),
+        FOURTH ("4 Matches (50,000 KRW)", 50_000),
+        THIRD ("5 Matches (1,500,000 KRW)", 1_500_000),
+        SECOND ("5 Matches + Bonus Ball (30,000,000 KRW)", 30_000_000),
+        FIRST ("6 Matches (2,000,000,000 KRW)", 2_000_000_000)
 
     }
 
     init {
-        require((numbers.size == 6) && (numbers.toSet().size == 6)) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require((numbers.size == SIZE_LOTTO) && (numbers.toSet().size == SIZE_LOTTO)) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.all { it in MIN_VALUE_LOTTO .. MAX_VALUE_LOTTO}) {
             "[ERROR] Lotto numbers must in the range [$MIN_VALUE_LOTTO,$MAX_VALUE_LOTTO]."
         }
@@ -43,5 +45,4 @@ class Lotto(private val numbers: List<Int>) {
         return Prize.NOPRIZE
     }
 
-    // TODO: Implement additional functions
 }

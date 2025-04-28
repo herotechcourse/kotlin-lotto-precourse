@@ -1,6 +1,9 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.util.InputValidator
+import lotto.Lotto
+import lotto.WinningNumbers
 
 class InputView {
 
@@ -12,14 +15,14 @@ class InputView {
                 val amount = Console.readLine()
                 val amountMoney = InputValidator.validateMoneyAmount(amount)
 
-                return amountMoney/1000
+                return amountMoney/ Lotto.PRICE_TICKET
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
-    fun promptWinningNumbers(): WinningNumbers {
+    fun readWinningNumbers(): WinningNumbers {
 
         val mainNumbers = readMainNumbers()
         val bonusNumber = readBonusNumber(mainNumbers)
@@ -30,7 +33,7 @@ class InputView {
     private fun readMainNumbers(): List<Int?> {
         while (true){
             try {
-                println("Please enter last week's winning numbers (commas separated).")
+                println("Please enter last week's winning numbers.")
                 val main = Console.readLine()
                 val mainNumbers = InputValidator.validateMainNumbers(main)
 
@@ -45,10 +48,10 @@ class InputView {
         while (true) {
             try {
                 println("Please enter the bonus number.")
-                val bonus = Console.readLine()//.toIntOrNull()
+                val bonus = Console.readLine()
                 val bonusNumber = InputValidator.validateBonusNumber(bonus, mainNumbers)
-                return bonusNumber
 
+                return bonusNumber
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
