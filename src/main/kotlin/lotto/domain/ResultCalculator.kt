@@ -21,8 +21,8 @@ class ResultCalculator(
         for (lotto in lottoes) {
             val nums = lotto.getNumbers().toSet()
 
-            val matchCount: Int = nums.intersect(winningNumbers).size
-            val bonusMatch: Boolean = lotto.getNumbers().contains(bonusNumber)
+            val matchCount: Int = lotto.matchCount(winningNumbers)
+            val bonusMatch: Boolean = lotto.hasBonus(bonusNumber)
 
             PrizeRank.of(matchCount, bonusMatch)?.let { rank ->
                 rankFreq[rank] = rankFreq.getValue(rank) + 1

@@ -3,19 +3,19 @@ package lotto.engine
 import lotto.domain.ITicketMachine
 import lotto.domain.ResultCalculator
 import lotto.domain.TicketMachine
-import lotto.util.DefaultNumberGenerator
-import lotto.util.NumberGenerator
+import lotto.util.DefaultINumberGenerator
+import lotto.util.INumberGenerator
 import lotto.validator.InputValidator
-import lotto.validator.Validator
+import lotto.validator.IInputValidator
 import lotto.view.IInputView
 import lotto.view.IOutputView
 import lotto.view.InputView
 import lotto.view.OutputView
 
 class LottoEngine(
-    val validator: Validator = InputValidator(),
-    val inputView: IInputView = InputView(validator),
-    val generator: NumberGenerator = DefaultNumberGenerator(),
+    val inputValidator: IInputValidator = InputValidator(),
+    val inputView: IInputView = InputView(inputValidator),
+    val generator: INumberGenerator = DefaultINumberGenerator(),
     val ticketMachine: ITicketMachine = TicketMachine(generator),
     val outputView: IOutputView = OutputView
 ) {

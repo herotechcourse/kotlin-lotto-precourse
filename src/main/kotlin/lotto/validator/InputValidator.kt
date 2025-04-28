@@ -1,9 +1,11 @@
 package lotto.validator
 
+import lotto.config.Config
+
 /**
  * Validates raw user inputs for the Lotto game.
  */
-class InputValidator : Validator {
+class InputValidator : IInputValidator {
 
     /**
      * Validates purchase amount string and returns integer.
@@ -12,7 +14,8 @@ class InputValidator : Validator {
     override fun validatePurchaseAmount(input: String): Int {
         val amount = input.toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
-        if (amount % 1000 != 0) {
+
+        if (amount % Config.TICKET_PRICE != 0) {
             throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
         }
         if (amount <= 0) {
@@ -29,7 +32,10 @@ class InputValidator : Validator {
     override fun validateWinningNumbers(input: String): List<Int> {
         val nums = input.split(",")
             .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning numbers.") }
-        if (nums.size != 6 || nums.toSet().size != 6 || nums.any { it !in 1..45 }) {
+
+        if (nums.size != Config.NUMBERS_PER_TICKET || nums.toSet().size != Config.NUMBERS_PER_TICKET
+            || nums.any { it !in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER }
+        ) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be 6 unique numbers between 1 and 45.")
         }
 
@@ -43,7 +49,8 @@ class InputValidator : Validator {
     override fun validateBonusNumber(input: String): Int {
         val bonus = input.toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] Bonus number must be a number.")
-        if (bonus !in 1..45) {
+
+        if (bonus !in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER) {
             throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
         }
 

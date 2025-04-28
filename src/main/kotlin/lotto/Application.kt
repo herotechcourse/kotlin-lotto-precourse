@@ -6,8 +6,12 @@ import lotto.engine.LottoEngine
  * Entry point of the Lotto application.
  */
 fun main() {
-    val engine = LottoEngine()
+    try {
+        val engine = LottoEngine()
 
-    engine.run()
+        engine.run()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
 
