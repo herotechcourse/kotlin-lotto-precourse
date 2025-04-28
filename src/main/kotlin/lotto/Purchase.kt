@@ -15,6 +15,10 @@ class Purchase(val amount: Int) {
         }
     }
 
+    fun calculateReturnRate(totalPrize: Int): Double {
+        return amount.toDouble() / totalPrize // converting one operand to Double to ensure a precise calculation
+    }
+
     companion object {
         private const val TICKET_PRICE = 1000
         private const val MAX_AMOUNT = 15000
