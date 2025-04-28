@@ -31,20 +31,18 @@
 - [x] The user can enter the winning numbers.  
   - [x] If there are not exactly 6 comma-separated tokens, throw `IllegalArgumentException`  
     - “[ERROR] Winning numbers must contain 6 numbers.”  
-  - [x] If any token is not numeric or is outside the 1–45 range, throw `IllegalArgumentException`  
-    - “[ERROR] Input is not a number.”  
-    - “[ERROR] Lotto numbers must be between 1 and 45.”  
+  - [x] If any token is outside the 1–45 range, throw `IllegalArgumentException`  
+    - “[ERROR] Lotto number(s) must be between 1 and 45.”  
   - [x] If there are duplicate numbers, throw `IllegalArgumentException`  
     - “[ERROR] Winning numbers contain duplicates.”  
   - [x] Allow leading/trailing whitespace and trim spaces around each number.
 
-- [ ] The user can enter the bonus number.  
-  - [ ] If the input is not a single number, throw `IllegalArgumentException`  
-    - “[ERROR] Bonus number is not a single number.”  
-  - [ ] If the input is not numeric or is outside the 1–45 range, throw `IllegalArgumentException`  
+- [x] The user can enter the bonus number.  
+  - [x] If the input is not a single number, throw `IllegalArgumentException`  
     - “[ERROR] Input is not a number.”  
-    - “[ERROR] Lotto numbers must be between 1 and 45.”  
-  - [ ] If the bonus number is one of the winning numbers, throw `IllegalArgumentException`  
+  - [x] If the input is outside the 1–45 range, throw `IllegalArgumentException`  
+    - “[ERROR] Lotto number(s) must be between 1 and 45.”  
+  - [X] If the bonus number is one of the winning numbers, throw `IllegalArgumentException`  
     - “[ERROR] Bonus number duplicates a winning number.”
 
 - [ ] When the user enters invalid data, throw `IllegalArgumentException` and re-prompt at the **same** step.
@@ -75,7 +73,7 @@
 ---
 
 ### Console Output
-- [ ] **Input Prompts**  
+- [x] **Input Prompts**  
   - `Please enter the purchase amount.`  
   - `Please enter last week's winning numbers.`  
   - `Please enter the bonus number.`
@@ -191,3 +189,23 @@ Total return rate is 62.5%.
 - **initializes successfully with exactly six valid numbers**  
   - Input: `listOf(1, 2, 3, 4, 5, 6)`  
   - Expect: `.numbers` contains exactly `[1, 2, 3, 4, 5, 6]`
+
+### `BonusNumber` Tests (lotto.domain)
+
+- **throws exception when a number exceeds the maximum range**  
+  - Input: `46`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBERS_RANGE)`
+
+- **throws exception when a number is below the minimum range**  
+  - Input: `0`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBERS_RANGE)`
+
+- **throws exception when bonus number duplicates a winning number**  
+  - Given WinningNumbers:** `[1, 2, 3, 4, 5, 6]`  
+  - Input: `6`  
+  - Expect: `IllegalArgumentException(INVALID_BONUS_NUMBER_DUPLICATED)`
+
+- **does not throw when bonus number is not in winning numbers**  
+  - Given WinningNumbers:** `[1, 2, 3, 4, 5, 6]`  
+  - Input: `7`  
+  - Expect: no exception
