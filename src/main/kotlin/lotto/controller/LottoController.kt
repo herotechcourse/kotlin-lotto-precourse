@@ -8,18 +8,13 @@ class LottoController {
     fun run() {
         val purchaseAmount = getPurchaseAmount()
         val lottos = generateLottos(purchaseAmount.possibleLottoTicketCount)
-
         OutputView.printGeneratedLottos(lottos)
 
         val winningNumber = getWinningNumbers()
         val bonusNumber = getBonusNumber(winningNumber)
         val matchedLottoCount = ResultCalculator.calculateMatchedLottoCount(lottos, winningNumber, bonusNumber)
-
         OutputView.printMatchedLottoCount(matchedLottoCount)
-
-        val profitRate = ResultCalculator.calculateProfitRate(matchedLottoCount, purchaseAmount.amount)
-
-        OutputView.printProfitRate(profitRate)
+        OutputView.printProfitRate(ResultCalculator.calculateProfitRate(matchedLottoCount, purchaseAmount.amount))
     }
 
     fun getPurchaseAmount(): PurchaseAmount {
