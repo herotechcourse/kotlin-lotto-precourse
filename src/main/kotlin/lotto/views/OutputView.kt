@@ -1,7 +1,12 @@
 package lotto.views
 
+import lotto.Lotto
+
 object OutputView {
-    fun printTickets(tickets: Int) {
-        println("You have purchased $tickets tickets.")
+    fun printTickets(tickets: List<Lotto>) {
+        println("You have purchased ${tickets.size} tickets.")
+        tickets.forEach { println(it) }
     }
+
 }
+
