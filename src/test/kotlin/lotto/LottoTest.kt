@@ -26,4 +26,11 @@ class LottoTest {
         val lotto = Lotto(numbers)
         assert(numbers == lotto.getNumbers())
     }
+
+    @Test
+    fun `lotto numbers are sorted in ascending order`() {
+        val numbers = listOf(6, 2, 5, 1, 4, 3)
+        val lotto = Lotto(numbers)
+        assert(lotto.getNumbers() == listOf(1, 2, 3, 4, 5, 6))
+    }
 }
