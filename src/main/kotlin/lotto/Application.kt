@@ -1,5 +1,14 @@
 package lotto
 
+import lotto.domain.LottoMachine
+import lotto.view.InputView
+import lotto.view.OutputView
+
+
 fun main() {
-    // TODO: Implement the program
+    val amount = InputView.readPurchaseAmount()
+    val lottoMachine = LottoMachine()
+    val tickets = lottoMachine.issueTickets(amount)
+
+    OutputView.printTickets(tickets)
 }
