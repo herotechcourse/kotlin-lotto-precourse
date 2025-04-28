@@ -29,7 +29,7 @@ class OutputView {
     fun printReturnRate(result: LotteryResult) {
         val returnRate = String.format("%.1f", result.getReturnRate())
 
-        println("Total return rate is $returnRate%")
+        println("Total return rate is $returnRate%.")
     }
 
     private fun formatMoney(amount: Long): String {
