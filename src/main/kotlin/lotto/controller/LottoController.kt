@@ -11,8 +11,7 @@ class LottoController {
     val purchasedLottoService = PurchasedLottoService()
 
     fun startLottoDraw() {
-        val purchasedAmount = getPurchasedAmount() / 1000
-        buyLottos(purchasedAmount)
+        val purchasedLotto = buyLottos()
         val winningNumbers = getWinningNumbers()
         val bonusNumber = getBonusNumber(winningNumbers)
     }
@@ -22,11 +21,13 @@ class LottoController {
         return purchasedAmount
     }
 
-    fun buyLottos(ticketCount: Int) {
-        printUserPurchasedTicketPhrase(ticketCount)
-        purchasedLottoService.generatePurchasedLottoNumbers(ticketCount)
+    fun buyLottos(): List<PurchasedLotto> {
+        val purchasedAmount = getPurchasedAmount() / 1000
+        printUserPurchasedTicketPhrase(purchasedAmount)
+        purchasedLottoService.generatePurchasedLottoNumbers(purchasedAmount)
         val purchasedLottos = purchasedLottoService.getAllPurchasedLottoNumbers()
         printAllPurchasedLottoNumbers(purchasedLottos)
+        return  purchasedLottos
     }
 
     fun getWinningNumbers(): Lotto {
