@@ -15,8 +15,8 @@ fun main() {
     val lottoResult = LottoResult()
 
     lottos.forEach { lotto ->
-        val matchCount = lotto.countMatchingNumbers(winningLotto.winningNumbers)
-        val hasBonus = lotto.containsBonusNumber(winningLotto.bonusNumber)
+        val matchCount = lotto.countMatchingNumbers(winningLotto.getWinningNumbers())
+        val hasBonus = lotto.containsBonusNumber(winningLotto.getBonusNumber())
         val rank = Rank.findByMatch(matchCount, hasBonus)
         lottoResult.record(rank)
     }
