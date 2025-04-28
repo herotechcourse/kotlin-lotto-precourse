@@ -22,14 +22,23 @@ object InputView {
         println("Please enter last week's winning numbers.")
         return try {
             val input = Console.readLine()
-            parseNumbers(input)
+            val numbers = parseNumbers(input)
+            if (numbers.size != 6) {
+                throw IllegalArgumentException("[ERROR] Exactly 6 winning numbers must be provided.")
+            }
+            if (numbers.any { it !in 1..45 }) {
+                throw IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.")
+            }
+            numbers
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] Winning numbers must be valid numbers.")
+            println(e.message)
             readWinningNumbers()
         }
     }
 
-//bonus input
+
+
+    //bonus input
 fun readBonusNumber(): Int {
     println("Please enter the bonus number.")
     return try {
