@@ -5,17 +5,11 @@ fun main() {
     val outputHandler = OutputHandler()
     val lottoMachine = LottoMachine()
 
-    val purchaseAmount = inputHandler.getPurchaseAmount()
-
-    val lottoCount = purchaseAmount / 1000
-    val lottos = lottoMachine.generateLottos(lottoCount)
-
-    outputHandler.printPurchasedLottos(lottos)
-
-    val winningNumbers = inputHandler.getWinningNumbers()
-    val bonusNumber = inputHandler.getBonusNumber(winningNumbers)
-
-    val winningStatistics = lottoMachine.calculateWinningStatistics(lottos, winningNumbers, bonusNumber)
+    val lottoGame = LottoGame(
+        lottoMachine,
+        inputHandler,
+        outputHandler
+    )
     
-    outputHandler.printWinningStatistics(winningStatistics, purchaseAmount)
+    lottoGame.run()
 }
