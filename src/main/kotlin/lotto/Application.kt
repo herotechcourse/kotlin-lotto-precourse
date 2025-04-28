@@ -16,6 +16,20 @@ fun main() {
 
     println("\nWinning Numbers: $winningNumbers")
     println("Bonus Number: $bonusNumber")
+
+    println("\nWinning Statistics")
+    println("---")
+    val rankCount = mutableMapOf<Rank, Int>()
+
+    for (ticket in tickets) {
+        val rank = determineRank(ticket, winningNumbers, bonusNumber)
+        rankCount[rank] = rankCount.getOrDefault(rank, 0) + 1
+    }
+
+    for (rank in listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST)) {
+        println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${rank.prize} KRW) – ${rankCount.getOrDefault(rank, 0)} ticket(s)")
+    }
+
 }
 
 fun readPurchaseAmount(): Int {
@@ -76,4 +90,11 @@ fun readBonusNumber(): Int {
     }
 
     return number
+}
+
+fun determineRank (ticket: List<Int>, winningNumbers: List<Int>, bonusNumber:Int): Rank {
+    val matchCount = ticket.count { it in winningNumbers }
+    val bonusMatch = bonusNumber in ticket
+
+    return Rank.from(matchCount, bonusMatch)
 }
