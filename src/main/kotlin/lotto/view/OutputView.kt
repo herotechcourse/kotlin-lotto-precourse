@@ -2,7 +2,7 @@ package lotto.view
 
 import lotto.domain.LottoTicket
 
-class OutputView {
+object OutputView {
     fun printPurchaseCount(count: Int) {
         println("You have purchased $count tickets.")
     }
