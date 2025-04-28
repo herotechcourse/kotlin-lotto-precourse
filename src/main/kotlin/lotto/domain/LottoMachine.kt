@@ -21,7 +21,7 @@ class LottoMachine(private val money: Int) {
 
     fun setAllRank(guessNumbers: Set<Int>, bonusNumber: Int): List<Int> {
         for (ticket in tickets) {
-            val actualNumbers = ticket.getNumbers()
+            val actualNumbers = ticket.numberSet()
             val matchCount = countMatch(actualNumbers, guessNumbers)
             val bonusMatch = checkBonusMatch(ticket, bonusNumber)
             setRank(matchCount, bonusMatch)
@@ -41,7 +41,7 @@ class LottoMachine(private val money: Int) {
     }
 
     private fun checkBonusMatch(ticket: Lotto, bonusNumber: Int): Boolean {
-        return ticket.getNumbers().contains(bonusNumber)
+        return ticket.numberSet().contains(bonusNumber)
     }
 
     fun calculateReturnRate(): String {
