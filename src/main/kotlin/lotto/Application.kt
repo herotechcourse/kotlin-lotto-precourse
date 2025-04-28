@@ -8,9 +8,9 @@ fun main() {
     val tickets = generateTickets(amount)
     printTickets(tickets)
 
-    val winningNumbers = readWinningNumbers()
+    val winningNumbersInput = readWinningNumbers()
     val bonusNumber = readBonusNumber()
 
-    println("Winning Numbers: $winningNumbers")
+    println("Winning Numbers: $winningNumbersInput")
     println("Bonus Number: $bonusNumber")
 }

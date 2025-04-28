@@ -10,16 +10,16 @@
 #### - Apply as much feedback from the Pre-course Week 1 as possible to improve my coding habits.
 
 # Feature List
-- [ ] Ask the user for the purchase amount
-- [ ] Validate that the amount is divisible by 1,000 KRW
-- [ ] Generate lottery tickets based on the purchase amount
-- [ ] Each ticket must have 6 unique random numbers between 1 and 45 
-- [ ] Prompt the user to input 6 winning numbers
-- [ ] Prompt the user to input a bonus number
+- [X] Ask the user for the purchase amount
+- [X] Validate that the amount is divisible by 1,000 KRW
+- [X] Generate lottery tickets based on the purchase amount
+- [X] Each ticket must have 6 unique random numbers between 1 and 45 
+- [X] Prompt the user to input 6 winning numbers
+- [X] Prompt the user to input a bonus number
 - [ ] Compare the user’s tickets against the winning numbers
 - [ ] Calculate prize ranks based on matches
-- [ ] Display purchased tickets 
+- [X] Display purchased tickets 
 - [ ] Show lottery results and total profit rate
-- [ ] Handle invalid input with proper [ERROR] messages
-- [ ] throw specific exceptions like IllegalArgumentException or IllegalStateException and re-prompt input
+- [X] Handle invalid input with proper [ERROR] messages
+- [X] throw specific exceptions like IllegalArgumentException or IllegalStateException and re-prompt input
 - [ ] Write unit tests for all logic
