@@ -90,7 +90,7 @@ import camp.nextstep.edu.missionutils.Randoms
             for (ticket in tickets) {
                 val tktNums= ticket.getSortedNumbers()
                 val matched= tktNums.count { it in winningNums }
-                print(matched)
+
                 if (matched== 6) {
                     result["6"]= result["6"]!! + 1
                 } else if (matched== 5 && bonusNumber in tktNums) {
@@ -103,18 +103,19 @@ import camp.nextstep.edu.missionutils.Randoms
                     result["3"]= result["3"]!! + 1
                 }
             }
-            print(result)
+
             return result
         }
 
         private fun getResult(result:Map<String, Int>) {
             println("Winning Statistics")
             println("---")
-            println("3 Matches (5,000 KRW) - ${result["3"]} tickets")
-            println("4 Matches (50,000 KRW) - ${result["4"]} tickets")
-            println("5 Matches (1,500,000 KRW) - ${result["5"]} tickets")
-            println("5 Matches + Bonus Ball (30,000,000 KRW) - ${result["5+bonus"]} tickets")
-            println("6 Matches (2,000,000,000 KRW) - ${result["6"]} tickets")
+            println("3 Matches (5,000 KRW) – ${result["3"]} tickets")
+            println("4 Matches (50,000 KRW) – ${result["4"]} tickets")
+            println("5 Matches (1,500,000 KRW) – ${result["5"]} tickets")
+            println("5 Matches + Bonus Ball (30,000,000 KRW) – ${result["5+bonus"]} tickets")
+            println("6 Matches (2,000,000,000 KRW) – ${result["6"]} tickets")
+
         }
 
         private fun getProfit(result: Map<String, Int>, purchaseAmt: Int) {
