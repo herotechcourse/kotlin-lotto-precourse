@@ -1,15 +1,8 @@
 package input
 
-import camp.nextstep.edu.missionutils.Console
 import error.util.getErrorMsgWithPrefix
 import input.util.getNumbersFromInput
-
-fun readLineAndProcess(): String {
-    val line: String? = Console.readLine();
-    if(line.isNullOrBlank())
-        throw IllegalArgumentException();
-    return line
-}
+import input.util.readLineAndProcess
 
 fun getLottoNumberArrayFromInput(): Array<Int>{
     while(true){
@@ -22,5 +15,18 @@ fun getLottoNumberArrayFromInput(): Array<Int>{
             println(e.message?.let { getErrorMsgWithPrefix(it) })
         }
     }
+}
 
+fun getTicketAmountFromInput(): Array<Int>{
+    while(true){
+        val input: String = readLineAndProcess()
+        try{
+            return getNumbersFromInput(input)
+        } catch (e: NumberFormatException){
+            println(e.message?.let { getErrorMsgWithPrefix(it) })
+        }catch (e: IllegalArgumentException){
+            // validate if number
+            println(e.message?.let { getErrorMsgWithPrefix(it) })
+        }
+    }
 }
