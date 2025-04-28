@@ -49,7 +49,7 @@ class PurchaseTest {
     )
     fun `test return rate calculation`(revenue: String, spending: String, rate: String) {
         val purchase = Purchase(spending.toInt())
-        val result = purchase.calculateReturnRate(revenue.toInt())
+        val result = purchase.calculateReturnRate(revenue.toLong())
         assertThat(result).isEqualTo(rate.toDouble())
     }
 }

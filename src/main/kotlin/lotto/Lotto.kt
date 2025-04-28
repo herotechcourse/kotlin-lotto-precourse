@@ -35,8 +35,8 @@ class Lotto(private val numbers: List<Int>) {
         return prizeCount
     }
 
-    fun calculateTotalPrize(prizeCount: Map<Prize, Int>): Int {
-        var totalPrize: Int = 0
+    fun calculateTotalPrize(prizeCount: Map<Prize, Int>): Long {
+        var totalPrize: Long = 0
         for (prize in prizeCount) {
             totalPrize += prize.value * prize.key.money
         }

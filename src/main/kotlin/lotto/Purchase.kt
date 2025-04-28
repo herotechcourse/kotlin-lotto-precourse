@@ -14,7 +14,7 @@ class Purchase(private val amount: Int) {
         tickets = List(ticketCount()) { lotto.Ticket() }
     }
 
-    fun calculateReturnRate(totalPrize: Int): Double {
+    fun calculateReturnRate(totalPrize: Long): Double {
         return (totalPrize / amount.toDouble() * 100) // converting one operand to Double to ensure a precise calculation
     }
 
