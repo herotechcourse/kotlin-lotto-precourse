@@ -26,4 +26,14 @@ class WinningNumbersTest {
         }
     }
 
+    @Test
+    fun `creates correct bonus bitmask`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 7
+
+        val winningNumbers = WinningNumbers(numbers, bonusNumber)
+
+        val expectedBonusBitmask = 1L shl 7
+        assertThat(winningNumbers.bonusBitmask).isEqualTo(expectedBonusBitmask)
+    }
 }
