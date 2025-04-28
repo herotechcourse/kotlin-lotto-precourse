@@ -12,7 +12,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getLottoNumber(): List<Int> {
-        return numbers;
+        return numbers
     }
 
     fun containsNumber(number: Int): Boolean{
