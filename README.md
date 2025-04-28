@@ -35,3 +35,8 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
     - LottoController.kt
     - LottoView.kt
 ```
+
+### 3. Define the Input Handler 
+- The inputHandler performs the reading and validation of input data by user
+- Rearrange  the folder to include Input and outputHandler
+- Test it out in the main application
