@@ -1,5 +1,9 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.lottogenerator.RandomLottoGenerator
+
 fun main() {
-    // TODO: Implement the program
+    val lottoController = LottoController(RandomLottoGenerator())
+    lottoController.run()
 }

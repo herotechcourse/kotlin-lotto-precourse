@@ -1,0 +1,19 @@
+package lotto.lottogenerator
+
+import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
+
+class RandomLottoGenerator : LottoGenerator {
+
+    override fun generate(): Lotto {
+        val numbers = Randoms.pickUniqueNumbersInRange(MIN_INCLUSIVE, MAX_INCLUSIVE, SIZE)
+            .sorted()
+        return Lotto(numbers)
+    }
+
+    companion object {
+        private const val MIN_INCLUSIVE: Int = 1
+        private const val MAX_INCLUSIVE: Int = 45
+        private const val SIZE: Int = 6
+    }
+}
