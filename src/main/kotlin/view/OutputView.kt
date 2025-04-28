@@ -20,7 +20,7 @@ object OutputView {
     }
 
     fun printTicketCount(count: Int) {
-        println("You have purchased $count tickets")
+        println("You have purchased $count tickets.")
     }
 
     fun printTickets(tickets: List<List<Int>>) {
@@ -39,7 +39,7 @@ object OutputView {
     }
 
     fun printProfitRate(rate: String) {
-        println("Total return rate is $rate")
+        println("Total return rate is $rate.")
     }
 
 }
