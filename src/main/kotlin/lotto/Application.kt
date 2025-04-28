@@ -4,7 +4,7 @@ fun main() {
     try {
         val lottoGame = LottoGame()
         lottoGame.play()
-    } catch (e: InputView.MaxRetryException) {
+    } catch (e: LottoGame.MaxRetryException) {
         println(e.message + " Exiting...")
         return
     }
