@@ -1,6 +1,8 @@
 package lotto.ui
 
-class TestConsoleIO(private val inputStrings: MutableList<String> = mutableListOf()) : ConsoleIoInterface {
+import lotto.ui.console.ConsoleIOInterface
+
+class TestConsoleIO(private val inputStrings: MutableList<String> = mutableListOf()) : ConsoleIOInterface {
     private var inputIndex = 0
     val outputMessages = mutableListOf<String>()
 

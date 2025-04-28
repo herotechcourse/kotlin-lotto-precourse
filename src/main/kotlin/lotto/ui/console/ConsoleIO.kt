@@ -1,8 +1,8 @@
-package lotto.ui
+package lotto.ui.console
 
 import camp.nextstep.edu.missionutils.Console
 
-class ConsoleIO : ConsoleIoInterface{
+class ConsoleIO : ConsoleIOInterface {
     override fun read(): String {
         return Console.readLine()
     }

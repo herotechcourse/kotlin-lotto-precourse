@@ -1,9 +1,10 @@
 package lotto.ui
 
 import lotto.Lotto
+import lotto.ui.console.ConsoleIOInterface
 import lotto.util.Constants
 
-class InputView(private val console: ConsoleIoInterface) {
+class InputView(private val console: ConsoleIOInterface) {
 
     private fun <T> readValidatedInput(prompt: String, parseAndValidate: () -> T): T {
         while (true) {

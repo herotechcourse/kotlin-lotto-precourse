@@ -3,9 +3,10 @@ package lotto.ui
 import lotto.domain.WinningRank
 import lotto.domain.PurchasedLottos
 import lotto.domain.WinningStats
+import lotto.ui.console.ConsoleIOInterface
 import lotto.util.Constants
 
-class OutputView(private val console: ConsoleIoInterface) {
+class OutputView(private val console: ConsoleIOInterface) {
     fun printPurchasedLottos(purchasedLottos: PurchasedLottos) {
         val ticketAmount = purchasedLottos.count()
         console.print("\nYou have purchased $ticketAmount tickets.")

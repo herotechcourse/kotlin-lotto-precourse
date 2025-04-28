@@ -1,7 +1,7 @@
 package lotto
 
 import lotto.service.LottoMachine
-import lotto.ui.ConsoleIO
+import lotto.ui.console.ConsoleIO
 import lotto.ui.InputView
 import lotto.ui.OutputView
 
