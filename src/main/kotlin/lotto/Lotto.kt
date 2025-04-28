@@ -1,13 +1,14 @@
 package lotto
 
+import lotto.common.ErrorMessages
 import lotto.views.InputView
 import lotto.views.OutputView
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must be unique." }
-        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
+        require(numbers.size == 6) { ErrorMessages.LOTTO_SIZE_MUST_BE_SIX }
+        require(numbers.toSet().size == 6) { ErrorMessages.LOTTO_NUMBERS_MUST_BE_UNIQUE }
+        require(numbers.all { it in 1..45 }) { ErrorMessages.LOTTO_NUMBERS_MUST_BE_IN_RANGE }
     }
 
     fun matchCount(winningNumbers: List<Int>): Int {

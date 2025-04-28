@@ -1,6 +1,7 @@
 package lotto.views
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.common.ErrorMessages
 
 object InputView {
 
@@ -10,7 +11,7 @@ object InputView {
         val amount = input.toIntOrNull()
 
         if (amount == null || amount <= 0 || amount % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] Amount must be a positive number divisible by 1,000.")
+            throw IllegalArgumentException(ErrorMessages.INVALID_PURCHASE_AMOUNT)
         }
 
         amount
@@ -22,17 +23,17 @@ object InputView {
         val numbers = input.split(",").map { it.trim().toIntOrNull() }
 
         if (numbers.any { it == null } || numbers.size != 6) {
-            throw IllegalArgumentException("[ERROR] Please enter exactly 6 valid numbers.")
+            throw IllegalArgumentException(ErrorMessages.INVALID_WINNING_COUNT)
         }
 
         val validNumbers = numbers.filterNotNull()
 
         if (validNumbers.toSet().size != 6) {
-            throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+            throw IllegalArgumentException(ErrorMessages.DUPLICATE_WINNING_NUMBERS)
         }
 
         if (validNumbers.any { it !in 1..45 }) {
-            throw IllegalArgumentException("[ERROR] Numbers must be between 1 and 45.")
+            throw IllegalArgumentException(ErrorMessages.OUT_OF_RANGE_WINNING_NUMBER)
         }
 
         validNumbers
@@ -42,14 +43,14 @@ object InputView {
         println("Please enter the bonus number.")
         val input = Console.readLine()
         val bonus = input.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] Bonus number must be a valid integer.")
+            ?: throw IllegalArgumentException(ErrorMessages.INVALID_BONUS_NUMBER)
 
         if (bonus !in 1..45) {
-            throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+            throw IllegalArgumentException(ErrorMessages.BONUS_NUMBER_OUT_OF_RANGE)
         }
 
         if (bonus in winningNumbers) {
-            throw IllegalArgumentException("[ERROR] Bonus number must not be part of the winning numbers.")
+            throw IllegalArgumentException(ErrorMessages.BONUS_NUMBER_DUPLICATE)
         }
 
         bonus
