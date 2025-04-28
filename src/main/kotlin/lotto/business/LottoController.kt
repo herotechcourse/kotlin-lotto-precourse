@@ -12,7 +12,7 @@ class LottoController {
         val winningNumber = inputWinningNumber()
         val bonusNumber = inputBonusNumber(winningNumber)
 
-        outputWinningStatistics(purchaseAmount, lottoList, winningNumber, bonusNumber)
+        outputWinningStatistics(lottoList, winningNumber, bonusNumber)
     }
 
     private fun inputPurchaseAmount(): PurchaseAmount {
