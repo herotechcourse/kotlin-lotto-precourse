@@ -1,5 +1,11 @@
 package lotto
 
+import lotto.controller.LottoController
+import lotto.service.LottoService
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
-    // TODO: Implement the program
+    val lottoMachine = LottoController(InputView(), OutputView(), LottoService())
+    lottoMachine.run()
 }
