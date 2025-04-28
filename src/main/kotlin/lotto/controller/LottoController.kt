@@ -13,7 +13,7 @@ class LottoController(
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.
-        val amount = reader.readPurchaseAmount()
+        val amount = RePrompter.retryPrompt({ reader.readPurchaseAmount() })
 
         // 2. Print purchased lottery tickets with issued numbers (sorted)
         val ticketCount = amount.toInt() / Lotto.PRICE
