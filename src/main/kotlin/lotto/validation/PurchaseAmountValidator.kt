@@ -1,7 +1,5 @@
 package lotto.validation
 
-import lotto.validation.ErrorMessage
-
 object PurchaseAmountValidator {
     private const val ERROR_PREFIX: String = "[ERROR]"
     private const val PROMPT_AGAIN: String = "Please enter it again"
