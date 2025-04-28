@@ -39,6 +39,7 @@
 - Check if the bonus number is included
 - Determine the prize rank based on match count and bonus match
 - Count how many tickets won for each prize rank
+- Calculate profit rate
 
 ### 6. Print the Result
 
@@ -46,3 +47,4 @@
     - Rank(e.g, 1st, 2nd, 3rd...)
     - Prize amount for that rank
     - Number of winning tickets
+- Print the profit rate
