@@ -3,7 +3,6 @@ package input.validation
 import error.config.INVALID_LOTTO_NUMBER_MSG
 import error.config.TICKET_AMOUNT_MUST_BE_MULTIPLE_MSG
 import error.config.TICKET_AMOUNT_MUST_BE_POSITIVE_MSG
-import input.config.TICKET_AMOUNT_MSG
 import lotto.config.*
 
 fun validateAndReturnLottoNumber(num: Int): Int{
