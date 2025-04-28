@@ -1,7 +1,13 @@
 package lotto
 import camp.nextstep.edu.missionutils.Randoms
 
-class Tickets (val money:Int){
+class Tickets (
+    val money:Int,
+    private val pickNumbers: (min: Int, max: Int, count: Int) -> List<Int> =
+        { min, max, count ->
+            Randoms.pickUniqueNumbersInRange(min, max, count)
+        }
+) {
     val ticketCount:Int
     val lottos: List<Lotto>
 
@@ -13,7 +19,7 @@ class Tickets (val money:Int){
     }
 
     private fun generateLotto():Lotto{
-        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        val numbers =pickNumbers(1, 45, 6)
         return Lotto(numbers)
     }
 }
