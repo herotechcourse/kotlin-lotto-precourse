@@ -8,12 +8,12 @@ class LottoResultTest {
     @Test
     fun `calculates rank counts, total prize, and yield correctly`() {
         val tickets = listOf(
-            LottoTicket(listOf(1, 2, 3, 4, 5, 6)),    // FIRST
-            LottoTicket(listOf(1, 2, 3, 4, 5, 7)),    // SECOND (5 + bonus)
-            LottoTicket(listOf(1, 2, 3, 4, 5, 8)),    // THIRD
-            LottoTicket(listOf(1, 2, 3, 4, 8, 9)),    // FOURTH
-            LottoTicket(listOf(1, 2, 3, 10, 11, 12)), // FIFTH
-            LottoTicket(listOf(1, 2, 10, 11, 12, 13)) // MISS
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),    // FIRST
+            Lotto(listOf(1, 2, 3, 4, 5, 7)),    // SECOND (5 + bonus)
+            Lotto(listOf(1, 2, 3, 4, 5, 8)),    // THIRD
+            Lotto(listOf(1, 2, 3, 4, 8, 9)),    // FOURTH
+            Lotto(listOf(1, 2, 3, 10, 11, 12)), // FIFTH
+            Lotto(listOf(1, 2, 10, 11, 12, 13)) // MISS
         )
         val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6), 7)
         val result = LottoResult(tickets, winningNumbers)

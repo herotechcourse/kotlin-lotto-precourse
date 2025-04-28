@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.domain.LottoTicket
+import lotto.domain.Lotto
 import lotto.domain.Rank
 
 object OutputView {
@@ -8,7 +8,7 @@ object OutputView {
         println("You have purchased $count tickets.")
     }
 
-    fun printLottoTickets(tickets: List<LottoTicket>) {
+    fun printLottoTickets(tickets: List<Lotto>) {
         tickets.forEach { ticket ->
             println(ticket.getNumbers())
         }
