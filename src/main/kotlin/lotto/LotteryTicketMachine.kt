@@ -22,14 +22,7 @@ object LotteryTicketMachine {
         }
     }
 
-    fun validatePurchaseAmount(amount: Int) {
-        if (amount % 1000 != 0) {
-            throw IllegalArgumentException("[ERROR] Purchase amount must be divisible by 1,000.")
-        }
-    }
-
     fun generateTickets(purchaseAmount: Int) {
-        validatePurchaseAmount((purchaseAmount))
         val numberOfTickets = purchaseAmount / 1000
         repeat(numberOfTickets) {
             this.tickets.add(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
