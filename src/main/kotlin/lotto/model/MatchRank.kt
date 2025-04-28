@@ -22,6 +22,10 @@ enum class MatchRank(
             if (matchedCount < 3) return NONE
             throw IllegalArgumentException("[ERROR] Invalid matched count: $matchedCount")
         }
+
+        fun ranksInDisplayOrder(): List<MatchRank> {
+            return listOf(FIFTH, FOURTH, THIRD, SECOND, FIRST)
+        }
     }
 
     fun toMessage(): String {

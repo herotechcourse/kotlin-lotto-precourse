@@ -21,15 +21,7 @@ class OutputView {
     }
 
     private fun printRankResult(matchResults: MatchResults) {
-        val ranksInOrder = listOf(
-            MatchRank.FIFTH,
-            MatchRank.FOURTH,
-            MatchRank.THIRD,
-            MatchRank.SECOND,
-            MatchRank.FIRST
-        )
-
-        for (rank in ranksInOrder) {
+        for (rank in MatchRank.ranksInDisplayOrder()) {
             val count = matchResults.countOf(rank)
             println("${rank.toMessage()} – $count tickets")
         }
