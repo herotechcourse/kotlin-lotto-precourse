@@ -1,6 +1,16 @@
 package lotto
 
 class LottoEvaluator {
+    /**
+     * Compare a list of lotto tickets against winning numbers and a bonus number to determine prizes.
+     *
+     * @param tickets The list of Lotto tickets to evaluate.
+     * @param winningNumbers The winning numbers (6 unique integers).
+     * @param bonusNumber The bonus number (must not be in winningNumbers).
+     * @return containing:
+     *   - A map of `PrizeRanks` to the count of winning tickets for each tier.
+     *   - The total profit rate as a percentage.
+     */
     fun compareTickets(tickets: List<Lotto>, winningNumbers: List<Int>, bonusNumber: Int): Pair<Map<PrizeRanks, Int>, Double> {
         val results = mutableMapOf<PrizeRanks, Int>().withDefault { 0 }
         var totalWinnings = 0L
