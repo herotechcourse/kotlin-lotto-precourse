@@ -24,9 +24,30 @@ The profit rate is calculated based on the prize ranks achieved by players.
   - Must be between 1 and 45
   - Must be different from the winning numbers
 
+#### Winning Prizes
+There are five prize ranks based on how many numbers are matched:
+- 6 matching numbers: 1st place
+- 5 matching numbers + bonus: 2nd place
+- 5 matching numbers: 3rd place
+- 4 matching numbers: 4th place
+- 3 matching numbers: 5th place
+
 ### Programming Requirements
-The program must be executable with Kotlin 1.9.24
+- Kotlin 1.9.24
+- JUnit for testing
+- AssertJ for assertions
 
 
 ### Testing/Unit Testing
-Unit tests will be implemented using JUnit and AssertJ.
+- Input validation
+- Number generation
+- Prize calculations
+- Return rate calculation
+- Error handling
+
+### Error Messages
+The program will let you know if something's not right with clear error messages:
+- If your purchase amount isn't valid
+- If your numbers are out of range
+- If you enter duplicate numbers
+- If your bonus number isn't valid
