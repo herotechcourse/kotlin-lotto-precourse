@@ -16,10 +16,10 @@
 - [X] Each ticket must have 6 unique random numbers between 1 and 45 
 - [X] Prompt the user to input 6 winning numbers
 - [X] Prompt the user to input a bonus number
-- [ ] Compare the user’s tickets against the winning numbers
-- [ ] Calculate prize ranks based on matches
+- [X] Compare the user’s tickets against the winning numbers
+- [X] Calculate prize ranks based on matches
 - [X] Display purchased tickets 
-- [ ] Show lottery results and total profit rate
+- [X] Show lottery results and total profit rate
 - [X] Handle invalid input with proper [ERROR] messages
 - [X] throw specific exceptions like IllegalArgumentException or IllegalStateException and re-prompt input
-- [ ] Write unit tests for all logic
+- [X] Write unit tests for all logic
