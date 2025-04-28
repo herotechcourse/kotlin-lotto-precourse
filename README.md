@@ -21,12 +21,12 @@ A lotto simulator implemented in Kotlin as part of the Hero Tech Course pre-cour
   - [x] Validate that each ticket's numbers consist of 6 unique numbers
 
 ### ✅ Winning numbers
-- [ ] **Accept winning numbers**
-  - [ ] Validate that the winning numbers are not blank
-  - [ ] Validate that the winning numbers are numbers
-  - [ ] Validate that the winning numbers are positive integers
-  - [ ] Validate that the winning numbers are in the range from 1 to 45
-  - [ ] Validate that the winning numbers consist of 6 unique numbers
+- [x] **Accept winning numbers**
+  - [x] Validate that the winning numbers are not blank
+  - [x] Validate that the winning numbers are numbers
+  - [x] Validate that the winning numbers are positive integers
+  - [x] Validate that the winning numbers are in the range from 1 to 45
+  - [x] Validate that the winning numbers consist of 6 unique numbers
 - [ ] **Accept bonus number**
   - [ ] Validate that the bonus number is not blank
   - [ ] Validate that the bonus number is a number

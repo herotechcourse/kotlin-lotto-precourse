@@ -50,4 +50,15 @@ class WinningNumbersTest {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "5"))
         }
     }
+
+    @Test
+    fun `throws an exception when winning numbers are not in range`() {
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("1", "2", "3", "4", "5", "46"))
+        }
+
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("0", "2", "3", "4", "5", "5"))
+        }
+    }
 }
