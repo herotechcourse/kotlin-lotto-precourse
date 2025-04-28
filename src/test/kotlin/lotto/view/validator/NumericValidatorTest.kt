@@ -19,4 +19,10 @@ class NumericValidatorTest {
         assertDoesNotThrow("input ${input} should not throw error") { NumericValidator.validate(input) }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = ["-1", "-2", "-3", "-4"])
+    fun `Throws when value is negative`(input: String) {
+        assertThrows<IllegalArgumentException>("input ${input} should throw error") { NumericValidator.validate(input) }
+    }
+
 }
