@@ -6,7 +6,7 @@ object InputView {
     fun readPurchaseAmount(): Int {
         while (true) {
             try {
-                println("Please enter the purchase amount.")
+                OutputView.promptPurchaseAmount()
                 val input = Console.readLine()
                 InputValidator.validatePurchaseAmount(input)
                 return input.toInt()
@@ -19,7 +19,7 @@ object InputView {
     fun readWinningNumbers(): List<Int> {
         while (true) {
             try {
-                println("Please enter last week's winning numbers.")
+                OutputView.promptWinningNumbers()
                 val input = Console.readLine()
                 InputValidator.validateWinningNumbers(input)
                 return input.split(",")
@@ -33,7 +33,7 @@ object InputView {
     fun readBonusNumber(): Int {
         while (true) {
             try {
-                println("Please enter the bonus number.")
+                OutputView.promptBonusNumber()
                 val input = Console.readLine()
                 InputValidator.validateBonusNumber(input)
                 return input.toInt()

@@ -5,7 +5,22 @@ import lotto.domain.Rank
 import lotto.domain.MatchResult
 
 object OutputView {
+    fun promptPurchaseAmount() {
+        println("Please enter the purchase amount.")
+    }
+
+    fun promptWinningNumbers() {
+        println()
+        println("Please enter last week's winning numbers.")
+    }
+
+    fun promptBonusNumber() {
+        println()
+        println("Please enter the bonus number.")
+    }
+
     fun printPurchaseLottos(lottos: List<Lotto>) {
+        println()
         println("You have purchased ${lottos.size} tickets.")
         lottos.forEach { lotto ->
             println(lotto.getNumbers())
@@ -13,7 +28,8 @@ object OutputView {
     }
 
     fun printMatchResult(matchResult: MatchResult) {
-        println("\nWinning Statistics")
+        println()
+        println("Winning Statistics")
         println("---")
         Rank.entries
             .filter { it != Rank.MISS }
