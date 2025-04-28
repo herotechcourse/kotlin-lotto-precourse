@@ -6,12 +6,15 @@ class WinningNumbers(val numbers: List<Int>) {
             var parsedWinningNumbers = winningNumbers.map {
                 require(it.isNotBlank()) { BLANK_ERROR }
 
-                it.toInt()
+                val parsedWinningNumber = it.toIntOrNull() ?: throw IllegalArgumentException(NOT_A_NUMBER_ERROR)
+
+                parsedWinningNumber
             }
 
             return WinningNumbers(parsedWinningNumbers)
         }
 
         private const val BLANK_ERROR: String = "Winning number must not be blank"
+        private const val NOT_A_NUMBER_ERROR: String = "Winning number must be a number"
     }
 }
