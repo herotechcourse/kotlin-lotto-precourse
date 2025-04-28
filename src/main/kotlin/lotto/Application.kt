@@ -22,7 +22,7 @@ fun main() {
 
     OutputView.myLotto(myLotto)
     OutputView.resultStatistics()
-    OutputView.profitRate(ProfitRateCalaulator.calculateProfitRate(purchaseAmount))
+    OutputView.profitRate(ProfitRateCalculator.calculateProfitRate(purchaseAmount))
 
 
 }
