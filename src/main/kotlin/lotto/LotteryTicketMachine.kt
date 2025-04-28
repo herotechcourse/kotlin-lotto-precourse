@@ -27,6 +27,7 @@ object LotteryTicketMachine {
         repeat(numberOfTickets) {
             this.tickets.add(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
         }
+        OutputView.printTickets(tickets)
     }
 
     fun validateAmountOfNumbers(numbers: List<Int>) {
