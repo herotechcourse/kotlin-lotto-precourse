@@ -4,7 +4,7 @@ import lotto.config.bonusMap
 import lotto.config.prizeMap
 
 
-fun determinePrize(matches: Int, bonus: Boolean): Int {
+fun increasePrize(matches: Int, bonus: Boolean): Int {
     var prize: Int? = null
 
     if (bonus) {

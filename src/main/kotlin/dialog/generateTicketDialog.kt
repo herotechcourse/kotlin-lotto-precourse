@@ -1,4 +1,4 @@
-package input.dialog
+package dialog
 
 import input.config.printTicketResultMsgWithAmount
 import lotto.Lotto

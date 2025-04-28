@@ -1,9 +1,9 @@
 package lotto
 
-import input.dialog.getBonusNumberFromDialog
-import input.dialog.getLottosFromTicketAmountThroughDialog
-import input.dialog.getTicketAmountFromDialog
-import input.dialog.getWinningNumberFromDialog
+import dialog.getBonusNumberFromDialog
+import dialog.getLottosFromTicketAmountThroughDialog
+import dialog.getTicketAmountFromDialog
+import dialog.getWinningNumberFromDialog
 
 fun main() {
     val ticketAmount: Int = getTicketAmountFromDialog()
