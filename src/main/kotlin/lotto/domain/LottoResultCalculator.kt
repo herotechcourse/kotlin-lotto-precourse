@@ -13,6 +13,12 @@ class LottoResultCalculator (private val winning: WinningNumbers, private val bo
         return initial.mapValues { (rank, _) -> counted[rank] ?: 0 }
     }
 
+    fun calculateRate(stats: Map<Rank, Int>, purchase: PurchaseAmount): Double =
+        calculateTotalPrize(stats).toDouble() / purchase.amount * 100
+
+    private fun calculateTotalPrize(stats: Map<Rank, Int>): Int =
+        stats.entries.sumOf { (rank, count) -> rank.prize * count }
+
     // Returns how many times each prize rank occurs among the given Lotto tickets.
     private fun countRanks(lottos: List<Lotto>): Map<Rank, Int> =
         lottos
