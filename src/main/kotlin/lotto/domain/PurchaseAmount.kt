@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.presentation.ErrorMessages.INVALID_PURCHASE_UNIT
+import lotto.domain.ErrorMessages.INVALID_PURCHASE_UNIT
 
 data class PurchaseAmount(val amount: Int) {
     init {

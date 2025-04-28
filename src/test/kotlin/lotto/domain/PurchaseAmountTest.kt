@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.presentation.ErrorMessages.INVALID_PURCHASE_UNIT
+import lotto.domain.ErrorMessages.INVALID_PURCHASE_UNIT
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
