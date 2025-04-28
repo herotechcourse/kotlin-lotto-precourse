@@ -1,19 +1,24 @@
 package lotto.domain
 
-import kotlin.math.round
-
 class LottoStatistics(
     private val results: List<LottoResult>,
     private val purchaseAmount: Int
 ) {
     private val totalPrize: Long = results.sumOf { it.prize }
+    private val ticketCount: Int = purchaseAmount / 1_000
 
     fun count(rank: LottoResult): Int =
         results.count { it == rank }
 
     val profitRate: Double
-        get() {
-            val raw = totalPrize.toDouble() / purchaseAmount * 1000
-            return round(raw * 10) / 10.0
-        }
+        get() = if (ticketCount > 0)
+            totalPrize.toDouble() / ticketCount
+        else
+            0.0
+
+    val returnRate: Double
+        get() = if (purchaseAmount > 0)
+            totalPrize.toDouble() / purchaseAmount * 100
+        else
+            0.0
 }

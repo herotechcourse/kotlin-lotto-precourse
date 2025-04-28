@@ -5,19 +5,17 @@ class LottoGame(
     private val winningNumbers: Set<Int>,
     private val bonusNumber: Int
 ) {
-    private val ticketCount = purchaseAmount / 1_000
+    private val ticketCount: Int = purchaseAmount / 1_000
 
-    fun createTickets(): List<LottoTicket> {
-        val tickets = mutableListOf<LottoTicket>()
-        repeat(ticketCount) {
-            tickets += LottoTicket.createRandom()
-        }
-        return tickets
+    private val tickets: List<LottoTicket> = List(ticketCount) {
+        LottoTicket.createRandom()
     }
+
+    fun createTickets(): List<LottoTicket> = tickets
+
     fun calculateResults(): LottoStatistics {
-        val tickets = createTickets()
-        val results = tickets.map { ticket ->
-            LottoResult.of(ticket, winningNumbers, bonusNumber)
+        val results = tickets.map { t ->
+            LottoResult.of(t, winningNumbers, bonusNumber)
         }
         return LottoStatistics(results, purchaseAmount)
     }
