@@ -11,20 +11,20 @@
 - [x] Throw IllegalArgumentException and get new input if the input is invalid.  
 
 ### Generate lottery ticket
-- [ ] Issue as many lottery tickets as the budget allows. (1000KRW per lottery ticket)
-- [ ] Generate 6 random unique numbers between 1~45 to make lottery ticket.
+- [x] Issue as many lottery tickets as the budget allows. (1000KRW per lottery ticket)
+- [x] Generate 6 random unique numbers between 1~45 to make lottery ticket.
 
 ### Check Lotto result
-- [ ] Check how many numbers match the winning number.
-- [ ] Check the number of matching tickets for each prize category
+- [x] Check how many numbers match the winning number.
+- [x] Check the number of matching tickets for each prize category
 
 ### Calculate profit rate 
-- [ ] Calculate profit rate. 
+- [x] Calculate profit rate. 
 
 ### Output 
-- [ ] Print lottery tickets that are purchased. 
-- [ ] Print result statistics. 
-- [ ] Print profit rate.
+- [x] Print lottery tickets that are purchased. 
+- [x] Print result statistics. 
+- [x] Print profit rate.
 
 ### Test
 - [ ] Gets new input when input is invalid. 
