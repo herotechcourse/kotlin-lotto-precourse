@@ -15,6 +15,9 @@ fun main() {
         lotto.addBonusNumber(bonusNumber)
         val result = lotto.compareNumbers(purchase.tickets)
         outputView.printStatistics(result)
+        val totalPrize = lotto.calculateTotalPrize(result)
+        val returnRate = purchase.calculateReturnRate(totalPrize)
+        outputView.printReturnRate(returnRate)
     } catch (e: InputView.MaxRetryException) {
         println(e.message + " Exiting...")
         return
