@@ -70,3 +70,7 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 ### 9. add the print results to output Handler
 - add print results to output handler
 - try it in the application class
+
+### 10. Fix bugs in the code
+- the print results isnt printing as required
+- adjusted the prize class to handle this case

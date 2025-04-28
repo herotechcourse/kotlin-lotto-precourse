@@ -14,10 +14,8 @@ fun main() {
 
     val resultChecker = ResultChecker(winningNumbers, bonusNumber)
     val results = resultChecker.checkResults(tickets)
-    println(results)
 
     outputHandler.printResults(results)
     outputHandler.printReturnRate(results, ticketCount)
-
 
 }
