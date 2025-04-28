@@ -3,7 +3,6 @@ package lotto.view
 import lotto.Lotto
 import lotto.WinningNumbers
 import lotto.util.WinningStatistics
-import java.util.Locale
 
 class OutputView (private val lottoTickets: List<Lotto>, private val winningNumbers: WinningNumbers) {
 
