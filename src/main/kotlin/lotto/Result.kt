@@ -14,27 +14,7 @@ class Result {
             val matchCount = lotto.getNumbers().intersect(winningLotto.getWinningNumbers().toSet()).size
             val hasBonus = lotto.getNumbers().contains(winningLotto.getBonusNumber())
 
-            val rank = Rank.of(matchCount, hasBonus)
-            if (rank.equals(Rank.FIRST)) {
-                firstPrize += 1
-                totalPrice += Rank.FIRST.prize
-            }
-            if (rank.equals(Rank.SECOND)) {
-                secondPrize += 1
-                totalPrice += Rank.SECOND.prize
-            }
-            if (rank.equals(Rank.THIRD)) {
-                thirdPrize += 1
-                totalPrice += Rank.THIRD.prize
-            }
-            if (rank.equals(Rank.FOURTH)) {
-                fourthPrize += 1
-                totalPrice += Rank.FOURTH.prize
-            }
-            if (rank.equals(Rank.FIFTH)) {
-                fifthPrize += 1
-                totalPrice += Rank.FIFTH.prize
-            }
+            updateResult(matchCount, hasBonus, totalPrice)
         }
 
         if (totalPrice != 0f) {
@@ -42,6 +22,31 @@ class Result {
             return
         }
         rate = 0f
+    }
+
+    private fun updateResult(matchCount: Int, hasBonus: Boolean, totalPrice: Float) {
+        var totalPrice1 = totalPrice
+        val rank = Rank.of(matchCount, hasBonus)
+        if (rank.equals(Rank.FIRST)) {
+            firstPrize += 1
+            totalPrice1 += Rank.FIRST.prize
+        }
+        if (rank.equals(Rank.SECOND)) {
+            secondPrize += 1
+            totalPrice1 += Rank.SECOND.prize
+        }
+        if (rank.equals(Rank.THIRD)) {
+            thirdPrize += 1
+            totalPrice1 += Rank.THIRD.prize
+        }
+        if (rank.equals(Rank.FOURTH)) {
+            fourthPrize += 1
+            totalPrice1 += Rank.FOURTH.prize
+        }
+        if (rank.equals(Rank.FIFTH)) {
+            fifthPrize += 1
+            totalPrice1 += Rank.FIFTH.prize
+        }
     }
 
     override fun toString(): String {
