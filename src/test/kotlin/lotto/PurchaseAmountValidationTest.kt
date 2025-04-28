@@ -15,7 +15,7 @@ class PurchaseAmountValidationTest {
         val exception = assertThrows<IllegalArgumentException> {
             validateAmount(0)
         }
-        assertThat(exception.message).isEqualTo("[ERROR] Amount must be positive.")
+        assertThat(exception.message).isEqualTo("Amount must be positive.")
     }
 
     @Test
@@ -23,6 +23,6 @@ class PurchaseAmountValidationTest {
         val exception = assertThrows<IllegalArgumentException> {
             validateAmount(1500)
         }
-        assertThat(exception.message).isEqualTo("[ERROR] Amount must be divisible by 1,000.")
+        assertThat(exception.message).isEqualTo("Amount must be divisible by 1,000.")
     }
 }
