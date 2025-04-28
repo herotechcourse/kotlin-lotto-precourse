@@ -28,5 +28,9 @@ class LottoController(
         val bonusNumberInput = inputView.readLastBonusNumber()
         val bonusNumber = bonusNumberInput.toInt()
 
+        if (winningNumbers.contains(bonusNumber)) {
+            throw IllegalArgumentException("[ERROR] Bonus number must not be included in winning numbers.")
+        }
+
     }
 }
