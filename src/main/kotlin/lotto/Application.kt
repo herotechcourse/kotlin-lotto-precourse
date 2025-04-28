@@ -15,9 +15,10 @@ fun main() {
     OutputView.printPurchasedTickets(lottos)
 
 
-    val winningNumbers = InputView.readWinningNumbers()
-    val bonusNumber = InputView.readBonusNumber()
+    val winningNumbers = readValidWinningNumbers()
+    val bonusNumber = readValidBonusNumber()
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
+
 
     val lottoManager = LottoManager(lottos)
     val result = lottoManager.matchLottos(winningLotto)
@@ -44,4 +45,50 @@ fun readValidPurchaseAmount(): Int {
         return readValidPurchaseAmount()
     }
 }
+
+fun readValidWinningLotto(): WinningLotto {
+    return try {
+        val winningNumbers = InputView.readWinningNumbers()
+        val bonusNumber = InputView.readBonusNumber()
+        WinningLotto(winningNumbers, bonusNumber)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        readValidWinningLotto()
+    }
+}
+
+fun readValidBonusNumber(): Int {
+    return try {
+        val bonusNumber = InputView.readBonusNumber()
+        bonusNumber
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        readValidBonusNumber()
+    }
+}
+
+fun readValidWinningNumbers(): List<Int> {
+    return try {
+        val winningNumbers = InputView.readWinningNumbers()
+        validateWinningNumbers(winningNumbers)
+        winningNumbers
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        readValidWinningNumbers()
+    }
+}
+
+
+fun validateWinningNumbers(numbers: List<Int>) {
+    if (numbers.size != 6) {
+        throw IllegalArgumentException("[ERROR] Exactly 6 winning numbers must be provided.")
+    }
+    if (numbers.toSet().size != 6) {
+        throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+    }
+    if (numbers.any { it !in 1..45 }) {
+        throw IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.")
+    }
+}
+
 
