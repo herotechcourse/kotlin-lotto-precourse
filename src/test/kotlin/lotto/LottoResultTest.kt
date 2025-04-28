@@ -75,4 +75,31 @@ class LottoResultTest {
 
         assertThat(statistics[LottoRank.FIRST]).isEqualTo(2)
     }
+
+    @Test
+    fun `should calculate total winning amount correctly`() {
+        val statistics = mapOf(
+            LottoRank.FIRST to 2,
+            LottoRank.SECOND to 1
+        )
+        val totalWinningAmount = lottoResult.calculateWinningAmount(statistics)
+        assertThat(totalWinningAmount).isEqualTo(2_000_000_000L * 2 + 30_000_000L)
+    }
+
+    @Test
+    fun `should calculate return rate correctly`() {
+        val totalWinningAmount = 2_000_000_000L * 20 + 30_000_000L
+        val purchaseAmount = 10000
+        val returnRate = lottoResult.calculateReturnRate(totalWinningAmount, purchaseAmount)
+        assertThat(returnRate).isEqualTo(400300000.0)
+    }
+
+    @Test
+    fun `should calculate return rate with one decimal place`() {
+        val totalWinningAmount = 30_000_000L + 5_000L
+        val purchaseAmount = 13000
+        val returnRate = lottoResult.calculateReturnRate(totalWinningAmount, purchaseAmount)
+        val formattedReturnRate = "%.1f".format(returnRate)
+        assertThat(formattedReturnRate).isEqualTo("230807.7")
+    }
 }
