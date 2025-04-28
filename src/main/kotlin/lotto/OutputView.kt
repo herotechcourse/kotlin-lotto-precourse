@@ -17,4 +17,12 @@ object OutputView {
     fun askForBonusNumber() {
         println(ASK_FOR_BONUS_NUMBER)
     }
+
+    fun printTickets(tickets: List<List<Int>>) {
+        println("\nYou have purchased ${tickets.size} tickets.")
+        for (ticket in tickets) {
+            println("[${ticket.joinToString(", ")}]")
+        }
+        println()
+    }
 }

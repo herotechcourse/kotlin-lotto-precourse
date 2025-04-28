@@ -24,10 +24,10 @@
     - [x] ask user for purchase amount
     - [x] ask user for winning numbers
     - [x] ask user for bonus number
-- [ ] generated tickets
-    - [ ] number of tickets
-    - [ ] tickets
-        - [ ] numbers must be sorted in ascending order
+- [x] generated tickets
+    - [x] number of tickets
+    - [x] tickets
+        - [x] numbers must be sorted in ascending order
 - [ ] results
     - [ ] matches per prize rank
     - [ ] profit return rate
