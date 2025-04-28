@@ -11,9 +11,10 @@ class LottoController {
     val purchasedLottoService = PurchasedLottoService()
 
     fun startLottoDraw() {
-        val purchasedLotto = buyLottos()
+        val purchasedLottos = buyLottos()
         val winningNumbers = getWinningNumbers()
         val bonusNumber = getBonusNumber(winningNumbers)
+        calculateMatchedNumbers(purchasedLottos, winningNumbers, bonusNumber)
     }
 
     fun getPurchasedAmount(): Int {
@@ -36,5 +37,11 @@ class LottoController {
 
     fun getBonusNumber(winningNumbers: Lotto): Int {
         return inputUserBonusNumber(winningNumbers)
+    }
+
+    fun calculateMatchedNumbers(purchasedLottos: List<PurchasedLotto>, winningNumbers: Lotto, bonusNumber: Int) {
+        for (lotto in purchasedLottos) {
+            val matchCount = lotto.countMatchedNumbersWithWinningNumbers(winningNumbers)
+        }
     }
 }

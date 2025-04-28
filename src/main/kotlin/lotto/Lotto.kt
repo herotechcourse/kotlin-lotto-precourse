@@ -12,4 +12,6 @@ class Lotto(private val numbers: List<Int>) {
             throw IllegalArgumentException("[ERROR] Bonus number is not duplicate with winning numbers")
         }
     }
+
+    fun getNumbers(): List<Int> = numbers
 }

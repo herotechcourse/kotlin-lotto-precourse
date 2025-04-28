@@ -60,9 +60,10 @@
 
 ### 3. Business Logic
   - [ ] Rank is implemented using an `Enum` class.
-    - (rank, prize amount)
+    - (matchCount, prize amount)
   - [x] Purchased lotto numbers are stored in a List.
   - List Iteration
+    - [x] implement method that return Lotto to List<Int>
     - [ ] For each purchased lotto ticket, check how many numbers including the bonus number match the winning numbers.
     - [ ] Store winning tickets in a `Map`
   - Prize Amount Sum

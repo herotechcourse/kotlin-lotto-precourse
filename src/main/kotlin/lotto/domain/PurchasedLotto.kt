@@ -1,9 +1,14 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 import java.util.*
 
 class PurchasedLotto(val lottoNumbers: List<Int>) {
+    fun countMatchedNumbersWithWinningNumbers(winningNumbers: Lotto): Int {
+        return lottoNumbers.count { it in winningNumbers.getNumbers() }
+    }
+
     companion object {
         fun generateLottoNumbers(ticketCount: Int): List<PurchasedLotto> {
             return List(ticketCount) { createPurchasedLotto() }
@@ -11,7 +16,7 @@ class PurchasedLotto(val lottoNumbers: List<Int>) {
 
         private fun createPurchasedLotto(): PurchasedLotto {
             val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            Collections.sort(numbers)
+            numbers.sort()
             return PurchasedLotto(numbers)
         }
     }
