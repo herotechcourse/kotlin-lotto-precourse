@@ -62,7 +62,7 @@ class InputView: InputReader() {
     fun getLottoNumber(): Lotto{
         while (true){
             try {
-                return lastWeekLottoNumber();
+                return lastWeekLottoNumber()
             } catch (e: IllegalArgumentException){
                 println(e.message)
             }
@@ -80,10 +80,10 @@ class InputView: InputReader() {
     }
 
     override fun equals(other: Any?): Boolean {
-        return this === other
+        return this === other || (other is InputView)
     }
 
     override fun hashCode(): Int {
-        return System.identityHashCode(this)
+        return javaClass.hashCode()
     }
 }
