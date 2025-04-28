@@ -34,13 +34,10 @@ fun printWinningStatisticsPhrase() {
 fun printWinningStatics(rankStatics: Map<Rank, Int>, rateOfReturn: String) {
     val sb = StringBuilder()
     Rank.entries.forEach {
-        sb.append(it.matchCount)
-            .append(" Matched ")
-            .append("(")
-            .append(it.prize)
-            .append(") - ")
-            .append(rankStatics[it])
-            .append(" tickets\n")
+        val formattedPrize = String.format("%,d", it.prize)
+        sb.append("""
+            ${it.matchCount} Matched ($formattedPrize KRW) - ${rankStatics[it]} tickets
+        """.trimIndent()).append("\n")
     }
     sb.append("Total return rate is ").append("${rateOfReturn}%")
     println(sb)
