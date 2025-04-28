@@ -4,9 +4,9 @@ import lotto.Lotto
 import lotto.enums.Rank
 import lotto.model.Game
 import lotto.model.LottoTicketMachine
+import lotto.model.RandomLottoTicketMachine
 import lotto.model.WinningLotto
 import lotto.view.*
-import net.bytebuddy.pool.TypePool.Resolution.Illegal
 
 class LottoController(private val inputView: InputView, private val outputView: OutputView, private val lottoTicketMachine: LottoTicketMachine) {
 

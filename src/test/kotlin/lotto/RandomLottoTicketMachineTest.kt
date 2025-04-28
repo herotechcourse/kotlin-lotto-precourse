@@ -1,14 +1,14 @@
 package lotto
 
-import lotto.model.LottoTicketMachine
+import lotto.model.RandomLottoTicketMachine
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class LottoTicketMachineTest {
+class RandomLottoTicketMachineTest {
 
     @Test
     fun `lotto ticket machine create lotto tickets`() {
-        val lottoTicketMachine = LottoTicketMachine()
+        val lottoTicketMachine = RandomLottoTicketMachine()
         val lottoTicket = lottoTicketMachine.buyLotto(3)
         assertEquals(lottoTicket.size, 3)
     }
