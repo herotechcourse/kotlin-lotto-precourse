@@ -175,3 +175,18 @@ These tests verify the behavior of the `Winner` class methods:
 - Confirms proper rounding to one decimal place
 
 ### Lotto Machine Test
+
+#### PurchaseTest
+
+These tests verify that the `LottoMachine` correctly issues lottery tickets based on the amount of money provided:
+
+- `shouldReturnCorrectNumberOfLottos`: Ensures that the correct number of lottery tickets (5) is returned when purchasing with 5000 units of money.
+- `shouldReturnLottosProportionalToMoney`: Parameterized test that verifies different money amounts produce the proportional number of tickets (1 ticket per 1000 units).
+- `shouldCreateLottosWithValidNumbers`: Verifies that each lottery ticket contains 6 unique numbers between 1 and 45.
+
+#### SimulateTest
+
+These tests verify that the `LottoMachine` correctly simulates lottery draws and awards prizes:
+
+- `shouldReturnPrizesForEachLotto`: Ensures that prizes are returned for each lottery ticket submitted.
+- `shouldCorrectlyIdentifyMatchingNumbersAndBonus`: Verifies that the simulation correctly identifies different winning scenarios (6 matches, 5+bonus, 5, 4, 3, and no matches).
