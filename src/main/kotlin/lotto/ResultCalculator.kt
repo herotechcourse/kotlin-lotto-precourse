@@ -15,4 +15,11 @@ class ResultCalculator {
         }
         return results
     }
+
+    fun calculateProfitRate(results: Map<Rank, Int>, purchaseAmount: Int): Double {
+        val totalWinning = results.entries.sumOf { (rank, count) ->
+            rank.prize.toLong() * count
+        }
+        return totalWinning.toDouble() / purchaseAmount * 100
+    }
 }
