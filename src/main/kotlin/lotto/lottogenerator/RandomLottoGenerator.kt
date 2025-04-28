@@ -6,11 +6,9 @@ import lotto.Lotto
 class RandomLottoGenerator : LottoGenerator {
 
     override fun generate(): Lotto {
-        return Lotto(
-            Randoms.pickUniqueNumbersInRange(MIN_INCLUSIVE, MAX_INCLUSIVE, SIZE)
-                .sorted()
-                .map { it }
-        )
+        val numbers = Randoms.pickUniqueNumbersInRange(MIN_INCLUSIVE, MAX_INCLUSIVE, SIZE)
+            .sorted()
+        return Lotto(numbers)
     }
 
     companion object {
