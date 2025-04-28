@@ -4,7 +4,7 @@ enum class Prize (val index: Int, val amount: Int) {
     MATCHED3(0, 5000),
     MATCHED4(1, 50000),
     MATCHED5(2, 1500000),
-    `MATCHED-BONUS`(3, 30000000),
+    MATCHED_BONUS(3, 30000000),
     MATCHED6(4, 2000000000),
     NONE(5, 0)
 }
@@ -23,7 +23,7 @@ class  Lotto(private val numbers: List<Int>) {
         val matched = numbers.intersect(winningNumbers.toSet())
 
         if (matched.size == 5 && bonusNumber in numbers) {
-            return Prize.`MATCHED-BONUS`
+            return Prize.MATCHED_BONUS
         }
 
         when (matched.size) {

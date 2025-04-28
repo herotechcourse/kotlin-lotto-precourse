@@ -11,7 +11,7 @@ class LottoSimulate() {
     private var lottoList: MutableList<Lotto> = mutableListOf()
 
     init {
-        amount = InputView.getPurchaseAmount()
+        amount = InputView.getInput(InputView.InputType.PURCHASE_AMOUNT) as Int
 
         lottoCount = amount / 1000
 
@@ -21,11 +21,11 @@ class LottoSimulate() {
 
         OutputView.displayTickets(lottoList)
 
-        winningNumbers = InputView.getWinningNumbers()
-        bonusNumber = InputView.getBonusNumber(winningNumbers)
+        winningNumbers = InputView.getInput(InputView.InputType.WINNING_NUMBERS) as List<Int>
+        bonusNumber = InputView.getInput(InputView.InputType.BONUS_NUMBER, winningNumbers) as Int
 
         val matchedNumber: Array<Int> = countMatched(lottoList, winningNumbers, bonusNumber)
-        val returnRate: Double = calReturnRate(amount, matchedNumber)
+        val returnRate: Double = calReturnRate(lottoCount * 1000, matchedNumber)
 
         OutputView.displayWinningStatistics(matchedNumber, returnRate)
     }
