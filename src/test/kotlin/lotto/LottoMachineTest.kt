@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 class LottoMachineTest {
     @Test
-    fun `Generate the correct number of Lotto tickets with fixed numbers`() {
+    fun `generate the correct number of Lotto tickets with fixed numbers`() {
         // given
         val ticketCount = 7
         val fixedNumbers = listOf(1, 2, 3, 4, 5, 6)
