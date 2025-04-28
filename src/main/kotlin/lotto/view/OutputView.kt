@@ -14,13 +14,13 @@ object OutputView {
     fun printWinningStatistics(rankCount: Map<Rank, Int>) {
         println("\nWinning Statistics")
         println("---")
-        Rank.values()
-            .filter { it != Rank.NONE }
-            .sortedByDescending { it.matchCount }
-            .forEach { rank ->
-                val count = rankCount[rank] ?: 0
-                println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${formatPrize(rank.prize)} KRW) – $count tickets")
-            }
+
+        val orderedRanks = listOf(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST)
+
+        for (rank in orderedRanks) {
+            val count = rankCount[rank] ?: 0
+            println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${formatPrize(rank.prize)} KRW) – $count tickets")
+        }
     }
 
     fun printProfitRate(profitRate: Double) {
