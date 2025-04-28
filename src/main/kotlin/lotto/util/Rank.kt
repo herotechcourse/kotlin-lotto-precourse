@@ -13,7 +13,7 @@ enum class Rank(val matchCount: Int, val prize: Int) {
             return when {
                 matchCount == 3 -> FIFTH
                 matchCount == 4 -> FORTH
-                matchCount == 5 -> THIRD
+                matchCount == 5 && !isBonusMatch -> THIRD
                 matchCount == 5 && isBonusMatch -> SECOND
                 matchCount == 6 -> FIRST
                 else -> NONE
