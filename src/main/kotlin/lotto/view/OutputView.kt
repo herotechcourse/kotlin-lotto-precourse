@@ -26,16 +26,25 @@ object OutputView {
             if (rank == PrizeRank.FAIL) continue
 
             val count = results[rank] ?: 0
+            printRank(rank, count)
+        }
 
-            when (rank) {
-                PrizeRank.SECOND -> {
-                    println("${rank.matchCount} Matches + Bonus Ball (${rank.prizeMoney} KRW) – $count tickets")
-                }
+        printProfitRate(result.calculateProfitRate(totalSpent))
+    }
 
-                else -> {
-                    println("${rank.matchCount} Matches (${rank.prizeMoney} KRW) – $count tickets")
-                }
+    private fun printRank(rank: PrizeRank, count: Int) {
+        when (rank) {
+            PrizeRank.SECOND -> {
+                println("${rank.matchCount} Matches + Bonus Ball (${rank.prizeMoney} KRW) – $count tickets")
+            }
+            else -> {
+                println("${rank.matchCount} Matches (${rank.prizeMoney} KRW) – $count tickets")
             }
         }
     }
+
+    private fun printProfitRate(profitRate: Double) {
+        println("Total return rate is ${"%.1f".format(profitRate)}%.")
+    }
+
 }
