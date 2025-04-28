@@ -4,7 +4,7 @@ import lotto.Lotto
 import lotto.Lottos
 import lotto.WinningNumbers
 
-object ResultCaculator {
+object ResultCalculator {
     fun calculateMatches(lottos: Lottos, winningNumbers: WinningNumbers) : Map<String, Int> {
         val tickets = lottos.getTickets()
         val winningSet = winningNumbers.getWinningNumbers().toSet()
