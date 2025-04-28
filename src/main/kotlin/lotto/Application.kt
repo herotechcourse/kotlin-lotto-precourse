@@ -14,6 +14,7 @@ fun main() {
     tickets.forEach { println(it.getNumbers().sorted()) }   // 생성된 티켓들 내용 출력
 
     val winningNumbers = readWinningNumbers()
+    val bonusNumber = readBonusNumber()
 }
 
 // 입력 관련 함수. 값 입력받고 복권개수 리턴
@@ -50,4 +51,17 @@ fun readWinningNumbers(): List<Int> {
         "[ERROR] Lotto numbers must be between 1 and 45."
     }
     return numbers
+}
+
+// enter bonus number
+fun readBonusNumber(): Int {
+    println("Please enter the bonus number.")
+    val input = Console.readLine()
+    val number = input.toIntOrNull()
+
+    // 보너스넘버 적절성 체크
+    require(number != null && number in 1..45) {
+        "[ERROR] Bonus number must be between 1 and 45."
+    }
+    return number
 }
