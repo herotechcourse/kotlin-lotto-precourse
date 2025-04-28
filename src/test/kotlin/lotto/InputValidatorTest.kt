@@ -11,4 +11,28 @@ class InputValidatorTest {
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("[ERROR] The purchase amount must be divisible by 1,000")
     }
+
+    @Test
+    fun `should throw exception when bonus number is out of range`() {
+        assertThatThrownBy {
+            InputValidator.validateBonusNumber(0, listOf(1, 2, 3, 4, 5, 6))
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] Bonus number must be between 1 and 45.")
+
+        assertThatThrownBy {
+            InputValidator.validateBonusNumber(46, listOf(1, 2, 3, 4, 5, 6))
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] Bonus number must be between 1 and 45.")
+    }
+
+    @Test
+    fun `should throw exception when bonus number duplicates winning numbers`() {
+        assertThatThrownBy {
+            InputValidator.validateBonusNumber(3, listOf(1, 2, 3, 4, 5, 6))
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] Bonus number must not duplicate winning numbers.")
+    }
 }
