@@ -4,7 +4,6 @@ import input.dialog.getBonusNumberFromDialog
 import input.dialog.getLottosFromTicketAmountThroughDialog
 import input.dialog.getTicketAmountFromDialog
 import input.dialog.getWinningNumberFromDialog
-import input.getBonusNumberFromInput
 
 fun main() {
     val ticketAmount: Int = getTicketAmountFromDialog()
