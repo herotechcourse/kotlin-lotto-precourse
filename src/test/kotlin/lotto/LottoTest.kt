@@ -23,6 +23,6 @@ class LottoTest {
     @Test
     fun `returns valid 6 different lotto numbers`() {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assertThat(lotto.getNumbers().size == 6)
+        assertThat(lotto.numberSet().size == lotto.numberList().size)
     }
 }

@@ -1,6 +1,6 @@
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import lotto.domain.LottoMachine
+import lotto.Lotto
 import lotto.view.messages.PromptMessages
 import lotto.view.OutputView
 import org.assertj.core.api.Assertions.assertThat
@@ -11,7 +11,7 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints formatted ticket count message`() {
         assertSimpleTest {
-            OutputView(LottoMachine(5000)).printTicketCount()
+            OutputView().printTicketCount(5)
 
             val output = output()
 
@@ -22,13 +22,14 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints lotto numbers correctly`() {
         assertSimpleTest {
-            OutputView(LottoMachine(5000)).printLottoNumbers()
+            val tickets = listOf(Lotto(listOf(1, 2, 3, 4, 5, 6)))
+            OutputView().printLottoNumbers(tickets)
 
             val output = output()
 
             assertThat(output).contains("[")
             assertThat(output).contains("]")
-            assertThat(output.lines().size).isEqualTo(5)
+            assertThat(output.lines().size).isEqualTo(1)
         }
     }
 
@@ -36,10 +37,9 @@ class OutputViewTest : NsTest() {
     fun `prints winning statistics correctly`() {
         assertSimpleTest {
 
-            val guess = setOf(1, 2, 3, 4, 5, 6)
-            val bonus = 7
+            val ranks = listOf(0, 2, 0, 0, 0, 0)
 
-            OutputView(LottoMachine(5000)).printWinningStatistics(guess, bonus)
+            OutputView().printWinningStatistics(ranks)
 
             val out = output()
 
@@ -53,7 +53,7 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints return rate in correct format`() {
         assertSimpleTest {
-            OutputView(LottoMachine(5000)).printReturnRate()
+            OutputView().printReturnRate("50.0%")
 
             val out = output()
 
