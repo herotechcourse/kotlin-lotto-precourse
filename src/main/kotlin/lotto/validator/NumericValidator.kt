@@ -6,10 +6,10 @@ object NumericValidator {
         val value = input.toIntOrNull()
 
         if (value == null)
-            throw IllegalArgumentException("Amount must be numeric value")
+            throw IllegalArgumentException("[ERROR] Amount must be numeric value")
 
         if (value < 0)
-            throw IllegalArgumentException("Amount must be positive")
+            throw IllegalArgumentException("[ERROR] Amount must be positive")
 
         return value
     }
