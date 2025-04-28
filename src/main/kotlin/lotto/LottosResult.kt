@@ -7,6 +7,13 @@ data class LottosResult(val lottos: Lottos, val winningNumbers: WinningNumbers) 
     val result: Map<String, Int>
         get() = ResultCalculator.calculateMatches(lottos, winningNumbers)
 
+    fun calculateProfitRate(): String {
+        val cost = lottos.getTickets().size * 1000
+        val profit = totalPrize()
+        val profitRate = (profit.toDouble() / cost) * 100
+        return String.format("%.1f%%", profitRate)
+    }
+
     fun totalPrize(): Int {
         var total = 0
         for (res in result) {
@@ -21,13 +28,6 @@ data class LottosResult(val lottos: Lottos, val winningNumbers: WinningNumbers) 
             total += res.value * prize
         }
         return total
-    }
-
-    fun caculateProfit(): String {
-        val cost = lottos.getTickets().size
-        val profit = totalPrize()
-        val profitRate = (profit.toDouble() / cost) * 100
-        return String.format("%.1f%%", profitRate)
     }
 }
 
