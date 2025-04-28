@@ -1,7 +1,10 @@
 package lotto
 
-class LottoMachine(private val reader: InputReader, private val printer: OutputPrinter) {
+import lotto.domain.Lotto
+import lotto.view.InputReader
+import lotto.view.OutputPrinter
 
+class LottoMachine(private val reader: InputReader, private val printer: OutputPrinter) {
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.

@@ -1,4 +1,6 @@
-package lotto
+package lotto.view
+
+import lotto.domain.Lottos
 
 interface OutputPrinter {
     fun printPurchasedTickets(lottos: Lottos): Unit

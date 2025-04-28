@@ -1,4 +1,7 @@
-package lotto
+package lotto.view
+
+import lotto.domain.PurchaseAmount
+import lotto.domain.WinningNumbers
 
 interface InputReader {
     fun readPurchaseAmount(): PurchaseAmount
