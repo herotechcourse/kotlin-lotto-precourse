@@ -15,7 +15,7 @@ class LotteryTicketMachineTest {
     @Test
     fun `generates the correct number of tickets based on purchase amount`() {
         val purchaseAmount = 8000
-        val tickets = LotteryTicketMachine.generateTickets(purchaseAmount)
+        LotteryTicketMachine.generateTickets(purchaseAmount)
         assertThat(LotteryTicketMachine.tickets.size == 8)
     }
 
