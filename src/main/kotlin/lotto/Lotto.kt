@@ -7,6 +7,7 @@ import lotto.domain.LottoNumber.Companion.MIN_NUMBER
 class Lotto private constructor(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly unique 6 numbers." }
+        require(numbers.distinct().size == numbers.size) { "[ERROR] Lotto numbers must be unique." }
         require(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] Lotto numbers must be between $MIN_NUMBER and $MAX_NUMBER." }
     }
 
