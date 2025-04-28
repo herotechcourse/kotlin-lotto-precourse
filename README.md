@@ -28,7 +28,7 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 - [x] Parser (input parser)
 - [ ] Lotto util (lotto simulator utility functions)
-- [ ] Error message (include sysytem error messages)
+- [x] Error message (include sysytem error messages)
 
 ### Model
 
