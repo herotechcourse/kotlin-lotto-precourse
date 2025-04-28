@@ -2,8 +2,13 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == LOTTO_NUMBER_SIZE) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == numbers.toSet().size) { "[ERROR] Lotto numbers cannot be duplicated." }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> = numbers.toList()
+
+    companion object {
+        private const val LOTTO_NUMBER_SIZE = 6
+    }
 }
