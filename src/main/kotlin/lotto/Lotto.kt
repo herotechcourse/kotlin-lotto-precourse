@@ -1,6 +1,8 @@
 package lotto
 
+import lotto.domain.BonusNumber
 import lotto.domain.ErrorMessages
+import lotto.domain.WinningNumbers
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -14,4 +16,8 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getNumbers(): List<Int> = numbers
+
+    fun matchCount(winning: WinningNumbers): Int = numbers.count { it in winning.numbers }
+
+    fun containsNumber(bonus: BonusNumber): Boolean = numbers.contains(bonus.number)
 }
