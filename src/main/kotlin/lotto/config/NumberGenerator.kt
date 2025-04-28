@@ -1,5 +1,5 @@
 package lotto.config
 
 interface NumberGenerator {
-    fun generate() : List<Int>
+    fun generate(): List<Int>
 }

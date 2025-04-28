@@ -17,19 +17,19 @@ fun main() {
     lottoApplication.run()
 }
 
-fun createLottoApplication(inputHandler : InputHandler, outputHandler: OutputHandler, randomNumberGenerator: RandomNumberGenerator): LottoApplication {
-    val money = readMoney(inputHandler)
-
-    return LottoApplication(
-        inputHandler = inputHandler,
-        outputHandler = outputHandler,
-        randomNumberGenerator = randomNumberGenerator,
-        money = money
-    )
-}
+fun createLottoApplication(
+    inputHandler: InputHandler,
+    outputHandler: OutputHandler,
+    randomNumberGenerator: RandomNumberGenerator
+): LottoApplication = LottoApplication(
+    inputHandler,
+    outputHandler,
+    randomNumberGenerator,
+    money = readMoney(inputHandler)
+)
 
 fun readMoney(inputHandler: InputHandler): Money {
-    val amount = inputHandler.readPurchaseAmount({ Console.readLine() })
+    val amount = inputHandler.readPurchaseAmount { Console.readLine() }
     return Money(amount)
 }
 
@@ -59,7 +59,7 @@ class LottoApplication(
     }
 
     private fun readWinningNumbers(): WinningNumbers {
-        val winningNumbers = inputHandler.readWinningNumbers({ Console.readLine() })
+        val winningNumbers = inputHandler.readWinningNumbers { Console.readLine() }
         val bonusNumber = inputHandler.readBonusNumbers({ Console.readLine() }, winningNumbers)
         return lottoMachine.createWinningNumbers(winningNumbers, bonusNumber)
     }

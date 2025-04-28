@@ -34,6 +34,4 @@ class ResultCalculator {
             else -> Rank.NONE
         }
     }
-
-
 }

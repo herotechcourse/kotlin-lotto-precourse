@@ -22,10 +22,10 @@ class OutputHandler {
     }
 
     private fun printWinningResult(winResult: WinResult) {
-        println(Rank.FIFTH.message + EN_DASH + winResult.getResult()[Rank.FIFTH]+ TICKETS)
-        println(Rank.FOURTH.message + EN_DASH + winResult.getResult()[Rank.FOURTH]+ TICKETS)
-        println(Rank.THIRD.message + EN_DASH + winResult.getResult()[Rank.THIRD]+ TICKETS)
-        println(Rank.SECOND.message + EN_DASH + winResult.getResult()[Rank.SECOND]+ TICKETS)
-        println(Rank.FIRST.message + EN_DASH + winResult.getResult()[Rank.FIRST]+ TICKETS)
+        println(Rank.FIFTH.message + EN_DASH + winResult.getResult()[Rank.FIFTH] + TICKETS)
+        println(Rank.FOURTH.message + EN_DASH + winResult.getResult()[Rank.FOURTH] + TICKETS)
+        println(Rank.THIRD.message + EN_DASH + winResult.getResult()[Rank.THIRD] + TICKETS)
+        println(Rank.SECOND.message + EN_DASH + winResult.getResult()[Rank.SECOND] + TICKETS)
+        println(Rank.FIRST.message + EN_DASH + winResult.getResult()[Rank.FIRST] + TICKETS)
     }
 }

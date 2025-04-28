@@ -1,4 +1,3 @@
 package lotto.domain.model
 
-class Lotties(val value: List<Lotto>) {
-}
+class Lotties(val value: List<Lotto>)
