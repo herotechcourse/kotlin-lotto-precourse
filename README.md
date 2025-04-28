@@ -2,6 +2,7 @@
 
 # Feature List
 
+
 - Input: User enters purchase amount (must be divisible by 1,000)
 - Issue: Print tickets (6 unique random numbers between 1 and 45)
 - Input: User enters last week's winning numbers
