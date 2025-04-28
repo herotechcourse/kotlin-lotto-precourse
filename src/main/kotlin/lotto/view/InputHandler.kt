@@ -9,33 +9,36 @@ import lotto.config.Messages
 class InputHandler {
 
     fun readPurchaseAmount(readLine: () -> String): Int {
-            return try {
-                println(Messages.INPUT_PURCHASE)
-                validateAmount(readLine)
-            } catch (e: Exception) {
-                println(errorMessage(e))
-                validateAmount(readLine)
-            }
+        return try {
+            println(Messages.INPUT_PURCHASE)
+            validateAmount(readLine)
+        } catch (e: Exception) {
+            if (e is NoSuchElementException) throw e
+            println(errorMessage(e))
+            readPurchaseAmount(readLine)
+        }
     }
 
     fun readWinningNumbers(readLine: () -> String): List<Int> {
-            return try {
-                println(Messages.INPUT_WINNING_NUMBERS)
-                validateWinningNumbers(readLine)
-            } catch (e: Exception) {
-                println(errorMessage(e))
-                validateWinningNumbers(readLine)
-            }
+        return try {
+            println(Messages.INPUT_WINNING_NUMBERS)
+            validateWinningNumbers(readLine)
+        } catch (e: Exception) {
+            if (e is NoSuchElementException) throw e
+            println(errorMessage(e))
+            readWinningNumbers(readLine)
+        }
     }
 
     fun readBonusNumbers(readLine: () -> String, winningNumbers: List<Int>): Int {
-            return try {
-                println(Messages.INPUT_BONUS_NUMBER)
-                validateBonusNumbers(readLine, winningNumbers)
-            } catch (e: Exception) {
-                println(errorMessage(e))
-                validateBonusNumbers(readLine, winningNumbers)
-            }
+        return try {
+            println(Messages.INPUT_BONUS_NUMBER)
+            validateBonusNumbers(readLine, winningNumbers)
+        } catch (e: Exception) {
+            if (e is NoSuchElementException) throw e
+            println(errorMessage(e))
+            readBonusNumbers(readLine, winningNumbers)
+        }
     }
 
     private fun validateWinningNumbers(readLine: () -> String): List<Int> {
@@ -131,10 +134,10 @@ class InputHandler {
     }
 
     private fun errorMessage(e: Throwable): String {
-        when (e) {
-            is NumberFormatException -> return Messages.NOT_A_VALID_NUMBER
-            is IllegalArgumentException -> return e.message ?: Messages.INVALID_INPUT
-            else -> return Messages.UNEXPECTED_MESSAGE
+        return when (e) {
+            is NumberFormatException -> Messages.NOT_A_VALID_NUMBER
+            is IllegalArgumentException -> e.message ?: Messages.INVALID_INPUT
+            else -> Messages.UNEXPECTED_MESSAGE
         }
     }
 }
