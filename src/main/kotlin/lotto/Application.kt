@@ -8,13 +8,16 @@ class Application {
     companion object {
         const val TICKET_PRICE = 1000
         const val AMOUNT_PROMPTER_TEXT = "Please enter the purchase amount."
+        const val LOTTO_MAX_NUMBER = 45
+        const val LOTTO_MIN_NUMBER = 1
+        const val LOTTO_AMOUNT_OF_NUMBERS = 6
     }
 
     fun main() {
         val amount = promptAmount()
         val cashier = Cashier(TICKET_PRICE)
         val numberOfTickets = cashier.calculateNumberOfTickets(amount)
-        val ticketGenerator = TicketGenerator()
+        val ticketGenerator = TicketGenerator(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_AMOUNT_OF_NUMBERS)
         val tickets = ticketGenerator.generate(numberOfTickets)
 
         val outputView = OutputView()
@@ -32,8 +35,8 @@ class Application {
     }
 
     /**
-     * Prompts the user for the purchase amount.
-     * The amount must be a positive integer and divisible by 1000.
+     * Prompts the user for the purchase amount. The amount must be a positive integer and divisible
+     * by TICKET_PRICE
      *
      * @return the validated purchase amount
      */

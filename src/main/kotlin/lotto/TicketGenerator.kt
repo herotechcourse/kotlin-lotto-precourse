@@ -1,17 +1,35 @@
 package lotto
 
-class TicketGenerator {
+import camp.nextstep.edu.missionutils.Randoms
+
+class TicketGenerator (
+    /**
+     * Generates a list of lottery tickets.
+     *
+     * @param minNumber The minimum number in the range.
+     * @param maxNumber The maximum number in the range.
+     * @param numbersCount The number of unique numbers in each ticket.
+     */
+    private val minNumber: Int,
+    private val maxNumber: Int,
+    private val numbersCount: Int,
+) {
+    init { 
+        require(numbersCount > 0) { "Numbers count must be greater than zero." }
+        require(minNumber > 0) { "Minimum number must be greater than zero." }
+        require(maxNumber > 0) { "Maximum number must be greater than zero." }
+        require(minNumber < maxNumber) { "Minimum number must be less than maximum number." }
+    }
+
+    /**
+     * Generates a list of lottery tickets.
+     *
+     * @param amount The number of tickets to generate.
+     * @return A list of lists, where each inner list represents a ticket with 6 unique numbers.
+     */
     fun generate(amount: Int): List<List<Int>> {
-        return listOf(
-            listOf(8, 21, 23, 41, 42, 43),
-            listOf(3, 5, 11, 16, 32, 38),
-            listOf(7, 11, 16, 35, 36, 44),
-            listOf(1, 8, 11, 31, 41, 42),
-            listOf(13, 14, 16, 38, 42, 45),
-            listOf(7, 11, 30, 40, 42, 43),
-            listOf(2, 13, 22, 32, 38, 45),
-            listOf(1, 3, 5, 14, 22, 45)
-        )
-        .take(amount)
+        return (1..amount).map { 
+            Randoms.pickUniqueNumbersInRange(minNumber, maxNumber, numbersCount).sorted() 
+        }
     }
 }
