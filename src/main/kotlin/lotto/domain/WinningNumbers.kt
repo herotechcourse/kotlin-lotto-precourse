@@ -2,6 +2,8 @@ package lotto.domain
 
 class WinningNumbers(val numbers: List<Int>) {
     init {
+        require(numbers.size == LottoConstants.LOTTO_NUMBER_SIZE) { ErrorMessages.LOTTO_NUMBER_SIZE_ERROR }
+
         numbers.forEach {
             require(it > 0) { ErrorMessages.NOT_A_POSITIVE_NUMBER_ERROR }
         }
