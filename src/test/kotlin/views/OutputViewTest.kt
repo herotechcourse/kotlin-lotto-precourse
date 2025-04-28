@@ -51,4 +51,19 @@ class OutputViewTest {
         assertTrue(output.contains("4 Matches (50,000 KRW) – 1 tickets"))
     }
     
+    @Test
+    fun `printReturnRate should print the return rate`() {
+        
+        val outputStream = ByteArrayOutputStream()
+        System.setOut(PrintStream(outputStream))
+        val outputView = OutputView()
+
+        
+        outputView.printReturnRate(62.5)
+
+        
+        val output = outputStream.toString()
+        assertTrue(output.contains("Total return rate is 62.5%."))
+    }
+    
 }
