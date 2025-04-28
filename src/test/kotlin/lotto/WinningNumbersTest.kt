@@ -36,4 +36,5 @@ class WinningNumbersTest {
         val expectedBonusBitmask = 1L shl 7
         assertThat(winningNumbers.bonusBitmask).isEqualTo(expectedBonusBitmask)
     }
+
 }
