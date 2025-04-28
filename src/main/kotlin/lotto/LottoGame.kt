@@ -46,6 +46,7 @@ class LottoGame(
             try {
                 val bonusNumber = inputView.readBonusNumber()
                 lotto.addBonusNumber(bonusNumber)
+                return
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
