@@ -18,5 +18,10 @@ enum class Rank(val matchingCount: Int, val prize: Int) {
         else -> null
       }
     }
+
+    fun formattedPrize(prize: Int): String {
+      return "%,d".format(prize).replace('.', ',')
+    }
   }
+
 }

@@ -21,6 +21,8 @@ class LottoGame(private val inputView: InputView = InputView(),
 	  // calculate winnings
     val result = resultCalculator.calculate(tickets, winningNumbers, bonusNumber)
     // display result
+    outputView.printResults(result.winners)
+    outputView.printProfitRate(result.profitRate)
   }
 
   private fun generateTickets(purchaseAmount: Long): List<Lotto> {
