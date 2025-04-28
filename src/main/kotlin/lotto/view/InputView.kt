@@ -7,10 +7,10 @@ object InputView {
     }
 
     fun winningNumbers() {
-        println("Please enter last week's winning numbers.")
+        println("\nPlease enter last week's winning numbers.")
     }
 
     fun bonusNumber() {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
     }
 }

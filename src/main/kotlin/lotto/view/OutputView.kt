@@ -6,7 +6,7 @@ import lotto.domain.Rank
 object OutputView {
 
     fun printNumberOfTickets(numberOfTickets: Int) {
-        println("You have purchased $numberOfTickets tickets.")
+        println("\nYou have purchased $numberOfTickets tickets.")
     }
 
     fun printTickets(tickets: List<Lotto>) {
@@ -21,7 +21,7 @@ object OutputView {
             .forEach { rank ->
                 val count = rankTable[rank.ordinal]
                 val prizeText = "%,d KRW".format(rank.prize)
-                println("${rank.label} ($prizeText) - $count tickets")
+                println("${rank.label} ($prizeText) – $count tickets")
             }
     }
 
@@ -31,7 +31,7 @@ object OutputView {
     }
 
     fun printWinningStatistics(rankTable: List<Int>, returnRate: Double) {
-        println("Wining statistics")
+        println("\nWining statistics")
         println("---")
         printRanks(rankTable)
         printReturnRate(returnRate)
