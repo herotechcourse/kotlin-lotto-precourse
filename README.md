@@ -24,8 +24,8 @@
 -[X] save winning numbers and a bonus number
 -[X] create a number for bitmasking 6 winnning numbers and one bonus number
 ### lotto match & result process (`service.LottoMatchService`)
--[ ] bitmasking logic to count matching numbers between a ticket and winning numbera
--[ ] bitmasking logic to see if the ticket contains a bonus number
+-[X] bitmasking logic to count matching numbers between a ticket and winning numbera
+-[X] bitmasking logic to see if the ticket contains a bonus number
 -[ ] determine the rank of each ticket based on matched numbers and bonus number
 -[ ] count how many tickets fall into each rank
 -[ ] calculate the lotto return rate
