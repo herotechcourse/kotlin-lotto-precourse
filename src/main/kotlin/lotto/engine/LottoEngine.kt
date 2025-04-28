@@ -7,17 +7,16 @@ import lotto.util.DefaultINumberGenerator
 import lotto.util.INumberGenerator
 import lotto.validator.InputValidator
 import lotto.validator.IInputValidator
-import lotto.view.IInputView
 import lotto.view.IOutputView
 import lotto.view.InputView
 import lotto.view.OutputView
 
 class LottoEngine(
     val inputValidator: IInputValidator = InputValidator(),
-    val inputView: IInputView = InputView(inputValidator),
+    val inputView: InputView = InputView(inputValidator),
     val generator: INumberGenerator = DefaultINumberGenerator(),
     val ticketMachine: ITicketMachine = TicketMachine(generator),
-    val outputView: IOutputView = OutputView
+    val outputView: IOutputView = OutputView()
 ) {
 
     fun run() {
