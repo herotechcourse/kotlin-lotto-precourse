@@ -1,5 +1,6 @@
 package lotto.domain.winning
 
+import lotto.Lotto
 import lotto.common.CommonValidator
 
 class WinningNumbers(private val numbers: List<Int>) {
@@ -14,6 +15,8 @@ class WinningNumbers(private val numbers: List<Int>) {
     }
 
     fun doNotContain(number: Int): Boolean = number !in numbers
+
+    fun countMatches(lottoNumbers: Lotto): Int = lottoNumbers.numbers().count { it in numbers }
 
     companion object {
         private const val VALID_SIZE = 6

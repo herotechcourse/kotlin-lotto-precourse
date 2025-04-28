@@ -1,5 +1,7 @@
 package lotto.domain.winning
 
+import lotto.Lotto
+
 class BonusNumber(private val number: Int) {
     init {
         require(isValidRange(number)) { "[ERROR] Winning numbers must be between $START_INCLUSIVE and $END_INCLUSIVE." }
@@ -8,6 +10,8 @@ class BonusNumber(private val number: Int) {
     private fun isValidRange(number: Int): Boolean {
         return number in START_INCLUSIVE..END_INCLUSIVE
     }
+
+    fun isMatched(randomLotto: Lotto): Boolean = randomLotto.numbers().contains(number)
 
     companion object {
         private const val START_INCLUSIVE = 1

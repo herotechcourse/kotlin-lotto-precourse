@@ -13,8 +13,9 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.all { it in START_INCLUSIVE..END_INCLUSIVE }
     }
 
-
     fun toNumbersDto(): NumbersDto = NumbersDto(numbers.toList())
+
+    fun numbers() = numbers.toList()
 
     companion object {
         private const val VALID_SIZE = 6
