@@ -21,6 +21,12 @@ class WinningResult(
         return result
     }
 
+    private fun determineRank(lotto: Lotto): Rank {
+        val matchCount = countMatches(lotto)
+        val bonusMatched = isBonusMatched(lotto)
+        return Rank.from(matchCount, bonusMatched)
+    }
+
     fun calculateTotalPrize(matchResult: Map<Rank, Int>): Int {
         return matchResult.entries.sumOf { (rank, count) ->
             rank.prizeMoney * count
