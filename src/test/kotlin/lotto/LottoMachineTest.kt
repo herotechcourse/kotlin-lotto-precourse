@@ -1,9 +1,9 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import lotto.LottoMachine
 
-class LottoMachine {
+class LottoMachineTest {
 
     @Test
     fun `creates the correct number of lotto tickets`() {
