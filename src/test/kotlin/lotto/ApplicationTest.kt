@@ -45,7 +45,7 @@ class ApplicationTest : NsTest() {
     fun `exception test`() {
         assertSimpleTest {
             runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            assertThat(output()).contains("[ERROR]")
         }
     }
 
