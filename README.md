@@ -10,9 +10,9 @@ This Lotto project is part of the Hero Tech Course curriculum.
 - [x] Purchase lottery tickets based on input amount (1000 KRW per ticket)
 - [x] Generate random lottery tickets (6 unique numbers from 1-45)
 - [x] Get Input Winning numbers and bonus number
-- [] Compare user tickets against winning numbers
-- [] Calculate and display prize statistic
-- [] Calculate and display return rate
+- [x] Compare user tickets against winning numbers
+- [x] Calculate and display prize statistic
+- [x] Calculate and display return rate
 
 ### Input Validations
 
@@ -26,14 +26,14 @@ This Lotto project is part of the Hero Tech Course curriculum.
 
 - [x] Display appropriate error messages for invalid inputs
 - [x] Re-prompt user after invalid input.
-- [] Handle only `IllegalArgumenthexception` and `IllegalStateException`
+- [x] Handle only `IllegalArgumenthexception` and `IllegalStateException`
 
 ### User Interface
 
 - [x] Clear prompts for user input
 - [x] Formatted display of purchased tickets
-- [] Organized presentation of winning statistics
-- [] Display return rate rounded to nearest tenth
+- [x] Organized presentation of winning statistics
+- [x] Display return rate rounded to nearest tenth
 
 ## Architecture
 
