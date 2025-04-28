@@ -19,8 +19,7 @@ class OutputView {
         )
     }
 
-    fun displayWinningStatistics(rankList: Map<Rank, Int>)
-    {
+    fun displayWinningStatistics(rankList: Map<Rank, Int>) {
         println()
         Messages.display(Messages.WINNING_STATISTICS)
         Messages.display(Messages.MATCH_SIX, rankList[Rank.FIRST] ?: 0)
@@ -28,5 +27,9 @@ class OutputView {
         Messages.display(Messages.MATCH_FIVE, rankList[Rank.THIRD] ?: 0)
         Messages.display(Messages.MATCH_FOUR, rankList[Rank.FOURTH] ?: 0)
         Messages.display(Messages.MATCH_THREE, rankList[Rank.FIFTH] ?: 0)
+    }
+
+    fun displayReturnRate(percentage: Double) {
+        Messages.display(Messages.RETURN_RATE, percentage)
     }
 }
