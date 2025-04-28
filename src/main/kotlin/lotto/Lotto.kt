@@ -5,6 +5,8 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    // TODO: Implement additional functions
-
+    /**
+     * Returns the ticket's numbers sorted in ascending order.
+     */
+    fun getNumbers(): List<Int> = numbers.sorted()
 }
