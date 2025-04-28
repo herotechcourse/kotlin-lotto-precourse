@@ -40,8 +40,8 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 ### View
 
-- [ ] Read input
-  - [ ] Safe Read
+- [x] Read input
+  - [x] Safe Read
 - [ ] Print output
   - [ ] Print result
 
