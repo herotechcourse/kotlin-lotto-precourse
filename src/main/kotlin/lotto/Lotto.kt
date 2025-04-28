@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.LottoConstants.MAX_NUMBER
+import lotto.LottoConstants.MIN_NUMBER
 import lotto.LottoConstants.NUMBERS_PER_TICKET
 import lotto.domain.BonusNumber
 import lotto.domain.ErrorMessages
@@ -12,7 +14,7 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.distinct().size == NUMBERS_PER_TICKET) { ErrorMessages.INVALID_WINNING_NUMBERS_DUPLICATED }
 
         numbers.forEach {
-            require(it in 1..45) { ErrorMessages.INVALID_NUMBERS_RANGE }
+            require(it in MIN_NUMBER..MAX_NUMBER) { ErrorMessages.INVALID_NUMBERS_RANGE }
         }
     }
 
