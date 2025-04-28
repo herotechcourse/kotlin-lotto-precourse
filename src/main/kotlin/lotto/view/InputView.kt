@@ -5,65 +5,74 @@ import lotto.util.Config
 import lotto.util.Messages
 
 object InputView {
-    fun readPurchaseAmount(): Int = readIntWithValidation(Messages.Prompt.PURCHASE_AMOUNT) { number ->
-            number >= Config.TICKET_PRICE && number % Config.TICKET_PRICE == 0 || throw IllegalArgumentException(Messages.Error.NOT_MULTIPLE_OF_TICKET_PRICE.format(number))
-        }
 
-    fun readWinningNumbers(): List<Int> = readIntListWithValidation(Messages.Prompt.WINNING_NUMBERS) { list ->
-        list.size  == Config.LOTTO_NUMBER_COUNT && list.all  { it in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER } || throw IllegalArgumentException(Messages.Error.OUT_OF_RANGE.format(list))
-        list.distinct().size == Config.LOTTO_NUMBER_COUNT || throw IllegalArgumentException(Messages.Error.NUMBERS_NOT_UNIQUE)
-    }
-
-        fun readBonusNumber(winningNumbers: List<Int>): Int = readIntWithValidation(Messages.Prompt.BONUS_NUMBER) { number ->
-            number in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER || throw IllegalArgumentException(Messages.Error.INVALID_BONUS_NUMBER.format(number))
-            !winningNumbers.contains(number) || throw IllegalArgumentException(Messages.Error.BONUS_DUPLICATE)
-        }
-
-        private fun readIntWithValidation(prompt: String, validate: (Int) -> Boolean): Int {
-            while (true) {
-                println(prompt)
-                val input = Console.readLine()
-                val number = input.toIntOrNull()
-                if (number == null) {
-                    println(Messages.Error.NOT_A_NUMBER.format(input))
-                    continue
-                }
-                try {
-                    if (!validate(number)) throw IllegalArgumentException(Messages.Error.INPUT_DOES_NOT_MEET_CRITERIA)
-                } catch (e: IllegalArgumentException) {
-                    println(e.message)
-                    continue
-                }
-                return number
-            }
-        }
-
-        private fun readIntListWithValidation(prompt: String, validate: (List<Int>) -> Boolean): List<Int> {
-            while (true) {
-                println(prompt)
-                val input = Console.readLine()
-                if (!input.contains(",")) {
-                    println(Messages.Error.MALFORMED_LIST.format(input))
-                    continue
-                }
-                val list = try {
-                    input.split(",").mapIndexed { index, raw ->
-                        val trimmed = raw.trim()
-                        if (trimmed.isEmpty()) throw IllegalArgumentException(Messages.Error.EMPTY_VALUE_AT.format(index + 1))
-                        trimmed.toIntOrNull() ?: throw IllegalArgumentException(Messages.Error.INVALID_INTEGER.format(trimmed))
-                    }
-                } catch (e: IllegalArgumentException) {
-                    println(e.message)
-                    continue
-                }
-                try {
-                    if (!validate(list)) throw IllegalArgumentException(Messages.Error.OUT_OF_RANGE.format(list))
-                } catch (e: IllegalArgumentException) {
-                    println(e.message)
-                    continue
-                }
-                return list
+    private inline fun <T> promptUntilValid(
+        prompt: String,
+        parser: (String) -> T,
+        crossinline validator: (T) -> Unit
+    ): T {
+        while (true) {
+            println(prompt)
+            val line = Console.readLine()
+            try {
+                val value = parser(line)
+                validator(value)
+                return value
+            } catch (e: IllegalArgumentException) {
+                println("\n${e.message}\nTry again")
             }
         }
     }
 
+    fun readPurchaseAmount(): Int = promptUntilValid(
+        Messages.Prompt.PURCHASE_AMOUNT,
+        { raw ->
+            raw.toIntOrNull()
+                ?: throw IllegalArgumentException(Messages.Error.NOT_A_NUMBER.format(raw))
+        },
+        { amount ->
+            require(amount >= Config.TICKET_PRICE && amount % Config.TICKET_PRICE == 0) {
+                Messages.Error.NOT_MULTIPLE_OF_TICKET_PRICE.format(amount)
+            }
+        }
+    )
+
+    fun readWinningNumbers(): List<Int> = promptUntilValid(
+        Messages.Prompt.WINNING_NUMBERS,
+        { raw ->
+            if (!raw.contains(",")) throw IllegalArgumentException(Messages.Error.MALFORMED_LIST.format(raw))
+            raw.split(",").mapIndexed { idx, part ->
+                val trimmed = part.trim()
+                if (trimmed.isEmpty()) throw IllegalArgumentException(Messages.Error.EMPTY_VALUE_AT.format(idx + 1))
+                trimmed.toIntOrNull()
+                    ?: throw IllegalArgumentException(Messages.Error.INVALID_INTEGER.format(trimmed))
+            }
+        },
+        { list ->
+            require(list.size == Config.LOTTO_NUMBER_COUNT &&
+                    list.all { it in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER }
+            ) {
+                Messages.Error.OUT_OF_RANGE.format(list)
+            }
+            require(list.distinct().size == Config.LOTTO_NUMBER_COUNT) {
+                Messages.Error.NUMBERS_NOT_UNIQUE
+            }
+        }
+    )
+
+    fun readBonusNumber(winningNumbers: List<Int>): Int = promptUntilValid(
+        Messages.Prompt.BONUS_NUMBER,
+        { raw ->
+            raw.toIntOrNull()
+                ?: throw IllegalArgumentException(Messages.Error.NOT_A_NUMBER.format(raw))
+        },
+        { bonus ->
+            require(bonus in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER) {
+                Messages.Error.INVALID_BONUS_NUMBER.format(bonus)
+            }
+            require(!winningNumbers.contains(bonus)) {
+                Messages.Error.BONUS_DUPLICATE
+            }
+        }
+    )
+}
