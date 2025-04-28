@@ -20,4 +20,10 @@ class LottoTest {
     }
 
     // TODO: Implement tests based on the added features
+    @Test
+    fun `returns the correct lotto numbers`() {
+        val numbers = listOf(1, 2, 3, 4, 5, 6)
+        val lotto = Lotto(numbers)
+        assert(numbers == lotto.getNumbers())
+    }
 }
