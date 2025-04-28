@@ -2,8 +2,8 @@ package lotto
 
 object LottoValidators {
     fun validatePurchase(amount: Int) {
-        require(amount > 0) { "amount must be a positive number." }
-        require(amount % 1_000 == 0) { "Each ticket costs 1,000 KRW" }
+        require(amount > 0) { "[ERROR] amount must be a positive number." }
+        require(amount % 1_000 == 0) { "[ERROR] Each ticket costs 1,000 KRW" }
     }
 
     fun validateWinningNumber(numbers: List<Int>) {
@@ -13,7 +13,7 @@ object LottoValidators {
     }
 
     fun validateBonusNumber(bonus: Int, winning: Collection<Int>) {
-        require(bonus !in winning) { "Bonus number must not duplicate winning numbers." }
-        require(bonus in 1..45) { "Numbers must be between 1 and 45." }
+        require(bonus !in winning) { "[ERROR] Bonus number must not duplicate winning numbers." }
+        require(bonus in 1..45) { "[ERROR] Numbers must be between 1 and 45." }
     }
 }

@@ -19,7 +19,9 @@ class InputView {
             val purchaseAmount = Console.readLine().toIntOrNull()
             requireNotNull(purchaseAmount) { "purchase amount must be an integer" }
             LottoValidators.validatePurchase(purchaseAmount)
+            println()
             purchaseAmount
+
         }
     }
 
@@ -28,6 +30,7 @@ class InputView {
             val winningNumbers = Console.readLine().split(",")
                 .map { requireNotNull(it.trim().toIntOrNull()) { "Winning numbers must be integers." } }
             LottoValidators.validateWinningNumber(winningNumbers)
+            println()
             winningNumbers
         }
     }
@@ -37,6 +40,7 @@ class InputView {
             val bonusNumber = Console.readLine().toIntOrNull()
             requireNotNull(bonusNumber) { "Bonus number must be an integer." }
             LottoValidators.validateBonusNumber(bonusNumber, winningNumbers)
+            println()
             bonusNumber
         }
     }
