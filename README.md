@@ -316,3 +316,21 @@ Total return rate is 62.5%.
     - `purchase = PurchaseAmount(3_000)`  
   - Expect:  
     - `rate` ≈ `2000.0` (i.e. (2×5_000 + 1×50_000) ÷ 3_000 × 100 = 2_000%)
+
+### `InputView` Retry Reading Tests (lotto.presentation)
+
+- **`readPurchaseAmount` retries then succeeds**  
+  - Input sequence: `"abc"`, `"1500"`, `"2000"`  
+  - Expect: returns `PurchaseAmount(2000)`
+
+- **`readWinningNumbers` retries then succeeds**  
+  - Input sequence:
+    1. `"1,2,3"` (invalid token count)  
+    2. `"1,a,3,4,5,6"` (non-numeric)  
+    3. `"1, 2, 3, 4, 5, 6"` (valid)  
+  - Expect: returns `WinningNumbers([1, 2, 3, 4, 5, 6])`
+
+- **`readBonusNumber` retries then succeeds**  
+  - Input sequence: `"0"` (out-of-range), `"abc"` (non-numeric), `"7"` (valid)  
+  - Expect: returns `BonusNumber(7)`
+
