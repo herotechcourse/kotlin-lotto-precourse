@@ -43,4 +43,42 @@ class IntPurserTest {
         // then
         assertThat(result).isEqualTo(8)
     }
+
+    @Test
+    fun `throws exception when numbers are not comma-separated`() {
+        // given
+        val rawInput = "1 2,3,4,5,6"
+
+        // when
+
+        // then
+        assertThatThrownBy { IntParser.parseMultiple(rawInput) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(INVALID_NUMBER)
+    }
+
+    @Test
+    fun `throws exception when input contains non-numeric element`() {
+        // given
+        val rawInput = "1, k,3,4,5,6"
+
+        // when
+
+        // then
+        assertThatThrownBy { IntParser.parseMultiple(rawInput) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage(INVALID_NUMBER)
+    }
+
+    @Test
+    fun `parses comma-separated integers with whitespace`() {
+        // given
+        val rawInput = " 1, 2,3,4,5,6 "
+
+        // when
+        val result = IntParser.parseMultiple(rawInput)
+
+        // then
+        assertThat(result).containsExactly(1,2,3,4,5,6)
+    }
 }
