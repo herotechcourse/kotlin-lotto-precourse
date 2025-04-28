@@ -1,9 +1,8 @@
 package input.validation
 
-internal const val INVALID_LOTTO_NUMBER_MSG = "Numbers must be in the range from 1 to 45."
-
-internal const val MIN_LOTTO_NUMBER = 1
-internal const val MAX_LOTTO_NUMBER = 45
+import lotto.config.INVALID_LOTTO_NUMBER_MSG
+import lotto.config.MAX_LOTTO_NUMBER
+import lotto.config.MIN_LOTTO_NUMBER
 
 fun validateAndReturnLottoNumber(num: Int): Int{
     validateLottoNumber(num)
