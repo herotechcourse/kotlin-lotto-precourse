@@ -1,6 +1,10 @@
 package lotto.util
 
-fun calculateAndFormatReturnRate(totalPrize: Int, purchaseAmount: Int): String {
-    val returnRate = calcReturnRate(totalPrize, purchaseAmount)
+import lotto.support.TICKET_PRICE
+import lotto.domain.PrizeResult
+import lotto.Lotto
+
+fun calculateAndFormatReturnRate(prize: PrizeResult, tickets: List<Lotto>): String {
+    val returnRate = calcReturnRate(prize.totalPrize, tickets.size * TICKET_PRICE)
     return roundRateToString(returnRate)
 }
