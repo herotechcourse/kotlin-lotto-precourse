@@ -7,8 +7,8 @@ class Lotto(private val numbers: List<LottoNumber>) {
         require(numbers.toSet().size == numbers.size) { LOTTO_NUMBER_NOT_UNIQUE_ERROR }
     }
 
-    fun countMatchingNumber(winningLotto: Lotto): Int {
-        return numbers.count { winningLotto.hasSameNumber(it) }
+    fun countSameNumber(other: Lotto): Int {
+        return numbers.count { other.hasSameNumber(it) }
     }
 
     fun doesNotContain(lottoNumber: LottoNumber): Boolean {

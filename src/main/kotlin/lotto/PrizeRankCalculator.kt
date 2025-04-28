@@ -14,7 +14,7 @@ class PrizeRankCalculator(val winningLotto: Lotto, val bonusLottoNumber: LottoNu
     }
 
     private fun getPrizeRank(lotto: Lotto): PrizeRank {
-        val matchingCount = lotto.countMatchingNumber(winningLotto)
+        val matchingCount = lotto.countSameNumber(winningLotto)
         val hasBonusNumber = lotto.hasSameNumber(bonusLottoNumber)
         return PrizeRank.findBy(matchingCount, hasBonusNumber)
     }
