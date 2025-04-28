@@ -11,5 +11,4 @@ fun main() {
     val lottoController = LottoController(inputView, outputView)
 
     lottoController.run()
-
 }

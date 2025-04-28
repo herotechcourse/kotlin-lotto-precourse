@@ -1,8 +1,10 @@
 package lotto.controller
 
-import lotto.Lotto
 import lotto.domain.BonusNumber
+import lotto.Lotto
 import lotto.domain.LottoMachine
+import lotto.domain.Rank
+import lotto.domain.ResultCalculator
 import lotto.domain.WinningNumbers
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -22,7 +24,11 @@ class LottoController(
         val winningNumbers = createWinningNumbers()
         val bonusNumber = createBonusNumber(winningNumbers)
 
-        //TODO: logic for comparison, result display
+        val resultCalculator = ResultCalculator()
+        val results = resultCalculator.calculateResults(purchasedLottos, winningNumbers, bonusNumber)
+        val profitRate = resultCalculator.calculateProfitRate(results, lottoMachine.purchaseAmount)
+        outputView.displayMatchResults(results)
+        outputView.displayRate(profitRate)
     }
 
     private fun createLottoMachine(): LottoMachine {
