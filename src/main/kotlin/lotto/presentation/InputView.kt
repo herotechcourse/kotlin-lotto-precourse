@@ -16,4 +16,10 @@ object InputView {
 
         return parseMultiple(Console.readLine())
     }
+
+    fun readBonusNumber(): Int {
+        println("Please enter the bonus number.")
+
+        return parseSingle(Console.readLine())
+    }
 }
