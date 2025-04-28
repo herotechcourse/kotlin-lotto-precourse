@@ -18,4 +18,11 @@ class PurchaseAmountTest {
             PurchaseAmount.from("      ")
         }
     }
+
+    @Test
+    fun `throws an exception when purchase amount is not a number`() {
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount.from("ab")
+        }
+    }
 }
