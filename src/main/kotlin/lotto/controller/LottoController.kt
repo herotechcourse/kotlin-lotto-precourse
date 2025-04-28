@@ -23,7 +23,8 @@ object LottoController {
         OutputView.printNumberOfTickets(numberOfTickets)
         OutputView.printTickets(LottoManager.getTickets())
 
-        val winningTicket = Lotto(InputReader.winningNumbers())
+        //val winningTicket = Lotto(InputReader.winningNumbers())
+        val winningTicket = InputReader.winningNumbers()
         val bonusNumber = InputReader.bonusNumber(winningTicket.getNumbers())
 
         LottoManager.makeRankTable(winningTicket, bonusNumber)

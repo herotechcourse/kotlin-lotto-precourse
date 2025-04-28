@@ -1,6 +1,7 @@
 package lotto.input
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.Lotto
 import lotto.util.Split
 import lotto.validation.Input
 import lotto.view.InputView
@@ -24,13 +25,14 @@ object InputReader {
         }
     }
 
-    fun winningNumbers(): List<Int> {
+    fun winningNumbers(): Lotto {
         while (true) {
             InputView.winningNumbers()
             val rawInput = Console.readLine()
             try {
                 val numbers = Input.isWinningNumbersValid(rawInput)
-                return numbers
+                val winningTicket = Lotto(numbers)
+                return winningTicket
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
