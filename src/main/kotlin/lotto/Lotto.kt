@@ -6,7 +6,12 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must not contain duplicates." }
     }
 
+    fun getNumbers(): List<Int> {
+        return numbers
+    }
+
     override fun toString(): String {
         return numbers.sorted().joinToString(", ", prefix = "[", postfix = "]")
     }
+
 }
