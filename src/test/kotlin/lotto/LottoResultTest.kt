@@ -35,6 +35,6 @@ class LottoResultTest {
         val result = LottoResult().calculateStatics(listOf(1, 2, 3, 4, 5, 6), 7, tickets)
         val totalRate = LottoResult().calculateTotal(result, 1000)
 
-        assertThat(totalRate).isEqualTo(2000000000.0)
+        assertThat(totalRate).isEqualTo(200000000.0)
     }
 }
