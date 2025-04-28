@@ -47,4 +47,4 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 ### Controller
 
-- [ ] Lotto controller (main controller class that orchestrates the flow of the lottery application.)
+- [x] Lotto controller (main controller class that orchestrates the flow of the lottery application.)
