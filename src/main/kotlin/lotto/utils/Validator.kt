@@ -9,23 +9,23 @@ object Validator {
         require(input.toIntOrNull() != null) {
             "[ERROR] Input must be a valid number."
         }
-        require(input.toInt() > 0) {
-            "[ERROR] Number must be greater than 0."
+        require(input.toInt() >= Constants.MINIMUM_VALID_NUMBER) {
+            "[ERROR] Number must be greater than or equal to ${Constants.MINIMUM_VALID_NUMBER}."
         }
     }
 
     fun validatePurchaseAmount(input: String) {
         validateNumber(input)
         val amount = input.toInt()
-        require(amount >= 1000) {
-            "[ERROR] Purchase amount must be at least 1,000."
+        require(amount >= Constants.MINIMUM_PURCHASE_AMOUNT) {
+            "[ERROR] Purchase amount must be at least ${Constants.MINIMUM_PURCHASE_AMOUNT}."
         }
-        require(amount % 1000 == 0) {
-            "[ERROR] Purchase amount must be divisible by 1,000."
+        require(amount % Constants.MINIMUM_PURCHASE_AMOUNT == 0) {
+            "[ERROR] Purchase amount must be divisible by ${Constants.MINIMUM_PURCHASE_AMOUNT}."
         }
     }
 
-    fun validateNumberListSize(numbers: List<String>, expectedSize: Int = 6) {
+    fun validateNumberListSize(numbers: List<String>, expectedSize: Int = Constants.LOTTO_NUMBER_COUNT) {
         require(numbers.size == expectedSize) {
             "[ERROR] You must enter exactly $expectedSize numbers."
         }

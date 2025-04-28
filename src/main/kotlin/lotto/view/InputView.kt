@@ -15,7 +15,6 @@ object InputView {
         }
     }
 
-
     fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers (comma-separated).")
         return Retrier.retryInput {

@@ -15,11 +15,11 @@ enum class Rank(
     companion object {
         fun find(matchCount: Int, bonusMatch: Boolean): Rank {
             return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && bonusMatch -> SECOND
-                matchCount == 5 -> THIRD
-                matchCount == 4 -> FOURTH
-                matchCount == 3 -> FIFTH
+                matchCount == FIRST.matchCount -> FIRST
+                matchCount == SECOND.matchCount && bonusMatch -> SECOND
+                matchCount == THIRD.matchCount -> THIRD
+                matchCount == FOURTH.matchCount -> FOURTH
+                matchCount == FIFTH.matchCount -> FIFTH
                 else -> MISS
             }
         }
