@@ -2,7 +2,7 @@ package lotto
 
 import javax.swing.plaf.metal.MetalIconFactory.TreeControlIcon
 
-class Purchase(val amount: Int) {
+class Purchase(private val amount: Int) {
     val tickets: List<Ticket> = List(amount / TICKET_PRICE) { Ticket() }
 
     init {
