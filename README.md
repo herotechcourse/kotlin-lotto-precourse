@@ -44,4 +44,6 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 - leave the rest for now as all we need is the amount to implement purchase
 
 ### 4. Implement LottoMachine
-- 
+- Create the feature to generate tickets
+- Calculate ticket prices
+
