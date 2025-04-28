@@ -1,9 +1,10 @@
 package lotto
 
-import input.config.printTicketAmountMsg
 import input.dialog.getTicketAmountFromDialog
+import lotto.Lotto.Companion.generateLottoArray
 
 fun main() {
     val ticketAmount = getTicketAmountFromDialog()
 
+    val lottos: Array<Lotto> = generateLottoArray(ticketAmount)
 }
