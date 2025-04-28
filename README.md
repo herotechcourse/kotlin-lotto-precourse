@@ -20,7 +20,7 @@
 | &#9745; | Calculate rank counts and profit rate                                             | business |
 | &#9745; | Print result including winnings and profit rate                                   | view     |
 | &#9745; | If error is thrown, re-prompt input from that step                                | shared   |
-| &#9744; | Business logic unit test                                                          | test     |
+| &#9745; | Business logic unit test                                                          | test     |
 | &#9745; | Throw error if purchase amount is not a number                                    | business |
 | &#9745; | Throw error if purchase amount is not divisible by 1,000                          | business |
 | &#9745; | Throw error if winning numbers contain non-numeric input                          | business |
