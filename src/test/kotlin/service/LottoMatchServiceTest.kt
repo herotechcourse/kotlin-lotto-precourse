@@ -71,4 +71,34 @@ class LottoMatchServiceTest {
         assertThat(LottoMatchService.determineRank(2, false)).isNull()
     }
 
+    @Test
+    fun `calculateStatistics returns correct counts for each rank`() {
+        val ticketNumbers = listOf(
+            listOf(1, 2, 3, 4, 5, 6), // 6
+            listOf(1, 2, 3, 4, 5, 10), // 5
+            listOf(1, 2, 3, 4, 7, 8), // 4
+            listOf(1, 2, 3, 10, 20, 30), // 3
+            listOf(1, 2, 10, 20, 30, 40), // 2
+            listOf(7, 8, 9, 10, 20, 30) // 0
+        )
+
+        var index = 0
+        val pickNumbers: (Int, Int, Int) -> List<Int> = { _, _, _ ->
+            val numbers = ticketNumbers[index]
+            index++
+            numbers
+        }
+
+        val tickets = Tickets(6000, pickNumbers)
+        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6), 7)
+
+        val statistics = LottoMatchService.calculateStatistics(tickets, winningNumbers)
+
+        assertThat(statistics[LottoRank.THREE]).isEqualTo(1)
+        assertThat(statistics[LottoRank.FOUR]).isEqualTo(1)
+        assertThat(statistics[LottoRank.FIVE]).isEqualTo(1)
+        assertThat(statistics[LottoRank.FIVE_BONUS]).isEqualTo(0)
+        assertThat(statistics[LottoRank.SIX]).isEqualTo(1)
+    }
+
 }
