@@ -4,22 +4,13 @@ import lotto.domain.TicketPrice
 import lotto.domain.throwInvalidBudgetException
 
 class BudgetValidator() {
-    fun run(value: Int?): Int {
-        val validatedValue = valid(value)
-        return range(validatedValue)
+    fun run(value: Int): Int {
+        return range(value)
     }
 
     internal fun range(value: Int): Int {
         if (value < TicketPrice.TICKET.value)
-            throw throwInvalidBudgetException("")
-
-        return value
-    }
-
-    internal fun valid(value: Int?): Int {
-        if (value == null)
-            throw throwInvalidBudgetException("")
-
+            throwInvalidBudgetException("[ERROR] Budget value must be greater than ${TicketPrice.TICKET.value}")
         return value
     }
 }
