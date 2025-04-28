@@ -2,6 +2,7 @@ package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
+import lotto.model.LottoMatchResult
 import lotto.model.LottoMatchCount
 import lotto.utils.Constant.LOTTO_COST
 import lotto.utils.Constant.LOTTO_SIZE
@@ -25,5 +26,23 @@ class LottoGame {
         val matchedCount = lotto.getNumbers().count { it in winningNumber.getNumbers() }
         val hasBonus = bonusNumber in lotto.getNumbers()
         LottoMatchCount(matchedCount = matchedCount, hasBonus = hasBonus)
+    }
+
+    fun match(lottoMatchCounts: List<LottoMatchCount>): LottoMatchResult =
+        lottoMatchCounts.fold(LottoMatchResult()) { result, lottoResult ->
+            result.updateMatchResult(lottoResult)
+        }
+
+    private fun LottoMatchResult.updateMatchResult(lottoMatchCount: LottoMatchCount): LottoMatchResult {
+        return when (lottoMatchCount.matchedCount) {
+            6 -> copy(sixMatching = sixMatching + 1)
+            5 -> {
+                if (lottoMatchCount.hasBonus) copy(fiveMatchingWithBonus = fiveMatchingWithBonus + 1)
+                else copy(fiveMatching = fiveMatching + 1)
+            }
+            4 -> copy(fourMatching = fourMatching + 1)
+            3 -> copy(threeMatching = threeMatching + 1)
+            else -> this
+        }
     }
 }

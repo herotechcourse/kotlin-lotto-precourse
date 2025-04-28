@@ -1,6 +1,8 @@
 package lotto.domain
 
 import lotto.Lotto
+import lotto.model.LottoMatchCount
+import lotto.model.LottoMatchResult
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -45,5 +47,25 @@ class LottoGameTest {
         assertThat(results[0].hasBonus).isFalse()
         assertThat(results[1].matchedCount).isEqualTo(1)
         assertThat(results[1].hasBonus).isTrue()
+    }
+
+    @Test
+    fun `aggregate match results into a LottoMatchResult`() {
+        val matchCounts = listOf(
+            LottoMatchCount(matchedCount = 6, hasBonus = false),
+            LottoMatchCount(matchedCount = 5, hasBonus = true),
+            LottoMatchCount(matchedCount = 5, hasBonus = false),
+            LottoMatchCount(matchedCount = 4, hasBonus = false),
+            LottoMatchCount(matchedCount = 3, hasBonus = false),
+            LottoMatchCount(matchedCount = 2, hasBonus = false)
+        )
+
+        val result = lottoGame.match(matchCounts)
+
+        assertThat(result.sixMatching).isEqualTo(1)
+        assertThat(result.fiveMatchingWithBonus).isEqualTo(1)
+        assertThat(result.fiveMatching).isEqualTo(1)
+        assertThat(result.fourMatching).isEqualTo(1)
+        assertThat(result.threeMatching).isEqualTo(1)
     }
 }
