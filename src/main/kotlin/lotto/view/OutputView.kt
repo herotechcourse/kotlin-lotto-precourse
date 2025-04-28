@@ -4,6 +4,7 @@ import lotto.model.Lotto
 import lotto.model.Rank
 import lotto.util.ProfitCalculator
 import lotto.util.toFormatted
+import lotto.util.toPercentageString
 
 object OutputView {
 
@@ -14,15 +15,15 @@ object OutputView {
         }
     }
 
-    fun printResult(result: Map<Rank, Int>) {
+    fun printResult(result: Map<Rank, Int>, ticketCount: Int) {
         println("\nWinning Statistics")
         println("---")
-        Rank.values()
+        Rank.entries
             .filter { it != Rank.NONE }
             .forEach { rank ->
-                println("${rank.description} (${rank.prize.toFormatted()} KRW) – ${result[rank] ?: 0} tickets")
+                println("${rank.matchCount} ${rank.description} (${rank.prize.toFormatted()} KRW) – ${result[rank]} tickets")
             }
-        val totalProfitRate = ProfitCalculator.calculateProfitRate(result)
-        println("Total return rate is %.1f%%.".format(totalProfitRate))
+        val totalProfitRate = ProfitCalculator.calculateProfitRate(result, ticketCount)
+        println("Total return rate is ${totalProfitRate.toPercentageString()}.")
     }
 }

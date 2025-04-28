@@ -15,6 +15,6 @@ class LottoController {
         val bonusNumber = InputView.readBonusNumber()
 
         val result = LottoService.calculateResult(lottoTickets, winningNumbers, bonusNumber)
-        OutputView.printResult(result)
+        OutputView.printResult(result, lottoTickets.getTickets().size)
     }
 }
