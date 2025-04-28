@@ -1,10 +1,12 @@
 package lotto.domain
 
+import lotto.constant.Constants
+
 class Lotto(private val numbers: List<LottoNumber>) {
 
     init {
-        require(numbers.size == SIZE) { "[ERROR] Lotto must contain exactly $SIZE numbers." }
-        require(numbers.distinct().size == SIZE) { "[ERROR] Lotto numbers must not contain duplicates." }
+        require(numbers.size == SIZE) { Constants.ERROR_WRONG_WINNING_NUMBER_COUNT }
+        require(numbers.distinct().size == SIZE) { Constants.ERROR_DUPLICATE_WINNING_NUMBERS }
     }
 
     fun getSortedNumbers(): List<Int> {

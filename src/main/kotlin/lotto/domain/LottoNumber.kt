@@ -1,10 +1,12 @@
 package lotto.domain
 
+import lotto.constant.Constants
+
 class LottoNumber(val number: Int) : Comparable<LottoNumber> {
 
     init {
         require(number in MIN..MAX) {
-            "[ERROR] Lotto number must be between $MIN and $MAX."
+            Constants.ERROR_INVALID_NUMBER_RANGE
         }
     }
 

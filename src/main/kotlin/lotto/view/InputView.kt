@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.constant.Constants
 
 object InputView {
 
@@ -8,21 +9,21 @@ object InputView {
         println("Please enter the purchase amount.")
         val input = Console.readLine()
         return input.toIntOrNull()
-            ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+            ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER)
     }
 
     fun readWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers")
         val input = Console.readLine()
         val numbers = input.split(",")
-            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a number.") }
+            .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER) }
 
         if (numbers.size != 6) {
-            throw IllegalArgumentException("[ERROR] You must enter exactly 6 numbers.")
+            throw IllegalArgumentException(Constants.ERROR_WRONG_WINNING_NUMBER_COUNT)
         }
 
         if (numbers.distinct().size != 6) {
-            throw IllegalArgumentException("[ERROR] Duplicate numbers are not allowed.")
+            throw IllegalArgumentException(Constants.ERROR_DUPLICATE_WINNING_NUMBERS)
         }
 
         return numbers
@@ -31,10 +32,10 @@ object InputView {
     fun readBonusNumber(winningNumbers: List<Int>): Int {
         println("Please enter the bonus number.")
         val input = Console.readLine()
-        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be a number.")
+        val bonus = input.toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_NOT_A_NUMBER)
 
         if (winningNumbers.contains(bonus)) {
-            throw IllegalArgumentException("[ERROR] Bonus number must not duplicate a winning number.")
+            throw IllegalArgumentException(Constants.ERROR_DUPLICATE_BONUS_NUMBER)
         }
 
         return bonus

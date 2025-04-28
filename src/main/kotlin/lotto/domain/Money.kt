@@ -1,13 +1,15 @@
 package lotto.domain
 
+import lotto.constant.Constants
+
 class Money(private val amount: Int) {
 
     init {
         require(amount >= TICKET_PRICE) {
-            "[ERROR] Invalid purchase amount. Must be at least ₩1,000."
+            Constants.ERROR_INVALID_PURCHASE_AMOUNT
         }
         require(amount % TICKET_PRICE == 0) {
-            "[ERROR] Purchase amount must be a multiple of ₩1,000."
+            Constants.ERROR_INVALID_PURCHASE_AMOUNT
         }
     }
 

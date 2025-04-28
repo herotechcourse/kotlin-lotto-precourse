@@ -1,12 +1,14 @@
 package lotto.domain
 
+import lotto.constant.Constants
+
 class BonusNumber(
     val number: LottoNumber,
     winningNumbers: WinningNumbers
 ) {
     init {
         require(!winningNumbers.contains(number)) {
-            "[ERROR] Bonus number must not be included in the winning numbers."
+            Constants.ERROR_DUPLICATE_BONUS_NUMBER
         }
     }
 
