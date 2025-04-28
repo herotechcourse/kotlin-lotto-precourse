@@ -4,6 +4,10 @@ import lotto.Lotto
 import lotto.domain.LottoResult
 import lotto.domain.PrizeRank
 
+/**
+ * OutputView is responsible for displaying information to the user, including purchase details,
+ * winning statistics, and the total return rate.
+ */
 object OutputView {
     fun printTickets(tickets: List<Lotto>) {
         println(getPurchaseMessage(tickets.size))
@@ -23,6 +27,9 @@ object OutputView {
         println(getReturnRateMessage(returnRate))
     }
 
+    /**
+     * Returns a pluralized string for the word "ticket", depending on the count.
+     */
     private fun pluralizeTicket(count: Int): String {
         return if (count == 1) "ticket" else "tickets"
     }
@@ -33,6 +40,10 @@ object OutputView {
 
     private fun getPurchaseMessage(count: Int) = "You have purchased $count ${pluralizeTicket(count)}."
 
+    /**
+     * Formats a prize amount by adding commas for thousands separation.
+     * For example, formats 1500000 as "1,500,000".
+     */
     private fun formatPrize(prize: Int): String {
         return prize.toString()
             .reversed()
@@ -47,6 +58,9 @@ object OutputView {
         return "${rank.matchCount} Matches$bonusMessage (${formatPrize(rank.prize)} KRW) – $count tickets"
     }
 
+    /**
+     * Contains constant strings used in the OutputView class for various messages.
+     */
     object Constants {
         const val STATISTICS_HEADER = "Winning Statistics"
         const val SEPARATOR = "---"

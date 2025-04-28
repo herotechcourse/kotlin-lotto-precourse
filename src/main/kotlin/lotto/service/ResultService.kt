@@ -1,9 +1,9 @@
 package lotto.service
 
 import lotto.Lotto
-import lotto.domain.WinningNumbers
-import lotto.domain.PrizeRank
 import lotto.domain.LottoResult
+import lotto.domain.PrizeRank
+import lotto.domain.WinningNumbers
 
 /**
  * Service responsible for evaluating lottery tickets against winning numbers.
