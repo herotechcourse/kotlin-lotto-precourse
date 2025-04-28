@@ -2,7 +2,7 @@
 
 # Features
 
-### 1. Input - Purchase amount, issued
+### 1. Input - Purchase amount
 
 **View**
 * Print info text
@@ -42,10 +42,9 @@
 **Error cases**
 1. Numbers must be in the range 1-45
 2. Winning number
-1. The user enters numbers(comma-separated)
-2. The number counts must be 6
-3. Only accept `Number`
-4. No duplicates allowed
+  - The user enters numbers(comma-separated)
+  - Only accept `Number`
+  - No duplicates allowed
 
 ### 4. Output - The result of lotteries
 
@@ -65,6 +64,8 @@ Total return rate is 62.5%.
 ```
 
 **Logic**
+* winningNumbers size must be 6.
+  
 1. Logic for matching the lottery
 2. Get match counts for each prize
 3. Calculate profit rate
