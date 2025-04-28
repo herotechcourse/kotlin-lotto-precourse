@@ -1,9 +1,10 @@
 package lotto
 
-class PrizeRankCalculator(val winningLotto: Lotto, val bonusLottoNumber: LottoNumber) {
+class PrizeRankCalculator(val winningLotto: Lotto, val bonusLottoNumber: Int) {
 
     init {
         require(winningLotto.doesNotContain(bonusLottoNumber)) { DUPLICATED_NUMBER_ERROR }
+        require(bonusLottoNumber in MIN_RANGE..MAX_RANGE) { NUMBER_OUT_OF_RANGE_ERROR }
     }
 
     fun calculateStatistics(lottoTickets: List<Lotto>): PrizeRankResult {
@@ -20,6 +21,11 @@ class PrizeRankCalculator(val winningLotto: Lotto, val bonusLottoNumber: LottoNu
     }
 
     companion object {
+        private const val MIN_RANGE: Int = 1
+        private const val MAX_RANGE: Int = 45
+
+        private const val NUMBER_OUT_OF_RANGE_ERROR: String =
+            "[ERROR] Number must be between $MIN_RANGE and $MAX_RANGE."
         private const val DUPLICATED_NUMBER_ERROR: String =
             "[ERROR] Winning numbers and the bonus number should be unique."
     }

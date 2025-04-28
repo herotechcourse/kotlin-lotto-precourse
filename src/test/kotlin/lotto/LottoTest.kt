@@ -11,43 +11,22 @@ class LottoTest {
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(
-                listOf(
-                    LottoNumber(1),
-                    LottoNumber(2),
-                    LottoNumber(3),
-                    LottoNumber(4),
-                    LottoNumber(5),
-                    LottoNumber(6),
-                    LottoNumber(7)
-                )
-            )
+            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
         }
     }
 
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
-            Lotto(
-                listOf(
-                    LottoNumber(1),
-                    LottoNumber(2),
-                    LottoNumber(3),
-                    LottoNumber(4),
-                    LottoNumber(5),
-                    LottoNumber(5)
-                )
-            )
+            Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
     }
 
     @Test
     fun `can count matching numbers between two lotto`() {
         // given
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
-        val comparisonNumbers = listOf(4, 5, 6, 7, 8, 9)
-        val lotto = createLotto(numbers)
-        val comparisonLotto = createLotto(comparisonNumbers)
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val comparisonLotto = Lotto(listOf(4, 5, 6, 7, 8, 9))
         // when
         val matchingCount = lotto.countSameNumber(comparisonLotto)
         // then
@@ -58,10 +37,9 @@ class LottoTest {
     @ValueSource(ints = [11, 20, 40])
     fun `should return true when lotto does not contain the given number`(lottoNumber: Int) {
         // given
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
-        val lotto = createLotto(numbers)
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         // when
-        val isNotContained = lotto.doesNotContain(LottoNumber(lottoNumber))
+        val isNotContained = lotto.doesNotContain(lottoNumber)
         // then
         assertThat(isNotContained).isTrue()
     }
@@ -70,24 +48,10 @@ class LottoTest {
     @ValueSource(ints = [1, 2, 3, 4, 5, 6])
     fun `should return true when lotto contains a same lotto number`(lottoNumber: Int) {
         // given
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
-        val lotto = createLotto(numbers)
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
         // when
-        val hasSameNumber = lotto.hasSameNumber(LottoNumber(lottoNumber))
+        val hasSameNumber = lotto.hasSameNumber(lottoNumber)
         // then
         assertThat(hasSameNumber).isTrue()
-    }
-
-    private fun createLotto(numbers: List<Int>): Lotto {
-        return Lotto(
-            listOf(
-                LottoNumber(numbers[0]),
-                LottoNumber(numbers[1]),
-                LottoNumber(numbers[2]),
-                LottoNumber(numbers[3]),
-                LottoNumber(numbers[4]),
-                LottoNumber(numbers[5])
-            )
-        )
     }
 }

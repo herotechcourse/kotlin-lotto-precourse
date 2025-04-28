@@ -21,14 +21,8 @@ class LottoStoreTest {
         // then
         assertAll(
             { assertThat(lottoTickets).hasSize(2) },
-            { assertLottoNumbers(lottoTickets.first(), listOf(1, 2, 3, 4, 5, 6)) },
-            { assertLottoNumbers(lottoTickets.last(), listOf(11, 12, 13, 14, 15, 16)) }
-        )
-    }
-
-    private fun assertLottoNumbers(lotto: Lotto, lottoNumbers: List<Int>) {
-        assertThat(lotto.numbers()).containsExactlyInAnyOrder(
-            *lottoNumbers.map { LottoNumber(it) }.toTypedArray()
+            { assertThat(lottoTickets.first().numbers()).containsExactlyInAnyOrder(1, 2, 3, 4, 5, 6) },
+            { assertThat(lottoTickets.last().numbers()).containsExactlyInAnyOrder(11, 12, 13, 14, 15, 16) }
         )
     }
 }

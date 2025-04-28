@@ -2,7 +2,6 @@ package lotto.controller
 
 import lotto.InputHandler
 import lotto.Lotto
-import lotto.LottoNumber
 import lotto.LottoPurchaseAmount
 import lotto.LottoStore
 import lotto.PrizeRankCalculator
@@ -41,14 +40,13 @@ class LottoController(val lottoGenerator: LottoGenerator) {
     private fun initPrizeRankCalculator(): PrizeRankCalculator {
         val winningLotto = InputHandler.retryOnInvalidInput { readWinningLotto() }
         return InputHandler.retryOnInvalidInput {
-            val bonusNumber = LottoNumber(InputView.readBonusNumber())
+            val bonusNumber = InputView.readBonusNumber()
             PrizeRankCalculator(winningLotto, bonusNumber)
         }
     }
 
     private fun readWinningLotto(): Lotto {
         val winningNumbers = InputView.readWinningNumbers()
-        return Lotto(winningNumbers.map { LottoNumber(it) })
+        return Lotto(winningNumbers.map { it })
     }
-
 }

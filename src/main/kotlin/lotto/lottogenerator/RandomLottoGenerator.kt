@@ -2,7 +2,6 @@ package lotto.lottogenerator
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
-import lotto.LottoNumber
 
 class RandomLottoGenerator : LottoGenerator {
 
@@ -10,7 +9,8 @@ class RandomLottoGenerator : LottoGenerator {
         return Lotto(
             Randoms.pickUniqueNumbersInRange(MIN_INCLUSIVE, MAX_INCLUSIVE, SIZE)
                 .sorted()
-                .map { (LottoNumber(it)) })
+                .map { it }
+        )
     }
 
     companion object {

@@ -10,9 +10,8 @@ class PrizeRankCalculatorTest {
     @Test
     fun `throws an exception when the winning lotto and the bonus number have a duplicate number`() {
         //given
-        val numbers = listOf(1, 2, 3, 4, 5, 6)
-        val lotto = createLotto(numbers)
-        val bonusNumber = LottoNumber(4)
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 4
         // when & then
         assertThatThrownBy { PrizeRankCalculator(lotto, bonusNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
@@ -22,14 +21,14 @@ class PrizeRankCalculatorTest {
     @Test
     fun `should calculate prize rank statistics for lotto tickets`() {
         // given
-        val expectedFirst = createLotto(listOf(1, 2, 3, 4, 5, 6))
-        val expectedSecond = createLotto(listOf(1, 2, 3, 4, 5, 10))
-        val expectedThird = createLotto(listOf(1, 2, 3, 4, 5, 9))
-        val expectedNone = createLotto(listOf(10, 11, 12, 13, 14, 15))
+        val expectedFirst = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val expectedSecond = Lotto(listOf(1, 2, 3, 4, 5, 10))
+        val expectedThird = Lotto(listOf(1, 2, 3, 4, 5, 9))
+        val expectedNone = Lotto(listOf(10, 11, 12, 13, 14, 15))
         val lottoTickets = listOf(expectedFirst, expectedSecond, expectedThird, expectedNone)
 
-        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
-        val bonusNumber = LottoNumber(10)
+        val winningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 10
         val prizeRankCalculator = PrizeRankCalculator(winningLotto, bonusNumber)
         // when
         val statistics = prizeRankCalculator.calculateStatistics(lottoTickets)
@@ -41,19 +40,6 @@ class PrizeRankCalculatorTest {
             { assertThat(statistics.statistics()[PrizeRank.FOURTH]).isEqualTo(0) },
             { assertThat(statistics.statistics()[PrizeRank.FIFTH]).isEqualTo(0) },
             { assertThat(statistics.statistics()[PrizeRank.NONE]).isEqualTo(1) }
-        )
-    }
-
-    private fun createLotto(numbers: List<Int>): Lotto {
-        return Lotto(
-            listOf(
-                LottoNumber(numbers[0]),
-                LottoNumber(numbers[1]),
-                LottoNumber(numbers[2]),
-                LottoNumber(numbers[3]),
-                LottoNumber(numbers[4]),
-                LottoNumber(numbers[5])
-            )
         )
     }
 }

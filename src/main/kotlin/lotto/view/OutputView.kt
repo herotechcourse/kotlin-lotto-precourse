@@ -17,7 +17,7 @@ Winning Statistics
     fun showLottoTickets(lottoTickets: List<Lotto>) {
         println(LOTTO_TICKETS_MESSAGE.format(lottoTickets.size))
         lottoTickets.forEach { lotto ->
-            println(lotto.numbers().map { it.value })
+            println(lotto.numbers().map { it })
         }
     }
 
