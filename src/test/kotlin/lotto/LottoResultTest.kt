@@ -16,7 +16,6 @@ class LottoResultTest {
     }
 
     @Test
-    fun `creates LottoResult correctly based on winning numbers and bonus number`() {
     fun `should return 2nd prize when matching 5 numbers and bonus`() {
         val lottoList = listOf(Lotto(listOf(1, 2, 3, 4, 5, 7)))
         val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6))
@@ -63,23 +62,20 @@ class LottoResultTest {
     }
 
     @Test
+    fun `should round profit rate to one decimal place`() {
         val lottoList = listOf(
             Lotto(listOf(1, 2, 3, 4, 5, 6)),
-            Lotto(listOf(1, 2, 3, 4, 5, 7)),
-            Lotto(listOf(1, 2, 3, 4, 5, 8)),
-            Lotto(listOf(1, 2, 3, 4, 7, 8)),
-            Lotto(listOf(1, 2, 3, 7, 8, 9))
+            Lotto(listOf(1, 2, 3, 4, 5, 7))
         )
         val winningNumber = WinningNumber(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = BonusNumber(7)
 
-        val lottoResult = LottoResult.from(lottoList, winningNumber, bonusNumber)
-        val result = lottoResult.getResult()
+        val result = LottoResult.from(lottoList, winningNumber, bonusNumber)
 
-        assertEquals(1, result[LottoResult.LottoPrize.PRIZE_1ST])
-        assertEquals(1, result[LottoResult.LottoPrize.PRIZE_2ND])
-        assertEquals(1, result[LottoResult.LottoPrize.PRIZE_3RD])
-        assertEquals(1, result[LottoResult.LottoPrize.PRIZE_4TH])
-        assertEquals(1, result[LottoResult.LottoPrize.PRIZE_5TH])
+        val expectedPrize = 2000000000 + 30000000
+        val expectedRate = (expectedPrize.toFloat() / (2 * 1000)) * 100
+        val rounded = kotlin.math.round(expectedRate * 10) / 10f
+
+        assertThat(result.getProfitRate()).isEqualTo(rounded)
     }
 }
