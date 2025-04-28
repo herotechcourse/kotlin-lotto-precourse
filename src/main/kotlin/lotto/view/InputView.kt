@@ -13,7 +13,7 @@ object InputView {
     }
 
     fun readWinningNumbers(): List<Int> {
-        println("Please enter last week's winning numbers")
+        println("\nPlease enter last week's winning numbers.")
         val input = Console.readLine()
         val numbers = input.split(",")
             .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_INVALID_INPUT_NUMBER) }
@@ -30,7 +30,7 @@ object InputView {
     }
 
     fun readBonusNumber(winningNumbers: List<Int>): Int {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
         val input = Console.readLine()
         val bonus = input.toIntOrNull() ?: throw IllegalArgumentException(Constants.ERROR_INVALID_INPUT_NUMBER)
 
