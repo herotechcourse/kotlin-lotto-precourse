@@ -28,7 +28,7 @@ object InputView {
 
 
     fun readWinningNumbers(): List<Int> {
-        println("Please enter last week's winning numbers.")
+        println("\nPlease enter last week's winning numbers.")
         val winningNumbers = Console.readLine().split(",").map {
             val parsedNumber = it.trim().toIntOrNull()
             validateLotteryNumber(parsedNumber)
@@ -41,7 +41,7 @@ object InputView {
     }
 
     fun readBonusNumber(): Int {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
         val bonusNumber = Console.readLine().toIntOrNull()
         validateLotteryNumber(bonusNumber)
 
