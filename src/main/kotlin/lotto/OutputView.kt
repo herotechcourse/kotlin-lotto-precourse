@@ -14,11 +14,13 @@ class OutputView {
     fun printStatistics(prizeCount: Map<Prize, Int>) {
         println("\nWinning Statistics")
         println("-------------------")
-        for (prize in Prize.entries) {
+        for (prize in Prize.entries.asReversed()) {
+            if (prize == Prize.NONE)
+                continue
             print("${prize.matchCount} Matches ")
             if (prize == Prize.SECOND)
                 print("+ Bonus Ball ")
-            println("${prize.prize} KRW) — ${prizeCount.getOrDefault(prize, 0)} tickets")
+            println("(${prize.prize} KRW) — ${prizeCount.getOrDefault(prize, 0)} tickets")
         }
     }
 
