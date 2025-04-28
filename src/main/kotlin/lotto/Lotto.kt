@@ -7,7 +7,6 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) {"[ERROR] All numbers must be between 1 and 45"}
     }
 
-    // TODO: Implement additional functions
     fun getTicketNumbers(): List<Int> {
         return sortNumbers()
     }
@@ -24,3 +23,4 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.sorted()
     }
 }
+
