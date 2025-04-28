@@ -1,6 +1,7 @@
 package lotto.controller
 
 import lotto.Lotto
+import lotto.domain.LottoCalculator
 import lotto.domain.TicketIssuer
 import lotto.view.InputReader
 import lotto.view.OutputPrinter
@@ -26,14 +27,13 @@ class LottoController(
         // 4. Input a bonus number.
         val bonusNumber = RePrompter.retryPrompt({ reader.readBonusNumber() })
 
-        // 5. Print lotto result statistics.
-
-        // 6. Print calculated Profit rate
+        // 5. Print lotto result statistics and profit rate
+        val result = LottoCalculator(
+            winningNumbers = winningNumbers,
+            bonusNumber = bonusNumber,
+            tickets = tickets,
+        )
 
         printer.close()
-    }
-
-    companion object {
-        private const val TICKET_PRICE: Int = Lotto.PRICE
     }
 }
