@@ -13,6 +13,10 @@
 6. print result : winnings and profit rate
 
 ## Notes:
+-  must implement the program using the provided Lotto class. 
+   - get user input from Application.kt, Lotto.kt issues the lottery tickts with 6 random numbers each
+   - get winning number from Application.kt, check criteria at Lotto.kt
+   - print result at Application.kt
 - Input validation: If the input is invalid, the program throws `IllegalArgumentException` or `IllegalStateException` and re-prompts for input.
 - Random number generation uses `Randoms.pickNumberInRange()` from `camp.nextstep.edu.missionutils`.
 
