@@ -1,5 +1,5 @@
 package lotto
 
-fun main() {
-    // TODO: Implement the program
-}
+import lotto.controller.LottoController
+
+fun main() = LottoController().run()
