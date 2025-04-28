@@ -2,7 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoService {
+object LottoService {
     fun generateLottos(purchaseAmount: Int): List<Lotto> {
         val numberOfTickets = purchaseAmount / 1000
         return List(numberOfTickets) { createLotto() }
