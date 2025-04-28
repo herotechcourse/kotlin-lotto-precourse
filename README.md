@@ -37,13 +37,11 @@ adhering to the MVC pattern principles.
         ├── ApplicationTest.kt
         ├── LottoTest.kt
         ├── domain                  
-        │   ├── LottoTicketsTest.kt     // Unit tests for managing purchased tickets
         │   ├── WinningLottoTest.kt     // Unit tests for winning number matching logic
         │   ├── LottoResultsTest.kt     // Unit tests for result aggregation and profit calculation
-        │   ├── LottoMachineTest.kt     // Tests the overall buying and calculation flow within the model
         │   └── PrizeRankTest.kt        // Unit tests for PrizeRank Enum logic
-        └── controller
-            └── LottoControllerTest.kt  // Tests game flow and input validation loops
+        └── util
+            └── InputValidatorTest.kt 
         
 ```
 
