@@ -20,7 +20,7 @@ class OutputView {
             print("${prize.matchCount} Matches ")
             if (prize == Prize.SECOND)
                 print("+ Bonus Ball ")
-            println("(${prize.prize} KRW) — ${prizeCount.getOrDefault(prize, 0)} tickets")
+            println("(${prize.money} KRW) — ${prizeCount.getOrDefault(prize, 0)} tickets")
         }
     }
 

@@ -4,7 +4,7 @@ package lotto
  * Enum class that holds the prize table of the lottery.
  *
  * @param matchCount: count of matching numbers
- * @param prize: the money to win
+ * @param money: the money to win
  * The enum has 5 prize ranks plus NONE for no prize. Enums are
  * fixed singletons - they are pre-declared constants. Since we
  * cannot create new instances, we need a factory function that
@@ -27,7 +27,7 @@ package lotto
  * let you define class-level functions and properties. It is useful for
  * creating factory methods, holding constants, and accessing shared utilities.
  */
-enum class Prize(val matchCount: Int, val prize: Int) {
+enum class Prize(val matchCount: Int, val money: Int) {
     FIRST(6, 2000000000), // important: comma -> enums are a list of constants
     SECOND(5, 30000000),
     THIRD(5, 1500000),
