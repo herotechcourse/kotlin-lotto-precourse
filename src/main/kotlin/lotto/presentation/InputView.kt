@@ -6,13 +6,13 @@ import lotto.presentation.IntParser.parseSingle
 
 object InputView {
     fun readPurchaseAmount(): Int {
-        println("Purchase amount for lottery tickets:")
+        println("Please enter the purchase amount.")
 
         return parseSingle(Console.readLine())
     }
 
     fun readWinningNumbers(): List<Int> {
-        println("Winning numbers (comma-separated):")
+        println("Please enter last week's winning numbers.")
 
         return parseMultiple(Console.readLine())
     }
