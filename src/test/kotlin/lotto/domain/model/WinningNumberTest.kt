@@ -42,7 +42,7 @@ class WinningNumberTest {
     @DisplayName("Creating WinningNumber with size not equal to 6 should throw IllegalArgumentException with WINNING_NUMBER_SIZE_NOT_SIX")
     fun createWinningNumber_withInvalidSize() {
         val exception = assertThrows(IllegalArgumentException::class.java) {
-            WinningNumber(listOf(1, 2, 3, 4, 5)) // 5개
+            WinningNumber(listOf(1, 2, 3, 4, 5))
         }
 
         assertEquals(WINNING_NUMBER_SIZE_NOT_SIX, exception.message)

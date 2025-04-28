@@ -16,4 +16,6 @@ object Messages {
     const val NUMBER_NOT_POSITIVE = ERROR + "Please re-enter a positive number."
     const val INVALID_INPUT = ERROR + "Invalid input."
     const val UNEXPECTED_MESSAGE = ERROR + "Unexpected error."
+    const val LOTTO_NUMBERS_NOT_SIX = ERROR + "Lotto must contain exactly 6 numbers."
+    const val LOTTO_NUMBERS_DUPLICATE = ERROR + "Lotto must not have duplicates."
 }
