@@ -23,8 +23,8 @@ fun generateLottoTickets(): List<List<Int>> {
     return tickets
 }
 
-fun checkWinningTickets(tickets: List<List<Int>>, winningNumbers: List<Int>, luckyNumber: Int): List<LottoResults> {
-    return tickets.mapNotNull { ticket ->
+fun checkWinningTickets(tickets: List<List<Int>>, winningNumbers: List<Int>, luckyNumber: Int): List<LottoResults?> {
+    return tickets.map { ticket ->
         val matchCount = ticket.count { it in winningNumbers }
         val hasLuckyNumber = luckyNumber in ticket
 
@@ -39,8 +39,8 @@ fun checkWinningTickets(tickets: List<List<Int>>, winningNumbers: List<Int>, luc
     }
 }
 
-fun calculateResultCounts(results: List<LottoResults>): Map<LottoResults, Int> {
-    return LottoResults.entries.associateWith { result ->
+fun calculateResultCounts(results: List<LottoResults?>): Map<LottoResults, Int> {
+    return LottoResults.values().associateWith { result ->
         results.count { it == result }
     }
 }

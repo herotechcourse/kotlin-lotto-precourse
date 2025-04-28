@@ -6,7 +6,7 @@ class OutputView {
 
     fun displayTickets(tickets: List<List<Int>>): List<String> {
         val output = mutableListOf<String>()
-        output.add("You have purchased ${tickets.count()} tickets.")
+        output.add("You have purchased ${tickets.size} tickets.")
         tickets.forEach { ticket ->
             output.add(ticket.toString())
         }

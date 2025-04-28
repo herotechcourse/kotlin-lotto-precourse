@@ -3,71 +3,79 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun inputTickets(): Int {
-        println("Enter how much you wish to spend today:")
-        val input = Console.readLine() ?: throw IllegalArgumentException("Input cannot be null.")
-        return validateTickets(input)
+        while (true) {
+            try {
+                println("Enter how much you wish to spend today:")
+                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
+                return validateTickets(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun validateTickets(input: String): Int {
         val inputValidated = input.toIntOrNull()
         if (inputValidated == null) {
-            println("[ERROR] Must be a number! Please provide an integer value.")
-            return inputTickets()
+            throw IllegalArgumentException("[ERROR] Must be a number! Please provide an integer value.")
         } else if (inputValidated % 1000 != 0) {
-            println("[ERROR] The amount must be divisible by 1000. Please try again.")
-            return inputTickets()
+            throw IllegalArgumentException("[ERROR] The amount must be divisible by 1000. Please try again.")
         }
         return inputValidated
     }
 
-
     fun inputWinningNumber(): List<Int> {
-        println("Enter 6 unique numbers between 1 and 45, separated by commas:")
-        val input = Console.readLine() ?: throw IllegalArgumentException("Input cannot be null.")
-        return validateWinningNumber(input)
+        while (true) {
+            try {
+                println("Enter 6 unique numbers between 1 and 45, separated by commas:")
+                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
+                return validateWinningNumber(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun validateWinningNumber(input: String): List<Int> {
         val numbers = input.split(",").map { it.trim() }
         if (numbers.size != 6) {
-            println("[ERROR] You must provide exactly 6 numbers separated by commas. Please try again.")
-            return inputWinningNumber()
+            throw IllegalArgumentException("[ERROR] You must provide exactly 6 numbers separated by commas.")
         }
         val validatedNumbers = numbers.mapNotNull { it.toIntOrNull() }
         if (validatedNumbers.size != 6) {
-            println("[ERROR] All inputs must be valid integers. Please try again.")
-            return inputWinningNumber()
+            throw IllegalArgumentException("[ERROR] All inputs must be valid integers.")
         }
         if (validatedNumbers.any { it !in 1..45 }) {
-            println("[ERROR] All numbers must be between 1 and 45. Please try again.")
-            return inputWinningNumber()
+            throw IllegalArgumentException("[ERROR] All numbers must be between 1 and 45.")
         }
         if (validatedNumbers.toSet().size != 6) {
-            println("[ERROR] All numbers must be unique. Please try again.")
-            return inputWinningNumber()
+            throw IllegalArgumentException("[ERROR] All numbers must be unique.")
         }
         return validatedNumbers
     }
 
     fun inputSingleNumber(winningNumbers: List<Int>): Int {
-        println("Enter a single number that is not in the winning numbers:")
-        val input = Console.readLine() ?: throw IllegalArgumentException("Input cannot be null.")
-        return validateSingleNumber(input, winningNumbers)
+        while (true) {
+            try {
+                println("Enter a single number that is not in the winning numbers:")
+                val input = Console.readLine() ?: throw IllegalArgumentException("[ERROR] Input cannot be null.")
+                return validateSingleNumber(input, winningNumbers)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun validateSingleNumber(input: String, winningNumbers: List<Int>): Int {
         val inputValidated = input.toIntOrNull()
         if (inputValidated == null) {
-            println("[ERROR] Must be a valid number. Please try again.")
-            return inputSingleNumber(winningNumbers)
+            throw IllegalArgumentException("[ERROR] Must be a valid number.")
         }
         if (inputValidated in winningNumbers) {
-            println("[ERROR] The number must not be one of the winning numbers. Please try again.")
-            return inputSingleNumber(winningNumbers)
+            throw IllegalArgumentException("[ERROR] The number must not be one of the winning numbers.")
         }
         if (inputValidated !in 1..45) {
-            println("[ERROR] The number must be between 1 and 45. Please try again.")
-            return inputSingleNumber(winningNumbers)
+            throw IllegalArgumentException("[ERROR] The number must be between 1 and 45.")
         }
         return inputValidated
     }
