@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@modelcontextprotocol/server-sequential-thinking": "^0.6.2"
+  }
+}

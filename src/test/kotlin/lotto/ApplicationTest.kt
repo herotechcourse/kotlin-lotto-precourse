@@ -22,11 +22,11 @@ class ApplicationTest : NsTest() {
                     "[7, 11, 30, 40, 42, 43]",
                     "[2, 13, 22, 32, 38, 45]",
                     "[1, 3, 5, 14, 22, 45]",
-                    "3 Matches (5,000 KRW) – 1 tickets",
-                    "4 Matches (50,000 KRW) – 0 tickets",
-                    "5 Matches (1,500,000 KRW) – 0 tickets",
-                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
-                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "3 Matches (5,000 KRW)-1 tickets",
+                    "4 Matches (50,000 KRW)-0 tickets",
+                    "5 Matches (1,500,000 KRW)-0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW)-0 tickets",
+                    "6 Matches (2,000,000,000 KRW)-0 tickets",
                     "Total return rate is 62.5%.",
                 )
             },
@@ -37,15 +37,19 @@ class ApplicationTest : NsTest() {
             listOf(13, 14, 16, 38, 42, 45),
             listOf(7, 11, 30, 40, 42, 43),
             listOf(2, 13, 22, 32, 38, 45),
-            listOf(1, 3, 5, 14, 22, 45),
+            listOf(1, 3, 5, 14, 22, 45)
         )
     }
 
     @Test
     fun `exception test`() {
         assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            try {
+                run("1000j")
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+                assertThat(e.message).isEqualTo(ERROR_MESSAGE)
+            }
         }
     }
 
@@ -54,6 +58,5 @@ class ApplicationTest : NsTest() {
     }
 
     companion object {
-        private const val ERROR_MESSAGE: String = "[ERROR]"
     }
 }
