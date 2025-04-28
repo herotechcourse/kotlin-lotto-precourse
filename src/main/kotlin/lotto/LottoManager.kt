@@ -1,6 +1,7 @@
 package lotto
 
 object LottoManager {
+    private const val TICKET_PRICE = 1000
 
     fun run() {
         val purchaseAmount = readPurchaseAmount()
@@ -24,7 +25,7 @@ object LottoManager {
     }
 
     private fun issueTickets(purchaseAmount: Int): List<Lotto> {
-        val ticketCount = purchaseAmount / 1000
+        val ticketCount = purchaseAmount / TICKET_PRICE
         return LottoMachine.issueTickets(ticketCount)
     }
 
