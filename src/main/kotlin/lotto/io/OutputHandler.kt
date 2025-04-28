@@ -9,7 +9,7 @@ object OutputHandler {
     fun showTickets(tickets: MutableList<Lotto>) {
         println("You have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {
-            ticket.showNumbers()
+            println(ticket.getNumbers())
         }
     }
 

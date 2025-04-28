@@ -3,8 +3,6 @@ package lotto
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
 
 class LottoTest {
     @Test
@@ -29,13 +27,10 @@ class LottoTest {
     }
 
     @Test
-    fun `should show numbers`() {
+    fun `should return the ticket numbers`() {
         val lotto = Lotto(listOf(1, 2, 4, 5, 8, 9))
-        val output = ByteArrayOutputStream()
-        System.setOut(PrintStream(output))
-        lotto.showNumbers()
-        assertThat("[1, 2, 4, 5, 8, 9]").isEqualTo(output.toString().trim())
-        System.setOut(System.out)
+        lotto.getNumbers()
+        assertThat(listOf(1, 2, 4, 5, 8, 9)).isEqualTo(lotto.getNumbers())
     }
 
     @Test

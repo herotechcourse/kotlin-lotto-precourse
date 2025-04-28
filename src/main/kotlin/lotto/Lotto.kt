@@ -9,8 +9,8 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }){ ValidationErrors.MUST_BE_IN_RANGE.message }
     }
 
-    fun showNumbers() {
-        println(numbers)
+    fun getNumbers(): List<Int>{
+        return numbers
     }
 
     fun calculateMatches(winningCombination: List<Int>): Int {
