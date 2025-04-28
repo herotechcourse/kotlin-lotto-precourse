@@ -36,4 +36,15 @@ class PurchaseAmountTest {
             PurchaseAmount.from("0")
         }
     }
+
+    @Test
+    fun `throws an exception when purchase amount is not divisible by 1000`() {
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount.from("500")
+        }
+
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount.from("1001")
+        }
+    }
 }

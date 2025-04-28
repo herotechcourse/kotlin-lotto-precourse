@@ -10,11 +10,11 @@ A lotto simulator implemented in Kotlin as part of the Hero Tech Course pre-cour
 
 ## Feature List
 ### ✅ Ticket Purchase
-- [ ] **Accept purchase amount**
+- [x] **Accept purchase amount**
   - [x] Validate that the purchase amount is not blank
   - [x] Validate that the purchase amount is a number
   - [x] Validate that the purchase amount is a positive integer
-  - [ ] Validate that the purchase amount is divisible by 1,000
+  - [x] Validate that the purchase amount is divisible by 1,000
 - [ ] **Issue lottery tickets based on the purchase amount**
   - [ ] Validate that the number of issued tickets matches the purchase amount divided by 1,000
   - [ ] Validate that each ticket's numbers are in the range from 1 to 45
