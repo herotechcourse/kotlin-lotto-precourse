@@ -55,3 +55,9 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 
 ### 6. Implement an outputHandler
 - refactor LottoView earlier created to Input Handler
+
+### 7. implement the input number functions for winning numbers and bonus
+- implement input and parsing of winning numbers
+- implement input and parsing of winning numbers
+- implement printing of the output in the output handler
+

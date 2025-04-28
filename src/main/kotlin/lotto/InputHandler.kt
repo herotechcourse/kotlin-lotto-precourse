@@ -25,4 +25,6 @@ object InputHandler {
         }
         return amount
     }
+
+
 }
