@@ -27,7 +27,7 @@ class WinningLotto(
             throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
         }
         if (winningNumbers.contains(number)) {
-            throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with winning numbers.")
+            throw IllegalArgumentException("[ERROR] Bonus number must not be same with winning numbers.")
         }
     }
 
