@@ -13,4 +13,5 @@ fun main() {
     outputHandler.printPurchasedLottos(lottos)
 
     val winningNumbers = inputHandler.getWinningNumbers()
+    val bonusNumber = inputHandler.getBonusNumber(winningNumbers)
 }

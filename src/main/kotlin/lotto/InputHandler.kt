@@ -39,4 +39,25 @@ class InputHandler {
             throw IllegalArgumentException("[ERROR] Invalid number format.")
         }
     }
+
+    fun getBonusNumber(winningNumbers: List<Int>): Int {
+        println("Please enter the bonus number:")
+        val input = Console.readLine()
+
+        return validateBonusNumber(input, winningNumbers)
+    }   
+
+    private fun validateBonusNumber(input: String, winningNumbers: List<Int>): Int {
+        try {
+            val number = input.toInt()
+
+            require(number in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
+            require(number !in winningNumbers) { "[ERROR] Bonus number must be different from the winning numbers." }
+            
+            return number   
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("[ERROR] Invalid number format.")
+        }
+    }
+}
 }
