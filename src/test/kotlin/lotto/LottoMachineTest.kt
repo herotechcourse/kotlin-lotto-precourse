@@ -7,6 +7,11 @@ import org.assertj.core.api.Assertions.assertThat
 
 class LottoMachineTest {
     @Test
+    fun `minimum purchase amount minimum`() {
+        val machine = LottoMachine("1000")
+        assertThat(machine.numberOfLottos).isEqualTo(1)
+    }
+    @Test
     fun `valid purchase amount 2000`() {
         val machine = LottoMachine("2000")
         assertThat(machine.numberOfLottos).isEqualTo(2)

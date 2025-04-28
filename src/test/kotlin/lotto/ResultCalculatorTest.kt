@@ -6,6 +6,7 @@ import lotto.domain.WinningNumbers
 import lotto.domain.Rank
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.assertThrows
 
 class ResultCalculatorTest{
     private val calculator = ResultCalculator()
@@ -13,7 +14,7 @@ class ResultCalculatorTest{
     private val bonus = BonusNumber("7", winningNumbers)
 
     @Test
-    fun `calculate rank 1`() {
+    fun `calculate result with rank 1`() {
         val ticket = Lotto(listOf(1,2,3,4,5,6))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -22,7 +23,7 @@ class ResultCalculatorTest{
     }
 
     @Test
-    fun `calculate rank 2`() {
+    fun `calculate result with rank 2`() {
         val ticket = Lotto(listOf(1,2,3,4,5,7))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -31,7 +32,7 @@ class ResultCalculatorTest{
     }
 
     @Test
-    fun `calculate rank 3`() {
+    fun `calculate result with rank 3`() {
         val ticket = Lotto(listOf(1,2,3,4,5,45))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -40,7 +41,7 @@ class ResultCalculatorTest{
     }
 
     @Test
-    fun `calculate rank 4`() {
+    fun `calculate result with rank 4`() {
         val ticket = Lotto(listOf(1,2,3,4,44,45))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -49,7 +50,7 @@ class ResultCalculatorTest{
     }
 
     @Test
-    fun `calculate rank 5`() {
+    fun `calculate result with rank 5`() {
         val ticket = Lotto(listOf(1,2,3,43,44,45))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -58,7 +59,7 @@ class ResultCalculatorTest{
     }
 
     @Test
-    fun `calculate rank zero`() {
+    fun `calculate result with rank zero`() {
         val ticket = Lotto(listOf(40,41,42,43,44,45))
         val results = calculator.calculateResults(
             listOf(ticket), winningNumbers, bonus
@@ -66,6 +67,19 @@ class ResultCalculatorTest{
         assertThat(results[Rank.NON]).isEqualTo(1)
     }
 
+    @Test
+    fun `calculate results with multiple tickets`() {
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)), // Rank 1
+            Lotto(listOf(1, 2, 3, 4, 5, 7)), // Rank 2
+            Lotto(listOf(1, 2, 3, 4, 5, 8)), // Rank 3
+        )
+        val results = calculator.calculateResults(tickets, winningNumbers, bonus)
+        assertThat(results[Rank.FIRST]).isEqualTo(1)
+        assertThat(results[Rank.SECOND]).isEqualTo(1)
+        assertThat(results[Rank.THIRD]).isEqualTo(1)
+    }
+    
     @Test
     fun `calculate profit rate for zero matches`() {
         val results = mapOf<Rank, Int>()
