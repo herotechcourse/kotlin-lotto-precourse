@@ -49,6 +49,115 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `should generate correct return rate when all tickets are losers`() {
+        val expectedTickets =
+                listOf(
+                        listOf(1, 2, 3, 4, 5, 6),
+                        listOf(7, 8, 9, 10, 11, 12),
+                        listOf(13, 14, 15, 16, 17, 18)
+                )
+
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("3000", "1,1,1,1,1,1", "1")
+                    assertThat(output())
+                            .contains(
+                                    "You have purchased 3 tickets.",
+                                    "Total return rate is 0.0%.",
+                            )
+                },
+                expectedTickets[0],
+                expectedTickets[1],
+                expectedTickets[2]
+        )
+    }
+
+    @Test
+    fun `should throw error when purchase amount is below 1000`() {
+        assertSimpleTest {
+            runException("500")
+            assertThat(output()).contains("[ERROR] Invalid amount. Purchase must be at least 1000.")
+        }
+    }
+
+    @Test
+    fun `should generate correct number of tickets`() {
+        val expectedTickets =
+                listOf(
+                        listOf(1, 2, 3, 4, 5, 6),
+                        listOf(7, 8, 9, 10, 11, 12),
+                        listOf(13, 14, 15, 16, 17, 18)
+                )
+
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run("3000", "1,1,1,1,1,1", "1") // User purchases 3 tickets and input numbers
+                    assertThat(output())
+                            .contains("You have purchased 3 tickets.", "Total return rate is 0.0%.")
+                },
+                expectedTickets[0],
+                expectedTickets[1],
+                expectedTickets[2]
+        )
+    }
+
+    @Test
+    fun `should calculate return rate when some tickets win`() {
+        val expectedTickets =
+                listOf(
+                        listOf(1, 2, 3, 4, 15, 16),
+                        listOf(7, 8, 9, 10, 11, 12),
+                        listOf(13, 14, 15, 16, 17, 18)
+                )
+
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run(
+                            "3000",
+                            "1,2,3,4,5,6",
+                            "1"
+                    ) // User purchases 3 tickets and the first ticket wins
+                    assertThat(output())
+                            .contains(
+                                    "You have purchased 3 tickets.",
+                                    "Total return rate is 1666.7%" // Assuming that one of the tickets
+                                    // wins completely
+                                    )
+                },
+                expectedTickets[0],
+                expectedTickets[1],
+                expectedTickets[2]
+        )
+    }
+
+    @Test
+    fun `should calculate return rate when all tickets are losers`() {
+        val expectedTickets =
+                listOf(
+                        listOf(10, 12, 31, 42, 53, 16),
+                        listOf(7, 8, 9, 10, 11, 12),
+                        listOf(13, 14, 15, 16, 17, 18)
+                )
+
+        assertRandomUniqueNumbersInRangeTest(
+                {
+                    run(
+                            "3000", // User spends 3000 KRW
+                            "1,2,3,4,5,6", // Winning numbers
+                            "1" // Bonus number
+                    )
+                    assertThat(output())
+                            .contains("You have purchased 3 tickets.", "Total return rate is 0.0%.")
+                },
+                expectedTickets[0],
+                expectedTickets[1],
+                expectedTickets[2]
+        )
+    }
+
+
+
     override fun runMain() {
         main()
     }
