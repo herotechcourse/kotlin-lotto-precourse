@@ -1,8 +1,7 @@
-package lotto
+package lotto.model
 
-import lotto.model.Game
+import lotto.Lotto
 import lotto.enums.Rank
-import lotto.model.WinningLotto
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
