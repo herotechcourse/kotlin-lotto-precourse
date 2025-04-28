@@ -2,8 +2,14 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.toSet().size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
     }
 
-    // TODO: Implement additional functions
+    fun numberList(): List<Int> {
+        return numbers
+    }
+
+    fun numberSet(): Set<Int> {
+        return numbers.toSet()
+    }
 }
