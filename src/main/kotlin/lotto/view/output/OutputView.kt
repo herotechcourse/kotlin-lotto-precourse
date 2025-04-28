@@ -1,5 +1,5 @@
 package lotto.view.output
 
-interface OutputView<T> {
+interface OutputView<in T> {
     fun display(model: T)
 }
