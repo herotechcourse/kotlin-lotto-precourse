@@ -14,6 +14,8 @@ class LottoController {
         val winningNumber = getWinningNumbers()
         val bonusNumber = getBonusNumber(winningNumber)
         val matchedLottoCount = ResultCalculator.calculateMatchedLottoCount(lottos, winningNumber, bonusNumber)
+
+        OutputView.printMatchedLottoCount(matchedLottoCount)
     }
 
     fun getPurchaseAmount(): PurchaseAmount {

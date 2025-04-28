@@ -1,10 +1,13 @@
 package lotto.view
 
+import lotto.domain.LottoRank
 import lotto.domain.Lottos
 
 object OutputView {
     private const val ERROR_HEAD = "[ERROR]"
     private const val GENERATED_LOTTO_HEADER = "You have purchased %d tickets."
+    private const val MATCHED_LOTTO_COUNT_HEADER = "\nWinning Statistics\n---";
+    private const val MATCHED_LOTTO_COUNT = "%s - %d tickets"
 
     fun printError(message: String) {
         println("$ERROR_HEAD $message")
@@ -16,5 +19,16 @@ object OutputView {
         lottos.tickets.forEach {
             println(it.formatForDisplay())
         }
+    }
+
+    fun printMatchedLottoCount(matchedLottoCount: Map<LottoRank, Int>) {
+        println(MATCHED_LOTTO_COUNT_HEADER)
+
+        LottoRank.entries
+            .filter { it != LottoRank.NONE } // NONE 등수는 출력 제외
+            .forEach { rank ->
+                val count = matchedLottoCount[rank] ?: 0  // 없으면 0
+                println(MATCHED_LOTTO_COUNT.format(rank.message, count))
+            }
     }
 }
