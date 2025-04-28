@@ -136,4 +136,42 @@ These tests verify the behavior of the `Winner` class methods:
 
 ### Lotto Util Test
 
+#### isValidLottoNumber
+
+- Validates that numbers between 1 and 45 are accepted
+- Validates that numbers outside the range (0, -5, 46, 100) are rejected
+- Validates that null inputs are rejected
+
+#### isValidLottoSize
+
+- Verifies that collections with exactly 6 elements are accepted
+- Verifies that collections with fewer or more than 6 elements are rejected
+- Verifies that null or empty collections are rejected
+
+#### generateNumbers
+
+- Ensures the function generates 6 unique numbers
+- Ensures all generated numbers are within the valid range (1-45)
+
+#### getMatchCount
+
+- Verifies correct counting of matching numbers between a lotto ticket and winning numbers
+- Tests edge cases: no matches and all matches
+
+#### isMatchBonus
+
+- Checks correct detection of bonus number presence in a lotto ticket
+- Verifies negative cases where bonus number is not present
+
+#### calculateProfit
+
+- Ensures accurate calculation of total prize money from multiple prizes
+- Verifies that empty prize list returns zero profit
+
+#### calculateProfitRate
+
+- Validates correct calculation of profit rate as percentage (profit/spent × 100)
+- Ensures proper handling of various profit and spending scenarios
+- Confirms proper rounding to one decimal place
+
 ### Lotto Machine Test
