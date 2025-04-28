@@ -6,7 +6,7 @@
   - Each ticket must consist of 6 `different` random numbers. 
   - Range: `1 - 45` 
   - Use: `Randoms.pickUniqueNumbersInRange(1, 45, 6)`
-  - [Error] Handle:
+  - Error handling:
     - Duplicate numbers
     - Out-of-range values.
 
@@ -41,17 +41,17 @@
 ## 6. Matching & Rank Calculation
 - Define 5-types of prizes.
 - Use `enum` class for `Rank`.
-- Bonus number works only for `2nd Prize`.
+- Bonus number is considered only for `2nd Prize`.
 - Store the number of wins per rank.
 - Profit rate = `Total prize money / Total purchase amount`
 
-| Prize sort | Matching Numbers |      Prize Amount |
-|:----------:|:----------------:|------------------:|
-| 1st Prize  |        6         | 2,000,000,000 KRW |
-| 2nd Prize  | 5 + Bonus Number |    30,000,000 KRW |
-| 3rd Prize  |        5         |     1,500,000 KRW |
-| 4th Prize  |        4         |        50,000 KRW |
-| 5th Prize  |        3         |         5,000 KRW |
+|   Prize   | Matching Numbers |      Prize Amount |
+|:---------:|:----------------:|------------------:|
+| 1st Prize |        6         | 2,000,000,000 KRW |
+| 2nd Prize | 5 + Bonus Number |    30,000,000 KRW |
+| 3rd Prize |        5         |     1,500,000 KRW |
+| 4th Prize |        4         |        50,000 KRW |
+| 5th Prize |        3         |         5,000 KRW |
 
 ## 7. Error message
 - All error messages must start with `[ERROR]`
@@ -63,7 +63,7 @@
 
 ## 9. Output Requirements
 - Display `nLottery` (the number of tickets)
-- Display `each ticket’s numbers` enclosed in square brackets.
+- Display `each ticket’s numbers` inside square brackets.
 - Display `Winning Statistics`
 - Display `Profit rate`
 - Display `Error messages`

@@ -1,10 +1,10 @@
 # Project-guidelines
 
 ## 🎯 Project goals
-1. Member function
-    - Put all functions related to a class inside the class.
+1. Class member functions
+    - Place all functions related to a class inside the class itself.
 2. Unit tests
-   - Test each class and function by unit.
+   - Write unit tests for each class and function.
 3. Feedback
    - Actively reflect the given feedback on this project.
 
@@ -14,8 +14,8 @@
 
 ### 🛠️ Process Requirements
 1. Fork and clone the repo.
-2. Create a feature list in `doc/feature-list.md`.
-3. Follow Angular JS commit message convention `feat`, `fix`, …)
+2. Create feature list in `docs/feature-list.md`.
+3. Follow the Angular JS commit message convention `feat`, `fix`, …)
    - [Commit Message Guide](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 
 ---
@@ -26,21 +26,22 @@
 2. Language: Kotlin only
 3. Entry  point: `main()` in `Application` class
 4. ❌ **DO NOT**
-   - Modify: build.gradle.kts 
-   - Include: external libraries. 
-   - Use: System.exit(), exitProcess()
-   - Rename or move: files, packages, or other elements.
+   - Modifying: build.gradle.kts 
+   - Including: external libraries. 
+   - Using: System.exit(), exitProcess()
+   - Renaming or moving: files, packages, or other elements.
 
 ---
 
 ### Code Style & Test
 1. Follow [Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html)
 2. Max indentation: 2 levels
-3. Test: `./gradlew clean test` (Using JUnit5 & AssertJ)
+3. Run tests with: `./gradlew clean test` (Using JUnit5 & AssertJ)
+4. Expected result: `BUILD SUCCESSFUL`
 
 ---
 
-### Basic (3)
+### Basic
 1. SRP (Single Responsibility Principle): One function should do one thing.
 2. Max `10` lines per function.
 3. Prefer `early return` than `else`.
@@ -52,15 +53,38 @@
 
 ---
 
-### API Reference
+### Project Structure
+```
+src/
+├── main/kotlin
+│     └── lotto/
+└── test/kotlin
+      └── lotto/
+```
+- Follow the standard Gradle project structure
+- Keep all production and test files under the `lotto/` package.
+
+---
+
+### Test Scope
+- Only unit tests are required.
+- No integration tests are needed.
+
+---
+
+### API Usage Examples
 1. `Randoms.pickUniqueNumbersInRange()`
    - From: camp.nextstep.edu.missionutils.Randoms.
-   - Ex:
+   - e.g.:
         ```
         Randoms.pickUniqueNumbersInRange(1, 45, 6)
         ```
 2. `Console.readLine()`
    - From: camp.nextstep.edu.missionutils.Console.
+   - e.g.:
+        ```
+        val input = Console.readLine()
+        ```
 
 ---
 
@@ -73,8 +97,8 @@
    └── lotto/
    └── Lotto.kt
    ```
-4. if `numbers.size > 6` 
-   - throw: Error.
+4. if `numbers.size > 6`, 
+   - throw: IllegalArgumentException.
 5. Only allow to add method
 - Can't add any `var` or `val`.
     ```

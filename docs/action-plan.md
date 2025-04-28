@@ -1,36 +1,62 @@
 # Action plan
 ## Step 1. Project setting & Documentation
-1. Analyze the overall specification and break down the project into key tasks.
-2. Create a list of features in `docs/feature-list.md`.
-3. Set the structure of directories based on MVC.
-   - Model, View, Service, Controller, Repository
+- Analyze the overall specification and break down the project into key tasks.
+- Create a list of features in `docs/feature-list.md`.
+- Set up project structure based on MVC(S). (Controller, Domain, Service, View)
 
 ---
 
 ## Step 2. FDD (Feature-Driven Development)
-    🚧 To be updated
-- Design classes & Methods based on feature units.
+- Design classes and Methods based on feature units.
+   - Example features:
+      - Validate Purchase Amount
+      - Validate Winning Numbers and Bonus Number
+      - Generate Lottos
+      - Match Lottos with Winning Numbers
+      - Calculate MatchResult and ProfitRate
+- Implemented prototypes for each feature without tests initially.
 
 ---
 
 ## Step 3. TDD (Test_Driven Development)
-    🚧 To be updated
 - Write unit tests before implementing code.
-- `Red → Green → Refactor` cycle for each feature.
-- Use JUnit5 and AssertJ for unit testing
+  - `Red → Green → Refactor` cycle for each feature.
+- Frameworks: JUnit5, AssertJ
+- Examples:
+   - Validate correct numbers from lotto
+   - Validate bonus number is not duplicated
+- Gradually refactored based on test feedback.
 
 ---
 
-## Step 4. MVC pattern & Separation of responsibilities
-	🚧 To be updated
-- **Model**: Define the domain classes.
-- **View**: User interaction layer.
-- **Service**: Needed Logics.
-- **Controller**: Implement Class to handle application flow.
-- **Repository**: (If needed)
+## Step 4. DDD & MVC pattern for separation of responsibilities
+- - Applied Domain-Driven Design (DDD) principles
+- Separated responsibilities following MVC pattern:
+   - Controller: Handles application main flow
+     - `LottoController`
+   - View: User interaction layer -> input/output
+     - `InputView`, `InputValidator`, `OutputView`
+   - Service: Procedural tasks
+     - `GenerateLottos`, `MatchLottos`
+   - Domain: Business logic
+     - `PurchaseAmount`, `WinningNumbers`
+     - `BonuseNumber`, `Rank`, `MatchResult`
 
 ---
 
 ## Step 5. Test using Gradle
-	🚧 To be updated
-- Run test using `./gradlew clean test`
+- Test whole project using Gradle
+- Confirmed all tests passed with BUILD SUCCESSFUL.
+- Ensured clean build and test environment.
+
+---
+
+## Step 6. Cleanup & Documentation
+- Refactored code for better readability and maintainability.
+- Structured final project hierarchy.
+- Updated all docs
+  - `README, project-guidelines, functional-requirements`
+  - `execution-flow documents, action-plan, feature-list`
+
+---
+
