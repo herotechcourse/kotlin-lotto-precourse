@@ -1,6 +1,7 @@
 package lotto.view
 
 import lotto.common.CommonValidator
+import lotto.exception.InputException
 
 object InputValidator {
     fun parseAndValidateNumber(input: String): Int {
@@ -9,7 +10,7 @@ object InputValidator {
     }
 
     fun validateBlank(input: String): String {
-        require(input.isNotBlank()) { "[ERROR] This input must not be blank." }
+        require(input.isNotBlank()) { InputException.MUST_NOT_BE_BLANK.message() }
         return input
     }
 

@@ -2,12 +2,13 @@ package lotto.domain.winning
 
 import lotto.Lotto
 import lotto.common.CommonValidator
+import lotto.exception.DomainException
 
 class WinningNumbers private constructor(private val numbers: List<Int>) {
     init {
-        require(numbers.size == VALID_SIZE) { "[ERROR] Winning numbers must contain exactly $VALID_SIZE numbers." }
-        require(numbers.size == numbers.distinct().size) { "[ERROR] Winning Numbers must not be duplicated." }
-        require(isValidRange(numbers)) { "[ERROR] Winning numbers must be between $START_INCLUSIVE and $END_INCLUSIVE." }
+        require(numbers.size == VALID_SIZE) { DomainException.MUST_CONTAIN.format(VALID_SIZE) }
+        require(numbers.size == numbers.distinct().size) { DomainException.MUST_NOT_BE_DUPLICATED.message() }
+        require(isValidRange(numbers)) { DomainException.MUST_BE_VALID_RANGE.format(START_INCLUSIVE, END_INCLUSIVE) }
     }
 
     private fun isValidRange(numbers: List<Int>): Boolean {

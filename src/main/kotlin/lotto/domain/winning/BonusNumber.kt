@@ -1,10 +1,11 @@
 package lotto.domain.winning
 
 import lotto.Lotto
+import lotto.exception.DomainException
 
 class BonusNumber(private val number: Int) {
     init {
-        require(isValidRange(number)) { "[ERROR] Winning numbers must be between $START_INCLUSIVE and $END_INCLUSIVE." }
+        require(isValidRange(number)) { DomainException.MUST_BE_VALID_RANGE.format(START_INCLUSIVE, END_INCLUSIVE) }
     }
 
     private fun isValidRange(number: Int): Boolean {
@@ -18,7 +19,7 @@ class BonusNumber(private val number: Int) {
         private const val END_INCLUSIVE = 45
 
         fun from(number: Int, numbers: WinningNumbers): BonusNumber {
-            require(numbers.doNotContain(number)) { "[ERROR] bonus number must not be duplicated with winning numbers." }
+            require(numbers.doNotContain(number)) { DomainException.BONUS_NUMBER_IS_UNIQUE.message() }
             return BonusNumber(number)
         }
     }

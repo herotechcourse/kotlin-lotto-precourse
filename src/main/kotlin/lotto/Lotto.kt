@@ -1,12 +1,13 @@
 package lotto
 
 import lotto.domain.dto.NumbersDto
+import lotto.exception.DomainException
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == VALID_SIZE) { "[ERROR] Lotto must contain exactly $VALID_SIZE numbers." }
-        require(numbers.size == numbers.distinct().size) { "[ERROR] Lotto must not contain distinct numbers." }
-        require(isValidRange(numbers)) { "[ERROR] Winning numbers must be between $START_INCLUSIVE and $END_INCLUSIVE." }
+        require(numbers.size == VALID_SIZE) { DomainException.MUST_CONTAIN.format(VALID_SIZE) }
+        require(numbers.size == numbers.distinct().size) { DomainException.MUST_NOT_BE_DUPLICATED.message() }
+        require(isValidRange(numbers)) { DomainException.MUST_BE_VALID_RANGE.format(START_INCLUSIVE, END_INCLUSIVE) }
     }
 
     private fun isValidRange(numbers: List<Int>): Boolean {
