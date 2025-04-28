@@ -43,6 +43,7 @@ Total return rate is 62.5%.
 ### 1. Input Purchase Amount
 - Receive the purchase amount
 - The amount must be **divisible by 1,000**
+- Only integers are allowed
 
 ### 2. Calculate Ticket Quantity
 - The program issues (purchase amount / 1,000) lottery tickets
@@ -58,9 +59,9 @@ For each ticket:
 
 ### 5. Input Winning Numbers
 - Receive **6 unique numbers**
-    - No repeated numbers allowed
+- No repeated numbers allowed
 - Each number must be in the range **from 1 to 45**
-- Comma-separated **without spaces**
+- Input must be comma-separated; blanks are automatically trimmed.
 - If input is invalid, throw exception → Re-promt input from that step
 
 ### 6. Input Bonus Number
