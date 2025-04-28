@@ -4,6 +4,7 @@ import lotto.domain.LottoMachine
 import lotto.domain.ResultCalculator
 import lotto.view.InputView;
 import lotto.view.OutputView
+import net.bytebuddy.asm.Advice.OffsetMapping.Factory.Illegal
 
 fun main() {
   val purchaseAmount = InputView.readPurchaseAmount();
@@ -15,4 +16,15 @@ fun main() {
   val bonusNumber = InputView.readBonusNumber(winningNumbers)
 
   val stats = ResultCalculator(winningNumbers, bonusNumber).calculate(tickets)
+
+  OutputView.printResult(stats, purchaseAmount)
+
 }
+
+private fun <T> tryRead(block:()->T):T=
+  try{
+    block()
+  }catch (e:IllegalArgumentException){
+    println(e.message)
+    tryRead(block)
+  }
