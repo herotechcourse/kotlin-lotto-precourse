@@ -27,6 +27,8 @@
     - “[ERROR] Input is not a number.”  
   - [x] If the amount is not divisible by 1,000 KRW, throw `IllegalArgumentException`  
     - “[ERROR] Purchase amount must be in multiples of 1,000 KRW.”
+  - [x] If the amount is 0, throw `IllegalArgumentException`
+    - "[ERROR] Purchase amount must not be 0." 
 
 - [x] The user can enter the winning numbers.  
   - [x] If there are not exactly 6 comma-separated tokens, throw `IllegalArgumentException`  
@@ -133,6 +135,10 @@ Total return rate is 62.5%.
 - **throws exception when amount is not divisible by `1,000`**  
   - Input: `1100`  
   - Expect: `IllegalArgumentException(INVALID_PURCHASE_UNIT)`
+
+- **throws exception when amount is zero**  
+  - Input: `0`  
+  - Expect: `IllegalArgumentException(INVALID_ZERO_PURCHASE_AMOUNT)`
 
 - **initializes successfully when amount is exactly `1,000`**  
   - Input: `1000`  
