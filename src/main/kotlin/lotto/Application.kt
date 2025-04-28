@@ -1,7 +1,7 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Console
-
+import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: Implement the program
@@ -10,7 +10,8 @@ fun main() {
     val ticketCount = amount / 1000
     println("You have purchased $ticketCount tickets.")
 
-
+    val tickets = generateTickets(ticketCount)
+    tickets.forEach { println(it.getNumbers().sorted()) }   // 생성된 티켓들 내용 출력
 
 }
 
@@ -23,4 +24,12 @@ fun readAmount(): Int {
         "[ERROR] Amount must be a multiple of 1000."
     }
     return amount
+}
+
+// 티켓 생성. 복권 수 만큼 복권 생성
+fun generateTickets(count: Int): List<Lotto> {
+    return List(count) {
+        val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+        Lotto(numbers)
+    }
 }
