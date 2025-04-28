@@ -10,14 +10,14 @@ class InputView {
     }
 
     fun getWinnings(): String {
-        println("Please enter last week's winning numbers.")
+        println("\nPlease enter last week's winning numbers.")
         val winnings = Console.readLine()
 
         return winnings
     }
 
     fun getBonusNumber(): String {
-        println("Please enter the bonus number.")
+        println("\nPlease enter the bonus number.")
         val bonus = Console.readLine()
 
         return bonus

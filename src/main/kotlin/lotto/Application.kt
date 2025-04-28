@@ -1,16 +1,24 @@
 package lotto
 
 import WinningNumberValidator
-import lotto.view.InputView
-import lotto.utils.StringToNumber
-import lotto.utils.StringToList
-import lotto.validator.BudgetValidator
-import lotto.view.OutputView
 import lotto.services.GenerateTickets
+import lotto.services.LottoStatistics
+import lotto.utils.StringToList
+import lotto.utils.StringToNumber
+import lotto.validator.BudgetValidator
+import lotto.view.InputView
+import lotto.view.OutputView
 
 fun main() {
-    val application = Application()
-    application.run()
+    while (true) {
+        try {
+            val application = Application()
+            application.run()
+            break
+        } catch (e: IllegalArgumentException) {
+            println("${e.message}")
+        }
+    }
 }
 
 class Application {
@@ -27,6 +35,15 @@ class Application {
         outputView.ticketNumber(tickets)
 
         val (winningNumber, bonus) = readWinningNumbers()
+
+        val lottos = createLottoList(tickets)
+        val winningLotto = Lotto(winningNumber)
+        val statistics = LottoStatistics(lottos, winningLotto, bonus)
+        statistics.calculate()
+        val rate = statistics.calculateProfitRate(budget)
+
+        outputView.printStatistics(statistics)
+        outputView.printProfitRate(rate)
     }
 
     private fun readBudget(): Int {
@@ -43,7 +60,7 @@ class Application {
         return lottery.run(ticketCount)
     }
 
-    private fun readWinningNumbers(): Pair<Set<Int>, Int>{
+    private fun readWinningNumbers(): Pair<List<Int>, Int> {
         val winningValidator = WinningNumberValidator()
 
         val winningNumbersInput = inputView.getWinnings()
@@ -58,4 +75,7 @@ class Application {
         return Pair(winningNumbers, bonus)
     }
 
+    private fun createLottoList(tickets: List<List<Int>>): List<Lotto> {
+        return tickets.map { ticket -> Lotto(ticket) }
+    }
 }
