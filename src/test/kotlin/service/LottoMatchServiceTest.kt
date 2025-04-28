@@ -121,5 +121,12 @@ class LottoMatchServiceTest {
         assertThat(rate).isEqualTo(1100.0)
     }
 
+    @Test
+    fun `roundNearestTenth formats number correctly`() {
+        assertThat(LottoMatchService.roundNearestTenth(123.456)).isEqualTo("123.5")
+        assertThat(LottoMatchService.roundNearestTenth(123.45)).isEqualTo("123.5")
+        assertThat(LottoMatchService.roundNearestTenth(123.44)).isEqualTo("123.4")
+        assertThat(LottoMatchService.roundNearestTenth(0.0)).isEqualTo("0.0")
+    }
 
 }
