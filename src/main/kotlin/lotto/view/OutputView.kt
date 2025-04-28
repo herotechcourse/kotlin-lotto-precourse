@@ -4,11 +4,13 @@ import lotto.Lotto
 import lotto.Rank
 
 class OutputView {
+
   fun printTickets(tickets: List<Lotto>) {
     println()
     println("You have purchased ${tickets.size} tickets.")
     tickets.forEach { println(it.getSortedNumbers()) }
   }
+
   fun printResults(winners: Map<Rank, Int>) {
     println()
     println("Winning Statistics")
@@ -25,6 +27,7 @@ class OutputView {
       )
     }
   }
+  
   fun printProfitRate(rate: Double) {
     val formattedRate = "%.1f".format(rate).replace(',', '.')
     println("Total return rate is ${formattedRate}%.")
