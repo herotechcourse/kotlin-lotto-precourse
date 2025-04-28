@@ -52,20 +52,20 @@
   - Purchased Lotto Numbers
     - [x] print `(purchase amount / 1,000)` sets of numbers, enclosed in square brackets and separated by comma(,)
   - Winning Statistics
-    - [ ] Print the results in ascending order.
+    - [x] Print the results in ascending order.
   - Rate of Return
-    - [ ] Print the value rounded to the first decimal place.
+    - [x] Print the value rounded to the first decimal place.
   - Exception
     - [x] Throw an error message starting with `[ERROR]`
 
 ### 3. Business Logic
-  - [ ] Rank is implemented using an `Enum` class.
+  - [x] Rank is implemented using an `Enum` class.
     - (matchCount, prize amount)
   - [x] Purchased lotto numbers are stored in a List.
   - List Iteration
     - [x] implement method that return Lotto to List<Int>
-    - [ ] For each purchased lotto ticket, check how many numbers including the bonus number match the winning numbers.
-    - [ ] Store winning tickets in a `Map`
+    - [x] For each purchased lotto ticket, check how many numbers including the bonus number match the winning numbers.
+    - [x] Store winning tickets in a `Map`
   - Prize Amount Sum
-    - [ ] Calculate the rate of return rounded to the first decimal place.
+    - [x] Calculate the rate of return rounded to the first decimal place.
       - (total winning amount / total purchase amount) * 100

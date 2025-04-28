@@ -23,3 +23,25 @@ fun printWinningNumbersInputPhrase() {
 fun printBonusNumberInputPhrase() {
     println("Please enter the bonus number.")
 }
+
+fun printWinningStatisticsPhrase() {
+    println("""
+        Winning Statistics
+        ---
+    """.trimIndent())
+}
+
+fun printWinningStatics(rankStatics: Map<Rank, Int>, rateOfReturn: String) {
+    val sb = StringBuilder()
+    Rank.entries.forEach {
+        sb.append(it.matchCount)
+            .append(" Matched ")
+            .append("(")
+            .append(it.prize)
+            .append(") - ")
+            .append(rankStatics[it])
+            .append(" tickets\n")
+    }
+    sb.append("Total return rate is ").append("${rateOfReturn}%")
+    println(sb)
+}

@@ -19,6 +19,10 @@ enum class Rank(val matchCount: Int, val prize: Int) {
                 else -> NONE
             }
         }
+
+        fun getRankPrize(rank: Rank): Int {
+            return rank.prize
+        }
     }
 
 }
