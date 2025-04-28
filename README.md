@@ -48,3 +48,30 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 ### Controller
 
 - [x] Lotto controller (main controller class that orchestrates the flow of the lottery application.)
+
+## Test
+
+### Parser Test
+
+#### ToInt Function Tests
+
+- **Valid input conversion**: Confirms that valid numeric strings are correctly converted to integers
+- **Non-numeric input handling**: Verifies that an exception is thrown when attempting to parse non-numeric text
+- **Empty string handling**: Ensures an appropriate exception is thrown when an empty string is provided
+
+#### ToIntList Function Tests
+
+- **Valid comma-separated values**: Verifies that strings with comma-separated numbers are correctly converted to integer lists
+- **Whitespace handling**: Confirms that the parser handles inputs with extra spaces around the numbers
+- **Invalid value detection**: Ensures that exceptions are thrown when any value in the list is non-numeric
+- **Empty string handling**: Verifies that empty strings are properly rejected with an exception
+
+### Money Test
+
+### Prize Test
+
+### Winner Test
+
+### Lotto Util Test
+
+### Lotto Machine Test
