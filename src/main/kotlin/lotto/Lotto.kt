@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -10,7 +10,4 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getNumbers(): List<Int> = numbers.sorted()
-
-    fun countMatches(other: List<Int>): Int = numbers.count { it in other }
-    fun containsNumber(number: Int): Boolean = numbers.contains(number)
 }

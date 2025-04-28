@@ -1,6 +1,7 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import lotto.Lotto
 
 class LottoTickets(private val tickets: List<Lotto>) {
 
