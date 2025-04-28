@@ -10,17 +10,30 @@ class OutputView {
         private const val TICKETS_SUFFIX = " tickets"
     }
 
+    fun printPrompt(message: String) {
+        printSectionBreak()
+        println(message)
+    }
+
+    fun printError(message: String) {
+        println(message)
+    }
+
     fun printPurchasedTickets(tickets: List<Lotto>) {
-        println()
+        printSectionBreak()
         printTicketCount(tickets.size)
         printTickets(tickets)
-        println()
     }
 
     fun printWinningStatistics(rankCounts: Map<Rank, Int>, totalPurchaseAmount: Int) {
+        printSectionBreak()
         printStatisticsHeader()
         printRankStatistics(rankCounts)
         printReturnRate(calculateReturnRate(rankCounts, totalPurchaseAmount))
+    }
+
+    private fun printSectionBreak() {
+        println()
     }
 
     private fun printTicketCount(count: Int) {

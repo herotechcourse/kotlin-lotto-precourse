@@ -6,9 +6,10 @@ fun main() {
 }
 
 class LottoApplication {
-    private val inputView = InputView()
     private val outputView = OutputView()
+    private val inputView = InputView(outputView)
     private val lottoService = LottoService()
+    
     fun run() {
         val purchaseAmount = getPurchaseAmount()
         val tickets = purchaseTickets(purchaseAmount)
@@ -46,7 +47,7 @@ class LottoApplication {
             try {
                 return action()
             } catch (e: IllegalArgumentException) {
-                println(e.message)
+                outputView.printError(e.message ?: "An error occurred.")
             }
         }
     }

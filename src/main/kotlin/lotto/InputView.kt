@@ -2,7 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputView {
+/**
+ * InputView is responsible for collecting user input and validating it.
+ * All console output operations are delegated to OutputView.
+ */
+class InputView(private val outputView: OutputView) {
     companion object {
         private const val PURCHASE_AMOUNT_PROMPT = "Please enter the purchase amount."
         private const val WINNING_NUMBERS_PROMPT = "Please enter last week's winning numbers."
@@ -17,13 +21,13 @@ class InputView {
     }
 
     fun readPurchaseAmount(): Int {
-        promptForInput(PURCHASE_AMOUNT_PROMPT)
+        outputView.printPrompt(PURCHASE_AMOUNT_PROMPT)
         val input = readInput()
         return parseAndValidatePurchaseAmount(input)
     }
 
     fun readWinningNumbers(): List<Int> {
-        promptForInput(WINNING_NUMBERS_PROMPT)
+        outputView.printPrompt(WINNING_NUMBERS_PROMPT)
         val input = readInput()
         val numbers = parseCommaDelimitedNumbers(input)
         validateWinningNumbers(numbers)
@@ -31,13 +35,9 @@ class InputView {
     }
 
     fun readBonusNumber(winningNumbers: List<Int>): Int {
-        promptForInput(BONUS_NUMBER_PROMPT)
+        outputView.printPrompt(BONUS_NUMBER_PROMPT)
         val input = readInput()
         return parseAndValidateBonusNumber(input, winningNumbers)
-    }
-
-    private fun promptForInput(message: String) {
-        println(message)
     }
 
     private fun readInput(): String {
