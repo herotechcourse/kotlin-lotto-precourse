@@ -8,6 +8,7 @@ object OutputView {
     private const val GENERATED_LOTTO_HEADER = "You have purchased %d tickets."
     private const val MATCHED_LOTTO_COUNT_HEADER = "\nWinning Statistics\n---";
     private const val MATCHED_LOTTO_COUNT = "%s - %d tickets"
+    private const val PROFIT_RATE_HEADER = "Total return rate is %.1f%%.";
 
     fun printError(message: String) {
         println("$ERROR_HEAD $message")
@@ -30,5 +31,9 @@ object OutputView {
                 val count = matchedLottoCount[rank] ?: 0  // 없으면 0
                 println(MATCHED_LOTTO_COUNT.format(rank.message, count))
             }
+    }
+
+    fun printProfitRate(profitRate: Double) {
+        println(PROFIT_RATE_HEADER.format(profitRate))
     }
 }
