@@ -2,7 +2,7 @@ package lotto.view.output
 
 import lotto.LottosResult
 
-object DisplayWinningStatistics : OutputView<LottosResult> {
+object DisplayWinningStatisticsOutputView : OutputView<LottosResult> {
     override fun display(model: LottosResult) {
         val result = model.result
         val profit = model.calculateProfitRate()
