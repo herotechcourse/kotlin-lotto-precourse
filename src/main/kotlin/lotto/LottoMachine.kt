@@ -2,7 +2,6 @@ package lotto
  
 class LottoMachine()
 {
-    private var tickets: MutableList<Lotto> = mutableListOf()
     public val matchMap=mutableMapOf<MatchCondition, CountAndPrize>(
         MatchCondition.MATCH_3 to CountAndPrize(0,5_000),
         MatchCondition.MATCH_4 to CountAndPrize(0,50_000),
@@ -24,11 +23,10 @@ class LottoMachine()
             var ticket = Lotto(uniqueNumbers)
             tickets.add(ticket)
         }
-        this.tickets=tickets
         return tickets
     }
 
-    fun checkMatches(winningNumbers:List<Int>, bonusNumber:Int)
+    fun checkMatches(tickets:List<Lotto>, winningNumbers:List<Int>, bonusNumber:Int)
     {
         for (ticket in tickets) {
             val matchCount = winningNumbers.count { it in ticket.getNumbers() }

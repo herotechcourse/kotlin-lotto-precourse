@@ -14,7 +14,7 @@ fun main() {
    outputView.printTickets(tickets)
    val winningNumbers=inputView.getWinningNumbers()
    val bonusNumber=inputView.getBonusNumber()
-   lottoMachine.checkMatches(winningNumbers, bonusNumber)
+   lottoMachine.checkMatches(tickets, winningNumbers, bonusNumber)
    outputView.printMatches(lottoMachine.matchMap)
    val returnRate=lottoMachine.calcReturnRate(purchaseAmount)
    outputView.printReturnRate(returnRate)
