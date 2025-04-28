@@ -24,7 +24,7 @@
 ### User Input
 - [x] The user can enter the purchase amount.  
   - [x] If the input is not a single number, throw `IllegalArgumentException`  
-    - “[ERROR] Purchase amount is not a single number.”  
+    - “[ERROR] Input is not a number.”  
   - [x] If the amount is not divisible by 1,000 KRW, throw `IllegalArgumentException`  
     - “[ERROR] Purchase amount must be in multiples of 1,000 KRW.”
 
@@ -76,9 +76,9 @@
 
 ### Console Output
 - [ ] **Input Prompts**  
-  - `Purchase amount for lottery tickets:`  
-  - `Winning numbers (comma-separated):`  
-  - `Bonus number:`
+  - `Please enter the purchase amount.`  
+  - `Please enter last week's winning numbers.`  
+  - `Please enter the bonus number.`
 
 - [ ] **Ticket Issuance Result**  
     ```
