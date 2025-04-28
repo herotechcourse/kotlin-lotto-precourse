@@ -1,4 +1,4 @@
-package lotto.view.validator
+package lotto.validator
 
 object NumericValidator {
 

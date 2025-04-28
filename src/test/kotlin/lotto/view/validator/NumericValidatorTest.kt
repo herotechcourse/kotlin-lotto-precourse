@@ -1,5 +1,6 @@
 package lotto.view.validator
 
+import lotto.validator.NumericValidator
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest

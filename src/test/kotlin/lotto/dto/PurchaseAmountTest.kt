@@ -1,6 +1,6 @@
 package lotto.dto
 
-import lotto.view.validator.NumericValidator
+import lotto.validator.NumericValidator
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows

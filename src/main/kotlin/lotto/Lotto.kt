@@ -2,10 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.utils.LottoGenerator
+import lotto.validator.LottoValidator
 
 class Lotto(private val numbers: List<Int> = LottoGenerator.generateLottoNumbers()) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        LottoValidator.validate(numbers)
     }
 
     // TODO: Implement additional functions

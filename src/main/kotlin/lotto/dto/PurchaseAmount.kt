@@ -1,6 +1,6 @@
 package lotto.dto
 
-import lotto.view.validator.NumericValidator
+import lotto.validator.NumericValidator
 
 data class PurchaseAmount(val amount: String) {
     val amountValue: Int
