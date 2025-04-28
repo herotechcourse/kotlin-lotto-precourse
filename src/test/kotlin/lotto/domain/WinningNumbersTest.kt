@@ -6,28 +6,28 @@ import org.junit.jupiter.api.assertThrows
 
 class WinningNumbersTest {
     @Test
-    fun `throws an exception when winning numbers is empty string`() {
+    fun `throws an exception when winning number is empty string`() {
         assertThrows<IllegalArgumentException> {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", ""))
         }
     }
 
     @Test
-    fun `throws an exception when winning numbers is blank`() {
+    fun `throws an exception when winning number is blank`() {
         assertThrows<IllegalArgumentException> {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "      "))
         }
     }
 
     @Test
-    fun `throws an exception when winning numbers is not a number`() {
+    fun `throws an exception when winning number is not a number`() {
         assertThrows<IllegalArgumentException> {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "abc"))
         }
     }
 
     @Test
-    fun `throws an exception when winning numbers is not positive number`() {
+    fun `throws an exception when winning number is not positive number`() {
         assertThrows<IllegalArgumentException> {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "-1"))
         }
