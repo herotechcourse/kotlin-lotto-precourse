@@ -53,7 +53,7 @@ class OutputViewTest : NsTest() {
     @Test
     fun `prints return rate in correct format`() {
         assertSimpleTest {
-            OutputView().printReturnRate("50.0%")
+            OutputView().printReturnRate(50.0)
 
             val out = output()
 

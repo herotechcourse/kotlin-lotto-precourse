@@ -25,8 +25,8 @@ class OutputView() {
             .forEach { println(it.getResultMessage(ranks[it.ordinal])) }
     }
 
-    fun printReturnRate(returnRate: String) {
-        println(PromptMessages.TOTAL_RETURN_RATE.with(returnRate))
+    fun printReturnRate(returnRate: Double) {
+        println(PromptMessages.TOTAL_RETURN_RATE.with("%.1f".format(returnRate)))
     }
 
 }

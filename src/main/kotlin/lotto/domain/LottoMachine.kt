@@ -44,9 +44,8 @@ class LottoMachine(private val money: Int) {
         return ticket.numberSet().contains(bonusNumber)
     }
 
-    fun calculateReturnRate(): String {
-        val returnRate = calculateTotalPrize() / money.toDouble() * 100
-        return "%.1f".format(returnRate)
+    fun calculateReturnRate(): Double {
+        return calculateTotalPrize() / money.toDouble() * 100
     }
 
     private fun calculateTotalPrize(): Int {
