@@ -33,5 +33,5 @@
 - [x] separate controller logic
 - [x] separate Lotto Machine with Interface
 - [] add test code
-- [] check requirement
+- [x] check requirement
 - [x] bonus number can't be duplicate with existing winning lotto numbers
