@@ -1,6 +1,6 @@
 package lotto.view
 
-import lotto.model.Lotto
+import lotto.Lotto
 import lotto.model.PrizeRank
 
 class OutputView {
@@ -9,7 +9,7 @@ class OutputView {
         fun printLotteries(lotteries: List<Lotto>) {
             println("You have purchased ${lotteries.size} tickets.")
             lotteries.forEach { lotto ->
-                println(lotto.numbers.sorted())
+                println(lotto.getNumbers().sorted())
             }
 
         }
