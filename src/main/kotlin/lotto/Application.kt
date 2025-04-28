@@ -80,6 +80,12 @@ fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
     }
 }
 
+fun calculateMatchResult(ticket: Lotto, winningNumbers: List<Int>, bonusNumber: Int): MatchResult {
+    val matchCount = ticket.getNumbers().count { it in winningNumbers }
+    val bonusMatched = ticket.getNumbers().contains(bonusNumber)
+    return MatchResult(matchCount, bonusMatched)
+}
+
 fun main() {
     val purchaseAmount = promptUntilValid {
         val amount = readPurchaseAmount()

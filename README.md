@@ -52,3 +52,9 @@
   - Takes a block of input-reading and validation logic.
   - Automatically retries until valid input is entered.
   - Reduces duplication of `while (true) try-catch` logic across different inputs.
+
+### Match Result Calculation
+
+- For each purchased ticket:
+  - Counts how many numbers match the winning numbers.
+  - Checks whether the bonus number is matched.
