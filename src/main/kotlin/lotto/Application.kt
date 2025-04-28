@@ -12,6 +12,15 @@ fun main() {
     val bonusNumber = readBonusNumber()
     val winningNumbers = WinningNumbers(Lotto(winningNumbersInput), bonusNumber)
 
-    println("Winning Numbers: $winningNumbers")
-    println("Bonus Number: $bonusNumber")
+    val results = calculateResults(tickets, winningNumbers)
+
+    // Print results
+    println("\nWinning Statistics")
+    println("-------------------")
+    println("3 matches (5,000 won) - ${results.getOrDefault(5, 0)} tickets")
+    println("4 matches (50,000 won) - ${results.getOrDefault(4, 0)} tickets")
+    println("5 matches (1,500,000 won) - ${results.getOrDefault(3, 0)} tickets")
+    println("5 matches + Bonus (30,000,000 won) - ${results.getOrDefault(2, 0)} tickets")
+    println("6 matches (2,000,000,000 won) - ${results.getOrDefault(1, 0)} tickets")
+
 }

@@ -82,6 +82,30 @@ class WinningNumbers(
     }
 }
 
+// Calculates the number of tickets per prize rank
+fun calculateResults(tickets: List<Lotto>, winningNumbers: WinningNumbers): Map<Int, Int> {
+    val resultMap = mutableMapOf<Int, Int>()
+
+    tickets.forEach { ticket ->
+        val matchCount = winningNumbers.countMatch(ticket)
+        val bonusMatched = winningNumbers.isBonusMatched(ticket)
+
+        val rank = when {
+            matchCount == 6 -> 1
+            matchCount == 5 && bonusMatched -> 2
+            matchCount == 5 -> 3
+            matchCount == 4 -> 4
+            matchCount == 3 -> 5
+            else -> null
+        }
+
+        rank?.let {
+            resultMap[it] = resultMap.getOrDefault(it, 0) + 1
+        }
+    }
+
+    return resultMap
+}
 
 
 
