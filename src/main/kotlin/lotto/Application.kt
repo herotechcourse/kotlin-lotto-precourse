@@ -9,7 +9,7 @@ fun main() {
     val purchaseService = PurchaseService(inputView, outputView)
 
     // Step 1: Ticket Purchase
-    var tickets: List<Lotto> // Changed to var
+    var tickets: List<Lotto>
     while (true) {
         try {
             val ticketCount = purchaseService.getTicketCount()
@@ -24,31 +24,32 @@ fun main() {
     }
 
     // Step 2: Winning Numbers Input
-    val winningNumberInput = WinningNumberInput(inputView)
-    var winningNumbers: List<Int> // Changed to var
+    var winningNumbers: List<Int>
     while (true) {
         try {
-            winningNumbers = winningNumberInput.getWinningNumbers()
+            val input = inputView.getWinningNumbersInput()
+            winningNumbers = Lotto.getWinningNumbers(input)
             break
         } catch (e: IllegalArgumentException) {
             outputView.showError(e.message ?: "An error occurred.")
         }
     }
 
-    var bonusNumber: Int // Changed to var
+    // Step 3: Bonus Number Input
+    var bonusNumber: Int
     while (true) {
         try {
-            bonusNumber = winningNumberInput.getBonusNumber(winningNumbers)
+            val input = inputView.getBonusNumberInput()
+            bonusNumber = Lotto.getBonusNumber(input, winningNumbers)
             break
         } catch (e: IllegalArgumentException) {
             outputView.showError(e.message ?: "An error occurred.")
         }
     }
 
-    // Step 3: Result Evaluation
-    val evaluator = ResultEvaluator(winningNumbers.toSet(), bonusNumber)
-    val result = evaluator.evaluate(tickets)
+    // Step 4: Result Evaluation
+    val result = Lotto.evaluateResults(tickets, winningNumbers.toSet(), bonusNumber)
 
-    // Step 4: Display Results
+    // Step 5: Display Results
     result.displayStatistics(purchaseService.getPurchaseAmount())
 }
