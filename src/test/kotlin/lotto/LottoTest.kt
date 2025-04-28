@@ -39,4 +39,12 @@ class LottoTest {
         assertThat(lotto.getNumbers()).isEqualTo(listOf(1, 2, 3, 4, 5, 6))
     }
 
+    @Test
+    fun `throws correct error message`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 5))
+        }
+        assertThat(exception.message).startsWith("[ERROR]")
+    }
+
 }
