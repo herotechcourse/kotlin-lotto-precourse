@@ -2,8 +2,12 @@ package lotto
 
 object TicketChecker {
     // map <rank, ticketCount>
-    val rankStatistics = mutableMapOf<Rank, Int>()
+    private val rankStatistics = mutableMapOf<Rank, Int>()
     init {
+        resetStatistics()
+    }
+    fun resetStatistics() {
+        rankStatistics.clear()
         Rank.entries.forEach { rankStatistics[it] = 0 }
     }
 
