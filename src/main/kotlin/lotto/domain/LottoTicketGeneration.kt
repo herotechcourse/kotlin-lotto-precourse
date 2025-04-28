@@ -5,6 +5,7 @@ import lotto.Lotto
 
 object LottoTicketGeneration  {
 
+    // Randomly generate list of tickets
     fun generateTicket(numberTickets: Int): List<Lotto> {
 
         val lottoTickets = mutableListOf<Lotto>()
@@ -16,9 +17,13 @@ object LottoTicketGeneration  {
             ).sorted()
             lottoTickets.add(Lotto(ticket))
         }
+
         return lottoTickets
     }
+
+    // Print list of tickets
     fun printLottoTickets(lottoTickets: List<Lotto>) {
+
         println("You have purchased ${lottoTickets.size} tickets.")
         for (ticket in lottoTickets) {
             println(ticket.getTicket())

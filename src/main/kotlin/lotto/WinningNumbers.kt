@@ -2,7 +2,9 @@ package lotto
 
 class WinningNumbers(val mainNumbers: List<Int?>, val bonusNumber: Int?) {
 
+    // Conditions on winning numbers
     init {
+
         require((mainNumbers.size == Lotto.SIZE_LOTTO) && (mainNumbers.toSet().size == Lotto.SIZE_LOTTO)) {
             "[ERROR] Main numbers must contain exactly ${Lotto.SIZE_LOTTO} unique numbers"
         }

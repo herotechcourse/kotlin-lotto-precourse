@@ -7,6 +7,7 @@ import lotto.WinningNumbers
 
 class InputView {
 
+    // Read money amount and return the number of tickets
     fun readPurchase(): Int {
 
         while (true) {
@@ -15,13 +16,14 @@ class InputView {
                 val amount = Console.readLine()
                 val amountMoney = InputValidator.validateMoneyAmount(amount)
 
-                return amountMoney/ Lotto.PRICE_TICKET
+                return (amountMoney/Lotto.PRICE_TICKET).toInt()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
+    // Read winning numbers that include main numbers and bonus number
     fun readWinningNumbers(): WinningNumbers {
 
         val mainNumbers = readMainNumbers()
@@ -30,7 +32,9 @@ class InputView {
         return WinningNumbers(mainNumbers, bonusNumber)
     }
 
+    // Read main numbers
     private fun readMainNumbers(): List<Int?> {
+
         while (true){
             try {
                 println("Please enter last week's winning numbers.")
@@ -44,6 +48,7 @@ class InputView {
         }
     }
 
+    // Read bonus number
     private fun readBonusNumber(mainNumbers: List<Int?>): Int? {
         while (true) {
             try {

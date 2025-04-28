@@ -21,6 +21,13 @@ class InputValidatorTest {
     }
 
     @Test
+    fun `exception test purchase money non positive`() {
+        assertThrows<IllegalArgumentException> {
+            InputValidator.validateMoneyAmount("0")
+        }
+    }
+
+    @Test
     fun `exception test purchase money not divisible by 1000`() {
         assertThrows<IllegalArgumentException> {
             InputValidator.validateMoneyAmount("2500")

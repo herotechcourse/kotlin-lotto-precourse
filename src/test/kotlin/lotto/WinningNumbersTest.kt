@@ -28,7 +28,7 @@ class WinningNumbersTest {
     @Test
     fun `throw exception when main number less than 1`() {
         assertThrows<IllegalArgumentException> {
-                WinningNumbers(listOf(0, 1, 3, 5, 7, 9), 10)
+                WinningNumbers(listOf(-4, 1, 3, 5, 7, 9), 10)
             }
         }
 
