@@ -8,16 +8,22 @@ object OutputView {
     println("You have purchased ${tickets.size} tickets.")
     tickets.forEach { println(it.numbers())}
   }
+
+  private fun formatReward(reward: Int): String {
+    return "%,d".format(reward)
+  }
   
-   fun printResult(ranks: List<Rank>, purchaseAmount: Int) {
-        println("Winning Statistics")
-        println("---")
-        val result = ranks.groupingBy { it }.eachCount()
-        Rank.values().filter { it != Rank.NONE }.forEach {
-            println("${it.matchCount} Matches${if (it.bonus) " + Bonus Ball" else ""} (${it.reward} KRW) - ${result[it] ?: 0} ticket(s)")
-        }
-        println("Total return rate is ${calculateProfit(ranks, purchaseAmount)}%.")
-    }
+  fun printResult(ranks: List<Rank>, purchaseAmount: Int) {
+      println("Winning Statistics")
+      println("---")
+      for (rank in Rank.values()) {
+          if (rank != Rank.NONE) {
+              val count = ranks.count { it == rank }
+              println("${rank.description()} (${formatReward(rank.reward)} KRW) – $count tickets")
+          }
+      }
+      println("Total return rate is ${calculateProfit(ranks, purchaseAmount)}%.")
+  }
 
     private fun calculateProfit(ranks: List<Rank>, purchaseAmount: Int): Double {
         val totalReward = ranks.sumOf { it.reward }
