@@ -41,6 +41,8 @@
 ## Project Structure
 
 - lotto
+    - constants
+        - LottoConstants.kt
     - controller
         - LottoController.kt  
     - model
@@ -60,8 +62,6 @@
         - NumberUtil.kt
         - StringUtil.kt
     - exception
-        - ApplicationException.kt
-        - ErrorCode.kt
         - InputException.kt
         - LottoException.kt
         - WinningNumbersException.kt
