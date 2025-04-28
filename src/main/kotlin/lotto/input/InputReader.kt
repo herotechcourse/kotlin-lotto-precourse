@@ -2,13 +2,9 @@ package lotto.input
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Lotto
-import lotto.util.Split
+import lotto.domain.TICKET_COST
 import lotto.validation.Input
 import lotto.view.InputView
-
-const val ticketCost = 1000
-const val start = 1
-const val end = 45
 
 object InputReader {
 
@@ -17,7 +13,7 @@ object InputReader {
             InputView.purchaseAmount()
             val rawInput = Console.readLine()
             try {
-                val number = Input.isPurchaseAmountValid(rawInput, ticketCost)
+                val number = Input.isPurchaseAmountValid(rawInput, TICKET_COST)
                 return number
             } catch (e: IllegalArgumentException) {
                 println(e.message)

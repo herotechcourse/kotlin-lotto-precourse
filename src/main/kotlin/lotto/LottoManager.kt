@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.domain.Rank
 import org.assertj.core.util.VisibleForTesting
 import kotlin.math.round
 

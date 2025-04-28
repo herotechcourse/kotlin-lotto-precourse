@@ -1,8 +1,7 @@
 package lotto.validation
 
-import lotto.input.end
-import lotto.input.start
-import lotto.input.ticketCost
+import lotto.domain.END_NUMBER
+import lotto.domain.START_NUMBER
 import lotto.util.Split
 
 object Input {
@@ -71,7 +70,7 @@ object Input {
         val input = Input.isEmpty(rawInput)
         Input.isInteger(input)
         val number = input.toInt()
-        Input.isInRange(number, start, end)
+        Input.isInRange(number, START_NUMBER, END_NUMBER)
         Input.bonusNumberDuplication(number, numbers)
         return number
     }
