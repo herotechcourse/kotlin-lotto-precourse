@@ -38,7 +38,6 @@ A lotto simulator implemented in Kotlin as part of the Hero Tech Course pre-cour
   - [ ] Validate that the profit rate is rounded to the nearest tenth
 
 ### ⚠️ Error Handling
-- [ ] **Handle invalid input**
-  - [ ] Error messages start with `[ERROR]`
-  - [ ] Re-prompt input if invalid data is entered
-  - [ ] Handle only specific exception types (e.g., `IllegalArgumentException`, `IllegalStateException`), not generic `Exception`
+- [ ] **Error messages start with `[ERROR]`**
+- [ ] **Re-prompt input if invalid data is entered**
+- [ ] **Handle only specific exception types (e.g., `IllegalArgumentException`, `IllegalStateException`), not generic `Exception`**
