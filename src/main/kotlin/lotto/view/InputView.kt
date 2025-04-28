@@ -6,21 +6,30 @@ object InputView {
     private const val INPUT_LAST_WINNING_NUMBER_MESSAGE = "Please enter last week's winning numbers."
     private const val INPUT_LAST_BONUS_NUMBER_MESSAGE = "Please enter the bonus number."
 
-    fun readPurchaseAmount(): String {
-        println(INPUT_PURCHASE_AMOUNT_MESSAGE)
-        return readln()
-    }
-
-    fun readLastWinningNumber(): String {
+    private fun readWithMessage(message: String): String {
         println()
-        println(INPUT_LAST_WINNING_NUMBER_MESSAGE)
+        println(message)
         return readln()
     }
 
-    fun readLastBonusNumber(): String {
-        println()
-        println(INPUT_LAST_BONUS_NUMBER_MESSAGE)
-        return readln()
+    fun readPurchaseAmount(): Int {
+        val input = readWithMessage(INPUT_PURCHASE_AMOUNT_MESSAGE)
+        return input.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Input must be a valid number.")
     }
 
+    fun readLastWinningNumber(): List<Int> {
+        val input = readWithMessage(INPUT_LAST_WINNING_NUMBER_MESSAGE)
+        return input.split(",")
+            .map {
+                it.trim().toIntOrNull()
+                    ?: throw IllegalArgumentException("[ERROR] Winning numbers must be numbers.")
+            }
+    }
+
+    fun readLastBonusNumber(): Int {
+        val input = readWithMessage(INPUT_LAST_BONUS_NUMBER_MESSAGE)
+        return input.toIntOrNull()
+            ?: throw IllegalArgumentException("[ERROR] Bonus number must be a number.")
+    }
 }

@@ -14,37 +14,37 @@ class LottoController(
 ) {
 
     fun run() {
-        val purchaseAmountInput = inputView.readPurchaseAmount()
-        val money = Money(purchaseAmountInput.toInt())
+        try {
+            val money = Money(inputView.readPurchaseAmount())
 
-        val ticketCount = money.getTicketCount()
-        outputView.printTicketCount(ticketCount)
+            outputView.printTicketCount(money.getTicketCount())
 
-        val lottoTickets = LottoTickets(ticketCount)
-        outputView.printLottoTickets(lottoTickets.getTickets())
+            val lottoTickets = LottoTickets(money.getTicketCount())
+            outputView.printLottoTickets(lottoTickets.getTickets())
 
-        val winningNumbersInput = inputView.readLastWinningNumber()
-        val winningNumbers = winningNumbersInput.split(",").map { it.trim().toInt() }
-        val winningLotto = Lotto(winningNumbers)
+            val winningLotto = Lotto(inputView.readLastWinningNumber())
 
-        val bonusNumberInput = inputView.readLastBonusNumber()
-        val bonusNumber = bonusNumberInput.toInt()
+            val bonusNumber = inputView.readLastBonusNumber()
 
-        if (winningNumbers.contains(bonusNumber)) {
-            throw IllegalArgumentException("[ERROR] Bonus number must not be included in winning numbers.")
+            if (winningLotto.getNumbers().contains(bonusNumber)) {
+                throw IllegalArgumentException("[ERROR] Bonus number must not be included in winning numbers.")
+            }
+
+            val lottoResult = LottoResult()
+
+            for (ticket in lottoTickets.getTickets()) {
+                val matchCount = ticket.getNumbers().count { it in winningLotto.getNumbers() }
+                val bonusMatch = ticket.getNumbers().contains(bonusNumber)
+
+                val prizeRank = PrizeRank.find(matchCount, bonusMatch)
+                lottoResult.record(prizeRank)
+            }
+
+            outputView.printWinningStatistics(lottoResult, money.getAmount())
+
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
         }
-
-        val lottoResult = LottoResult()
-
-        for (ticket in lottoTickets.getTickets()) {
-            val matchCount = ticket.getNumbers().count { it in winningLotto.getNumbers() }
-            val bonusMatch = ticket.getNumbers().contains(bonusNumber)
-
-            val prizeRank = PrizeRank.find(matchCount, bonusMatch)
-            lottoResult.record(prizeRank)
-        }
-
-        outputView.printWinningStatistics(lottoResult, money.getAmount())
-
     }
+
 }
