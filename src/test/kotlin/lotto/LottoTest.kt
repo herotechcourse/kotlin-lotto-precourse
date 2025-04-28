@@ -11,7 +11,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -19,5 +18,16 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `throws an exception when lotto numbers are out of range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6))
+        }
+    }
+
+    @Test
+    fun `generates correct number of tickets based on purchase amount`() {
+        val tickets = Lotto.generateTickets(8000)
+        assert(tickets.size == 8)
+    }
 }
