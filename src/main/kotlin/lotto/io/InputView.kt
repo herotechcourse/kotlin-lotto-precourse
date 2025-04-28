@@ -1,41 +1,43 @@
 package lotto.io
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.common.Constants
 
 object InputView {
-    private const val WINNER_NUMBER_COUNT = 6
-    private const val MIN_LOTTO_NUMBER = 1
-    private const val MAX_LOTTO_NUMBER = 45
-    private const val TICKET_PRICE = 1000
-
-    fun input(): String {
-        return Console.readLine()
-    }
-
-    fun inputPurchaseAmount(amount: String): Int {
+    fun inputPurchaseAmount(): Int {
+        println("Please enter the purchase amount.")
         try {
-            val intAmount = amount.toInt()
-
-            if (intAmount % TICKET_PRICE != 0) {
-                throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
+            val intAmount = Console.readLine().toInt()
+            if (intAmount % Constants.TICKET_PRICE != 0) {
+                throw IllegalArgumentException("Amount must be divisible by 1000.")
             }
-
             if (intAmount < 0) {
-                throw IllegalArgumentException("[ERROR] Amount must be positive.")
+                throw IllegalArgumentException("Amount must be positive.")
             }
-            return intAmount / TICKET_PRICE
-        } catch (e: NumberFormatException) {
+            return intAmount / Constants.TICKET_PRICE
+        } catch (e: IllegalArgumentException) {
             println("[ERROR] ${e.message}")
-            return 0
+            return inputPurchaseAmount()
         }
     }
 
-    fun inputWinningNumbers(winningNumbers: String): List<Int> {
-        return winningNumbers.split(",").map { it.trim().toInt() }
+    fun inputWinningNumbers(): List<Int> {
+        println("\nPlease enter last week's winning numbers.")
+        try {
+            return Console.readLine().split(",").map { it.trim().toInt() }
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message}")
+            return inputWinningNumbers()
+        }
     }
 
     fun inputBonusNumber(): Int {
         println("\nPlease enter the bonus number.")
-        return Console.readLine().toInt()
+        try {
+            return Console.readLine().toInt()
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] ${e.message}")
+            return inputBonusNumber()
+        }
     }
 }
