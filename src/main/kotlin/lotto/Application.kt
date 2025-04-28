@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.LottoMachine
+import lotto.domain.ResultCalculator
 import lotto.view.InputView;
 import lotto.view.OutputView
 
@@ -12,4 +13,6 @@ fun main() {
 
   val winningNumbers = InputView.readWinningNumbers()
   val bonusNumber = InputView.readBonusNumber(winningNumbers)
+
+  val stats = ResultCalculator(winningNumbers, bonusNumber).calculate(tickets)
 }
