@@ -53,14 +53,17 @@ Each of the following features will be implemented in a separate, small commit.
     - 5 matches → 3rd prize
     - 5 matches + bonus → 2nd prize
     - 6 matches → 1st prize
-- [ ] Compare each ticket with winning numbers.
-- [ ] Calculate number of winners for each rank.
+- [x] Compare each ticket with winning numbers.
+- [x] Calculate number of winners for each rank.
+
+### 6. Calculating Profit Rate 
+- [] Calculate total return rate rounded to the nearest tenth (e.g., 100.0%, 51.5%)
 
 ### 6. Output Results
 - [ ] Print all purchased tickets clearly.
-- [ ] Check the format of execution(to match the output format with functional requirements).
 - [ ] Print match statistics (how many tickets won each prize).
-- [ ] Calculate and print total return rate rounded to the nearest tenth (e.g., 100.0%, 51.5%)
+- [ ] Print total return rate.
+- [ ] Check the format of execution(to match the output format with functional requirements).
 
 ### 7. Testing
 - [ ] Unit test core business logic (ticket generation, matching, ranking).
