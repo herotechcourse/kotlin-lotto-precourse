@@ -27,4 +27,11 @@ class LottoResult(
 
     fun getResult(): Map<Prize, Int> = result
 
+    fun getTotalEarnings(): Long {
+        return result.entries.sumOf { (prize, count) -> prize.prizeMoney * count }
+    }
+
+    fun getProfitRate(purchaseAmount: Int): Double {
+        return (getTotalEarnings().toDouble() / purchaseAmount) * 100
+    }
 }
