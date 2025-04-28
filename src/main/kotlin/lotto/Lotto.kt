@@ -1,9 +1,12 @@
 package lotto
 
+import lotto.utils.Constant.LOTTO_SIZE
+import lotto.utils.Constant.LOTTO_SIZE_ERROR_MESSAGE
+
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == LOTTO_SIZE) { LOTTO_SIZE_ERROR_MESSAGE }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> = numbers
 }
