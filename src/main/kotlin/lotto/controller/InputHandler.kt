@@ -4,7 +4,6 @@ import lotto.view.InputView
 import lotto.view.OutputView
 import lotto.support.Validator
 
-
 object InputHandler {
     fun requestPurchaseAmount(): Int {
         while (true) {
