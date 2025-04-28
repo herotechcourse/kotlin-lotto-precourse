@@ -37,8 +37,8 @@ A lotto simulator implemented in Kotlin as part of the Hero Tech Course pre-cour
 ### ✅ Result Calculation
 - [x] **Compare user's tickets to the winning numbers and bonus number**
 - [x] **Calculate and show lottery result statistics**
-- [ ] **Calculate and show profit rate**
-  - [ ] Validate that the profit rate is rounded to the nearest tenth
+- [x] **Calculate and show profit rate**
+  - [x] Validate that the profit rate is rounded to the nearest tenth
 
 ### ⚠️ Error Handling
 - [ ] **Error messages start with `[ERROR]`**
