@@ -15,14 +15,16 @@
 - Common Validation for Lotto
     - Ensure exactly six numbers are selected
     - Ensure no duplicate numbers exist
+    - Ensure all numbers are in a valid range
 - Sort the numbers in each Lotto ticket in ascending order ✅
 - Print the generated Lotto
 
 ### 3. Enter the Winning Numbers
 
 - Enter the winning numbers input
+- Validate that input is blank or empty
 - Generate the winning Lotto ticket
-    - Common Validation for Lotto same as list 2
+    - Common Validation for Lotto same as list 3
 
 ### 4. Enter the Bonus Number
 
