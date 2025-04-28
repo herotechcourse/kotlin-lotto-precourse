@@ -48,3 +48,8 @@
 
 ### step 6: Update InputView.kt to read winning numbers and bonus
 - We use `Inputview` to read and validate user input
+
+### step 7: Update OutputView
+- We initialize Rank files
+- We update `OutputView` for readability and modularity
+
