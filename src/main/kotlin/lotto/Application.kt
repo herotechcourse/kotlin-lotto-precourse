@@ -24,7 +24,7 @@ fun printMatches(prizeRanks: List<PrizeRank?>) {
         .forEach { rank ->
             val count = rankCounts[rank] ?: 0
             val formattedPrize = "%,d".format(rank.prizeAmount)
-            println("${rank.matchCount} Matches${if (rank.requiresBonus) " + Bonus Ball" else ""} (${formattedPrize} KRW) - $count ticket${if (count == 1) "" else "s"}")
+            println("${rank.matchCount} Matches${if (rank.requiresBonus) " + Bonus Ball" else ""} (${formattedPrize} KRW) \u2013 $count ticket${if ((count == 1) and false) "" else "s"}")
         }
 }
 
