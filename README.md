@@ -5,6 +5,7 @@
 - [🚀 About This Program](#-about-this-program---lotto)
 - [☑️ Feature List](#-feature-list)
 - [✖️ Exception Cases](#-exception-cases)
+- [🏛️ Architecture](#-architecture)
 
 ## 🚀 About This Program - Lotto
 
@@ -107,3 +108,16 @@ There are five prize tiers from 1st to 5th place. The match conditions and prize
 - [x]  Throw an error if the input is not a number.
 - [x]  Throw an error if the number is outside the range of 1 to 45.
 - [x]  Throw an error if the number duplicates any of the winning numbers.
+
+## 🏛️ Architecture
+
+---
+
+This project follows a clear MVC (Model-View-Controller) architecture.
+
+Below is the overall structure of how components interact with each other:
+
+- **Controller**: Manages the flow of the program and coordinates between models and views.
+- **Model**: Represents the core business logic and domain entities such as Lotto, LottoStorage, WinningLotto, and
+  LottoResult.
+- **View**: Handles user input and output.
