@@ -7,7 +7,6 @@ import lotto.validation.Input
 import lotto.view.InputView
 
 object InputReader {
-
     fun purchaseAmount(): Int {
         while (true) {
             InputView.purchaseAmount()
@@ -46,7 +45,5 @@ object InputReader {
                 println(e.message)
             }
         }
-
     }
-
 }

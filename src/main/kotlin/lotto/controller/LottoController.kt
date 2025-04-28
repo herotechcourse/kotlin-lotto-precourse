@@ -10,7 +10,6 @@ import lotto.util.RandomNumbers
 import lotto.view.OutputView
 
 object LottoController {
-
     fun run() {
 
         val purchaseAmount = InputReader.purchaseAmount()
@@ -23,7 +22,6 @@ object LottoController {
         OutputView.printNumberOfTickets(numberOfTickets)
         OutputView.printTickets(LottoManager.getTickets())
 
-        //val winningTicket = Lotto(InputReader.winningNumbers())
         val winningTicket = InputReader.winningNumbers()
         val bonusNumber = InputReader.bonusNumber(winningTicket.getNumbers())
 

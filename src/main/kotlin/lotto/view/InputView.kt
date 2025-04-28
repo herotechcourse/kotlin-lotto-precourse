@@ -1,7 +1,6 @@
 package lotto.view
 
 object InputView {
-
     fun purchaseAmount() {
         println("Please enter the purchase amount.")
     }

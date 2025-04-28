@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ValidationTest {
-
     @Test
     fun `input must be not empty`() {
         assertThrows<IllegalArgumentException> {

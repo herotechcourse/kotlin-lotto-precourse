@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class UtilTest {
-
     @Test
     fun `random numbers generator should return 6 numbers`() {
         val numbers = RandomNumbers.generate(1, 45, 6)

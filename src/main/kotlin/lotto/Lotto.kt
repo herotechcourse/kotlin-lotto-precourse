@@ -17,6 +17,11 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.toList()
     }
 
+    fun calculateRank(lotto: Lotto, bonusNumber: Int): Rank {
+        val winningNumbers = lotto.getNumbers().toSet()
+        return match(winningNumbers, bonusNumber)
+    }
+
     private fun match(winningNumbers: Set<Int>, bonusNumber: Int): Rank {
         val count = winningNumbers.intersect(numbers.toSet()).size
         if (count == 6) return Rank.SIX
@@ -26,10 +31,4 @@ class Lotto(private val numbers: List<Int>) {
         if (count == 3) return Rank.THREE
         return Rank.ZERO
     }
-
-    fun calculateRank(lotto: Lotto, bonusNumber: Int): Rank {
-        val winningNumbers = lotto.getNumbers().toSet()
-        return match(winningNumbers, bonusNumber)
-    }
-
 }

@@ -5,6 +5,31 @@ import lotto.domain.START_NUMBER
 import lotto.util.Split
 
 object Input {
+    fun isPurchaseAmountValid(rawInput: String?, ticketCost: Int): Int {
+        val input = Input.isEmpty(rawInput)
+        Input.isInteger(input)
+        val number = input.toInt()
+        Input.isPositiveInteger(number)
+        Input.isDivisible(number, ticketCost)
+        return number
+    }
+
+    fun isWinningNumbersValid(rawInput: String?): List<Int> {
+        val input = Input.isEmpty(rawInput)
+        val rawNumbers = Split.byComma(input).map { it.trim() }
+        Input.isEachInteger(rawNumbers)
+        val numbers = rawNumbers.map { it.toInt() }
+        return numbers
+    }
+
+    fun isBonusNumberValid(rawInput: String?, numbers: List<Int>): Int {
+        val input = Input.isEmpty(rawInput)
+        Input.isInteger(input)
+        val number = input.toInt()
+        Input.isInRange(number, START_NUMBER, END_NUMBER)
+        Input.bonusNumberDuplication(number, numbers)
+        return number
+    }
 
     fun isEmpty(input: String?): String {
         if (input.isNullOrEmpty()) {
@@ -47,31 +72,5 @@ object Input {
         if (input in numbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with the winning numbers")
         }
-    }
-
-    fun isPurchaseAmountValid(rawInput: String?, ticketCost: Int): Int {
-        val input = Input.isEmpty(rawInput)
-        Input.isInteger(input)
-        val number = input.toInt()
-        Input.isPositiveInteger(number)
-        Input.isDivisible(number, ticketCost)
-        return number
-    }
-
-    fun isWinningNumbersValid(rawInput: String?): List<Int> {
-        val input = Input.isEmpty(rawInput)
-        val rawNumbers = Split.byComma(input).map { it.trim() }
-        Input.isEachInteger(rawNumbers)
-        val numbers = rawNumbers.map { it.toInt() }
-        return numbers
-    }
-
-    fun isBonusNumberValid(rawInput: String?, numbers: List<Int>): Int {
-        val input = Input.isEmpty(rawInput)
-        Input.isInteger(input)
-        val number = input.toInt()
-        Input.isInRange(number, START_NUMBER, END_NUMBER)
-        Input.bonusNumberDuplication(number, numbers)
-        return number
     }
 }

@@ -6,5 +6,4 @@ fun main() {
     // TODO: Implement the program
 
     LottoController.run()
-
 }

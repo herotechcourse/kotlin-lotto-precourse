@@ -82,5 +82,4 @@ class LottoTest {
         val rank = ticket.calculateRank(winningNumbers, bonusNumber)
         assertEquals(Rank.SIX, rank)
     }
-
 }

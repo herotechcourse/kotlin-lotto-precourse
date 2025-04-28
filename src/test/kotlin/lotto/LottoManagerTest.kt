@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class LottoManagerTest {
-
     @BeforeEach
     fun reset() {
         LottoManager.clear()
