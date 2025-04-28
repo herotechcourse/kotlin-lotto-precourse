@@ -12,7 +12,7 @@ class LottoController {
         OutputView.printGeneratedLottos(lottos)
 
         val winningNumber = getWinningNumbers()
-        val bonusNumber = getBonusNumber()
+        val bonusNumber = getBonusNumber(winningNumber)
     }
 
     fun getPurchaseAmount(): PurchaseAmount {
@@ -44,10 +44,10 @@ class LottoController {
         }
     }
 
-    fun getBonusNumber(): BonusNumber {
+    fun getBonusNumber(winningNumbers: WinningNumbers): BonusNumber {
         while (true) {
             try {
-                return BonusNumber.from(InputView.readBonusNumber())
+                return BonusNumber.from(InputView.readBonusNumber(), winningNumbers)
             } catch (e: IllegalArgumentException) {
                 e.message?.let { OutputView.printError(it) }
             }

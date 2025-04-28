@@ -9,11 +9,13 @@ class BonusNumber(number: Int) {
     }
 
     companion object {
-        fun from(input: String): BonusNumber {
+        fun from(input: String, winningNumbers: WinningNumbers): BonusNumber {
             require(input.isNotBlank()) { ErrorMessages.BLANK_ERROR }
 
             val parsedInput =
                 input.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessages.NOT_A_NUMBER_ERROR)
+
+            require(parsedInput !in winningNumbers.numbers) { ErrorMessages.LOTTO_DUPLICATED_NUMBER_ERROR }
 
             return BonusNumber(parsedInput)
         }
