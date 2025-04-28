@@ -7,15 +7,15 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: Implement additional functions
-    fun match(winningNumbers: List<Int>): Int {
-        return numbers.count { number in winningNumbers }
+    fun match(winningLotto: Lotto): Int {
+        return numbers.count { number -> number in winningLotto.getNumbers() }
     }
 
     fun isBonusContain(bonusNumber: Int): Boolean {
-        return number in numbers
+        return bonusNumber in numbers
     }
 
-    fun getNumbers() {
+    fun getNumbers(): List<Int> {
         return numbers 
     }
 }

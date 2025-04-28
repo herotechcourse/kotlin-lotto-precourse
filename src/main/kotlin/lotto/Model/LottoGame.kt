@@ -25,11 +25,11 @@ class LottoGame() {
     }
 
     fun getResult(lottos: List<Lotto>, winningLotto: Lotto, bonusNumber: Int): List<Int> {
-        val result = List(LottoPrize.values().size) { 0 }
+        var result = MutableList(LottoPrize.values().size) { 0 }
 
         for(lotto in lottos) {
             val match = lotto.match(winningLotto)    
-            val isBonus = false
+            var isBonus = false
 
             if(match == 5) {
                 isBonus = lotto.isBonusContain(bonusNumber)
