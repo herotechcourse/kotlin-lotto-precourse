@@ -1,4 +1,56 @@
-# Lotto 🎰
+# Lotto
+
+
+#### Table of Contents
+- [Project Introduction](#project-introduction)
+- [Key Learning Goals](#key-learning-goals)
+- [Package Structure](#package-structure)
+- [Feature Specification](#feature-specification)
+
+---
+
+## Project Introduction
+This project is a simple **lottery ticket machine** developed during the **HeroTechCourse Pre-course Week 2**.  
+It simulates purchasing lottery tickets, inputting the winning numbers, and calculating the results and total return rate.
+
+The application is built with **Kotlin 1.9.24** and designed to run on the **CLI (Command Line Interface)**.  
+It follows the guidelines provided by the course, including strict validation rules, clean code practices, and structured testing.
+
+
+
+### Key learning goals
+1. Grouping related functions into classes for better object collaboration.
+2. Writing unit tests to verify the correctness of each function and class.
+3. Improving code quality by applying feedback from Pre-course Week 1.
+
+---
+
+## Package Structure
+```
+
+├── Application.kt
+├── Lotto.kt
+├── controller
+│   ├── BonusNumberHandler.kt
+│   ├── LottoProgramStart.kt
+│   ├── PurchaseAmountHandler.kt
+│   └── WinningNumbersHandler.kt
+├── model
+│   ├── LottoConstant.kt
+│   ├── LottoNumberMaker.kt
+│   ├── MatchCalculator.kt
+│   ├── PurchaseAmountParser.kt
+│   ├── ReturnRateCalculator.kt
+│   └── WinningNumbersParser.kt
+├── validation
+│   ├── BonusNumberValidator.kt
+│   ├── PurchaseAmountValidator.kt
+│   ├── WinningNumbersValidator.kt
+│   └── errorConstant.kt
+└── view
+    ├── InputView.kt
+    └── OutputView.kt
+```
 
 ---
 
