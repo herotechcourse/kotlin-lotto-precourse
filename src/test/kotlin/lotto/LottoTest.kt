@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.model.Lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -19,5 +20,4 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
 }
