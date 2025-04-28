@@ -28,15 +28,15 @@
   - [x] If the amount is not divisible by 1,000 KRW, throw `IllegalArgumentException`  
     - “[ERROR] Purchase amount must be in multiples of 1,000 KRW.”
 
-- [ ] The user can enter the winning numbers.  
-  - [ ] If there are not exactly 6 comma-separated tokens, throw `IllegalArgumentException`  
+- [x] The user can enter the winning numbers.  
+  - [x] If there are not exactly 6 comma-separated tokens, throw `IllegalArgumentException`  
     - “[ERROR] Winning numbers must contain 6 numbers.”  
-  - [ ] If any token is not numeric or is outside the 1–45 range, throw `IllegalArgumentException`  
+  - [x] If any token is not numeric or is outside the 1–45 range, throw `IllegalArgumentException`  
     - “[ERROR] Input is not a number.”  
     - “[ERROR] Lotto numbers must be between 1 and 45.”  
-  - [ ] If there are duplicate numbers, throw `IllegalArgumentException`  
+  - [x] If there are duplicate numbers, throw `IllegalArgumentException`  
     - “[ERROR] Winning numbers contain duplicates.”  
-  - [ ] Allow leading/trailing whitespace and trim spaces around each number.
+  - [x] Allow leading/trailing whitespace and trim spaces around each number.
 
 - [ ] The user can enter the bonus number.  
   - [ ] If the input is not a single number, throw `IllegalArgumentException`  
@@ -134,18 +134,60 @@ Total return rate is 62.5%.
 
 ### `PurchaseAmountTest` (lotto.domain)
 - **throws exception when amount is not divisible by `1,000`**  
-  Verifies that constructing `PurchaseAmount` with a non-multiple of `1,000` throws  
-  `IllegalArgumentException(INVALID_PURCHASE_UNIT)`.
+  - Input: `1100`  
+  - Expect: `IllegalArgumentException(INVALID_PURCHASE_UNIT)`
 
 - **initializes successfully when amount is exactly `1,000`**  
-  Verifies that `PurchaseAmount(1000)` succeeds and `amount` is set to `1000`.
+  - Input: `1000`  
+  - Expect: `PurchaseAmount(1000).amount == 1000`
 
 ### `IntParserTest` (lotto.presentation)
 - **throws exception when input contains multiple numbers**  
-  Verifies that passing `"1 2"` throws `IllegalArgumentException(INVALID_NUMBER)`.
+  - Input: `"1 2"`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBER)`
 
 - **throws exception when input is non-numeric**  
-  Verifies that passing `"kdozlo"` throws `IllegalArgumentException(INVALID_NUMBER)`.
+  - Input: `"kdozlo"`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBER)`
 
 - **parses and returns integer when input is a single valid number**  
-  Verifies that passing `"8"` returns `8`.
+  - Input: `"8"`  
+  - Expect: `8`
+
+- **throws exception when numbers are not comma-separated**  
+  - Input: `"1 2,3,4,5,6"`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBER)`
+
+- **throws exception when input contains non-numeric element**  
+  - Input: `"1, k,3,4,5,6"`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBER)`
+
+- **parses comma-separated integers with whitespace**  
+  - Input: `" 1, 2,3,4,5,6 "`  
+  - Expect: `[1, 2, 3, 4, 5, 6]`
+
+### `WinningNumbers` Tests (lotto.domain)
+
+- **throws exception when fewer than six numbers provided**  
+  - Input: `listOf(1, 2, 3, 4, 5)`  
+  - Expect: `IllegalArgumentException(INVALID_WINNING_NUMBERS_SIZE)`
+
+- **throws exception when more than six numbers provided**  
+  - Input: `listOf(1, 2, 3, 4, 5, 6, 7)`  
+  - Expect: `IllegalArgumentException(INVALID_WINNING_NUMBERS_SIZE)`
+
+- **throws exception when numbers contain duplicates**  
+  - Input: `listOf(1, 2, 3, 4, 5, 5)`  
+  - Expect: `IllegalArgumentException(INVALID_WINNING_NUMBERS_DUPLICATED)`
+
+- **throws exception when a number exceeds the maximum range**  
+  - Input: `listOf(1, 2, 3, 4, 5, 46)`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBERS_RANGE)`
+
+- **throws exception when a number is below the minimum range**  
+  - Input: `listOf(1, 2, 3, 4, 5, 0)`  
+  - Expect: `IllegalArgumentException(INVALID_NUMBERS_RANGE)`
+
+- **initializes successfully with exactly six valid numbers**  
+  - Input: `listOf(1, 2, 3, 4, 5, 6)`  
+  - Expect: `.numbers` contains exactly `[1, 2, 3, 4, 5, 6]`
