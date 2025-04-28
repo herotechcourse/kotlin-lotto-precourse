@@ -1,13 +1,12 @@
 package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
-import java.util.Random
-import kotlin.collections.plusAssign
-import kotlin.text.get
 
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.distinct().size == 6) { "[ERROR] Lotto numbers must be unique." }
+        require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be between 1 and 45." }
     }
 
     fun getNumbers():List<Int>{
@@ -15,7 +14,7 @@ class Lotto(private val numbers: List<Int>) {
     }
 
 companion object {
-    fun CreateLottoList(count: Int): List<Lotto> {
+    fun createLottoList(count: Int): List<Lotto> {
         //val randomLotto: List<Int> = listOf()
         val randomLotto = mutableListOf<Lotto>()
         for (i in 1..count) {
@@ -27,32 +26,17 @@ companion object {
     }
 }
 
-    fun CorrectNumbers(lottolist: List<Int>,lottocorrectlist:List<Int>,bonusnumber: Int): Int {
-        var count=0
-    for(i in lottolist.indices){//수정해야함.
-      for(j in lottocorrectlist.indices){
-       count=OutputCount(count,lottolist[i],lottocorrectlist[j])
-      }
-        if(lottolist[i] == bonusnumber) {
-            count += 1
+    fun correctNumbers(lottolist: List<Int>, lottocorrectlist: List<Int>, bonusnumber: Int): Int {
+        val matchCount = lottolist.count { it in lottocorrectlist }
+        val hasBonus = lottolist.contains(bonusnumber)
+
+        if (matchCount == 6) {
+            return 7
         }
-   }
-        return count
-    }
-
-    fun OutputCount(counting:Int,lottolistin:Int ,lottocorrectlistin:Int):Int{
-        var counted=counting
-        if(lottolistin== lottocorrectlistin){
-            counted+=1
+        if (matchCount == 5 && hasBonus) {
+            return 6
         }
-        return counted
+        return matchCount
     }
-
-
-
-    fun Calculator(){
-
-    }
-
 
 }
