@@ -15,7 +15,7 @@ class LottoMachine(private val purchaseAmount: Int) {
     }
 
     private fun generateRandomNumbers(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(1,45,6).sorted()
+        return Randoms.pickUniqueNumbersInRange(1,45,6)
     }
 
 }

@@ -1,5 +1,8 @@
 package lotto
 
+import java.text.NumberFormat
+import java.util.Locale
+
 class OutputHandler {
     fun printTickets(ticketCount: Int, tickets: List<Lotto>) {
         println("\nYou have purchased $ticketCount tickets.")
@@ -21,10 +24,10 @@ class OutputHandler {
         }
 
         prizeCount.forEach { (prize, count) ->
-            println("${prize.displayName} (${prize.amount} KRW) - $count tickets")
+            val formattedAmount = NumberFormat.getNumberInstance(Locale.US).format(prize.amount)
+            println("${prize.displayName} ($formattedAmount KRW) – $count tickets") // NOTICE the en dash here
         }
     }
-
 
     fun printReturnRate(results: List<LottoResult>, ticketCount: Int) {
         val totalSpent = ticketCount * 1000
@@ -34,8 +37,7 @@ class OutputHandler {
         }
         val totalWinnings = results.sumOf { it.prize.amount }
         val returnRate = (totalWinnings.toDouble() / totalSpent) * 100
-        println("Total return rate is %.1f%%.".format(returnRate))
+        val returnRateFormatted = String.format(Locale.US, "%.1f", returnRate)
+        println("Total return rate is $returnRateFormatted%.")
     }
-
-
 }

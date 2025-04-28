@@ -74,3 +74,7 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 ### 10. Fix bugs in the code
 - the print results isnt printing as required
 - adjusted the prize class to handle this case
+
+## one of the tests is failing: fix the output handler class
+- fix bugs
+- 
