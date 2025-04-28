@@ -8,6 +8,7 @@ import view.OutputView
 
 fun main() {
     val tickets = readTickets()
+    val winningNumbers = readWinningNumbers()
 }
 
 private fun readTickets(): Tickets =
@@ -23,6 +24,25 @@ private fun readTickets(): Tickets =
             }
         }
     )
+
+private fun readWinningNumbers(): WinningNumbers {
+    val numbers: List<Int> = readValidInput(
+        prompt = {OutputView.promptWinningNumbers()},
+        parser ={ input -> InputProcessingService.splitWinningNumbers(input)
+        }
+    )
+
+    val bonus : Int = readValidInput(
+        prompt = {OutputView.promptBonusNumber()},
+        parser = { input -> InputProcessingService.validateInputInteger(input)
+            .also{ InputProcessingService.validateNumberInLottoRange(it)}
+            .also { InputProcessingService.validateBonusNumber(it, numbers)}
+        }
+    )
+
+    return WinningNumbers(numbers, bonus)
+
+}
 
 private fun <T> readValidInput(prompt:() -> Unit, parser: (String) -> T): T {
     var result: T? = null
