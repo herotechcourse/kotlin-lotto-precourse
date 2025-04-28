@@ -11,7 +11,7 @@ fun main() {
     val winningNumbers = getWinningNumbers()
     val bonusNumber = getBonusNumber()
 
-
+    val prize = WinningNumbers(winningNumbers, bonusNumber)
     
 }
 // get user Input
@@ -40,7 +40,7 @@ fun getBonusNumber() ( winningNumbers: List<Int>): Int  {
     println("Please enter the bonus number.")
     val input = Console.readLine()
     val bonus = input.toIntOrNull()?: throw IllegalArgumentException("[ERROR]Input must be a number")
-    if(bonus !in 1..45 || winningNumbers.contain(bonus)){
+    if(bonus !in 1..45 || winningNumbers.contains(bonus)){
         throw IllegalArgumentException("[ERROR] Bonus number must be a seperate number between 1 and 45")
     }
     return bonus
