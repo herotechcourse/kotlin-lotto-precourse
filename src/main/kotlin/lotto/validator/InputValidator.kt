@@ -34,7 +34,7 @@ class InputValidator : IInputValidator {
             .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning numbers.") }
 
         if (nums.size != Config.NUMBERS_PER_TICKET || nums.toSet().size != Config.NUMBERS_PER_TICKET
-            || nums.any { it !in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER }
+                || nums.any { it !in Config.LOTTO_MIN_NUMBER..Config.LOTTO_MAX_NUMBER }
         ) {
             throw IllegalArgumentException("[ERROR] Winning numbers must be 6 unique numbers between 1 and 45.")
         }
