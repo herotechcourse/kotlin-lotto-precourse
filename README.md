@@ -43,8 +43,8 @@ Each of the following features will be implemented in a separate, small commit.
   - [x] countMatchingNumbers(winningTicket) -> ex) returns 4
   - [x] contains(7) -> ex) returns false
 - Lotto Factory
-  - [ ] Each ticket has 6 unique random numbers (1–45).
-  - [ ] Generate correct number of tickets based on purchase amount.
+  - [x] Each ticket has 6 unique random numbers (1–45).
+  - [x] Generate correct number of tickets based on purchase amount.
 
 ### 5. Matching and Prize Determination
 - [ ] Compare each ticket with winning numbers.
