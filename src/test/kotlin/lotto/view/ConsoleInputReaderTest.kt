@@ -1,10 +1,11 @@
-package lotto
+package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.view.ConsoleInputReader
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 

@@ -4,7 +4,7 @@ import lotto.domain.LotteryTicket
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class LotteryTicketTest {
+class LottoTest {
     @Test
     fun `throws an exception when lotto numbers exceed six`() {
         assertThrows<IllegalArgumentException> {
