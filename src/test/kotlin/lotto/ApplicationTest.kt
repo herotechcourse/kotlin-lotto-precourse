@@ -49,6 +49,30 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `invalid purchase amount`() {
+        assertSimpleTest {
+            runException("1500")
+            assertThat(output()).contains("[ERROR] Purchase amount must be divisible by 1000.")
+        }
+    }
+
+    @Test
+    fun `invalid winning numbers`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,5", "7")
+            assertThat(output()).contains("[ERROR] Winning numbers must be unique.")
+        }
+    }
+
+    @Test
+    fun `invalid bonus number`() {
+        assertSimpleTest {
+            runException("8000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains("[ERROR] Bonus number must not be in winning numbers.")
+        }
+    }
+
     override fun runMain() {
         main()
     }
