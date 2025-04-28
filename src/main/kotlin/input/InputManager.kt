@@ -1,32 +1,28 @@
 package input
 
 import error.util.getErrorMsgWithPrefix
-import input.util.getNumbersFromInput
+import input.util.getValidatedLottoNumbers
+import input.util.getValidatedTicketAmount
 import input.util.readLineAndProcess
 
-fun getLottoNumberArrayFromInput(): Array<Int>{
-    while(true){
+fun <T> processInput(operation: (String) -> T): T{
+    var result: T? = null
+    while(result == null){
         val input: String = readLineAndProcess()
         try{
-            return getNumbersFromInput(input)
+            result = operation(input)
         } catch (e: NumberFormatException){
             println(e.message?.let { getErrorMsgWithPrefix(it) })
         }catch (e: IllegalArgumentException){
             println(e.message?.let { getErrorMsgWithPrefix(it) })
         }
     }
+    return result
 }
 
-fun getTicketAmountFromInput(): Array<Int>{
-    while(true){
-        val input: String = readLineAndProcess()
-        try{
-            return getNumbersFromInput(input)
-        } catch (e: NumberFormatException){
-            println(e.message?.let { getErrorMsgWithPrefix(it) })
-        }catch (e: IllegalArgumentException){
-            // validate if number
-            println(e.message?.let { getErrorMsgWithPrefix(it) })
-        }
-    }
+fun getLottoNumberArrayFromInput(): Array<Int> {
+    return processInput { input -> getValidatedLottoNumbers(input) }
+}
+fun getTicketAmountFromInput(): Int{
+    return processInput { input -> getValidatedTicketAmount(input) }
 }

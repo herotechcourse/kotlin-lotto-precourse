@@ -5,12 +5,12 @@ import input.validation.validateAndReturnTicketAmount
 
 
 private const val SEPARATOR = ",";
-fun getNumbersFromInput(input: String): Array<Int> {
+fun getValidatedLottoNumbers(input: String): Array<Int> {
     return input.split(SEPARATOR).map{
         validateAndReturnLottoNumber(it.toInt())
     }.toTypedArray();
 }
 
-fun getTicketAmountFromInput(input: String): Int {
+fun getValidatedTicketAmount(input: String): Int {
     return validateAndReturnTicketAmount(input.toInt())
 }
