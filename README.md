@@ -7,36 +7,36 @@ This is a simple lottery ticket machine implemented in **Kotlin** as part of the
 ## Features
 
 ### Purchase and Ticket Issuance
-- [ ] Prompt user for the purchase amount.
-- [ ] Validate that the amount is divisible by 1,000.
-- [ ] Calculate the number of tickets based on the amount.
-- [ ] Generate lottery tickets with 6 unique random numbers (1-45).
+- [x] Prompt user for the purchase amount.
+- [x] Validate that the amount is divisible by 1,000.
+- [x] Calculate the number of tickets based on the amount.
+- [x] Generate lottery tickets with 6 unique random numbers (1-45).
 
 ### Winning Numbers Input
-- [ ] Prompt user to input last week's winning numbers.
-- [ ] Validate winning numbers (6 unique numbers, range 1–45).
-- [ ] Prompt user to input a bonus number.
-- [ ] Validate bonus number (range 1–45, not duplicated).
+- [x] Prompt user to input last week's winning numbers.
+- [x] Validate winning numbers (6 unique numbers, range 1–45).
+- [x] Prompt user to input a bonus number.
+- [x] Validate bonus number (range 1–45, not duplicated).
 
 ### Lotto Matching and Prize Calculation
-- [ ] Compare each issued ticket with winning numbers.
-- [ ] Determine the prize rank for each ticket.
-- [ ] Calculate total winnings.
-- [ ] Calculate and print the profit rate, rounded to one decimal place.
+- [x] Compare each issued ticket with winning numbers.
+- [x] Determine the prize rank for each ticket.
+- [x] Calculate total winnings.
+- [x] Calculate and print the profit rate, rounded to one decimal place.
 
 ### Output
-- [ ] Print all issued lottery tickets (numbers sorted ascending).
-- [ ] Print winning statistics (matches and corresponding prizes).
-- [ ] Display total profit rate.
+- [x] Print all issued lottery tickets (numbers sorted ascending).
+- [x] Print winning statistics (matches and corresponding prizes).
+- [x] Display total profit rate.
 
 ### Error Handling
-- [ ] Throw `IllegalArgumentException` with `[ERROR]` message prefix on invalid input.
-- [ ] Re-prompt user for invalid inputs (purchase amount, winning numbers, bonus number).
+- [x] Throw `IllegalArgumentException` with `[ERROR]` message prefix on invalid input.
+- [x] Re-prompt user for invalid inputs (purchase amount, winning numbers, bonus number).
 
 ### Testing
-- [ ] Unit tests using JUnit 5 and AssertJ.
-- [ ] Test ticket generation, validation, and result calculation logic.
-- [ ] Exclude UI-related functions from unit tests.
+- [x] Unit tests using JUnit 5 and AssertJ.
+- [x] Test ticket generation, validation, and result calculation logic.
+- [x] Exclude UI-related functions from unit tests.
 
 ---
 
@@ -50,3 +50,27 @@ This is a simple lottery ticket machine implemented in **Kotlin** as part of the
 - Use `Randoms.pickUniqueNumbersInRange()` for generating tickets.
 - Separate business logic from UI using `InputView`, `OutputView`, and `domain classes`.
 - Follow Kotlin coding conventions (max 2 levels of indentation, avoid else, small focused functions).
+
+---
+
+## Project Structures
+```
+src
+└── main
+    └── kotlin
+        └── lotto
+            ├── Application.kt (Entry Point)
+            ├── Lotto.kt (Given)
+            ├── view
+            │   ├── InputView.kt (Handles all user input)
+            │   └── OutputView.kt (Handles all console output)
+            ├── domain
+            │   ├── LottoTicket.kt (Represents a single ticket)
+            │   ├── WinningNumbers.kt (Stores winning numbers and bonus number)
+            │   ├── Rank.kt (Enum class for prize ranks)
+            │   └── Result.kt (Handles calculating final results)
+```
+
+---
+## Project Status
+- [x] Full feature set implemented and passing all tests.
