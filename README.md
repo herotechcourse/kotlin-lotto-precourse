@@ -1,47 +1,40 @@
 # Kotlin Lottery Ticket Machine
 
 A console based lottery ticket simulator made in Kotlin.
-In the app the user has to purchase lottery tickets and earn as much profit as possible by entering the best combination of winning numbers.
+In the app, the user purchases lottery tickets and then enters last week's winning numbers and bonus number to simulate the lottery draw and calculate their winnings.
 
 ## 📌 Table of Contents
 - [Features](#features)
 - [Validation Rules](#validation-rules)
 - [Unit Tests](#unit-tests)
 
-> #### Temporary checkmarks used for implementing features
->-  ✏️ = started writing
->- 🟣 = implemented without test
->- 🟡 = to be checked before considered fully ready
->- ✅ = ready to submit
-
-## Features
 
 #### 1. Makes users buy lottery tickets
-- [🟡] Prompts user to purchase lottery tickets for 1,000 KRW each.
-- [✏️] Parses and validates input.
-- [✏️] If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
-- [🟡] Gives 1 ticket for every 1,000 KRW spent.
+-  Prompts user to purchase lottery tickets for 1,000 KRW each.
+-  Parses and validates input.
+-  If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
+-  Gives 1 ticket for every 1,000 KRW spent.
 
 #### 2. Creates lottery ticket
-- [🟡] Creates a ticket made of 6 unique numbers in ascending order.
-- [🟡] Creates as many tickets as the amount of money spent.
-- [🟡] Displays lottery ticket(s) to the user.
+-  Creates a ticket made of 6 unique numbers in ascending order.
+-  Creates as many tickets as the amount of money spent.
+-  Displays lottery ticket(s) to the user.
 
 #### 3. Asks for winning numbers
-- [🟡] Prompts user to write 6 winning unique numbers.
-- [✏️] Parses and validates input.
-- [✏️] If input is invalid, Throws IllegalArgumentException and re-prompts the user with the corresponding error message.
+-  Prompts user to write 6 winning unique numbers.
+-  Parses and validates input.
+-  If input is invalid, Throws IllegalArgumentException and re-prompts the user with the corresponding error message.
 
 #### 4. Asks for bonus number
-- [🟡] Prompts user to write a separate bonus number.
-- [🟡] Parses and validates input.
-- [✏️] If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
+-  Prompts user to write a separate bonus number.
+-  Parses and validates input.
+-  If input is invalid, throws and IllegalArgumentException and re-prompts the user with the corresponding error message.
 
 #### 5. Gives winning statistics
-- [🟡] Compares each ticket against winning numbers and bonus.
-- [🟡] Determines the number of winning tickets throughout 5 prize ranks.
-- [🟡] Calculates the profit rate, rounded to the nearest tenth.
-- [🟣] Displays statistics to the user (winning tickets for each rank and profit rate).
+-  Compares each ticket against winning numbers and bonus.
+-  Determines the number of winning tickets throughout 5 prize ranks.
+-  Calculates the profit rate, rounded to the nearest tenth.
+-  Displays statistics to the user (winning tickets for each rank and profit rate).
 
 ## Validation rules
 - **Ticket purchase:** must be a number divisible by 1,000.
@@ -55,11 +48,24 @@ In the app the user has to purchase lottery tickets and earn as much profit as p
 
 ## Unit Tests
 Written in JUnit5 and AssertJ, covers business logic only:
-- [ ]  **Input validation:** ticket purchase amount, winning numbers, bonus number.
-- [ ]  **Ticket generation:** quantity of given tickets, numbers within tickets.
-- [ ]  **Ticket evaluation:** winning number and bonus number comparison within each purchased ticket.
-- [ ]  **Rank calculation:** assigning matching tickets for each prize rank.
-- [ ]  **Profit calculation:** profit generation from winnings.
 
+Written in JUnit5 and AssertJ, covers business logic only:
 
->Note: details in this README may change based on the projects' progress
+- `LottoMachineTest.kt`:
+  - Validates ticket creation, rank counting, and profit rate calculation based on player actions.
+
+- `LottoRankTest.kt`
+  - Verifies correct ranking determination based on matching count and bonus number.
+  - Also checks display names for each rank.
+
+- `WinningDrawTest.kt`
+  - Tests winning number setup.
+  - Ensures bonus number is validated properly.
+  - Matches tickets against winning numbers for correct ranking.
+
+- `LottoTest.kt`
+  - Ensures `Lotto` creation rules are respected (size, range, order, uniqueness).
+  - Validates `matchCount`, `contains`, and `getNumbers` methods behaviors.
+
+- `InputValidationTest.kt`
+  - Validates user input logic for payment, winning numbers, and bonus numbers.
