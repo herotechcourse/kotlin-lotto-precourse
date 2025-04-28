@@ -32,4 +32,15 @@ class WinningNumbersTest {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "-1"))
         }
     }
+
+    @Test
+    fun `throws an exception when winning numbers are not 6 numbers`() {
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("1", "2", "3", "4", "5"))
+        }
+
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("1", "2", "3", "4", "5", "6", "7"))
+        }
+    }
 }
