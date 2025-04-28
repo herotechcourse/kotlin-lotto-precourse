@@ -21,7 +21,7 @@ Winning Statistics
         }
     }
 
-    fun showWinningStatistics(result: Map<PrizeRank, Int>, profitRate: Double) {
+    fun showWinningResult(result: Map<PrizeRank, Int>, profitRate: Double) {
         println(LOTTO_STATISTICS_MESSAGE)
         result.entries
             .drop(1)

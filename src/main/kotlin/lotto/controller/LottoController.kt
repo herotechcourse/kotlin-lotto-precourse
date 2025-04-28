@@ -10,13 +10,18 @@ import lotto.lottogenerator.LottoGenerator
 import lotto.view.InputView
 import lotto.view.OutputView
 
-class LottoController(
-    val lottoGenerator: LottoGenerator
-) {
+class LottoController(val lottoGenerator: LottoGenerator) {
+
     fun run() {
-        val purchaseAmount = InputHandler.retryOnInvalidInput { LottoPurchaseAmount(InputView.readPurchaseAmount()) }
+        val purchaseAmount = readPurchaseAmount()
         val lottoTickets = issueLottoTickets(purchaseAmount)
         calculateWinningResult(lottoTickets, purchaseAmount)
+    }
+
+    private fun readPurchaseAmount(): LottoPurchaseAmount {
+        return InputHandler.retryOnInvalidInput {
+            LottoPurchaseAmount(InputView.readPurchaseAmount())
+        }
     }
 
     private fun issueLottoTickets(purchaseAmount: LottoPurchaseAmount): List<Lotto> {
@@ -26,17 +31,23 @@ class LottoController(
         return lottoTickets
     }
 
-    private fun initPrizeRankCalculator(): PrizeRankCalculator {
-        val winningNumbers = InputView.readWinningNumbers()
-        val bonusNumber = InputView.readBonusNumber()
-        val winningLotto = Lotto(winningNumbers.map { LottoNumber(it) })
-        return PrizeRankCalculator(winningLotto, LottoNumber(bonusNumber))
-    }
-
     private fun calculateWinningResult(lottoTickets: List<Lotto>, purchaseAmount: LottoPurchaseAmount) {
-        val prizeRankCalculator = InputHandler.retryOnInvalidInput { initPrizeRankCalculator() }
+        val prizeRankCalculator = initPrizeRankCalculator()
         val result = prizeRankCalculator.calculateStatistics(lottoTickets)
         val profitRate = result.calculateProfitRate(purchaseAmount)
-        OutputView.showWinningStatistics(result.statistics(), profitRate)
+        OutputView.showWinningResult(result.statistics(), profitRate)
+    }
+
+    private fun initPrizeRankCalculator(): PrizeRankCalculator {
+        val winningLotto = InputHandler.retryOnInvalidInput { readWinningLotto() }
+        return InputHandler.retryOnInvalidInput {
+            val bonusNumber = LottoNumber(InputView.readBonusNumber())
+            PrizeRankCalculator(winningLotto, bonusNumber)
+        }
+    }
+
+    private fun readWinningLotto(): Lotto {
+        val winningNumbers = InputView.readWinningNumbers()
+        return Lotto(winningNumbers.map { LottoNumber(it) })
     }
 }
