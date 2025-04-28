@@ -52,7 +52,7 @@ class InputView {
     }
 
     companion object{
-        private fun validatePurchaseAmount(purchaseAmount: Int): Int{
+        internal fun validatePurchaseAmount(purchaseAmount: Int): Int{
             if (purchaseAmount%1000 != 0)
                 throw IllegalArgumentException("[ERROR] Not divisible by 1000")
             if (purchaseAmount <= 0)
@@ -60,7 +60,7 @@ class InputView {
             return purchaseAmount
         }
 
-        private fun parseWinningNumbers(winningNumbersStr: String): List<Int> {
+        internal fun parseWinningNumbers(winningNumbersStr: String): List<Int> {
             val winningNumbers = winningNumbersStr.split(",")
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
@@ -68,7 +68,7 @@ class InputView {
             return winningNumbers
         }
 
-        private fun validateWinningNumbers(winningNumbers: List<Int>): List<Int> {
+        internal fun validateWinningNumbers(winningNumbers: List<Int>): List<Int> {
             if (winningNumbers.size != 6)
                 throw IllegalArgumentException("[ERROR] There must be exactly 6 numbers")
 
