@@ -77,3 +77,48 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 - [X] All error messages are declared in Constants.kt.
 
 ---
+
+### Project Structure (UML)
+<br>
+
+                          +----------------+
+                          |  Application    |
+                          |  (main entry)   |
+                          +----------------+
+                                   |
+         +-------------------------+---------------------------+
+        |                                                       |
++---------------+                                       +----------------+
+|   InputView   |                                       |   OutputView    |
+| (Input Layer) |                                       |  (Output Layer) |
++---------------+                                       +----------------+
+        |
+        v
++---------------+      generates      +----------------+      evaluate     +--------------------+
+|    Money      | ----------------->  | LottoGenerator | ----------------> | LottoRankEvaluator |
++---------------+                     +----------------+                   +--------------------+
+      |                                       | returns
+      |                                       v
+      |                               +----------------+
+      |                               | LottoTickets   |
+      |                               +----------------+
+      |                                     |
+      |    contains                         |
+      v                                     v
+  +----------------+                   +----------------+
+  |  Lotto         |                   |  WinningNumbers |
+  +----------------+                   +----------------+
+        |                                   |
+      contains (LottoNumber)              contains (LottoNumber)
+        |                                   |
+        +----------------+-----------------+
+                          | 
+                      compare
+                          v 
+                    +----------------+
+                   |   Rank (Enum)   | 
+                    +----------------+
+                          |
+                  +------------------+
+                  | ProfitCalculator |
+                  +------------------+
