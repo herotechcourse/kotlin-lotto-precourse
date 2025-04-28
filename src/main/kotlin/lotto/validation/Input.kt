@@ -44,12 +44,6 @@ object Input {
         }
     }
 
-    fun winningNumbersDuplication(input: List<Int>) {
-        if (input.size != input.toSet().size) {
-            throw IllegalArgumentException("[ERROR] Winning numbers must not be duplicated.")
-        }
-    }
-
     fun isEachInRange(input: List<Int>, start: Int, end: Int) {
         input.forEach {
             if (it < start || it > end) {
@@ -79,7 +73,6 @@ object Input {
         Input.isEachInteger(rawNumbers)
         val numbers = rawNumbers.map { it.toInt() }
         Input.isEachInRange(numbers, start, end)
-        Input.winningNumbersDuplication(numbers)
         return numbers
     }
 
