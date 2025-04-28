@@ -6,8 +6,8 @@ import lotto.util.StringParser
 object InputView {
 
     private const val READ_PURCHASE_AMOUNT_MESSAGE: String = "Please enter the purchase amount."
-    private const val READ_WINNING_NUMBERS_MESSAGE: String = "Please enter last week's winning numbers."
-    private const val READ_BONUS_NUMBER_MESSAGE: String = "Please enter the bonus number."
+    private const val READ_WINNING_NUMBERS_MESSAGE: String = "\nPlease enter last week's winning numbers."
+    private const val READ_BONUS_NUMBER_MESSAGE: String = "\nPlease enter the bonus number."
 
     private const val WINNING_NUMBER_DELIMITER = ","
 
