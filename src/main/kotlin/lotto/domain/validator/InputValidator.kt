@@ -1,9 +1,9 @@
-package lotto.domain
+package lotto.domain.validator
 
 import lotto.constants.ErrorMessage
 import lotto.constants.LottoConstants
 
-object Validator {
+object InputValidator {
     fun validatePurchaseAmount(input: String): Int {
         validateBlank(input)
         validateNumber(input)
@@ -15,13 +15,13 @@ object Validator {
     fun validateWinningNumbers(input: String): Set<Int> {
         validateBlank(input)
         val tokens: List<String> = input.split(',').map { it.trim() }
-        validateCount(tokens)
-        validateDuplication(tokens)
+        Validator.validateCount(tokens)
+        Validator.validateDuplication(tokens)
 
         return tokens.map {
             validateNumber(it)
             val number = it.toInt()
-            validateRange(number)
+            Validator.validateRange(number)
             number
         }.toSet()
     }
@@ -30,8 +30,8 @@ object Validator {
         validateBlank(input)
         validateNumber(input)
         val number: Int = input.toInt()
-        validateRange(number)
-        validateDuplicateOfBonusNumber(number, winningNumbers)
+        Validator.validateRange(number)
+        Validator.validateDuplicateOfBonusNumber(number, winningNumbers)
 
         return number
     }
@@ -51,31 +51,6 @@ object Validator {
     private fun validateDivisibility(input: String) {
         if (input.toInt() % LottoConstants.TICKET_PRICE != 0) {
             throw IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE_BY_UNIT.message)
-        }
-    }
-
-    private fun validateCount(input: List<String>) {
-        if (input.size != LottoConstants.LOTTO_SIZE) {
-            throw IllegalArgumentException(ErrorMessage.INVALID_NUMBER_COUNT.message)
-        }
-    }
-
-    private fun validateDuplication(input: List<String>) {
-        val set = input.toSet()
-        if (set.size != LottoConstants.LOTTO_SIZE) {
-            throw IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.message)
-        }
-    }
-
-    private fun validateRange(number: Int) {
-        if (number < LottoConstants.MIN_NUMBER || number > LottoConstants.MAX_NUMBER) {
-            throw IllegalArgumentException(ErrorMessage.NUMBER_OUT_OF_RANGE.message)
-        }
-    }
-
-    private fun validateDuplicateOfBonusNumber(bonusNumber: Int, winningNumbers: Set<Int>) {
-        if (winningNumbers.contains(bonusNumber)) {
-            throw IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER.message)
         }
     }
 }

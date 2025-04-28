@@ -1,8 +1,8 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.Validator
 import lotto.constants.InputMessage
+import lotto.domain.validator.InputValidator
 
 object InputView {
     fun getPurchaseAmount(): Int {
@@ -10,7 +10,7 @@ object InputView {
             println(InputMessage.PURCHASE.message)
             val input: String = Console.readLine()
 
-            return Validator.validatePurchaseAmount(input)
+            return InputValidator.validatePurchaseAmount(input)
         } catch (e: IllegalArgumentException) {
             println(e.message)
             getPurchaseAmount()
@@ -22,7 +22,7 @@ object InputView {
             println(InputMessage.WINNING_NUMBER.message)
             val input: String = Console.readLine()
 
-            return Validator.validateWinningNumbers(input)
+            return InputValidator.validateWinningNumbers(input)
         } catch (e: IllegalArgumentException) {
             println(e.message)
             getWinningNumbers()
@@ -34,7 +34,7 @@ object InputView {
             println(InputMessage.BONUS_NUMBER.message)
             val input: String = Console.readLine()
 
-            return Validator.validateBonusNumber(input, winningNumbers)
+            return InputValidator.validateBonusNumber(input, winningNumbers)
         } catch (e: IllegalArgumentException) {
             println(e.message)
             getBonusNumber(winningNumbers)
