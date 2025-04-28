@@ -36,35 +36,34 @@ class LottoMachine(
 
     private fun readPickedNumbers(): PickedNumbers {
         val winningNumbers = readWinningNumbers()
-
-        while (true) {
-            try {
-                val bonusNumber = readBonusNumber()
-                return PickedNumbers(winningNumbers, bonusNumber)
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
+        retryInput {
+            val bonusNumber = readBonusNumber()
+            return PickedNumbers(winningNumbers, bonusNumber)
         }
     }
 
-    private fun readWinningNumbers(): List<Int> {
-        while (true) {
-            try {
-                val input = inputView.readWinningNumber()
-                InputValidator.validateWinningNumbersInput(input)
-                val numbers = input.split(",").map { it.trim().toInt() }
-                val dummyBonus = (LOTTO_NUMBER_MIN..LOTTO_NUMBER_MAX).first { it !in numbers }
-                PickedNumbers(numbers, dummyBonus)
-                return numbers
-            } catch (e: IllegalArgumentException) {
-                println(e.message)
-            }
-        }
+    private fun readWinningNumbers(): List<Int> = retryInput {
+        val input = inputView.readWinningNumber()
+        InputValidator.validateWinningNumbersInput(input)
+        val numbers = input.split(DELIMITER).map { it.trim().toInt() }
+        val dummyBonus = (LOTTO_NUMBER_MIN..LOTTO_NUMBER_MAX).first { it !in numbers }
+        PickedNumbers(numbers, dummyBonus)
+        numbers
     }
 
-    private fun readBonusNumber(): Int {
+    private fun readBonusNumber(): Int = retryInput {
         val input = inputView.readBonusNumber()
         InputValidator.validateBonusNumberInput(input)
-        return input.trim().toInt()
+        input.trim().toInt()
+    }
+
+    private inline fun <T> retryInput(block: () -> T): T {
+        while (true) {
+            try {
+                return block()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 }
