@@ -36,12 +36,12 @@ object WinningStatistics {
     fun getTotalMoney(mapPrizeNumber: MutableMap<Lotto.Prize, Int>): Long {
 
         var totalMoney: Long = 0
-        for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize.toLong() * number
+        for ((prize, number) in mapPrizeNumber) totalMoney += prize.valuePrize * number
 
         return totalMoney
     }
     // Calculate return rate
-    fun getReturnRate(moneyTotal: Long, numberTickets: Long): String {
+    fun getReturnRate(moneyTotal: Long, numberTickets: Int): String {
 
         val returnRate = moneyTotal.toDouble()/(numberTickets.toLong() * Lotto.PRICE_TICKET)
         val formattedRate = String.format(Locale.US,"%.1f%%", returnRate * 100)

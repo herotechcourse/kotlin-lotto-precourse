@@ -6,10 +6,10 @@ import lotto.Lotto
 object LottoTicketGeneration  {
 
     // Randomly generate list of tickets
-    fun generateTicket(numberTickets: Int): List<Lotto> {
+    fun generateTicket(numberTickets: Long): List<Lotto> {
 
         val lottoTickets = mutableListOf<Lotto>()
-        repeat(numberTickets) {
+        for (i in 1 .. numberTickets) {
             val ticket = Randoms.pickUniqueNumbersInRange(
                 Lotto.MIN_VALUE_LOTTO,
                 Lotto.MAX_VALUE_LOTTO,

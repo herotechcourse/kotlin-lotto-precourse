@@ -8,7 +8,7 @@ import lotto.WinningNumbers
 class InputView {
 
     // Read money amount and return the number of tickets
-    fun readPurchase(): Int {
+    fun readPurchase(): Long {
 
         while (true) {
             try {
@@ -16,7 +16,7 @@ class InputView {
                 val amount = Console.readLine()
                 val amountMoney = InputValidator.validateMoneyAmount(amount)
 
-                return (amountMoney/Lotto.PRICE_TICKET).toInt()
+                return amountMoney
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }

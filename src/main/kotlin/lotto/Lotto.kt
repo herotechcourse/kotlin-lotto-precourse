@@ -3,7 +3,7 @@ package lotto
 class Lotto(private val numbers: List<Int>) {
 
     // Define prizes for Lotto
-    enum class Prize(val namePrize: String, val valuePrize: Int) {
+    enum class Prize(val namePrize: String, val valuePrize: Long) {
         NOPRIZE ( "Less than 3 matches", 0),
         FIFTH ("3 Matches (5,000 KRW)", 5_000),
         FOURTH ("4 Matches (50,000 KRW)", 50_000),

@@ -36,7 +36,4 @@ object InputValidator {
 
         return bonusNumber
     }
-
-
-
 }

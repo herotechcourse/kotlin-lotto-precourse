@@ -21,7 +21,7 @@ class OutputView (private val lottoTickets: List<Lotto>, private val winningNumb
             println("$prize – $number tickets")
         }
 
-        val returnRate = WinningStatistics.getReturnRate(moneyTotal, lottoTickets.size.toLong())
+        val returnRate = WinningStatistics.getReturnRate(moneyTotal, lottoTickets.size)
         println("Total return rate is ${returnRate}.")
     }
 }
