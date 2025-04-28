@@ -68,6 +68,28 @@ you can buy tickets and choose winning numbers then simulator show lottery resul
 
 ### Money Test
 
+#### MoneyCreationTest
+
+Tests the creation of Money objects:
+
+- **createMoneyWithValidAmount**: Verifies Money objects can be created with valid amounts
+- **throwExceptionWhenAmountIsNull**: Ensures exception is thrown when amount is null
+- **throwExceptionWhenAmountIsLessThanMinimum**: Confirms exception is thrown for amounts below 1000
+
+#### MoneyBehaviorTest 
+
+Tests the behavior of Money objects:
+
+- **getAmountShouldReturnCorrectValue**: Verifies the getter returns the correct amount
+- **shouldAllowMaximumValidAmount**: Ensures the class handles the maximum integer value
+
+#### Key Validations
+
+- Money cannot be created with null values
+- Money amount must be at least 1000
+- Money objects correctly store and return their amount values
+
+
 ### Prize Test
 
 ### Winner Test
