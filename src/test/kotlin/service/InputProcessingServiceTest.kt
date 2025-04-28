@@ -106,4 +106,34 @@ class InputProcessingServiceTest {
             }
         }
     }
+
+    @Test
+    fun `validateWinningNumbers accepts list with 6 unique numbers`() {
+        val validList = listOf(1, 2, 3, 4, 5, 6)
+
+        InputProcessingService.validateWinningNumbers(validList)
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception for list with wrong size`() {
+        val invalidLists = listOf(
+            listOf(1, 2, 3, 4, 5),
+            listOf(1, 2, 3, 4, 5, 6, 7)
+        )
+
+        invalidLists.forEach { list ->
+            assertThrows<IllegalArgumentException> {
+                InputProcessingService.validateWinningNumbers(list)
+            }
+        }
+    }
+
+    @Test
+    fun `validateWinningNumbers throws exception for list with duplicates`() {
+        val invalidList = listOf(1, 2, 3, 4, 5, 5)
+
+        assertThrows<IllegalArgumentException> {
+            InputProcessingService.validateWinningNumbers(invalidList)
+        }
+    }
 }
