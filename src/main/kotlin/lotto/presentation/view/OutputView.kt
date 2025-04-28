@@ -43,7 +43,6 @@ object OutputView {
   }
 
   fun printProfitRate(profitRate: Double) {
-    println("Total return rate is ${profitRate}%.")
-  }
+    println(String.format("Total return rate is %.1f%%.", profitRate))  }
 
 }
