@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.util.VisibleForTesting
 import kotlin.math.round
 
 object LottoManager {
@@ -29,16 +30,20 @@ object LottoManager {
 
     private fun totalPrize(): Long =
         Rank.entries
-            .filterNot { it != Rank.ZERO }
+            .filter { it != Rank.ZERO }
             .sumOf { rank -> rankTable[rank.ordinal] * rank.prize }
 
     /**
      * Resets internal tickets and rank counts for testing purposes.
      */
+    @VisibleForTesting
     internal fun clear() {
         tickets.clear()
         for (i in rankTable.indices) {
             rankTable[i] = 0
         }
     }
+
+    @VisibleForTesting
+    internal fun getTotalPrize(): Long = totalPrize()
 }
