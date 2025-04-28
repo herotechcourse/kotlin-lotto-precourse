@@ -19,4 +19,7 @@ fun main() {
         Ranks.of(matchCount, bonusMatched)
     }
 
+    val result = LottoResult(ranks)
+    OutputView.printStatistics(result, amount)
+
 }
