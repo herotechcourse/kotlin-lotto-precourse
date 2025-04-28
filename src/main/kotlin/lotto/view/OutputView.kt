@@ -33,6 +33,6 @@ object OutputView {
 
     private fun printReturnRate(returnRate: Double) {
         val rateText = "%,.1f%%".format(returnRate)
-        println("Total return rate is $rateText.")
+        print("Total return rate is $rateText.")
     }
 }
