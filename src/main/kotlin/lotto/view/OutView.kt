@@ -5,6 +5,7 @@ import lotto.domain.MatchLotto
 
 object OutView {
     fun printTicket(tickets: List<LottoTicket>) {
+        println()
         println("You have purchased ${tickets.size} tickets.")
         tickets.forEach { println(it.getNumbers()) }
     }
