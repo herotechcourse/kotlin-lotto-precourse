@@ -5,21 +5,19 @@ import lotto.domain.WinningLotto
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertNotNull
 
 class LottoNumberInputTest {
     @Test
-    fun `should throw exception when Lotto is not given 6 unique numbers`() {
+    fun `success case when Lotto is given 6 unique numbers`() {
         // given
         val lottoNumbers: List<Int> = listOf(1, 2, 3, 4, 5, 6)
 
         // when
-        val exception = assertThrows<IllegalArgumentException> {
-            Lotto(lottoNumbers)
-        }
+        val lotto = Lotto(lottoNumbers)
 
         // then
-        assertTrue(exception.message!!.contains("[ERROR]"))
-
+        assertNotNull(lotto)
     }
 
     @Test
@@ -33,7 +31,7 @@ class LottoNumberInputTest {
         }
 
         // then
-        assertTrue(exception.message!!.contains("[ERROR]"))
+        assertTrue(exception.message!!.equals("[ERROR] Lotto must contain exactly 6 numbers."))
     }
 
     @Test
