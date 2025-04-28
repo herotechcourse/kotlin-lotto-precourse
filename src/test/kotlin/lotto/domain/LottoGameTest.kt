@@ -68,4 +68,20 @@ class LottoGameTest {
         assertThat(result.fourMatching).isEqualTo(1)
         assertThat(result.threeMatching).isEqualTo(1)
     }
+
+    @Test
+    fun `calculate the rate`() {
+        val purchaseAmount = 2000
+        val lottoMatchResult = LottoMatchResult(
+            sixMatching = 0,
+            fiveMatchingWithBonus = 0,
+            fiveMatching = 0,
+            fourMatching = 0,
+            threeMatching = 1
+        )
+
+        val rate = lottoGame.calculateRate(lottoMatchResult, purchaseAmount)
+
+        assertThat(rate).isEqualTo(250.0f)
+    }
 }

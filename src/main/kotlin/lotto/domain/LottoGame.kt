@@ -4,10 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
 import lotto.model.LottoMatchResult
 import lotto.model.LottoMatchCount
+import lotto.utils.Constant.FIFTH_PRICE
+import lotto.utils.Constant.FIRST_PRICE
+import lotto.utils.Constant.FOURTH_PRICE
 import lotto.utils.Constant.LOTTO_COST
 import lotto.utils.Constant.LOTTO_SIZE
 import lotto.utils.Constant.MAX_LOTTO_NUMBER
 import lotto.utils.Constant.MIN_LOTTO_NUMBER
+import lotto.utils.Constant.SECOND_PRICE
+import lotto.utils.Constant.THIRD_PRICE
 
 class LottoGame {
     fun getQuantity(amount: Int): Int = amount / LOTTO_COST
@@ -44,5 +49,17 @@ class LottoGame {
             3 -> copy(threeMatching = threeMatching + 1)
             else -> this
         }
+    }
+
+    fun calculateRate(lottoMatchResult: LottoMatchResult, purchaseAmount: Int): Float {
+        return (calculatePrice(lottoMatchResult).toFloat() / purchaseAmount * 100)
+    }
+
+    private fun calculatePrice(lottoMatchResult: LottoMatchResult): Int {
+        return lottoMatchResult.sixMatching * FIRST_PRICE +
+                lottoMatchResult.fiveMatchingWithBonus * SECOND_PRICE +
+                lottoMatchResult.fiveMatching * THIRD_PRICE +
+                lottoMatchResult.fourMatching * FOURTH_PRICE +
+                lottoMatchResult.threeMatching * FIFTH_PRICE
     }
 }
