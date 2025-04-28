@@ -26,9 +26,9 @@ object OutputView {
         println(MATCHED_LOTTO_COUNT_HEADER)
 
         LottoRank.entries
-            .filter { it != LottoRank.NONE } // NONE 등수는 출력 제외
+            .filter { it != LottoRank.NONE }
             .forEach { rank ->
-                val count = matchedLottoCount[rank] ?: 0  // 없으면 0
+                val count = matchedLottoCount[rank] ?: 0
                 println(MATCHED_LOTTO_COUNT.format(rank.message, count))
             }
     }
