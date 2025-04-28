@@ -21,6 +21,16 @@ class WinningResult(
         return result
     }
 
+    fun calculateTotalPrize(matchResult: Map<Rank, Int>): Int {
+        return matchResult.entries.sumOf { (rank, count) ->
+            rank.prizeMoney * count
+        }
+    }
+
+    fun calculateProfitRate(totalPrize: Int, purchaseAmount: Int): Double {
+        return (totalPrize.toDouble() / purchaseAmount) * 100
+    }
+
     private fun countMatches(lotto: Lotto): Int {
         return lotto.getNumbers().count { it in winningNumbers }
     }
