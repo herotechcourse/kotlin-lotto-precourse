@@ -25,4 +25,15 @@ class PurchaseAmountTest {
             PurchaseAmount.from("ab")
         }
     }
+
+    @Test
+    fun `throws an exception when purchase amount is not a positive number`() {
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount.from("-1")
+        }
+
+        assertThrows<IllegalArgumentException> {
+            PurchaseAmount.from("0")
+        }
+    }
 }
