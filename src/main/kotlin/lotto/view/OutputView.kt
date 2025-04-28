@@ -7,7 +7,7 @@ object OutputView {
     private const val GENERATED_LOTTO_HEADER = "You have purchased %d tickets."
 
     fun printError(message: String) {
-        println("$ERROR_HEAD $message\n")
+        println("$ERROR_HEAD $message")
     }
 
     fun printGeneratedLottos(lottos: Lottos) {
