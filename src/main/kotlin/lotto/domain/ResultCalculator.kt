@@ -14,7 +14,7 @@ class ResultCalculator (
       val matchNumbers = ticket.getNumbers().count{it in winningNumbers}
 
       val rank = when{
-        matchNumbers ==6 -> Rank.FIFTH
+        matchNumbers ==6 -> Rank.FIRST
         matchNumbers ==5 && bonusNumber in ticket.getNumbers() -> Rank.SECOND
         matchNumbers ==5 -> Rank.THIRD
         matchNumbers ==4 -> Rank.FOURTH
