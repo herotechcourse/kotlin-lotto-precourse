@@ -81,11 +81,11 @@ class InputView {
     }
 
 
-    private fun isNumeric(purchase: String): Boolean {
+     fun isNumeric(purchase: String): Boolean {
         return try {
             purchase.toInt()
             true
-        } catch (e: NotImplementedError) {
+        } catch (e: IllegalArgumentException) {
             false
         }
     }
