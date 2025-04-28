@@ -1,23 +1,35 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class LottoTest {
+
     @Test
-    fun `throws an exception when lotto numbers exceed six`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
-        }
+    fun `lotto numbers must be exactly six`() {
+        assertThatThrownBy { Lotto(listOf(1, 2, 3, 4, 5)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
     }
 
-    // TODO: Implement production code to pass the test
     @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
+    fun `lotto numbers must be unique`() {
+        assertThatThrownBy { Lotto(listOf(1, 2, 3, 4, 5, 5)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
     }
 
-    // TODO: Implement tests based on the added features
+    @Test
+    fun `lotto numbers must be within range 1 to 45`() {
+        assertThatThrownBy { Lotto(listOf(0, 2, 3, 4, 5, 6)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+
+        assertThatThrownBy { Lotto(listOf(1, 2, 3, 4, 5, 46)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+    }
+
+    @Test
+    fun `lotto is created successfully with valid numbers`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertThat(lotto.numbers).containsExactlyInAnyOrder(1, 2, 3, 4, 5, 6)
+    }
 }
