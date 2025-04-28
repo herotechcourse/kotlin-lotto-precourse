@@ -16,11 +16,12 @@ object InputView {
         println(Constants.WINNING_NUMBERS_QUESTION)
 
         val input = Console.readLine()
-        val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
-        if (numbers.size != 6)
+        val tokens = input.split(",").map {it.trim()}
+
+        if (tokens.size != 6 || tokens.any { it.toIntOrNull() == null })
             throw LottoInputException.InvalidWinningNumbersInput(input)
 
-        return numbers
+        return tokens.map { it.toInt() }
     }
 
     fun getBonusNumber(): Int {
