@@ -2,7 +2,7 @@ package lotto.domain
 
 class LottoTicket (private val numbers: List<Int>) {
     init {
-        require (numbers.size == 6) { "[ERROR] A lotto ticket must have exactly 6 numbers." }
+        require (numbers.size == LOTTO_NUMBERS_SIZE) { ERROR_INVALID_SIZE }
     }
     fun getNumbers(): List<Int> = numbers.sorted()
 
@@ -12,5 +12,10 @@ class LottoTicket (private val numbers: List<Int>) {
 
     fun containsBonus(bonusNumber: Int): Boolean {
         return numbers.contains(bonusNumber)
+    }
+
+    companion object {
+        private const val LOTTO_NUMBERS_SIZE = 6
+        private const val ERROR_INVALID_SIZE = "[ERROR] A lotto ticket must have exactly 6 numbers."
     }
 }
