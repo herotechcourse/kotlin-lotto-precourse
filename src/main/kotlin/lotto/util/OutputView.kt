@@ -42,17 +42,16 @@ fun printWinningStatics(rankStatics: Map<Rank, Int>, rateOfReturn: String) {
         .forEach {
         val descriptionOfRank = rankDescription(it)
         val formattedPrize = formatPrize(it.prize)
-        sb.append("$descriptionOfRank ($formattedPrize KRW) - ${rankStatics[it]} tickets \n")
+        sb.append("$descriptionOfRank ($formattedPrize KRW) – ${rankStatics[it]} tickets \n")
     }
-    sb.append("Total return rate is ").append("${rateOfReturn}%")
+    sb.append("Total return rate is ").append("${rateOfReturn}%.")
     println(sb)
 }
 
 fun rankDescription(rank: Rank): String? {
     return when (rank) {
-        Rank.SECOND -> "5 Matches + Bonus Ball"
-        Rank.NONE -> null
-        else -> "${rank.matchCount} Matches "
+        Rank.SECOND -> "${rank.matchCount} Matches + Bonus Ball"
+        else -> "${rank.matchCount} Matches"
     }
 }
 
