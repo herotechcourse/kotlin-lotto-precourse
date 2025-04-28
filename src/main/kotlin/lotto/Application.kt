@@ -5,9 +5,9 @@ import lotto.domain.WinningNumbers
 import lotto.service.LottoService
 import lotto.service.ResultService
 import lotto.service.StatisticsService
+import lotto.utils.Utils
 import lotto.view.InputView
 import lotto.view.OutputView
-import lotto.utils.Utils
 
 /**
  * Main entry point and the orchestrator of the Lotto application.
@@ -19,7 +19,7 @@ fun main() {
     val amount: Int =
         Utils.retryInputUntilSuccess { InputView.getPurchaseAmount().also { LottoService.validatePurchaseAmount(it) } }
     // Calculate the number of tickets to generate based on the purchase amount
-    val ticketsQuantity = amount / 1000
+    val ticketsQuantity = amount / LottoConstants.TICKET_PRICE
     val tickets: List<Lotto> = LottoService.generateTickets(ticketsQuantity)
     println()
 

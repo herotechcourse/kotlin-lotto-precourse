@@ -1,6 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
+import lotto.LottoConstants
 import lotto.exception.LottoInputException
 
 /**
@@ -30,7 +31,7 @@ object InputView {
         val input = Console.readLine()
         val tokens = input.split(",").map { it.trim() }
 
-        if (tokens.size != 6 || tokens.any { it.toIntOrNull() == null })
+        if (tokens.size != LottoConstants.LOTTO_NUMBERS_COUNT || tokens.any { it.toIntOrNull() == null })
             throw LottoInputException.InvalidWinningNumbersInput(input)
 
         return tokens.map { it.toInt() }
