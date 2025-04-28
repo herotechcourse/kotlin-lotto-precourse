@@ -13,4 +13,10 @@ class LottoResult(
             LottoRank.valueOf(matchCount, matchBonus)
         }
     }
+
+    fun getStatistics(lottoRanks: List<LottoRank>): Map<LottoRank, Int> {
+        return lottoRanks
+            .groupingBy { it }
+            .eachCount()
+    }
 }
