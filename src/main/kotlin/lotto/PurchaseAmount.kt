@@ -1,0 +1,16 @@
+package lotto
+
+import lotto.validator.NumericValidator
+
+data class PurchaseAmount(val amount: String) {
+    val amountValue: Int
+
+    init {
+        amountValue = NumericValidator.validate(amount)
+    }
+
+    fun getTicketCount(): Int {
+        return amountValue / 1000
+    }
+
+}

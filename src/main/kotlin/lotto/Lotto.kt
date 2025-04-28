@@ -1,9 +1,17 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+import camp.nextstep.edu.missionutils.Randoms
+import lotto.utils.LottoGenerator
+import lotto.validator.LottoValidator
+
+class Lotto(private val numbers: List<Int> = LottoGenerator.generateLottoNumbers()) {
+    private val sortedNumbers = numbers.sorted()
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        LottoValidator.validate(sortedNumbers)
     }
 
     // TODO: Implement additional functions
+    fun getNumbers(): List<Int> {
+        return sortedNumbers
+    }
 }
