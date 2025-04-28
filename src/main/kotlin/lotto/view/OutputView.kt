@@ -19,7 +19,7 @@ class OutputView {
         println("\nWinning Statistics")
         println("---")
 
-        PrizeTier.entries.forEach { prizeTier ->
+        PrizeTier.entries.filter { it != PrizeTier.NONE }.forEach { prizeTier ->
             val count = result.getPrizeTierCount(prizeTier)
             val formattedMoney = formatMoney(prizeTier.prizeMoney)
             println("${prizeTier.description} (${formattedMoney} KRW) – $count tickets")
