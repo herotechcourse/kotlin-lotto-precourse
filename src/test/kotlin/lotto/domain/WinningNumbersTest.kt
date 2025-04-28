@@ -76,9 +76,9 @@ class WinningNumbersTest {
         val numbers = listOf(1, 2, 3, 4, 5, 6)
 
         // when
-        val winningNumbers = WinningNumbers(numbers)
+        val winning = WinningNumbers(numbers)
 
         // then
-        assertThat(winningNumbers.numbers).containsExactly(1, 2, 3, 4, 5, 6)
+        assertThat(winning.numbers).containsExactly(1, 2, 3, 4, 5, 6)
     }
 }

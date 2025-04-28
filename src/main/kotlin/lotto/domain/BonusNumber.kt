@@ -8,7 +8,7 @@ data class BonusNumber(val number: Int) {
         require(number in 1 .. 45) { INVALID_NUMBERS_RANGE }
     }
 
-    fun requireNotDuplicated(winningNumbers: WinningNumbers) {
-        require(number !in winningNumbers.numbers) { INVALID_BONUS_NUMBER_DUPLICATED }
+    fun requireNotDuplicated(winning: WinningNumbers) {
+        require(number !in winning.numbers) { INVALID_BONUS_NUMBER_DUPLICATED }
     }
 }

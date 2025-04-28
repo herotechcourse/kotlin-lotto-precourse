@@ -33,13 +33,13 @@ class BonusNumberTest {
     @Test
     fun `throws exception when a number contain duplicates`() {
         // given
-        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
+        val winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
         val number = 6
 
         // when
 
         // then
-        assertThatThrownBy { BonusNumber(number).requireNotDuplicated(winningNumbers) }
+        assertThatThrownBy { BonusNumber(number).requireNotDuplicated(winning) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage(ErrorMessages.INVALID_BONUS_NUMBER_DUPLICATED)
     }
@@ -47,7 +47,7 @@ class BonusNumberTest {
     @Test
     fun `does not throw when bonus number is not in winning numbers`() {
         // given
-        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
+        val winning = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
         val number = 7
 
         // when
@@ -55,7 +55,7 @@ class BonusNumberTest {
         // then
         assertThatCode {
             BonusNumber(number).apply {
-                requireNotDuplicated(winningNumbers)
+                requireNotDuplicated(winning)
             }
         }.doesNotThrowAnyException()
     }
