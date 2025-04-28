@@ -17,6 +17,7 @@ object LottoManager {
         val winningNumbers = retry {
             val input = InputView.readWinningNumbers()
             val numbers = InputParser.parseToNumbers(input)
+            Lotto(numbers)
         }
     }
 
