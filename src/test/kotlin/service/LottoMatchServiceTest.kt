@@ -101,4 +101,25 @@ class LottoMatchServiceTest {
         assertThat(statistics[LottoRank.SIX]).isEqualTo(1)
     }
 
+    @Test
+    fun `calculateReturnRate returns correct rate`() {
+
+        val tickets = Tickets(5000)
+        val statistics = mapOf(
+            LottoRank.THREE to 1, // 5,000
+            LottoRank.FOUR to 1, // 50,000
+            LottoRank.FIVE to 0,
+            LottoRank.FIVE_BONUS to 0,
+            LottoRank.SIX to 0
+        )
+
+        val rate = LottoMatchService.calculateReturnRate(tickets, statistics)
+
+
+        // Total: 5,000 + 50,000 = 55,000
+        // Return: (55,000 / 5,000) * 100 = 1,100%
+        assertThat(rate).isEqualTo(1100.0)
+    }
+
+
 }
