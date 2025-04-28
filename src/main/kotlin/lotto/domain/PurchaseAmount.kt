@@ -1,6 +1,11 @@
 package lotto.domain
 
 class PurchaseAmount(val amount: Int) {
+    init {
+        require(amount > 0) { ErrorMessages.NOT_A_POSITIVE_NUMBER_ERROR }
+        require(amount % LottoConstants.LOTTO_PRICE == 0) { NOT_DIVISIBLE_BY_1000_ERROR }
+    }
+
     val possibleLottoTicketCount: Int
         get() = amount / LottoConstants.LOTTO_PRICE
 
@@ -10,9 +15,6 @@ class PurchaseAmount(val amount: Int) {
 
             val parsedInput =
                 input.toIntOrNull() ?: throw IllegalArgumentException(ErrorMessages.NOT_A_NUMBER_ERROR)
-
-            require(parsedInput > 0) { ErrorMessages.NOT_A_POSITIVE_NUMBER_ERROR }
-            require(parsedInput % LottoConstants.LOTTO_PRICE == 0) { NOT_DIVISIBLE_BY_1000_ERROR }
 
             return PurchaseAmount(parsedInput)
         }
