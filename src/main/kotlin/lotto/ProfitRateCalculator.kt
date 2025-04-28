@@ -1,7 +1,7 @@
 package lotto
 
 object ProfitRateCalculator {
-    fun calculateProfitRate(purchaseAmount : Int) : Double{
+    fun calculateProfitRate(purchaseAmount: Int): Double {
         val rankStatistics = TicketChecker.getStatistics()
         var totalPrize = 0
         for (rank in Rank.entries) {

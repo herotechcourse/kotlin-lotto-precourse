@@ -1,6 +1,6 @@
 package lotto
 
-enum class Rank (val matching : Int, val prize : Int ) {
+enum class Rank(val matching: Int, val prize: Int) {
     THREE(3, 5000),
     FOUR(4, 50000),
     FIVE(5, 1500000),
