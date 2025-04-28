@@ -29,7 +29,7 @@ class LottoGame(private val inputView: InputView = InputView(),
     val ticketCount = purchaseAmount / TICKET_PRICE
     val tickets = mutableListOf<Lotto>()
     for (i in 1..ticketCount) {
-      tickets.add(Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)))
+      tickets.add(Lotto(Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_NUMBER_SIZE)))
     }
     return tickets
   }

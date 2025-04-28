@@ -16,7 +16,7 @@ class LottoResultCalculator {
       }
     }
     
-    val investment = tickets.size * 1000
+    val investment = tickets.size * TICKET_PRICE
     val profitRate = (totalPrize.toDouble() / investment) * 100
 
     return LottoResult(resultCounts, profitRate)
