@@ -1,12 +1,12 @@
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Nested
-import org.assertj.core.api.Assertions.assertThat
 import camp.nextstep.edu.missionutils.test.NsTest
 import lotto.Lotto
 import lotto.domain.LottoResult
-import lotto.view.OutputView
 import lotto.domain.PrizeRank
+import lotto.view.OutputView
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 
 class OutputViewTest : NsTest() {
     override fun runMain() {}

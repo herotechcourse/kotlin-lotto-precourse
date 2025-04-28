@@ -1,11 +1,11 @@
-import  lotto.service.LottoService
+import lotto.service.LottoService
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Nested
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
 
 
 class LottoServiceTest {
@@ -81,7 +81,7 @@ class LottoServiceTest {
             assertThatThrownBy { LottoService.validateWinningNumbers(invalidNumbers) }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessageContaining("Numbers must be between 1 and 45.")
-       }
+        }
 
         @Test
         @DisplayName("Should throw InvalidWinningNumbers exception for duplicated numbers")

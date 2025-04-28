@@ -1,7 +1,7 @@
 import lotto.Lotto
-import lotto.service.ResultService
-import lotto.domain.WinningNumbers
 import lotto.domain.PrizeRank
+import lotto.domain.WinningNumbers
+import lotto.service.ResultService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
