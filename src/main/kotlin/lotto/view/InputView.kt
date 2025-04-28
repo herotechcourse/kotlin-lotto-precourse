@@ -1,5 +1,6 @@
 package lotto.view
 
+import lotto.service.InputValidator
 import camp.nextstep.edu.missionutils.Console
 
 object InputView {
@@ -7,9 +8,7 @@ object InputView {
         while (true) {
             try {
                 OutputView.promptPurchaseAmount()
-                val input = Console.readLine()
-                InputValidator.validatePurchaseAmount(input)
-                return input.toInt()
+                return readAndValidatePurchaseAmount()
             } catch (e: IllegalArgumentException) {
                 OutputView.printError("${e.message}")
             }
@@ -20,10 +19,7 @@ object InputView {
         while (true) {
             try {
                 OutputView.promptWinningNumbers()
-                val input = Console.readLine()
-                InputValidator.validateWinningNumbers(input)
-                return input.split(",")
-                    .map { it.trim().toInt() }
+                return readAndValidateWinningNumbers()
             } catch (e: IllegalArgumentException) {
                 OutputView.printError("${e.message}")
             }
@@ -34,12 +30,28 @@ object InputView {
         while (true) {
             try {
                 OutputView.promptBonusNumber()
-                val input = Console.readLine()
-                InputValidator.validateBonusNumber(input)
-                return input.toInt()
+                return readAndValidateBonusNumber()
             } catch (e: IllegalArgumentException) {
                 OutputView.printError("${e.message}")
             }
         }
+    }
+
+    private fun readAndValidatePurchaseAmount(): Int {
+        val input = Console.readLine()
+        InputValidator.validatePurchaseAmount(input)
+        return input.toInt()
+    }
+
+    private fun readAndValidateWinningNumbers(): List<Int> {
+        val input = Console.readLine()
+        InputValidator.validateWinningNumbers(input)
+        return input.split(",").map { it.trim().toInt() }
+    }
+
+    private fun readAndValidateBonusNumber(): Int {
+        val input = Console.readLine()
+        InputValidator.validateBonusNumber(input)
+        return input.toInt()
     }
 }
