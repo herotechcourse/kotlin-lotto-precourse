@@ -45,6 +45,12 @@ class UserInput{
 
     fun setWinningNumbers(input: String) {
         val splitNumbers = input.split(",").map { it.trim() }
+        val numbers = sanitizeSplitNumbers(splitNumbers)
+
+        this.winningNumbers = numbers
+    }
+
+    private fun sanitizeSplitNumbers(splitNumbers: List<String>): MutableList<Int> {
         val numbers = mutableListOf<Int>()
 
         for (splitNumber in splitNumbers) {
@@ -56,7 +62,7 @@ class UserInput{
         }
         sanitizeNumbers(numbers)
 
-        this.winningNumbers = numbers
+        return numbers
     }
 
     private fun sanitizeNumber(number: Int?){
