@@ -1,3 +1,5 @@
+package lotto
+
 import camp.nextstep.edu.missionutils.Console
 
 class InputHandler {
@@ -59,5 +61,4 @@ class InputHandler {
             throw IllegalArgumentException("[ERROR] Invalid number format.")
         }
     }
-}
 }
