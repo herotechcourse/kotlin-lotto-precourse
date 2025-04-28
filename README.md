@@ -58,7 +58,7 @@ It generates random Lotto tickets based on user input, accepts winning numbers a
 ---
 ## Sources
 
-- [Hero Tech Pre-course Mission Guidelines](https://hero-tech-course-guidelines.example.com)
+- [Hero Tech Pre-course Mission Guidelines](https://docs.google.com/document/d/1mpJtYaGOaLtk_K3yk3qqTowOWWqz94_fgS3UXFn-qZA/edit?tab=t.0#heading=h.j54y4c3df9nv)
 - [Kotlin Official Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)
 - [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 - [AssertJ Assertions Guide](https://assertj.github.io/doc/)
