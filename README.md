@@ -11,7 +11,7 @@
     - Bonus number should not be duplicated with the winning numbers
 
 ### Lotto
-- Lotto must be initiated by Winning Numbers
+- Lotto must be initiated by 6 Numbers
 - It must be available to get result of lotto by comparing winning number & lotto number
 - Under 2 Matches results are considered not a winner
 
