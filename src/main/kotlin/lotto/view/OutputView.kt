@@ -31,9 +31,9 @@ object OutputView {
             val count = results.getOrDefault(prize, 0)
 
             if (prize == Prize.SECOND) {
-                println("${prize.matchCount} Matches + Bonus Ball (${prize.prizeMoney} KRW) – $count tickets")
+                println("${prize.matchCount} Matches + Bonus Ball (${formatMoney(prize.prizeMoney)} KRW) – $count tickets")
             } else {
-                println("${prize.matchCount} Matches (${prize.prizeMoney} KRW) – $count tickets")
+                println("${prize.matchCount} Matches (${formatMoney(prize.prizeMoney)} KRW) – $count tickets")
             }
         }
     }
@@ -43,5 +43,9 @@ object OutputView {
         val profitRate = (totalPrizeMoney.toDouble() / purchaseAmount) * 100
 
         println("Total return rate is ${"%.1f".format(profitRate)}%.")
+    }
+
+    private fun formatMoney(amount: Int): String {
+        return "%,d".format(amount)
     }
 }

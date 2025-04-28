@@ -8,12 +8,14 @@ import lotto.utils.validateNotBlank
 import lotto.utils.validateNumberCount
 import lotto.utils.validateNumberRange
 import lotto.utils.validateUniqueNumbers
+import lotto.utils.validateIsNumber
 
 object InputView {
 
     fun readPurchaseAmount(): Int = retryUntilValid {
         val input = readLineFromConsole("Please enter the purchase amount.")
         validateNotBlank(input)
+        validateIsNumber(input)
         val amount = input.toInt()
         validateDivisibleByThousand(amount)
         amount
@@ -33,9 +35,8 @@ object InputView {
     fun readBonusNumber(winningNumbers: List<Int>): Int = retryUntilValid {
         val input = readLineFromConsole("Please enter the bonus number.")
         validateNotBlank(input)
-        val bonusNumbers = parseCommaSeparatedNumbers(input)
-        validateNumberCount(bonusNumbers, 1)
-        val bonusNumber = bonusNumbers.first()
+        validateIsNumber(input)
+        val bonusNumber = input.toInt()
         validateBonusNotDuplicate(winningNumbers, bonusNumber)
         bonusNumber
     }
@@ -55,4 +56,3 @@ object InputView {
         }
     }
 }
-

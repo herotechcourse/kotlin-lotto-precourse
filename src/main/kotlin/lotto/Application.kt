@@ -14,14 +14,19 @@ fun main() {
     // [x] OutputView prints statistics
 
     val purchaseAmount = InputView.readPurchaseAmount()
+    println()
+
     val ticketCount = purchaseAmount / 1000
     val lottoTickets = LottoFactory.createLottos(ticketCount)
 
     OutputView.printPurchaseInfo(ticketCount)
     OutputView.printTickets(lottoTickets)
+    println()
 
     val winningNumbers = InputView.readWinningNumbers()
+    println()
     val bonusNumber = InputView.readBonusNumber(winningNumbers)
+    println()
 
     val result = LottoResultChecker.checkResults(lottoTickets, winningNumbers, bonusNumber)
 

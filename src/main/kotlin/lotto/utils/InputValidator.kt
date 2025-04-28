@@ -6,6 +6,10 @@ fun validateNotBlank(input: String) {
     }
 }
 
+fun validateIsNumber(input: String) {
+    input.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Input must be (a) number(s).")
+}
+
 fun validateDivisibleByThousand(number: Int) {
     if (number % 1000 != 0) {
         throw IllegalArgumentException("[ERROR] Amount must be divisible by 1,000.")
