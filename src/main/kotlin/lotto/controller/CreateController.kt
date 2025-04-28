@@ -2,6 +2,8 @@ package lotto.controller
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
+import lotto.model.LottoResult
+import lotto.model.Prize
 import lotto.model.WinningLotto
 
 private const val LOTTO_PRICE = 1000
