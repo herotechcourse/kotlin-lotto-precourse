@@ -2,7 +2,7 @@ package lotto.model
 
 import lotto.util.LottoConstants
 
-enum class Rank(val prize: Int) {
+enum class Rank(val prize: Double) {
     FIRST(LottoConstants.FIRST_PRIZE),
     SECOND(LottoConstants.SECOND_PRIZE),
     THIRD(LottoConstants.THIRD_PRIZE),

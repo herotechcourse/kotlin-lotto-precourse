@@ -59,8 +59,8 @@ class LottoService() {
 
     fun calculateReturnRate(rankList: Map<Rank, Int>, purchaseAmount: Int): Double {
         val totalWinnings = rankList.entries.sumOf { (rank , count) ->
-            rank.prize.toLong() * count
+            rank.prize * count
         }
-        return totalWinnings.toDouble() / purchaseAmount * 100
+        return totalWinnings / purchaseAmount * 100
     }
 }
