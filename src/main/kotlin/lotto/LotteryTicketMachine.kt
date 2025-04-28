@@ -6,6 +6,8 @@ object LotteryTicketMachine {
 
     internal val tickets = mutableListOf<List<Int>>()
     internal val winnings = mutableMapOf<PrizeRank, Int>()
+    internal val winningNumbers = mutableListOf<Int>()
+    internal var bonusNumber: Int = -1
 
     init {
         initWinnings()
@@ -53,15 +55,53 @@ object LotteryTicketMachine {
         validateAmountOfNumbers(numbers)
         validateUniqueness(numbers)
         validateRange(numbers)
+        for (number in numbers) {
+            winningNumbers.add(number)
+        }
     }
 
-    fun validateBonusNumber(winningNumbers: List<Int>, bonusNumber: Int) {
-        if (bonusNumber !in 1..45) {
+    fun validateBonusNumber(winningNumbers: List<Int>, number: Int) {
+        if (number !in 1..45) {
             throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
         }
-        if (bonusNumber in winningNumbers) {
+        if (number in winningNumbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must not be one of the winning numbers.")
+        }
+        bonusNumber = number
+    }
+
+    fun evaluateTickets() {
+        for (ticket in tickets) {
+            val matchCount = evaluateMatchesInWinningNumbers(ticket)
+            val bonusMatch = evaluateMatchWithBonusNumber(ticket)
+            val matchRank = PrizeRank.entries.find {
+                it.matches == matchCount && it.bonusNumber == bonusMatch
+            }
+            if (matchRank != null) {
+                increaseRankMatches(matchRank)
+            }
         }
     }
 
+    fun evaluateMatchesInWinningNumbers(ticket: List<Int>): Int {
+        var matchCount = 0
+        for (number in ticket) {
+            if (number in winningNumbers) {
+                matchCount++
+            }
+        }
+        return matchCount
+    }
+
+    fun evaluateMatchWithBonusNumber(ticket: List<Int>): Boolean {
+        var bonusMatch = false
+        if (ticket.contains(bonusNumber)) {
+            bonusMatch = true
+        }
+        return bonusMatch
+    }
+
+    fun increaseRankMatches(rank: PrizeRank) {
+        winnings[rank] = winnings.getOrDefault(rank, 0) + 1
+    }
 }

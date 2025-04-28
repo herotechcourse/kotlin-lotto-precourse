@@ -16,7 +16,7 @@
     - [x] generate number of tickets based on purchase amount - 1 ticket per 1,000
     - [x] each ticket consists of 6 random and unique numbers in the range from 1 to 45
 - [ ] result generation
-    - [ ] compare tickets with winning numbers to calculate winnings - see table below
+    - [x] compare tickets with winning numbers to calculate winnings - see table below
     - [ ] calculate profit return rate based on winnings
     - [ ] round profit return rate to nearest tenth
 ### output
