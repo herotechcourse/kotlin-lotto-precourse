@@ -15,7 +15,7 @@ class OutputView {
         println()
         println("Winning Statistics")
         println("---")
-        println("3 Matches (5,000 KRW) - ${result[0]} tickets")
+        println("3 Matches (5,000 KRW) – ${result[0]} tickets")
         println("4 Matches (50,000 KRW) – ${result[1]} tickets")
         println("5 Matches (1,500,000 KRW) – ${result[2]} tickets")
         println("5 Matches + Bonus Ball (30,000,000 KRW) – ${result[3]} tickets")
