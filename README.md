@@ -1,21 +1,21 @@
 # kotlin-lotto-precourse
 
 ## TO-DO Features
-	[ ] Class InputVIew
+	[x] Class InputVIew
 		[x] Implement Functions
-		[ ] Unit Test (Exception)
+		[x] Unit Test (Exception)
 	
-	[ ] Class OutputView
+	[x] Class OutputView
 		[x] Implement Functions
-		[ ] Unit Test
+		[x] Unit Test
 
-	[ ] Class Lotto
+	[x] Class Lotto
 		[x] Implement Functions
-		[ ] Unit Test - Using JUnit
+		[x] Unit Test - Using JUnit
 	
-	[ ] Class LottoSimulate
-		[ ] Implement Functions
-		[ ] Unit Test
+	[x] Class LottoSimulate
+		[x] Implement Functions
+		[x] Unit Test
 
 ## Structure With PseudoCode
 
