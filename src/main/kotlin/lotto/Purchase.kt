@@ -11,7 +11,7 @@ class Purchase(private val amount: Int) {
                     " by $TICKET_PRICE is accepted."
         }
         require(amount in TICKET_PRICE..MAX_AMOUNT) {
-            "[ERROR] Amount cannot be lower than $TICKET_PRICE or higher than $MAX_AMOUNT"
+            "[ERROR] Amount cannot be lower than $TICKET_PRICE or higher than $MAX_AMOUNT."
         }
     }
 
