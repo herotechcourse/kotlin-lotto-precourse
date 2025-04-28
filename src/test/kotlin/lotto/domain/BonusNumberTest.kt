@@ -47,6 +47,13 @@ class BonusNumberTest {
         }
     }
 
+    @Test
+    fun `throws an exception when bonus number is in winning numbers`() {
+        assertThrows<IllegalArgumentException> {
+            BonusNumber.from("1", winningNumber)
+        }
+    }
+
     companion object {
         val winningNumber = WinningNumbers.from(listOf("1", "2", "3", "4", "5", "6"))
     }
