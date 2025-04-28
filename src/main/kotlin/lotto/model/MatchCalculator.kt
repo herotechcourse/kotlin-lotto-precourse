@@ -2,7 +2,7 @@ package lotto.model
 
 import lotto.Lotto
 
-object Match{
+object Match {
     var sixCount = 0
     var fiveAndBonusCount = 0
     var fiveCount = 0
@@ -20,10 +20,12 @@ object MatchCalculator {
 
         return calculateWinningAmount()
     }
-    
+
     private fun countMatchesThreeFourSix(totalLottoTicket: List<Lotto>, winningNumbers: List<Int>) {
         for (lottoTicket in totalLottoTicket) {
-            val intersectionNumber = lottoTicket.getNumbers().intersect(winningNumbers)
+            val intersectionNumber = lottoTicket
+                .getNumbers()
+                .intersect(winningNumbers)
             if (intersectionNumber.size == 3) Match.threeCount++
             if (intersectionNumber.size == 4) Match.fourCount++
             if (intersectionNumber.size == 6) Match.sixCount++
