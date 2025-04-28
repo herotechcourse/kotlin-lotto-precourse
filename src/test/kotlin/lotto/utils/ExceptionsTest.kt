@@ -1,5 +1,6 @@
 import lotto.Lotto
 import lotto.utils.Constant.AMOUNT_NOT_DIVISIBLE_ERROR_MESSAGE
+import lotto.utils.Constant.DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE
 import lotto.utils.Constant.INVALID_BONUS_NUMERIC_ERROR_MESSAGE
 import lotto.utils.Constant.INVALID_WINNING_NUMERIC_ERROR_MESSAGE
 import lotto.utils.Constant.PURCHASE_AMOUNT_INPUT_ERROR_MESSAGE
@@ -61,5 +62,15 @@ class ExceptionsTest {
         }
             .isInstanceOf(NumberFormatException::class.java)
             .hasMessageContaining(INVALID_BONUS_NUMERIC_ERROR_MESSAGE)
+    }
+
+    @Test
+    fun `throw an exception if bonus number is duplicated in winning numbers`() {
+        val dummyWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertThatThrownBy {
+            Exceptions.validateBonusNumber(dummyWinningLotto, "6").getOrThrow()
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE)
     }
 }
