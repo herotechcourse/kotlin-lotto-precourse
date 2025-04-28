@@ -45,7 +45,7 @@
   - [X] If the bonus number is one of the winning numbers, throw `IllegalArgumentException`  
     - “[ERROR] Bonus number duplicates a winning number.”
 
-- [ ] When the user enters invalid data, throw `IllegalArgumentException` and re-prompt at the **same** step.
+- [x] When the user enters invalid data, throw `IllegalArgumentException` and re-prompt at the **same** step.
 
 ---
 
