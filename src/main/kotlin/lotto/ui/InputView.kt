@@ -25,7 +25,7 @@ class InputView(private val console: ConsoleIOInterface) {
 
     fun getWinningNumbers(): Lotto {
         return readValidatedInput(Constants.WINNING_NUMBERS_PROMPT) {
-            val winningNumbers = parseWinningNumbers(console.read())
+            val winningNumbers = InputParser.parseWinningNumbers(console.read())
             Lotto(winningNumbers)
         }
     }
@@ -37,13 +37,5 @@ class InputView(private val console: ConsoleIOInterface) {
         }
     }
 
-    private fun parseWinningNumbers(input: String): List<Int> {
-        val numbers = input
-            .split(",")
-            .map {
-                it.trim().toIntOrNull()
-                    ?: throw IllegalArgumentException(Constants.ERROR_INVALID_WINNING_NUMBER)
-            }
-        return numbers
-    }
+
 }
