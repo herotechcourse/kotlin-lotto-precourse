@@ -8,12 +8,12 @@ import lotto.util.NumberGenerator
  *
  * @param generator produces the numbers for each ticket
  */
-class TicketMachine(private val generator: NumberGenerator) {
+class TicketMachine(private val generator: NumberGenerator): ITicketMachine {
 
     /**
      * Issues one Lotto ticket per 1,000 KRW in [amount].
      */
-    fun issue(amount: Int): List<Lotto> {
+    override fun issue(amount: Int): List<Lotto> {
         val count = amount / 1000
         return List(count) { Lotto(generator.generate()) }
     }
