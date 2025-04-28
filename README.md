@@ -12,7 +12,7 @@
   - [x] Handle only specific exception types such as IllegalArgumentException or IllegalStateException, not generic Exception.
 - [x] Implement Lotto Result Analyzer and test it
 - [x] Implement ProfitCalculator and test the calculation
-- [ ] Assemble all classes togethe and run the application
+- [x] Assemble all classes togethe and run the application
 
 ## Tech Stack
 
