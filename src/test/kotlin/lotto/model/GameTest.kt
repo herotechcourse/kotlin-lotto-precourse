@@ -15,7 +15,7 @@ class GameTest {
     @BeforeEach
     fun setUp() {
         lottoTicket = listOf(Lotto(listOf(1, 2, 3, 4, 5, 6)), Lotto(listOf(11, 12, 13, 14, 15, 16)), Lotto(listOf(21, 22, 23, 24, 25, 26)))
-        winningLotto = WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 23)), 4)
+        winningLotto = WinningLotto(Lotto(listOf(1, 2, 3, 4, 5, 23)), 6)
         game = Game(3_000, lottoTicket, winningLotto)
     }
 
