@@ -21,6 +21,6 @@ class LottoMatcher(val winningNumbers: List<Int>, val bonusNumber: Int) {
 
     fun calculatePrizeResult(tickets: List<Lotto>): PrizeResult {
         val prizeRanks = tickets.map { ticket -> getPrizeRank(ticket) }
-        return countPrizeRank(prizeRanks, tickets.size * 1_000)
+        return countPrizeRank(prizeRanks, tickets.size * LottoFactory.TICKET_PRICE)
     }
 }
