@@ -3,6 +3,10 @@
 This project implement an amazing lottery ticket machine that allows users to purchase tickets, enter winning numbers, and calculate their winnings based on matching numbers.
 This Lotto project is part of the Hero Tech Course curriculum.
 
+<picture>
+ <img alt="racingCar" src="https://github.com/user-attachments/assets/45b956eb-0590-4ecd-a051-b31fb6c8e882">
+</picture>
+
 ## Features
 
 ### Core Functionality
