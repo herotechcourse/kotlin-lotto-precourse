@@ -9,7 +9,9 @@ object InputView {
     fun inputPurchaseAmount():Int {
         println("Please enter the purchase amount.")
         return try {
-            val purchaseAmount = Console.readLine().toInt()
+            val input = Console.readLine()
+            val purchaseAmount = input.toIntOrNull()
+                ?: throw IllegalArgumentException("[ERROR] Purchase amount must be a valid number.")
             require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
             require(purchaseAmount % TICKET_PRICE == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
             purchaseAmount
