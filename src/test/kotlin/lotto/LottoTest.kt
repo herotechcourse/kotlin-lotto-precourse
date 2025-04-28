@@ -60,5 +60,47 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `compare tickets and lotto numbers returns correct values`() {
+        val winningNumbers = listOf(1,2,3,4,5,6)
+        val lotto = Lotto(winningNumbers)
+        lotto.setBonusNumber(7)
 
+        val tickets = listOf(
+            Ticket(listOf(1,2,3,4,5,6)), // FIRST
+            Ticket(listOf(1,2,3,4,5,6)), // FIRST
+            Ticket(listOf(1,2,3,4,5,7)), // SECOND
+            Ticket(listOf(1,2,3,4,5,8)), // THIRD
+            Ticket(listOf(1,2,3,4,8,9)), // FOURTH
+            Ticket(listOf(1,2,3,8,9,10)), // FIFTH
+            Ticket(listOf(1,2,8,9,10,11)), // NONE
+        )
+
+        val prizeCount = lotto.compareTicketsAndLottoNumbers(tickets)
+
+        assertThat(prizeCount[Prize.FIRST]).isEqualTo(2)
+        assertThat(prizeCount[Prize.SECOND]).isEqualTo(1)
+        assertThat(prizeCount[Prize.THIRD]).isEqualTo(1)
+        assertThat(prizeCount[Prize.FOURTH]).isEqualTo(1)
+        assertThat(prizeCount[Prize.FIFTH]).isEqualTo(1)
+        assertThat(prizeCount[Prize.NONE]).isEqualTo(1)
+    }
+
+    @Test
+    fun `calculate total prize returns correct value`() {
+        val prizeCount = mapOf(
+            Prize.FIRST to 1, // 2_000_000_000
+            Prize.SECOND to 2, // 30_000_000
+            Prize.THIRD to 3, // 1_500_000
+            Prize.FOURTH to 0, // 50_000
+            Prize.FIFTH to 2, // 5_000
+            Prize.NONE to 5,
+        )
+
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        val totalPrize = lotto.calculateTotalPrize(prizeCount)
+
+        val expectedPrice = 2_000_000_000 + 2 * 30_000_000 + 1_500_000 * 3 + 5_000 * 2
+        assertThat(expectedPrice).isEqualTo(totalPrize)
+    }
 }
