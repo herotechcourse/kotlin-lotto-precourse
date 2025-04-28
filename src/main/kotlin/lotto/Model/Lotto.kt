@@ -14,4 +14,8 @@ class Lotto(private val numbers: List<Int>) {
     fun isBonusContain(bonusNumber: Int): Bool {
         return number in numbers
     }
+
+    fun getNumbers() {
+        return numbers 
+    }
 }
