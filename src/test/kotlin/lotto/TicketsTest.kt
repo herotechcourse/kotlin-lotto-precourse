@@ -19,5 +19,14 @@ class TicketsTest {
         }
     }
 
+    @Test
+    fun `creates correct number of tickets based on money`() {
+        val money = 8000
+
+        val tickets = Tickets(money)
+
+        assertThat(tickets.ticketCount).isEqualTo(8)
+        assertThat(tickets.lottos).hasSize(8)
+    }
 
 }
