@@ -10,7 +10,7 @@ class LottoController {
     }
 
     fun getPurchaseAmount(): PurchaseAmount {
-        while(true){
+        while (true) {
             try {
                 return PurchaseAmount.from(InputView.readPurchaseAmount())
             } catch (e: IllegalArgumentException) {
