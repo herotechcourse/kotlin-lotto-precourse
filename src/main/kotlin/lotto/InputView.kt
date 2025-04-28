@@ -4,17 +4,23 @@ import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun readPurchaseAmount(): String {
-        println("Please enter the purchase amount.")
+        println(PROMPT_PURCHASE_AMOUNT)
         return Console.readLine()
     }
 
     fun readWinningNumber(): String {
-        println("\nPlease enter last week's winning numbers.")
+        println(PROMPT_WINNING_NUMBERS)
         return Console.readLine()
     }
 
     fun readBonusNumber(): String {
-        println("\nPlease enter the bonus number.")
+        println(PROMPT_BONUS_NUMBER)
         return Console.readLine()
+    }
+
+    companion object {
+        private const val PROMPT_PURCHASE_AMOUNT = "Please enter the purchase amount."
+        private const val PROMPT_WINNING_NUMBERS = "\nPlease enter last week's winning numbers."
+        private const val PROMPT_BONUS_NUMBER = "\nPlease enter the bonus number."
     }
 }
