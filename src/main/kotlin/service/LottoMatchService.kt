@@ -31,5 +31,12 @@ object LottoMatchService {
         return counts
     }
 
+    fun calculateReturnRate(tickets: Tickets, statistics: Map<LottoRank, Int>): Double {
+        val totalPrize = statistics.entries.sumOf{ ( rank, count) -> rank.prize * count}
+        val rate = (totalPrize.toDouble() / tickets.money.toDouble()) * 100
+        return rate
+    }
+
+    fun roundNearestTenth(number:Double):String = String.format("%.1f", number)
 
 }

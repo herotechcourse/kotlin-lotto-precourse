@@ -28,8 +28,8 @@
 -[X] bitmasking logic to see if the ticket contains a bonus number
 -[X] determine the rank of each ticket based on matched numbers and bonus number
 -[X] count how many tickets fall into each rank
--[ ] calculate the lotto return rate
--[ ] round the return rate to the nearest tenth
+-[X] calculate the lotto return rate
+-[X] round the return rate to the nearest tenth
 ### output process (`view.OutputView`)
 -[X] print basic messages prompting the user for input
     -[X] "Please enter the purchase amount."
