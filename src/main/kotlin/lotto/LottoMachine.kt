@@ -7,9 +7,7 @@ class LottoMachine(
         val purchaseAmount = readPurchaseAmount()
         val lottos = generateLottoByPurchaseAmount(purchaseAmount)
         OutputView.printIssuedLottos(lottos)
-        val winningNumbers = readWinningNumber()
-        val bonusNumber = readBonusNumber(winningNumbers)
-        val pickedNumbers = PickedNumbers(winningNumbers, bonusNumber)
+        val pickedNumbers = readPickedNumbers()
         val result = ResultCalculator.calculate(lottos, pickedNumbers, purchaseAmount)
         OutputView.printWinningStatistics(result)
     }
@@ -31,27 +29,36 @@ class LottoMachine(
         return LottoGenerator.generateLottos(count)
     }
 
-    private fun readWinningNumber(): List<Int> {
+    private fun readPickedNumbers(): PickedNumbers {
+        val winningNumbers = readWinningNumbers()
+
         while (true) {
             try {
-                val input = inputView.readWinningNumber()
-                WinningNumberValidator.validate(input)
-                return input.split(",").map { it.trim().toInt() }
+                val bonusNumber = readBonusNumber()
+                return PickedNumbers(winningNumbers, bonusNumber)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
     }
 
-    private fun readBonusNumber(winningNumbers: List<Int>): Int {
+    private fun readWinningNumbers(): List<Int> {
         while (true) {
             try {
-                val input = inputView.readBonusNumber()
-                BonusNumberValidator.validate(input, winningNumbers)
-                return input.trim().toInt()
+                val input = inputView.readWinningNumber()
+                InputValidator.validateWinningNumbersInput(input)
+                val numbers = input.split(",").map { it.trim().toInt() }
+                PickedNumbers(numbers, 0)
+                return numbers
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
         }
+    }
+
+    private fun readBonusNumber(): Int {
+        val input = inputView.readBonusNumber()
+        InputValidator.validateBonusNumberInput(input)
+        return input.trim().toInt()
     }
 }
