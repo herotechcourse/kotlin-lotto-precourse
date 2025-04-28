@@ -1,7 +1,10 @@
+import lotto.Lotto
 import lotto.utils.Constant.AMOUNT_NOT_DIVISIBLE_ERROR_MESSAGE
+import lotto.utils.Constant.INVALID_BONUS_NUMERIC_ERROR_MESSAGE
 import lotto.utils.Constant.INVALID_WINNING_NUMERIC_ERROR_MESSAGE
 import lotto.utils.Constant.PURCHASE_AMOUNT_INPUT_ERROR_MESSAGE
 import lotto.utils.Constant.WINNING_NUMBER_RANGE_ERROR_MESSAGE
+import lotto.utils.Exceptions
 import lotto.utils.Exceptions.validatePurchaseAmount
 import lotto.utils.Exceptions.validateWinningNumbers
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -48,5 +51,15 @@ class ExceptionsTest {
         }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(WINNING_NUMBER_RANGE_ERROR_MESSAGE)
+    }
+
+    @Test
+    fun `throw an exception if bonus number is not a number`() {
+        val dummyWinningLotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertThatThrownBy {
+            Exceptions.validateBonusNumber(dummyWinningLotto, "abc").getOrThrow()
+        }
+            .isInstanceOf(NumberFormatException::class.java)
+            .hasMessageContaining(INVALID_BONUS_NUMERIC_ERROR_MESSAGE)
     }
 }
