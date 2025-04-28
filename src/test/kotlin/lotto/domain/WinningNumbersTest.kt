@@ -43,4 +43,11 @@ class WinningNumbersTest {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "6", "7"))
         }
     }
+
+    @Test
+    fun `throws an exception when winning number is duplicated`() {
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("1", "2", "3", "4", "5", "5"))
+        }
+    }
 }
