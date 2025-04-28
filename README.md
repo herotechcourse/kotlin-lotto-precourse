@@ -78,3 +78,81 @@ A Kotlin console application that issues lottery tickets, checks winning results
   ./gradlew clean test      # macOS/Linux
   gradlew.bat clean test     # Windows
   ```
+
+# Game Instructions
+
+## Objective
+
+Buy lottery tickets, enter the winning numbers and bonus number, and determine the number of winning tickets and the overall profit rate.
+
+## How to Play
+
+1. Enter the purchase amount when prompted.
+  - Each ticket costs 1,000 KRW.
+  - The number of tickets issued equals the purchase amount divided by 1,000.
+2. The program prints the purchased tickets.
+  - Each ticket contains six unique numbers between 1 and 45.
+  - Ticket numbers are sorted in ascending order.
+3. Enter the six winning numbers separated by commas.
+4. Enter the bonus number separately.
+
+## Winning Criteria
+
+| Match | Prize Rank | Prize Amount |
+|------|------------|--------------|
+| 6 numbers matched | 1st | 2,000,000,000 KRW |
+| 5 numbers matched + bonus matched | 2nd | 30,000,000 KRW |
+| 5 numbers matched | 3rd | 1,500,000 KRW |
+| 4 numbers matched | 4th | 50,000 KRW |
+| 3 numbers matched | 5th | 5,000 KRW |
+| Fewer than 3 matches | No prize | 0 KRW |
+
+## Result Output
+
+- The number of winning tickets for each prize rank is displayed.
+- The total return rate is calculated and displayed, rounded to one decimal place.
+  - Return rate = (Total Prize Money ÷ Purchase Amount) × 100
+
+## Error Handling
+
+The program validates all inputs. If an invalid input is entered, an error message prefixed with `[ERROR]` is printed, and the input is requested again.
+
+Validation cases include:
+- Purchase amount must be divisible by 1,000.
+- Winning numbers must be six unique integers between 1 and 45.
+- Bonus number must be between 1 and 45 and must not duplicate any winning number.
+
+## Example
+
+```
+Please enter the purchase amount.
+8000
+
+You have purchased 8 tickets.
+[8, 21, 23, 41, 42, 43]
+[3, 5, 11, 16, 32, 38]
+[7, 11, 16, 35, 36, 44]
+[1, 8, 11, 31, 41, 42]
+[13, 14, 16, 38, 42, 45]
+[7, 11, 30, 40, 42, 43]
+[2, 13, 22, 32, 38, 45]
+[1, 3, 5, 14, 22, 45]
+
+Please enter last week's winning numbers.
+1,2,3,4,5,6
+
+Please enter the bonus number.
+7
+
+Winning Statistics
+---
+3 Matches (5,000 KRW) – 1 tickets
+4 Matches (50,000 KRW) – 0 tickets
+5 Matches (1,500,000 KRW) – 0 tickets
+5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets
+6 Matches (2,000,000,000 KRW) – 0 tickets
+
+Total return rate is 62.5%.
+```
+
+---
