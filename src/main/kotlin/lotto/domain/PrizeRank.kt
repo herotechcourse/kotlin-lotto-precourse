@@ -18,9 +18,14 @@ enum class PrizeRank(val matchCount: Int, val hasBonus: Boolean, val prize: Int)
          * Finds the appropriate prize rank based on the number of matches and bonus match status.
          */
         fun findByMatch(matchCount: Int, hasBonus: Boolean): PrizeRank {
-            return entries.find {
-                it.matchCount == matchCount && it.hasBonus == hasBonus
-            } ?: NONE
+            return when {
+                matchCount == 6 -> PrizeRank.FIRST
+                matchCount == 5 && hasBonus -> PrizeRank.SECOND
+                matchCount == 4 -> PrizeRank.FOURTH
+                matchCount == 5 -> PrizeRank.THIRD
+                matchCount == 3 -> PrizeRank.FIFTH
+                else -> PrizeRank.NONE
+            }
         }
     }
 }
