@@ -51,3 +51,29 @@
 - Use `Console.readLine()` for user input.
 - Unit tests using JUnit5 + AssertJ for all logic except UI.
  
+ ## How to Test and Run under macOS/Linux 🚀
+
+Follow these steps to test and run the project on your macOS or Linux machine:
+
+1. **Clean and Run Tests**:  
+   First, clean the project and run the tests with the following command:
+
+   ```bash
+   ./gradlew clean test
+2. **Clean, Build, and Test the Project**:  
+   Next, clean, build, and test the project with the following command:
+
+   ```bash
+   ./gradlew clean build
+3. **Build the JAR File**: 
+   After cleaning and building, you can create the JAR file by running:
+   ```bash
+   ./gradlew build
+4. **Run the Application**: 
+   Finally, run the application using the following command:
+   ```bash
+   java -jar build/libs/kotlin-lotto-1.0-SNAPSHOT.jar
+
+
+
+
