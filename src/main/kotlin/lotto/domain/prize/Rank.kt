@@ -2,14 +2,14 @@ package lotto.domain.prize
 
 enum class Rank(
     private val winningStrategy: WinningStrategy,
-    private val prizeAmount: Int
+    private val prizeAmount: Long
 ) {
-    FIFTH(MatchCountStrategy(3), 5_000),
-    FOURTH(MatchCountStrategy(4), 50_000),
-    THIRD(MatchCountAndBonusStrategy(5, false), 1_500_000),
-    SECOND(MatchCountAndBonusStrategy(5, true), 30_000_000),
-    FIRST(MatchCountStrategy(6), 2_000_000_000),
-    NONE(MatchCountStrategy(0), 0);
+    FIFTH(MatchCountStrategy(3), 5_000L),
+    FOURTH(MatchCountStrategy(4), 50_000L),
+    THIRD(MatchCountAndBonusStrategy(5, false), 1_500_000L),
+    SECOND(MatchCountAndBonusStrategy(5, true), 30_000_000L),
+    FIRST(MatchCountStrategy(6), 2_000_000_000L),
+    NONE(MatchCountStrategy(0), 0L);
 
     private interface WinningStrategy {
         fun matches(matchCount: Int, bonusMatch: Boolean): Boolean
@@ -27,6 +27,8 @@ enum class Rank(
             return this.matchCount == matchCount && this.bonusMath == bonusMatch
         }
     }
+
+    fun multiplyPrizeAmount(count: Int): Long = prizeAmount * count
 
     companion object {
         fun find(matchCount: Int, bonusMatch: Boolean): Rank {

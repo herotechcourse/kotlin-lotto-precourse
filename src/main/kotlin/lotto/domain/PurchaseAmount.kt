@@ -16,6 +16,8 @@ class PurchaseAmount(private val amount: Int) {
 
     fun toTicketAmount(): Int = amount / PURCHASE_UNIT
 
+    fun amount(): Int = amount
+    
     companion object {
         private const val MAXIMUM_AMOUNT = 100_000
         private const val PURCHASE_UNIT = 1_000
