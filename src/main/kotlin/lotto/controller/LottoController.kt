@@ -60,16 +60,27 @@ class LottoControllerImpl(
         }
     }
 
+    private fun processResult(
+        tickets: List<Lotto>,
+        winningNumbers: List<Int>,
+        bonusNumber: Int,
+    ) {
+        val result = statistics.calculateResult(tickets, winningNumbers, bonusNumber)
+        outputView.printStatistics(result)
+    }
+
+    private fun processProfitRate(purchaseAmount: Int) {
+        val profitRate = statistics.calculateProfitRate(purchaseAmount)
+        outputView.printProfitRate(profitRate)
+    }
 
     override fun run() {
         val purchaseAmount = processPurchaseAmount()
         val tickets = processTickets(purchaseAmount)
         val winningNumbers = processWinningNumbers()
         val bonusNumber = processBonusNumber()
-        val result = statistics.calculateResult(tickets, winningNumbers, bonusNumber)
-        outputView.printStatistics(result)
-        val profitRate = statistics.calculateProfitRate(purchaseAmount)
-        outputView.printProfitRate(profitRate)
+        processResult(tickets, winningNumbers, bonusNumber)
+        processProfitRate(purchaseAmount)
     }
 
     companion object {
