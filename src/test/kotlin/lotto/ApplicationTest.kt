@@ -49,6 +49,65 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `reject negative purchase amount`() {
+        assertSimpleTest {
+            runException("-1000")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject amount not divisible by 1000`() {
+        assertSimpleTest {
+            runException("1500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject winning numbers with duplicates`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,5", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject winning numbers with less than 6 numbers`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject winning numbers with numbers out of range`() {
+        assertSimpleTest {
+            runException("1000", "0,2,3,4,5,6", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+            runException("1000", "1,2,3,4,5,46", "7")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject bonus number that is duplicate of winning numbers`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `reject bonus number out of range`() {
+        assertSimpleTest {
+            runException("1000", "1,2,3,4,5,6", "0")
+            assertThat(output()).contains(ERROR_MESSAGE)
+            runException("1000", "1,2,3,4,5,6", "46")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
     override fun runMain() {
         main()
     }
@@ -56,4 +115,5 @@ class ApplicationTest : NsTest() {
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
     }
+
 }
