@@ -7,7 +7,7 @@ fun main() {
     OutputView.printLottos(lottos)
 
     val winningNumbers = InputView.readWinningNumbers()
-    val bonusNumber = InputView.readBonusNumber()
+    val bonusNumber = InputView.readBonusNumber(winningNumbers)
 
     val result = ResultService.calculateResult(lottos, winningNumbers, bonusNumber)
     OutputView.printResult(result)

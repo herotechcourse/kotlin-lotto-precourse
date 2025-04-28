@@ -19,6 +19,10 @@ object InputView {
         require(lotteryNumbers.toSet().size == lotteryNumbers.size) { "[ERROR] The lottery numbers must consist of unique numbers." }
     }
 
+    private fun validateBonusNumber(bonusNumber: Int, winningNumbers: List<Int>) {
+        require(bonusNumber !in winningNumbers) { "[ERROR] Bonus number must not duplicate winning numbers." }
+    }
+
     fun readPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
         val input = Console.readLine().toIntOrNull()
@@ -40,11 +44,11 @@ object InputView {
         return winningNumbers
     }
 
-    fun readBonusNumber(): Int {
+    fun readBonusNumber(winningNumbers: List<Int>): Int {
         println("\nPlease enter the bonus number.")
         val bonusNumber = Console.readLine().toIntOrNull()
         validateLotteryNumber(bonusNumber)
-
-        return bonusNumber!!
+        validateBonusNumber(bonusNumber!!, winningNumbers)
+        return bonusNumber
     }
 }
