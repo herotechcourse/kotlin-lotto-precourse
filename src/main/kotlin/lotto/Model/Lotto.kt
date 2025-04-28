@@ -11,7 +11,7 @@ class Lotto(private val numbers: List<Int>) {
         return numbers.count { number in winningNumbers }
     }
 
-    fun isBonusContain(bonusNumber: Int): Bool {
+    fun isBonusContain(bonusNumber: Int): Boolean {
         return number in numbers
     }
 

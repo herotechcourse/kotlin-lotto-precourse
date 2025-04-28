@@ -1,7 +1,7 @@
 package lotto.model 
 import camp.nextstep.edu.missionutils.Randoms
 
-enum class LottoPrize(val match: Int, val isBonus: Bool, val prize: Int) {
+enum class LottoPrize(val match: Int, val isBonus: Boolean, val prize: Int) {
     FIRST(6, false, 2000000000),
     SECOND(5, true, 30000000),
     THIRD(5, false, 1500000),
@@ -9,7 +9,7 @@ enum class LottoPrize(val match: Int, val isBonus: Bool, val prize: Int) {
     FIFTH(3, false, 5000);
 
     companion object {
-        fun from(match: Int, isBonus: Bool): LottoPrize? {
+        fun from(match: Int, isBonus: Boolean): LottoPrize? {
             return values().find { prize -> (prize.match == match && prize.isBonus == isBonus) }
         }
     }
