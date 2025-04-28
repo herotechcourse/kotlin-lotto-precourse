@@ -6,6 +6,7 @@ class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { ValidationErrors.MUST_ENTER_SIX_NUMBERS.message }
         require(numbers.size == numbers.toSet().size) { ValidationErrors.MUST_ENTER_UNIQUE_NUMBERS.message }
+        require(numbers.all { it in 1..45 }){ ValidationErrors.MUST_BE_IN_RANGE.message }
     }
 
     fun showNumbers() {
