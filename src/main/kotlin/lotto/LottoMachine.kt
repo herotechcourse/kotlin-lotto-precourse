@@ -9,6 +9,9 @@ class LottoMachine(
         OutputView.printIssuedLottos(lottos)
         val winningNumbers = readWinningNumber()
         val bonusNumber = readBonusNumber(winningNumbers)
+        val pickedNumbers = PickedNumbers(winningNumbers, bonusNumber)
+        val result = ResultCalculator.calculate(lottos, pickedNumbers, purchaseAmount)
+        OutputView.printWinningStatistics(result)
     }
 
     private fun readPurchaseAmount(): Int {
