@@ -48,3 +48,5 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 - Calculate ticket prices
 
 ### 5. add a getNumber in the Lotto class to capture the numbers created
+- add a getter to lotto
+- make the code more idiomatic
