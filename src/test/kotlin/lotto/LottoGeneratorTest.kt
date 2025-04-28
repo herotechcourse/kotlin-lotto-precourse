@@ -12,7 +12,7 @@ class LottoGeneratorTest {
         assertThatThrownBy {
             LottoGenerator.generate(1550)
         }.isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("divisible by 1,000")
+            .hasMessageContaining("divisible by 1000")
     }
 
     @Test

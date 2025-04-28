@@ -23,7 +23,7 @@ class ValidatorTest {
     fun `throws error when input is a negative number`() {
         assertThatThrownBy { Validator.validateNumber("-5") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("must be greater than 0")
+            .hasMessageContaining("Number must be greater than or equal to 1")
     }
 
     @Test
@@ -35,14 +35,14 @@ class ValidatorTest {
     fun `throws error when purchase amount is less than 1000`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("500") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("at least 1,000")
+            .hasMessageContaining("at least 1000")
     }
 
     @Test
     fun `throws error when purchase amount is not divisible by 1000`() {
         assertThatThrownBy { Validator.validatePurchaseAmount("1500") }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("divisible by 1,000")
+            .hasMessageContaining("divisible by 1000")
     }
 
     @Test
