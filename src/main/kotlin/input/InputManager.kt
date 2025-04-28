@@ -1,6 +1,7 @@
 package input
 
 import error.util.getErrorMsgWithPrefix
+import input.util.getValidatedBonusNumber
 import input.util.getValidatedLottoNumbers
 import input.util.getValidatedTicketAmount
 import input.util.readLineAndProcess
@@ -25,4 +26,8 @@ fun getLottoNumberArrayFromInput(): Array<Int> {
 }
 fun getTicketAmountFromInput(): Int{
     return processInput { input -> getValidatedTicketAmount(input) }
+}
+
+fun getBonusNumberFromInput(): Int{
+    return processInput { input -> getValidatedBonusNumber(input) }
 }
