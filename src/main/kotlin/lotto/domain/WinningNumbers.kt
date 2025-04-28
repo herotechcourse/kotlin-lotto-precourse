@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Lotto
+
 class WinningNumbers(private val numbers: List<LottoNumber>) {
 
     init {

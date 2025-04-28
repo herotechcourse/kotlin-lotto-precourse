@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Lotto
+
 class LottoTickets(private val tickets: List<Lotto>) {
 
     fun size(): Int = tickets.size
