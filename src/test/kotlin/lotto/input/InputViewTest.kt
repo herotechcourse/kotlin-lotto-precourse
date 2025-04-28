@@ -3,6 +3,7 @@ package lotto.input
 import lotto.BonusNumber
 import lotto.Lotto
 import lotto.PurchaseAmount
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_AMOUNT
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -30,7 +31,7 @@ class InputViewTest {
         val exception = assertThrows<IllegalArgumentException> {
             PurchaseAmount(invalidAmount)
         }
-        assertThat(exception.message).isEqualTo("[ERROR] Amount must be a multiple of 1000")
+        assertThat(exception.message).isEqualTo(ERROR_MESSAGE_INVALID_AMOUNT)
     }
 
     @Test

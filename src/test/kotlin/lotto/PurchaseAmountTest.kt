@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_AMOUNT
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -17,7 +18,7 @@ class PurchaseAmountTest {
     fun `should throw exception if amount is not multiple of 1000`() {
         assertThatThrownBy { PurchaseAmount(5500) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Amount must be a multiple of 1000")
+            .hasMessageContaining(ERROR_MESSAGE_INVALID_AMOUNT)
     }
 
     @Test

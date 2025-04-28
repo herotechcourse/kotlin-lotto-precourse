@@ -1,11 +1,12 @@
 package lotto
 
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_AMOUNT
 import java.math.BigDecimal
 
 class PurchaseAmount(private val amount: Int) {
 
     init{
-        require(amount % 1000 == 0) { "[ERROR] Amount must be a multiple of 1000" }
+        require(amount % 1000 == 0) { ERROR_MESSAGE_INVALID_AMOUNT }
     }
 
     fun getNumberOfTickets(): Int {

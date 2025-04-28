@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_BONUS_NUMBER_IN_LOTTO
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_BONUS_NUMBER_LIMIT
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -20,7 +22,7 @@ class BonusNumberTest {
 
         assertThatThrownBy { BonusNumber(0, lotto) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Bonus Number should be a between 1 and 45")
+            .hasMessageContaining(ERROR_MESSAGE_INVALID_BONUS_NUMBER_LIMIT)
     }
 
     @Test
@@ -29,7 +31,7 @@ class BonusNumberTest {
 
         assertThatThrownBy { BonusNumber(46, lotto) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Bonus Number should be a between 1 and 45")
+            .hasMessageContaining(ERROR_MESSAGE_INVALID_BONUS_NUMBER_LIMIT)
     }
 
     @Test
@@ -38,6 +40,6 @@ class BonusNumberTest {
 
         assertThatThrownBy { BonusNumber(5, lotto) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Bonus Number should not be in Lotto numbers")
+            .hasMessageContaining(ERROR_MESSAGE_BONUS_NUMBER_IN_LOTTO)
     }
 }

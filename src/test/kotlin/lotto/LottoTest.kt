@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_LOTTO_LIMIT
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_LOTTO_LENGTH_IS_NOT_6
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -32,7 +34,7 @@ class LottoTest {
         val numbers = listOf(1, 2, 3, 4, 5)
         assertThatThrownBy { Lotto(numbers) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Lotto must contain exactly 6 numbers.")
+            .hasMessageContaining(ERROR_MESSAGE_LOTTO_LENGTH_IS_NOT_6)
     }
 
     @Test
@@ -41,7 +43,7 @@ class LottoTest {
 
         assertThatThrownBy { Lotto(numbers) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("[ERROR] Lotto numbers must be between 1 and 45.")
+            .hasMessageContaining(ERROR_MESSAGE_INVALID_LOTTO_LIMIT)
     }
 
     @Test

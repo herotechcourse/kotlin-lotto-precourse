@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.BonusNumber
 import lotto.Lotto
 import lotto.PurchaseAmount
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_EMPTY_VALUE
+import lotto.constants.ErrorMessageConstants.ERROR_MESSAGE_INVALID_NUMBER
 
 sealed class InputReader {
 
@@ -42,8 +44,8 @@ sealed class InputReader {
     }
 
     private fun parseNumberOrThrow(maybeNumber: String): Int{
-        require(maybeNumber.isNotBlank()){"[ERROR] Input must not contain empty value"}
-        require(maybeNumber.all {it.isDigit()}){ "[ERROR] Invalid number entered for $maybeNumber" }
+        require(maybeNumber.isNotBlank()){ERROR_MESSAGE_EMPTY_VALUE}
+        require(maybeNumber.all {it.isDigit()}){ String.format(ERROR_MESSAGE_INVALID_NUMBER, maybeNumber) }
         return maybeNumber.toInt()
     }
 }
