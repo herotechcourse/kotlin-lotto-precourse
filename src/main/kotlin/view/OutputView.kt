@@ -23,6 +23,6 @@ object OutputView {
     }
 
     private fun printRate(profitRate: Double) {
-        println("Total return rate is %.1f%%".format(Locale.US, profitRate))
+        println("Total return rate is %.1f%%.".format(Locale.US, profitRate))
     }
 }
