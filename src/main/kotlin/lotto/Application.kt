@@ -1,5 +1,18 @@
 package lotto
 
+import lotto.controller.LottoControllerImpl
+import lotto.presentation.InputViewImpl
+import lotto.presentation.OutputViewImpl
+
 fun main() {
-    // TODO: Implement the program
+    val lottoController = LottoControllerImpl(
+        inputView = InputViewImpl(),
+        inputValidator = InputValidatorImpl(),
+        outputView = OutputViewImpl(),
+        lottoTicketGenerator = LottoTicketGeneratorImpl(
+            randomNumbersGeneratorWrapper = RandomNumbersGeneratorWrapperImpl()
+        ),
+        statistics = StatisticsImpl(),
+    )
+    lottoController.run()
 }
