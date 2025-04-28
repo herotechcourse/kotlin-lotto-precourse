@@ -12,7 +12,8 @@ object InputView {
                     InputType.BONUS_NUMBER -> getBonusNumber(winningNumbers)
                 }
             } catch (e: IllegalArgumentException) {
-                println(e.message + "\nPlease try again.\n")
+                println(e.message)
+                println("Please try again.\n")
             }
         }
     }
