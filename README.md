@@ -25,19 +25,19 @@ The application allows users to buy lotto tickets, input winning numbers, and ca
 ---
 
 ### Core Game Logic
-- [ ] Issue one lotto ticket per 1,000 KRW.
-- [ ] Each ticket must have:
-    - [ ] 6 unique random numbers between 1 and 45.
-    - [ ] Numbers sorted in ascending order.
-- [ ] Compare each purchased ticket against winning numbers.
-- [ ] Determine matches:
-    - [ ] Match 6 numbers → 1st prize.
-    - [ ] Match 5 numbers + bonus → 2nd prize.
-    - [ ] Match 5 numbers → 3rd prize.
-    - [ ] Match 4 numbers → 4th prize.
-    - [ ] Match 3 numbers → 5th prize.
-- [ ] Calculate the total number of winners per rank.
-- [ ] Calculate total prize money and profit rate.
+- [x] Issue one lotto ticket per 1,000 KRW.
+- [x] Each ticket must have:
+    - [x] 6 unique random numbers between 1 and 45.
+    - [x] Numbers sorted in ascending order.
+- [x] Compare each purchased ticket against winning numbers.
+- [x] Determine matches:
+    - [x] Match 6 numbers → 1st prize.
+    - [x] Match 5 numbers + bonus → 2nd prize.
+    - [x] Match 5 numbers → 3rd prize.
+    - [x] Match 4 numbers → 4th prize.
+    - [x] Match 3 numbers → 5th prize.
+- [x] Calculate the total number of winners per rank.
+- [x] Calculate total prize money and profit rate.
 
 ---
 
