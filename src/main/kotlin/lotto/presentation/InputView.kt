@@ -3,23 +3,26 @@ package lotto.presentation
 import camp.nextstep.edu.missionutils.Console
 import lotto.presentation.IntParser.parseMultiple
 import lotto.presentation.IntParser.parseSingle
+import java.lang.IllegalArgumentException
 
 object InputView {
-    fun readPurchaseAmount(): Int {
-        println("Please enter the purchase amount.")
-
-        return parseSingle(Console.readLine())
+    private fun <T> repeatRead(prompt: String, parse: () -> T): T {
+        while (true) {
+            try {
+                println(prompt)
+                return parse()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
-    fun readWinningNumbers(): List<Int> {
-        println("Please enter last week's winning numbers.")
+    fun readPurchaseAmount(): Int =
+        repeatRead("Please enter the purchase amount.") { parseSingle(Console.readLine()) }
 
-        return parseMultiple(Console.readLine())
-    }
+    fun readWinningNumbers(): List<Int> =
+        repeatRead("Please enter last week's winning numbers.") { parseMultiple(Console.readLine()) }
 
-    fun readBonusNumber(): Int {
-        println("Please enter the bonus number.")
-
-        return parseSingle(Console.readLine())
-    }
+    fun readBonusNumber(): Int =
+        repeatRead("Please enter the bonus number.") { parseSingle(Console.readLine()) }
 }
