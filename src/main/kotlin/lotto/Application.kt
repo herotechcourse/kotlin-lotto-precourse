@@ -1,6 +1,5 @@
 package lotto
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
@@ -8,14 +7,12 @@ fun main() {
     val lottoMachine = LottoMachine(amount)
     lottoMachine.purchaseLottoTicket(amount)
     OutputView.printTickets(lottoMachine.tickets)
-
     val winningNumbers = InputView.inputLottoNumber()
     val bonusNumber = InputView.inputBonusNumber(winningNumbers)
     val winningLotto = WinningLotto(winningNumbers, bonusNumber)
     val rankCounts = lottoMachine.calculateResults(lottoMachine.tickets, winningLotto)
     val totalPrize = rankCounts.entries.sumOf { it.key.prizeMoney * it.value }
     val profitRate = (totalPrize.toDouble() / amount) * 100
-
     OutputView.printResultStatistics(rankCounts)
     OutputView.printProfitRate(profitRate)
 }
@@ -34,84 +31,6 @@ enum class ResultRank(
 
     val bonusText: String
         get() = if (bonusRequired) " + Bonus Ball" else ""
-}
-
-object InputView {
-    fun inputPurchaseAmount():Int {
-        println("Please enter the purchase amount.")
-        return try {
-            val purchaseAmount = Console.readLine().toInt()
-            require(purchaseAmount > 0) { "[ERROR] Purchase amount must be greater than zero." }
-            require(purchaseAmount % 1000 == 0) { "[ERROR] Purchase amount must be divisible by 1000." }
-            purchaseAmount
-        } catch (e: IllegalArgumentException) {
-            println("${e.message}")
-            inputPurchaseAmount()
-        }
-    }
-
-    fun inputLottoNumber():List<Int> {
-        println("\nPlease enter last week's winning numbers.")
-        try {
-            val input = Console.readLine().removeWhiteSpaces()
-            val winningNumbers = input.split(",").map {
-                it.toIntOrNull() ?: throw IllegalArgumentException("All numbers must be valid integers")
-            }
-            require(winningNumbers.size == 6) { "[ERROR] You must enter exactly 6 numbers." }
-            require(winningNumbers.distinct().size == winningNumbers.size) { "[ERROR] You cannot enter duplicate numbers." }
-            require(winningNumbers.all { it in 1..45 }) { "[ERROR] All numbers must be between 1 and 45." }
-            return winningNumbers
-        } catch (e: IllegalArgumentException) {
-            println("${e.message}")
-            return inputLottoNumber()
-        }
-    }
-
-    private fun String.removeWhiteSpaces() = replace("\\s".toRegex(), "")
-
-    fun inputBonusNumber(winningNumbers: List<Int>):Int {
-        println("\nPlease enter the bonus number.")
-        try {
-            val input = Console.readLine()
-            val bonusNumber = input.toIntOrNull() ?: throw IllegalArgumentException("Bonus number must be a valid integer.")
-            require(bonusNumber in 1..45) { "[ERROR] Bonus number must be between 1 and 45." }
-            require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number cannot be one of the winning numbers." }
-            return bonusNumber
-        } catch (e: IllegalArgumentException) {
-            println("${e.message}")
-            return inputBonusNumber(winningNumbers)
-        }
-    }
-}
-
-object OutputView {
-    fun printTickets(lottoTickets: List<Lotto>) {
-        println("\nYou have purchased ${lottoTickets.size} tickets.")
-        for (lotto in lottoTickets) {
-            println(lotto.getNumbers().sorted().joinToString(prefix="[", postfix="]", separator = ", "))
-        }
-    }
-
-    fun printResultStatistics(result: Map<ResultRank, Int>) {
-        println("\nWinning Statistics")
-        println("---")
-        ResultRank.entries
-            .filter { it != ResultRank.NO_WIN }
-            .sortedBy { it.matchCount }
-            .forEach { rank ->
-                val count = result.getOrDefault(rank, 0)
-                println("${rank.matchCount} Matches${rank.bonusText} (${formatMoney(rank.prizeMoney)} KRW) – $count tickets")
-            }
-    }
-
-    private fun formatMoney(amount: Int): String {
-        return amount.toString().replace(Regex("(?<=\\d)(?=(\\d{3})+(?!\\d))"), ",")
-    }
-
-    fun printProfitRate(profitRate: Double) {
-        val formattedProfitRate = String.format("%.1f", profitRate)
-        println("Total return rate is $formattedProfitRate%.")
-    }
 }
 
 class LottoMachine (purchaseAmount: Int) {
