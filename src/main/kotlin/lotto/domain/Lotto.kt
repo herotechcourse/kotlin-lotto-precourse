@@ -1,9 +1,10 @@
 package lotto.domain
+import lotto.LOTTO_NUMBER_COUNT
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(numbers.toSet().size == 6) { "[ERROR] Lotto numbers must be unique." }
+        require(numbers.size == LOTTO_NUMBER_COUNT) { "[ERROR] Lotto must contain exactly $LOTTO_NUMBER_COUNT numbers." }
+        require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { "[ERROR] Lotto numbers must be unique." }
     }
 
     fun getNumbers(): List<Int> {

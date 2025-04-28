@@ -1,5 +1,9 @@
 package lotto.utils
 
+import lotto.LOTTO_MIN_NUMBER
+import lotto.LOTTO_MAX_NUMBER
+import lotto.TICKET_PRICE
+
 fun validateNotBlank(input: String) {
     if (input.isBlank()) {
         throw IllegalArgumentException("[ERROR] Input field cannot be empty.")
@@ -11,7 +15,7 @@ fun validateIsNumber(input: String) {
 }
 
 fun validateDivisibleByThousand(number: Int) {
-    if (number % 1000 != 0) {
+    if (number % TICKET_PRICE != 0) {
         throw IllegalArgumentException("[ERROR] Amount must be divisible by 1,000.")
     }
 }
@@ -30,8 +34,8 @@ fun validateNumberCount(numbers: List<Int>, limit: Int) {
 
 fun validateNumberRange(numbers: List<Int>) {
     numbers.forEach { number ->
-        if (number !in 1..45) {
-            throw IllegalArgumentException("[ERROR] Lotto numbers must be between 1 and 45.")
+        if (number !in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER) {
+            throw IllegalArgumentException("[ERROR] Lotto numbers must be between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER.")
         }
     }
 }

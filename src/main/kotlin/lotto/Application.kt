@@ -6,17 +6,10 @@ import lotto.view.InputView
 import lotto.view.OutputView
 
 fun main() {
-    // Entry point that orchestrates the whole flow:
-    // [x] InputView gets input
-    // [x] LottoGenerator creates tickets
-    // [x] ResultChecker calculates result
-    // [x] OutputView prints tickets
-    // [x] OutputView prints statistics
-
     val purchaseAmount = InputView.readPurchaseAmount()
     println()
 
-    val ticketCount = purchaseAmount / 1000
+    val ticketCount = purchaseAmount / TICKET_PRICE
     val lottoTickets = LottoFactory.createLottos(ticketCount)
 
     OutputView.printPurchaseInfo(ticketCount)

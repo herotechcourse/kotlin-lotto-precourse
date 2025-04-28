@@ -10,6 +10,8 @@ import lotto.utils.validateNumberRange
 import lotto.utils.validateUniqueNumbers
 import lotto.utils.validateIsNumber
 
+import lotto.LOTTO_NUMBER_COUNT
+
 object InputView {
 
     fun readPurchaseAmount(): Int = retryUntilValid {
@@ -26,7 +28,7 @@ object InputView {
         validateNotBlank(input)
         validateNumberSeparatedWithCommas(input)
         val numbers = parseCommaSeparatedNumbers(input)
-        validateNumberCount(numbers, 6)
+        validateNumberCount(numbers, LOTTO_NUMBER_COUNT)
         validateNumberRange(numbers)
         validateUniqueNumbers(numbers)
         numbers

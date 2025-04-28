@@ -66,9 +66,8 @@ Each of the following features will be implemented in a separate, small commit.
 - [x] Check the format of execution(to match the output format with functional requirements).
 
 ### 7. Testing
-- [ ] Unit test core business logic (ticket generation, matching, ranking).
-- [ ] Use JUnit 5 and AssertJ.
-- [ ] No testing of input/output (UI) code.
+- [x] Unit test core business logic (ticket generation, matching, ranking).
+- [x] No testing of input/output (UI) code.
 
 ---
 
