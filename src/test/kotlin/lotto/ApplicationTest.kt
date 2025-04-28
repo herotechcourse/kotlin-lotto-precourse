@@ -44,8 +44,9 @@ class ApplicationTest : NsTest() {
     @Test
     fun `exception test`() {
         assertSimpleTest {
-            runException("1000j")
-            assertThat(output()).contains(ERROR_MESSAGE)
+            val exception = runCatching { runException("1000j") }.exceptionOrNull()
+            assertThat(exception).isInstanceOf(IllegalArgumentException::class.java)
+            assertThat(exception?.message).contains("[ERROR]")
         }
     }
 
