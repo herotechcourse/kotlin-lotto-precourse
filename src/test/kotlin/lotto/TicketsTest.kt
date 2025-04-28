@@ -42,4 +42,16 @@ class TicketsTest {
         assertThat(lotto.numbers.all { it in 1..45 }).isTrue() // Ensure numbers are in range
     }
 
+    @Test
+    fun `uses provided number picker function`() {
+        val money = 1000
+        val fixedNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val pickNumbers: (Int, Int, Int) -> List<Int> = { _, _, _ -> fixedNumbers }
+
+        val tickets = Tickets(money, pickNumbers)
+
+        assertThat(tickets.lottos).hasSize(1)
+        assertThat(tickets.lottos[0].numbers).containsExactly(1, 2, 3, 4, 5, 6)
+    }
+
 }
