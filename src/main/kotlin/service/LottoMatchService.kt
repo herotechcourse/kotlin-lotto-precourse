@@ -2,6 +2,7 @@ package service
 
 import lotto.Lotto
 import lotto.LottoRank
+import lotto.Tickets
 import lotto.WinningNumbers
 
 object LottoMatchService {
@@ -20,5 +21,15 @@ object LottoMatchService {
         matchCount == 3 -> LottoRank.THREE
         else -> null
     }
+
+    fun calculateStatistics(tickts: Tickets, winningNumbers: WinningNumbers): Map<LottoRank, Int> {
+        val counts = LottoRank.values().associateWith { 0 }.toMutableMap()
+        tickts.lottos.forEach { ticket ->
+            determineRank(countMatchingNumbers(ticket, winningNumbers), hasBonus(ticket, winningNumbers))
+                ?.also {counts[it] = counts.getValue(it) + 1 }
+        }
+        return counts
+    }
+
 
 }

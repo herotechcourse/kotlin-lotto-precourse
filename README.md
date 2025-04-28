@@ -27,7 +27,7 @@
 -[X] bitmasking logic to count matching numbers between a ticket and winning number
 -[X] bitmasking logic to see if the ticket contains a bonus number
 -[X] determine the rank of each ticket based on matched numbers and bonus number
--[ ] count how many tickets fall into each rank
+-[X] count how many tickets fall into each rank
 -[ ] calculate the lotto return rate
 -[ ] round the return rate to the nearest tenth
 ### output process (`view.OutputView`)
