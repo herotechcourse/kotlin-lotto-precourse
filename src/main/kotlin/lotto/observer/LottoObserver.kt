@@ -1,8 +1,10 @@
 package lotto.observer
 
-class LottoObserver(private val listeners: MutableList<ILottoListener> = mutableListOf()) : ILottoObserver {
+object LottoObserver : ILottoObserver {
+    private val listeners: MutableList<ILottoListener> = mutableListOf()
+
     init {
-        listeners.add(ConsoleListener())
+        listeners.add(ConsoleListener)
     }
 
     override fun println(message: Any?) {

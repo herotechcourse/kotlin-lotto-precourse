@@ -4,7 +4,7 @@ import lotto.domain.PrizeRank
 import lotto.observer.ILottoObserver
 import lotto.observer.LottoObserver
 
-class OutputView(private val observer: ILottoObserver = LottoObserver()) : IOutputView {
+class OutputView(private val observer: ILottoObserver = LottoObserver) : IOutputView {
 
     override fun printTickets(tickets: List<List<Int>>) {
         observer.println("You have purchased ${tickets.size} tickets.")
