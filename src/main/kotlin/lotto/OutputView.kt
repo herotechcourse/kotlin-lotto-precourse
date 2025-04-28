@@ -24,7 +24,7 @@ class OutputView {
         }
     }
 
-//    fun printProfitRate() {
-//
-//    }
+    fun printReturnRate(returnRate: Double) {
+        println("Total return rate is %.1f".format(returnRate))
+    }
 }
