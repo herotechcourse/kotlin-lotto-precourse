@@ -57,5 +57,4 @@ class InputValidator {
             throw IllegalArgumentException(errorMessage)
         }
     }
-
 }

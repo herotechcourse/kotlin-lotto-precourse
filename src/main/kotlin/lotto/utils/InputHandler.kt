@@ -9,7 +9,7 @@ fun <T> getValidatedInput(
 ): T {
     val errorView = ErrorView()
     while (true) {
-        val input  = readInput(prompt)
+        val input = readInput(prompt)
         val result = runValidation(input, validate, errorView)
         if (result != null) return result
     }

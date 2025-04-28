@@ -8,5 +8,4 @@ class InputView() {
         println(prompt)
         return Console.readLine()
     }
-
 }

@@ -53,5 +53,4 @@ class LottoMachine(private val money: Int) {
             .filter { it != LottoRank.NONE }
             .sumOf { it.prizeMoney * ranks[it.ordinal] }
     }
-
 }
