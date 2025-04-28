@@ -1,5 +1,8 @@
 package lotto
 
+
+
 fun main() {
-    // TODO: Implement the program
+    val output = Lotto.start()
+    output.forEach { println(it) }
 }
