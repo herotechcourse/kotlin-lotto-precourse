@@ -18,5 +18,9 @@ object Message {
     const val PURCHASED_TICKETS_MESSAGE = "You have purchased %d tickets."
     const val WINNING_TICKET_PROMPT = "Please enter last week's winning numbers."
     const val BONUS_NUMBER_PROMPT = "Please enter the bonus number."
-
+    const val RETURN_RATE_MESSAGE = "Total return rate is %s%%."
+    const val RESULT_TITLE = "Winning Statistics"
+    const val DRAW_LINE = "---"
+    const val NORMAL_MATCH_RESULT_FORMAT = "%s Matches (%s KRW) – %d tickets"
+    const val BONUS_MATCH_RESULT_FORMAT = "%s Matches + Bonus Ball (%s KRW) – %d tickets"
 }
