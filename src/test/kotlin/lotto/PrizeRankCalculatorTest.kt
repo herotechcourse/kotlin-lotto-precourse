@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class PrizeRankCalculatorTest {
 
@@ -16,6 +18,16 @@ class PrizeRankCalculatorTest {
         assertThatThrownBy { PrizeRankCalculator(lotto, bonusNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("[ERROR] Winning numbers and the bonus number should be unique.")
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 0, 46])
+    fun `throw exception when the bonus number is out of range`(bonusNumber: Int) {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        // when & then
+        assertThatThrownBy { PrizeRankCalculator(lotto, bonusNumber) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] Number must be between $MIN_RANGE and $MAX_RANGE.")
     }
 
     @Test
@@ -41,5 +53,10 @@ class PrizeRankCalculatorTest {
             { assertThat(statistics.statistics()[PrizeRank.FIFTH]).isEqualTo(0) },
             { assertThat(statistics.statistics()[PrizeRank.NONE]).isEqualTo(1) }
         )
+    }
+
+    companion object {
+        private const val MIN_RANGE: Int = 1
+        private const val MAX_RANGE: Int = 45
     }
 }

@@ -1,6 +1,7 @@
 package lotto
 
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -20,6 +21,15 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 0, 46])
+    fun `throw exception when the number is out of range`(number: Int) {
+        // when & then
+        assertThatThrownBy { Lotto(listOf(1, 2, 3, 4, 5, number)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("[ERROR] Number must be between $MIN_RANGE and $MAX_RANGE.")
     }
 
     @Test
@@ -53,5 +63,10 @@ class LottoTest {
         val hasSameNumber = lotto.hasSameNumber(lottoNumber)
         // then
         assertThat(hasSameNumber).isTrue()
+    }
+
+    companion object {
+        private const val MIN_RANGE: Int = 1
+        private const val MAX_RANGE: Int = 45
     }
 }
