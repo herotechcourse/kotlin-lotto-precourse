@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console
 import lotto.dto.PurchaseAmount
 import lotto.dto.WinningNumbers
 import lotto.factory.InputViewFactory
+import lotto.view.input.BonusNumberInputView
 import lotto.view.input.WinningNumbersInputView
 
 fun main() {
@@ -22,7 +23,10 @@ fun main() {
         println("Lotto: ${lotto.getNumbers()}")
     }
 
-    val winningNumbers = WinningNumbers(WinningNumbersInputView.inputWinningNumbers())
-    println("WinningNumbers: ${winningNumbers.getWinningNumbers()}")
+    val winningNumbers = WinningNumbersInputView.readInput().split(",")
+    val bonusNumber = BonusNumberInputView.readInput()
+    val allNumbers = WinningNumbers(winningNumbers, bonusNumber)
+    println("WinningNumbers: ${allNumbers.getWinningNumbers()}")
+    println("BonusNumber: ${allNumbers.getBonusNumber()}")
 }
 
