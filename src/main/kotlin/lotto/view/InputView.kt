@@ -12,11 +12,13 @@ object InputView {
     }
 
     fun readLastWinningNumber(): String {
+        println()
         println(INPUT_LAST_WINNING_NUMBER_MESSAGE)
         return readln()
     }
 
     fun readLastBonusNumber(): String {
+        println()
         println(INPUT_LAST_BONUS_NUMBER_MESSAGE)
         return readln()
     }

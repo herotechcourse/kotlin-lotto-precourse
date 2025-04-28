@@ -7,6 +7,7 @@ import lotto.model.PrizeRank
 object OutputView {
 
     fun printTicketCount(ticketCount: Int) {
+        println()
         println("You have purchased $ticketCount tickets.")
     }
 
@@ -17,6 +18,7 @@ object OutputView {
     }
 
     fun printWinningStatistics(result: LottoResult, totalSpent: Int) {
+        println()
         println("Winning Statistics")
         println("---")
 
