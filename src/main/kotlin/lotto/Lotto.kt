@@ -1,13 +1,13 @@
 package lotto
 
 import lotto.constants.LottoRank
+import lotto.domain.validator.Validator
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
-        require(numbers.toSet().size == 6) {
-            "[ERROR] Lotto numbers must not contain duplicates."
-        }
+        Validator.validateCount(numbers)
+        Validator.validateDuplication(numbers)
+        numbers.forEach { Validator.validateRange(it) }
     }
 
     fun match(winningNumbers: Set<Int>, bonusNumber: Int): LottoRank {
