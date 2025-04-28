@@ -2,11 +2,12 @@ package lotto.view
 
 import lotto.Lotto
 import lotto.Rank
+import java.util.*
 
 object OutputView {
 
     fun printLottos(lottos: List<Lotto>) {
-        println("${lottos.size} tickets have been purchased.")
+        println("You have purchased ${lottos.size} tickets.")
         lottos.forEach { lotto ->
             println(lotto.getNumbers())
         }
@@ -21,11 +22,12 @@ object OutputView {
             .filter { it != Rank.NONE }
             .sortedBy { it.prizeMoney }
             .forEach { rank ->
-                println("${getRankDescription(rank)} - ${result.getOrDefault(rank, 0)} tickets")
+                println("${getRankDescription(rank)} – ${result.getOrDefault(rank, 0)} tickets")
             }
 
-        println("Total return rate is ${"%.1f".format(profitRate)}%.")
+        println("Total return rate is ${String.format(Locale.US, "%.1f", profitRate)}%.")
     }
+
 
     private fun getRankDescription(rank: Rank): String {
         return when (rank) {
