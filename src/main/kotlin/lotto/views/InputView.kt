@@ -7,21 +7,20 @@ class InputView {
 
     // Ask user to input the purchase amount
     fun getPurchaseAmount(): Int {
-        while(true) {
+        while (true) {
             try {
                 println("Please enter the purchase amount.")
-                val purchaseAmountInput = Console.readLine()
-                try {
-                    val purchaseAmount = purchaseAmountInput.toInt()
-                    return validatePurchaseAmount(purchaseAmount)
-                } catch (e: NumberFormatException) {
-                    println("[ERROR] Invalid input. Please enter a valid number for the purchase amount.")
-                }
+                val input = Console.readLine()
+                val purchaseAmount = input.toInt()
+                return validatePurchaseAmount(purchaseAmount)
+            } catch (e: NumberFormatException) {
+                println("[ERROR] Invalid input. Please enter a valid number for the purchase amount.")
             } catch (e: IllegalArgumentException) {
                 println("[ERROR] ${e.message}")
             }
         }
     }
+
 
     // Ask user to input exactly 6 numbers  comma-separated and they should be between 1 and 45
     fun getWinningNumbers(): List<Int> {
@@ -92,4 +91,3 @@ class InputView {
         }
     }
 }
-
