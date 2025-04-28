@@ -1,10 +1,10 @@
 package lotto.view
 
-import lotto.domain.Lottos
+import lotto.Lotto
 
 interface OutputPrinter {
-    fun printPurchasedTickets(lottos: Lottos): Unit
-    fun printLottoResult(lottos: Lottos): Unit
+    fun printPurchasedTickets(tickets: List<Lotto>): Unit
+    fun printLottoResult(tickets: List<Lotto>): Unit
     fun printProfitRate(profitRate: Any): Unit
     fun close(): Unit
 }

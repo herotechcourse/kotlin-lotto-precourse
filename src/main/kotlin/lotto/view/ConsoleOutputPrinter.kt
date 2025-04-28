@@ -1,19 +1,21 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.domain.LotteryTickets
+import lotto.Lotto
 
 class ConsoleOutputPrinter: OutputPrinter {
-    override fun printPurchasedTickets(tickets: LotteryTickets) {
-        val printBuilder = StringBuilder()
-        printBuilder.append("You have purchased ${tickets.size} tickets.\n")
-        tickets.toList().forEach {
-            printBuilder.append(it.toNumberList().toString())
-            printBuilder.append('\n')
+    override fun printPurchasedTickets(tickets: List<Lotto>) {
+        val stringBuilder = StringBuilder()
+
+        stringBuilder.appendLine("You have purchased ${tickets.size} tickets.")
+        tickets.forEach {
+            stringBuilder.appendLine(it)
         }
+
+        println(stringBuilder.toString())
     }
 
-    override fun printLottoResult(tickets: LotteryTickets) {
+    override fun printLottoResult(tickets: List<Lotto>) {
         TODO("Not yet implemented")
     }
 

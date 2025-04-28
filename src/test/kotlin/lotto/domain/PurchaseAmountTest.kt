@@ -1,7 +1,6 @@
 package lotto.domain
 
-import lotto.domain.Lotto
-import lotto.domain.PurchaseAmount
+import lotto.Lotto
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThatThrownBy
 

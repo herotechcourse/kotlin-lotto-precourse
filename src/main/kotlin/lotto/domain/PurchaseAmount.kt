@@ -1,5 +1,7 @@
 package lotto.domain
 
+import lotto.Lotto
+
 class PurchaseAmount(private val amount: Int) {
 
     init {

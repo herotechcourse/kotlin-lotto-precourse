@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto
+
+import lotto.domain.CurrencyType
 
 class Lotto(private val numbers: List<Int>) {
     init {
