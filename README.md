@@ -21,9 +21,9 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
 3. **Input Winning Numbers**
 
     - Accept 6 unique winning numbers from the user.
-    - Validate that all numbers are within the range of 1 to 45.
     - Accept a single bonus number.
-    - Ensure the winning numbers and bonus number are unique.
+    - Validate that all winning numbers and a bonus number are within the range of 1 to 45.
+    - Ensure the winning numbers are unique.
 
 4. **Calculate the Win**
 

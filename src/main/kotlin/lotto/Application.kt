@@ -1,27 +1,39 @@
 package lotto
 
 import lotto.validators.CombinedValidator
+import lotto.validators.CommaSeparatedValidator
 import lotto.validators.DivisibleByValidator
 import lotto.validators.IntegerValidator
+import lotto.validators.NumbersCountValidator
+import lotto.validators.NumbersRangeValidator
+import lotto.validators.NumberRangeValidator
+import lotto.validators.UniqueNumbersValidator
 
 class Application {
     companion object {
         const val TICKET_PRICE = 1000
-        const val AMOUNT_PROMPTER_TEXT = "Please enter the purchase amount."
+        const val AMOUNT_PROMPT_TEXT = "Please enter the purchase amount."
         const val LOTTO_MAX_NUMBER = 45
         const val LOTTO_MIN_NUMBER = 1
         const val LOTTO_AMOUNT_OF_NUMBERS = 6
+        const val WINNING_NUMBERS_PROMPT_TEXT =
+                "Please enter the winning numbers (comma-separated)."
     }
 
     fun main() {
-        val amount = promptAmount()
+        val inputView = InputView()
+        val amount = promptAmount(inputView)
         val cashier = Cashier(TICKET_PRICE)
         val numberOfTickets = cashier.calculateNumberOfTickets(amount)
-        val ticketGenerator = TicketGenerator(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_AMOUNT_OF_NUMBERS)
+        val ticketGenerator =
+                TicketGenerator(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER, LOTTO_AMOUNT_OF_NUMBERS)
         val tickets = ticketGenerator.generate(numberOfTickets)
 
         val outputView = OutputView()
         outputView.printTickets(tickets)
+
+        val winningNumbers = promptWinningNumbers(inputView)
+        val bonusNumber = promptBonusNumber(inputView)
 
         // hard-coded winning numbers and bonus ball for testing
         println("Winning Statistics")
@@ -40,13 +52,46 @@ class Application {
      *
      * @return the validated purchase amount
      */
-    private fun promptAmount(): Int {
-        val inputView = InputView()
-        val intValidator = IntegerValidator()
-        val divisibleByValidator = DivisibleByValidator(TICKET_PRICE)
-        val combinedValidator = CombinedValidator<Int>(listOf(intValidator, divisibleByValidator))
-        val amountPrompter = Prompter(inputView, AMOUNT_PROMPTER_TEXT, combinedValidator)
+    private fun promptAmount(inputView: InputView): Int {
+        val validators = listOf(IntegerValidator(), DivisibleByValidator(TICKET_PRICE))
+        val combinedValidator = CombinedValidator<Int>(validators)
+        val amountPrompter = Prompter(inputView, AMOUNT_PROMPT_TEXT, combinedValidator)
         return amountPrompter.prompt()
+    }
+
+    /**
+     * Prompts the user for the winning numbers. The numbers must be comma-separated, within the
+     * range of LOTTO_MIN_NUMBER to LOTTO_MAX_NUMBER, and exactly LOTTO_AMOUNT_OF_NUMBERS numbers.
+     *
+     * @return the validated winning numbers
+     */
+    private fun promptWinningNumbers(inputView: InputView): List<Int> {
+        val validators = listOf(
+            CommaSeparatedValidator(),
+            NumbersCountValidator(LOTTO_AMOUNT_OF_NUMBERS),
+            NumbersRangeValidator(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER),
+            UniqueNumbersValidator()
+        )
+        val combinedValidator = CombinedValidator<List<Int>>(validators)
+        val winningNumbersPrompter =
+                Prompter(inputView, WINNING_NUMBERS_PROMPT_TEXT, combinedValidator)
+        return winningNumbersPrompter.prompt()
+    }
+
+    /**
+     * Prompts the user for the bonus number. The number must be an integer within the range of
+     * LOTTO_MIN_NUMBER to LOTTO_MAX_NUMBER.
+     *
+     * @return the validated bonus number
+     */
+    private fun promptBonusNumber(inputView: InputView): Int {
+        val validators = listOf(
+            IntegerValidator(),
+            NumberRangeValidator(LOTTO_MIN_NUMBER, LOTTO_MAX_NUMBER)
+        )
+        val combinedValidator = CombinedValidator<Int>(validators)
+        val bonusNumberPrompter = Prompter(inputView, "Please enter the bonus number.", combinedValidator)
+        return bonusNumberPrompter.prompt()
     }
 }
 
