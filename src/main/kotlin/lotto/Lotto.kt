@@ -26,6 +26,18 @@ fun readPurchaseAmount(): Int {
         ?: throw IllegalArgumentException("[ERROR] Invalid input. Please enter a valid number.")
 }
 
+fun readValidPurchaseAmount(): Int {
+    while (true) {
+        try {
+            val amount = readPurchaseAmount()
+            validateAmount(amount)
+            return amount
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
+}
+
 // Validates if the purchase amount is divisible by 1000
 fun validateAmount(amount: Int) {
     if (amount % 1000 != 0) {
@@ -49,16 +61,53 @@ fun printTickets(tickets: List<Lotto>) {
 // Reads last week's winning numbers from the user
 fun readWinningNumbers(): List<Int> {
     println("Please enter last week's winning numbers (comma-separated).")
-    return Console.readLine()
+    val input = Console.readLine()
         .split(",")
         .map { it.trim().toIntOrNull() ?: throw IllegalArgumentException("[ERROR] Invalid winning number input.") }
+
+    if (input.size != 6) {
+        throw IllegalArgumentException("[ERROR] You must enter exactly 6 winning numbers.")
+    }
+
+    if (input.toSet().size != 6) {
+        throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+    }
+
+    return input
+}
+
+fun readValidWinningNumbers(): List<Int> {
+    while (true) {
+        try {
+            return readWinningNumbers()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
 }
 
 // Reads the bonus number from the user
 fun readBonusNumber(): Int {
     println("Please enter the bonus number.")
-    return Console.readLine().toIntOrNull()
+    val input = Console.readLine().toIntOrNull()
         ?: throw IllegalArgumentException("[ERROR] Invalid bonus number input.")
+
+    if (input !in 1..45) {
+        throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+    }
+
+    return input
+}
+
+
+fun readValidBonusNumber(): Int {
+    while (true) {
+        try {
+            return readBonusNumber()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+        }
+    }
 }
 
 // Manages the winning lotto numbers and the bonus number

@@ -2,14 +2,14 @@ package lotto
 
 fun main() {
     // Temporary manual testing code
-    val amount = readPurchaseAmount()
+    val amount = readValidPurchaseAmount()
     validateAmount(amount)
 
     val tickets = generateTickets(amount)
     printTickets(tickets)
 
-    val winningNumbersInput = readWinningNumbers()
-    val bonusNumber = readBonusNumber()
+    val winningNumbersInput = readValidWinningNumbers()
+    val bonusNumber = readValidBonusNumber()
     val winningNumbers = WinningNumbers(Lotto(winningNumbersInput), bonusNumber)
 
     val results = calculateResults(tickets, winningNumbers)
