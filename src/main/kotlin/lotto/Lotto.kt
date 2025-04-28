@@ -4,16 +4,14 @@ class Lotto(private val numbers: List<Int>) {
     private var bonusNumber: Int = 0
 
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == SIZE) { "[ERROR] Lotto must contain exactly $SIZE numbers." }
         require(numbers.distinct().size == numbers.size) { "[ERROR] Lotto must contain unique numbers." }
-        numbers.forEach {
-            number -> require(number in 1..45) { "[ERROR] Lotto must contain numbers in range 1..45." }
-        }
+        require(numbers.all { it in MIN..MAX}) { "[ERROR] Lotto must contain numbers in range $MIN..$MAX." }
     }
 
     fun setBonusNumber(number: Int) {
         require(number !in numbers) { "[ERROR] Bonus number has to be different than winning numbers." }
-        require(number in 1..45) { "[ERROR] Bonus number must be in range 1..45." }
+        require(number in MIN..MAX) { "[ERROR] Bonus number must be in range $MIN..$MAX." }
         bonusNumber = number
     }
 
@@ -43,5 +41,11 @@ class Lotto(private val numbers: List<Int>) {
             totalPrize += prize.value * prize.key.money
         }
         return totalPrize
+    }
+
+    companion object {
+        private const val MIN = 1
+        private const val MAX = 45
+        private const val SIZE = 6
     }
 }
