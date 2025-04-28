@@ -28,7 +28,7 @@
 | &#9745; | Throw error if winning numbers contain duplicates                                 | business |
 | &#9745; | Throw error if bonus number is not between 1 and 45 or duplicates winning numbers | business |
 
-### Limitations & Assumptions
+## Limitations & Assumptions
 
 1. **Program stays alive after any `IllegalArgumentException`;** it prints `[ERROR] …` and re-prompts the current step
    only.
