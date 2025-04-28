@@ -6,20 +6,13 @@ class WinningResult(
 ) {
 
     fun match(lottos: List<Lotto>): Map<Rank, Int> {
-        val result = mutableMapOf<Rank, Int>()
-
-        for (lotto in lottos) {
-            val matchCount = countMatches(lotto)
-            val bonusMatched = isBonusMatched(lotto)
-            val rank = Rank.from(matchCount, bonusMatched)
-
-            if (rank != Rank.NONE) {
-                result[rank] = result.getOrDefault(rank, 0) + 1
-            }
-        }
-
-        return result
+        return lottos
+            .map { determineRank(it) }
+            .filter { it != Rank.NONE }
+            .groupingBy { it }
+            .eachCount()
     }
+
 
     private fun determineRank(lotto: Lotto): Rank {
         val matchCount = countMatches(lotto)
