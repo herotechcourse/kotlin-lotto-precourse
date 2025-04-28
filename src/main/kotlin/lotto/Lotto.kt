@@ -55,3 +55,31 @@ data class LottoResult(
     val rankCount: Map<Rank, Int>,
     val profitRate: Double,
 )
+enum class Rank(val matchCount: Int, val matchBonus: Boolean, val prize: Int, val rank: Int) {
+    FIRST(6, false, 2_000_000_000, 1),
+    SECOND(5, true, 30_000_000, 2),
+    THIRD(5, false, 1_500_000, 3),
+    FOURTH(4, false, 50_000, 4),
+    FIFTH(3, false, 5_000, 5),
+    NONE(0, false, 0, 6);
+
+    companion object {
+        fun of(count: Int, bonus: Boolean): Rank {
+            return when {
+                count == 6 -> FIRST
+                count == 5 && bonus -> SECOND
+                count == 5 -> THIRD
+                count == 4 -> FOURTH
+                count == 3 -> FIFTH
+                else -> NONE
+            }
+        }
+    }
+
+    fun message(count: Int): String {
+        return when (this) {
+            SECOND -> "5 Matches + Bonus Ball (${prize} KRW) – $count tickets"
+            else -> "${matchCount} Matches (${prize} KRW) – $count tickets"
+        }
+    }
+}
