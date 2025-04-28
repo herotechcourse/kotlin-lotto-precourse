@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.Service
+
 fun main() {
-    // TODO: Implement the program
+    val service = Service()
+    service.start()
 }
