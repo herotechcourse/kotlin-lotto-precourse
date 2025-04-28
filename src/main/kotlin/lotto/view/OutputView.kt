@@ -5,6 +5,8 @@ import lotto.PrizeRank
 
 object OutputView {
 
+    private const val INDEX_OF_NONE = 1
+
     private const val LOTTO_TICKETS_MESSAGE = "\nYou have purchased %d tickets."
     private const val LOTTO_STATISTICS_MESSAGE =
         """
@@ -24,8 +26,7 @@ Winning Statistics
     fun showWinningResult(result: Map<PrizeRank, Int>, profitRate: Double) {
         println(LOTTO_STATISTICS_MESSAGE)
         result.entries
-            .drop(1)
-            .reversed()
+            .drop(INDEX_OF_NONE)
             .forEach { showMatchStatistic(it) }
         println(LOTTO_PROFIT_RATE_MESSAGE.format(profitRate))
     }
