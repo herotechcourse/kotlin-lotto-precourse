@@ -15,6 +15,13 @@ class LottoTest {
     }
 
     @Test
+    fun `throws an exception when lotto numbers are less than six`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5))
+        }
+    }
+
+    @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3, 4, 5, 5))
@@ -45,4 +52,13 @@ class LottoTest {
             }
         }
     }
+
+    @Test
+    fun `valid bonus numbers`() {
+        assertThatNoException().isThrownBy {
+            Lotto(listOf(45, 2, 1, 3, 5, 7)).setBonusNumber(26)
+        }
+    }
+
+
 }
