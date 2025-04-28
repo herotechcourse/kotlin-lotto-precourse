@@ -17,4 +17,9 @@ class Lotto(private val numbers: List<Int>) {
     fun getNumbers(): List<Int> {
         return numbers
     }
+
+    override fun toString(): String {
+        val sortedNumbers = numbers.sorted()
+        return sortedNumbers.joinToString(separator = ", ", prefix = "[", postfix = "]")
+    }
 }
