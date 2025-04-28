@@ -20,11 +20,11 @@ class OutputView {
             print("${prize.matchCount} Matches ")
             if (prize == Prize.SECOND)
                 print("+ Bonus Ball ")
-            println("(${prize.money} KRW) — ${prizeCount.getOrDefault(prize, 0)} tickets")
+            println("(%,d KRW) – ${prizeCount.getOrDefault(prize, 0)} tickets".format(prize.money))
         }
     }
 
     fun printReturnRate(returnRate: Double) {
-        println("Total return rate is %.1f%%".format(returnRate))
+        println("Total return rate is %.1f%%.".format(returnRate))
     }
 }
