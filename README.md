@@ -34,9 +34,10 @@
     - Compute profit rate as `(totalPrize / purchaseAmount) * 100`.
 
 - **LottoGame**
-    - Read purchase amount, winning numbers, and bonus number.
+    - Read purchase amount, winning numbers and bonus number.
     - `createTickets()` makes all tickets.
     - `calculateResults()` gives a `LottoStatistics` object.
+    - `calculateResults()` maps tickets to `LottoResult` and builds `LottoStatistics`.
 
 ### 3. User Interaction (View)
 - **InputView**
