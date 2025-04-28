@@ -37,9 +37,14 @@ Each of the following features will be implemented in a separate, small commit.
 - [x] Re-prompt user input after an invalid input without terminating the program.
 
 ### 4. Lotto Ticket Generation
-- [ ] Generate correct number of tickets based on purchase amount.
-- [ ] Each ticket has 6 unique random numbers (1–45).
-- [ ] Numbers must be sorted in ascending order.
+- Lotto class
+  - [x] Numbers must be sorted in ascending order.
+  - [x] getNumbers() -> ex) returns [1, 5, 12, 23, 34, 42]
+  - [x] countMatchingNumbers(winningTicket) -> ex) returns 4
+  - [x] contains(7) -> ex) returns false
+- Lotto Factory
+  - [ ] Each ticket has 6 unique random numbers (1–45).
+  - [ ] Generate correct number of tickets based on purchase amount.
 
 ### 5. Matching and Prize Determination
 - [ ] Compare each ticket with winning numbers.
