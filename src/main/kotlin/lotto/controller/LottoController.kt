@@ -21,11 +21,16 @@ class LottoController(
         printer.printPurchasedTickets(tickets)
 
         // 3. Input last week's numbers
-        // 4. Input a bonus number.
-        // 5. Print lotto result statistics.
-        // 6. Print calculated Profit rate.this.
-        printer.close()
+        val winningNumbers = RePrompter.retryPrompt({ reader.readWinningNumbers() })
 
+        // 4. Input a bonus number.
+        val bonusNumber = RePrompter.retryPrompt({ reader.readBonusNumber() })
+
+        // 5. Print lotto result statistics.
+
+        // 6. Print calculated Profit rate
+
+        printer.close()
     }
 
     companion object {
