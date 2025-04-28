@@ -1,6 +1,5 @@
 package lotto.validator
 
-
 fun validatePurchaseAmount (input: String): Int {
     val amount = input.toIntOrNull()
         ?: throw IllegalArgumentException("[ERROR] Purchase amount must be a number.")
