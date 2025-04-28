@@ -14,6 +14,18 @@ class WinningNumbers(
         require(!winningNumbers.contains(bonusNumber)) { "[ERROR] Bonus number must not duplicate winning numbers." }
     }
 
+    companion object {
+        fun parse(numbersInput: String, bonusInput: String): WinningNumbers {
+            val numbers = numbersInput.split(",").map { token ->
+                token.trim().toIntOrNull()
+                    ?: throw IllegalArgumentException("[ERROR] Winning numbers must be numeric.")
+            }
+            val bonus = bonusInput.trim().toIntOrNull()
+                ?: throw IllegalArgumentException("[ERROR] Bonus number must be numeric.")
+            return WinningNumbers(numbers, bonus)
+        }
+    }
+
     fun getWinningNumbers(): List<Int> = winningNumbers.sorted()
     fun getBonusNumber(): Int = bonusNumber
 }
