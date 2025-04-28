@@ -40,3 +40,4 @@ This project is a command-line Lotto Ticket Machine built using Kotlin, followin
 - The inputHandler performs the reading and validation of input data by user
 - Rearrange  the folder to include Input and outputHandler
 - Test it out in the main application
+- Modify the class to use constant 1000 as opposed to hard coding
