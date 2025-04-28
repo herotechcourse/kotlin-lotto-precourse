@@ -11,3 +11,11 @@ class Lotto(private val numbers: List<Int>) {
 
     val numbers: List<Int> = numbers.sorted()
 }
+object LottoMachine {
+    fun issueTickets(amount: Int): List<Lotto> {
+        val ticketCount = amount / 1000
+        return List(ticketCount) {
+            Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+        }
+    }
+}
