@@ -1,5 +1,7 @@
 # kotlin-lotto-precourse
 
+## Description
+This project implements a Lotto game application following Clean Architecture principles, structured into Data, Domain, and Presentation layers. The user can purchase lotto tickets, input winning numbers, check results, and compute their profit rate.
 
 ## ✅ Feature List
 
@@ -42,11 +44,38 @@
 - [x] Display all error messages with prefix `[ERROR]`.
 
 ### 7. Testing
-- [ ] Unit test all domain logic and use cases.
-- [ ] Validate ticket generation, matching logic, profit calculation.
-- [ ] Use **JUnit 5** and **AssertJ**.
-- [ ] Exclude tests for I/O (InputView/OutputView).
+- [x] Unit test all domain logic and use cases.
+- [x] Validate ticket generation, matching logic, profit calculation.
 
 ---
 
-## 🧪 Tech Stack
+
+## Project Structure
+- **Data Layer**
+  - `LottoNumberService`: Generates random lotto numbers.
+  - `LottoRepositoryImpl`: Stores and retrieves lotto tickets.
+
+- **Domain Layer**
+  - `PurchaseLottoUseCase`: Handles purchasing lotto tickets.
+  - `CalculateResultUseCase`: Calculates results based on winning numbers.
+  - `ComputeProfitUseCase`: Calculates the profit rate.
+
+- **Presentation Layer**
+  - `InputView`: Handles user input with validation and re-prompting on invalid entries.
+  - `OutputView`: Displays tickets, statistics, and profit rate.
+  - `LottoController`: Manages the flow between user input, business logic, and output.
+
+- **Entry Point**
+  - `main.kt`: Initializes all components and starts the application.
+
+## Features
+- Purchase multiple lotto tickets based on the input purchase amount.
+- Input winning numbers and a bonus number.
+- Validate inputs for correctness (range, duplicates, format).
+- Match purchased tickets against winning numbers and display results.
+- Calculate and display the profit rate.
+- Robust input handling: re-prompts on invalid inputs using specific exceptions only.
+
+## Notes
+- Error messages and magic numbers are extracted into constants for better maintainability.
+- The application automatically re-prompts the user without crashing on invalid inputs.
