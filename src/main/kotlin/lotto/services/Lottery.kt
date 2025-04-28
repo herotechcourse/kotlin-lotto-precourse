@@ -11,7 +11,7 @@ class Lottery {
     fun run(count: Int): List<List<Int>> {
         val result: MutableList<List<Int>> = mutableListOf()
         for (i in 1..count) {
-            result.add(getRandom())
+            result.add(getRandom().sorted())
         }
         return result
     }
