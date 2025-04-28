@@ -20,4 +20,12 @@ class LottoTest {
     }
 
     // TODO: Implement tests based on the added features
+    @Test
+    fun `throws an exception when calculatePrize argument - bonusNumber is wrong`() {
+        assertThrows<IllegalArgumentException> {
+            var lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+            lotto.calculatePrize(listOf(1, 2, 3, 4, 5, 6), 0)
+        }
+    }
 }
