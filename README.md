@@ -79,14 +79,14 @@
   - `Please enter last week's winning numbers.`  
   - `Please enter the bonus number.`
 
-- [ ] **Ticket Issuance Result**  
+- [x] **Ticket Issuance Result**  
     ```
     You have purchased X tickets.
     [n1, n2, n3, n4, n5, n6]
     … (X lines)
     ```
 
-- [ ] **Winning Statistics** 
+- [x] **Winning Statistics** 
     ```
     3 Matches (5,000 KRW) – A tickets
     4 Matches (50,000 KRW) – B tickets
