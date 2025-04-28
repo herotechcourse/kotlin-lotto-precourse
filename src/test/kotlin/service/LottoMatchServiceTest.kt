@@ -35,4 +35,24 @@ class LottoMatchServiceTest {
         assertThat(matchCount).isEqualTo(6)
     }
 
+    @Test
+    fun `hasBonus returns true when ticket contains bonus number`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 7))
+        val winningNumbers = WinningNumbers(listOf(10, 20, 30, 40, 50, 60), 7)
+
+        val hasBonus = LottoMatchService.hasBonus(ticket, winningNumbers)
+
+        assertThat(hasBonus).isTrue()
+    }
+
+    @Test
+    fun `hasBonus returns false when ticket does not contain bonus number`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val winningNumbers = WinningNumbers(listOf(10, 20, 30, 40, 50, 60), 7)
+
+        val hasBonus = LottoMatchService.hasBonus(ticket, winningNumbers)
+
+        assertThat(hasBonus).isFalse()
+    }
+
 }
