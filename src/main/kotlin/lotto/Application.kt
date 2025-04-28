@@ -30,6 +30,8 @@ fun main() {
         println("${rank.matchCount} Matches${if (rank == Rank.SECOND) " + Bonus Ball" else ""} (${rank.prize} KRW) – ${rankCount.getOrDefault(rank, 0)} ticket(s)")
     }
 
+    calculateProfitRate(rankCount, amount)
+
 }
 
 fun readPurchaseAmount(): Int {
@@ -97,4 +99,13 @@ fun determineRank (ticket: List<Int>, winningNumbers: List<Int>, bonusNumber:Int
     val bonusMatch = bonusNumber in ticket
 
     return Rank.from(matchCount, bonusMatch)
+}
+
+fun calculateProfitRate(rankCount: Map<Rank, Int>, totalSpent: Int) {
+    val totalPrizeMoney = rankCount.entries.sumOf { (rank, count) ->
+        rank.prize.toLong() * count
+    }
+    val profitRate = totalPrizeMoney.toDouble() / totalSpent * 100
+
+    println("Total return rate is ${"%.1f".format(profitRate)}%.")
 }
