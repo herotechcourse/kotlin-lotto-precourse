@@ -2,10 +2,18 @@
 
 ## TO-DO Features
 	[ ] Class InputVIew
-		[ ] Implement Functions
+		[x] Implement Functions
 		[ ] Unit Test (Exception)
 	
 	[ ] Class OutputView
+		[x] Implement Functions
+		[ ] Unit Test
+
+	[ ] Class Lotto
+		[x] Implement Functions
+		[ ] Unit Test - Using JUnit
+	
+	[ ] Class LottoSimulate
 		[ ] Implement Functions
 		[ ] Unit Test
 
