@@ -39,11 +39,10 @@
     - [x] The amount is not a unit of `1,000 KRW`
     - [x] The amount exceeds the range of an Integer
   - Winning Numbers
-    - [ ] Non-numeric characters are used(excluding commas)
-    - [ ] Special characters other than commas(,) are used 
-    - [ ] Fewer or more than 6 numbers are entered
-    - [ ] Duplicate numbers are entered
-    - [ ] Numbers outside the range of 1 to 45 are entered
+    - [x] Non-numeric characters are used(excluding commas)
+    - [x] Fewer or more than 6 numbers are entered
+    - [x] Duplicate numbers are entered
+    - [x] Numbers outside the range of 1 to 45 are entered
   - Bonus Number
     - [ ] Non-numeric characters are used
     - [ ] The input is not exactly one number
