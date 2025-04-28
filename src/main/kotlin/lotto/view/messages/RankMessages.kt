@@ -1,4 +1,4 @@
-package lotto.messages
+package lotto.view.messages
 
 enum class RankMessages(val message: String) {
     SECOND("5 Matches + Bonus Ball (%s KRW) – %d tickets"),

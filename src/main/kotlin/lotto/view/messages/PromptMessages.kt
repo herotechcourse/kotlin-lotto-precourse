@@ -1,4 +1,4 @@
-package lotto.messages
+package lotto.view.messages
 
 enum class PromptMessages(val message: String) {
     PURCHASE_AMOUNT("Please enter the purchase amount."),
@@ -11,5 +11,4 @@ enum class PromptMessages(val message: String) {
     fun with(vararg args: Any): String {
         return message.format(*args)
     }
-
 }

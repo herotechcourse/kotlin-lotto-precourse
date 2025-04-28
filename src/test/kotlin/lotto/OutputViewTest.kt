@@ -1,7 +1,7 @@
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
-import lotto.LottoMachine
-import lotto.messages.PromptMessages
+import lotto.domain.LottoMachine
+import lotto.view.messages.PromptMessages
 import lotto.view.OutputView
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

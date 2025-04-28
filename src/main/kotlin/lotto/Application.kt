@@ -1,8 +1,9 @@
 package lotto
 
+import lotto.domain.LottoMachine
 import lotto.utils.getValidatedInput
-import lotto.domain.InputValidator
-import lotto.messages.PromptMessages
+import lotto.utils.InputValidator
+import lotto.view.messages.PromptMessages
 import lotto.view.InputView
 import lotto.view.OutputView
 

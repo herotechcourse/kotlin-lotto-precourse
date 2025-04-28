@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.messages.RankMessages
+import lotto.view.messages.RankMessages
 
 enum class LottoRank (
     private val matchCount: Int,

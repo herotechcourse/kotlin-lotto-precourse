@@ -1,7 +1,7 @@
 package lotto.view
 
-import lotto.LottoMachine
-import lotto.messages.PromptMessages
+import lotto.domain.LottoMachine
+import lotto.view.messages.PromptMessages
 import lotto.domain.LottoRank
 
 class OutputView(private val lottoMachine: LottoMachine) {

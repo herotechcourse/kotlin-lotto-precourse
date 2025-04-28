@@ -1,7 +1,7 @@
-package lotto
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.domain.LottoRank
+import lotto.Lotto
 
 class LottoMachine(private val money: Int) {
 

@@ -1,6 +1,6 @@
-import lotto.domain.InputValidator
-import lotto.messages.PurchaseErrorMessage
-import lotto.messages.WinningNumberErrorMessage
+import lotto.utils.InputValidator
+import lotto.view.messages.PurchaseErrorMessage
+import lotto.view.messages.WinningNumberErrorMessage
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test

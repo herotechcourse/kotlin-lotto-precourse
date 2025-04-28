@@ -1,4 +1,4 @@
-package lotto.messages
+package lotto.view.messages
 
 enum class PurchaseErrorMessage(val message: String) {
     NOT_A_NUMBER("The input is not a valid number."),

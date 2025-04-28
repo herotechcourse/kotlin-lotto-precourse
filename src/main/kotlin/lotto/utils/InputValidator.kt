@@ -1,7 +1,7 @@
-package lotto.domain
+package lotto.utils
 
-import lotto.messages.PurchaseErrorMessage
-import lotto.messages.WinningNumberErrorMessage
+import lotto.view.messages.PurchaseErrorMessage
+import lotto.view.messages.WinningNumberErrorMessage
 
 class InputValidator {
 
