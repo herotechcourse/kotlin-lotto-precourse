@@ -42,6 +42,15 @@ class PrizeTierTest {
     }
 
     @Test
+    fun `returns FOURTH prize when 4 numbers match and bonus number match`() {
+        val prize = PrizeTier.calculate(4, true)
+
+        assertThat(prize).isEqualTo(PrizeTier.FOURTH)
+        assertThat(prize.prizeMoney).isEqualTo(50000L)
+        assertThat(prize.description).isEqualTo("4 Matches")
+    }
+
+    @Test
     fun `returns FIFTH prize when 3 numbers match`() {
         val prize = PrizeTier.calculate(3, false)
 
