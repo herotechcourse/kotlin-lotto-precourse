@@ -58,7 +58,7 @@ class InputView {
         }
 
 
-        fun validateWinningNumber(input: String): List<Int> {
+        private fun validateWinningNumber(input: String): List<Int> {
             val winningNumber = validateWinningNumberIsNumeric(input)
             return validateWinningNumberRange(winningNumber)
 
