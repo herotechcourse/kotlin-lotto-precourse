@@ -19,5 +19,4 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement tests based on the added features
 }
