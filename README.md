@@ -40,4 +40,37 @@ This project is a Lotto ticket application developed using Kotlin. Users can pur
     - Implements robust error handling for invalid inputs. All error messages are prefixed with `[ERROR]`.
     - Ensures the program prompts the user to re-enter invalid inputs.
 
+## ❛ Directory Structure
+
+```
+src/
+├── main/
+│   └── kotlin/
+│       └── lotto/
+│           ├── Application.kt
+│           ├── Lotto.kt
+│           ├── LottoMachine.kt
+│           ├── LottoResult.kt
+│           ├── LottoRank.kt
+│           ├── WinningLotto.kt
+│           ├── constant/
+│           │   └── LottoConstants.kt
+│           ├── validation/
+│           │   └── LottoValidator.kt
+│           └── view/
+│               ├── InputView.kt
+│               └── OutputView.kt
+└── test/
+    └── kotlin/
+        └── lotto/
+            ├── ApplicationTest.kt
+            ├── domain/
+            │   ├── LottoMachineTest.kt
+            │   ├── LottoRankTest.kt
+            │   ├── LottoResultTest.kt
+            │   ├── LottoTest.kt
+            │   └── WinningLottoTest.kt
+            └── validation/
+                └── LottoValidatorTest.kt
+```
 
