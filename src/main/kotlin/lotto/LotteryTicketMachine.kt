@@ -1,0 +1,117 @@
+package lotto
+
+import camp.nextstep.edu.missionutils.Randoms
+import kotlin.math.round
+
+object LotteryTicketMachine {
+
+    internal var purchaseAmount = 0
+    internal var returnRate = 0.0
+    internal val tickets = mutableListOf<List<Int>>()
+    internal val winnings = mutableMapOf<PrizeRank, Int>()
+    internal val winningNumbers = mutableListOf<Int>()
+    internal var bonusNumber: Int = -1
+
+    init {
+        initWinnings()
+    }
+
+    fun initWinnings() {
+        for (rank in PrizeRank.entries) {
+            winnings[rank] = 0
+        }
+    }
+
+    fun generateTickets(purchaseAmount: Int) {
+        val numberOfTickets = purchaseAmount / 1000
+        repeat(numberOfTickets) {
+            this.tickets.add(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted())
+        }
+        OutputView.printTickets(tickets)
+    }
+
+    fun validateAmountOfNumbers(numbers: List<Int>) {
+        if (numbers.size != 6) {
+            throw IllegalArgumentException("[ERROR] Exactly 6 winning numbers must be provided.")
+        }
+    }
+
+    fun validateUniqueness(numbers: List<Int>) {
+        if (numbers.distinct().size != numbers.size) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must be unique.")
+        }
+    }
+
+    fun validateRange(numbers: List<Int>) {
+        if (numbers.any { it !in 1..45}) {
+            throw IllegalArgumentException("[ERROR] Winning numbers must be between 1 and 45.")
+        }
+    }
+
+    fun validateWinningNumbers(numbers: List<Int>) {
+        validateAmountOfNumbers(numbers)
+        validateUniqueness(numbers)
+        validateRange(numbers)
+        for (number in numbers) {
+            winningNumbers.add(number)
+        }
+    }
+
+    fun validateBonusNumber(winningNumbers: List<Int>, number: Int) {
+        if (number !in 1..45) {
+            throw IllegalArgumentException("[ERROR] Bonus number must be between 1 and 45.")
+        }
+        if (number in winningNumbers) {
+            throw IllegalArgumentException("[ERROR] Bonus number must not be one of the winning numbers.")
+        }
+        bonusNumber = number
+    }
+
+    fun evaluateTickets() {
+        for (ticket in tickets) {
+            val matchCount = evaluateMatchesInWinningNumbers(ticket)
+            val bonusMatch = evaluateMatchWithBonusNumber(ticket)
+            val matchRank = PrizeRank.entries.find {
+                it.matches == matchCount && it.bonusNumber == bonusMatch
+            }
+            if (matchRank != null) {
+                increaseRankMatches(matchRank)
+            }
+        }
+    }
+
+    fun evaluateMatchesInWinningNumbers(ticket: List<Int>): Int {
+        var matchCount = 0
+        for (number in ticket) {
+            if (number in winningNumbers) {
+                matchCount++
+            }
+        }
+        return matchCount
+    }
+
+    fun evaluateMatchWithBonusNumber(ticket: List<Int>): Boolean {
+        var bonusMatch = false
+        if (ticket.contains(bonusNumber)) {
+            bonusMatch = true
+        }
+        return bonusMatch
+    }
+
+    fun increaseRankMatches(rank: PrizeRank) {
+        winnings[rank] = winnings.getOrDefault(rank, 0) + 1
+    }
+
+    fun calculateReturnRate() {
+        val winningAmount = calculateWinningAmount().toDouble()
+        returnRate = round(winningAmount / purchaseAmount * 100 * 10) / 10
+    }
+
+    fun calculateWinningAmount(): Int {
+        var winningAmount = 0
+        for (rank in PrizeRank.entries) {
+            winningAmount += winnings.getOrDefault(rank, 0) * rank.amount
+        }
+        return winningAmount
+    }
+}
