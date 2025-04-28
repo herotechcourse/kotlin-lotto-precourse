@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms
 fun main() {
     val amount = readPurchaseAmount()
     val tickets = generateTickets(amount)
-    println("\nYou have purchased ${tickets.size} tickets:")
+    println("\nYou have purchased ${tickets.size} tickets.")
     for (ticket in tickets) {
         println(ticket.getNumbers())
     }
