@@ -16,7 +16,7 @@ class Application {
         const val LOTTO_MAX_NUMBER = 45
         const val LOTTO_MIN_NUMBER = 1
         const val LOTTO_AMOUNT_OF_NUMBERS = 6
-        const val WINNING_NUMBERS_PROMPT_TEXT = "Please enter the winning numbers (comma-separated)."
+        const val WINNING_NUMBERS_PROMPT_TEXT = "Please enter last week's winning numbers."
         const val BONUS_NUMBER_PROMPT_TEXT = "Please enter the bonus number."
 
         enum class Prize(val matches: Int, val bonusMatch: Boolean, val amount: Int) {
@@ -44,16 +44,10 @@ class Application {
 
         val lotto = Lotto(winningNumbers)
         val results = lotto.calculateWin(tickets, bonusNumber)
+        val totalReturnRate = cashier.calculateTotalReturnRate(results, amount)
 
-        println("Winning Statistics")
-        println("---")
-        println("3 Matches (5,000 KRW) – 1 tickets")
-        println("4 Matches (50,000 KRW) – 0 tickets")
-        println("5 Matches (1,500,000 KRW) – 0 tickets")
-        println("5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets")
-        println("6 Matches (2,000,000,000 KRW) – 0 tickets")
-        println("Total return rate is 62.5%.")
-        //results.forEach { (prize, count) -> println("$prize – $count tickets") }
+        outputView.printWinningStatistics(results)
+        outputView.printTotalReturnRate(totalReturnRate)
     }
 
     /**
