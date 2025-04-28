@@ -19,7 +19,7 @@
 - `fun main()` is the standard entry point in kotlin
 - `LottoGame().run()` creates an instance of the game and runs it.
 
-### step 2: Create Controller for controlling program flow
+### step 2: Create a Controller for controlling program flow
 
 - `InputView` : Allows us to read input     
 
@@ -35,7 +35,7 @@
 - `console.readLine()` is provided by MissionUtils.
 - Validation makes sure that users don't crash the program with invalid inputs
 
-### atep 4: Build Lotto Ticket generator
+### step 4: Build Lotto Ticket generator
 - We use `Randoms.pickUniqueNumbersInRange` to generate 6 unique 1-45. It returns to us a list of `Lotto` objects.
 - We use `List(count) {block}` to generate a list the size of `count`.
 
@@ -44,4 +44,7 @@
 - The `Lotto.tk` class represents one lotto ticket
 - We use `require` to validate the input
 - We use `toSet().size == 6` to make sure that all input values are unique
-- We use `getNumbers()` method to make the numbers accessible
+- We use `getNumbers()` method to make the numbers accessible.
+
+### step 6: Update InputView.kt to read winning numbers and bonus
+- We use `Inputview` to read and validate user input
