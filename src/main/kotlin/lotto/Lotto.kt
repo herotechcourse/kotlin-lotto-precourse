@@ -1,5 +1,6 @@
 package lotto
 import camp.nextstep.edu.missionutils.Console
+import camp.nextstep.edu.missionutils.Randoms
 
 class Lotto(private val numbers: List<Int>) {
     init {
@@ -31,4 +32,12 @@ fun validateAmount(amount: Int) {
         throw IllegalArgumentException("[ERROR] Amount must be divisible by 1000.")
     }
 }
+
+fun generateTickets(amount: Int): List<Lotto> {
+    val numberOfTickets = amount / 1000
+    return List(numberOfTickets) {
+        Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
+    }
+}
+
 

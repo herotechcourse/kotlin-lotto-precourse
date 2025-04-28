@@ -5,4 +5,6 @@ fun main() {
     val amount = readPurchaseAmount()
     validateAmount(amount)
 
+    val tickets = generateTickets(amount)
+
 }
