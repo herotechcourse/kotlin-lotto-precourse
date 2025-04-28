@@ -1,7 +1,7 @@
-package lotto.service.validation
+package lotto.archive
 
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
+import org.assertj.core.api.Assertions.assertThatThrownBy
 
 class ValidateAmountTest {
     @Test

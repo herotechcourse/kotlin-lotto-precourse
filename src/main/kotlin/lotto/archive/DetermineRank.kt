@@ -1,4 +1,6 @@
-package lotto.domain
+package lotto.archive
+
+import lotto.domain.Rank
 
 fun determineRank(matchCount: Int, bonusMatched: Boolean): Rank {
     if (matchCount == 6)

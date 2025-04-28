@@ -1,5 +1,6 @@
-package lotto.domain
+package lotto.archive
 
+import lotto.domain.Rank
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
@@ -9,7 +10,7 @@ class DetermineRankTest {
     fun `givenMatchCount6WithAnyBonusState_whenDetermineRank_thenReturn1st`() {
         val matchCount = 6
 
-        // bonusMatched = true
+        // bonusMatched  = true
         val rankTrue = determineRank(matchCount, true)
         assertEquals(Rank.FIRST, rankTrue)
 

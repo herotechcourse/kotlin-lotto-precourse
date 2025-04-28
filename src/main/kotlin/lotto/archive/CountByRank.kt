@@ -1,4 +1,4 @@
-package lotto.service.logic
+package lotto.archive
 import lotto.domain.Rank
 
 /**

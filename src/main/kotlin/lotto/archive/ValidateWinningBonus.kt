@@ -1,4 +1,4 @@
-package lotto.service.validation
+package lotto.archive
 
 class ValidateWinningBonus {
     fun validate(bonusNumber: Int, winningNumbers: List<Int>) {

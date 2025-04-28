@@ -1,4 +1,4 @@
-package lotto.service.logic
+package lotto.archive
 
 class CalcLottoCount() {
     fun calculate(amount: Int): Int {

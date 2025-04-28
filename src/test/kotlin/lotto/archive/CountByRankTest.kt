@@ -1,9 +1,8 @@
-package lotto.service.logic
-
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
+package lotto.archive
 
 import lotto.domain.Rank
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.assertEquals
 
 class CountByRankTest {
 

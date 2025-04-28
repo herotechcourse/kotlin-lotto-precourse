@@ -1,4 +1,4 @@
-package lotto.util
+package lotto.archive
 
 import kotlin.math.round
 

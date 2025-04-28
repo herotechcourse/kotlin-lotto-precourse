@@ -1,4 +1,4 @@
-package lotto.service.validation
+package lotto.archive
 
 /**
  *  [ Test Scenarios ]

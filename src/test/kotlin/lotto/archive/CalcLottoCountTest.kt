@@ -1,4 +1,4 @@
-package lotto.service.logic
+package lotto.archive
 
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
