@@ -58,5 +58,38 @@ class LottoTest {
         assert(result[Prize.THIRD] == 1)
     }
 
-}
+    @Test
+    fun `calculates profit rate correctly`() {
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(1, 2, 3, 4, 5, 7)),
+            Lotto(listOf(1, 2, 3, 4, 5, 8))
+        )
+        val winningNumbers = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 7
 
+        val lottoResult = LottoResult(tickets, winningNumbers, bonusNumber)
+
+        val totalPurchaseAmount = tickets.size * 1000
+        val profitRate = lottoResult.getProfitRate(totalPurchaseAmount)
+
+        assert(profitRate > 0)
+    }
+
+    @Test
+    fun `calculates total earnings correctly`() {
+        val tickets = listOf(
+            Lotto(listOf(1, 2, 3, 4, 5, 6)),
+            Lotto(listOf(1, 2, 3, 4, 5, 7)),
+            Lotto(listOf(1, 2, 3, 4, 5, 8))
+        )
+        val winningNumbers = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = 7
+
+        val lottoResult = LottoResult(tickets, winningNumbers, bonusNumber)
+
+        val totalEarnings = lottoResult.getTotalEarnings()
+
+        assert(totalEarnings > 0)
+    }
+}
