@@ -3,6 +3,7 @@ package lotto.controller
 import lotto.domain.LottoGenerator
 import lotto.domain.Lottos
 import lotto.domain.PurchaseAmount
+import lotto.domain.WinningNumbers
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -12,6 +13,8 @@ class LottoController {
         val lottos = generateLottos(purchaseAmount.possibleLottoTicketCount)
 
         OutputView.printGeneratedLottos(lottos)
+
+        val winningNumber = getWinningNumbers()
     }
 
     fun getPurchaseAmount(): PurchaseAmount {
@@ -30,6 +33,16 @@ class LottoController {
         } catch (e: IllegalArgumentException) {
             e.message?.let { OutputView.printError(it) }
             throw e
+        }
+    }
+
+    fun getWinningNumbers(): WinningNumbers {
+        while (true) {
+            try {
+                return WinningNumbers.from(InputView.readWinningNumbers())
+            } catch (e: IllegalArgumentException) {
+                e.message?.let { OutputView.printError(it) }
+            }
         }
     }
 }
