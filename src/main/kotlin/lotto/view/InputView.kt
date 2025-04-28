@@ -11,7 +11,6 @@ object InputView {
     }
 
     fun inputWinNumbers(): List<Int> {
-        println()
         println(MESSAGE_ENTER_WINNING_NUMBERS)
         val input = Console.readLine()
         validateWinNumber(input)
@@ -19,13 +18,12 @@ object InputView {
     }
 
     fun inputBonusNumbers(winNumbers: List<Int>): Int {
-        println()
         println(MESSAGE_ENTER_BONUS_NUMBER)
         val input = Console.readLine()
         return validateBonusNumber(input, winNumbers)
     }
 
-    private fun validateWinNumber(input: String) {
+    fun validateWinNumber(input: String) {
         val num = input.split(",").map { it.trim() }
         require(num.size == 6) { ERROR_WIN_NUMBERS_SIZE }
         require(num.all { it.all { ch -> ch.isDigit() } }) { ERROR_WIN_NUMBERS_NUMERIC }
@@ -34,7 +32,7 @@ object InputView {
         require(intNumber.toSet().size == 6) { ERROR_WIN_NUMBERS_DUPLICATE }
     }
 
-    private fun validateBonusNumber(input: String, winNum: List<Int>): Int {
+    fun validateBonusNumber(input: String, winNum: List<Int>): Int {
         require(input.all { it.isDigit() }) { ERROR_BONUS_NUMBER_NUMERIC }
         val bonus = input.toInt()
         require(bonus in 1..45) { ERROR_BONUS_NUMBER_RANGE }
@@ -42,7 +40,7 @@ object InputView {
         return bonus
     }
 
-    private fun validatePriceInput(input: String) {
+    fun validatePriceInput(input: String) {
         require(input.all { it.isDigit() }) { ERROR_PURCHASE_AMOUNT_NUMERIC }
         val amount = try {
             input.toLong()

@@ -32,8 +32,7 @@ object OutView {
             println("${rank.description} (${String.format("%,d", reward)} KRW) – $count tickets")
         }
 
-        val returnRate = totalReward * 100.0 / purchaseAmount
-        val returnRateFormatted = String.format("%,.1f", returnRate)
-        println("Total return rate is $returnRateFormatted%")
+        val returnRate = totalReward.toDouble() / purchaseAmount * 100
+        println("Total return rate is %.1f%%".format(returnRate))
     }
 }
