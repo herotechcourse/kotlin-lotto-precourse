@@ -13,7 +13,7 @@ class Lotto(private val numbers: List<Int>) {
     // TODO: Implement additional functions
     fun run(ticketList: ArrayList<List<Int>>, purchase: String) {
         println()
-        val bonusNum = inputView.bonusNumber()
+        val bonusNum = inputView.bonusNumber(numbers)
         compareWinningNum(ticketList, bonusNum)
         outputView.showWinningStat()
         outputView.showProfitRate(profitRate(purchase, sumOfMoney()))
