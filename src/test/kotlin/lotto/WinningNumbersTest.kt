@@ -20,15 +20,15 @@ class LottoResultTest {
 
     @Test
     fun `should calculate lotto results according to statistics`() {
-        // 결과를 리스트로 생성하고 LottoResult 객체를 생성합니다.
+        // 결과를 리스트로 생성하고 LottoResult 객체를 생성성.
         val results = listOf(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.FOURTH)
         val lottoResult = LottoResult(results)
 
-        // 각 등수별로 맞은 티켓 수를 세고 그것이 기대되는 값과 일치하는지 확인합니다.
+        // 각 등수별로 맞은 티켓 수를 세고 그것이 기대되는 값과 일치하는지 확인.
         assertEquals(1, lottoResult.count(Rank.FIRST))
         assertEquals(1, lottoResult.count(Rank.SECOND))
 
-        // 각 등수의 'description'을 출력하여 형식이 정확한지 확인합니다.
+        // 각 등수의 'description'을 출력하여 형식이 정확한지 확인.
         assertEquals("6 Matches (2,000,000,000 KRW)", Rank.FIRST.description())
         assertEquals("5 Matches + Bonus Ball (30,000,000 KRW)", Rank.SECOND.description())
         assertEquals("5 Matches (1,500,000 KRW)", Rank.THIRD.description())

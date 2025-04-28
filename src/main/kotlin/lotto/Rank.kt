@@ -1,6 +1,7 @@
 package lotto
 
-//로또 결과 등수를 나타내는 열거형(enum) 클래스예요. 등수별로 몇 개의 숫자를 맞춰야 하는지(matchCount),
+//로또 결과 등수를 나타내는 열거형(enum) 클래스. 
+//등수별로 몇 개의 숫자를 맞춰야 하는지(matchCount),
 //얼마의 상금을 받는지(prize),
 //보너스 번호가 필요한지 여부(bonusRequired)를 정의
 enum class Rank(val matchCount: Int, val prize: Int, val bonusRequired: Boolean = false) {
@@ -24,23 +25,6 @@ enum class Rank(val matchCount: Int, val prize: Int, val bonusRequired: Boolean 
         }
     }
 
-//    fun description(): String {
-//        val formattedPrize = "%,d".format(prize)
-//        return if (this == SECOND) {
-//            "5 Matches + Bonus Ball (${formattedPrize} KRW)"
-//        } else {
-//            "${matchCount} Matches (${formattedPrize} KRW)"
-//        }
-//    }
-
-//    fun description(): String {
-//        val formattedPrize = "%,d".format(prize)
-//        return if (this == SECOND) {
-//            "5 Matches + Bonus Ball ($formattedPrize KRW)" // 기호와 공백을 확인
-//        } else {
-//            "$matchCount Matches ($formattedPrize KRW)" // 동일한 형식 적용
-//        }
-//    }
 
     fun description(): String {
         val formattedPrize = "%,d".format(prize)
