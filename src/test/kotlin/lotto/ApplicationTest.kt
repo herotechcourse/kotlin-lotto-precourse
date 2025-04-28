@@ -42,9 +42,169 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test`() {
+    fun `feature test first price`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("8000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 8 tickets.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[3, 5, 11, 16, 32, 38]",
+                    "[7, 11, 16, 35, 36, 44]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "[7, 11, 30, 40, 42, 43]",
+                    "[2, 13, 22, 32, 38, 45]",
+                    "[1, 3, 5, 14, 22, 45]",
+                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 1 tickets",
+                    "Total return rate is 25000062.5%.",
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(3, 5, 11, 16, 32, 38),
+            listOf(7, 11, 16, 35, 36, 44),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+            listOf(7, 11, 30, 40, 42, 43),
+            listOf(2, 13, 22, 32, 38, 45),
+            listOf(1, 3, 5, 14, 22, 45),
+        )
+    }
+
+    @Test
+    fun `feature test second price`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("8000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 8 tickets.",
+                    "[1, 2, 3, 4, 5, 7]",
+                    "[3, 5, 11, 16, 32, 38]",
+                    "[7, 11, 16, 35, 36, 44]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "[7, 11, 30, 40, 42, 43]",
+                    "[2, 13, 22, 32, 38, 45]",
+                    "[1, 3, 5, 14, 22, 45]",
+                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 1 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 0 tickets",
+                    "Total return rate is 375062.5%.",
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 7),
+            listOf(3, 5, 11, 16, 32, 38),
+            listOf(7, 11, 16, 35, 36, 44),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+            listOf(7, 11, 30, 40, 42, 43),
+            listOf(2, 13, 22, 32, 38, 45),
+            listOf(1, 3, 5, 14, 22, 45),
+        )
+    }
+
+    @Test
+    fun `feature test two first price`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("8000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 8 tickets.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[7, 11, 16, 35, 36, 44]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "[7, 11, 30, 40, 42, 43]",
+                    "[2, 13, 22, 32, 38, 45]",
+                    "[1, 3, 5, 14, 22, 45]",
+                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 2 tickets",
+                    "Total return rate is 50000062.5%.",
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(7, 11, 16, 35, 36, 44),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+            listOf(7, 11, 30, 40, 42, 43),
+            listOf(2, 13, 22, 32, 38, 45),
+            listOf(1, 3, 5, 14, 22, 45),
+        )
+    }
+
+    @Test
+    fun `feature test three first price`() {
+        assertRandomUniqueNumbersInRangeTest(
+            {
+                run("8000", "1,2,3,4,5,6", "7")
+                assertThat(output()).contains(
+                    "You have purchased 8 tickets.",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[1, 2, 3, 4, 5, 6]",
+                    "[1, 8, 11, 31, 41, 42]",
+                    "[13, 14, 16, 38, 42, 45]",
+                    "[7, 11, 30, 40, 42, 43]",
+                    "[2, 13, 22, 32, 38, 45]",
+                    "[1, 3, 5, 14, 22, 45]",
+                    "3 Matches (5,000 KRW) – 1 tickets",
+                    "4 Matches (50,000 KRW) – 0 tickets",
+                    "5 Matches (1,500,000 KRW) – 0 tickets",
+                    "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+                    "6 Matches (2,000,000,000 KRW) – 3 tickets",
+                    "Total return rate is 75000062.5%.",
+                )
+            },
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 2, 3, 4, 5, 6),
+            listOf(1, 8, 11, 31, 41, 42),
+            listOf(13, 14, 16, 38, 42, 45),
+            listOf(7, 11, 30, 40, 42, 43),
+            listOf(2, 13, 22, 32, 38, 45),
+            listOf(1, 3, 5, 14, 22, 45),
+        )
+    }
+
+    @Test
+    fun `exception test not integer input`() {
         assertSimpleTest {
             runException("1000j")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `exception test not divisible by 1000`() {
+        assertSimpleTest {
+            runException("2500")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `exception test duplicate bonus number`() {
+        assertSimpleTest {
+            runException("10000", "1,2,3,4,5,6", "6")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `exception test bonus number of the range`() {
+        assertSimpleTest {
+            runException("10000", "1,2,3,4,5,6", "0")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }

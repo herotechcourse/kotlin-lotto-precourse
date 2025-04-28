@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.controller.LottoController
+
 fun main() {
-    // TODO: Implement the program
+
+    // Initialize controller and run Lotto
+    val lottoController = LottoController()
+    lottoController.run()
 }
