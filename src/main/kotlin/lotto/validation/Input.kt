@@ -1,11 +1,17 @@
 package lotto.validation
 
+import lotto.input.end
+import lotto.input.start
+import lotto.input.ticketCost
+import lotto.util.Split
+
 object Input {
 
-    fun isEmpty(input: String?) {
+    fun isEmpty(input: String?): String {
         if (input.isNullOrEmpty()) {
             throw IllegalArgumentException("[ERROR] Input is empty")
         }
+        return input
     }
 
     fun isInteger(input: String) {
@@ -56,5 +62,33 @@ object Input {
         if (input in numbers) {
             throw IllegalArgumentException("[ERROR] Bonus number must not be duplicated with the winning numbers")
         }
+    }
+
+    fun isPurchaseAmountValid(rawInput: String?, ticketCost: Int): Int {
+        val input = Input.isEmpty(rawInput)
+        Input.isInteger(input)
+        val number = input.toInt()
+        Input.isPositiveInteger(number)
+        Input.isDivisible(number, ticketCost)
+        return number
+    }
+
+    fun isWinningNumbersValid(rawInput: String?): List<Int> {
+        val input = Input.isEmpty(rawInput)
+        val rawNumbers = Split.byComma(input).map { it.trim() }
+        Input.isEachInteger(rawNumbers)
+        val numbers = rawNumbers.map { it.toInt() }
+        Input.isEachInRange(numbers, start, end)
+        Input.winningNumbersDuplication(numbers)
+        return numbers
+    }
+
+    fun isBonusNumberValid(rawInput: String?, numbers: List<Int>): Int {
+        val input = Input.isEmpty(rawInput)
+        Input.isInteger(input)
+        val number = input.toInt()
+        Input.isInRange(number, start, end)
+        Input.bonusNumberDuplication(number, numbers)
+        return number
     }
 }

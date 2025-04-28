@@ -16,11 +16,8 @@ object InputReader {
             InputView.purchaseAmount()
             val rawInput = Console.readLine()
             try {
-                Input.isEmpty(rawInput)
-                Input.isInteger(rawInput)
-                Input.isPositiveInteger(rawInput.toInt())
-                Input.isDivisible(rawInput.toInt(), ticketCost)
-                return rawInput.toInt()
+                val number = Input.isPurchaseAmountValid(rawInput, ticketCost)
+                return number
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
@@ -32,12 +29,7 @@ object InputReader {
             InputView.winningNumbers()
             val rawInput = Console.readLine()
             try {
-                Input.isEmpty(rawInput)
-                val rawNumbers = Split.byComma(rawInput).map { it.trim() }
-                Input.isEachInteger(rawNumbers)
-                val numbers = rawNumbers.map { it.toInt() }
-                Input.isEachInRange(numbers, start, end)
-                Input.winningNumbersDuplication(numbers)
+                val numbers = Input.isWinningNumbersValid(rawInput)
                 return numbers
             } catch (e: IllegalArgumentException) {
                 println(e.message)
@@ -50,11 +42,8 @@ object InputReader {
             InputView.bonusNumber()
             val rawInput = Console.readLine()
             try {
-                Input.isEmpty(rawInput)
-                Input.isInteger(rawInput)
-                Input.isInRange(rawInput.toInt(), start, end)
-                Input.bonusNumberDuplication(rawInput.toInt(), numbers)
-                return rawInput.toInt()
+                val number = Input.isBonusNumberValid(rawInput, numbers)
+                return number
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
