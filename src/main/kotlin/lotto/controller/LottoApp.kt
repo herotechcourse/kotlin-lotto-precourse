@@ -13,6 +13,12 @@ class LottoApp(
     fun run() {
         val purchaseAmount = inputView.readPurchaseAmount()
 
+        handleUserInput(purchaseAmount)
+        handleResultProcessing(purchaseAmount)
+    }
+
+    private fun handleUserInput(purchaseAmount: Int) {
+
         lottoService.purchaseTickets(purchaseAmount)
         outputView.displayPurchasedTickets(lottoService.getTickets())
 
@@ -21,11 +27,16 @@ class LottoApp(
 
         val bonusNumber = inputView.readBonusNumber(lottoService.getWinnerNumbers())
         lottoService.setBonusNumber(bonusNumber)
+    }
 
+    private fun handleResultProcessing(purchaseAmount: Int) {
         val rankList = lottoService.compareTickets()
         outputView.displayWinningStatistics(rankList)
 
-        val returnRate = lottoService.calculateReturnRate(rankList, purchaseAmount)
+        val returnRate = lottoService.calculateReturnRate(
+            rankList, purchaseAmount
+        )
         outputView.displayReturnRate(returnRate)
     }
+
 }

@@ -43,22 +43,30 @@ class LottoService() {
     }
 
     fun compareTickets(): MutableMap<Rank, Int> {
-        val rankCounts = mutableMapOf<Rank, Int>()
+        val rankCounts = initializeRankCounts()
+        countRanks(rankCounts)
+        return rankCounts
+    }
 
+    private fun initializeRankCounts(): MutableMap<Rank, Int> {
+        val rankCounts = mutableMapOf<Rank, Int>()
         for (rank in Rank.entries) {
             rankCounts[rank] = 0
         }
+        return rankCounts
+    }
+
+    private fun countRanks(rankCounts: MutableMap<Rank, Int>) {
         lottoTickets.forEach { ticket ->
             val hits = ticket.countHits(winnerNumbers)
             val hasBonus = ticket.containsBonus(bonusNumber)
             val rank = Rank.from(hits, hasBonus)
             rankCounts[rank] = rankCounts.getValue(rank) + 1
         }
-        return rankCounts
     }
 
     fun calculateReturnRate(rankList: Map<Rank, Int>, purchaseAmount: Int): Double {
-        val totalWinnings = rankList.entries.sumOf { (rank , count) ->
+        val totalWinnings = rankList.entries.sumOf { (rank, count) ->
             rank.prize * count
         }
         return totalWinnings / purchaseAmount * 100

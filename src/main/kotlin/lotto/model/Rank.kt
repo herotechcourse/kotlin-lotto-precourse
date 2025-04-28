@@ -11,15 +11,13 @@ enum class Rank(val prize: Double) {
     NONE(LottoConstants.NONE_PRIZE);
 
     companion object {
-        fun from(matchCount: Int, hasBonus: Boolean): Rank {
-            return when {
-                matchCount == 6 -> FIRST
-                matchCount == 5 && hasBonus -> SECOND
-                matchCount == 5 -> THIRD
-                matchCount == 4 -> FOURTH
-                matchCount == 3 -> FIFTH
-                else -> NONE
-            }
+        fun from(match: Int, bonus: Boolean) = when {
+            match == 6 -> FIRST
+            match == 5 && bonus -> SECOND
+            match == 5 -> THIRD
+            match == 4 -> FOURTH
+            match == 3 -> FIFTH
+            else -> NONE
         }
     }
 }

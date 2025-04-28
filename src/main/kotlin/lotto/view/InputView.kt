@@ -12,16 +12,20 @@ class InputView {
     ): T {
         while (true) {
             try {
-                Messages.display(promptMessage)
-                val input = Console.readLine()
-                return validator(input)
+                return validator(readUserInput(promptMessage))
             } catch (e: IllegalArgumentException) {
-                Messages.display(
-                    Messages.ERROR,
-                    e.message ?: Messages.ERROR_INVALID_INPUT
-                )
+                showValidationError(e)
             }
         }
+    }
+
+    private fun readUserInput(message: String): String {
+        Messages.display(message)
+        return Console.readLine()
+    }
+
+    private fun showValidationError(e: IllegalArgumentException) {
+        Messages.display(Messages.ERROR, e.message ?: Messages.ERROR_INVALID_INPUT)
     }
 
     fun readPurchaseAmount(): Int {
