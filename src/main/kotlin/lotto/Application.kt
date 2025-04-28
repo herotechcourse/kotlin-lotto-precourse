@@ -1,5 +1,10 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    try {
+        val lottoGame = LottoGame()
+        lottoGame.play()
+    } catch (e: LottoGame.MaxRetryException) {
+        println(e.message + " Exiting...")
+    }
 }
