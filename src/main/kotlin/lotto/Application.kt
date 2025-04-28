@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.view.inputView
+import lotto.view.InputView
 
 fun main() {
     // Entry point that orchestrates the whole flow:
@@ -10,5 +10,7 @@ fun main() {
     // [ ] ResultChecker calculates result
     // [ ] OutputView prints statistics
 
-    inputView()
+    val purchaseAmount =  InputView.readPurchaseAmount()
+    val winningNumbers = InputView.readWinningNumbers()
+    val bonusNumber = InputView.readBonusNumber(winningNumbers)
 }

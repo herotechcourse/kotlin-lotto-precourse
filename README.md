@@ -20,19 +20,21 @@ Each of the following features will be implemented in a separate, small commit.
 
 ### 2. Input Validation
 - Validator
-  - [ ] validateNotBlank
-  - [ ] validateDivisibleByThousand
-  - [ ] validateNumberRange
-  - [ ] validateUniqueNumbers
-  - [ ] validateBonusNotDuplicate
-- [ ] Validate purchase amount (validateNotBlank, validateDivisibleByThousand).
-- [ ] Validate winning numbers (validateNotBlank, validateNumberRange, validateUniqueNumbers).
-- [ ] Validate bonus number (validateNotBlank, validateNumberRange, validateBonusNotDuplicate).
+  - [x] validateNotBlank
+  - [x] validateDivisibleByThousand
+  - [x] validateNumberCount
+  - [x] validateNumberRange
+  - [x] validateUniqueNumbers
+  - [x] validateBonusNotDuplicate
+  - [x] validateNumberSeparatedWithCommas
+- [x] Validate purchase amount (validateNotBlank, validateDivisibleByThousand).
+- [x] Validate winning numbers (validateNotBlank, validateNumberSeparatedWithCommas, validateNumberCount, validateNumberRange, validateUniqueNumbers).
+- [x] Validate bonus number (validateNotBlank, validateNumberCount, validateNumberRange, validateBonusNotDuplicate).
 
 ### 3. Error Handling
-- [ ] All error messages must start with `[ERROR]`.
-- [ ] Handle only specific exceptions like `IllegalArgumentException`.
-- [ ] Re-prompt user input after an invalid input without terminating the program.
+- [x] All error messages must start with "[ERROR]".
+- [x] Handle only specific exceptions like `IllegalArgumentException`.
+- [x] Re-prompt user input after an invalid input without terminating the program.
 
 ### 4. Lotto Ticket Generation
 - [ ] Generate correct number of tickets based on purchase amount.
