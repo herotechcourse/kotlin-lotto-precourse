@@ -13,15 +13,13 @@ import org.junit.jupiter.api.Assertions.assertEquals
  */
 class GenerateLottosTest {
 
-    private val generator = GenerateLottos()
-
     @Test
     fun `givenPurchaseCount_whenGenerateLottos_thenGenerateExactNumberOfLottos`() {
         // given
         val count = 10
 
         // when
-        val lottos = generator.generate(count)
+        val lottos = GenerateLottos.generate(count)
 
         // then
         assertEquals(count, lottos.size, "[ERROR]: Generated lotto count should match the requested count.")
@@ -31,7 +29,7 @@ class GenerateLottosTest {
     fun `givenGeneratedLottos_whenCheckingEachLotto_thenEachLottoHasExactly6Numbers`() {
         // given
         val count = 10
-        val lottos = generator.generate(count)
+        val lottos = GenerateLottos.generate(count)
 
         // then
         lottos.forEach { lotto ->
@@ -44,7 +42,7 @@ class GenerateLottosTest {
     fun `givenGeneratedLottos_whenCheckingEachLotto_thenNoDuplicateNumbersInEachLotto`() {
         // given
         val count = 10
-        val lottos = generator.generate(count)
+        val lottos = GenerateLottos.generate(count)
 
         // then
         lottos.forEach { lotto ->
@@ -57,7 +55,7 @@ class GenerateLottosTest {
     fun `givenGeneratedLottos_whenCheckingEachLotto_thenInRange1to45`() {
         // given
         val count = 10
-        val lottos = generator.generate(count)
+        val lottos = GenerateLottos.generate(count)
 
         // then
         lottos.forEach { lotto ->
