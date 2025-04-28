@@ -37,11 +37,11 @@ enum class Prize(val matchCount: Int, val money: Int) {
 
     companion object Factory {
         fun from(matchCount: Int, hasBonus: Boolean): Prize = when {
-            matchCount == 6 -> Prize.FIRST
-            matchCount == 5 && hasBonus -> Prize.SECOND
-            matchCount == 5 -> Prize.THIRD
-            matchCount == 4 -> Prize.FOURTH
-            matchCount == 3 -> Prize.FIFTH
+            matchCount == 6 -> FIRST
+            matchCount == 5 && hasBonus -> SECOND
+            matchCount == 5 -> THIRD
+            matchCount == 4 -> FOURTH
+            matchCount == 3 -> FIFTH
             else -> NONE
         }
     }

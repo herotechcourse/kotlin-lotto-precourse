@@ -1,7 +1,5 @@
 package lotto
 
-import javax.swing.plaf.metal.MetalIconFactory.TreeControlIcon
-
 class Purchase(private val amount: Int) {
     val tickets: List<Ticket> = List(amount / TICKET_PRICE) { Ticket() }
 
@@ -23,9 +21,4 @@ class Purchase(private val amount: Int) {
         private const val TICKET_PRICE = 1000
         private const val MAX_AMOUNT = 15000
     }
-    // Property declarations
-    // Initializer blocks
-    // Secondary constructors
-    // Method declarations
-    // Companion object
 }

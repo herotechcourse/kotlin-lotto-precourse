@@ -6,6 +6,5 @@ fun main() {
         lottoGame.play()
     } catch (e: LottoGame.MaxRetryException) {
         println(e.message + " Exiting...")
-        return
     }
 }
