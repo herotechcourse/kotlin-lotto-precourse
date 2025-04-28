@@ -12,6 +12,7 @@ lottery tickets based on the entered amount.
 - Validates that numbers are unique and within valid range
 - Provides methods to count matches with winning numbers
 - Checks if it contains a specific bonus number
+- Override `toString()` to print with correct format
 
 ### Input Processing
 
@@ -59,7 +60,8 @@ lottery tickets based on the entered amount.
 - Shows the number of purchased tickets
 - Displays each generated ticket's numbers in ascending order
 - Presents winning statistics for each prize tier
-- Shows the total return rate as a percentage with one decimal place
+- Shows the total return rate as a percentage with one decimal place (62.5%)
+- Format the money to correct decimal format (2,000,000,000 KRW)
 
 ### Error Handling
 
@@ -69,8 +71,6 @@ lottery tickets based on the entered amount.
     - Invalid number ranges
     - Duplicate numbers
     - Wrong number of inputs
-- Uses IllegalStateException for invalid program states:
-    - Attempting operations in incorrect sequence
-    - Accessing data that hasn't been initialized
+    - Wrong separator (spaces instead of commas)
 - All error messages are prefixed with "[ERROR]"
 - Re-prompts for input after any error
