@@ -1,6 +1,7 @@
 package lotto.domain
 
 import lotto.Lotto
+import lotto.domain.WinningSet
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -20,10 +21,8 @@ data class PlayerData(
 class Game {
     fun run() {
         val playerData = TicketMachine.buy()
-        // TODO: consider regrouping winning numbers and bonus into a dedicated WinningTicket class for better structure.
-        val winningLotto = InputView.getWinningNumbers()
-        val bonusNumber = InputView.getBonusNumber()
-        WinningStatistics.get(playerData, winningLotto, bonusNumber)
+        val winningSet = WinningSet()
+        WinningStatistics.get(playerData, winningSet)
         OutputView.printStats(playerData)
     }
 }

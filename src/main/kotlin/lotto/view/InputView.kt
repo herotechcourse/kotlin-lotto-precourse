@@ -2,8 +2,6 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Lotto
-import lotto.PRICE_LIMIT
-import lotto.TICKET_PRICE
 
 private object RequestMessage {
     const val PAYMENT = "Please enter the amount of money you want to spend."
@@ -31,8 +29,9 @@ object InputView {
     }
 
 
-    fun getBonusNumber(): Int {
-        return requestUntilValid(RequestMessage.BONUS_NUMBER, InputValidation::bonusNumber)
+    fun getBonusNumber(winningNumbers: Lotto): Int {
+        return requestUntilValid(RequestMessage.BONUS_NUMBER){input ->
+            InputValidation.bonusNumber(input, winningNumbers)}
     }
 
     private fun <T> requestUntilValid(promptMessage: String, validationFunction: (String) -> T): T {
@@ -53,8 +52,8 @@ private object InputValidation {
         val parsedInput = input.trim().toIntOrNull()
             ?: throw IllegalArgumentException(ErrorMessage.NON_NUMERIC)
         require(parsedInput > 0) { ErrorMessage.NEGATIVE_NUMBER }
-        require(parsedInput % TICKET_PRICE == 0) { ErrorMessage.PAYMENT_DIVISION }
-        require(parsedInput <= PRICE_LIMIT) { ErrorMessage.PAYMENT_LIMIT }
+        require(parsedInput % lotto.TICKET_PRICE == 0) { ErrorMessage.PAYMENT_DIVISION }
+        require(parsedInput <= lotto.PRICE_LIMIT) { ErrorMessage.PAYMENT_LIMIT }
         return parsedInput
     }
 
@@ -69,12 +68,13 @@ private object InputValidation {
         return Lotto(parsedNumbers)
     }
 
-    fun bonusNumber(input: String): Int {
+    fun bonusNumber(input: String, winningNumbers: Lotto): Int {
         val parsedInput = input.trim().toIntOrNull()
             ?: throw IllegalArgumentException(ErrorMessage.NON_NUMERIC)
         require(parsedInput in lotto.MIN_RANGE..lotto.MAX_RANGE) {
             ErrorMessage.INVALID_RANGE
         }
+        require(parsedInput !in winningNumbers.getNumbers()) { "[ERROR] Bonus number must not be among winning numbers." }
         return parsedInput
     }
 }

@@ -4,8 +4,8 @@ import lotto.Lotto
 
 object WinningStatistics {
 
-    fun get(playerData: PlayerData, winningLotto: Lotto, bonusNumber: Int) {
-        playerData.rankResults = getRankDetails(playerData, winningLotto, bonusNumber)
+    fun get(playerData: PlayerData, winningSet: WinningSet) {
+        playerData.rankResults = getRankDetails(playerData, winningSet)
         playerData.prizeSum = calculateRankEarnings(playerData.rankResults)
         playerData.returnRate = calculateProfitRate(playerData.moneySpent, playerData.prizeSum)
     }
@@ -26,33 +26,27 @@ object WinningStatistics {
 
     private fun getRankDetails(
         playerData: PlayerData,
-        winningLotto: Lotto,
-        bonusNumber: Int
+        winningSet: WinningSet   // ⚡️ Pass full winningSet here
     ): Map<Rank, Pair<Int, Int>> {
         val rankingTable = mutableMapOf<Rank, Pair<Int, Int>>()
         for (rank in Rank.entries) {
             rankingTable[rank] = Pair(0, rank.prizeMoney)
         }
         for (ticket in playerData.lottoTickets) {
-            rankTicket(ticket, winningLotto, bonusNumber, rankingTable)
+            rankTicket(ticket, winningSet, rankingTable)
         }
         return rankingTable
     }
 
     private fun rankTicket(
         ticket: Lotto,
-        winningLotto: Lotto,
-        bonusNumber: Int,
+        winningSet: WinningSet,
         rankingTable: MutableMap<Rank, Pair<Int, Int>>
     ) {
-        val foundWinningNumbers = ticket.matchCount(winningLotto.getNumbers())
-        val foundBonus = ticket.contains(bonusNumber)
-        val ticketRank = Rank.find(foundWinningNumbers, foundBonus)
+        val ticketRank = winningSet.match(ticket)  // ✅ Now winningSet is available
         if (ticketRank != null) {
             val (matchingTickets, prizeMoney) = rankingTable.getOrDefault(ticketRank, Pair(0, ticketRank.prizeMoney))
             rankingTable[ticketRank] = Pair(matchingTickets + 1, prizeMoney)
         }
     }
 }
-
-
