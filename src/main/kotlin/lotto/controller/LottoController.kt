@@ -34,6 +34,9 @@ class LottoController(
             tickets = tickets,
         )
 
+        printer.printLottoResult(result.rankCount)
+        printer.printProfitRate(result.profitRate)
+
         printer.close()
     }
 }
