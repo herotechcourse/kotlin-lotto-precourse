@@ -1,7 +1,12 @@
 package lotto
 
-enum class Rank {
-    FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE;
+enum class Rank(val prize: Int) {
+    FIRST(LottoConstants.FIRST_PRIZE),
+    SECOND(LottoConstants.SECOND_PRIZE),
+    THIRD(LottoConstants.THIRD_PRIZE),
+    FOURTH(LottoConstants.FOURTH_PRIZE),
+    FIFTH(LottoConstants.FIFTH_PRIZE),
+    NONE(LottoConstants.NONE_PRIZE);
 
     companion object {
         fun from(matchCount: Int, hasBonus: Boolean): Rank {
