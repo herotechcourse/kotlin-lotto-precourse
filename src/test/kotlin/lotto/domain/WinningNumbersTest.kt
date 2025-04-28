@@ -25,4 +25,11 @@ class WinningNumbersTest {
             WinningNumbers.from(listOf("1", "2", "3", "4", "5", "abc"))
         }
     }
+
+    @Test
+    fun `throws an exception when winning numbers is not positive number`() {
+        assertThrows<IllegalArgumentException> {
+            WinningNumbers.from(listOf("1", "2", "3", "4", "5", "-1"))
+        }
+    }
 }
