@@ -5,7 +5,7 @@ import lotto.LottoRanks
 import lotto.LottoResults
 import java.util.Locale
 
-object OutputHandler {
+object OutputView {
     fun showTickets(tickets: MutableList<Lotto>) {
         println("You have purchased ${tickets.size} tickets.")
         for (ticket in tickets) {

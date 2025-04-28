@@ -3,7 +3,7 @@ package lotto.io
 import lotto.validators.InputValidator
 import camp.nextstep.edu.missionutils.Console
 
-object InputHandler {
+object InputView {
     fun getSumOfMoney(): Int {
         var isValid = false
         var validatedInput = 0
