@@ -69,10 +69,9 @@ Users can purchase multiple lotto tickets based on their input amount, enter the
 ---
 
 ### 8. Output Format
-- [ ] Lotto numbers are printed in `[1, 2, 3, 4, 5, 6]` format.
-- [ ] The number of tickets, winning statistics, and profit rate are printed in the exact format specified in the example output.
-- [ ] **If the format does not match**, the score will be **zero**.
-
+- [x] Lotto ticket numbers are printed one per line, sorted in ascending order and enclosed in square brackets : `OutputView`.
+- [x] Winning statistics are printed with the exact match count, bonus ball notation (+ Bonus Ball for 5 matches), prize amount formatted with commas, and ticket count.
+- [x] Profit rate is rounded to one decimal place and printed as: Total return rate is XX.X%.
 ---
 
 ### 9. Error Handling
