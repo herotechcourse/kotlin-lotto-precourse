@@ -44,5 +44,7 @@ class LottoController(
             lottoResult.record(prizeRank)
         }
 
+        outputView.printWinningStatistics(lottoResult, money.getAmount())
+
     }
 }
