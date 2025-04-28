@@ -13,25 +13,33 @@ The goal is to practice clean code principles, Kotlin basics, small function dec
 
 Each of the following features will be implemented in a separate, small commit.
 
-### 1. User Input & Input Validation
-- [ ] Prompt user to enter purchase amount.
-- [ ] Validate purchase amount (must be divisible by 1,000).
-- [ ] Prompt user to enter the winning numbers.
-- [ ] Validate winning numbers (must be 6 unique numbers between 1 and 45 and comma-separated).
-- [ ] Prompt user for bonus number.
-- [ ] Validate bonus number (must be between 1 and 45 and not duplicate winning numbers).
+### 1. User Input
+- [x] Prompt user to enter purchase amount.
+- [x] Prompt user to enter the winning numbers.
+- [x] Prompt user for bonus number.
 
-### 2. Error Handling
+### 2. Input Validation
+- Validator
+  - [ ] validateNotBlank
+  - [ ] validateDivisibleByThousand
+  - [ ] validateNumberRange
+  - [ ] validateUniqueNumbers
+  - [ ] validateBonusNotDuplicate
+- [ ] Validate purchase amount (validateNotBlank, validateDivisibleByThousand).
+- [ ] Validate winning numbers (validateNotBlank, validateNumberRange, validateUniqueNumbers).
+- [ ] Validate bonus number (validateNotBlank, validateNumberRange, validateBonusNotDuplicate).
+
+### 3. Error Handling
 - [ ] All error messages must start with `[ERROR]`.
 - [ ] Handle only specific exceptions like `IllegalArgumentException`.
 - [ ] Re-prompt user input after an invalid input without terminating the program.
 
-### 3. Lotto Ticket Generation
+### 4. Lotto Ticket Generation
 - [ ] Generate correct number of tickets based on purchase amount.
 - [ ] Each ticket has 6 unique random numbers (1–45).
 - [ ] Numbers must be sorted in ascending order.
 
-### 4. Matching and Prize Determination
+### 5. Matching and Prize Determination
 - [ ] Compare each ticket with winning numbers.
 - [ ] Determine prize ranks based on matches:
     - 3 matches → 5th prize
@@ -41,13 +49,13 @@ Each of the following features will be implemented in a separate, small commit.
     - 6 matches → 1st prize
 - [ ] Calculate number of winners for each rank.
 
-### 5. Output Results
+### 6. Output Results
 - [ ] Print all purchased tickets clearly.
 - [ ] Check the format of execution(to match the output format with functional requirements).
 - [ ] Print match statistics (how many tickets won each prize).
 - [ ] Calculate and print total return rate rounded to the nearest tenth (e.g., 100.0%, 51.5%)
 
-### 6. Testing
+### 7. Testing
 - [ ] Unit test core business logic (ticket generation, matching, ranking).
 - [ ] Use JUnit 5 and AssertJ.
 - [ ] No testing of input/output (UI) code.

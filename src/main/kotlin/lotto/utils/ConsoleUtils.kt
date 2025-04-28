@@ -1,6 +1,8 @@
 package lotto.utils
 
-class ConsoleUtils {
-    // TODO
-    // fun readLineFromConsole()
+import camp.nextstep.edu.missionutils.Console
+
+fun readLineFromConsole(prompt : String) : String {
+    println(prompt)
+    return Console.readLine()
 }
