@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class ApplicationTest : NsTest() {
+class ApplicationExceptionTest : NsTest() {
     @Test
     fun `feature test`() {
         assertRandomUniqueNumbersInRangeTest(

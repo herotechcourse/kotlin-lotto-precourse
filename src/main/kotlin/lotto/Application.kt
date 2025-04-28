@@ -1,5 +1,11 @@
 package lotto
 
+import lotto.controller.LottoController
+
 fun main() {
-    // TODO: Implement the program
+    try {
+        LottoController().run()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
