@@ -3,7 +3,7 @@ package lotto.services
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.TicketPrice
 
-class Lottery {
+class GenerateTickets {
     fun getLotteryCount(budget: Int): Int {
         return budget / TicketPrice.TICKET.value
     }
