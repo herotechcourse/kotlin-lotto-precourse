@@ -12,18 +12,21 @@ object InputView {
                     InputType.BONUS_NUMBER -> getBonusNumber(winningNumbers)
                 }
             } catch (e: IllegalArgumentException) {
-                println(e.message)
-                println("Please try again.\n")
+                println(e.message + "\nPlease try again.\n")
             }
         }
     }
 
-    fun getPurchaseAmount(): Int {
+    private fun getPurchaseAmount(): Int {
         println("Please enter the purchase amount.")
 
         try {
             val input = Console.readLine()?.trim()?.toInt()
                 ?: throw IllegalStateException("[ERROR] Input cannot be null.\n")
+
+            require (input >= 1000) { "[ERROR] Input cannot be smaller than 1000.\n" }
+
+            println()
 
             return input
         } catch (e: NumberFormatException) {
@@ -31,7 +34,7 @@ object InputView {
         }
     }
 
-    fun getWinningNumbers(): List<Int> {
+    private fun getWinningNumbers(): List<Int> {
         println("Please enter last week's winning numbers.")
 
         try {
@@ -39,9 +42,10 @@ object InputView {
 
             val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }.toList()
 
-            if (numbers.size != 6 || numbers.size != numbers.distinct().size || checkNumbers(numbers)) {
-                throw IllegalArgumentException("[ERROR] You must enter exactly 6, non duplicate numbers.\n")
-            }
+            require (numbers.size == 6 && numbers.size == numbers.distinct().size && checkNumbers(numbers))
+                { "[ERROR] You must enter exactly 6, non duplicate numbers.\n" }
+
+            println()
 
             return numbers
         } catch (e: NumberFormatException) {
@@ -49,15 +53,14 @@ object InputView {
         }
     }
 
-    fun getBonusNumber(winningNumbers: List<Int>): Int {
+    private fun getBonusNumber(winningNumbers: List<Int>): Int {
         println("Please enter the bonus number.")
 
         try {
             val input = Console.readLine()?.trim()?.toInt() ?: throw IllegalArgumentException("[ERROR] Input cannot be null\n")
 
-            if (!isValidLottoNumber(input) || input in winningNumbers) {
-                throw IllegalArgumentException("[ERROR] bonus number must be between 1 and 45, not in winningNumbers.\n")
-            }
+            require (isValidLottoNumber(input) && input !in winningNumbers)
+                { "[ERROR] bonus number must be between 1 and 45, not in winningNumbers.\n" }
 
             println()
 
@@ -68,13 +71,10 @@ object InputView {
     }
 
     fun isValidLottoNumber(number: Int): Boolean {
-        if (number < 1 || number > 45) {
-            return false
-        }
-        return true
+        return !(number < 1 || number > 45)
     }
 
-    fun checkNumbers(numbers: List<Int>): Boolean {
+    private fun checkNumbers(numbers: List<Int>): Boolean {
         numbers.forEach { number ->
             if (!isValidLottoNumber(number)) {
                 return false

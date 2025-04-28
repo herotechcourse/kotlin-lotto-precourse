@@ -15,9 +15,8 @@ class LottoSimulate() {
 
         lottoCount = amount / 1000
 
-        for (i in 1..lottoCount) {
+        for (i in 1..lottoCount)
             lottoList.add(Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).sorted()))
-        }
 
         OutputView.displayTickets(lottoList)
 
