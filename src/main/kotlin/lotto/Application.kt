@@ -9,8 +9,8 @@ fun readAmount(): Int {
     println("Please enter the purchase amount.")
     val input = Console.readLine()
     val amount = input.toIntOrNull()
-    require(amount != null && amount % 1000 == 0) {
-        "[ERROR] Amount must be a multiple of 1000."
+    require(amount != null && amount >= 1000) {
+        "[ERROR] Purchase mount must be equal or upper that 1000."
     }
     return amount
 }
@@ -29,14 +29,8 @@ fun readWinningNumbers(): List<Int> {
     val input = Console.readLine()
     val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
 
-    // 입력한 숫자가 6개인지, 중복 여부 체크
-    require(numbers.size == 6 && numbers.toSet().size == 6) {
-        "[ERROR] You must enter 6 unique numbers."
-    }
-    // 입력한 숫자가 1..45 사이에 있는지 체크
-    require(numbers.all { it in 1..45 }) {
-        "[ERROR] Lotto numbers must be between 1 and 45."
-    }
+    Lotto(numbers)
+
     return numbers
 }
 
