@@ -16,7 +16,7 @@ class Purchase(val amount: Int) {
     }
 
     fun calculateReturnRate(totalPrize: Int): Double {
-        return amount.toDouble() / totalPrize // converting one operand to Double to ensure a precise calculation
+        return (totalPrize / amount.toDouble() * 100) // converting one operand to Double to ensure a precise calculation
     }
 
     companion object {
