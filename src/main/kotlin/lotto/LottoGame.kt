@@ -39,7 +39,7 @@ class LottoGame {
     private fun generateLottos(purchaseAmount: String): Lottos {
         val ticketCount = calculateTicketCount(purchaseAmount)
         OutputView().printPurchasedCount(ticketCount)
-        val lottos = LottoMachine().generate(ticketCount)
+        val lottos = LottoMachine(RandomLottoNumberGenerator()).generate(ticketCount)
         OutputView().printLottos(lottos)
         return lottos
     }

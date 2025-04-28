@@ -2,12 +2,11 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoMachine {
+class LottoMachine(private val lottoNumberGenerator: LottoNumberGenerator) {
     fun generate(ticketCount: Int) : Lottos {
         val generatedLottos = mutableListOf<Lotto>()
         repeat(ticketCount) {
-            val generatedNumbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, PICK_NUMBER)
-            generatedNumbers.sort()
+            val generatedNumbers = lottoNumberGenerator.generateNumbers()
             generatedLottos.add(Lotto(generatedNumbers))
         }
         return Lottos(generatedLottos)
