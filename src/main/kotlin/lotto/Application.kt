@@ -1,5 +1,8 @@
 package lotto
 
+import lotto.business.LottoController
+
 fun main() {
-    // TODO: Implement the program
+    val controller = LottoController()
+    controller.run()
 }
