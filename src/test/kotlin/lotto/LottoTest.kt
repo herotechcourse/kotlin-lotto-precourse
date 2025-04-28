@@ -1,5 +1,6 @@
 package lotto
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -11,13 +12,23 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
-    @Test
-    fun `throws an exception when lotto numbers contain duplicates`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 5))
-        }
-    }
 
-    // TODO: Implement tests based on the added features
-}
+  @Test
+  fun `throws an exception when lotto numbers contain duplicates`() {
+    assertThrows<IllegalArgumentException> {
+      Lotto(listOf(1, 2, 3, 4, 5, 5))
+    }
+  }
+  @Test
+  fun `throws an exception when lotto numbers are more than 6`() {
+    assertThrows<IllegalArgumentException> {
+      Lotto(listOf(1, 2, 3, 4, 5, 6, 7))
+    }
+  }
+
+
+  @Test
+  fun `creates lotto successfully when valid numbers provided`() {
+    val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+    assertEquals(6, lotto.getNumbers().size)
+  }}
