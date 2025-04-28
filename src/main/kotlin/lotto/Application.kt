@@ -4,6 +4,11 @@ import dialog.getBonusNumberFromDialog
 import dialog.getLottosFromTicketAmountThroughDialog
 import dialog.getTicketAmountFromDialog
 import dialog.getWinningNumberFromDialog
+import prize.Prize
+import prize.config.printReturnRate
+import prize.getPrizeKeyByMatchesAndBonus
+import prize.getPrizeResult
+import prize.prizeByKey
 
 fun main() {
     val ticketAmount: Int = getTicketAmountFromDialog()
@@ -11,4 +16,21 @@ fun main() {
     val winningNumbers: Array<Int> = getWinningNumberFromDialog()
     val bonusNumber: Int = getBonusNumberFromDialog()
     MatchManager.init(winningNumbers, bonusNumber)
+
+    matchLottos(lottos)
+    val result: Int = getPrizeResult()
+    printReturnRate((result.toDouble() / ticketAmount.toDouble()));
 }
+
+fun matchLottos(lottos: Array<Lotto>){
+    lottos.forEach { lotto ->
+        run {
+            val matches: Int = MatchManager.countMatches(lotto)
+            val bonus: Boolean = MatchManager.containsBonus(lotto)
+            val key: Int = getPrizeKeyByMatchesAndBonus(matches, bonus)
+            val prize: Prize = prizeByKey[key] ?: return
+            prize.increaseWinCount()
+        }
+    }
+}
+

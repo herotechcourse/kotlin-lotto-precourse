@@ -1,5 +1,7 @@
 package prize
 
+import prize.config.beginPrizeStat
+
 val prizeByRank: Array<Prize> = arrayOf(
     Prize(0, false, 0),
     Prize(6, false, 2_000_000_000),
@@ -19,4 +21,16 @@ val prizeByKey: Map<Int, Prize> = mapOf(
 
 fun getPrizeKeyByMatchesAndBonus(matches: Int, bonus: Boolean): Int{
     return if (bonus) -matches else matches
+}
+
+
+fun getPrizeResult(): Int{
+    beginPrizeStat()
+    var result: Int = 0;
+    for (rank in 1..5){
+        val prize: Prize = prizeByRank[rank]
+        println(prize.toString())
+        result += prize.award()
+    }
+    return result
 }
