@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.Lotto
 import lotto.enums.Rank
+import lotto.error.ExceptionMessage
 import lotto.model.Game
 import lotto.model.LottoTicketMachine
 import lotto.model.WinningLotto
@@ -37,7 +38,7 @@ class LottoController(private val inputView: InputView, private val outputView: 
     private fun getWinningLotto(): WinningLotto {
         val winningNumbers = getInput {getWinningNumbers()}
         println()
-        val bonusNumber = getInput {getBonusNumber()}
+        val bonusNumber = getInput {getBonusNumber(winningNumbers)}
         return WinningLotto(Lotto(winningNumbers.winningNumbers), bonusNumber.bonusNumber)
     }
 
@@ -51,9 +52,11 @@ class LottoController(private val inputView: InputView, private val outputView: 
         return inputView.askWinningNumbers()
     }
 
-    private fun getBonusNumber(): BonusNumberDto {
+    private fun getBonusNumber(winningNumbers: WinningNumbersDto): BonusNumberDto {
         outputView.askBonusNumber()
-        return inputView.askBonusNumber()
+        val bonusNumber = inputView.askBonusNumber()
+        if(winningNumbers.winningNumbers.contains(bonusNumber.bonusNumber)) throw IllegalArgumentException(ExceptionMessage.INVALID_BONUS_NUMBER.errorMessage)
+        return bonusNumber
     }
 
     private fun <T> getInput(input: () -> T):T {
