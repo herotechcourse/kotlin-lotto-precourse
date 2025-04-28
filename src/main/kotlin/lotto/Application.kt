@@ -1,16 +1,13 @@
 package lotto
 
+import lotto.validator.InputValidator
 import lotto.view.InputView
 
 fun main() {
-    println("Please enter the purchase amount.")
-    val amount = InputView.readPurchaseAmount()
+    val validator = InputValidator()
+    val inputView = InputView.InputView(validator)
 
-    println("Please enter the winning numbers (comma-separated).")
-    val winning = InputView.readWinningNumbers()
-
-    println("Please enter the bonus number.")
-    val bonus = InputView.readBonusNumber()
-
-    // TODO: implement core logic and call OutputView to display results
+    val purchaseAmount = inputView.readPurchaseAmount()
+    val winningNumbers = inputView.readWinningNumbers()
+    val bonusNumber = inputView.readBonusNumber()
 }

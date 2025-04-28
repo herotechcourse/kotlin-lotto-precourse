@@ -29,7 +29,7 @@ A console application in Kotlin that simulates a lottery ticket purchase and res
 - Dockerize the application.
 
 ## Assumptions
-- Purchase amount always an integer.
+- Purchase amount always a positive integer.
 - Input numbers are comma-separated, no extra whitespace.
 - Duplicate numbers in a ticket or winning set are invalid.
 - Errors throw `IllegalArgumentException` with prefix `[ERROR]:` and re-prompt.
