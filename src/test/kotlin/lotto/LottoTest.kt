@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.utils.Constant.DUPLICATE_NUMBER_ERROR_MESSAGE
 import lotto.utils.Constant.LOTTO_SIZE_ERROR_MESSAGE
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
@@ -22,9 +23,16 @@ class LottoTest {
         }
     }
 
+    @Test
+    fun `throw an exception when lotto numbers are duplicated`() {
+        assertThatThrownBy { Lotto(listOf(1, 2, 3, 4, 5, 5)) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessageContaining(DUPLICATE_NUMBER_ERROR_MESSAGE)
+    }
+
     @ParameterizedTest
     @MethodSource("invalidLottoNumbers")
-    fun `throw an exception when the number of lotto numbers is not 6`(numbers: List<Int>) {
+    fun `throw an exception when the number of lotto numbers is not LOTTO_SIZE`(numbers: List<Int>) {
         assertThatThrownBy { Lotto(numbers) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessageContaining(LOTTO_SIZE_ERROR_MESSAGE)
