@@ -89,8 +89,28 @@ Tests the behavior of Money objects:
 - Money amount must be at least 1000
 - Money objects correctly store and return their amount values
 
-
 ### Prize Test
+
+#### Constructor Tests
+
+- Validates that the constructor throws an exception when given a negative match count
+- Ensures the constructor accepts valid match counts (0-6)
+
+#### getRank Method Tests
+
+- Validates correct rank determination based on match count and bonus ball status:
+  - FIRST rank: 6 matches
+  - SECOND rank: 5 matches with bonus ball
+  - THIRD rank: 5 matches without bonus ball
+  - FOURTH rank: 4 matches
+  - FIFTH rank: 3 matches
+  - NONE rank: 0-2 matches
+
+#### getReward Method Tests
+
+- Confirms that the correct prize amount is returned for each rank:
+  - Validates rewards for all ranks from FIRST to NONE
+  - Ensures different rewards for 5 matches with/without bonus ball
 
 ### Winner Test
 
