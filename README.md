@@ -13,17 +13,17 @@ Users can purchase lottery tickets, input winning numbers, and calculate their w
     - Ensure the purchase amount is divisible by 1,000.
     - Calculate the number of tickets the customer can purchase: (1 ticket = 1,000 KRW).
 
-2. **Input Winning Numbers**
+2. **Generate Tickets**
+
+    - Issue as many tickets as the customer purchased.
+    - Each ticket contains 6 unique random numbers between 1 and 45.
+
+3. **Input Winning Numbers**
 
     - Accept 6 unique winning numbers from the user.
     - Validate that all numbers are within the range of 1 to 45.
     - Accept a single bonus number.
     - Ensure the winning numbers and bonus number are unique.
-
-3. **Generate Tickets**
-
-    - Issue as many tickets as the customer purchased.
-    - Each ticket contains 6 unique random numbers between 1 and 45.
 
 4. **Calculate the Win**
 
