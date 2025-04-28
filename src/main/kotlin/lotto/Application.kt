@@ -5,18 +5,22 @@ import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
     // TODO: Implement the program
-    val purchaseAmount = readPurchaseAmount()
-    val lottoTickets = buyLottoTickets(purchaseAmount)
-    printLottoTickets(lottoTickets)
+    try {
+        val purchaseAmount = readPurchaseAmount()
+        val lottoTickets = buyLottoTickets(purchaseAmount)
+        printLottoTickets(lottoTickets)
 
-    val winningNumbers = readWinningNumbers()
-    val bonusNumber = readBonusNumber(winningNumbers)
-    val results = calculateResults(lottoTickets, winningNumbers, bonusNumber)
-    printResults(results, purchaseAmount)
+        val winningNumbers = readWinningNumbers()
+        val bonusNumber = readBonusNumber(winningNumbers)
+        val results = calculateResults(lottoTickets, winningNumbers, bonusNumber)
+        printResults(results, purchaseAmount)
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
 }
 // Converting input into an Integer
 fun readPurchaseAmount(): Int {
-    println("Purchase amount for lottery tickets:")
+    println("Please enter the purchase amount.")
     val amount = Console.readLine().toIntOrNull()
         ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
     if (amount < 1000 || amount % 1000 != 0) {
@@ -34,7 +38,7 @@ fun printLottoTickets(lottos: List<Lotto>) {
     lottos.forEach { println(it.getSortedNumbers()) }
 }
 fun readWinningNumbers(): List<Int> {
-    println("Winning numbers (comma-separated):")
+    println("Please enter last week's winning numbers.")
     val input = Console.readLine()
     val numbers = input.split(",").mapNotNull { it.trim().toIntOrNull() }
     if (numbers.size != 6 || numbers.toSet().size != 6) {
@@ -46,8 +50,8 @@ fun readWinningNumbers(): List<Int> {
     return numbers
 }
 
-fun readBonusNumber(winningNumbers: List<Int>): int {
-    println("Bonus number:")
+fun readBonusNumber(winningNumbers: List<Int>): Int {
+    println("Please enter the bonus number.")
     val bonus = Console.readLine().toIntOrNull()
         ?: throw IllegalArgumentException("[ERROR] Please enter a valid number.")
     if (bonus in winningNumbers) {
@@ -70,13 +74,36 @@ fun calculateResults(lottos: List<Lotto>, winningNumbers: List<Int>, bonusNumber
 }
 // Print result statistics
 fun printResults(result: Map<Rank, Int>, purchaseAmount: Int) {
-    println("\nLotto result statistics:")
-    println("------------------------")
+    println("\nWinning Statistics")
+    println("---")
     Rank.values().filter { it != Rank.MISS }.forEach { rank ->
-        println("${rank.matchCount} matches${if (rank.requiresBonus) " + bonus" else ""} (${rank.prize} KRW) - ${result.getOrDefault(rank, 0)} tickets")
+        val label = if (rank.requiresBonus) "${rank.matchCount} Matches + Bonus Ball" else "${rank.matchCount} Matches"
+        val count = result.getOrDefault(rank, 0)
+        val ticketLabel = if (count == 1) "ticket" else "tickets"
+        println("$label (${rank.prize} KRW) – $count $ticketLabel")
     }
     val totalPrize = result.entries.sumOf { (rank, count) -> rank.prize * count }
     val profitRate = totalPrize.toDouble() / purchaseAmount * 100
-    println("Profit rate: ${"%.2f".format(profitRate)}%")
+    println("Total return rate is ${"%.1f".format(profitRate)}%.")
 }
+enum class Rank(val matchCount: Int, val prize: Int, val requiresBonus: Boolean = false){
+    FIRST(6, 2_000_000_000),
+    SECOND(5, 30_000_000, true),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000),
+    MISS(0, 0);
+
+    companion object {
+        fun of(matchCount: Int, bonus: Boolean): Rank {
+            return when {
+                matchCount == 6 -> FIRST
+                matchCount == 5 && bonus -> SECOND
+                matchCount == 5 -> THIRD
+                matchCount == 4 -> FOURTH
+                matchCount == 3 -> FIFTH
+                else -> MISS
+            }
+        }
+    }
 }
