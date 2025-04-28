@@ -13,6 +13,8 @@ class WinningNumbers(private val numbers: List<Int>) {
         return numbers.all { it in START_INCLUSIVE..END_INCLUSIVE }
     }
 
+    fun doNotContain(number: Int): Boolean = number !in numbers
+
     companion object {
         private const val VALID_SIZE = 6
         private const val START_INCLUSIVE = 1
