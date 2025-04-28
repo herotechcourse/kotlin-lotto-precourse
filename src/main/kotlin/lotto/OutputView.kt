@@ -2,7 +2,7 @@ package lotto
 
 class OutputView {
     fun displayPurchasedTickets(tickets: List<LottoTicket>) {
-        println("\nYou have purchased ${tickets.size} tickets.")
+        println("\nYou have purchased ${tickets.size} ${if (tickets.size == 1) "ticket" else "tickets"}.")
         tickets.forEach { println(it.numbers.sorted()) }
         println()
     }
