@@ -17,7 +17,23 @@ class Lotto(private val numbers: List<Int>) {
         bonusNumber = number
     }
 
-//    fun compareNumbers() {
-//
-//    }
+    private fun countMatches(ticket: Ticket): Int {
+        var matchCount: Int = 0
+        for (winningNumber in numbers) {
+            if (ticket.numbers.contains(winningNumber))
+                matchCount++
+        }
+        return matchCount
+    }
+
+    fun compareNumbers(tickets: List<Ticket>): Map<Prize, Int> {
+        val prizeCount = mutableMapOf<Prize, Int>()
+        for (ticket in tickets) {
+            val matchCount = countMatches(ticket)
+            val hasBonus: Boolean = ticket.numbers.contains(bonusNumber)
+            val prize = Prize.from(matchCount, hasBonus)
+            prizeCount[prize] = prizeCount.getOrDefault(prize, 0) + 1 // use get or default to avoid NullPointerException
+        }
+        return prizeCount
+    }
 }
