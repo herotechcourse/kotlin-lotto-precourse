@@ -51,4 +51,21 @@ class LottoTest {
 
         Prize.values().forEach { prize -> assertEquals(0, results[prize]) }
     }
+
+    @Test
+    fun `should calculate correct win results when bonus number matches`() {
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 1
+        val tickets = listOf(
+            listOf(1, 2, 3, 11, 12, 13), // 5th Prize
+            listOf(1, 2, 3, 4, 9, 10), // 4th Prize
+        )
+
+        val lotto = Lotto(winningNumbers)
+        val results = lotto.calculateWin(tickets, bonusNumber)
+
+        assertEquals(1, results[Prize.MATCH_THREE])
+        assertEquals(1, results[Prize.MATCH_FOUR])
+    }
+
 }

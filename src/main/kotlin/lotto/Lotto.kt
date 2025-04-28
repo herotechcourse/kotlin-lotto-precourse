@@ -17,16 +17,32 @@ class Lotto(private val numbers: List<Int>) {
      */
     fun calculateWin(tickets: List<List<Int>>, bonusNumber: Int): Map<Prize, Int> {
         val results = mutableMapOf<Prize, Int>().apply { Prize.values().forEach { this[it] = 0 } }
-
         tickets.forEach { ticket ->
             val matchCount = ticket.count { it in numbers }
             val hasBonus = bonusNumber in ticket
-            val prize = Prize.values().find { it.matches == matchCount && it.bonusMatch == hasBonus }
+            val prize = findPrize(matchCount, hasBonus)
             if (prize != null) {
                 results[prize] = results[prize]!! + 1
             }
         }
-
         return results
+    }
+
+    /**
+     * Finds the prize based on the match count and whether the bonus number is matched.
+     *
+     * @param matchCount The number of matches.
+     * @param hasBonus Whether the bonus number is matched.
+     * @return The corresponding prize, or null if no prize is found.
+     */
+    protected fun findPrize(
+        matchCount: Int,
+        hasBonus: Boolean
+    ): Prize? {
+        val prizeWithMatchCount = Prize.values().count { p -> p.matches == matchCount }
+
+        return Prize.values().find {
+            it.matches == matchCount && (it.bonusMatch == hasBonus || prizeWithMatchCount == 1)
+        }
     }
 }

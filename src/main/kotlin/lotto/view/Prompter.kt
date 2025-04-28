@@ -13,7 +13,7 @@ class Prompter<T>(
                 inputView.showPrompt(promptMessage)
                 val input = inputView.readInput()
                 val validatedInput = validator.validate(input)
-                println("${input}\n")
+                println()
                 return validatedInput
             } catch (e: IllegalArgumentException) {
                 inputView.showError(e.message ?: "Invalid input")
