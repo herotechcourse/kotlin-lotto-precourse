@@ -1,5 +1,7 @@
 package lotto
 
 fun main() {
-    // TODO: Implement the program
+    val purchaseAmount = InputHandler.readAndValidatePurchaseAmount()
+    println(purchaseAmount)
+
 }
