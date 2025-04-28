@@ -31,11 +31,11 @@
 ## 📊 Output
 
 - [x] Print the list of purchased tickets in ascending order.
-- [ ] Print the winning statistics (number of tickets for each rank).
-- [ ] Calculate the total prize money.
-- [ ] Calculate and display the profit rate, rounded to one decimal place.
+- [x] Print the winning statistics (number of tickets for each rank).
+- [x] Calculate the total prize money.
+- [x] Calculate and display the profit rate, rounded to one decimal place.
 
 ## ⚠️ Error Handling
 
-- [ ] Throw IllegalArgumentException with "[ERROR]" prefix for invalid inputs.
-- [ ] Re-prompt user input after an error without terminating the program.
+- [x] Throw IllegalArgumentException with "[ERROR]" prefix for invalid inputs.
+- [x] Re-prompt user input after an error without terminating the program.
