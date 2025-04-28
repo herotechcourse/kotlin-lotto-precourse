@@ -47,13 +47,13 @@ Each of the following features will be implemented in a separate, small commit.
   - [x] Generate correct number of tickets based on purchase amount.
 
 ### 5. Matching and Prize Determination
-- [ ] Compare each ticket with winning numbers.
-- [ ] Determine prize ranks based on matches:
+- [x] Determine prize ranks based on matches:
     - 3 matches → 5th prize
     - 4 matches → 4th prize
     - 5 matches → 3rd prize
     - 5 matches + bonus → 2nd prize
     - 6 matches → 1st prize
+- [ ] Compare each ticket with winning numbers.
 - [ ] Calculate number of winners for each rank.
 
 ### 6. Output Results
