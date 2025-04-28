@@ -11,7 +11,8 @@ class Lotto(private val numbers: List<Int>) {
         return numbers
     }
 
-    fun checkForWinningNumber git(winningNumbers : List<Int>) : Int {
+    fun countMatchingNumber (winningLotto : Lotto) : Int {
+        val winningNumbers = winningLotto.getLottoNumbers()
         return numbers.count { it in winningNumbers }
     }
 
