@@ -9,9 +9,12 @@
 #### 1. Purchase amount
 - [x] Prompt : "Please enter the purchase amount."
 - [x] Enter the purchase amount
-  - [x] If the amount isn't divisible by 1,000
+  - [x] If input isn't divisible by 1,000
     - [x] throw IllegalArgumentException
     - [x] re-prompt input 
+  - [x] If input isn't number
+    - [x] throw IllegalArgumentException
+    - [x] re-prompt input
 #### 2. Ticket lists
 - [x] Prompt : "You have purchased 8 tickets."
 - [x] Make m(size of 6)*n(size of purchase amount/1000) lists
@@ -23,14 +26,17 @@
         - [x] If the numbers are not separated by commas
             - [x] throw _IllegalArgumentException_
             - [x] re-prompt input
-        
+      - [x] If the numbers are not invalid data type
+        - [x] throw _IllegalArgumentException_
+        - [x] re-prompt input
 #### 4. Bonus number
 - [x] Prompt : "Please enter the bonus number."
   - [x] If the number isn't in the range of 1 to 45
       - [x] throw _IllegalArgumentException_
-  - [ ] If input is not number
-    - [ ] throw _IllegalArgumentException_
-    
+  - [x] If input is not number
+    - [x] throw _IllegalArgumentException_
+  - [x] If input already exists in winning number list 
+    - [x] throw _IllegalArgumentException_
 ### Process
 -[x] Compare Each of ticket lists with winning numbers and Match this prize amounts
   - 1st Prize (2,000,000,000 KRW) : Match 6 numbers 
@@ -40,6 +46,7 @@
   - 5th Prize (5,000 KRW): Match 3 numbers
 -[x] Calculate profit rate
   - sum of prize amounts/the purchase amount*100
+-[x] Change profit rate rounded to the nearest tenth(e.g., 100.0%, 1,000,000,0%)
 
 ### Output
 -[x] Prompt : "Winning Statistics"
