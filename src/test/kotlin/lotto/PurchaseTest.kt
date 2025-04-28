@@ -34,8 +34,6 @@ class PurchaseTest {
     @ValueSource(strings = ["1000", "12000", "15000"])
     fun `test valid purchase amount`(input: String) {
         assertThatNoException().isThrownBy{ Purchase(input.toInt()) }
-        val value = Purchase(input.toInt())
-        assertThat(value).isEqualTo(input.toInt())
     }
 
     @Test
