@@ -12,7 +12,6 @@ object InputView {
                 return validationAction(input)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
-                throw e
             }
         }
     }
