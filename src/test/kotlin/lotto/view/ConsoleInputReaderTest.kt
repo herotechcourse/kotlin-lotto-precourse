@@ -57,7 +57,7 @@ class ConsoleInputReaderTest{
         // when & then
         assertThatThrownBy { consoleInputReader.readPurchaseAmount() }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERR] Purchase amount must be a number.")
+            .hasMessage("[ERROR] Purchase amount must be a number.")
     }
 
     @Test
@@ -68,7 +68,7 @@ class ConsoleInputReaderTest{
 
         // when & then
         assertThatThrownBy { RePrompter.retryPrompt({ consoleInputReader.readPurchaseAmount() }) }
-            .hasMessage("[ERR] You failed 3 times. Please try again later.")
+            .hasMessage("[ERROR] You failed 3 times. Please try again later.")
     }
 
     private fun inputToConsole(text: String) {

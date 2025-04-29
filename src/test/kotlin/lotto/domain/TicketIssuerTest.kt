@@ -27,6 +27,6 @@ class TicketIssuerTest {
         // when & then
         assertThatThrownBy { issuer.issue(invalidCount) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERR] Ticket count must be greater than 0.")
+            .hasMessage("[ERROR] Ticket count must be greater than 0.")
     }
 }

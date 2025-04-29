@@ -9,7 +9,7 @@ class TicketIssuer {
     }
 
     fun issue(count: Int): List<Lotto> {
-        require(count > 0) { "[ERR] Ticket count must be greater than 0." }
+        require(count > 0) { "Ticket count must be greater than 0." }
 
         val tickets: MutableList<Lotto> = mutableListOf()
 

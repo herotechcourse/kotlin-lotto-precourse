@@ -8,8 +8,8 @@ enum class Rank(val matchCount: Int, val prize: Long, val bonusBallRequired: Boo
     FIFTH(3, 5_000L);
 
     init {
-        require(matchCount in 0..6) { "[ERR] Match count must be between 0 and 6." }
-        require(prize >= 0) { "[ERR] Prize must be non-negative." }
+        require(matchCount in 0..6) { " Match count must be between 0 and 6." }
+        require(prize >= 0) { " Prize must be non-negative." }
     }
 }
 

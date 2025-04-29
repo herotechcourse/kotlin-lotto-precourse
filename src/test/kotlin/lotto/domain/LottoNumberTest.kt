@@ -12,7 +12,7 @@ class LottoNumberTest {
         // when & then
         assertThatThrownBy { LottoNumber(invalidNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERR] Lotto numbers must be between 1 and 45.")
+            .hasMessage("[ERROR] Lotto numbers must be between 1 and 45.")
     }
 
     @Test
@@ -23,6 +23,6 @@ class LottoNumberTest {
         // when & then
         assertThatThrownBy { LottoNumber(invalidNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERR] Lotto numbers must be between 1 and 45.")
+            .hasMessage("[ERROR] Lotto numbers must be between 1 and 45.")
     }
 }

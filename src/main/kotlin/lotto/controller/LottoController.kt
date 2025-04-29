@@ -5,6 +5,7 @@ import lotto.domain.LottoCalculator
 import lotto.domain.TicketIssuer
 import lotto.view.InputReader
 import lotto.view.OutputPrinter
+import java.lang.IllegalArgumentException
 
 class LottoController(
     private val reader: InputReader,
@@ -14,7 +15,7 @@ class LottoController(
 
     fun run(): Unit {
         // 1. Input purchase amount for buy the lottery tickets.
-        val amount = RePrompter.retryPrompt({ reader.readPurchaseAmount() })
+        val amount = reader.readPurchaseAmount()
 
         // 2. Print purchased lottery tickets with issued numbers (sorted)
         val ticketCount = amount.toInt() / Lotto.PRICE

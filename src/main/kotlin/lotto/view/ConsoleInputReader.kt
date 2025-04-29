@@ -10,7 +10,7 @@ class ConsoleInputReader: InputReader {
         println("Please enter the purchase amount.")
 
         val amount: Int? = Console.readLine().toIntOrNull()
-        require(amount != null) {"[ERR] Purchase amount must be a number."}
+        require(amount != null) {"Purchase amount must be a number."}
 
         return PurchaseAmount(amount)
     }
@@ -21,7 +21,7 @@ class ConsoleInputReader: InputReader {
         val numbers: List<Int>? = Console.readLine()
             ?.split(",")
             ?.map { it.trim().toInt() }
-        require(numbers != null) {"[ERR] Winning numbers must be 6 numbers."}
+        require(numbers != null) {"Winning numbers must be 6 numbers."}
 
         return WinningNumbers.of(numbers)
     }
@@ -30,7 +30,7 @@ class ConsoleInputReader: InputReader {
         println("Please enter the bonus number.")
 
         val number: Int? = Console.readLine().toIntOrNull()
-        require(number != null) {"[ERR] Bonus number must be a number."}
+        require(number != null) {"Bonus number must be a number."}
 
         return LottoNumber(number)
     }
