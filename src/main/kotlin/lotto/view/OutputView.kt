@@ -1,0 +1,38 @@
+package lotto.view
+
+import lotto.Lotto
+import lotto.view.dto.LottoTicketDto
+import lotto.view.dto.MatchResultDto
+
+class OutputView {
+    fun askPurchaseAmount() {
+        println("Please enter the purchase amount")
+    }
+
+    fun printPurchasedLottoTicket(purchasedQuantity: Int, lottoTicket: List<Lotto>) {
+        println()
+        println("You have purchased $purchasedQuantity tickets.")
+        lottoTicket.map { lotto ->
+            LottoTicketDto(lotto.getNumbers())
+        }.forEach {
+            println(it.numbers)
+        }
+        println()
+    }
+
+    fun askWinningNumbers() {
+        println("Please enter last week's winning numbers.")
+    }
+
+    fun askBonusNumber() {
+        println("Please enter the bonus number.")
+    }
+
+    fun printWinningStatistics(matchResultDtoList: List<MatchResultDto>, returnRate: Double) {
+        println()
+        println("Winning Statistics")
+        println("---")
+        matchResultDtoList.forEach {println(it.output)}
+        println("Total return rate is ${String.format("%.1f", returnRate)}%.")
+    }
+}

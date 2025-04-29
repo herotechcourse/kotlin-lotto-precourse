@@ -1,9 +1,18 @@
 package lotto
 
-class Lotto(private val numbers: List<Int>) {
+import lotto.error.ExceptionMessage
+import java.util.*
+
+class Lotto(private val numbers: List<Int>, val price: Int = 1000) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
+        require(numbers.size == 6) { ExceptionMessage.INVALID_LOTTO_NUMBER_SIZE.errorMessage }
+        require(numbers.toSet().size == numbers.size) { ExceptionMessage.DUPLICATE_LOTTO_NUMBER.errorMessage }
+        numbers.forEach {
+            require(it in 1..45) { ExceptionMessage.INVALID_LOTTO_NUMBER_RANGE.errorMessage }
+        }
     }
 
-    // TODO: Implement additional functions
+    fun getNumbers(): List<Int> {
+        return Collections.unmodifiableList(numbers)
+    }
 }
