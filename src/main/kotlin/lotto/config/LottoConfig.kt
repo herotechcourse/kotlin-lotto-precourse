@@ -1,5 +1,5 @@
 package lotto.config
 
 object LottoConfig {
-  const val TICKET_PRICE = 1000
+    const val PRICE_PER_TICKET = 1000
 }

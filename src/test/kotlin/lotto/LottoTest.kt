@@ -1,5 +1,6 @@
 package lotto
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -11,7 +12,6 @@ class LottoTest {
         }
     }
 
-    // TODO: Implement production code to pass the test
     @Test
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThrows<IllegalArgumentException> {
@@ -20,18 +20,26 @@ class LottoTest {
     }
 
     @Test
-    fun `creates lotto successfully with 6 unique valid numbers`() {
-        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
-        assertThat(lotto.getNumbers()).containsExactly(1, 2, 3, 4, 5, 6)
+    fun `throws an exception when lotto numbers are out of valid range`() {
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(0, 2, 3, 4, 5, 6)) // 0 is invalid
+        }
+        assertThrows<IllegalArgumentException> {
+            Lotto(listOf(1, 2, 3, 4, 5, 46)) // 46 is invalid
+        }
     }
 
     @Test
-    fun `throws when numbers are out of 1 to 45`() {
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(0, 2, 3, 4, 5, 6))
-        }
-        assertThrows<IllegalArgumentException> {
-            Lotto(listOf(1, 2, 3, 4, 5, 46))
-        }
+    fun `matchCount returns number of matching numbers`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val winning = listOf(2, 3, 9, 10, 11, 12)
+        assertThat(ticket.matchCount(winning)).isEqualTo(2)
+    }
+
+    @Test
+    fun `contains returns true if number is in ticket`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertThat(ticket.contains(4)).isTrue()
+        assertThat(ticket.contains(10)).isFalse()
     }
 }

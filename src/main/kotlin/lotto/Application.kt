@@ -1,5 +1,5 @@
 package lotto
 
 fun main() {
-    LottoGame().run()
+    Lotto.run()
 }
