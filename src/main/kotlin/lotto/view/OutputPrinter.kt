@@ -5,7 +5,7 @@ import lotto.domain.Rank
 
 interface OutputPrinter {
     fun printPurchasedTickets(tickets: List<Lotto>): Unit
-    fun printLottoResult(tickets: Map<Rank, Int>): Unit
+    fun printLottoResult(rankCount: Map<Rank, Int>): Unit
     fun printProfitRate(profitRate: Double): Unit
     fun close(): Unit
 }
