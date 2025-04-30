@@ -29,7 +29,7 @@ class LottoTest {
     fun `throws an exception when lotto numbers contain duplicates`() {
         assertThatThrownBy {Lotto.from(listOf(1, 2, 3, 4, 5, 5))}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] Lotto numbers must be unique.")
+            .hasMessage("Lotto numbers must be unique.")
     }
 
     @Test
@@ -43,11 +43,11 @@ class LottoTest {
     fun `throws an exception when lotto numbers are out of range`() {
         assertThatThrownBy {Lotto.from(listOf(0, 2, 3, 4, 5, 6))}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] Lotto numbers must be between 1 and 45.")
+            .hasMessage("Lotto numbers must be between 1 and 45.")
 
         assertThatThrownBy {Lotto.from(listOf(46, 2, 3, 4, 5, 7))}
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] Lotto numbers must be between 1 and 45.")
+            .hasMessage("Lotto numbers must be between 1 and 45.")
     }
 
 }

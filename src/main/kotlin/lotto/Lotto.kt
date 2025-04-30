@@ -7,9 +7,9 @@ import lotto.domain.LottoNumber.Companion.MIN_NUMBER
 
 class Lotto private constructor(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly unique 6 numbers." }
-        require(numbers.distinct().size == numbers.size) { "[ERROR] Lotto numbers must be unique." }
-        require(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "[ERROR] Lotto numbers must be between $MIN_NUMBER and $MAX_NUMBER." }
+        require(numbers.size == LOTTO_NUMBER_SIZE) { "Lotto must contain exactly unique $LOTTO_NUMBER_SIZE numbers." }
+        require(numbers.distinct().size == numbers.size) { "Lotto numbers must be unique." }
+        require(numbers.all { it in MIN_NUMBER..MAX_NUMBER }) { "Lotto numbers must be between $MIN_NUMBER and $MAX_NUMBER." }
     }
 
     fun countMatches(winningNumbers: List<Int>): Int {
@@ -31,7 +31,7 @@ class Lotto private constructor(private val numbers: List<Int>) {
     companion object {
         val CURRENCY: CurrencyType = CurrencyType.KRW
         const val PRICE: Int = 1_000
-        const val NUMBER_COUNT: Int = 6
+        const val LOTTO_NUMBER_SIZE: Int = 6
 
         fun from(numbers: List<Int>): Lotto {
             return Lotto(numbers)

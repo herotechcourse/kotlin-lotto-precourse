@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import lotto.Lotto
 
 class TicketIssuer {
-    private fun createRandomNumbers(count: Int = Lotto.NUMBER_COUNT): List<Int> {
+    private fun createRandomNumbers(count: Int = Lotto.LOTTO_NUMBER_SIZE): List<Int> {
         return Randoms.pickUniqueNumbersInRange(LottoNumber.MIN_NUMBER, LottoNumber.MAX_NUMBER, count)
     }
 
