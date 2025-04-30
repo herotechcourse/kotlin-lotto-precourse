@@ -7,6 +7,23 @@ import lotto.domain.Rank
 
 class ConsoleOutputPrinter: OutputPrinter {
 
+    private fun getRankStaticsMessage(rankCount: Map<Rank, Int>): String {
+        val stringBuilder = StringBuilder()
+
+        rankCount.forEach {
+            stringBuilder.append("${it.key.matchCount} Matches ")
+            if (it.key.bonusBallRequired)
+                stringBuilder.append("+ Bonus Ball ")
+            stringBuilder.appendLine("(${String.format("%,d", it.key.prize)} ${Lotto.CURRENCY}) – ${it.value} tickets" )
+        }
+
+        return stringBuilder.toString()
+    }
+
+    private fun getProfitRateMessage(profitRate: Double): String {
+        return "Total return rate is ${String.format("%.1f", profitRate)}%.\n"
+    }
+
     override fun printPurchasedTickets(tickets: List<Lotto>) {
         val stringBuilder = StringBuilder()
 
@@ -18,26 +35,10 @@ class ConsoleOutputPrinter: OutputPrinter {
         println(stringBuilder.toString())
     }
 
-    private fun getRankStaticsMessage(rankCount: Map<Rank, Int>): String {
-        val stringBuilder = StringBuilder()
-        stringBuilder.appendLine("Winning Statics")
-        stringBuilder.appendLine("---")
-        rankCount.forEach {
-            stringBuilder.append("${it.key.matchCount} Matches ")
-            if (it.key.bonusBallRequired)
-                stringBuilder.append("+ Bonus Ball ")
-            stringBuilder.appendLine("(${String.format("%,d", it.key.prize)} ${Lotto.CURRENCY}) – ${it.value} tickets" )}
-        return stringBuilder.toString()
-    }
-
-    private fun getProfitRateMessage(profitRate: Double): String {
-        return "Total return rate is ${String.format("%.1f", profitRate)}%.\n"
-    }
-
     override fun printLottoResult(lottoResult: LottoResult) {
         val stringBuilder = StringBuilder()
         stringBuilder.appendLine(RESULT_DESCRIPTION)
-        stringBuilder.appendLine("---")
+        stringBuilder.appendLine(LINE_SEPARATOR)
 
         stringBuilder.appendLine(getRankStaticsMessage(lottoResult.lottoRanks))
         stringBuilder.appendLine(getProfitRateMessage(lottoResult.profitRate))
@@ -50,6 +51,7 @@ class ConsoleOutputPrinter: OutputPrinter {
     }
 
     companion object {
+        private const val LINE_SEPARATOR = "---"
         private const val RESULT_DESCRIPTION = "Winning Statics"
     }
 }
