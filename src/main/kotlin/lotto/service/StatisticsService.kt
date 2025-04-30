@@ -13,7 +13,10 @@ object StatisticsService {
      * The return rate is calculated as the percentage of the total winnings over the total spend.
      * The result is rounded to one decimal place.
      */
-    fun calculateReturnRate(lottoResults: List<LottoResult>, totalSpend: Int): Double {
+    fun calculateReturnRate(
+        lottoResults: List<LottoResult>,
+        totalSpend: Int,
+    ): Double {
         val totalWon = lottoResults.sumOf { it.totalPrizeMoney() }
         val rawRate = if (totalSpend == 0) 0.0 else (totalWon.toDouble() / totalSpend) * 100
         return roundToOneDecimal(rawRate)
@@ -24,3 +27,4 @@ object StatisticsService {
      */
     private fun roundToOneDecimal(value: Double) = round(value * 10) / 10.0
 }
+
