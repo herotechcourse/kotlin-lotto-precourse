@@ -23,7 +23,7 @@ class LottoCalculatorTest {
         val calculator = LottoCalculator(winningNumbers, bonusNumber, tickets)
 
         // then
-        assertThat(calculator.rankCount).containsExactlyInAnyOrderEntriesOf(
+        assertThat(calculator.getResult().lottoRanks).containsExactlyInAnyOrderEntriesOf(
             mapOf(
                 Rank.FIRST to 1,
                 Rank.SECOND to 1,
@@ -38,6 +38,6 @@ class LottoCalculatorTest {
         val expectedProfit = 2000000000L + 30000000L + 1500000L + 50000L + 5000L
         val expectedProfitRate = expectedProfit.toDouble() / 5000 * 100
 
-        assertThat(calculator.profitRate).isEqualTo(expectedProfitRate)
+        assertThat(calculator.getResult().profitRate).isEqualTo(expectedProfitRate)
     }
 }

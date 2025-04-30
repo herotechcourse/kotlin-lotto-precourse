@@ -27,10 +27,8 @@ class LottoController(
         val bonusNumber = RePrompter.retryPrompt({ reader.readBonusNumber() })
 
         // 5. Print lotto result statistics and profit rate
-        val result = LottoCalculator(winningNumbers, bonusNumber, tickets)
-
-        printer.printLottoResult(result.rankCount)
-        printer.printProfitRate(result.profitRate)
+        val result = LottoCalculator(winningNumbers, bonusNumber, tickets).getResult()
+        printer.printLottoResult(result)
 
         printer.close()
     }

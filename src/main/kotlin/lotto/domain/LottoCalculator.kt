@@ -8,8 +8,8 @@ class LottoCalculator(
     tickets: List<Lotto>,
     private val ranks: Ranks = Ranks()
 ) {
-    val rankCount: Map<Rank, Int>
-    val profitRate: Double
+    private val rankCount: Map<Rank, Int>
+    private val profitRate: Double
 
     init {
         rankCount = calculateRankCount(winningNumbers, bonusNumber, tickets)
@@ -35,5 +35,7 @@ class LottoCalculator(
 
         return profitPrize.toDouble() / paid * 100
     }
+
+    fun getResult(): LottoResult { return LottoResult(rankCount, profitRate) }
 }
 

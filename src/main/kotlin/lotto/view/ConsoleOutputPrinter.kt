@@ -2,6 +2,7 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.Lotto
+import lotto.domain.LottoResult
 import lotto.domain.Rank
 
 class ConsoleOutputPrinter: OutputPrinter {
@@ -17,9 +18,8 @@ class ConsoleOutputPrinter: OutputPrinter {
         println(stringBuilder.toString())
     }
 
-    override fun printLottoResult(rankCount: Map<Rank, Int>) {
+    private fun getRankStaticsMessage(rankCount: Map<Rank, Int>): String {
         val stringBuilder = StringBuilder()
-
         stringBuilder.appendLine("Winning Statics")
         stringBuilder.appendLine("---")
         rankCount.forEach {
@@ -27,15 +27,29 @@ class ConsoleOutputPrinter: OutputPrinter {
             if (it.key.bonusBallRequired)
                 stringBuilder.append("+ Bonus Ball ")
             stringBuilder.appendLine("(${String.format("%,d", it.key.prize)} ${Lotto.CURRENCY}) – ${it.value} tickets" )}
+        return stringBuilder.toString()
+    }
+
+    private fun getProfitRateMessage(profitRate: Double): String {
+        return "Total return rate is ${String.format("%.1f", profitRate)}%.\n"
+    }
+
+    override fun printLottoResult(lottoResult: LottoResult) {
+        val stringBuilder = StringBuilder()
+        stringBuilder.appendLine(RESULT_DESCRIPTION)
+        stringBuilder.appendLine("---")
+
+        stringBuilder.appendLine(getRankStaticsMessage(lottoResult.lottoRanks))
+        stringBuilder.appendLine(getProfitRateMessage(lottoResult.profitRate))
 
         println(stringBuilder.toString())
     }
 
-    override fun printProfitRate(profitRate: Double) {
-        println("Total return rate is ${String.format("%.1f", profitRate)}%.")
-    }
-
     override fun close() {
         Console.close()
+    }
+
+    companion object {
+        private const val RESULT_DESCRIPTION = "Winning Statics"
     }
 }
