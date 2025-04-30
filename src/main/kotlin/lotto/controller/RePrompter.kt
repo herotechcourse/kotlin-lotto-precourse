@@ -10,12 +10,13 @@ object RePrompter {
             try {
                 return promptFunction()
             } catch (e: Exception) {
-                println(e.message+" "+rePromptMessage+"\n")
+                println("$ERROR_TAG ${e.message} $rePromptMessage\n")
             }
         }
-        throw IllegalStateException(OVER_RE_PROMPT_TRY_MESSAGE)
+        throw IllegalStateException("$ERROR_TAG $OVER_RE_PROMPT_TRY_MESSAGE")
     }
 
+    private const val ERROR_TAG = "[ERROR]"
     private const val RE_PROMPT_MESSAGE = "Please try again."
     private const val OVER_RE_PROMPT_TRY_MESSAGE = "You failed 3 times. Please try again later."
 }

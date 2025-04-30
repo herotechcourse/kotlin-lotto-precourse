@@ -13,7 +13,7 @@ class PurchaseAmountTest {
         // when & then
         assertThatThrownBy { PurchaseAmount(invalidNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] The Purchase amount must be positive.")
+            .hasMessage("The Purchase amount must be positive.")
     }
 
     @Test
@@ -24,6 +24,6 @@ class PurchaseAmountTest {
         // when & then
         assertThatThrownBy { PurchaseAmount(invalidNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] The purchase amount must be greater than or equal to the single lottery ticket price(1,000KRW).")
+            .hasMessage("The purchase amount must be greater than or equal to the single lottery ticket price(1,000KRW).")
     }
 }

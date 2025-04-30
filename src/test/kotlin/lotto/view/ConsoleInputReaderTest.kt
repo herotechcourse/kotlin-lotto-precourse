@@ -57,7 +57,7 @@ class ConsoleInputReaderTest{
         // when & then
         assertThatThrownBy { consoleInputReader.readPurchaseAmount() }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("[ERROR] Purchase amount must be a number.")
+            .hasMessage("Purchase amount must be a number.")
     }
 
     @Test
