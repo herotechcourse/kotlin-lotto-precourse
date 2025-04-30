@@ -1,6 +1,7 @@
 package lotto.domain
 
 import lotto.Lotto
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThatThrownBy
 
@@ -25,5 +26,19 @@ class PurchaseAmountTest {
         assertThatThrownBy { PurchaseAmount(invalidNumber) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("The purchase amount must be greater than or equal to the single lottery ticket price(1,000KRW).")
+    }
+
+    @Test
+    fun `calculate purchasable tickets by amount`() {
+        // given
+        val exceptedCount = 3
+        val rawAmount = Lotto.PRICE * exceptedCount
+
+        // when
+        val realCount = PurchaseAmount(rawAmount).countPurchasableTickets(Lotto.PRICE)
+
+        // then
+        assertThat(realCount).isEqualTo(exceptedCount)
+
     }
 }
