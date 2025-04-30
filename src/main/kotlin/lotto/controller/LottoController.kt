@@ -12,21 +12,13 @@ class LottoController(
     private val issuer: TicketIssuer = TicketIssuer()
 ) {
 
-    fun run(): Unit {
-        // 1. Input purchase amount for buy the lottery tickets.
+    fun run() {
         val ticketCount = reader.readPurchaseAmount().countPurchasableTickets(Lotto.PRICE)
-
-        // 2. Print purchased lottery tickets with issued numbers (sorted)
         val tickets = issuer.issue(ticketCount)
         printer.printPurchasedTickets(tickets)
 
-        // 3. Input last week's numbers
         val winningNumbers = RePrompter.retryPrompt({ reader.readWinningNumbers() })
-
-        // 4. Input a bonus number.
         val bonusNumber = RePrompter.retryPrompt({ reader.readBonusNumber() })
-
-        // 5. Print lotto result statistics and profit rate
         val result = LottoCalculator(winningNumbers, bonusNumber, tickets).getResult()
         printer.printLottoResult(result)
 
