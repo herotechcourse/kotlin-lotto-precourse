@@ -6,15 +6,22 @@ import lotto.domain.LottoResult
 import lotto.domain.Rank
 
 class ConsoleOutputPrinter: OutputPrinter {
+    private fun getRankCountMessage(rankCount: Map.Entry<Rank, Int>): String {
+        val rank = rankCount.key
+        val prizeFormatted = "%,d".format(rank.prize)
+
+        val builder = StringBuilder()
+        builder.append("Rank ${rank.matchCount} Matches ")
+        if (rank.bonusBallRequired)
+            builder.append("+ Bonus Ball ")
+        return builder.append("($prizeFormatted ${Lotto.CURRENCY}) - ${rankCount.value} tickets").toString()
+    }
 
     private fun getRankStaticsMessage(rankCount: Map<Rank, Int>): String {
         val stringBuilder = StringBuilder()
 
         rankCount.forEach {
-            stringBuilder.append("${it.key.matchCount} Matches ")
-            if (it.key.bonusBallRequired)
-                stringBuilder.append("+ Bonus Ball ")
-            stringBuilder.appendLine("(${String.format("%,d", it.key.prize)} ${Lotto.CURRENCY}) – ${it.value} tickets" )
+            stringBuilder.appendLine(getRankCountMessage(it))
         }
 
         return stringBuilder.toString()
