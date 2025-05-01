@@ -3,7 +3,7 @@ package lotto.domain
 @JvmInline
 value class LottoNumber(val value: Int) {
     init {
-        require(value in MIN_NUMBER..MAX_NUMBER) {"Lotto numbers must be between 1 and 45."}
+        require(value in MIN_NUMBER..MAX_NUMBER) {"Lotto numbers must be between $MIN_NUMBER and $MAX_NUMBER."}
     }
 
     companion object {
