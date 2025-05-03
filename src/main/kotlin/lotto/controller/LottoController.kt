@@ -21,7 +21,5 @@ class LottoController(
         val bonusNumber = RePrompter.retryPrompt({ reader.readBonusNumber() })
         val result = LottoCalculator(winningNumbers, bonusNumber, tickets).getResult()
         printer.printLottoResult(result)
-
-        printer.close()
     }
 }
