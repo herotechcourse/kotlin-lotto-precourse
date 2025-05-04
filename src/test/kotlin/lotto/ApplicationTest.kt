@@ -42,13 +42,37 @@ class ApplicationTest : NsTest() {
     }
 
     @Test
-    fun `exception test`() {
+    fun `exception test for purchaseAmount`() {
         assertSimpleTest {
             runException("1000j")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+   
+    @Test
+    fun `exception test for purchaseAmount when it is not enterd`() {
+        assertSimpleTest {
+            runException("")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
 
+    @Test
+    fun `exception test for winning numbers`() {
+        assertSimpleTest {
+            runException("1000","1,a,b,3,5,14")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+
+    @Test
+    fun `exception test for bonus number`() {
+        assertSimpleTest {
+            runException("1000","1,2,3,5,14,22","50")
+            assertThat(output()).contains(ERROR_MESSAGE)
+        }
+    }
+   
     override fun runMain() {
         main()
     }
