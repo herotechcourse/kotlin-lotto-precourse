@@ -10,7 +10,7 @@ class InputView {
 
     fun readWinningNumbers(): List<String> {
         println(RequestMessages.WINNING_NUMBERS)
-        return Console.readLine().split(",").map {it.trim()}
+        return Console.readLine().split(",").map { it.trim() }
     }
 
     fun readBonusNumber(): String {

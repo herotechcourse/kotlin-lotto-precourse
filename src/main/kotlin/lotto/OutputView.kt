@@ -8,12 +8,12 @@ class OutputView {
 
     fun displayPrizeDistribution(prizeCountList: MutableMap<Prize, Int>) {
         println(Messages.WINNING_STATISTICS)
-        prizeCountList.forEach{
+        prizeCountList.forEach {
             println("${it.key.condition} (${it.key.getFormattedMoney()} KRW) – ${it.value} tickets")
         }
     }
 
-    fun displayTotalReturnRate(numberOfTickets: Int, totalPrizeMoney:Int) {
+    fun displayTotalReturnRate(numberOfTickets: Int, totalPrizeMoney: Int) {
         println(Messages.TOTAL_RETURN_RATE_PREFIX + (totalPrizeMoney / (numberOfTickets * 1000.0)) * 100 + Messages.RETURN_RATE_UNIT)
     }
 

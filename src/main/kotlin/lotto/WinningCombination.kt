@@ -1,6 +1,6 @@
 package lotto
 
-class WinningCombination (
+class WinningCombination(
     private val winningNumbers: List<Int>,
     private val bonusBall: Int,
     private var totalPrize: Int
@@ -23,7 +23,7 @@ class WinningCombination (
         return prizeCountList
     }
 
-    private fun initializePrizeCount(): MutableMap<Prize, Int>  = mutableMapOf(
+    private fun initializePrizeCount(): MutableMap<Prize, Int> = mutableMapOf(
         Prize.FIFTH to 0,
         Prize.FOURTH to 0,
         Prize.THIRD to 0,

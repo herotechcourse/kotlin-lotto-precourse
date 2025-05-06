@@ -2,7 +2,7 @@ package lotto
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers."}
+        require(numbers.size == 6) { "[ERROR] Lotto must contain exactly 6 numbers." }
         require(numbers.size == numbers.distinct().size) { "[ERROR] Lotto must be unique." }
         require(numbers.all { it in 1..45 }) { "[ERROR] Lotto numbers must be in the range of 1 to 45" }
     }

@@ -14,7 +14,7 @@ class LottoValidator {
         validateNoDuplicatesInList(winningNumbers)
     }
 
-    fun validateBonusNumber(bonusNumber:String, winningNumbers: List<Int>) {
+    fun validateBonusNumber(bonusNumber: String, winningNumbers: List<Int>) {
         validateIsNumeric(bonusNumber)
         validateRange1to45ForSingle(bonusNumber)
         validateNoDuplicatesForBonus(bonusNumber, winningNumbers)
@@ -63,7 +63,7 @@ class LottoValidator {
     }
 
     private fun validateRange1to45ForSingle(bonusNumber: String) {
-        if (bonusNumber.toInt() < 1 || bonusNumber.toInt() > 45 ) {
+        if (bonusNumber.toInt() < 1 || bonusNumber.toInt() > 45) {
             throw IllegalArgumentException("[ERROR] Bonus number must be in the range of 1 to 45.")
         }
     }

@@ -2,14 +2,14 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class LottoGame (
+class LottoGame(
     private val inputView: InputView,
     private val outputView: OutputView,
     private val lottoValidator: LottoValidator
 ) {
     private lateinit var winningCombination: WinningCombination
 
-    fun start(){
+    fun start() {
         val numberOfTickets = getNumberOfTickets()
 
         val lottoTickets = generateLottoTickets(numberOfTickets)
@@ -29,7 +29,7 @@ class LottoGame (
 
     private fun generateLottoTickets(numberOfTickets: Int): List<Lotto> {
         val lottoTickets = mutableListOf<Lotto>()
-        repeat (numberOfTickets) {
+        repeat(numberOfTickets) {
             val lotto = Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6))
             lottoTickets.add(lotto)
         }
