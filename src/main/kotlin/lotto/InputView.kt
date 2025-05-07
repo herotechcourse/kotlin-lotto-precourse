@@ -2,25 +2,23 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Console
 
+private const val AMOUNT_REQUEST_MESSAGE = "Please enter the purchase amount."
+private const val WINNING_NUMBERS_REQUEST_MESSAGE = "\nPlease enter last week's winning numbers."
+private const val BONUS_NUMBER_REQUEST_MESSAGE = "\nPlease enter the bonus number."
+
 class InputView {
     fun readPurchaseAmount(): String {
-        println(RequestMessages.AMOUNT)
+        println(AMOUNT_REQUEST_MESSAGE)
         return Console.readLine()
     }
 
     fun readWinningNumbers(): List<String> {
-        println(RequestMessages.WINNING_NUMBERS)
+        println(WINNING_NUMBERS_REQUEST_MESSAGE)
         return Console.readLine().split(",").map { it.trim() }
     }
 
     fun readBonusNumber(): String {
-        println(RequestMessages.BONUS_NUMBER)
+        println(BONUS_NUMBER_REQUEST_MESSAGE)
         return Console.readLine()
-    }
-
-    companion object RequestMessages {
-        const val AMOUNT = "Please enter the purchase amount."
-        const val WINNING_NUMBERS = "\nPlease enter last week's winning numbers."
-        const val BONUS_NUMBER = "\nPlease enter the bonus number."
     }
 }
