@@ -96,7 +96,7 @@ class LottoGame(
 
     private fun getMatchedPrizes(prizeCounts: IntArray): MutableMap<Prize, Int> {
         var index = 1
-        return Prize.entries.associateWith { prizeCounts[index++]}
+        return Prize.entries.associateWith { prizeCounts[index++] }
             .toMutableMap()
     }
 }
