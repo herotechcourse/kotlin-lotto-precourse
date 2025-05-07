@@ -2,8 +2,8 @@ package lotto
 
 class OutputView {
     fun displayPurchasedTickets(lottoTickets: List<Lotto>) {
-        println(Messages.PURCHASED_TICKETS_PREFIX + lottoTickets.size + Messages.TICKET_UNIT)
-        lottoTickets.forEach { println(it.numberList.sorted()) }
+        println(Messages.PURCHASED_TICKETS_PREFIX + lottoTickets.size + TICKET_UNIT)
+        lottoTickets.forEach { println(it.getSortedNumbers()) }
     }
 
     fun displayPrizeDistribution(prizeCountList: MutableMap<Prize, Int>) {
@@ -13,8 +13,8 @@ class OutputView {
         }
     }
 
-    fun displayTotalReturnRate(numberOfTickets: Int, totalPrizeMoney: Int) {
-        println(Messages.TOTAL_RETURN_RATE_PREFIX + (totalPrizeMoney / (numberOfTickets * 1000.0)) * 100 + Messages.RETURN_RATE_UNIT)
+    fun displayTotalReturnRate(returnRate: Double) {
+        println(Messages.TOTAL_RETURN_RATE_PREFIX + returnRate + Messages.RETURN_RATE_UNIT)
     }
 
     companion object Messages {

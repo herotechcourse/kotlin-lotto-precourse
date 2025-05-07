@@ -2,12 +2,14 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 
+private const val SINGLE_TICKET_PRICE = 1_000
+private const val PERCENT_RATIO = 100
+
 class LottoGame(
     private val inputView: InputView,
     private val outputView: OutputView,
     private val lottoValidator: LottoValidator
 ) {
-    private lateinit var winningCombination: WinningCombination
 
     fun start() {
         val numberOfTickets = getNumberOfTickets()
@@ -15,16 +17,16 @@ class LottoGame(
         val lottoTickets = generateLottoTickets(numberOfTickets)
         displayPurchasedTickets(lottoTickets)
 
-        initializeWinningNumbers()
-        initializeBonusNumber()
+        val winningNumbers = getWinningNumbers()
+        val bonusNumber = getBonusNumber(winningNumbers)
 
-        displayResult(lottoTickets)
+        displayResult(lottoTickets, winningNumbers, bonusNumber)
     }
 
     private fun getNumberOfTickets(): Int = repeatUntilSuccess {
         val amount = inputView.readPurchaseAmount()
         lottoValidator.validatePurchaseAmount(amount)
-        amount.toInt() / 1000
+        amount.toInt() / SINGLE_TICKET_PRICE
     }
 
     private fun generateLottoTickets(numberOfTickets: Int): List<Lotto> {
@@ -40,16 +42,17 @@ class LottoGame(
         outputView.displayPurchasedTickets(lottoTickets)
     }
 
-    private fun initializeWinningNumbers() = repeatUntilSuccess {
+    private fun getWinningNumbers(): Lotto = repeatUntilSuccess {
         val winningNumberInput: List<String> = inputView.readWinningNumbers()
         lottoValidator.validateWinningNumbers(winningNumberInput)
-        winningCombination = WinningCombination(winningNumberInput.map { it.toInt() }, 0, 0)
+        Lotto(winningNumberInput.map { it.toInt() })
     }
 
-    private fun initializeBonusNumber() = repeatUntilSuccess {
+
+    private fun getBonusNumber(winningNumbers: Lotto): Int = repeatUntilSuccess {
         val bonusNumberInput = inputView.readBonusNumber()
-        lottoValidator.validateBonusNumber(bonusNumberInput, winningCombination.winningNumberList)
-        winningCombination = WinningCombination(winningCombination.winningNumberList, bonusNumberInput.toInt(), 0)
+        lottoValidator.validateBonusNumber(bonusNumberInput, winningNumbers)
+        bonusNumberInput.toInt()
     }
 
     private fun <T> repeatUntilSuccess(actionToRetry: () -> T): T {
@@ -63,9 +66,37 @@ class LottoGame(
         }
     }
 
-    private fun displayResult(lottoTickets: List<Lotto>) {
-        val prizeCountList = winningCombination.match(lottoTickets)
-        outputView.displayPrizeDistribution(prizeCountList)
-        outputView.displayTotalReturnRate(lottoTickets.size, winningCombination.getTotalPrize())
+    private fun displayResult(lottoTickets: List<Lotto>, winningNumbers: Lotto, bonusNumber: Int) {
+        val prizeCounts: IntArray = getPrizeCounts(lottoTickets, winningNumbers, bonusNumber)
+        val matchedPrizes: MutableMap<Prize, Int> = getMatchedPrizes(prizeCounts)
+
+        outputView.displayPrizeDistribution(matchedPrizes)
+
+        val returnRate = getReturnRate(matchedPrizes, lottoTickets.size)
+
+        outputView.displayTotalReturnRate(returnRate)
+    }
+
+    private fun getReturnRate(matchedPrizes: MutableMap<Prize, Int>, countOfLotto: Int): Double {
+        val totalWinnings = matchedPrizes.entries.sumOf { (prize, count) -> prize.money * count }
+        val totalTicketPrice = countOfLotto * SINGLE_TICKET_PRICE.toDouble()
+
+        val returnRate = totalWinnings / totalTicketPrice * PERCENT_RATIO
+        return returnRate
+    }
+
+    private fun getPrizeCounts(lottoTickets: List<Lotto>, winningNumbers: Lotto, bonusNumber: Int): IntArray {
+        val prizeCounts: IntArray = IntArray(6)
+        for (lottoTicket in lottoTickets) {
+            val prize = lottoTicket.prizeCount(winningNumbers, bonusNumber)
+            prizeCounts[prize]++
+        }
+        return prizeCounts
+    }
+
+    private fun getMatchedPrizes(prizeCounts: IntArray): MutableMap<Prize, Int> {
+        var index = 1
+        return Prize.entries.associateWith { prizeCounts[index++]}
+            .toMutableMap()
     }
 }
