@@ -11,10 +11,10 @@ class ConsoleOutputPrinter: OutputPrinter {
         val prizeFormatted = "%,d".format(rank.prize)
 
         val builder = StringBuilder()
-        builder.append("Rank ${rank.matchCount} Matches ")
+        builder.append("${rank.matchCount} Matches ")
         if (rank.bonusBallRequired)
             builder.append("+ Bonus Ball ")
-        return builder.append("($prizeFormatted ${Lotto.CURRENCY}) - ${rankCount.value} tickets").toString()
+        return builder.append("($prizeFormatted ${Lotto.CURRENCY}) – ${rankCount.value} tickets").toString()
     }
 
     private fun getRankStaticsMessage(rankCount: Map<Rank, Int>): String {
@@ -53,11 +53,21 @@ class ConsoleOutputPrinter: OutputPrinter {
         println(stringBuilder.toString())
     }
 
+    override fun printErrors(reasons: List<String>) {
+        println("$ERROR_TAG ${reasons.joinToString(", ")}")
+    }
+
+    override fun printTryAgain() {
+        println("please try again.\n")
+    }
+
+
     override fun close() {
         Console.close()
     }
 
     companion object {
+        private const val ERROR_TAG = "[ERROR]"
         private const val LINE_SEPARATOR = "---"
         private const val RESULT_DESCRIPTION = "Winning Statics"
     }
