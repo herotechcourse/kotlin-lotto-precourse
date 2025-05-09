@@ -11,5 +11,16 @@ enum class Rank(val matchCount: Int, val prize: Long, val bonusBallRequired: Boo
         require(matchCount in 0..6) { " Match count must be between 0 and 6." }
         require(prize >= 0) { " Prize must be non-negative." }
     }
+
+    override fun toString(): String {
+        // "4 Matches (50,000 KRW) – 0 tickets",
+//        "5 Matches + Bonus Ball (30,000,000 KRW) – 0 tickets",
+        val formattedPrize = String.format("%,d", prize)
+        var bonusMessage = ""
+        if (bonusBallRequired)
+            bonusMessage = " + Bonus Ball"
+
+        return "$matchCount Matches$bonusMessage ($formattedPrize)"
+    }
 }
 
