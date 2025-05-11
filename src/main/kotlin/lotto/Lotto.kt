@@ -7,7 +7,13 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.all { it in 1..45 }) { "[ERROR] Winning numbers must be between 1 and 45." }
     }
 
-    fun getNumbers(): List<Int> = numbers.toList()
+    fun containsNumber(number: Int): Boolean {
+        return numbers.contains(number)
+    }
+
+    fun matchCount(winningNumbers: List<Int>): Int {
+        return numbers.count { it in winningNumbers }
+    }
 
     override fun toString(): String {
         return numbers.toString()
