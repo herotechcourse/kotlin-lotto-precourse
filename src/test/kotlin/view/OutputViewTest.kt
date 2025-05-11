@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.NsTest
 import lotto.LottoGame
 import lotto.LottoGenerator
+import lotto.Money
 import lotto.main
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -13,7 +14,8 @@ class OutputViewTest : NsTest() {
     fun `test output issued tickets (exact match)`() {
         assertRandomUniqueNumbersInRangeTest(
             {
-                val tickets = LottoGenerator.issue(4_000)
+                val money = Money(4_000)
+                val tickets = LottoGenerator.issue(money)
                 OutputView.printIssuedTickets(tickets)
                 assertEquals(cleanOutput(), """
                     You have purchased 4 tickets.
@@ -35,10 +37,10 @@ class OutputViewTest : NsTest() {
     fun `test output result statistic (exact match)`() {
         assertRandomUniqueNumbersInRangeTest(
             {
-                val purchaseAmount = 10_000
-                val tickets = LottoGenerator.issue(purchaseAmount)
+                val money = Money(10_000)
+                val tickets = LottoGenerator.issue(money)
                 val result = LottoGame(listOf(1, 2, 3, 4, 5, 6), 7, tickets).countWinningTickets()
-                OutputView.printStatistic(result, purchaseAmount)
+                OutputView.printStatistic(result, money)
                 assertEquals(cleanOutput(), """
                     Winning Statistics
                     –––

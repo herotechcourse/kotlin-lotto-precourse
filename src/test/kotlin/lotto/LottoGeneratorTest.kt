@@ -7,13 +7,15 @@ import org.junit.jupiter.api.Test
 class LottoGeneratorTest {
     @Test
     fun `issue 10 lotto tickets`() {
-        val lottoTickets = LottoGenerator.issue(PURCHASE_AMOUNT)
-        assertEquals(lottoTickets.size, PURCHASE_AMOUNT / TICKET_PRICE)
+        val purchaseAmount = Money(PURCHASE_AMOUNT)
+        val lottoTickets = LottoGenerator.issue(purchaseAmount)
+        assertEquals(lottoTickets.size, purchaseAmount.value / TICKET_PRICE)
     }
 
     @Test
     fun `each lotto ticket contains 6 unique numbers`() {
-        val lottoTickets = LottoGenerator.issue(PURCHASE_AMOUNT)
+        val purchaseAmount = Money(PURCHASE_AMOUNT)
+        val lottoTickets = LottoGenerator.issue(purchaseAmount)
         assertTrue(lottoTickets.all { it.getNumbers().toSet().size == TICKET_SIZE })
     }
 
