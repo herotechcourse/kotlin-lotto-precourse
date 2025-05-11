@@ -3,6 +3,7 @@ package lotto
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
 
 class LottoTest {
     @Test
@@ -24,6 +25,18 @@ class LottoTest {
         assertThrows<IllegalArgumentException> {
             Lotto(listOf(1, 2, 3333, 4, 5, 6))
         } .also { e -> assertTrue(e.message!!.startsWith(ERROR_MESSAGE)) }
+    }
+
+    @Test
+    fun `lotto ticket contains number`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertTrue(ticket.containsNumber(6))
+    }
+
+    @Test
+    fun `lotto ticket has 3 matches with winning numbers`() {
+        val ticket = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        assertEquals(ticket.matchCount(listOf(6, 1, 5, 8, 11, 40)), 3)
     }
 
     companion object {
