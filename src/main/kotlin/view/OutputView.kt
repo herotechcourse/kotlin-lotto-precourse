@@ -2,6 +2,7 @@ package view
 
 import lotto.Calculator
 import lotto.Lotto
+import lotto.Money
 import lotto.PrizeRankCriteria
 import java.util.*
 
@@ -11,7 +12,7 @@ object OutputView {
         tickets.onEach { println(it) }
     }
 
-    fun printStatistic(result: Map<PrizeRankCriteria, Int>, purchaseAmount: Int) {
+    fun printStatistic(result: Map<PrizeRankCriteria, Int>, purchaseAmount: Money) {
         println("Winning Statistics")
         println("–––")
         PrizeRankCriteria
@@ -19,7 +20,7 @@ object OutputView {
             .filter { it != PrizeRankCriteria.NONE }
             .sortedDescending()
             .onEach { println("${it.label} – ${result.getOrDefault(it, 0)} tickets") }
-        printRate(Calculator.rate(result, purchaseAmount))
+        printRate(Calculator.rate(result, purchaseAmount.value))
     }
 
     private fun printRate(profitRate: Double) {

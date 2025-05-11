@@ -4,7 +4,7 @@ import view.InputView
 import view.OutputView
 
 fun main() {
-    val purchaseAmount = InputView.readPurchaseAmount()
+    val purchaseAmount = Money(InputView.readPurchaseAmount())
     val tickets = LottoGenerator.issue(purchaseAmount)
     println()
     OutputView.printIssuedTickets(tickets)
